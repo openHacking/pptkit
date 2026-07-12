@@ -21,7 +21,7 @@ PPTKit documentation is organized into three layers:
 
 1. User docs for installation, quick start, and practical usage.
 2. Architecture docs for contributors who need to understand the system design.
-3. Decision records such as RFCs for major technical changes.
+3. Implementation-facing docs for workspace, API, and testing decisions.
 
 ## Suggested Reading Order
 

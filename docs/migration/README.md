@@ -1,9 +1,7 @@
 # Migration
 
-This section will document breaking changes and upgrade paths between releases.
+This section will track migration and release-readiness guidance as PPTKit moves from bootstrap to preview publishing.
 
-## Planned Topics
+## Pages
 
-- Release migration notes
-- API rename guidance
-- Deprecated behavior
+- [Release Strategy](release-strategy.md)

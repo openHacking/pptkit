@@ -10,4 +10,4 @@ The format is based on Keep a Changelog, and this project aims to follow Semanti
 
 - Initial open-source documentation structure
 - Project README and governance documents
-- Docs, examples, benchmark, and RFC directory scaffolding
+- Docs, examples, and benchmark directory scaffolding

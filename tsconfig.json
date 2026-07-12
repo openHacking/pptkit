@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/core" },
+    { "path": "./packages/layout" },
+    { "path": "./packages/pptx-exporter" },
+    { "path": "./packages/cli" },
+    { "path": "./examples/dev-app" }
+  ]
+}

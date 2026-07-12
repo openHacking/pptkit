@@ -2,15 +2,20 @@
 
 This page summarizes the intended public API surface by package.
 
-## Planned Public Packages
+## Bootstrap Packages
 
 - `@pptkit/core`
 - `@pptkit/layout`
 - `@pptkit/pptx-exporter`
+- `@pptkit/cli`
+
+These packages now exist in the workspace as provisional implementation shells.
+
+## Planned Follow-Up Packages
+
 - `@pptkit/pptx-parser`
 - `@pptkit/svg-parser`
 - `@pptkit/svg-renderer`
-- `@pptkit/cli`
 
 ## API Design Goals
 

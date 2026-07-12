@@ -2,7 +2,7 @@
 
 This guide describes the intended first-run experience for PPTKit.
 
-The APIs shown below are provisional. They exist to document the target developer experience before the first implementation is published.
+The APIs shown below are provisional. They reflect the current workspace bootstrap and may still change before preview releases.
 
 ## Goal
 
@@ -31,9 +31,11 @@ presentation.addSlide({
   ],
 });
 
-await exportPptx(presentation, {
+const result = await exportPptx(presentation, {
   output: "./hello-pptkit.pptx",
 });
+
+console.log(result.status);
 ```
 
 ## Mental Model
@@ -51,6 +53,7 @@ The quick-start experience should make three things obvious:
 - The project has clear package responsibilities.
 - Editable presentation output is a first-class goal.
 - The user does not need to wire together low-level PPT XML details by hand.
+- The current bootstrap does not yet write a real `.pptx` file.
 
 ## Next Steps
 

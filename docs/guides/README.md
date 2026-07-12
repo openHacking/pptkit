@@ -5,6 +5,8 @@ This section will contain task-oriented documentation.
 ## Pages
 
 - [Create Your First Deck](create-your-first-deck.md)
+- [Developer Workflow](developer-workflow.md)
+- [Example Workbench](example-workbench.md)
 
 ## Planned Topics
 

@@ -5,17 +5,24 @@ Thanks for your interest in contributing to PPTKit.
 ## Before You Start
 
 - Check existing issues and discussions before opening a new one.
-- For larger architectural or API changes, open a proposal first.
+- For larger architectural or API changes, update the owning documentation first so the design and implementation stay aligned.
 - Keep changes focused and easy to review.
 
 ## Local Development
 
-The repository is still in its early setup phase. Once the package workspace is in place, the standard workflow will be:
+The monorepo workspace is now bootstrapped. The standard validation workflow is:
 
 ```bash
 pnpm install
-pnpm dev
+pnpm lint
+pnpm typecheck
 pnpm test
+```
+
+To compile all initial packages:
+
+```bash
+pnpm build
 ```
 
 ## Contribution Workflow
@@ -42,6 +49,7 @@ pnpm test
 
 - Update the relevant guide, concept, or architecture doc alongside code changes.
 - Prefer examples that are easy to copy, run, and verify.
+- Mark provisional APIs clearly until preview publishing begins.
 
 ## Need Help?
 

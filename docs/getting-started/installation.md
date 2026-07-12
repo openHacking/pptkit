@@ -30,16 +30,23 @@ pnpm add @pptkit/core @pptkit/pptx-exporter
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-## Planned Local Development Setup
+## Local Development Setup
 
-Once the workspace is initialized, contributors should be able to start with:
+The workspace bootstrap now supports:
 
 ```bash
 pnpm install
-pnpm dev
+pnpm lint
+pnpm typecheck
 pnpm test
+```
+
+To compile all current packages:
+
+```bash
+pnpm build
 ```
 
 ## Current Status
 
-At this stage, the installation contract is being documented before the packages are published. This helps keep naming, package boundaries, and onboarding materials consistent from the beginning.
+At this stage, the workspace exists for local development and contributor validation. Public package publication is still deferred.

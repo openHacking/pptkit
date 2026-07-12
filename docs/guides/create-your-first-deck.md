@@ -1,6 +1,6 @@
 # Create Your First Deck
 
-This guide will become the main practical walkthrough for new users.
+This guide will become the main practical walkthrough for new users once the exporter moves beyond the current placeholder result.
 
 ## Intended Scope
 

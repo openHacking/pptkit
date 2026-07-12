@@ -1,6 +1,6 @@
 # Hello World
 
-This page is reserved for the first runnable PPTKit example.
+This page is reserved for the first runnable PPTKit example beyond the current workspace bootstrap.
 
 ## Intended Outcome
 

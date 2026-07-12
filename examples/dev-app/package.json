@@ -1,0 +1,17 @@
+{
+  "name": "@pptkit/dev-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Internal development workbench for PPTKit examples and capability previews.",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "dev": "node ./dist/server.js",
+    "test": "pnpm run build && node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/layout": "workspace:*",
+    "@pptkit/pptx-exporter": "workspace:*"
+  }
+}

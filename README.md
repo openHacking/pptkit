@@ -11,7 +11,7 @@ Modern presentation generation toolkit for JavaScript.
 
 ## Quick Start
 
-PPTKit is currently in the project-definition stage. The package APIs are not published yet, but the repository structure is being prepared for:
+PPTKit is currently in the early workspace bootstrap stage. The package APIs are still provisional, but the monorepo skeleton is now in place for:
 
 - A core SDK
 - A layout engine
@@ -20,11 +20,23 @@ PPTKit is currently in the project-definition stage. The package APIs are not pu
 
 ## Installation
 
-Package installation instructions will be added once the first public packages are published.
+For local development:
+
+```bash
+pnpm install
+pnpm dev
+pnpm lint
+pnpm typecheck
+pnpm test
+```
+
+Published package installation instructions will be added once preview releases exist.
+
+`pnpm dev` starts the internal examples workbench at `http://localhost:3210` so contributors can browse capability-focused cases based on the current project priorities and implementation state.
 
 ## Hello World
 
-Hello World examples will be added with the first runnable package release.
+The repository now includes placeholder package shells and smoke tests, but not a real deck export workflow yet.
 
 ## Architecture
 
@@ -35,15 +47,18 @@ Start with [docs/architecture/overview.md](docs/architecture/overview.md) and [d
 
 ## Packages
 
-Planned core packages:
+Bootstrap packages:
 
 - `@pptkit/core`
 - `@pptkit/layout`
 - `@pptkit/pptx-exporter`
+- `@pptkit/cli`
+
+Planned follow-up packages:
+
 - `@pptkit/pptx-parser`
 - `@pptkit/svg-parser`
 - `@pptkit/svg-renderer`
-- `@pptkit/cli`
 
 ## Documentation
 
@@ -53,6 +68,7 @@ Planned core packages:
 - API: [docs/api/README.md](docs/api/README.md)
 - Guides: [docs/guides/README.md](docs/guides/README.md)
 - Examples: [examples/README.md](examples/README.md)
+- Monorepo bootstrap: [docs/architecture/monorepo-bootstrap.md](docs/architecture/monorepo-bootstrap.md)
 
 ## Roadmap
 
