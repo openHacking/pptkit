@@ -5,13 +5,41 @@
   "type": "module",
   "description": "Internal development workbench for PPTKit examples and capability previews.",
   "scripts": {
-    "build": "tsc -b tsconfig.json",
-    "dev": "node ./dist/server.js",
-    "test": "pnpm run build && node --test test/*.test.mjs"
+    "build": "pnpm run build:client && pnpm run build:server",
+    "build:client": "vite build",
+    "build:deps": "pnpm --filter @pptkit/core --filter @pptkit/layout --filter @pptkit/pptx-exporter build",
+    "build:server": "tsc -b tsconfig.server.json",
+    "dev": "pnpm run build:deps && node ./scripts/dev.mjs",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc -b tsconfig.json --pretty false"
   },
   "dependencies": {
     "@pptkit/core": "workspace:*",
     "@pptkit/layout": "workspace:*",
-    "@pptkit/pptx-exporter": "workspace:*"
+    "@pptkit/pptx-exporter": "workspace:*",
+    "@radix-ui/react-scroll-area": "^1.2.14",
+    "@radix-ui/react-separator": "^1.1.11",
+    "@radix-ui/react-slot": "^1.3.0",
+    "@radix-ui/react-tabs": "^1.1.17",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.24.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "^4.3.2",
+    "tsx": "^4.23.0",
+    "vite": "^8.1.4",
+    "vitest": "^4.1.10"
   }
 }

@@ -2,6 +2,9 @@
 
 The examples workbench is the internal development surface for quickly inspecting PPTKit capabilities in the browser.
 
+The workbench is intentionally allowed to use application-layer UI tooling such as React and shadcn/ui.
+That exception is limited to `examples/dev-app`; `packages/*` should remain framework-agnostic.
+
 ## Goals
 
 - keep preview-driven development visible before full render and export implementations exist
@@ -15,6 +18,12 @@ The examples workbench is the internal development surface for quickly inspectin
 3. Add one or more `scenarioTags` when the example is useful outside a single feature lane.
 4. Keep the source payload small and reviewable.
 5. Update or add tests if the new example introduces a new fixture shape or report behavior.
+
+## UI Implementation Notes
+
+- prefer shadcn/ui components over hand-rolled primitives when extending the workbench
+- keep the default component styles rather than creating a custom design layer
+- reserve framework-specific code for `examples/dev-app`, not shared packages
 
 The feature list is intentionally open-ended.
 Seed examples can be reorganized as the project matures, so the workbench contract should stay stable even when the initial categories change.

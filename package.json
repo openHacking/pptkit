@@ -13,10 +13,12 @@
     "lint": "node ./scripts/lint.mjs",
     "test": "pnpm -r test",
     "typecheck": "tsc -b --pretty false",
-    "clean": "node ./scripts/clean.mjs"
+    "clean": "node ./scripts/clean.mjs",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "husky": "^9.1.7",
     "typescript": "^5.9.2"
   }
 }

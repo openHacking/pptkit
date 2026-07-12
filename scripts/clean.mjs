@@ -21,4 +21,15 @@ for (const relativePath of packageDirs.map((dirName) =>
   });
 }
 
+for (const relativePath of [
+  path.join("examples", "dev-app", "dist"),
+  path.join("examples", "dev-app", "tsconfig.app.tsbuildinfo"),
+  path.join("examples", "dev-app", "tsconfig.server.tsbuildinfo"),
+]) {
+  rmSync(path.join(root, relativePath), {
+    force: true,
+    recursive: true,
+  });
+}
+
 console.log("Cleaned build artifacts.");

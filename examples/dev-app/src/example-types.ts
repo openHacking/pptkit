@@ -50,6 +50,11 @@ export interface ExampleSummary {
   status: "ready" | "placeholder";
 }
 
+export interface WorkbenchPayload {
+  features: FeatureId[];
+  examples: ExampleSummary[];
+}
+
 export interface NormalizedDocumentReport {
   title: string;
   summary: string;

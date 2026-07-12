@@ -1,16 +1,7 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "lib": ["ES2022", "DOM"],
-    "rootDir": "src",
-    "outDir": "dist",
-    "composite": true,
-    "tsBuildInfoFile": "./tsconfig.tsbuildinfo"
-  },
-  "include": ["src/**/*.ts"],
+  "files": [],
   "references": [
-    { "path": "../../packages/core" },
-    { "path": "../../packages/layout" },
-    { "path": "../../packages/pptx-exporter" }
+    { "path": "./tsconfig.server.json" },
+    { "path": "./tsconfig.app.json" }
   ]
 }

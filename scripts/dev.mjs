@@ -25,5 +25,4 @@ function run(cmd, args, options = {}) {
   });
 }
 
-await run("pnpm", ["exec", "tsc", "-b", "--pretty", "false"]);
-await run("node", ["./examples/dev-app/dist/server.js"]);
+await run("pnpm", ["--filter", "@pptkit/dev-app", "dev"]);
