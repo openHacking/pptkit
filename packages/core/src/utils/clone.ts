@@ -13,7 +13,12 @@ export function cloneAssetSource(source: PresentationAssetSource): PresentationA
 }
 
 export function cloneTextStyle(style: TextStyle | undefined): TextStyle {
-  return style === undefined ? {} : { ...style };
+  return style === undefined
+    ? {}
+    : {
+        ...style,
+        ...(style.autoFit !== undefined ? { autoFit: { ...style.autoFit } } : {}),
+      };
 }
 
 export function cloneShapeStyle(style: ShapeStyle | undefined): ShapeStyle {
@@ -53,5 +58,9 @@ export function cloneElement(element: PresentationElementInput): PresentationEle
 }
 
 export function cloneSlide(input: PresentationSlideInput | PresentationSlide): PresentationSlide {
-  return { id: input.id ?? "", elements: (input.elements ?? []).map(cloneElement) };
+  return {
+    id: input.id ?? "",
+    ...(input.background !== undefined ? { background: input.background } : {}),
+    elements: (input.elements ?? []).map(cloneElement),
+  };
 }

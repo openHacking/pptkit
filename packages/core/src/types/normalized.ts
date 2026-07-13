@@ -4,6 +4,7 @@ import type { PresentationSize } from "./geometry.js";
 
 export interface NormalizedSlide {
   id: string;
+  background?: string;
   elements: NormalizedElement[];
 }
 

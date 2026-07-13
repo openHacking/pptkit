@@ -19,6 +19,7 @@ const presentation = createPresentation({
 });
 
 presentation.addSlide({
+  background: "#F7F5EF",
   elements: [
     {
       type: "text",

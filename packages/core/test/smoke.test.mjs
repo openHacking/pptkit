@@ -155,6 +155,51 @@ test("normalizePresentation returns detached normalized state", () => {
   assert.equal(normalized.slides[0].elements[0].box.width, 320);
 });
 
+test("normalizePresentation preserves slide background and detached text layout styles", () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide({
+    background: "#F7F5EF",
+    elements: [{
+      type: "text",
+      text: "First line\nSecond line",
+      box: { x: 20, y: 20, width: 240, height: 80 },
+      style: {
+        fontFamily: "Helvetica Neue",
+        lineSpacing: 1.15,
+        autoFit: { mode: "shrink", fontScale: 0.96 },
+      },
+    }],
+  });
+
+  const normalized = normalizePresentation(presentation);
+  slide.background = "#FFFFFF";
+  slide.elements[0].style.autoFit.fontScale = 0.5;
+
+  assert.equal(normalized.slides[0].background, "#F7F5EF");
+  assert.deepEqual(normalized.slides[0].elements[0].style.autoFit, {
+    mode: "shrink",
+    fontScale: 0.96,
+  });
+});
+
+test("normalizePresentation rejects invalid text layout ratios", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "text",
+      text: "Invalid spacing",
+      box: { x: 0, y: 0, width: 100, height: 20 },
+      style: { lineSpacing: 0 },
+    }],
+  });
+  assert.throws(() => normalizePresentation(presentation), /lineSpacing must be a positive finite number/);
+
+  presentation.slides[0].elements[0].style = {
+    autoFit: { mode: "shrink", fontScale: 1.01 },
+  };
+  assert.throws(() => normalizePresentation(presentation), /fontScale must be greater than zero and at most one/);
+});
+
 test("addSlide rejects duplicate slide ids", () => {
   const presentation = createPresentation();
   presentation.addSlide({ id: "intro" });

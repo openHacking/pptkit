@@ -29,9 +29,21 @@ function readZipEntries(input) {
 test("generatePptx creates deterministic cross-runtime bytes", async () => {
   const presentation = createPresentation({ title: "Quarterly plan" });
   presentation.addSlide({ elements: [
-    { type: "text", text: "Q1 & <ready>", box: { x: 10, y: 20, width: 300, height: 40 }, style: { fontSize: 20, fontWeight: "bold" } },
+    {
+      type: "text",
+      text: "Q1 & <ready>\nSecond line",
+      box: { x: 10, y: 20, width: 300, height: 40 },
+      style: {
+        fontSize: 20,
+        fontFamily: "Helvetica Neue",
+        fontWeight: "bold",
+        align: "right",
+        lineSpacing: 1.15,
+        autoFit: { mode: "shrink", fontScale: 0.96 },
+      },
+    },
     { type: "shape", shape: "rect", box: { x: 10, y: 70, width: 100, height: 50 }, style: { fill: "#ff0000" } },
-  ] });
+  ], background: "#F7F5EF" });
   const result = await generatePptx(presentation);
   const repeated = await generatePptx(presentation);
 
@@ -49,8 +61,15 @@ test("generatePptx creates deterministic cross-runtime bytes", async () => {
   assert.match(presentationXml, /sldId/);
   assert.match(presentationXml, /notesMasterIdLst/);
   assert.ok(presentationXml.indexOf("notesMasterIdLst") < presentationXml.indexOf("sldIdLst"));
-  assert.match(slideXml, /algn="l"/);
+  assert.match(slideXml, /<p:bg><p:bgPr><a:solidFill><a:srgbClr val="F7F5EF"/);
+  assert.match(slideXml, /algn="r"/);
   assert.doesNotMatch(slideXml, /algn="left"/);
+  assert.equal((slideXml.match(/<a:p>/g) ?? []).length, 2);
+  assert.match(slideXml, /<a:spcPct val="115000"\/>/);
+  assert.match(slideXml, /<a:normAutofit fontScale="96000"\/>/);
+  assert.match(slideXml, /<a:latin typeface="Helvetica Neue"\/>/);
+  assert.match(slideXml, /<a:ea typeface="Helvetica Neue"\/>/);
+  assert.match(slideXml, /<a:cs typeface="Helvetica Neue"\/>/);
   assert.match(masterXml, /accent3="accent3"/);
   assert.match(masterXml, /id="2147483649"/);
   assert.match(masterXml, /<p:bg><p:bgRef idx="1001"><a:schemeClr val="bg1"\/><\/p:bgRef><\/p:bg>/);

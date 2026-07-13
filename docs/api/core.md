@@ -87,6 +87,7 @@ Appends a slide to the document and returns the created slide.
 ```ts
 interface PresentationSlideInput {
   id?: string;
+  background?: string;
   elements?: PresentationElementInput[];
 }
 ```
@@ -189,7 +190,7 @@ interface ShapeElementInput {
 }
 ```
 
-Minimal style shells:
+Text and shape styles:
 
 ```ts
 interface TextStyle {
@@ -198,6 +199,10 @@ interface TextStyle {
   fontWeight?: "normal" | "bold";
   color?: string;
   align?: "left" | "center" | "right";
+  lineSpacing?: number;
+  autoFit?:
+    | { mode: "none" }
+    | { mode: "shrink"; fontScale?: number };
 }
 
 interface ShapeStyle {
@@ -206,6 +211,8 @@ interface ShapeStyle {
   strokeWidth?: number;
 }
 ```
+
+`background` is a solid slide color. `lineSpacing` is a line-height multiplier, so `1.15` means 115%. When supplied, `autoFit.fontScale` must be greater than zero and at most one. Newline characters create multiple paragraphs inside the same editable text box during PPTX export.
 
 ### Normalized Output
 
@@ -222,6 +229,7 @@ Downstream packages should consume normalized data rather than authoring state d
 - image elements that reference missing assets
 - negative or non-finite box dimensions
 - invalid presentation or asset dimensions
+- non-positive text line spacing or text auto-fit scales outside `(0, 1]`
 
 ## Asset Lifecycle Boundary
 

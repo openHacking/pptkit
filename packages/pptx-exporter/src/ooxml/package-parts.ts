@@ -1,10 +1,13 @@
 import type { LayoutResult } from "@pptkit/layout";
 import { CONTENT_TYPES } from "../constants/ooxml.js";
 import type { PackagedMedia } from "../types/internal.js";
-import { emu, escapeXml, groupTransformXml } from "./xml.js";
+import { colorValue, emu, escapeXml, groupTransformXml } from "./xml.js";
 
-export function slideXml(elements: string[]): string {
-  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr>${groupTransformXml()}</p:grpSpPr>${elements.join("")}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`;
+export function slideXml(elements: string[], background?: string): string {
+  const backgroundXml = background === undefined
+    ? ""
+    : `<p:bg><p:bgPr><a:solidFill><a:srgbClr val="${colorValue(background)}"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>`;
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld>${backgroundXml}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr>${groupTransformXml()}</p:grpSpPr>${elements.join("")}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>`;
 }
 
 export function presentationXml(layout: LayoutResult): string {

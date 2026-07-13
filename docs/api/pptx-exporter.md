@@ -47,7 +47,7 @@ Import `writePptx` from `@pptkit/pptx-exporter/node`. The output directory is cr
 
 | Core element | PPTX output |
 | --- | --- |
-| `text` | Editable text box with basic font, weight, color, and alignment |
+| `text` | Editable text box with font family, size, weight, color, alignment, paragraph line spacing, line breaks, and optional shrink-to-fit |
 | `shape: rect` | Editable rectangle |
 | `shape: ellipse` | Editable ellipse |
 | `shape: line` | Editable line |
@@ -56,5 +56,7 @@ Import `writePptx` from `@pptkit/pptx-exporter/node`. The output directory is cr
 The default entry supports URL sources through the runtime `fetch`, including HTTP(S), data, and blob URLs. Browser HTTP(S) requests obey CORS. A `path` source used through the default entry produces an `asset-read-failed` warning; the Node.js entry supports both `path` and `url`.
 
 Core normalization errors fail the operation. Recoverable asset failures omit only the affected image and are reported through `asset-read-failed` and `image-omitted` warnings. Unsupported elements use `unsupported-element`.
+
+Solid slide backgrounds are exported as native PowerPoint slide backgrounds rather than full-slide shapes. Fonts are referenced by family name and are not embedded; PowerPoint may substitute a font that is unavailable on the viewing machine.
 
 Themes, rich text runs, grouped elements, tables, animations, speaker notes, and PPTX parsing remain outside the current implementation.

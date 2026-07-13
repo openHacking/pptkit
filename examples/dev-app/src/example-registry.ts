@@ -1,4 +1,5 @@
 import type { ExampleDefinition, ExampleSummary, FeatureId } from "./example-types.js";
+import { saasHuntSwissStyleExample } from "./examples/saas-hunt-swiss-style.js";
 
 const exampleDefinitions: ExampleDefinition[] = [
   {
@@ -210,6 +211,115 @@ const exampleDefinitions: ExampleDefinition[] = [
       };
     },
   },
+  {
+    id: "export-mixed-media-slide",
+    title: "Export Mixed Media Slide",
+    feature: "export-pptx",
+    description: "Prove the dev workbench can author and export text, shapes, and images from one source payload.",
+    inputKind: "presentation-config",
+    source: {
+      label: "Mixed media slide config",
+      content: `{
+  "title": "Mixed Media Demo",
+  "summary": "A single slide combining text, shapes, and an image asset.",
+  "slides": [
+    {
+      "title": "Overview",
+      "elements": [
+        {
+          "type": "text",
+          "text": "PPTKit visual elements",
+          "box": { "x": 48, "y": 40, "width": 360, "height": 28 },
+          "style": { "fontSize": 24, "fontWeight": "bold" }
+        },
+        {
+          "type": "shape",
+          "shape": "rect",
+          "box": { "x": 48, "y": 92, "width": 240, "height": 120 },
+          "style": { "fill": "#DCEBFF", "stroke": "#2563EB", "strokeWidth": 2 }
+        },
+        {
+          "type": "image",
+          "altText": "Blue accent pixel",
+          "asset": {
+            "id": "accent-pixel",
+            "source": {
+              "type": "url",
+              "value": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9WnR8WQAAAAASUVORK5CYII="
+            },
+            "mimeType": "image/png",
+            "altText": "Blue accent pixel"
+          },
+          "box": { "x": 320, "y": 92, "width": 180, "height": 180 }
+        },
+        {
+          "type": "shape",
+          "shape": "line",
+          "box": { "x": 48, "y": 236, "width": 452, "height": 4 },
+          "style": { "stroke": "#0F172A", "strokeWidth": 2 }
+        },
+        "Caption: Mixed element authoring now reaches the exporter."
+      ]
+    }
+  ]
+}`,
+    },
+    scenarioTags: ["mixed-media", "export"],
+    expectedCapabilities: {
+      normalize: "implemented",
+      render: "placeholder",
+      exportPptx: "implemented",
+    },
+    status: "ready",
+    createInput() {
+      return {
+        title: "Mixed Media Demo",
+        summary: "A single slide combining text, shapes, and an image asset.",
+        slides: [
+          {
+            title: "Overview",
+            elements: [
+              {
+                type: "text",
+                text: "PPTKit visual elements",
+                box: { x: 48, y: 40, width: 360, height: 28 },
+                style: { fontSize: 24, fontWeight: "bold" },
+              },
+              {
+                type: "shape",
+                shape: "rect",
+                box: { x: 48, y: 92, width: 240, height: 120 },
+                style: { fill: "#DCEBFF", stroke: "#2563EB", strokeWidth: 2 },
+              },
+              {
+                type: "image",
+                altText: "Blue accent pixel",
+                asset: {
+                  id: "accent-pixel",
+                  source: {
+                    type: "url",
+                    value:
+                      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9WnR8WQAAAAASUVORK5CYII=",
+                  },
+                  mimeType: "image/png",
+                  altText: "Blue accent pixel",
+                },
+                box: { x: 320, y: 92, width: 180, height: 180 },
+              },
+              {
+                type: "shape",
+                shape: "line",
+                box: { x: 48, y: 236, width: 452, height: 4 },
+                style: { stroke: "#0F172A", strokeWidth: 2 },
+              },
+              "Caption: Mixed element authoring now reaches the exporter.",
+            ],
+          },
+        ],
+      };
+    },
+  },
+  saasHuntSwissStyleExample,
 ];
 
 export function listExamples(): ExampleDefinition[] {

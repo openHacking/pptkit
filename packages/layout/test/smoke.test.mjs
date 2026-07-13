@@ -36,10 +36,17 @@ test("resolveLayout returns an export-ready detached layout", () => {
 
 test("resolveNormalizedLayout consumes detached normalized IR without sharing references", () => {
   const presentation = createPresentation();
-  presentation.addSlide({ elements: [{ type: "text", text: "Detached", box: { x: 0, y: 0, width: 10, height: 10 } }] });
+  presentation.addSlide({ elements: [{
+    type: "text",
+    text: "Detached",
+    box: { x: 0, y: 0, width: 10, height: 10 },
+    style: { autoFit: { mode: "shrink", fontScale: 0.96 } },
+  }] });
   const normalized = normalizePresentation(presentation);
   const result = resolveNormalizedLayout(normalized);
 
   result.slides[0].elements[0].box.width = 99;
+  result.slides[0].elements[0].style.autoFit.fontScale = 0.5;
   assert.equal(normalized.slides[0].elements[0].box.width, 10);
+  assert.equal(normalized.slides[0].elements[0].style.autoFit.fontScale, 0.96);
 });

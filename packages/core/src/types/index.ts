@@ -17,4 +17,4 @@ export type {
   PresentationSlide,
   PresentationSlideInput,
 } from "./presentation.js";
-export type { ShapeStyle, TextStyle } from "./style.js";
+export type { ShapeStyle, TextAutoFit, TextStyle } from "./style.js";

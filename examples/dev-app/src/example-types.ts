@@ -1,3 +1,5 @@
+import type { Box, PresentationAssetSource, PresentationSize, ShapeStyle, TextStyle } from "@pptkit/core";
+
 export type FeatureId = string;
 
 export type InputKind = "html" | "markdown" | "presentation-config";
@@ -15,15 +17,54 @@ export interface ExampleSource {
   content: string;
 }
 
+export interface ExampleTextElementSpec {
+  type: "text";
+  text: string;
+  box?: Box;
+  style?: TextStyle;
+}
+
+export interface ExampleImageAssetSpec {
+  id?: string;
+  source: PresentationAssetSource;
+  mimeType?: string;
+  width?: number;
+  height?: number;
+  altText?: string;
+  dedupeKey?: string;
+}
+
+export interface ExampleImageElementSpec {
+  type: "image";
+  asset: ExampleImageAssetSpec;
+  box?: Box;
+  altText?: string;
+}
+
+export interface ExampleShapeElementSpec {
+  type: "shape";
+  shape: "rect" | "ellipse" | "line";
+  box?: Box;
+  style?: ShapeStyle;
+}
+
+export type ExampleElementSpec =
+  | string
+  | ExampleTextElementSpec
+  | ExampleImageElementSpec
+  | ExampleShapeElementSpec;
+
 export interface ExampleSlideSpec {
   id?: string;
   title: string;
-  elements: string[];
+  background?: string;
+  elements: ExampleElementSpec[];
 }
 
 export interface ExampleInputData {
   title: string;
   summary: string;
+  size?: Partial<PresentationSize>;
   slides: ExampleSlideSpec[];
 }
 

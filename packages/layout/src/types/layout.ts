@@ -2,6 +2,7 @@ import type { NormalizedElement, PresentationSize } from "@pptkit/core";
 
 export interface LayoutSlide {
   id: string;
+  background?: string;
   elements: NormalizedElement[];
 }
 

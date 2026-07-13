@@ -1,5 +1,6 @@
 import { resolveLayout } from "@pptkit/layout";
 import type {
+  ExampleElementSpec,
   ExampleDefinition,
   ExampleReport,
   NormalizedDocumentReport,
@@ -7,6 +8,27 @@ import type {
 } from "./example-types.js";
 import { parseExampleSource } from "./source-parser.js";
 import { createExamplePresentation } from "./presentation-builder.js";
+
+function describeElement(element: ExampleElementSpec): string {
+  if (typeof element === "string") {
+    return element;
+  }
+
+  if (element.type === "text") {
+    return element.text;
+  }
+
+  if (element.type === "shape") {
+    return `Shape: ${element.shape}`;
+  }
+
+  const assetLabel =
+    element.altText ??
+    element.asset.altText ??
+    element.asset.id ??
+    element.asset.source.value;
+  return `Image: ${assetLabel}`;
+}
 
 function buildNormalizedDocument(input: ReturnType<ExampleDefinition["createInput"]>): NormalizedDocumentReport {
   const document = createExamplePresentation(input);
@@ -16,7 +38,7 @@ function buildNormalizedDocument(input: ReturnType<ExampleDefinition["createInpu
     return {
       id: created.id,
       title: slide.title,
-      elements: [...slide.elements],
+      elements: slide.elements.map((element) => describeElement(element)),
     };
   });
 

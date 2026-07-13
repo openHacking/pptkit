@@ -26,7 +26,11 @@ export class PresentationDocumentImpl implements PresentationDocument {
   addSlide(input: PresentationSlideInput = {}): PresentationSlide {
     const slideId = input.id ?? createSlideId(this.slides.length);
     assertUniqueSlideIds([...this.slides, { id: slideId, elements: [] }]);
-    const slide = cloneSlide({ id: slideId, elements: input.elements ?? [] });
+    const slide = cloneSlide({
+      id: slideId,
+      ...(input.background !== undefined ? { background: input.background } : {}),
+      elements: input.elements ?? [],
+    });
     this.slides.push(slide);
     return slide;
   }

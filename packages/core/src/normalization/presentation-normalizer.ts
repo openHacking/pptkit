@@ -5,6 +5,7 @@ import type { PresentationDocument, PresentationSlide } from "../types/presentat
 import { cloneAsset, cloneBox, cloneShapeStyle, cloneTextStyle } from "../utils/clone.js";
 import { assertUniqueAssetIds, assertUniqueSlideIds } from "../validation/collection.js";
 import { assertBox, assertOptionalDimension, normalizeSize } from "../validation/geometry.js";
+import { assertTextStyle } from "../validation/style.js";
 import { DEFAULT_PRESENTATION_SIZE } from "../constants/presentation.js";
 
 function normalizeAsset(asset: PresentationAsset): PresentationAsset {
@@ -17,6 +18,7 @@ function normalizeElement(element: PresentationSlide["elements"][number], assetI
   const context = `Slide "${slideId}" element ${elementIndex + 1}`;
   assertBox(element.box, `${context} box`);
   if (element.type === "text") {
+    assertTextStyle(element.style, `${context} text style`);
     return { type: "text", text: element.text, box: cloneBox(element.box), style: cloneTextStyle(element.style) };
   }
   if (element.type === "image") {
@@ -42,6 +44,7 @@ export class PresentationNormalizer {
       assets: document.assets.map(normalizeAsset),
       slides: document.slides.map((slide) => ({
         id: slide.id,
+        ...(slide.background !== undefined ? { background: slide.background } : {}),
         elements: slide.elements.map((element, index) => normalizeElement(element, assetIds, slide.id, index)),
       })),
     };

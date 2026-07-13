@@ -5,7 +5,16 @@ function cloneElement(element: NormalizedElement): NormalizedElement {
   return {
     ...element,
     box: { ...element.box },
-    ...(element.type === "text" || element.type === "shape" ? { style: { ...element.style } } : {}),
+    ...(element.type === "text"
+      ? {
+          style: {
+            ...element.style,
+            ...(element.style.autoFit !== undefined ? { autoFit: { ...element.style.autoFit } } : {}),
+          },
+        }
+      : element.type === "shape"
+        ? { style: { ...element.style } }
+        : {}),
   } as NormalizedElement;
 }
 
@@ -14,6 +23,7 @@ export function resolveNormalizedLayout(normalized: NormalizedPresentation): Lay
     size: { ...normalized.size },
     slides: normalized.slides.map((slide) => ({
       id: slide.id,
+      ...(slide.background !== undefined ? { background: slide.background } : {}),
       elements: slide.elements.map(cloneElement),
     })),
     slideCount: normalized.slides.length,

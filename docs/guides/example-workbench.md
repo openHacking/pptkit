@@ -13,11 +13,13 @@ That exception is limited to `examples/dev-app`; `packages/*` should remain fram
 
 ## Adding a New Example
 
-1. Add a new entry to `examples/dev-app/src/example-registry.ts`.
+1. Add a small entry to `examples/dev-app/src/example-registry.ts`; place large, cohesive fixtures in a dedicated module under `src/examples/` and register it from the registry.
 2. Choose one primary `feature` that matches the current implementation focus in the repo.
 3. Add one or more `scenarioTags` when the example is useful outside a single feature lane.
 4. Keep the source payload small and reviewable.
 5. Update or add tests if the new example introduces a new fixture shape or report behavior.
+
+Presentation-config examples may set a `size` in points and a solid `background` per slide. The `Export SaaS Hunt Swiss Style` fixture demonstrates a 960 × 540 pt, seven-slide deck made entirely from editable text boxes, rectangles, and lines.
 
 ## UI Implementation Notes
 

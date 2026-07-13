@@ -4,6 +4,7 @@ import type { PresentationSize } from "./geometry.js";
 
 export interface PresentationSlideInput {
   id?: string;
+  background?: string;
   elements?: PresentationElementInput[];
 }
 
@@ -15,6 +16,7 @@ export interface PresentationInit {
 
 export interface PresentationSlide {
   id: string;
+  background?: string;
   elements: PresentationElementInput[];
 }
 

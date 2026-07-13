@@ -64,7 +64,7 @@ export async function buildPackage(
       }
       elements.push(elementXml(element, elementIndex, warnings, slide.id));
     });
-    parts.push({ name: `ppt/slides/slide${index + 1}.xml`, data: encodeUtf8(slideXml(elements)) });
+    parts.push({ name: `ppt/slides/slide${index + 1}.xml`, data: encodeUtf8(slideXml(elements, slide.background)) });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(relationships)) });
     parts.push({ name: `ppt/notesSlides/notesSlide${index + 1}.xml`, data: encodeUtf8(notesSlideXml()) });
     parts.push({ name: `ppt/notesSlides/_rels/notesSlide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml([

@@ -8,7 +8,7 @@ This package generates a minimal editable `.pptx` package from the normalized PP
 
 The default entry point is runtime-neutral and returns PPTX bytes. Filesystem output is an explicit Node.js adapter exposed from `@pptkit/pptx-exporter/node`.
 
-Supported elements are text, images, rectangles, ellipses, and lines. The default entry loads URL assets, including HTTP(S), data, and blob URLs. The Node.js entry additionally loads local paths. Recoverable asset failures are returned as structured warnings while the remaining document is exported.
+Supported elements are text, images, rectangles, ellipses, and lines. Text export supports font families, multiple paragraphs, line spacing, and optional shrink-to-fit; slides support native solid backgrounds. Font families are referenced rather than embedded. The default entry loads URL assets, including HTTP(S), data, and blob URLs. The Node.js entry additionally loads local paths. Recoverable asset failures are returned as structured warnings while the remaining document is exported.
 
 ```ts
 import { generatePptx } from "@pptkit/pptx-exporter";
