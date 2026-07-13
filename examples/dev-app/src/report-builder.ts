@@ -15,8 +15,15 @@ function buildNormalizedDocument(example: ExampleDefinition): NormalizedDocument
   const slides = input.slides.map((slide) => {
     const created = document.addSlide({
       ...(slide.id !== undefined ? { id: slide.id } : {}),
-      elements: slide.elements.map((element) => ({
-        type: element,
+      elements: slide.elements.map((element, index) => ({
+        type: "text",
+        text: element,
+        box: {
+          x: 48,
+          y: 48 + index * 32,
+          width: 640,
+          height: 24,
+        },
       })),
     });
 
@@ -50,8 +57,15 @@ export async function buildExampleReport(example: ExampleDefinition): Promise<Ex
   for (const slide of normalizedDocument.slides) {
     presentation.addSlide({
       id: slide.id,
-      elements: slide.elements.map((element) => ({
-        type: element,
+      elements: slide.elements.map((element, index) => ({
+        type: "text",
+        text: element,
+        box: {
+          x: 48,
+          y: 48 + index * 32,
+          width: 640,
+          height: 24,
+        },
       })),
     });
   }

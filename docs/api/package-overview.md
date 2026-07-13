@@ -1,15 +1,20 @@
 # Package Overview
 
-This page summarizes the intended public API surface by package.
+This page summarizes the current public API surface by package.
 
-## Bootstrap Packages
+## Current Packages
 
 - `@pptkit/core`
 - `@pptkit/layout`
 - `@pptkit/pptx-exporter`
 - `@pptkit/cli`
 
-These packages now exist in the workspace as provisional implementation shells.
+Current status:
+
+- `@pptkit/core` provides the formal authoring model, asset registry, and normalization boundary.
+- `@pptkit/layout` consumes normalized core documents through a placeholder layout pass.
+- `@pptkit/pptx-exporter` consumes normalized core documents and returns a structured placeholder export result.
+- `@pptkit/cli` remains a thin local workflow shell.
 
 ## Planned Follow-Up Packages
 
@@ -26,7 +31,7 @@ These packages now exist in the workspace as provisional implementation shells.
 
 ## Documentation Strategy
 
-As the packages are implemented, this section should expand into:
+As additional packages are implemented, this section should expand into:
 
 - Package-level references
 - Function and type documentation

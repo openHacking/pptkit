@@ -5,6 +5,7 @@ This section is for contributor-facing system design documentation.
 ## Reading Order
 
 - [Architecture Overview](overview.md)
+- [Core Authoring Model](core-authoring-model.md)
 - [Design Principles](design-principles.md)
 - [Document Models](document-models.md)
 - [Editable vs Visual](editable-vs-visual.md)

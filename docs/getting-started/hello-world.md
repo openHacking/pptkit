@@ -1,28 +1,48 @@
 # Hello World
 
-This page is reserved for the first runnable PPTKit example beyond the current workspace bootstrap.
+This page shows the smallest complete `@pptkit/core` example currently available in the repository.
 
-## Intended Outcome
+## Example
 
-The first Hello World should show:
+```ts
+import { createPresentation, normalizePresentation } from "@pptkit/core";
 
-- Minimal setup
-- One presentation
-- One slide
-- One export command
+const presentation = createPresentation({
+  title: "Hello World",
+});
 
-## Planned Criteria
+presentation.addSlide({
+  elements: [
+    {
+      type: "text",
+      text: "Hello World",
+      box: {
+        x: 64,
+        y: 64,
+        width: 320,
+        height: 36,
+      },
+      style: {
+        fontSize: 28,
+        fontWeight: "bold",
+      },
+    },
+  ],
+});
 
-The example should be:
+const normalized = normalizePresentation(presentation);
 
-- Short enough to scan in under one minute
-- Complete enough to run without hidden setup
-- Consistent with the package boundaries documented elsewhere
+console.log(normalized);
+```
 
-## Future Content
+## What You Get
 
-Once the first packages are implemented, this page should include:
+- one presentation document with default size metadata
+- one slide with a typed text element
+- one normalized output object ready for layout or export
 
-- A full source example
-- The expected output file
-- A preview image if practical
+## Current Limitation
+
+If you need a `.pptx` file, pass the presentation into `@pptkit/pptx-exporter`.
+
+That package currently returns a structured placeholder result and does not write a real PowerPoint file yet.

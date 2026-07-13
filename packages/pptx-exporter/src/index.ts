@@ -1,4 +1,4 @@
-import type { PresentationDocument } from "@pptkit/core";
+import { normalizePresentation, type PresentationDocument } from "@pptkit/core";
 import { resolveLayout } from "@pptkit/layout";
 
 export interface ExportPptxOptions {
@@ -15,12 +15,12 @@ export async function exportPptx(
   document: PresentationDocument,
   options: ExportPptxOptions,
 ): Promise<ExportAttempt> {
+  const normalized = normalizePresentation(document);
   const layout = resolveLayout(document);
 
   return {
     output: options.output,
-    slideCount: layout.slideCount,
+    slideCount: Math.min(layout.slideCount, normalized.slides.length),
     status: "not-implemented",
   };
 }
-

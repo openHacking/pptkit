@@ -11,12 +11,7 @@ Modern presentation generation toolkit for JavaScript.
 
 ## Quick Start
 
-PPTKit is currently in the early workspace bootstrap stage. The package APIs are still provisional, but the monorepo skeleton is now in place for:
-
-- A core SDK
-- A layout engine
-- PPTX parsing
-- PPTX exporting
+The repository now includes a formal `@pptkit/core` package for presentation construction, asset registration, and document normalization.
 
 ## Installation
 
@@ -36,14 +31,36 @@ Published package installation instructions will be added once preview releases 
 
 ## Hello World
 
-The repository now includes placeholder package shells and smoke tests, but not a real deck export workflow yet.
+```ts
+import { createPresentation, normalizePresentation } from "@pptkit/core";
+
+const presentation = createPresentation({
+  title: "Hello PPTKit",
+});
+
+presentation.addSlide({
+  elements: [
+    {
+      type: "text",
+      text: "Hello PPTKit",
+      box: { x: 64, y: 64, width: 320, height: 36 },
+    },
+  ],
+});
+
+const normalized = normalizePresentation(presentation);
+
+console.log(normalized.slides.length);
+```
+
+`@pptkit/pptx-exporter` still exposes a placeholder export boundary and does not write a real `.pptx` file yet.
 
 ## Architecture
 
 PPTKit is being designed as a multi-package toolkit with clear boundaries between content modeling, layout, parsing, and export.
 
 See the contributor-facing architecture docs in [docs/architecture/README.md](docs/architecture/README.md).
-Start with [docs/architecture/overview.md](docs/architecture/overview.md) and [docs/architecture/document-models.md](docs/architecture/document-models.md).
+Start with [docs/architecture/overview.md](docs/architecture/overview.md), [docs/architecture/core-authoring-model.md](docs/architecture/core-authoring-model.md), and [docs/architecture/document-models.md](docs/architecture/document-models.md).
 
 ## Packages
 
@@ -66,6 +83,7 @@ Planned follow-up packages:
 - Getting started: [docs/getting-started/README.md](docs/getting-started/README.md)
 - Architecture: [docs/architecture/README.md](docs/architecture/README.md)
 - API: [docs/api/README.md](docs/api/README.md)
+- Core API: [docs/api/core.md](docs/api/core.md)
 - Guides: [docs/guides/README.md](docs/guides/README.md)
 - Examples: [examples/README.md](examples/README.md)
 - Monorepo bootstrap: [docs/architecture/monorepo-bootstrap.md](docs/architecture/monorepo-bootstrap.md)

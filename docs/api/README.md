@@ -1,15 +1,15 @@
 # API
 
-This section will document the public APIs exposed by PPTKit packages.
+This section documents the public APIs exposed by PPTKit packages.
 
 ## Pages
 
 - [Package Overview](package-overview.md)
-- [v0.1 API Draft](v0.1-api-draft.md)
+- [`@pptkit/core`](core.md)
 
-## Planned References
+## Current References
 
-- `@pptkit/core`
-- `@pptkit/layout`
-- `@pptkit/pptx-exporter`
-- `@pptkit/pptx-parser`
+- `@pptkit/core` has a formal package reference.
+- `@pptkit/layout` reference is `TODO`.
+- `@pptkit/pptx-exporter` reference is `TODO`.
+- `@pptkit/pptx-parser` reference is `TODO`.

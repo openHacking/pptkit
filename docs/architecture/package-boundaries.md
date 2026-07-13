@@ -100,6 +100,9 @@ Expected responsibilities:
 ## Boundary Rules
 
 - `@pptkit/core` should not contain PPTX XML or package serialization details.
+- `@pptkit/core` should not contain layout resolution, file IO, network downloading, or binary asset loading.
+- Core authoring state belongs only in its document and registry layers; validation and normalization must remain side-effect-free.
+- Core normalized output must not share mutable references with its authoring document.
 - `@pptkit/layout` should not write files.
 - `@pptkit/pptx-exporter` should not become the owner of the public authoring model.
 - `@pptkit/pptx-parser` should not depend on exporter internals as if export and parse were mirror images.

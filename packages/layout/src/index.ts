@@ -1,4 +1,4 @@
-import type { PresentationDocument } from "@pptkit/core";
+import { normalizePresentation, type PresentationDocument } from "@pptkit/core";
 
 export interface LayoutResult {
   slideCount: number;
@@ -6,9 +6,10 @@ export interface LayoutResult {
 }
 
 export function resolveLayout(document: PresentationDocument): LayoutResult {
+  const normalized = normalizePresentation(document);
+
   return {
-    slideCount: document.slides.length,
+    slideCount: normalized.slides.length,
     status: "placeholder",
   };
 }
-
