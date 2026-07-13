@@ -2,7 +2,7 @@ import { REL } from "../constants/ooxml.js";
 import type { Relationship } from "../types/internal.js";
 
 export function relationshipsXml(relationships: Relationship[]): string {
-  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${relationships.map((relationship) => `<Relationship Id="${relationship.id}" Type="${relationship.type}" Target="${relationship.target}"/>`).join("")}</Relationships>`;
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${relationships.map((relationship) => `<Relationship Id="${relationship.id}" Type="${relationship.type}" Target="${relationship.target}"${relationship.targetMode === undefined ? "" : ` TargetMode="${relationship.targetMode}"`}/>`).join("")}</Relationships>`;
 }
 
 export function rootRelationshipsXml(): string {

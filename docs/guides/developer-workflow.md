@@ -1,6 +1,6 @@
 # Developer Workflow
 
-This guide describes the expected contributor workflow for the workspace bootstrap phase.
+This guide describes the contributor workflow for the implemented TypeScript workspace.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ When a new package is justified by architecture and roadmap scope:
 2. Add `package.json`, `tsconfig.json`, `README.md`, `src/index.ts`, and `test/smoke.test.mjs`.
 3. Update root `tsconfig.json` project references.
 4. Add or update any workspace-level documentation that mentions package inventory.
-5. Add the package to repository lint checks if it becomes part of the required initial set.
+5. Add the package to repository lint, boundary, documentation, and root TypeScript checks.
 
 ## Dependency Rules
 
@@ -50,6 +50,6 @@ When a new package is justified by architecture and roadmap scope:
 Update docs alongside structural changes when:
 
 - package inventory changes
-- public API drafts change
+- public API contracts change
 - contributor commands change
 - architecture, API, or workflow documentation changes materially affect implementation direction

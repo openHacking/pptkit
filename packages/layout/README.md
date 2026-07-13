@@ -1,11 +1,11 @@
 # `@pptkit/layout`
 
-Layout resolution primitives for PPTKit.
+Detached layout resolution for Canonical Presentation IR v1.
 
-## Current Status
+`resolveNormalizedLayout()` clones normalized Core state into export-ready layout state. It resolves connector element anchors, recursively resolves group children, calculates image `contain` boxes and `cover` crops from asset dimensions, and keeps slide-layout content separate from slide-local content.
 
-`resolveNormalizedLayout` consumes normalized core IR and returns an export-ready layout IR. `resolveLayout` remains a compatibility adapter for authoring documents and performs normalization once before delegating to the normalized entry point. The result preserves slide and element ordering, geometry, and normalized styles while keeping file-system and PPTX/XML concerns out of this package.
+`resolveLayout(document)` is the authoring convenience entry point; it normalizes once and then delegates to the canonical resolver.
 
-The same layout result is intended to be reusable by preview and export paths.
+The package does not read files, download assets, serialize OOXML, or write output.
 
-Internally, layout conversion is kept separate from future constraint, measurement, and pagination engines. This package never reads assets or writes output files.
+See the [Layout API reference](../../docs/api/layout.md) and [Layout Engine architecture](../../docs/architecture/layout-engine.md).

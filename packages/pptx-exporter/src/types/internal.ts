@@ -18,6 +18,7 @@ export interface Relationship {
   id: string;
   type: string;
   target: string;
+  targetMode?: "External";
 }
 
 export type AssetLoader = (

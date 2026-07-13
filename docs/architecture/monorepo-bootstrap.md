@@ -1,6 +1,6 @@
 # Monorepo Bootstrap
 
-This document records the repository structure and tooling decisions for the PPTKit workspace bootstrap phase.
+This document records the repository structure and tooling decisions made during the PPTKit workspace bootstrap. The workspace now contains implemented Core, Layout, and PPTX export pipelines; this page remains the historical tooling rationale.
 
 It complements the higher-level architecture docs and focuses on implementation-facing repository decisions.
 
@@ -8,7 +8,7 @@ It complements the higher-level architecture docs and focuses on implementation-
 
 PPTKit uses a `pnpm`-managed TypeScript monorepo with a small initial package set and repository-wide validation commands.
 
-The goal is to make package boundaries executable early without pretending the real layout and export implementations already exist.
+The bootstrap made package boundaries executable before the main feature implementations landed; those boundaries remain enforced today.
 
 ## Goals
 
@@ -31,7 +31,7 @@ Initial packages:
 Supporting directories:
 
 - `docs/` for user and contributor documentation
-- `examples/` for future runnable samples
+- `examples/` for runnable development samples
 - `scripts/` for small repository maintenance utilities
 
 ## Dependency Direction
@@ -61,10 +61,10 @@ Repository-level validation commands:
 - `pnpm test`
 - `pnpm build`
 
-Bootstrap validation intentionally stays lightweight:
+Workspace validation remains intentionally understandable:
 
 - Node's built-in test runner provides package smoke tests
-- a small repository lint script checks required workspace files and package shells
+- repository lint scripts check required files, dependency boundaries, documentation links/contracts, and typed documentation examples
 - CI runs the same commands contributors run locally
 
 ## Release Posture
@@ -77,7 +77,7 @@ Bootstrap validation intentionally stays lightweight:
 
 - runnable examples belong under `examples/`
 - package-specific fixtures should live close to the owning package
-- golden files should wait until export output is stable enough to snapshot
+- golden files are introduced only for stable, named output behaviors
 
 ## Documentation Rule
 

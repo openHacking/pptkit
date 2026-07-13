@@ -5,10 +5,17 @@ export function createDocumentId(): string {
   return `presentation-${presentationCounter}`;
 }
 
-export function createSlideId(index: number): string {
-  return `slide-${index + 1}`;
-}
+export class IdAllocator {
+  private counter = 0;
 
-export function createAssetId(index: number): string {
-  return `asset-${index + 1}`;
+  constructor(private readonly prefix: string) {}
+
+  next(isUsed: (id: string) => boolean): string {
+    let id: string;
+    do {
+      this.counter += 1;
+      id = `${this.prefix}-${this.counter}`;
+    } while (isUsed(id));
+    return id;
+  }
 }

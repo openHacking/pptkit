@@ -1,18 +1,11 @@
 # Guides
 
-This section will contain task-oriented documentation.
+Guides combine multiple package APIs into practical workflows.
 
-## Pages
+## Available guides
 
-- [Create Your First Deck](create-your-first-deck.md)
-- [Developer Workflow](developer-workflow.md)
-- [Example Workbench](example-workbench.md)
+- [Create Your First Deck](create-your-first-deck.md) — theme, layout, placeholders, assets, multiple slides, validation, and output.
+- [Developer Workflow](developer-workflow.md) — repository setup, commands, package boundaries, and contribution expectations.
+- [Example Workbench](example-workbench.md) — adding and validating examples in the local development app.
 
-## Planned Topics
-
-- Creating slides
-- Working with text
-- Images and SVG
-- Layout composition
-- Themes and reusable patterns
-- Export workflows
+Element-specific contracts belong in the [API reference](../api/README.md). Future task-oriented guides will cover typography, image composition, reusable templates, tables, diagnostics, and testing exported output as those workflows stabilize.

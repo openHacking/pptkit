@@ -1,15 +1,12 @@
 # Getting Started
 
-Use this section for first-time setup and the shortest path to generating a presentation.
+This section is the shortest path from a local checkout to editable PPTX output.
 
-## Pages
+## Reading order
 
-- [Installation](installation.md)
-- [Quick Start](quick-start.md)
-- [Hello World](hello-world.md)
+1. [Installation](installation.md) — current workspace setup and package entry points.
+2. [Quick Start](quick-start.md) — validate and write an editable PPTX.
+3. [Hello World: Core Only](hello-world.md) — the smallest authoring-to-IR example.
+4. [Create Your First Deck](../guides/create-your-first-deck.md) — layouts, assets, multiple slides, and error handling.
 
-## Suggested Order
-
-1. Read [Installation](installation.md)
-2. Continue to [Quick Start](quick-start.md)
-3. Use [Hello World](hello-world.md) once the first runnable package is published
+PPTKit is not published yet. All examples target the current workspace contract and intentionally omit superseded pre-release APIs.

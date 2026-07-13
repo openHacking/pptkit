@@ -12,7 +12,7 @@ export async function generatePptxWith(
   const normalized = normalizePresentation(document);
   const layout = resolveNormalizedLayout(normalized);
   const warnings: ExportWarning[] = [];
-  const bytes = createZip(await buildPackage(normalized.title, layout, normalized.assets, warnings, loadAsset));
+  const bytes = createZip(await buildPackage(layout, warnings, loadAsset));
   return {
     bytes,
     slideCount: layout.slideCount,

@@ -1,56 +1,35 @@
 # Layout Engine
 
-`@pptkit/layout` should provide a controlled layout system for presentation generation.
+`@pptkit/layout` owns presentation placement and sizing transformations that should not live in authoring state or file serialization.
 
-It should not be framed as a full browser layout engine or a promise of complete CSS compatibility.
+## Current contract
 
-## Purpose
+The package accepts a `PresentationDocument` through `resolveLayout()` or Canonical IR through `resolveNormalizedLayout()`. It returns detached metadata, theme, assets, layouts, slides, and resolved elements.
 
-The layout layer exists so PPTKit can resolve placement and sizing as a first-class responsibility instead of burying layout inside authoring helpers or PPTX export code.
+Implemented resolution covers connector anchors/bounds, image contain/cover geometry, and recursive group processing. Layout neither mutates its input nor writes files.
 
-## First-Class Concepts
+## Expansion direction
 
-The layout package should be the home for concepts such as:
+Layout is the owner for future:
 
-- stacking
-- grid-like composition
-- spacing and gaps
-- alignment
-- intrinsic sizing
-- text measurement interfaces
-- overflow detection
-- pagination
-- slide boundary checks
+- text measurement interfaces and font metrics
+- overflow detection and diagnostics
+- alignment, spacing, stacking, and grid-like composition
+- intrinsic sizing and constraints
+- table measurement and pagination
+- slide boundary checks and cross-page continuation
 
-These are presentation-layout concerns, even when some of them resemble web concepts.
+These capabilities are not current behavior and should be added as explicit, testable transformations.
 
-## Why It Deserves Its Own Package
+## Controlled, not magical
 
-Separating layout from export makes it easier to:
+Every layout capability must define its inputs, deterministic output, supported constraints, failure/overflow behavior, and measurement dependencies. PPTKit can learn from web layout without promising DOM or CSS parity.
 
-- test placement logic independently
-- reuse layout behavior across preview and export paths
-- avoid coupling file-format code to document composition
-- evolve authoring ergonomics without rewriting exporters
+## Non-goals
 
-## Controlled, Not Magical
-
-The layout layer should remain understandable and predictable.
-
-Contributors should be able to answer:
-
-- what inputs the layout engine consumes
-- what normalized placement output it produces
-- which constraints it supports
-- where unsupported cases fail or degrade
-
-## Explicit Non-Goals
-
-The initial architecture should not promise:
-
-- full browser CSS parity
+- full browser CSS compatibility
 - arbitrary DOM fidelity
-- support for every HTML and CSS behavior
-- hidden magical auto-layout that cannot be reasoned about
+- implicit exporter-only auto-layout
+- environment-dependent measurement hidden inside Core
 
-PPTKit can learn from web layout models without committing to browser equivalence.
+See [Layout API](../api/layout.md) and [Rendering Pipeline](rendering-pipeline.md).

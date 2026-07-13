@@ -3,247 +3,120 @@ import assert from "node:assert/strict";
 
 import { createPresentation, normalizePresentation } from "../dist/index.js";
 
-test("createPresentation builds a formal document model with defaults", () => {
-  const presentation = createPresentation({ title: "Roadmap" });
+test("authoring collections are method-managed and stable", () => {
+  const presentation = createPresentation({
+    metadata: { title: "Roadmap", author: "PPTKit Team" },
+    theme: { fonts: { heading: "Arial" } },
+  });
+  const first = presentation.addSlide({ id: "first" });
+  const second = presentation.insertSlide(0, { id: "second" });
+  const title = first.addElement({
+    type: "text",
+    content: "Launch plan",
+    box: { x: 48, y: 48, width: 400, height: 32 },
+  });
+  const duplicate = first.duplicateElement(title.id);
+
+  assert.deepEqual(presentation.slides.map((slide) => slide.id), ["second", "first"]);
+  assert.notEqual(duplicate.id, title.id);
+  first.moveElement(duplicate.id, 0);
+  assert.equal(first.elements[0].id, duplicate.id);
+  first.removeElement(title.id);
+  assert.equal(first.elements.length, 1);
+  presentation.moveSlide(second.id, 1);
+  assert.deepEqual(presentation.slides.map((slide) => slide.id), ["first", "second"]);
+  assert.throws(() => presentation.slides.push(first), TypeError);
+  assert.throws(() => { duplicate.name = "changed"; }, TypeError);
+});
+
+test("duplicateSlide creates fresh nested element identities", () => {
+  const presentation = createPresentation();
   const slide = presentation.addSlide({
-    elements: [
-      {
-        type: "text",
-        text: "Launch plan",
-        box: {
-          x: 48,
-          y: 48,
-          width: 400,
-          height: 32,
-        },
-      },
-    ],
+    elements: [{
+      type: "group",
+      box: { x: 0, y: 0, width: 200, height: 100 },
+      coordinateSize: { width: 200, height: 100 },
+      children: [{ type: "shape", shape: "rect", box: { x: 0, y: 0, width: 50, height: 50 } }],
+    }],
   });
-
-  assert.equal(presentation.id, "presentation-1");
-  assert.equal(presentation.title, "Roadmap");
-  assert.deepEqual(presentation.size, {
-    width: 960,
-    height: 540,
-    unit: "pt",
-  });
-  assert.equal(presentation.slides.length, 1);
-  assert.equal(slide.id, "slide-1");
+  const duplicate = presentation.duplicateSlide(slide.id);
+  assert.notEqual(duplicate.id, slide.id);
+  assert.notEqual(duplicate.elements[0].id, slide.elements[0].id);
+  assert.notEqual(duplicate.elements[0].children[0].id, slide.elements[0].children[0].id);
 });
 
-test("registerAsset deduplicates repeat registrations by dedupe key and source", () => {
-  const presentation = createPresentation();
-  const first = presentation.registerAsset({
-    kind: "image",
-    source: {
-      type: "path",
-      value: "./chart.png",
-    },
-    dedupeKey: "chart-image",
-    mimeType: "image/png",
+test("normalizePresentation materializes IR v1 defaults and rich text", () => {
+  const presentation = createPresentation({
+    metadata: { title: "Quarterly Update", language: "zh-CN" },
+    theme: { colors: { accent1: "112233" }, fonts: { body: "Microsoft YaHei" } },
   });
-  const second = presentation.registerAsset({
-    kind: "image",
-    source: {
-      type: "path",
-      value: "./chart.png",
-    },
-    dedupeKey: "chart-image",
-    mimeType: "image/png",
+  presentation.defineSlideLayout({
+    id: "title-layout",
+    name: "Title",
+    background: { type: "solid", color: { theme: "background2" } },
+    placeholders: [{
+      key: "title",
+      kind: "title",
+      box: { x: 40, y: 40, width: 600, height: 80 },
+      textStyle: { run: { fontFamily: { theme: "heading" }, fontSize: 36, bold: true } },
+    }],
+  });
+  const slide = presentation.addSlide({
+    layoutId: "title-layout",
+    notes: "Speaker note",
+    section: "Opening",
+    tags: ["intro"],
+    customData: { source: "test" },
+  });
+  slide.addElement({
+    type: "text",
+    content: [{
+      style: { bullet: { type: "bullet" }, lineSpacing: 1.2 },
+      runs: [
+        { text: "Hello ", style: { color: { theme: "text1" } } },
+        { text: "PPTKit", style: { color: { theme: "accent1" }, italic: true } },
+      ],
+    }],
+    placeholderKey: "title",
   });
 
-  assert.equal(first.id, "asset-1");
-  assert.equal(second, first);
-  assert.equal(presentation.assets.length, 1);
+  const normalized = normalizePresentation(presentation);
+  const text = normalized.slides[0].elements[0];
+  assert.equal(normalized.irVersion, 1);
+  assert.equal(normalized.metadata.title, "Quarterly Update");
+  assert.equal(normalized.theme.colors.accent1, "112233");
+  assert.equal(normalized.slides[0].backgroundSource, "layout");
+  assert.deepEqual(text.box, { x: 40, y: 40, width: 600, height: 80 });
+  assert.equal(text.plainText, "Hello PPTKit");
+  assert.equal(text.content[0].runs[0].style.fontSize, 36);
+  assert.equal(text.content[0].runs[1].style.italic, true);
+  assert.equal(normalized.slides[0].notes[0].runs[0].text, "Speaker note");
 });
 
-test("registerAsset rejects conflicting duplicate asset metadata", () => {
-  const presentation = createPresentation();
-  const first = presentation.registerAsset({
-    id: "logo",
-    kind: "image",
-    source: {
-      type: "path",
-      value: "./logo.png",
-    },
-    mimeType: "image/png",
-  });
-
-  const duplicate = presentation.registerAsset({
-    id: "logo",
-    kind: "image",
-    source: {
-      type: "path",
-      value: "./logo.png",
-    },
-    mimeType: "image/png",
-  });
-
-  assert.equal(duplicate, first);
-
-  assert.throws(
-    () =>
-      presentation.registerAsset({
-        id: "logo",
-        kind: "image",
-        source: {
-          type: "path",
-          value: "./logo.png",
-        },
-        mimeType: "image/jpeg",
-      }),
-    /already registered with different metadata/,
-  );
-});
-
-test("normalizePresentation validates image asset references", () => {
-  const presentation = createPresentation();
-  presentation.addSlide({
-    elements: [
-      {
-        type: "image",
-        assetId: "missing-asset",
-        box: {
-          x: 0,
-          y: 0,
-          width: 120,
-          height: 120,
-        },
-      },
-    ],
-  });
-
-  assert.throws(
-    () => normalizePresentation(presentation),
-    /references missing asset "missing-asset"/,
-  );
-});
-
-test("normalizePresentation returns detached normalized state", () => {
+test("normalization detaches nested groups, tables, assets, and custom data", () => {
   const presentation = createPresentation();
   const asset = presentation.registerAsset({
     kind: "image",
-    source: {
-      type: "url",
-      value: "https://example.com/hero.png",
-    },
+    source: { type: "url", value: "https://example.com/hero.png" },
     width: 800,
     height: 400,
   });
-
   presentation.addSlide({
+    customData: { nested: { value: 1 } },
     elements: [
+      { type: "image", assetId: asset.id, fit: "cover", box: { x: 0, y: 0, width: 200, height: 200 } },
       {
-        type: "image",
-        assetId: asset.id,
-        box: {
-          x: 32,
-          y: 24,
-          width: 320,
-          height: 160,
-        },
-        altText: "Hero graphic",
+        type: "table",
+        box: { x: 0, y: 220, width: 300, height: 100 },
+        columns: [150, 150],
+        rows: [{ cells: [{ content: "A", colSpan: 2, style: { fill: { type: "solid", color: "FF0000" } } }] }],
       },
     ],
   });
-
   const normalized = normalizePresentation(presentation);
-  presentation.assets[0].source.value = "https://example.com/changed.png";
-  presentation.slides[0].elements[0].box.width = 999;
-
-  assert.equal(normalized.assets[0].source.value, "https://example.com/hero.png");
-  assert.equal(normalized.slides[0].elements[0].box.width, 320);
-});
-
-test("normalizePresentation preserves slide background and detached text layout styles", () => {
-  const presentation = createPresentation();
-  const slide = presentation.addSlide({
-    background: "#F7F5EF",
-    elements: [{
-      type: "text",
-      text: "First line\nSecond line",
-      box: { x: 20, y: 20, width: 240, height: 80 },
-      style: {
-        fontFamily: "Helvetica Neue",
-        lineSpacing: 1.15,
-        autoFit: { mode: "shrink", fontScale: 0.96 },
-      },
-    }],
-  });
-
-  const normalized = normalizePresentation(presentation);
-  slide.background = "#FFFFFF";
-  slide.elements[0].style.autoFit.fontScale = 0.5;
-
-  assert.equal(normalized.slides[0].background, "#F7F5EF");
-  assert.deepEqual(normalized.slides[0].elements[0].style.autoFit, {
-    mode: "shrink",
-    fontScale: 0.96,
-  });
-});
-
-test("normalizePresentation rejects invalid text layout ratios", () => {
-  const presentation = createPresentation();
-  presentation.addSlide({
-    elements: [{
-      type: "text",
-      text: "Invalid spacing",
-      box: { x: 0, y: 0, width: 100, height: 20 },
-      style: { lineSpacing: 0 },
-    }],
-  });
-  assert.throws(() => normalizePresentation(presentation), /lineSpacing must be a positive finite number/);
-
-  presentation.slides[0].elements[0].style = {
-    autoFit: { mode: "shrink", fontScale: 1.01 },
-  };
-  assert.throws(() => normalizePresentation(presentation), /fontScale must be greater than zero and at most one/);
-});
-
-test("addSlide rejects duplicate slide ids", () => {
-  const presentation = createPresentation();
-  presentation.addSlide({ id: "intro" });
-
-  assert.throws(() => presentation.addSlide({ id: "intro" }), /Duplicate slide id "intro"/);
-});
-
-test("normalizePresentation rejects negative frame sizes", () => {
-  const presentation = createPresentation();
-  presentation.addSlide({
-    elements: [
-      {
-        type: "shape",
-        shape: "rect",
-        box: {
-          x: 10,
-          y: 10,
-          width: -1,
-          height: 80,
-        },
-      },
-    ],
-  });
-
-  assert.throws(() => normalizePresentation(presentation), /negative width or height/);
-});
-
-test("normalizePresentation maps text, image, and shape elements", () => {
-  const presentation = createPresentation();
-  const asset = presentation.registerAsset({
-    kind: "image",
-    source: { type: "path", value: "./hero.png" },
-  });
-
-  presentation.addSlide({
-    elements: [
-      { type: "text", text: "Title", box: { x: 0, y: 0, width: 100, height: 20 } },
-      { type: "image", assetId: asset.id, box: { x: 0, y: 30, width: 100, height: 80 } },
-      { type: "shape", shape: "rect", box: { x: 0, y: 120, width: 100, height: 40 } },
-    ],
-  });
-
-  const [slide] = normalizePresentation(presentation).slides;
-  assert.deepEqual(slide?.elements.map((element) => element.type), ["text", "image", "shape"]);
-  assert.deepEqual(slide?.elements[0]?.style, {});
-  assert.deepEqual(slide?.elements[2]?.style, {});
+  assert.equal(normalized.assets[0].accessibility.decorative, false);
+  assert.equal(normalized.slides[0].elements[0].fit, "cover");
+  assert.equal(normalized.slides[0].elements[1].rows[0].cells[0].colSpan, 2);
+  assert.equal(normalized.slides[0].elements[1].rows[0].cells[0].style.fill.opacity, 1);
+  assert.notEqual(normalized.slides[0].customData, presentation.slides[0].customData);
 });

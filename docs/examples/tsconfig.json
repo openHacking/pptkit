@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "composite": false,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "baseUrl": "../..",
+    "paths": {
+      "@pptkit/core": ["packages/core/src/index.ts"],
+      "@pptkit/layout": ["packages/layout/src/index.ts"],
+      "@pptkit/pptx-exporter": ["packages/pptx-exporter/src/index.ts"],
+      "@pptkit/pptx-exporter/node": ["packages/pptx-exporter/src/node.ts"]
+    }
+  },
+  "include": ["./*.ts"]
+}

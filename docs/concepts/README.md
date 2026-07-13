@@ -1,15 +1,8 @@
 # Concepts
 
-This section explains the core mental models behind PPTKit.
+Concept pages provide short mental models before the detailed API and architecture references.
 
-## Pages
+- [Presentation Model](presentation-model.md) — format-independent presentation intent and the authoring/IR distinction.
+- [Layout](layout.md) — the implemented resolution stage and its expansion direction.
 
-- [Presentation Model](presentation-model.md)
-- [Layout](layout.md)
-
-## Planned Topics
-
-- Slide structure
-- Elements and assets
-- Renderer responsibilities
-- Importer and exporter boundaries
+For package ownership and data-flow details, continue with the [Architecture Overview](../architecture/overview.md).

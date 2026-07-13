@@ -1,20 +1,8 @@
 export type { NormalizedAsset, PresentationAsset, PresentationAssetInput, PresentationAssetSource } from "./asset.js";
-export type {
-  ImageElementInput,
-  NormalizedElement,
-  NormalizedImageElement,
-  NormalizedShapeElement,
-  NormalizedTextElement,
-  PresentationElementInput,
-  ShapeElementInput,
-  TextElementInput,
-} from "./element.js";
-export type { Box, LengthUnit, PresentationSize } from "./geometry.js";
-export type { NormalizedPresentation, NormalizedSlide } from "./normalized.js";
-export type {
-  PresentationDocument,
-  PresentationInit,
-  PresentationSlide,
-  PresentationSlideInput,
-} from "./presentation.js";
-export type { ShapeStyle, TextAutoFit, TextStyle } from "./style.js";
+export type { PresentationDiagnostic, DiagnosticSeverity } from "./diagnostic.js";
+export { PresentationValidationError } from "./diagnostic.js";
+export type * from "./element.js";
+export type { Box, Insets, LengthUnit, Point, PresentationSize, Size } from "./geometry.js";
+export type * from "./presentation.js";
+export type * from "./style.js";
+export type { NormalizedPresentationTheme, PresentationThemeInput } from "./theme.js";

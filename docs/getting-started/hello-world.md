@@ -1,48 +1,25 @@
-# Hello World
+# Hello World: Core Only
 
-This page shows the smallest complete `@pptkit/core` example currently available in the repository.
-
-## Example
+This smallest example demonstrates Core authoring and normalization. It does not write a file; use the [Quick Start](quick-start.md) for an end-to-end PPTX example.
 
 ```ts
 import { createPresentation, normalizePresentation } from "@pptkit/core";
 
 const presentation = createPresentation({
-  title: "Hello World",
+  metadata: { title: "Hello World", author: "Example Team" },
 });
 
-presentation.addSlide({
-  elements: [
-    {
-      type: "text",
-      text: "Hello World",
-      box: {
-        x: 64,
-        y: 64,
-        width: 320,
-        height: 36,
-      },
-      style: {
-        fontSize: 28,
-        fontWeight: "bold",
-      },
-    },
-  ],
+const slide = presentation.addSlide();
+slide.addElement({
+  type: "text",
+  content: "Hello World",
+  box: { x: 64, y: 64, width: 320, height: 48 },
 });
 
 const normalized = normalizePresentation(presentation);
-
-console.log(normalized);
+console.log(normalized.irVersion, normalized.slides.length);
 ```
 
-## What You Get
+`normalizePresentation()` validates the document and returns detached Canonical IR v1 with IDs and defaults materialized. It throws `PresentationValidationError` with all error diagnostics when the authoring document is invalid.
 
-- one presentation document with default size metadata
-- one slide with a typed text element
-- one normalized output object ready for layout or export
-
-## Current Limitation
-
-If you need a `.pptx` file, pass the presentation into `@pptkit/pptx-exporter`.
-
-Its default entry generates minimal editable PowerPoint bytes in browsers or Node.js. The `/node` entry can write those packages to the filesystem, and both return structured warnings for recoverable export issues.
+Read [Validation and IR](../api/core/validation-and-ir.md) for the complete contract.

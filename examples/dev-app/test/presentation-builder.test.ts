@@ -59,17 +59,17 @@ describe("example presentation builder", () => {
     expect(slide?.elements.map((element) => element.type)).toEqual(["text", "shape", "image"]);
     expect(slide?.elements[0]).toMatchObject({
       type: "text",
-      text: "Plain text still works",
+      content: "Plain text still works",
     });
     expect(slide?.elements[1]).toMatchObject({
       type: "shape",
       shape: "ellipse",
-      style: { fill: "#FDE68A" },
+      style: { fill: { type: "solid", color: "#FDE68A" } },
     });
     expect(slide?.elements[2]).toMatchObject({
       type: "image",
       assetId: "accent-pixel",
-      altText: "Accent pixel",
+      accessibility: { description: "Accent pixel" },
     });
     expect(presentation.assets).toHaveLength(1);
     expect(presentation.assets[0]).toMatchObject({
@@ -85,9 +85,9 @@ describe("example presentation builder", () => {
     expect(presentation.size).toEqual({ width: 960, height: 540, unit: "pt" });
     expect(presentation.slides).toHaveLength(7);
     expect(presentation.slides.map((slide) => slide.elements.length)).toEqual([12, 11, 18, 20, 13, 13, 11]);
-    expect(presentation.slides.every((slide) => slide.background === "#F7F5EF")).toBe(true);
+    expect(presentation.slides.every((slide) => slide.background?.type === "solid" && slide.background.color === "#F7F5EF")).toBe(true);
     expect(presentation.slides.flatMap((slide) => slide.elements).filter((element) => element.type === "text")).toHaveLength(66);
-    expect(presentation.slides.flatMap((slide) => slide.elements).filter((element) => element.type === "shape")).toHaveLength(32);
+    expect(presentation.slides.flatMap((slide) => slide.elements).filter((element) => element.type === "shape" || element.type === "connector")).toHaveLength(32);
 
     const result = await generatePptx(presentation);
     expect(result.slideCount).toBe(7);

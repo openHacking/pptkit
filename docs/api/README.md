@@ -1,16 +1,21 @@
-# API
+# API Reference
 
-This section documents the public APIs exposed by PPTKit packages.
+This section documents the public package contracts currently implemented by PPTKit. It describes callable APIs, inputs, results, defaults, validation, and runtime boundaries.
 
-## Pages
+## Packages
 
-- [Package Overview](package-overview.md)
-- [`@pptkit/core`](core.md)
-- [`@pptkit/pptx-exporter`](pptx-exporter.md)
+- [`@pptkit/core`](core.md) — authoring state, elements, assets, themes, layouts, validation, and Canonical IR.
+- [`@pptkit/layout`](layout.md) — connector and image geometry resolution over normalized documents.
+- [`@pptkit/pptx-exporter`](pptx-exporter.md) — browser-neutral PPTX generation and Node.js file output.
+- [Package overview](package-overview.md) — package responsibilities and entry points at a glance.
 
-## Current References
+`@pptkit/cli` remains a minimal workflow shell and does not yet expose a stable presentation-authoring command surface. Planned parser and renderer packages are documented as architecture direction, not current APIs.
 
-- `@pptkit/core` has a formal package reference.
-- `@pptkit/layout` exposes `resolveLayout` and its export-ready layout IR.
-- `@pptkit/pptx-exporter` exposes runtime-neutral `generatePptx`; its `/node` entry exposes `writePptx` and local-path asset support.
-- `@pptkit/pptx-parser` reference is `TODO`.
+## Reading order
+
+1. Start with the [Quick Start](../getting-started/quick-start.md).
+2. Use the [Core overview](core.md) to find the relevant authoring topic.
+3. Read [Layout](layout.md) when working with resolved geometry.
+4. Read the [PPTX exporter](pptx-exporter.md) for runtime, asset-loading, and output behavior.
+
+All examples use the current pre-release contract. PPTKit does not maintain documentation for superseded unpublished APIs.

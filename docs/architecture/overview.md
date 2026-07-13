@@ -1,141 +1,71 @@
 # Architecture Overview
 
-PPTKit is being designed as a multi-package presentation toolkit with explicit boundaries between authoring, normalization, layout, parsing, preview, and file export.
+PPTKit is a TypeScript presentation document engine with explicit boundaries between authoring, normalization, layout, parsing, preview, and file export. Core, Layout, and editable PPTX export are implemented; parsing and preview/rendering remain roadmap work.
 
-## High-Level Goal
+## Goal
 
-Provide a clean developer-facing model for generating editable presentation output without forcing users to work directly with low-level PPT structures.
+Provide a developer-facing model for generating editable presentation output without forcing applications to manipulate low-level file-format structures.
 
-## Three-Layer Model
+## Three-layer model
 
-The architecture centers on three related but distinct layers:
+PPTKit keeps three representations distinct:
 
-- `Authoring Model`
-- `Canonical Presentation IR`
-- `PPTX Package Model`
-
-These layers exist to keep user-facing APIs, normalized document behavior, and file-format concerns from collapsing into one abstraction.
-
-## System View
-
-At a high level, the system is expected to look like this:
+1. The **Authoring Model** is ergonomic, method-managed application state.
+2. **Canonical Presentation IR** is detached, validated, explicit, and format-independent.
+3. A **PPTX Package Model** is format-specific parts, relationships, XML, media, and ZIP structure inside parser/exporter boundaries.
 
 ```text
-Structured Content
-        |
-        v
- Authoring Model
-        |
-        v
- normalize
-        |
-        v
-Canonical Presentation IR
-        |
-   +-----+------+
-   |            |
-   v            v
-preview path   export path
-   |            |
-   v            v
-SVG output   PPTX Package Model
-                |
-                v
-              .pptx
+application
+    │
+    ▼
+Authoring Model (@pptkit/core)
+    │ validate + normalize
+    ▼
+Canonical Presentation IR v1
+    │
+    ▼
+Layout Result (@pptkit/layout)
+    │
+    ├────────► future preview/render paths
+    ▼
+PPTX Package Model (@pptkit/pptx-exporter)
+    │
+    ▼
+editable .pptx
 ```
 
-The reverse direction starts from package-level data:
+A future parse flow starts at package-level data, classifies editable/preserved/fallback/unsupported structures, and maps supported semantics toward Canonical IR. Export and parse are related but are not assumed to be perfect inverses.
 
-```text
-.pptx
-  |
-  v
-PPTX Package Model
-  |
-  v
-parse path
-  |
-  v
-Canonical Presentation IR
-```
+## Current package mapping
 
-## Package Mapping
+- `@pptkit/core` owns authoring semantics, identity, validation, and IR v1.
+- `@pptkit/layout` resolves connector anchors and image fitting into detached layout output.
+- `@pptkit/pptx-exporter` loads assets and serializes editable PPTX packages; its Node adapter writes files.
+- `@pptkit/cli` is a thin workflow shell without a stable authoring command surface yet.
 
-The initial package vocabulary maps onto this flow:
+Planned parser and SVG packages are described in [Package Boundaries](package-boundaries.md).
 
-- `@pptkit/core` owns the authoring-facing model and shared document structures.
-- `@pptkit/layout` resolves layout against normalized document state.
-- `@pptkit/pptx-exporter` owns translation from normalized structures into package output.
-- `@pptkit/pptx-parser` owns translation from package input back into normalized structures.
-- `@pptkit/svg-parser` and `@pptkit/svg-renderer` support directional SVG workflows without becoming a second PPTX exporter.
-- `@pptkit/cli` provides local workflow entry points on top of these packages.
+## Why the separation matters
 
-## Forward and Reverse Flows
+Without these boundaries, mutable authoring assumptions leak into exporters, layout becomes hidden file-writing behavior, and parsers are forced to pretend arbitrary OOXML is equivalent to the public authoring model.
 
-### Authoring to Export
+The separation allows PPTKit to:
 
-```text
-Authoring API
-   |
-   v
-Authoring Model
-   |
-   v
-Normalization
-   |
-   v
-Canonical Presentation IR
-   |
-   v
-Layout Resolution
-   |
-   v
-PPTX Export
-   |
-   v
-PPTX Package Model
-   |
-   v
-.pptx
-```
+- validate one canonical contract
+- test layout independently from packaging
+- support multiple output paths without duplicating authoring rules
+- preserve unknown parsed content without contaminating common authoring APIs
+- discuss editable output and visual fidelity as explicit tradeoffs
 
-### PPTX Parse to Normalized Structures
+## Architecture priorities
 
-```text
-.pptx
-   |
-   v
-PPTX Package Model
-   |
-   v
-Package Inspection
-   |
-   v
-Normalization
-   |
-   v
-Canonical Presentation IR
-```
+1. Stable, intentional public semantics.
+2. Complete validation and explicit normalized defaults.
+3. Responsibility-based dependency direction.
+4. Independently testable layout and serialization stages.
+5. Honest degradation and preservation behavior.
+6. Cross-application output verification.
 
-## Why This Framing Matters
+## Current maturity
 
-This separation keeps the system from inheriting the main limitations of monolithic PPT generators:
-
-- command-style APIs become the only authoring surface
-- layout gets mixed into file writing logic
-- parser and exporter assumptions leak into public models
-- preview and editing flows become harder to add later
-
-It also gives PPTKit room to support both editable output and high-fidelity preview workflows without pretending they are always the same problem.
-
-## Architecture Priorities
-
-- Clear package ownership
-- Stable normalization boundary
-- Strong separation between layout and file-format concerns
-- Explicit preview, export, and parse paths
-- Honest handling of fidelity tradeoffs
-
-## Current Maturity
-
-The implementation is not in place yet. These docs exist to keep early package and API decisions aligned before code hardens around the wrong abstractions.
+The repository is pre-release. Core IR v1 and a foundational editable PPTX pipeline exist, including rich text, themes, layouts/placeholders, images, shapes, connectors, groups, tables, notes, and metadata. Text measurement, automatic layout, parsing, round-trip preservation, rendering, and publication hardening remain active roadmap areas.

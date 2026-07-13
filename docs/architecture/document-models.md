@@ -1,116 +1,45 @@
 # Document Models
 
-PPTKit should separate document state into three layers:
-
-- `Authoring Model`
-- `Canonical Presentation IR`
-- `PPTX Package Model`
-
-These layers should remain distinct even when the same package touches more than one of them.
+PPTKit uses three document layers with different audiences and stability needs. Keeping them distinct prevents a convenience API, a shared semantic contract, and a file-format package graph from collapsing into one model.
 
 ## Authoring Model
 
-The `Authoring Model` is the user-facing representation used by APIs and higher-level tooling.
+The Authoring Model is the application-facing representation in `@pptkit/core`. It is ergonomic, method-managed, and allowed to accept conveniences such as omitted IDs, string text, partial themes, and placeholder-derived boxes.
 
-It should be:
-
-- ergonomic
-- expressive
-- easy to construct
-- suitable for builders and future helpers
-
-It should not be forced to mirror OOXML structures or package-level storage details.
-
-Typical responsibilities:
-
-- presentation construction
-- slide creation
-- element composition
-- user-oriented defaults
-- high-level authoring helpers
+It owns construction and editing intent, not package storage. See [Core Authoring Model](core-authoring-model.md) for state, identity, validation, and normalization rules.
 
 ## Canonical Presentation IR
 
-The `Canonical Presentation IR` is the normalized document form that the rest of the system should rely on.
+Canonical IR is the validated, detached, fully explicit document consumed across package boundaries. It resolves authoring ambiguity while remaining independent from PPTX.
 
-It should be:
-
-- stable
-- normalized
-- explicit
-- independent from any one file format
-
-Typical responsibilities:
-
-- normalized slide and element structure
-- resolved identifiers and references
-- consistent geometry and style representation
-- validation-friendly document state
-- shared contract for preview, export, and parse-related transforms
-
-It should not expose package-level OOXML concerns or try to preserve every authoring convenience directly.
+It owns normalized slides/elements, stable references, consistent geometry/style representation, and a shared contract for Layout and exporters. See [Canonical Presentation IR v1](canonical-ir-v1.md) for exact invariants.
 
 ## PPTX Package Model
 
-The `PPTX Package Model` is the format-specific representation used for parsing and exporting PowerPoint packages.
+The PPTX Package Model exists inside format-specific parser/exporter boundaries. It may represent parts, relationships, content types, slide/master/layout XML, notes, themes, media, extensions, and preservation fragments.
 
-It should be:
+It must not become the public authoring API. OOXML contains storage and compatibility concepts that are neither ergonomic nor portable presentation semantics.
 
-- format-aware
-- package-oriented
-- explicit about OOXML constraints
-- allowed to model relationships, parts, and package structure directly
-
-Typical responsibilities:
-
-- package parts
-- relationships
-- content types
-- slide XML and related resources
-- media and embedded asset packaging
-
-It should not become the project’s public authoring model.
-
-## Why They Must Stay Separate
-
-If the `Authoring Model` becomes too close to the `PPTX Package Model`, public APIs inherit file-format complexity too early.
-
-If the `Canonical Presentation IR` is skipped, every exporter, preview path, and parser has to invent its own assumptions about structure and normalization.
-
-If the `PPTX Package Model` is treated as just another view of the authoring model, round-tripping, parser preservation, and compatibility work become much harder to reason about.
-
-## Concrete Flow Example
-
-The intended flow is:
+## Implemented forward flow
 
 ```text
-authoring API input
-        |
-        v
- Authoring Model
-        |
-   normalize
-        |
-        v
-Canonical Presentation IR
-        |
-     export
-        |
-        v
+Authoring Model
+      │ Core validation + normalization
+      ▼
+Canonical Presentation IR v1
+      │ Layout resolution
+      ▼
+Layout Result
+      │ PPTX serialization
+      ▼
 PPTX Package Model
-        |
-        v
-      .pptx
+      │ ZIP encoding
+      ▼
+editable .pptx
 ```
 
-For example:
+## Planned reverse flow
 
-1. A user builds a slide with text, image, and layout helpers through `@pptkit/core`.
-2. The system normalizes those structures into canonical elements and references.
-3. `@pptkit/layout` resolves placement against the canonical structures.
-4. `@pptkit/layout` creates a detached export-ready layout result.
-5. `@pptkit/pptx-exporter` translates that result into package parts, relationships, XML, and ZIP output.
+A future parser will inspect a PPTX Package Model and classify structures by capability. Supported semantics can become editable normalized structures; unknown or partially understood structures may require preservation or fallback representations. Silent data loss is not an acceptable default.
 
-## Design Constraint
-
-The three-layer model is a north star for the architecture. It does not require every field and transform to be fully specified yet, but it should guide how future packages and docs evolve.
+The reverse flow is not implemented and is not documented as universal round-trip support.

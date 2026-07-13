@@ -29,7 +29,7 @@ Because of this, parsing is not just “undoing export.”
 - enforce export-time constraints
 - fail early when required invariants are not met
 
-The first implementation supports text, images, rectangles, ellipses, and lines. Recoverable image loading failures are represented as warnings and the affected image is omitted; core normalization failures remain hard errors.
+The exporter supports rich text, images, shapes, connectors, groups, tables, themes, layouts, placeholders, and notes. Recoverable image loading failures are represented as warnings and the affected image is omitted; Core validation failures remain hard errors containing all diagnostics.
 
 It should not assume that every PPTX in the wild could have been produced by the same normalized model.
 

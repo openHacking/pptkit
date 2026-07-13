@@ -6,7 +6,13 @@ import { createZip } from "../dist/archive/create-zip.js";
 import { corePropertiesXml } from "../dist/ooxml/package-parts.js";
 
 test("OOXML helpers escape metadata independently of export orchestration", () => {
-  assert.match(corePropertiesXml("Q1 & <ready>"), /Q1 &amp; &lt;ready&gt;/);
+  assert.match(corePropertiesXml({
+    title: "Q1 & <ready>",
+    author: "PPTKit",
+    language: "en-US",
+    keywords: [],
+    revision: 1,
+  }), /Q1 &amp; &lt;ready&gt;/);
 });
 
 test("ZIP module emits a readable single-part package", () => {

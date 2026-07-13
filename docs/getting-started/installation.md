@@ -1,52 +1,56 @@
 # Installation
 
-PPTKit packages are not published yet.
+PPTKit is in pre-release development and its packages are not published to npm. Use the monorepo workspace for current development and evaluation.
 
-This page documents the intended installation model so the project can keep the developer experience stable as implementation begins.
+## Requirements
 
-## Planned Package Entry Points
+- Node.js 20 or newer
+- pnpm 10.13 or compatible pnpm 10 release
 
-Depending on the use case, developers will install one or more of these packages:
+## Workspace setup
 
-- `@pptkit/core`
-- `@pptkit/layout`
-- `@pptkit/pptx-exporter`
-- `@pptkit/pptx-parser`
-- `@pptkit/svg-parser`
-- `@pptkit/svg-renderer`
-- `@pptkit/cli`
+```bash
+git clone <your-pptkit-repository-url>
+cd pptkit
+pnpm install
+pnpm build
+pnpm typecheck
+pnpm lint
+pnpm test
+```
 
-## Planned Package Manager Support
+Start the local examples workbench with:
 
-The repository is being prepared for a JavaScript and TypeScript workflow centered on `pnpm`.
+```bash
+pnpm dev
+```
 
-Expected installation examples:
+The workbench is served at `http://localhost:3210`.
+
+## Current package entry points
+
+| Import | Runtime |
+| --- | --- |
+| `@pptkit/core` | Browser and Node.js |
+| `@pptkit/layout` | Browser and Node.js |
+| `@pptkit/pptx-exporter` | Browser-neutral generation; URL assets |
+| `@pptkit/pptx-exporter/node` | Node.js generation/file output; URL and path assets |
+| `@pptkit/cli` | Node.js command line |
+
+## Intended published installation
+
+After the first preview release, the standard installation will be:
 
 ```bash
 pnpm add @pptkit/core @pptkit/pptx-exporter
 ```
 
+or:
+
 ```bash
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-## Local Development Setup
+These commands describe the intended package split; they are not expected to succeed before publication.
 
-The workspace bootstrap now supports:
-
-```bash
-pnpm install
-pnpm lint
-pnpm typecheck
-pnpm test
-```
-
-To compile all current packages:
-
-```bash
-pnpm build
-```
-
-## Current Status
-
-At this stage, the workspace exists for local development and contributor validation. Public package publication is still deferred.
+Continue with the [Quick Start](quick-start.md).

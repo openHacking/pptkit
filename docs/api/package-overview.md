@@ -1,39 +1,50 @@
 # Package Overview
 
-This page summarizes the current public API surface by package.
+PPTKit is a TypeScript monorepo organized by cohesive responsibility. Public authoring semantics flow from Core through Layout into format-specific exporters.
 
-## Current Packages
+## Current packages
 
-- `@pptkit/core`
-- `@pptkit/layout`
-- `@pptkit/pptx-exporter`
-- `@pptkit/cli`
+| Package | Public entry points | Responsibility |
+| --- | --- | --- |
+| `@pptkit/core` | package root | Method-managed authoring model, assets, themes, layouts, validation, and Canonical IR v1. |
+| `@pptkit/layout` | package root | Detached geometric resolution over authoring or normalized documents. |
+| `@pptkit/pptx-exporter` | package root, `/node` | Editable PPTX generation, asset loading, OOXML packaging, and Node file output. |
+| `@pptkit/cli` | package root/bin | Thin command orchestration; presentation-authoring commands are not stable yet. |
 
-Current status:
+## Data flow
 
-- `@pptkit/core` provides the formal authoring model, asset registry, and normalization boundary.
-- `@pptkit/layout` consumes normalized core documents and returns a detached export-ready layout IR.
-- `@pptkit/pptx-exporter` consumes the layout IR and generates a minimal editable `.pptx` package in browsers or Node.js; its `/node` adapter writes files.
-- `@pptkit/cli` remains a thin local workflow shell.
+```text
+application
+    │
+    ▼
+@pptkit/core authoring state
+    │ validate + normalize
+    ▼
+Canonical Presentation IR v1
+    │ resolve
+    ▼
+@pptkit/layout result
+    │ serialize + package
+    ▼
+@pptkit/pptx-exporter → .pptx
+```
 
-## Planned Follow-Up Packages
+The exporter orchestrates normalization and layout for convenience, so ordinary callers can pass a `PresentationDocument` directly to `generatePptx()` or `writePptx()`.
 
-- `@pptkit/pptx-parser`
-- `@pptkit/svg-parser`
-- `@pptkit/svg-renderer`
+## Planned packages
 
-## API Design Goals
+- `@pptkit/pptx-parser` — package-aware PPTX parsing with explicit editable, preserved, fallback, and unsupported tiers.
+- `@pptkit/svg-parser` — SVG ingestion into format-independent visual structures.
+- `@pptkit/svg-renderer` — SVG output from supported presentation structures.
 
-- Small entry points
-- Explicit naming
-- Stable data flow between packages
-- Minimal accidental coupling between authoring, layout, and file-format code
+These packages are roadmap direction and have no public API in the current repository.
 
-## Documentation Strategy
+## Design rules
 
-As additional packages are implemented, this section should expand into:
+- Core contains no filesystem, network, ZIP, XML, or relationship behavior.
+- Layout contains no file output or OOXML serialization.
+- Exporters consume normalized/layout contracts and do not own authoring defaults.
+- Other packages are imported through public exports rather than private source paths.
+- New capabilities ship as vertical slices across the owning packages, tests, examples, and documentation.
 
-- Package-level references
-- Function and type documentation
-- Usage examples
-- Migration notes for breaking changes
+See [Package Boundaries](../architecture/package-boundaries.md) for contributor-level dependency rules.

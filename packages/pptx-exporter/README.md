@@ -1,26 +1,18 @@
 # `@pptkit/pptx-exporter`
 
-PPTX export boundary for PPTKit.
+Editable PowerPoint export for PPTKit.
 
-## Current Status
+The exporter consumes resolved IR and emits a deterministic `.pptx` package with:
 
-This package generates a minimal editable `.pptx` package from the normalized PPTKit model in browsers and Node.js.
+- rich text paragraphs, runs, bullets, theme fonts, and links
+- image embedding, opacity, crop, contain, and cover behavior
+- editable shapes, connectors, nested groups, and native tables
+- presentation themes, reusable slide layouts, and placeholders
+- slide backgrounds, hidden slides, speaker notes, and PPTKit metadata extensions
+- recoverable structured warnings for asset-loading failures
 
-The default entry point is runtime-neutral and returns PPTX bytes. Filesystem output is an explicit Node.js adapter exposed from `@pptkit/pptx-exporter/node`.
+The default entry loads URL assets. `@pptkit/pptx-exporter/node` additionally loads local paths and exposes `writePptx()`.
 
-Supported elements are text, images, rectangles, ellipses, and lines. Text export supports font families, multiple paragraphs, line spacing, and optional shrink-to-fit; slides support native solid backgrounds. Font families are referenced rather than embedded. The default entry loads URL assets, including HTTP(S), data, and blob URLs. The Node.js entry additionally loads local paths. Recoverable asset failures are returned as structured warnings while the remaining document is exported.
+The package owns asset I/O, OOXML parts and relationships, ZIP generation, and output diagnostics. It does not own authoring or layout semantics.
 
-```ts
-import { generatePptx } from "@pptkit/pptx-exporter";
-
-const result = await generatePptx(presentation);
-// result.bytes: Uint8Array
-```
-
-```ts
-import { writePptx } from "@pptkit/pptx-exporter/node";
-
-const result = await writePptx(presentation, { output: "./deck.pptx" });
-```
-
-The exporter intentionally does not yet cover themes, rich text runs, groups, tables, animations, speaker notes, or PPTX parsing.
+See the [PPTX exporter API reference](../../docs/api/pptx-exporter.md) and [Rendering Pipeline](../../docs/architecture/rendering-pipeline.md).

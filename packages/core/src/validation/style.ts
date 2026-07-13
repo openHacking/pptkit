@@ -1,12 +1,15 @@
-import type { TextStyle } from "../types/style.js";
+import type { ColorValue, PaintInput } from "../types/style.js";
+import { isFiniteNumber } from "./geometry.js";
 
-export function assertTextStyle(style: TextStyle | undefined, context: string): void {
-  if (style?.lineSpacing !== undefined && (!Number.isFinite(style.lineSpacing) || style.lineSpacing <= 0)) {
-    throw new Error(`${context} lineSpacing must be a positive finite number.`);
-  }
+export function isValidColor(value: ColorValue): boolean {
+  return typeof value === "string" ? /^#?[0-9a-f]{6}$/i.test(value) : typeof value.theme === "string";
+}
 
-  const fontScale = style?.autoFit?.mode === "shrink" ? style.autoFit.fontScale : undefined;
-  if (fontScale !== undefined && (!Number.isFinite(fontScale) || fontScale <= 0 || fontScale > 1)) {
-    throw new Error(`${context} autoFit fontScale must be greater than zero and at most one.`);
-  }
+export function isValidOpacity(value: unknown): value is number {
+  return isFiniteNumber(value) && value >= 0 && value <= 1;
+}
+
+export function isValidPaint(paint: PaintInput | undefined): boolean {
+  if (paint === undefined || paint.type === "none") return true;
+  return isValidColor(paint.color) && (paint.opacity === undefined || isValidOpacity(paint.opacity));
 }

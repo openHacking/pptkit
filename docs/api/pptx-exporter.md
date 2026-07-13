@@ -1,8 +1,55 @@
 # `@pptkit/pptx-exporter`
 
-`@pptkit/pptx-exporter` converts an `@pptkit/core` presentation into a minimal editable PowerPoint package. Byte generation is runtime-neutral; filesystem delivery is a Node.js adapter.
+`@pptkit/pptx-exporter` validates and normalizes a Core authoring document, resolves layout once, loads image assets, serializes editable OOXML parts, and returns a deterministic PPTX package. The default entry is browser-neutral; the `/node` entry additionally reads local files and writes output.
 
-## Runtime-neutral API
+## Browser-neutral `generatePptx(document)`
+
+```ts
+declare function generatePptx(
+  document: PresentationDocument,
+): Promise<GeneratePptxResult>;
+```
+
+```ts
+import { generatePptx } from "@pptkit/pptx-exporter";
+
+const result = await generatePptx(presentation);
+
+const blob = new Blob([result.bytes], {
+  type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+});
+
+console.log(result.status, result.slideCount, result.byteLength);
+```
+
+The default entry loads `source.type: "url"` assets using `fetch`. HTTP(S), data, and blob URLs are accepted when supported by the runtime. Local path assets are omitted with a warning.
+
+## Node.js entry
+
+The Node entry exports both `generatePptx()` and `writePptx()` and supports URL and path assets.
+
+```ts
+import { writePptx } from "@pptkit/pptx-exporter/node";
+
+const result = await writePptx(presentation, {
+  output: "./output/deck.pptx",
+});
+
+console.log(result.status, result.output, result.warnings);
+```
+
+### `writePptx(document, options)`
+
+```ts
+declare function writePptx(
+  document: PresentationDocument,
+  options: { output: string },
+): Promise<WritePptxResult>;
+```
+
+`output` is required. Parent directories are created as needed, and the returned `output` path identifies the written file.
+
+## Result types
 
 ```ts
 interface GeneratePptxResult {
@@ -13,20 +60,6 @@ interface GeneratePptxResult {
   status: "generated" | "generated-with-warnings";
 }
 
-declare function generatePptx(
-  document: PresentationDocument,
-): Promise<GeneratePptxResult>;
-```
-
-Import `generatePptx` from `@pptkit/pptx-exporter` in either a browser or Node.js. The caller owns delivery: for example, a browser application may wrap `bytes` in a Blob.
-
-## Node.js API
-
-```ts
-interface WritePptxOptions {
-  output: string;
-}
-
 interface WritePptxResult {
   output: string;
   slideCount: number;
@@ -35,28 +68,55 @@ interface WritePptxResult {
   status: "written" | "written-with-warnings";
 }
 
-declare function writePptx(
-  document: PresentationDocument,
-  options: WritePptxOptions,
-): Promise<WritePptxResult>;
+interface ExportWarning {
+  code: string;
+  message: string;
+  slideId?: string;
+  elementIndex?: number;
+  assetId?: string;
+}
 ```
 
-Import `writePptx` from `@pptkit/pptx-exporter/node`. The output directory is created automatically and an existing file is overwritten. The Node.js subpath also exports `generatePptx` with local-path asset support.
+`byteLength` is the generated package size. A non-empty warning collection changes the status but does not discard otherwise valid presentation content.
 
-## Supported content and assets
+## Failure and warning behavior
 
-| Core element | PPTX output |
+| Condition | Outcome |
 | --- | --- |
-| `text` | Editable text box with font family, size, weight, color, alignment, paragraph line spacing, line breaks, and optional shrink-to-fit |
-| `shape: rect` | Editable rectangle |
-| `shape: ellipse` | Editable ellipse |
-| `shape: line` | Editable line |
-| `image` | Editable picture with alt text and packaged media |
+| Core validation errors | Rejects with `PresentationValidationError` containing all error diagnostics. |
+| URL request failure | Omits the affected image and returns an asset warning. |
+| Missing local file in Node | Omits the affected image and returns an asset warning. |
+| Path asset through the default entry | Omits the image and explains that `/node` is required. |
+| Output directory does not exist | Node entry creates it. |
+| Output write fails | `writePptx()` rejects with the filesystem error. |
 
-The default entry supports URL sources through the runtime `fetch`, including HTTP(S), data, and blob URLs. Browser HTTP(S) requests obey CORS. A `path` source used through the default entry produces an `asset-read-failed` warning; the Node.js entry supports both `path` and `url`.
+Applications should display or log warnings even when output was generated successfully.
 
-Core normalization errors fail the operation. Recoverable asset failures omit only the affected image and are reported through `asset-read-failed` and `image-omitted` warnings. Unsupported elements use `unsupported-element`.
+## Exported presentation features
 
-Solid slide backgrounds are exported as native PowerPoint slide backgrounds rather than full-slide shapes. Fonts are referenced by family name and are not embedded; PowerPoint may substitute a font that is unavailable on the viewing machine.
+- Editable rich text paragraphs and runs, direct/theme colors, theme fonts, bullets, numbering, hyperlinks, and slide actions.
+- Images with stretch, contain, cover, crop, opacity, accessibility, and media relationships.
+- Shapes, connectors, nested groups, and native editable tables with cell spans.
+- Reusable slide layouts, typed placeholders, backgrounds, theme parts, hidden slides, and speaker notes.
+- Presentation metadata plus PPTKit-owned slide metadata preservation for section, tags, and custom data.
 
-Themes, rich text runs, grouped elements, tables, animations, speaker notes, and PPTX parsing remain outside the current implementation.
+Core supplies explicit normalized defaults. The exporter translates those semantics into OOXML but does not choose business defaults.
+
+## Runtime boundary example
+
+```ts
+const remote = presentation.registerAsset({
+  kind: "image",
+  source: { type: "url", value: "https://example.com/image.png" },
+  mimeType: "image/png",
+});
+
+// Works in the default and Node entries when the URL is reachable.
+slide.addElement({
+  type: "image",
+  assetId: remote.id,
+  box: { x: 80, y: 120, width: 320, height: 180 },
+});
+```
+
+For asset registration and dimensions, see [Core assets](core/assets.md). For geometric resolution before export, see [`@pptkit/layout`](layout.md).

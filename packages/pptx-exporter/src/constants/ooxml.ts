@@ -12,6 +12,7 @@ export const REL = {
   viewProps: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/viewProps",
   tableStyles: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/tableStyles",
   image: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image",
+  hyperlink: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
   core: "http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties",
   app: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties",
 } as const;

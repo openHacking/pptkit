@@ -1,27 +1,25 @@
 # Architecture
 
-This section is for contributor-facing system design documentation.
+These documents describe contributor-facing system boundaries, implemented contracts, and explicit future directions.
 
-## Reading Order
+## Reading order
 
-- [Architecture Overview](overview.md)
-- [Core Authoring Model](core-authoring-model.md)
+1. [Architecture Overview](overview.md)
+2. [Core Authoring Model](core-authoring-model.md)
+3. [Canonical Presentation IR v1](canonical-ir-v1.md)
+4. [Document Models](document-models.md)
+5. [Package Boundaries](package-boundaries.md)
+6. [Rendering Pipeline](rendering-pipeline.md)
+7. [Layout Engine](layout-engine.md)
+8. [Import and Export Boundaries](import-export-boundaries.md)
+
+Supporting decisions:
+
 - [Design Principles](design-principles.md)
-- [Document Models](document-models.md)
 - [Editable vs Visual](editable-vs-visual.md)
-- [Package Boundaries](package-boundaries.md)
 - [Source Organization](source-organization.md)
-- [Rendering Pipeline](rendering-pipeline.md)
-- [Import and Export Boundaries](import-export-boundaries.md)
-- [Layout Engine](layout-engine.md)
-- [Monorepo Bootstrap](monorepo-bootstrap.md)
 - [Preview and Editing](preview-and-editing.md)
-- [Canonical IR v0.1 Draft](canonical-ir-v0.1.md)
 - [Testing Strategy](testing-strategy.md)
+- [Monorepo Bootstrap](monorepo-bootstrap.md)
 
-## Planned Topics
-
-- Import and export pipeline internals
-- Data flow from source content to PPTX
-- Parser preservation strategy
-- Preview architecture
+Current behavior and future architecture are labeled separately. Parser preservation and preview/rendering documents describe direction until their owning packages exist.

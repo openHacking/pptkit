@@ -1,13 +1,15 @@
 # `@pptkit/core`
 
-Authoring-facing document model for PPTKit.
+Authoring model and Canonical Presentation IR for PPTKit.
 
-## What It Provides
+## Capabilities
 
-- `createPresentation()` for document construction
-- typed `text`, `image`, and `shape` slide elements
-- asset registration and lookup
-- `normalizePresentation()` for downstream-safe document output
+- method-managed presentations, slides, elements, assets, and slide layouts
+- rich text paragraphs and runs
+- theme colors and fonts
+- text, image, shape, connector, group, and table elements
+- placeholders, speaker notes, hidden slides, sections, tags, and custom data
+- structured validation and fully materialized IR v1 normalization
 
 ## Example
 
@@ -15,30 +17,26 @@ Authoring-facing document model for PPTKit.
 import { createPresentation, normalizePresentation } from "@pptkit/core";
 
 const presentation = createPresentation({
-  title: "Quarterly Update",
+  metadata: { title: "Quarterly Update", author: "Example Team" },
+  theme: { colors: { accent1: "2457D6" } },
 });
 
-presentation.addSlide({
-  background: "#F7F5EF",
-  elements: [
-    {
-      type: "text",
-      text: "Quarterly Update",
-      box: { x: 48, y: 48, width: 360, height: 32 },
-    },
-  ],
+const slide = presentation.addSlide();
+slide.addElement({
+  type: "text",
+  content: [{
+    runs: [
+      { text: "Quarterly ", style: { fontSize: 32 } },
+      { text: "Update", style: { fontSize: 32, bold: true, color: { theme: "accent1" } } },
+    ],
+  }],
+  box: { x: 48, y: 48, width: 500, height: 60 },
 });
 
 const normalized = normalizePresentation(presentation);
-
-console.log(normalized.slides.length);
+console.log(normalized.irVersion); // 1
 ```
 
-## Documentation
+Collections are exposed as readonly snapshots. Use document and slide methods to add, insert, move, remove, or duplicate content.
 
-- API reference: [docs/api/core.md](../../docs/api/core.md)
-- Architecture: [docs/architecture/core-authoring-model.md](../../docs/architecture/core-authoring-model.md)
-
-## Internal Architecture
-
-The package keeps its root API intentionally small. Internally, contracts live in `types`, mutable authoring state in `document`, and side-effect-free validation and normalization flows in their own modules. Internal classes are not part of the supported public API.
+See [the Core API reference](../../docs/api/core.md) and [authoring architecture](../../docs/architecture/core-authoring-model.md).

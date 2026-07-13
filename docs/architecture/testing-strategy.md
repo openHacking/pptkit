@@ -1,71 +1,47 @@
 # Testing Strategy
 
-This document defines the testing approach for the workspace bootstrap and the first implementation phases.
+PPTKit tests each responsibility at its narrowest useful boundary and then verifies the complete authoring-to-PPTX path.
 
-## Goals
+## Required workspace checks
 
-- Keep the initial feedback loop simple.
-- Validate package boundaries early.
-- Add richer regression coverage only when the output becomes meaningful.
+Contributors run the same commands expected in CI:
 
-## Test Layers
+```bash
+pnpm build
+pnpm typecheck
+pnpm lint
+pnpm test
+```
 
-### 1. Package Smoke Tests
+`pnpm lint` includes repository structure, dependency-boundary, documentation-link, stale-contract, and typed documentation-example checks.
 
-Every initial package should include a smoke test that proves:
+## Package tests
 
-- the package builds in isolation
-- the public entry point can be imported
-- the provisional runtime contract behaves as expected
+- **Core:** operation semantics, immutable snapshots, IDs, duplication/removal, full diagnostics, normalized defaults, inheritance, and detached IR.
+- **Layout:** detached results, connector anchors/bounds, image contain/cover, and nested group traversal.
+- **PPTX exporter:** deterministic ZIP structure, OOXML parts/relationships, editable feature serialization, runtime asset behavior, warnings, and Node output.
+- **CLI:** stable command entry behavior appropriate to its current minimal surface.
 
-Bootstrap examples:
+Tests prefer focused documents that isolate one contract. Cross-package tests cover boundaries where a feature would otherwise be “modeled but not exported.”
 
-- `@pptkit/core` can create a presentation shell
-- `@pptkit/layout` can consume a core document
-- `@pptkit/pptx-exporter` generates valid cross-runtime bytes and returns structured export diagnostics
-- `@pptkit/cli` responds to `--help`
+## Export verification layers
 
-### 2. Workspace Validation
+1. Validate authoring and normalized structures.
+2. Open generated ZIPs and parse every XML/relationship part.
+3. Assert key XML semantics and package relationships.
+4. Render named fixture decks and compare reviewable snapshots.
+5. Open/save representative decks in PowerPoint and LibreOffice.
 
-Root-level commands should remain stable:
+The first three layers are automated today. Visual fixture coverage and a formal cross-application matrix are public-preview gates in the [Roadmap](../../ROADMAP.md).
 
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm test`
+## Fixtures and regressions
 
-CI should run the same commands contributors run locally.
+- Package fixtures live under `packages/<name>/test/fixtures/` when needed.
+- Cross-package demonstrations live under `examples/` or typed documentation examples.
+- Golden artifacts must be small, deterministic, and tied to a named behavior/regression.
+- Large “everything” decks supplement rather than replace focused tests.
+- Every fixed export regression adds the narrowest assertion that would have detected it.
 
-### 3. Export Integration Tests
+## Review rule
 
-The exporter integration suite covers:
-
-- authoring to export flow
-- browser-safe byte generation without Node built-ins
-- file creation and output paths
-- unsupported feature diagnostics
-- error handling around invalid document input
-- OOXML package parts, relationships, media, and output byte size
-
-### 4. Future Golden and Fixture Tests
-
-Golden-file coverage is appropriate only after the exporter produces stable output.
-
-At that stage:
-
-- fixtures should live near the owning package
-- snapshot artifacts should be small and reviewable
-- every golden file should correspond to a named behavior or regression
-
-## Directory Guidance
-
-- package smoke tests live under `packages/<name>/test/`
-- future package fixtures should live under `packages/<name>/test/fixtures/`
-- cross-package examples belong in `examples/`
-
-## Review Rules
-
-When real implementation work begins:
-
-- add tests for every new public API or boundary behavior
-- prefer small focused fixtures over giant all-in-one decks
-- treat parse/export regressions as high-priority coverage candidates
+A behavior change is incomplete without tests at the owning package and, when package boundaries are affected, an integration/export assertion. Public contract changes also update examples, API reference, and architecture documentation in the same change.

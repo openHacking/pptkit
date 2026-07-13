@@ -1,4 +1,4 @@
-import type { Box, PresentationAssetSource, PresentationSize, ShapeStyle, TextStyle } from "@pptkit/core";
+import type { Box, PresentationAssetSource, PresentationSize } from "@pptkit/core";
 
 export type FeatureId = string;
 
@@ -21,7 +21,15 @@ export interface ExampleTextElementSpec {
   type: "text";
   text: string;
   box?: Box;
-  style?: TextStyle;
+  style?: {
+    fontSize?: number;
+    fontFamily?: string;
+    fontWeight?: "normal" | "bold";
+    color?: string;
+    align?: "left" | "center" | "right" | "justify";
+    lineSpacing?: number;
+    autoFit?: { mode: "none" } | { mode: "shrink"; fontScale?: number };
+  };
 }
 
 export interface ExampleImageAssetSpec {
@@ -45,7 +53,11 @@ export interface ExampleShapeElementSpec {
   type: "shape";
   shape: "rect" | "ellipse" | "line";
   box?: Box;
-  style?: ShapeStyle;
+  style?: {
+    fill?: string;
+    stroke?: string;
+    strokeWidth?: number;
+  };
 }
 
 export type ExampleElementSpec =

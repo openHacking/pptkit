@@ -1,31 +1,32 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { AssetRegistry } from "../dist/document/asset-registry.js";
+import { createPresentation } from "../dist/index.js";
 
-test("AssetRegistry deduplicates by dedupe key and source", () => {
-  const registry = new AssetRegistry();
-  const first = registry.register({
+test("asset registration deduplicates immutable assets", () => {
+  const presentation = createPresentation();
+  const first = presentation.registerAsset({
     kind: "image",
     source: { type: "url", value: "https://example.com/hero.png" },
     dedupeKey: "hero",
+    accessibility: { description: "Hero" },
   });
-  const second = registry.register({
+  const second = presentation.registerAsset({
     kind: "image",
     source: { type: "url", value: "https://example.com/hero.png" },
     dedupeKey: "hero",
+    accessibility: { description: "Hero" },
   });
-
-  assert.equal(second, first);
-  assert.equal(registry.assets.length, 1);
+  assert.equal(first, second);
+  assert.equal(presentation.assets.length, 1);
+  assert.throws(() => { first.source.value = "changed"; }, TypeError);
 });
 
-test("AssetRegistry rejects duplicate identifiers with different metadata", () => {
-  const registry = new AssetRegistry();
-  registry.register({ kind: "image", id: "logo", source: { type: "path", value: "./logo.png" } });
-
+test("asset registration rejects conflicting metadata", () => {
+  const presentation = createPresentation();
+  presentation.registerAsset({ kind: "image", id: "logo", source: { type: "path", value: "./logo.png" } });
   assert.throws(
-    () => registry.register({ kind: "image", id: "logo", source: { type: "path", value: "./other.png" } }),
+    () => presentation.registerAsset({ kind: "image", id: "logo", source: { type: "path", value: "./other.png" } }),
     /already registered with different metadata/,
   );
 });

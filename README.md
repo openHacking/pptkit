@@ -1,101 +1,136 @@
 # PPTKit
 
-Modern presentation generation toolkit for JavaScript.
+PPTKit is a developer-first TypeScript toolkit for building structured, editable presentations. It provides a format-independent authoring model, a stable Canonical Presentation IR, an independent layout stage, and editable PPTX output without exposing OOXML to application code.
+
+> **Project status:** PPTKit is under active pre-release development. Workspace packages are implemented and tested locally, but they are not published to npm and the public API may still change before the first preview release.
 
 ## Features
 
-- Developer-first toolkit for generating editable presentation output
-- Package-based architecture for core, layout, parsing, and export workflows
-- Designed for modern structured content and automation scenarios
-- Documentation-first repository structure for long-term open-source growth
+- Method-managed presentation and slide authoring with stable document-wide IDs.
+- Canonical Presentation IR v1 with complete diagnostics and materialized defaults.
+- Rich text, themes, paints, strokes, layouts, placeholders, notes, and accessibility metadata.
+- Images, preset shapes, anchored connectors, nested groups, and native editable tables.
+- Detached layout resolution for connector anchors and image contain/cover behavior.
+- Editable PPTX generation with native layouts, theme parts, notes, tables, media, and relationships.
+- Browser-neutral byte generation plus a Node.js adapter for local assets and file output.
 
 ## Quick Start
 
-The repository now includes a formal `@pptkit/core` package for presentation construction, asset registration, and document normalization.
+PPTKit is currently used from this workspace. Install dependencies and build the packages first:
 
-## Installation
+```bash
+pnpm install
+pnpm build
+```
 
-For local development:
+The following example writes an editable `hello-pptkit.pptx` file.
+
+<!-- doc-test: docs/examples/quick-start.ts -->
+```ts
+import { createPresentation, validatePresentation } from "@pptkit/core";
+import { writePptx } from "@pptkit/pptx-exporter/node";
+
+const presentation = createPresentation({
+  metadata: { title: "Hello PPTKit", author: "Example Team" },
+  theme: { colors: { accent1: "2457D6" } },
+});
+
+const slide = presentation.addSlide();
+slide.addElement({
+  type: "text",
+  content: [{
+    runs: [
+      { text: "Hello ", style: { fontSize: 36 } },
+      {
+        text: "PPTKit",
+        style: { fontSize: 36, bold: true, color: { theme: "accent1" } },
+      },
+    ],
+  }],
+  box: { x: 64, y: 64, width: 520, height: 72 },
+});
+
+const diagnostics = validatePresentation(presentation);
+if (diagnostics.some((diagnostic) => diagnostic.severity === "error")) {
+  throw new Error(JSON.stringify(diagnostics, null, 2));
+}
+
+const result = await writePptx(presentation, {
+  output: "./hello-pptkit.pptx",
+});
+
+console.log(result.status, result.output, result.warnings);
+```
+
+The checked copy of this example lives at `docs/examples/quick-start.ts`. Run it from the workspace with:
+
+```bash
+pnpm --filter @pptkit/dev-app exec tsx \
+  --tsconfig ../../docs/examples/tsconfig.json \
+  ../../docs/examples/quick-start.ts
+```
+
+This writes `hello-pptkit.pptx` in `examples/dev-app/`.
+
+See the full [Quick Start](docs/getting-started/quick-start.md) for how validation, browser generation, assets, and warnings fit together.
+
+## Packages
+
+| Package | Responsibility |
+| --- | --- |
+| `@pptkit/core` | Authoring model, elements, assets, themes/layouts, validation, and Canonical IR. |
+| `@pptkit/layout` | Detached connector and image geometry resolution. |
+| `@pptkit/pptx-exporter` | Browser-neutral editable PPTX generation and Node.js file output. |
+| `@pptkit/cli` | Thin command workflow shell; its authoring command surface is not stable yet. |
+
+Parser, SVG, preview, and rendering packages remain roadmap work. See the [package overview](docs/api/package-overview.md).
+
+## Architecture
+
+The implemented forward pipeline is:
+
+```text
+Authoring Model → validation/normalization → Canonical IR v1
+                → Layout Result → PPTX Package Model → .pptx
+```
+
+The separation keeps mutable authoring state, layout behavior, and OOXML packaging independently testable. Start with the [Architecture Overview](docs/architecture/overview.md) and [Core Authoring Model](docs/architecture/core-authoring-model.md).
+
+## Documentation
+
+- [Documentation index](docs/README.md)
+- [Installation](docs/getting-started/installation.md)
+- [Quick Start](docs/getting-started/quick-start.md)
+- [Create Your First Deck](docs/guides/create-your-first-deck.md)
+- [API reference](docs/api/README.md)
+- [Core API](docs/api/core.md)
+- [Layout API](docs/api/layout.md)
+- [PPTX exporter API](docs/api/pptx-exporter.md)
+- [Architecture](docs/architecture/README.md)
+
+## Development
+
+PPTKit requires Node.js 20 or newer and uses pnpm 10.
 
 ```bash
 pnpm install
 pnpm dev
-pnpm lint
+pnpm build
 pnpm typecheck
+pnpm lint
 pnpm test
 ```
 
-Published package installation instructions will be added once preview releases exist.
-
-`pnpm dev` starts the internal examples workbench at `http://localhost:3210` so contributors can browse capability-focused cases based on the current project priorities and implementation state.
-
-## Hello World
-
-```ts
-import { createPresentation, normalizePresentation } from "@pptkit/core";
-
-const presentation = createPresentation({
-  title: "Hello PPTKit",
-});
-
-presentation.addSlide({
-  elements: [
-    {
-      type: "text",
-      text: "Hello PPTKit",
-      box: { x: 64, y: 64, width: 320, height: 36 },
-    },
-  ],
-});
-
-const normalized = normalizePresentation(presentation);
-
-console.log(normalized.slides.length);
-```
-
-`@pptkit/pptx-exporter` generates a minimal editable `.pptx` in browsers or Node.js; its Node.js adapter can write the package directly to a file.
-
-## Architecture
-
-PPTKit is being designed as a multi-package toolkit with clear boundaries between content modeling, layout, parsing, and export.
-
-See the contributor-facing architecture docs in [docs/architecture/README.md](docs/architecture/README.md).
-Start with [docs/architecture/overview.md](docs/architecture/overview.md), [docs/architecture/core-authoring-model.md](docs/architecture/core-authoring-model.md), and [docs/architecture/document-models.md](docs/architecture/document-models.md).
-
-## Packages
-
-Bootstrap packages:
-
-- `@pptkit/core`
-- `@pptkit/layout`
-- `@pptkit/pptx-exporter`
-- `@pptkit/cli`
-
-Planned follow-up packages:
-
-- `@pptkit/pptx-parser`
-- `@pptkit/svg-parser`
-- `@pptkit/svg-renderer`
-
-## Documentation
-
-- Docs index: [docs/README.md](docs/README.md)
-- Getting started: [docs/getting-started/README.md](docs/getting-started/README.md)
-- Architecture: [docs/architecture/README.md](docs/architecture/README.md)
-- API: [docs/api/README.md](docs/api/README.md)
-- Core API: [docs/api/core.md](docs/api/core.md)
-- Guides: [docs/guides/README.md](docs/guides/README.md)
-- Examples: [examples/README.md](examples/README.md)
-- Monorepo bootstrap: [docs/architecture/monorepo-bootstrap.md](docs/architecture/monorepo-bootstrap.md)
+`pnpm dev` starts the local examples workbench at `http://localhost:3210`. Contribution and package-boundary expectations are documented in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Roadmap
 
-The open-source roadmap is available in [ROADMAP.md](ROADMAP.md).
+The [project roadmap](ROADMAP.md) separates implemented foundations, public-preview gates, layout fidelity, import/round-trip work, ecosystem expansion, and deferred Office features.
 
 ## Contributing
 
-Contribution guidelines are available in [CONTRIBUTING.md](CONTRIBUTING.md).
+Issues and contributions should preserve package ownership, add focused tests, update public/architecture documentation, and pass build, typecheck, lint, and test checks. See [CONTRIBUTING.md](CONTRIBUTING.md) for the complete workflow.
 
 ## License
 
-MIT
+PPTKit is licensed under the [MIT License](LICENSE).

@@ -10,19 +10,27 @@ export interface PresentationAssetInput {
   mimeType?: string;
   width?: number;
   height?: number;
-  altText?: string;
+  accessibility?: {
+    description?: string;
+    decorative?: boolean;
+  };
   dedupeKey?: string;
 }
 
-export interface PresentationAsset {
+export interface PresentationAsset extends Omit<PresentationAssetInput, "id"> {
+  id: string;
+}
+
+export interface NormalizedAsset {
   id: string;
   kind: "image";
   source: PresentationAssetSource;
   mimeType?: string;
   width?: number;
   height?: number;
-  altText?: string;
+  accessibility: {
+    description?: string;
+    decorative: boolean;
+  };
   dedupeKey?: string;
 }
-
-export interface NormalizedAsset extends PresentationAsset {}

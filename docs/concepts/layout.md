@@ -1,29 +1,24 @@
 # Layout
 
-Layout is a first-class concern in PPTKit.
+Layout is a first-class transformation between normalized presentation semantics and format-specific output.
 
-## Why Layout Deserves Its Own Package
+## Implemented behavior
 
-Legacy presentation libraries often push layout responsibility onto the user through coordinates and manual sizing.
+`@pptkit/layout` currently:
 
-PPTKit should treat layout as reusable logic rather than as a side effect of export.
+- consumes authoring documents or Canonical IR v1
+- returns a detached export-ready layout result
+- resolves connector element anchors to points
+- derives connector bounds
+- resolves image `contain` and `cover` when source dimensions are known
+- recursively processes group children while preserving local coordinates
 
-## Responsibilities
+## Why it is separate
 
-The layout layer is expected to handle:
+Keeping layout outside Core and exporters makes placement behavior independently testable and reusable. Core remains focused on document meaning, while exporters remain focused on format translation and packaging.
 
-- Positioning
-- Sizing
-- Group composition
-- Constraint resolution
-- Placement output for renderers and exporters
+## Roadmap behavior
 
-## Design Goal
+Text measurement, overflow diagnostics, constraints, automatic composition, table measurement, and pagination belong in Layout but are not implemented yet. They must remain predictable transformations rather than hidden “magic” inside export.
 
-The layout package should provide consistent structure without becoming a hidden, overly magical system.
-
-Contributors should be able to reason about:
-
-- What inputs layout consumes
-- What placement data it emits
-- Where unsupported cases fail
+See the [`@pptkit/layout` API](../api/layout.md) for callable behavior and [Layout Engine](../architecture/layout-engine.md) for contributor constraints.

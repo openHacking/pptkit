@@ -105,11 +105,11 @@ Canonical Presentation IR
 
 `@pptkit/layout` owns the detached layout result: page size, ordered slides, ordered elements, geometry, and normalized styles. `@pptkit/pptx-exporter` owns asset I/O, OOXML parts, relationships, ZIP packaging, and export diagnostics. Neither package becomes the authoring source of truth.
 
-The export path normalizes the authoring document exactly once, passes that normalized IR to `resolveNormalizedLayout`, and then passes the detached layout result to the exporter package builder. `resolveLayout(document)` remains available for direct compatibility use, but downstream pipelines should prefer the normalized entry point.
+The export path normalizes the authoring document exactly once, passes that normalized IR to `resolveNormalizedLayout`, and then passes the detached layout result to the exporter package builder. `resolveLayout(document)` is the authoring convenience entry point; downstream pipelines should prefer the normalized entry point.
 
 The runtime-neutral exporter entry orchestrates asset loading, OOXML generation, package-part collection, and ZIP encoding into `Uint8Array` output. Filesystem output and local-path asset loading belong to the explicit Node.js subpath, so importing the default entry never pulls Node built-ins into a browser dependency graph.
 
-The first exporter writes a deliberately small package with a fixed blank master/layout/theme. This gives the project a valid editable baseline without leaking OOXML into `@pptkit/core`.
+The exporter writes one theme and master plus the normalized reusable slide-layout roster. Placeholder bindings, layout backgrounds, static layout content, notes, and slide-local content remain separate native package structures without leaking OOXML into `@pptkit/core`.
 
 ## Why Use a Pipeline
 

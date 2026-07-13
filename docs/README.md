@@ -1,35 +1,38 @@
-# Documentation
+# PPTKit Documentation
 
-This directory contains the project documentation for PPTKit.
+The documentation is organized by audience and task. Current behavior is written in the present tense; parser, rendering, and other unimplemented systems are labeled as future architecture.
 
-## Sections
+## Start here
 
-- [Getting Started](getting-started/README.md)
+- [Installation](getting-started/installation.md)
+- [Quick Start](getting-started/quick-start.md)
+- [Create Your First Deck](guides/create-your-first-deck.md)
+
+## Use the API
+
+- [API index](api/README.md)
+- [`@pptkit/core`](api/core.md)
+- [`@pptkit/layout`](api/layout.md)
+- [`@pptkit/pptx-exporter`](api/pptx-exporter.md)
+- [Package overview](api/package-overview.md)
+
+## Understand the system
+
 - [Concepts](concepts/README.md)
-- [Guides](guides/README.md)
-- [API](api/README.md)
-- [Plugins](plugins/README.md)
-- [Renderer](renderer/README.md)
-- [Architecture](architecture/README.md)
-- [Migration](migration/README.md)
-- [FAQ](faq/README.md)
-- [Best Practices](best-practices/README.md)
+- [Architecture overview](architecture/overview.md)
+- [Core authoring model](architecture/core-authoring-model.md)
+- [Canonical Presentation IR v1](architecture/canonical-ir-v1.md)
+- [Package boundaries](architecture/package-boundaries.md)
+- [Rendering pipeline](architecture/rendering-pipeline.md)
 
-## Documentation Model
+## Contribute
 
-PPTKit documentation is organized into three layers:
+- [Developer workflow](guides/developer-workflow.md)
+- [Example workbench](guides/example-workbench.md)
+- [Testing strategy](architecture/testing-strategy.md)
+- [Source organization](architecture/source-organization.md)
+- [Release strategy](migration/release-strategy.md)
 
-1. User docs for installation, quick start, and practical usage.
-2. Architecture docs for contributors who need to understand the system design.
-3. Implementation-facing docs for workspace, API, and testing decisions.
+## Future areas
 
-## Suggested Reading Order
-
-1. [Getting Started](getting-started/README.md)
-2. [Architecture Overview](architecture/overview.md)
-3. [Core Authoring Model](architecture/core-authoring-model.md)
-4. [Design Principles](architecture/design-principles.md)
-5. [Document Models](architecture/document-models.md)
-6. [Editable vs Visual](architecture/editable-vs-visual.md)
-7. [Package Boundaries](architecture/package-boundaries.md)
-8. [Rendering Pipeline](architecture/rendering-pipeline.md)
+The [Roadmap](../ROADMAP.md) is the source of truth for planned capability areas. Parser preservation, preview/rendering, plugins, and advanced Office features are not presented as current APIs.

@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "node ./scripts/dev.mjs",
     "build": "pnpm -r build",
-    "lint": "node ./scripts/lint.mjs && node ./scripts/check-boundaries.mjs",
+    "lint": "node ./scripts/lint.mjs && node ./scripts/check-boundaries.mjs && node ./scripts/check-docs.mjs",
+    "docs:check": "node ./scripts/check-docs.mjs",
     "test": "pnpm -r test",
     "typecheck": "tsc -b --pretty false",
     "clean": "node ./scripts/clean.mjs",

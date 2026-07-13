@@ -1,7 +1,7 @@
-# Migration
+# Migration and Releases
 
-This section will track migration and release-readiness guidance as PPTKit moves from bootstrap to preview publishing.
+PPTKit has not published a public package version, so there is no supported legacy API and no pre-release migration adapter. Documentation and examples target only the current contract.
 
-## Pages
+Compatibility and migration policy begins with the first published preview. Until then, breaking contract changes update Core, Layout, exporters, tests, examples, and documentation together.
 
-- [Release Strategy](release-strategy.md)
+See [Release Strategy](release-strategy.md) and the [Roadmap](../../ROADMAP.md).

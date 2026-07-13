@@ -1,257 +1,79 @@
 # `@pptkit/core`
 
-`@pptkit/core` is the authoring-facing package for PPTKit. It owns presentation construction, typed slide elements, asset registration, and the normalized document boundary that downstream packages consume.
+`@pptkit/core` is the format-independent authoring and document-contract package for PPTKit. It owns presentation construction, stable identities, validation, themes, layouts, assets, and Canonical Presentation IR v1. It does not read files, fetch URLs, calculate final layout, or write PPTX packages.
 
-## Install
+## Installation status
+
+PPTKit is not published yet. Inside this repository, workspace packages can import Core directly:
+
+```ts
+import {
+  createPresentation,
+  normalizePresentation,
+  validatePresentation,
+} from "@pptkit/core";
+```
+
+The intended package installation command after the first preview release is:
 
 ```bash
 pnpm add @pptkit/core
 ```
 
-## Quick Example
+## First presentation
 
 ```ts
 import { createPresentation, normalizePresentation } from "@pptkit/core";
 
 const presentation = createPresentation({
-  title: "Hello PPTKit",
-});
-
-const heroImage = presentation.registerAsset({
-  kind: "image",
-  source: {
-    type: "path",
-    value: "./assets/hero.png",
+  metadata: {
+    title: "Launch Plan",
+    author: "Example Team",
+    language: "en-US",
   },
-  mimeType: "image/png",
-  altText: "Quarterly launch hero graphic",
-  dedupeKey: "launch-hero",
+  theme: {
+    colors: { accent1: "2457D6" },
+    fonts: { heading: "Aptos Display", body: "Aptos" },
+  },
 });
 
-presentation.addSlide({
-  elements: [
-    {
-      type: "text",
-      text: "Hello, PPTKit",
-      box: { x: 48, y: 48, width: 400, height: 32 },
-      style: { fontSize: 24, fontWeight: "bold" },
-    },
-    {
-      type: "image",
-      assetId: heroImage.id,
-      box: { x: 48, y: 112, width: 320, height: 180 },
-      altText: "Launch hero preview",
-    },
-  ],
+const slide = presentation.addSlide();
+slide.addElement({
+  type: "text",
+  content: "Launch Plan",
+  box: { x: 48, y: 48, width: 500, height: 60 },
 });
 
 const normalized = normalizePresentation(presentation);
-
-console.log(normalized.slides.length);
+console.log(normalized.irVersion, normalized.slides.length);
 ```
 
-## Public API
+Authoring inputs may omit most defaults and IDs. Normalization validates the complete document, generates a detached IR, and materializes the values required by layout and exporters.
 
-### `createPresentation(init?)`
+## API reference
 
-Creates an in-memory presentation document.
+- [Presentations and slides](core/presentation.md) — initialization, metadata, method-managed collections, ordering, duplication, and slide semantics.
+- [Elements](core/elements.md) — shared element fields plus text, image, shape, connector, group, and table inputs.
+- [Text and styles](core/text-and-styles.md) — paragraphs, runs, paints, strokes, transforms, bullets, links, and defaults.
+- [Themes and layouts](core/themes-and-layouts.md) — theme roles, reusable layouts, placeholders, and inheritance.
+- [Assets](core/assets.md) — registration, lookup, deduplication, and runtime boundaries.
+- [Validation and IR](core/validation-and-ir.md) — diagnostics, normalization failures, and IR v1 guarantees.
 
-```ts
-declare function createPresentation(init?: PresentationInit): PresentationDocument;
-```
+The exact normalized schema is documented separately in [Canonical Presentation IR v1](../architecture/canonical-ir-v1.md).
 
-`PresentationInit`:
+## Public exports
 
-```ts
-interface PresentationInit {
-  id?: string;
-  title?: string;
-  size?: Partial<PresentationSize>;
-}
-```
+Runtime exports:
 
-Default size:
+| Export | Purpose |
+| --- | --- |
+| `createPresentation(init?)` | Creates method-managed authoring state. |
+| `validatePresentation(document)` | Returns every validation diagnostic found in a document. |
+| `normalizePresentation(document)` | Produces detached Canonical IR v1 or throws one validation error containing all error diagnostics. |
+| `PresentationValidationError` | Error class exposing a readonly `diagnostics` collection. |
 
-```ts
-{
-  width: 960,
-  height: 540,
-  unit: "pt"
-}
-```
+Core also exports its public TypeScript types, including authoring inputs, normalized structures, geometry, themes, styles, diagnostics, assets, and element unions.
 
-### `presentation.addSlide(input?)`
+## Package boundary
 
-Appends a slide to the document and returns the created slide.
-
-```ts
-interface PresentationSlideInput {
-  id?: string;
-  background?: string;
-  elements?: PresentationElementInput[];
-}
-```
-
-If `id` is omitted, PPTKit generates a stable slide id such as `slide-1`.
-
-### `presentation.registerAsset(input)`
-
-Registers an asset for later element references.
-
-```ts
-interface PresentationAssetInput {
-  id?: string;
-  kind: "image";
-  source: { type: "path" | "url"; value: string };
-  mimeType?: string;
-  width?: number;
-  height?: number;
-  altText?: string;
-  dedupeKey?: string;
-}
-```
-
-Current behavior:
-
-- only image assets are supported
-- repeat registrations with the same `id` or `dedupeKey + source` return the existing asset when metadata matches
-- conflicting duplicate registrations throw an error
-
-### `presentation.getAsset(assetId)`
-
-Returns a previously registered asset when present.
-
-### `normalizePresentation(document)`
-
-Converts a mutable authoring document into a normalized structure for layout and export.
-
-```ts
-declare function normalizePresentation(
-  document: PresentationDocument,
-): NormalizedPresentation;
-```
-
-Normalization guarantees:
-
-- generated defaults are materialized
-- normalized arrays and objects do not share mutable references with authoring state
-- image elements must reference an existing asset
-- duplicate slide ids and asset ids are rejected
-- negative or non-finite geometry values are rejected
-
-## Types
-
-### Geometry
-
-```ts
-type LengthUnit = "pt";
-
-interface Box {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
-
-interface PresentationSize {
-  width: number;
-  height: number;
-  unit: LengthUnit;
-}
-```
-
-### Elements
-
-```ts
-type PresentationElementInput =
-  | TextElementInput
-  | ImageElementInput
-  | ShapeElementInput;
-
-interface TextElementInput {
-  type: "text";
-  text: string;
-  box: Box;
-  style?: TextStyle;
-}
-
-interface ImageElementInput {
-  type: "image";
-  assetId: string;
-  box: Box;
-  altText?: string;
-}
-
-interface ShapeElementInput {
-  type: "shape";
-  shape: "rect" | "ellipse" | "line";
-  box: Box;
-  style?: ShapeStyle;
-}
-```
-
-Text and shape styles:
-
-```ts
-interface TextStyle {
-  fontSize?: number;
-  fontFamily?: string;
-  fontWeight?: "normal" | "bold";
-  color?: string;
-  align?: "left" | "center" | "right";
-  lineSpacing?: number;
-  autoFit?:
-    | { mode: "none" }
-    | { mode: "shrink"; fontScale?: number };
-}
-
-interface ShapeStyle {
-  fill?: string;
-  stroke?: string;
-  strokeWidth?: number;
-}
-```
-
-`background` is a solid slide color. `lineSpacing` is a line-height multiplier, so `1.15` means 115%. When supplied, `autoFit.fontScale` must be greater than zero and at most one. Newline characters create multiple paragraphs inside the same editable text box during PPTX export.
-
-### Normalized Output
-
-`NormalizedPresentation` keeps the same document, slide, asset, and element concepts, but every entry is copied into a validation-friendly structure with defaults applied.
-
-Downstream packages should consume normalized data rather than authoring state directly.
-
-## Validation Rules
-
-`@pptkit/core` throws explicit errors for:
-
-- duplicate slide ids
-- duplicate asset ids with conflicting metadata
-- image elements that reference missing assets
-- negative or non-finite box dimensions
-- invalid presentation or asset dimensions
-- non-positive text line spacing or text auto-fit scales outside `(0, 1]`
-
-## Asset Lifecycle Boundary
-
-`@pptkit/core` owns:
-
-- asset ids
-- source metadata
-- optional descriptive metadata such as MIME type, dimensions, and alt text
-- deduplication keys
-
-`@pptkit/core` does not currently own:
-
-- file reads
-- binary payload storage
-- hashing bytes for deduplication
-- packaging media into `.pptx`
-
-Those responsibilities belong in downstream packages such as `@pptkit/pptx-exporter`.
-
-## TODO
-
-- richer text styling and text runs
-- theme and token-aware style inheritance
-- grouped elements, tables, speaker notes, and animations
-- binary asset payload support if a future workflow requires in-memory authoring
+Use Core when code needs to describe presentation intent. Use [`@pptkit/layout`](layout.md) to resolve connector anchors and image fitting, and use [`@pptkit/pptx-exporter`](pptx-exporter.md) to load assets and generate or write PPTX output.
