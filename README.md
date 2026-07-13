@@ -53,7 +53,7 @@ const normalized = normalizePresentation(presentation);
 console.log(normalized.slides.length);
 ```
 
-`@pptkit/pptx-exporter` writes a minimal editable `.pptx` file for the current text, image, and basic shape model.
+`@pptkit/pptx-exporter` generates a minimal editable `.pptx` in browsers or Node.js; its Node.js adapter can write the package directly to a file.
 
 ## Architecture
 

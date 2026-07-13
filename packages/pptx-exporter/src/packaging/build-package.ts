@@ -1,7 +1,6 @@
-import { basename } from "node:path";
 import type { NormalizedAsset } from "@pptkit/core";
 import type { LayoutResult } from "@pptkit/layout";
-import { loadAsset } from "../assets/load-asset.js";
+import { encodeUtf8 } from "../binary/encode.js";
 import { REL } from "../constants/ooxml.js";
 import { elementXml, imageXml } from "../ooxml/elements.js";
 import {
@@ -21,13 +20,14 @@ import {
 } from "../ooxml/package-parts.js";
 import { relationshipsXml, rootRelationshipsXml } from "../ooxml/relationships.js";
 import type { ExportWarning } from "../types/export.js";
-import type { PackagedMedia, Relationship, ZipPart } from "../types/internal.js";
+import type { AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types/internal.js";
 
 export async function buildPackage(
   title: string | undefined,
   layout: LayoutResult,
   assets: NormalizedAsset[],
   warnings: ExportWarning[],
+  loadAsset: AssetLoader,
 ): Promise<ZipPart[]> {
   const parts: ZipPart[] = [];
   const media = new Map<string, PackagedMedia>();
@@ -58,19 +58,19 @@ export async function buildPackage(
           return;
         }
         const relationshipId = `rId${nextRelationship++}`;
-        relationships.push({ id: relationshipId, type: REL.image, target: `../media/${basename(packaged.name)}` });
+        relationships.push({ id: relationshipId, type: REL.image, target: `../media/${mediaFilename(packaged.name)}` });
         elements.push(imageXml(element, relationshipId, elementIndex));
         return;
       }
       elements.push(elementXml(element, elementIndex, warnings, slide.id));
     });
-    parts.push({ name: `ppt/slides/slide${index + 1}.xml`, data: Buffer.from(slideXml(elements), "utf8") });
-    parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: Buffer.from(relationshipsXml(relationships), "utf8") });
-    parts.push({ name: `ppt/notesSlides/notesSlide${index + 1}.xml`, data: Buffer.from(notesSlideXml(), "utf8") });
-    parts.push({ name: `ppt/notesSlides/_rels/notesSlide${index + 1}.xml.rels`, data: Buffer.from(relationshipsXml([
+    parts.push({ name: `ppt/slides/slide${index + 1}.xml`, data: encodeUtf8(slideXml(elements)) });
+    parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(relationships)) });
+    parts.push({ name: `ppt/notesSlides/notesSlide${index + 1}.xml`, data: encodeUtf8(notesSlideXml()) });
+    parts.push({ name: `ppt/notesSlides/_rels/notesSlide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml([
       { id: "rId1", type: REL.notesMaster, target: "../notesMasters/notesMaster1.xml" },
       { id: "rId2", type: REL.slide, target: `../slides/slide${index + 1}.xml` },
-    ]), "utf8") });
+    ])) });
   }
 
   const presentationRelationships: Relationship[] = [
@@ -85,30 +85,34 @@ export async function buildPackage(
     { id: `rId${layout.slideCount + 6}`, type: REL.tableStyles, target: "tableStyles.xml" },
   );
   parts.push(
-    { name: "[Content_Types].xml", data: Buffer.from(contentTypesXml(media, layout.slideCount), "utf8") },
-    { name: "_rels/.rels", data: Buffer.from(rootRelationshipsXml(), "utf8") },
-    { name: "ppt/presentation.xml", data: Buffer.from(presentationXml(layout), "utf8") },
-    { name: "ppt/_rels/presentation.xml.rels", data: Buffer.from(relationshipsXml(presentationRelationships), "utf8") },
-    { name: "ppt/presProps.xml", data: Buffer.from(presentationPropertiesXml(), "utf8") },
-    { name: "ppt/viewProps.xml", data: Buffer.from(viewPropertiesXml(), "utf8") },
-    { name: "ppt/tableStyles.xml", data: Buffer.from(tableStylesXml(), "utf8") },
-    { name: "ppt/slideMasters/slideMaster1.xml", data: Buffer.from(slideMasterXml(), "utf8") },
-    { name: "ppt/slideMasters/_rels/slideMaster1.xml.rels", data: Buffer.from(relationshipsXml([
+    { name: "[Content_Types].xml", data: encodeUtf8(contentTypesXml(media, layout.slideCount)) },
+    { name: "_rels/.rels", data: encodeUtf8(rootRelationshipsXml()) },
+    { name: "ppt/presentation.xml", data: encodeUtf8(presentationXml(layout)) },
+    { name: "ppt/_rels/presentation.xml.rels", data: encodeUtf8(relationshipsXml(presentationRelationships)) },
+    { name: "ppt/presProps.xml", data: encodeUtf8(presentationPropertiesXml()) },
+    { name: "ppt/viewProps.xml", data: encodeUtf8(viewPropertiesXml()) },
+    { name: "ppt/tableStyles.xml", data: encodeUtf8(tableStylesXml()) },
+    { name: "ppt/slideMasters/slideMaster1.xml", data: encodeUtf8(slideMasterXml()) },
+    { name: "ppt/slideMasters/_rels/slideMaster1.xml.rels", data: encodeUtf8(relationshipsXml([
       { id: "rId1", type: REL.slideLayout, target: "../slideLayouts/slideLayout1.xml" },
       { id: "rId2", type: REL.theme, target: "../theme/theme1.xml" },
-    ]), "utf8") },
-    { name: "ppt/slideLayouts/slideLayout1.xml", data: Buffer.from(slideLayoutXml(), "utf8") },
-    { name: "ppt/slideLayouts/_rels/slideLayout1.xml.rels", data: Buffer.from(relationshipsXml([
+    ])) },
+    { name: "ppt/slideLayouts/slideLayout1.xml", data: encodeUtf8(slideLayoutXml()) },
+    { name: "ppt/slideLayouts/_rels/slideLayout1.xml.rels", data: encodeUtf8(relationshipsXml([
       { id: "rId1", type: REL.slideMaster, target: "../slideMasters/slideMaster1.xml" },
-    ]), "utf8") },
-    { name: "ppt/theme/theme1.xml", data: Buffer.from(themeXml(), "utf8") },
-    { name: "ppt/theme/theme2.xml", data: Buffer.from(themeXml(), "utf8") },
-    { name: "ppt/notesMasters/notesMaster1.xml", data: Buffer.from(notesMasterXml(), "utf8") },
-    { name: "ppt/notesMasters/_rels/notesMaster1.xml.rels", data: Buffer.from(relationshipsXml([
+    ])) },
+    { name: "ppt/theme/theme1.xml", data: encodeUtf8(themeXml()) },
+    { name: "ppt/theme/theme2.xml", data: encodeUtf8(themeXml()) },
+    { name: "ppt/notesMasters/notesMaster1.xml", data: encodeUtf8(notesMasterXml()) },
+    { name: "ppt/notesMasters/_rels/notesMaster1.xml.rels", data: encodeUtf8(relationshipsXml([
       { id: "rId1", type: REL.theme, target: "../theme/theme2.xml" },
-    ]), "utf8") },
-    { name: "docProps/core.xml", data: Buffer.from(corePropertiesXml(title), "utf8") },
-    { name: "docProps/app.xml", data: Buffer.from(appPropertiesXml(layout.slideCount), "utf8") },
+    ])) },
+    { name: "docProps/core.xml", data: encodeUtf8(corePropertiesXml(title)) },
+    { name: "docProps/app.xml", data: encodeUtf8(appPropertiesXml(layout.slideCount)) },
   );
   return parts;
+}
+
+function mediaFilename(value: string): string {
+  return value.slice(value.lastIndexOf("/") + 1);
 }

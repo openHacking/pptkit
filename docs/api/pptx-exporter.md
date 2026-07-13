@@ -1,23 +1,33 @@
 # `@pptkit/pptx-exporter`
 
-`@pptkit/pptx-exporter` converts a normalized `@pptkit/core` presentation into a minimal editable PowerPoint package.
+`@pptkit/pptx-exporter` converts an `@pptkit/core` presentation into a minimal editable PowerPoint package. Byte generation is runtime-neutral; filesystem delivery is a Node.js adapter.
 
-## API
+## Runtime-neutral API
 
 ```ts
-interface ExportPptxOptions {
+interface GeneratePptxResult {
+  bytes: Uint8Array;
+  slideCount: number;
+  byteLength: number;
+  warnings: ExportWarning[];
+  status: "generated" | "generated-with-warnings";
+}
+
+declare function generatePptx(
+  document: PresentationDocument,
+): Promise<GeneratePptxResult>;
+```
+
+Import `generatePptx` from `@pptkit/pptx-exporter` in either a browser or Node.js. The caller owns delivery: for example, a browser application may wrap `bytes` in a Blob.
+
+## Node.js API
+
+```ts
+interface WritePptxOptions {
   output: string;
 }
 
-interface ExportWarning {
-  code: string;
-  message: string;
-  slideId?: string;
-  elementIndex?: number;
-  assetId?: string;
-}
-
-interface ExportResult {
+interface WritePptxResult {
   output: string;
   slideCount: number;
   byteLength: number;
@@ -25,15 +35,15 @@ interface ExportResult {
   status: "written" | "written-with-warnings";
 }
 
-declare function exportPptx(
+declare function writePptx(
   document: PresentationDocument,
-  options: ExportPptxOptions,
-): Promise<ExportResult>;
+  options: WritePptxOptions,
+): Promise<WritePptxResult>;
 ```
 
-The output directory is created automatically and an existing output file is overwritten. Core normalization errors still fail the operation. Recoverable image read errors produce warnings and omit only the affected image.
+Import `writePptx` from `@pptkit/pptx-exporter/node`. The output directory is created automatically and an existing file is overwritten. The Node.js subpath also exports `generatePptx` with local-path asset support.
 
-## Supported content
+## Supported content and assets
 
 | Core element | PPTX output |
 | --- | --- |
@@ -43,14 +53,8 @@ The output directory is created automatically and an existing output file is ove
 | `shape: line` | Editable line |
 | `image` | Editable picture with alt text and packaged media |
 
-Image assets support `path` and `url` sources. URL sources use the runtime `fetch` implementation and must return a successful response.
+The default entry supports URL sources through the runtime `fetch`, including HTTP(S), data, and blob URLs. Browser HTTP(S) requests obey CORS. A `path` source used through the default entry produces an `asset-read-failed` warning; the Node.js entry supports both `path` and `url`.
 
-## Diagnostics
+Core normalization errors fail the operation. Recoverable asset failures omit only the affected image and are reported through `asset-read-failed` and `image-omitted` warnings. Unsupported elements use `unsupported-element`.
 
-Warnings currently include `asset-read-failed`, `image-omitted`, and `unsupported-element`. The exporter never silently treats a core validation error as a warning.
-
-The package model is private to the exporter; callers work with core authoring types and the structured result above.
-
-## Current limitations
-
-Themes, rich text runs, grouped elements, tables, animations, speaker notes, and PPTX parsing are outside this first export implementation.
+Themes, rich text runs, grouped elements, tables, animations, speaker notes, and PPTX parsing remain outside the current implementation.

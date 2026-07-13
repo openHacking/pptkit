@@ -10,7 +10,7 @@ test("OOXML helpers escape metadata independently of export orchestration", () =
 });
 
 test("ZIP module emits a readable single-part package", () => {
-  const bytes = createZip([{ name: "hello.txt", data: Buffer.from("hello") }]);
+  const bytes = Buffer.from(createZip([{ name: "hello.txt", data: new TextEncoder().encode("hello") }]));
   assert.equal(bytes.readUInt32LE(0), 0x04034b50);
   const nameLength = bytes.readUInt16LE(26);
   const compressedSize = bytes.readUInt32LE(18);

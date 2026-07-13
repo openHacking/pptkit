@@ -1,7 +1,3 @@
-export interface ExportPptxOptions {
-  output: string;
-}
-
 export interface ExportWarning {
   code: string;
   message: string;
@@ -10,7 +6,19 @@ export interface ExportWarning {
   assetId?: string;
 }
 
-export interface ExportResult {
+export interface GeneratePptxResult {
+  bytes: Uint8Array;
+  slideCount: number;
+  byteLength: number;
+  warnings: ExportWarning[];
+  status: "generated" | "generated-with-warnings";
+}
+
+export interface WritePptxOptions {
+  output: string;
+}
+
+export interface WritePptxResult {
   output: string;
   slideCount: number;
   byteLength: number;

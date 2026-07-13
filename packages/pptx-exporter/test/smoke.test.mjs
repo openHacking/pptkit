@@ -6,9 +6,11 @@ import { join } from "node:path";
 import { inflateRawSync } from "node:zlib";
 
 import { createPresentation } from "@pptkit/core";
-import { exportPptx } from "../dist/index.js";
+import { generatePptx } from "../dist/index.js";
+import { generatePptx as generateNodePptx, writePptx } from "../dist/node.js";
 
-function readZipEntries(bytes) {
+function readZipEntries(input) {
+  const bytes = Buffer.from(input);
   const entries = new Map();
   let offset = 0;
   while (offset + 30 <= bytes.length && bytes.readUInt32LE(offset) === 0x04034b50) {
@@ -24,24 +26,22 @@ function readZipEntries(bytes) {
   return entries;
 }
 
-test("exportPptx writes a real package with text and shapes", async () => {
+test("generatePptx creates deterministic cross-runtime bytes", async () => {
   const presentation = createPresentation({ title: "Quarterly plan" });
   presentation.addSlide({ elements: [
     { type: "text", text: "Q1 & <ready>", box: { x: 10, y: 20, width: 300, height: 40 }, style: { fontSize: 20, fontWeight: "bold" } },
     { type: "shape", shape: "rect", box: { x: 10, y: 70, width: 100, height: 50 }, style: { fill: "#ff0000" } },
   ] });
-  const directory = await mkdtemp(join(tmpdir(), "pptkit-export-"));
-  const output = join(directory, "nested", "deck.pptx");
+  const result = await generatePptx(presentation);
+  const repeated = await generatePptx(presentation);
 
-  const result = await exportPptx(presentation, { output });
-
-  assert.equal(result.output, output);
+  assert.ok(result.bytes instanceof Uint8Array);
   assert.equal(result.slideCount, 1);
-  assert.equal(result.status, "written");
+  assert.equal(result.status, "generated");
   assert.equal(result.warnings.length, 0);
-  const bytes = await readFile(output);
-  assert.equal(result.byteLength, bytes.length);
-  const entries = readZipEntries(bytes);
+  assert.equal(result.byteLength, result.bytes.byteLength);
+  assert.deepEqual(result.bytes, repeated.bytes);
+  const entries = readZipEntries(result.bytes);
   assert.match(entries.get("ppt/slides/slide1.xml").toString(), /Q1 &amp; &lt;ready&gt;/);
   const presentationXml = entries.get("ppt/presentation.xml").toString();
   const slideXml = entries.get("ppt/slides/slide1.xml").toString();
@@ -73,7 +73,7 @@ test("exportPptx writes a real package with text and shapes", async () => {
   assert.ok(entries.has("[Content_Types].xml"));
 });
 
-test("exportPptx packages local images and warns for missing assets", async () => {
+test("Node entry packages local images and writes nested output", async () => {
   const directory = await mkdtemp(join(tmpdir(), "pptkit-export-"));
   const imagePath = join(directory, "pixel.png");
   await writeFile(imagePath, Buffer.from("fake-png"));
@@ -86,29 +86,40 @@ test("exportPptx packages local images and warns for missing assets", async () =
   ] });
   const output = join(directory, "deck.pptx");
 
-  const result = await exportPptx(presentation, { output });
+  const generated = await generateNodePptx(presentation);
+  const result = await writePptx(presentation, { output });
 
   assert.equal(result.status, "written-with-warnings");
   assert.ok(result.warnings.some((warning) => warning.code === "asset-read-failed"));
+  assert.ok(readZipEntries(generated.bytes).has("ppt/media/hero.png"));
   const entries = readZipEntries(await readFile(output));
   assert.ok(entries.has("ppt/media/hero.png"));
   assert.match(entries.get("ppt/slides/_rels/slide1.xml.rels").toString(), /relationships\/image/);
   assert.equal((await stat(output)).size, result.byteLength);
 });
 
-test("exportPptx loads HTTP image assets", async () => {
+test("generatePptx loads URL image assets", async () => {
   const presentation = createPresentation();
   const asset = presentation.registerAsset({ kind: "image", id: "remote", source: { type: "url", value: "http://127.0.0.1:1/asset.png" }, mimeType: "image/png" });
   presentation.addSlide({ elements: [{ type: "image", assetId: asset.id, box: { x: 0, y: 0, width: 100, height: 100 } }] });
-  const directory = await mkdtemp(join(tmpdir(), "pptkit-export-"));
-  const output = join(directory, "remote.pptx");
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => new Response(Buffer.from("remote-png"), { status: 200, headers: { "content-type": "image/png" } });
   try {
-    const result = await exportPptx(presentation, { output });
-    assert.equal(result.status, "written");
-    assert.ok(readZipEntries(await readFile(output)).has("ppt/media/remote.png"));
+    const result = await generatePptx(presentation);
+    assert.equal(result.status, "generated");
+    assert.ok(readZipEntries(result.bytes).has("ppt/media/remote.png"));
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+test("default entry reports path assets as unsupported", async () => {
+  const presentation = createPresentation();
+  const asset = presentation.registerAsset({ kind: "image", id: "local", source: { type: "path", value: "./pixel.png" } });
+  presentation.addSlide({ elements: [{ type: "image", assetId: asset.id, box: { x: 0, y: 0, width: 100, height: 100 } }] });
+
+  const result = await generatePptx(presentation);
+
+  assert.equal(result.status, "generated-with-warnings");
+  assert.match(result.warnings.find((warning) => warning.code === "asset-read-failed")?.message ?? "", /only supported by @pptkit\/pptx-exporter\/node/);
 });

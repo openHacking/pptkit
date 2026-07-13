@@ -22,7 +22,7 @@ Bootstrap examples:
 
 - `@pptkit/core` can create a presentation shell
 - `@pptkit/layout` can consume a core document
-- `@pptkit/pptx-exporter` writes a valid package and returns structured export diagnostics
+- `@pptkit/pptx-exporter` generates valid cross-runtime bytes and returns structured export diagnostics
 - `@pptkit/cli` responds to `--help`
 
 ### 2. Workspace Validation
@@ -40,6 +40,7 @@ CI should run the same commands contributors run locally.
 The exporter integration suite covers:
 
 - authoring to export flow
+- browser-safe byte generation without Node built-ins
 - file creation and output paths
 - unsupported feature diagnostics
 - error handling around invalid document input

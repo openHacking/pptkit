@@ -13,7 +13,7 @@ Current status:
 
 - `@pptkit/core` provides the formal authoring model, asset registry, and normalization boundary.
 - `@pptkit/layout` consumes normalized core documents and returns a detached export-ready layout IR.
-- `@pptkit/pptx-exporter` consumes the layout IR and writes a minimal editable `.pptx` package with structured warnings.
+- `@pptkit/pptx-exporter` consumes the layout IR and generates a minimal editable `.pptx` package in browsers or Node.js; its `/node` adapter writes files.
 - `@pptkit/cli` remains a thin local workflow shell.
 
 ## Planned Follow-Up Packages

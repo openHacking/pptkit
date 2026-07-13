@@ -20,9 +20,17 @@ function relativeToPackages(file) {
 if (!existsSync(path.join(root, "AGENTS.md"))) issues.push("Missing project AGENTS.md");
 
 for (const packageName of ["layout", "pptx-exporter"]) {
+  const packageRoot = path.join(packagesRoot, packageName);
   const sourceRoot = path.join(packagesRoot, packageName, "src");
+  const manifest = JSON.parse(readFileSync(path.join(packageRoot, "package.json"), "utf8"));
+  const publicEntryModules = new Set(["index.ts"]);
+  for (const target of Object.values(manifest.exports ?? {})) {
+    const output = typeof target === "string" ? target : target?.default;
+    const match = typeof output === "string" ? /^\.\/dist\/([^/]+)\.js$/.exec(output) : null;
+    if (match?.[1] !== undefined) publicEntryModules.add(`${match[1]}.ts`);
+  }
   const unexpectedRootModules = readdirSync(sourceRoot, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".ts") && entry.name !== "index.ts");
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".ts") && !publicEntryModules.has(entry.name));
   for (const entry of unexpectedRootModules) {
     issues.push(`${packageName} source root contains non-entry module: ${entry.name}`);
   }

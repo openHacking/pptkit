@@ -200,18 +200,27 @@ describe("workbench app", () => {
     });
 
     expect(screen.getByText("Unsaved changes")).toBeTruthy();
-    expect((screen.getByRole("button", { name: "Export PPTX" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "Export in browser" }) as HTMLButtonElement).disabled).toBe(true);
+    expect((screen.getByRole("button", { name: "Export via server" }) as HTMLButtonElement).disabled).toBe(true);
 
     await user.click(screen.getByRole("button", { name: "Apply changes" }));
     await waitFor(() => {
       expect(screen.getAllByText("Applied Source").length).toBeGreaterThan(0);
     });
 
-    await user.click(screen.getByRole("button", { name: "Export PPTX" }));
+    await user.click(screen.getByRole("button", { name: "Export in browser" }));
     await waitFor(() => {
       expect(createObjectURL).toHaveBeenCalledOnce();
-      expect(screen.getByText("PPTX exported successfully.")).toBeTruthy();
+      expect(screen.getByText("PPTX exported in browser successfully.")).toBeTruthy();
     });
+    expect(vi.mocked(fetch).mock.calls.some(([url]) => String(url).endsWith("/export"))).toBe(false);
+
+    await user.click(screen.getByRole("button", { name: "Export via server" }));
+    await waitFor(() => {
+      expect(createObjectURL).toHaveBeenCalledTimes(2);
+      expect(screen.getByText("PPTX exported via server successfully.")).toBeTruthy();
+    });
+    expect(vi.mocked(fetch).mock.calls.filter(([url]) => String(url).endsWith("/export"))).toHaveLength(1);
   });
 
   it("keeps the applied report when source JSON is invalid", async () => {

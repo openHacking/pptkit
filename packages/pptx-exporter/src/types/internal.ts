@@ -1,10 +1,10 @@
 export interface ZipPart {
   name: string;
-  data: Buffer;
+  data: Uint8Array;
 }
 
 export interface LoadedAsset {
-  data: Buffer;
+  data: Uint8Array;
   mimeType: string;
   extension: string;
 }
@@ -19,3 +19,8 @@ export interface Relationship {
   type: string;
   target: string;
 }
+
+export type AssetLoader = (
+  source: { type: "path" | "url"; value: string },
+  declaredMime?: string,
+) => Promise<LoadedAsset>;

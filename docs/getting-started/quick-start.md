@@ -10,7 +10,7 @@ Build a presentation document with `@pptkit/core`, then pass it into downstream 
 
 ```ts
 import { createPresentation, normalizePresentation } from "@pptkit/core";
-import { exportPptx } from "@pptkit/pptx-exporter";
+import { writePptx } from "@pptkit/pptx-exporter/node";
 
 const presentation = createPresentation({
   title: "Hello PPTKit",
@@ -52,7 +52,7 @@ presentation.addSlide({
 });
 
 const normalized = normalizePresentation(presentation);
-const result = await exportPptx(presentation, {
+const result = await writePptx(presentation, {
   output: "./hello-pptkit.pptx",
 });
 
@@ -75,7 +75,7 @@ This quick start should make four things obvious:
 - The project has clear package responsibilities.
 - Assets are part of the core document model, not an exporter-only concern.
 - The user does not need to wire together low-level PPT XML details by hand.
-- PPTX export writes a real editable file and reports recoverable issues through `result.warnings`.
+- Runtime-neutral generation returns editable PPTX bytes, while the Node.js adapter writes files and reports recoverable issues through `result.warnings`.
 
 ## Next Steps
 

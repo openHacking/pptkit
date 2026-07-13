@@ -45,4 +45,4 @@ console.log(normalized);
 
 If you need a `.pptx` file, pass the presentation into `@pptkit/pptx-exporter`.
 
-That package writes a minimal editable PowerPoint file and returns structured warnings for recoverable export issues.
+Its default entry generates minimal editable PowerPoint bytes in browsers or Node.js. The `/node` entry can write those packages to the filesystem, and both return structured warnings for recoverable export issues.

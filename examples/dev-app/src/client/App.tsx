@@ -1,6 +1,9 @@
 import { AlertCircle, Check, Download, LoaderCircle, Presentation, RotateCcw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
+import { generatePptx } from "@pptkit/pptx-exporter";
 import type { CapabilityStatus, ExampleReport, ExampleSummary, FeatureId, WorkbenchPayload } from "../example-types";
+import { createExamplePresentation } from "../presentation-builder";
+import { parseExampleSource } from "../source-parser";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -73,23 +76,29 @@ function SourceEditor({
   dirty,
   error,
   applying,
-  exporting,
+  browserExporting,
+  serverExporting,
   onChange,
   onApply,
   onReset,
-  onExport,
+  onBrowserExport,
+  onServerExport,
 }: {
   label: string;
   value: string;
   dirty: boolean;
   error: string | null;
   applying: boolean;
-  exporting: boolean;
+  browserExporting: boolean;
+  serverExporting: boolean;
   onChange: (value: string) => void;
   onApply: () => void;
   onReset: () => void;
-  onExport: () => void;
+  onBrowserExport: () => void;
+  onServerExport: () => void;
 }) {
+  const busy = applying || browserExporting || serverExporting;
+
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -100,17 +109,21 @@ function SourceEditor({
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" onClick={onReset} disabled={!dirty || applying || exporting}>
+          <Button type="button" variant="outline" size="sm" onClick={onReset} disabled={!dirty || busy}>
             <RotateCcw />
             Reset
           </Button>
-          <Button type="button" size="sm" onClick={onApply} disabled={!dirty || applying || exporting}>
+          <Button type="button" size="sm" onClick={onApply} disabled={!dirty || busy}>
             {applying ? <LoaderCircle className="animate-spin" /> : <Check />}
             {applying ? "Applying..." : "Apply changes"}
           </Button>
-          <Button type="button" variant="secondary" size="sm" onClick={onExport} disabled={dirty || applying || exporting}>
-            {exporting ? <LoaderCircle className="animate-spin" /> : <Download />}
-            {exporting ? "Exporting..." : "Export PPTX"}
+          <Button type="button" variant="secondary" size="sm" onClick={onBrowserExport} disabled={dirty || busy}>
+            {browserExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
+            {browserExporting ? "Exporting in browser..." : "Export in browser"}
+          </Button>
+          <Button type="button" variant="outline" size="sm" onClick={onServerExport} disabled={dirty || busy}>
+            {serverExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
+            {serverExporting ? "Exporting via server..." : "Export via server"}
           </Button>
         </div>
       </div>
@@ -182,24 +195,28 @@ function ReportView({
   sourceDirty,
   sourceError,
   applying,
-  exporting,
+  browserExporting,
+  serverExporting,
   exportMessage,
   onSourceChange,
   onApply,
   onReset,
-  onExport,
+  onBrowserExport,
+  onServerExport,
 }: {
   report: ExampleReport;
   source: string;
   sourceDirty: boolean;
   sourceError: string | null;
   applying: boolean;
-  exporting: boolean;
+  browserExporting: boolean;
+  serverExporting: boolean;
   exportMessage: string | null;
   onSourceChange: (value: string) => void;
   onApply: () => void;
   onReset: () => void;
-  onExport: () => void;
+  onBrowserExport: () => void;
+  onServerExport: () => void;
 }) {
   return (
     <div className="flex h-full flex-col gap-5">
@@ -285,11 +302,13 @@ function ReportView({
                 dirty={sourceDirty}
                 error={sourceError}
                 applying={applying}
-                exporting={exporting}
+                browserExporting={browserExporting}
+                serverExporting={serverExporting}
                 onChange={onSourceChange}
                 onApply={onApply}
                 onReset={onReset}
-                onExport={onExport}
+                onBrowserExport={onBrowserExport}
+                onServerExport={onServerExport}
               />
               {exportMessage !== null && (
                 <p className="flex items-center gap-2 text-sm text-emerald-700">
@@ -351,7 +370,8 @@ export default function App() {
   const [appliedSource, setAppliedSource] = useState("");
   const [sourceError, setSourceError] = useState<string | null>(null);
   const [applying, setApplying] = useState(false);
-  const [exporting, setExporting] = useState(false);
+  const [browserExporting, setBrowserExporting] = useState(false);
+  const [serverExporting, setServerExporting] = useState(false);
   const [exportMessage, setExportMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -487,12 +507,45 @@ export default function App() {
     setExportMessage(null);
   }
 
-  async function exportSource() {
+  function downloadPptx(bytes: Uint8Array, filename: string) {
+    const blob = new Blob([bytes.slice().buffer], {
+      type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    });
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(downloadUrl);
+  }
+
+  async function exportInBrowser() {
     if (report === null || source !== appliedSource) {
       return;
     }
 
-    setExporting(true);
+    setBrowserExporting(true);
+    setSourceError(null);
+    setExportMessage(null);
+
+    try {
+      const presentation = createExamplePresentation(parseExampleSource(appliedSource));
+      const result = await generatePptx(presentation);
+      downloadPptx(result.bytes, `${report.example.id}.pptx`);
+      setExportMessage("PPTX exported in browser successfully.");
+    } catch (nextError) {
+      setSourceError(String(nextError).replace(/^Error: /, ""));
+    } finally {
+      setBrowserExporting(false);
+    }
+  }
+
+  async function exportViaServer() {
+    if (report === null || source !== appliedSource) {
+      return;
+    }
+
+    setServerExporting(true);
     setSourceError(null);
     setExportMessage(null);
 
@@ -508,18 +561,13 @@ export default function App() {
         throw new Error(payload?.error ?? `Export failed: ${response.status}`);
       }
 
-      const blob = await response.blob();
-      const downloadUrl = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = `${report.example.id}.pptx`;
-      link.click();
-      URL.revokeObjectURL(downloadUrl);
-      setExportMessage("PPTX exported successfully.");
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      downloadPptx(bytes, `${report.example.id}.pptx`);
+      setExportMessage("PPTX exported via server successfully.");
     } catch (nextError) {
       setSourceError(String(nextError).replace(/^Error: /, ""));
     } finally {
-      setExporting(false);
+      setServerExporting(false);
     }
   }
 
@@ -588,7 +636,8 @@ export default function App() {
                 sourceDirty={source !== appliedSource}
                 sourceError={sourceError}
                 applying={applying}
-                exporting={exporting}
+                browserExporting={browserExporting}
+                serverExporting={serverExporting}
                 exportMessage={exportMessage}
                 onSourceChange={(value) => {
                   setSource(value);
@@ -597,7 +646,8 @@ export default function App() {
                 }}
                 onApply={() => void applySource()}
                 onReset={resetSource}
-                onExport={() => void exportSource()}
+                onBrowserExport={() => void exportInBrowser()}
+                onServerExport={() => void exportViaServer()}
               />
             </div>
           </ScrollArea>

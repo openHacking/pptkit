@@ -1,5 +1,4 @@
-import { createPresentation } from "../../../packages/core/dist/index.js";
-import { resolveLayout } from "../../../packages/layout/dist/index.js";
+import { resolveLayout } from "@pptkit/layout";
 import type {
   ExampleDefinition,
   ExampleReport,
@@ -7,25 +6,13 @@ import type {
   VisualPreviewSlide,
 } from "./example-types.js";
 import { parseExampleSource } from "./source-parser.js";
+import { createExamplePresentation } from "./presentation-builder.js";
 
 function buildNormalizedDocument(input: ReturnType<ExampleDefinition["createInput"]>): NormalizedDocumentReport {
-  const document = createPresentation({ title: input.title });
+  const document = createExamplePresentation(input);
 
-  const slides = input.slides.map((slide) => {
-    const created = document.addSlide({
-      ...(slide.id !== undefined ? { id: slide.id } : {}),
-      elements: slide.elements.map((element, index) => ({
-        type: "text",
-        text: element,
-        box: {
-          x: 48,
-          y: 48 + index * 32,
-          width: 640,
-          height: 24,
-        },
-      })),
-    });
-
+  const slides = input.slides.map((slide, index) => {
+    const created = document.slides[index]!;
     return {
       id: created.id,
       title: slide.title,
@@ -52,23 +39,7 @@ function buildVisualPreview(normalizedDocument: NormalizedDocumentReport): Visua
 export async function buildExampleReport(example: ExampleDefinition, sourceOverride?: string): Promise<ExampleReport> {
   const input = sourceOverride === undefined ? example.createInput() : parseExampleSource(sourceOverride);
   const normalizedDocument = buildNormalizedDocument(input);
-  const presentation = createPresentation({ title: normalizedDocument.title });
-
-  for (const slide of normalizedDocument.slides) {
-    presentation.addSlide({
-      id: slide.id,
-      elements: slide.elements.map((element, index) => ({
-        type: "text",
-        text: element,
-        box: {
-          x: 48,
-          y: 48 + index * 32,
-          width: 640,
-          height: 24,
-        },
-      })),
-    });
-  }
+  const presentation = createExamplePresentation(input);
 
   const renderResult = resolveLayout(presentation);
   const exportResult = {

@@ -8,8 +8,8 @@ import { getExampleById, listExamples, listExampleSummaries, listFeatures } from
 import { buildExampleReport } from "./report-builder.js";
 import type { WorkbenchPayload } from "./example-types.js";
 import { ExampleSourceError, parseExampleSource } from "./source-parser.js";
-import { createPresentation } from "../../../packages/core/dist/index.js";
-import { exportPptx } from "../../../packages/pptx-exporter/dist/index.js";
+import { createExamplePresentation } from "./presentation-builder.js";
+import { writePptx } from "@pptkit/pptx-exporter/node";
 
 const sourceDir = path.dirname(fileURLToPath(import.meta.url));
 const clientDir = path.resolve(sourceDir, "../client");
@@ -142,20 +142,9 @@ export function createWorkbenchRequestHandler() {
 
           try {
             const input = parseExampleSource(source);
-            const presentation = createPresentation({ title: input.title });
+            const presentation = createExamplePresentation(input);
 
-            for (const slide of input.slides) {
-              presentation.addSlide({
-                ...(slide.id !== undefined ? { id: slide.id } : {}),
-                elements: slide.elements.map((element, index) => ({
-                  type: "text",
-                  text: element,
-                  box: { x: 48, y: 48 + index * 32, width: 640, height: 24 },
-                })),
-              });
-            }
-
-            await exportPptx(presentation, { output: outputPath });
+            await writePptx(presentation, { output: outputPath });
             const bytes = await readFile(outputPath);
             response.writeHead(200, {
               "content-type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",

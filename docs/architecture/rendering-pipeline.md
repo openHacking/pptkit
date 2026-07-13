@@ -107,7 +107,7 @@ Canonical Presentation IR
 
 The export path normalizes the authoring document exactly once, passes that normalized IR to `resolveNormalizedLayout`, and then passes the detached layout result to the exporter package builder. `resolveLayout(document)` remains available for direct compatibility use, but downstream pipelines should prefer the normalized entry point.
 
-The exporter public entry module is orchestration only. Asset loading, OOXML generation, package-part collection, ZIP encoding, and filesystem output are separate internal responsibilities.
+The runtime-neutral exporter entry orchestrates asset loading, OOXML generation, package-part collection, and ZIP encoding into `Uint8Array` output. Filesystem output and local-path asset loading belong to the explicit Node.js subpath, so importing the default entry never pulls Node built-ins into a browser dependency graph.
 
 The first exporter writes a deliberately small package with a fixed blank master/layout/theme. This gives the project a valid editable baseline without leaking OOXML into `@pptkit/core`.
 

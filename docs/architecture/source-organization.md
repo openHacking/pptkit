@@ -29,7 +29,7 @@ A helper used by only one module should remain private to that module. Avoid cat
 
 ## Entry Points and Dependency Direction
 
-For packages with multiple responsibilities, `src/index.ts` should be the only root source module. It owns public exports and top-level orchestration, while implementation remains behind responsibility directories.
+For packages with multiple responsibilities, `src/index.ts` owns the default public exports and top-level orchestration, while implementation remains behind responsibility directories. Additional root modules are allowed only for intentional public subpath exports such as a runtime-specific adapter.
 
 Dependencies should flow in one direction:
 

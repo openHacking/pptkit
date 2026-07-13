@@ -34,6 +34,7 @@ The workbench is intentionally honest about implementation status.
 
 - normalized document output should be inspectable
 - preview may be structural rather than visually final
-- export reports a real output path and structured warnings; visual preview may still be structural
+- browser export generates and downloads bytes locally, while server export exercises the Node.js file adapter
+- both export paths use the currently applied source; visual preview may still be structural
 
 That honesty makes `pnpm dev` useful now without pretending unfinished subsystems are complete.
