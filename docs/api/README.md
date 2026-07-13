@@ -6,10 +6,11 @@ This section documents the public APIs exposed by PPTKit packages.
 
 - [Package Overview](package-overview.md)
 - [`@pptkit/core`](core.md)
+- [`@pptkit/pptx-exporter`](pptx-exporter.md)
 
 ## Current References
 
 - `@pptkit/core` has a formal package reference.
-- `@pptkit/layout` reference is `TODO`.
-- `@pptkit/pptx-exporter` reference is `TODO`.
+- `@pptkit/layout` exposes `resolveLayout` and its export-ready layout IR.
+- `@pptkit/pptx-exporter` exposes `exportPptx` and structured export diagnostics.
 - `@pptkit/pptx-parser` reference is `TODO`.

@@ -54,7 +54,7 @@ This path exists to keep SVG handling explicit instead of letting format-specifi
 Canonical Presentation IR
     |
     v
-Layout Resolution
+ Layout Resolution (export-ready IR)
     |
     v
 Preview Transform
@@ -74,7 +74,7 @@ Canonical Presentation IR
 Layout Resolution
     |
     v
-PPTX Export
+ PPTX Export (OOXML package writer)
     |
     v
 PPTX Package Model
@@ -100,6 +100,16 @@ Normalization
     v
 Canonical Presentation IR
 ```
+
+## Export Boundary
+
+`@pptkit/layout` owns the detached layout result: page size, ordered slides, ordered elements, geometry, and normalized styles. `@pptkit/pptx-exporter` owns asset I/O, OOXML parts, relationships, ZIP packaging, and export diagnostics. Neither package becomes the authoring source of truth.
+
+The export path normalizes the authoring document exactly once, passes that normalized IR to `resolveNormalizedLayout`, and then passes the detached layout result to the exporter package builder. `resolveLayout(document)` remains available for direct compatibility use, but downstream pipelines should prefer the normalized entry point.
+
+The exporter public entry module is orchestration only. Asset loading, OOXML generation, package-part collection, ZIP encoding, and filesystem output are separate internal responsibilities.
+
+The first exporter writes a deliberately small package with a fixed blank master/layout/theme. This gives the project a valid editable baseline without leaking OOXML into `@pptkit/core`.
 
 ## Why Use a Pipeline
 

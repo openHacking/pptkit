@@ -10,6 +10,7 @@ This section is for contributor-facing system design documentation.
 - [Document Models](document-models.md)
 - [Editable vs Visual](editable-vs-visual.md)
 - [Package Boundaries](package-boundaries.md)
+- [Source Organization](source-organization.md)
 - [Rendering Pipeline](rendering-pipeline.md)
 - [Import and Export Boundaries](import-export-boundaries.md)
 - [Layout Engine](layout-engine.md)

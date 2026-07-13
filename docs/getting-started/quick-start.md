@@ -75,7 +75,7 @@ This quick start should make four things obvious:
 - The project has clear package responsibilities.
 - Assets are part of the core document model, not an exporter-only concern.
 - The user does not need to wire together low-level PPT XML details by hand.
-- PPTX export is still a placeholder boundary and does not create a real file yet.
+- PPTX export writes a real editable file and reports recoverable issues through `result.warnings`.
 
 ## Next Steps
 

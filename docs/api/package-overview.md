@@ -12,8 +12,8 @@ This page summarizes the current public API surface by package.
 Current status:
 
 - `@pptkit/core` provides the formal authoring model, asset registry, and normalization boundary.
-- `@pptkit/layout` consumes normalized core documents through a placeholder layout pass.
-- `@pptkit/pptx-exporter` consumes normalized core documents and returns a structured placeholder export result.
+- `@pptkit/layout` consumes normalized core documents and returns a detached export-ready layout IR.
+- `@pptkit/pptx-exporter` consumes the layout IR and writes a minimal editable `.pptx` package with structured warnings.
 - `@pptkit/cli` remains a thin local workflow shell.
 
 ## Planned Follow-Up Packages

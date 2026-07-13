@@ -45,4 +45,4 @@ console.log(normalized);
 
 If you need a `.pptx` file, pass the presentation into `@pptkit/pptx-exporter`.
 
-That package currently returns a structured placeholder result and does not write a real PowerPoint file yet.
+That package writes a minimal editable PowerPoint file and returns structured warnings for recoverable export issues.

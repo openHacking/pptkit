@@ -1,4 +1,4 @@
-import { AlertCircle, LoaderCircle, Presentation, TriangleAlert } from "lucide-react";
+import { AlertCircle, Check, Download, LoaderCircle, Presentation, RotateCcw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { CapabilityStatus, ExampleReport, ExampleSummary, FeatureId, WorkbenchPayload } from "../example-types";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -13,6 +13,21 @@ async function fetchJson<T>(url: string): Promise<T> {
 
   if (!response.ok) {
     throw new Error(`Request failed: ${response.status}`);
+  }
+
+  return (await response.json()) as T;
+}
+
+async function postJson<T>(url: string, body: unknown): Promise<T> {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+    throw new Error(payload?.error ?? `Request failed: ${response.status}`);
   }
 
   return (await response.json()) as T;
@@ -52,13 +67,61 @@ function JsonBlock({ value }: { value: unknown }) {
   );
 }
 
-function SourceBlock({ label, content }: { label: string; content: string }) {
+function SourceEditor({
+  label,
+  value,
+  dirty,
+  error,
+  applying,
+  exporting,
+  onChange,
+  onApply,
+  onReset,
+  onExport,
+}: {
+  label: string;
+  value: string;
+  dirty: boolean;
+  error: string | null;
+  applying: boolean;
+  exporting: boolean;
+  onChange: (value: string) => void;
+  onApply: () => void;
+  onReset: () => void;
+  onExport: () => void;
+}) {
   return (
     <div className="space-y-2">
-      <p className="text-muted-foreground text-sm">{label}</p>
-      <ScrollArea className="h-[28rem] rounded-md border">
-        <pre className="p-4 text-xs leading-5 whitespace-pre-wrap">{content}</pre>
-      </ScrollArea>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="text-muted-foreground text-sm">{label}</p>
+          <p className="text-muted-foreground mt-1 text-xs">
+            {dirty ? "Unsaved changes" : "Applied source"}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button type="button" variant="outline" size="sm" onClick={onReset} disabled={!dirty || applying || exporting}>
+            <RotateCcw />
+            Reset
+          </Button>
+          <Button type="button" size="sm" onClick={onApply} disabled={!dirty || applying || exporting}>
+            {applying ? <LoaderCircle className="animate-spin" /> : <Check />}
+            {applying ? "Applying..." : "Apply changes"}
+          </Button>
+          <Button type="button" variant="secondary" size="sm" onClick={onExport} disabled={dirty || applying || exporting}>
+            {exporting ? <LoaderCircle className="animate-spin" /> : <Download />}
+            {exporting ? "Exporting..." : "Export PPTX"}
+          </Button>
+        </div>
+      </div>
+      <textarea
+        aria-label={label}
+        className="min-h-[28rem] w-full resize-y rounded-md border bg-muted/20 p-4 font-mono text-xs leading-5 outline-none transition focus-visible:ring-2 focus-visible:ring-ring"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        spellCheck={false}
+      />
+      {error !== null && <p className="text-destructive text-sm">{error}</p>}
     </div>
   );
 }
@@ -113,7 +176,31 @@ function ExampleList({
   );
 }
 
-function ReportView({ report }: { report: ExampleReport }) {
+function ReportView({
+  report,
+  source,
+  sourceDirty,
+  sourceError,
+  applying,
+  exporting,
+  exportMessage,
+  onSourceChange,
+  onApply,
+  onReset,
+  onExport,
+}: {
+  report: ExampleReport;
+  source: string;
+  sourceDirty: boolean;
+  sourceError: string | null;
+  applying: boolean;
+  exporting: boolean;
+  exportMessage: string | null;
+  onSourceChange: (value: string) => void;
+  onApply: () => void;
+  onReset: () => void;
+  onExport: () => void;
+}) {
   return (
     <div className="flex h-full flex-col gap-5">
       <div className="flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-start sm:justify-between">
@@ -192,7 +279,24 @@ function ReportView({ report }: { report: ExampleReport }) {
               <CardTitle>Source</CardTitle>
             </CardHeader>
             <CardContent>
-              <SourceBlock label={report.example.source.label} content={report.example.source.content} />
+              <SourceEditor
+                label={report.example.source.label}
+                value={source}
+                dirty={sourceDirty}
+                error={sourceError}
+                applying={applying}
+                exporting={exporting}
+                onChange={onSourceChange}
+                onApply={onApply}
+                onReset={onReset}
+                onExport={onExport}
+              />
+              {exportMessage !== null && (
+                <p className="flex items-center gap-2 text-sm text-emerald-700">
+                  <Check className="size-4" />
+                  {exportMessage}
+                </p>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
@@ -243,6 +347,12 @@ export default function App() {
   const [activeFeature, setActiveFeature] = useState<FeatureId | null>(null);
   const [activeExampleId, setActiveExampleId] = useState<string | null>(null);
   const [report, setReport] = useState<ExampleReport | null>(null);
+  const [source, setSource] = useState("");
+  const [appliedSource, setAppliedSource] = useState("");
+  const [sourceError, setSourceError] = useState<string | null>(null);
+  const [applying, setApplying] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const [exportMessage, setExportMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -275,6 +385,8 @@ export default function App() {
         setActiveFeature(initialFeature);
         setActiveExampleId(initialExample.id);
         setReport(nextReport);
+        setSource(nextReport.example.source.content);
+        setAppliedSource(nextReport.example.source.content);
         setError(null);
       } catch (nextError) {
         if (!cancelled) {
@@ -313,6 +425,10 @@ export default function App() {
       setActiveFeature(feature);
       setActiveExampleId(nextExample.id);
       setReport(nextReport);
+      setSource(nextReport.example.source.content);
+      setAppliedSource(nextReport.example.source.content);
+      setSourceError(null);
+      setExportMessage(null);
       setError(null);
     } catch (nextError) {
       setError(String(nextError));
@@ -332,11 +448,78 @@ export default function App() {
       const nextReport = await fetchJson<ExampleReport>(`/api/examples/${exampleId}`);
       setActiveExampleId(exampleId);
       setReport(nextReport);
+      setSource(nextReport.example.source.content);
+      setAppliedSource(nextReport.example.source.content);
+      setSourceError(null);
+      setExportMessage(null);
       setError(null);
     } catch (nextError) {
       setError(String(nextError));
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function applySource() {
+    if (report === null || source === appliedSource) {
+      return;
+    }
+
+    setApplying(true);
+    setSourceError(null);
+    setExportMessage(null);
+
+    try {
+      const nextReport = await postJson<ExampleReport>(`/api/examples/${report.example.id}/report`, { source });
+      setReport(nextReport);
+      setAppliedSource(source);
+      setSourceError(null);
+    } catch (nextError) {
+      setSourceError(String(nextError).replace(/^Error: /, ""));
+    } finally {
+      setApplying(false);
+    }
+  }
+
+  function resetSource() {
+    setSource(appliedSource);
+    setSourceError(null);
+    setExportMessage(null);
+  }
+
+  async function exportSource() {
+    if (report === null || source !== appliedSource) {
+      return;
+    }
+
+    setExporting(true);
+    setSourceError(null);
+    setExportMessage(null);
+
+    try {
+      const response = await fetch(`/api/examples/${report.example.id}/export`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ source: appliedSource }),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(payload?.error ?? `Export failed: ${response.status}`);
+      }
+
+      const blob = await response.blob();
+      const downloadUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `${report.example.id}.pptx`;
+      link.click();
+      URL.revokeObjectURL(downloadUrl);
+      setExportMessage("PPTX exported successfully.");
+    } catch (nextError) {
+      setSourceError(String(nextError).replace(/^Error: /, ""));
+    } finally {
+      setExporting(false);
     }
   }
 
@@ -399,7 +582,23 @@ export default function App() {
 
           <ScrollArea className="min-h-0 flex-1 rounded-xl border">
             <div className="p-5">
-              <ReportView report={report} />
+              <ReportView
+                report={report}
+                source={source}
+                sourceDirty={source !== appliedSource}
+                sourceError={sourceError}
+                applying={applying}
+                exporting={exporting}
+                exportMessage={exportMessage}
+                onSourceChange={(value) => {
+                  setSource(value);
+                  setSourceError(null);
+                  setExportMessage(null);
+                }}
+                onApply={() => void applySource()}
+                onReset={resetSource}
+                onExport={() => void exportSource()}
+              />
             </div>
           </ScrollArea>
         </div>

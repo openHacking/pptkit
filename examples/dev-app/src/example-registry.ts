@@ -23,7 +23,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     expectedCapabilities: {
       normalize: "implemented",
       render: "placeholder",
-      exportPptx: "not-implemented",
+      exportPptx: "implemented",
     },
     status: "ready",
     createInput() {
@@ -66,7 +66,7 @@ const exampleDefinitions: ExampleDefinition[] = [
 
 ## Risks
 - Renderer package not started
-- PPTX export remains placeholder
+- Rich PPTX feature coverage is still limited
 
 ## Ask
 - Align on functional test taxonomy`,
@@ -75,7 +75,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     expectedCapabilities: {
       normalize: "implemented",
       render: "placeholder",
-      exportPptx: "not-implemented",
+      exportPptx: "implemented",
     },
     status: "ready",
     createInput() {
@@ -101,7 +101,7 @@ const exampleDefinitions: ExampleDefinition[] = [
             title: "Risks and Ask",
             elements: [
               "Risk: Renderer package not started",
-              "Risk: PPTX export remains placeholder",
+              "Risk: Rich PPTX feature coverage is still limited",
               "Ask: Align on functional test taxonomy",
             ],
           },
@@ -129,7 +129,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     expectedCapabilities: {
       normalize: "implemented",
       render: "placeholder",
-      exportPptx: "not-implemented",
+      exportPptx: "implemented",
     },
     status: "ready",
     createInput() {
@@ -157,9 +157,9 @@ const exampleDefinitions: ExampleDefinition[] = [
   },
   {
     id: "export-pitch-deck",
-    title: "Export Pitch Deck Placeholder",
+    title: "Export Pitch Deck",
     feature: "export-pptx",
-    description: "Track PPTX export readiness while keeping a scenario-rich case in the workbench.",
+    description: "Exercise the real PPTX export path with a scenario-rich multi-slide case.",
     inputKind: "presentation-config",
     source: {
       label: "Pitch deck outline",
@@ -176,9 +176,9 @@ const exampleDefinitions: ExampleDefinition[] = [
     expectedCapabilities: {
       normalize: "implemented",
       render: "placeholder",
-      exportPptx: "not-implemented",
+      exportPptx: "implemented",
     },
-    status: "placeholder",
+    status: "ready",
     createInput() {
       return {
         title: "Pitch Deck",

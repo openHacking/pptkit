@@ -22,7 +22,7 @@ Bootstrap examples:
 
 - `@pptkit/core` can create a presentation shell
 - `@pptkit/layout` can consume a core document
-- `@pptkit/pptx-exporter` returns a structured placeholder result
+- `@pptkit/pptx-exporter` writes a valid package and returns structured export diagnostics
 - `@pptkit/cli` responds to `--help`
 
 ### 2. Workspace Validation
@@ -35,14 +35,15 @@ Root-level commands should remain stable:
 
 CI should run the same commands contributors run locally.
 
-### 3. Future Integration Tests
+### 3. Export Integration Tests
 
-Once export behavior becomes real, add integration coverage for:
+The exporter integration suite covers:
 
 - authoring to export flow
 - file creation and output paths
 - unsupported feature diagnostics
 - error handling around invalid document input
+- OOXML package parts, relationships, media, and output byte size
 
 ### 4. Future Golden and Fixture Tests
 
@@ -67,4 +68,3 @@ When real implementation work begins:
 - add tests for every new public API or boundary behavior
 - prefer small focused fixtures over giant all-in-one decks
 - treat parse/export regressions as high-priority coverage candidates
-

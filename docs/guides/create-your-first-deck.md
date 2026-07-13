@@ -1,6 +1,6 @@
 # Create Your First Deck
 
-This guide will become the main practical walkthrough for new users once the exporter moves beyond the current placeholder result.
+This guide is the practical walkthrough for creating and exporting a first editable PPTX.
 
 ## Intended Scope
 

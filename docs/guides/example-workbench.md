@@ -7,7 +7,7 @@ That exception is limited to `examples/dev-app`; `packages/*` should remain fram
 
 ## Goals
 
-- keep preview-driven development visible before full render and export implementations exist
+- keep preview-driven development visible while render and export implementations mature
 - browse examples by capability rather than only by business scenario
 - retain scenario tags so cross-feature flows can grow into richer regression fixtures later
 
@@ -34,6 +34,6 @@ The workbench is intentionally honest about implementation status.
 
 - normalized document output should be inspectable
 - preview may be structural rather than visually final
-- export may remain placeholder until file generation is implemented
+- export reports a real output path and structured warnings; visual preview may still be structural
 
 That honesty makes `pnpm dev` useful now without pretending unfinished subsystems are complete.

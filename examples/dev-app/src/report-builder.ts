@@ -1,15 +1,14 @@
 import { createPresentation } from "../../../packages/core/dist/index.js";
 import { resolveLayout } from "../../../packages/layout/dist/index.js";
-import { exportPptx } from "../../../packages/pptx-exporter/dist/index.js";
 import type {
   ExampleDefinition,
   ExampleReport,
   NormalizedDocumentReport,
   VisualPreviewSlide,
 } from "./example-types.js";
+import { parseExampleSource } from "./source-parser.js";
 
-function buildNormalizedDocument(example: ExampleDefinition): NormalizedDocumentReport {
-  const input = example.createInput();
+function buildNormalizedDocument(input: ReturnType<ExampleDefinition["createInput"]>): NormalizedDocumentReport {
   const document = createPresentation({ title: input.title });
 
   const slides = input.slides.map((slide) => {
@@ -50,8 +49,9 @@ function buildVisualPreview(normalizedDocument: NormalizedDocumentReport): Visua
   }));
 }
 
-export async function buildExampleReport(example: ExampleDefinition): Promise<ExampleReport> {
-  const normalizedDocument = buildNormalizedDocument(example);
+export async function buildExampleReport(example: ExampleDefinition, sourceOverride?: string): Promise<ExampleReport> {
+  const input = sourceOverride === undefined ? example.createInput() : parseExampleSource(sourceOverride);
+  const normalizedDocument = buildNormalizedDocument(input);
   const presentation = createPresentation({ title: normalizedDocument.title });
 
   for (const slide of normalizedDocument.slides) {
@@ -71,9 +71,11 @@ export async function buildExampleReport(example: ExampleDefinition): Promise<Ex
   }
 
   const renderResult = resolveLayout(presentation);
-  const exportResult = await exportPptx(presentation, {
-    output: `${example.id}.pptx`,
-  });
+  const exportResult = {
+    output: "",
+    slideCount: normalizedDocument.slideCount,
+    status: "not-exported",
+  } as const;
 
   const diagnostics = [
     `Normalize: ${example.expectedCapabilities.normalize}`,
@@ -87,12 +89,10 @@ export async function buildExampleReport(example: ExampleDefinition): Promise<Ex
     );
   }
 
-  if (exportResult.status === "not-implemented") {
-    diagnostics.push("PPTX export remains a placeholder boundary and does not create a file yet.");
-  }
+  diagnostics.push("PPTX export is available from the Export PPTX action.");
 
   return {
-    example,
+    example: sourceOverride === undefined ? example : { ...example, source: { ...example.source, content: sourceOverride } },
     normalizedDocument,
     visualPreview: {
       status: "structural-preview",

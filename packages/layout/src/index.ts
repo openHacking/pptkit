@@ -1,15 +1,3 @@
-import { normalizePresentation, type PresentationDocument } from "@pptkit/core";
-
-export interface LayoutResult {
-  slideCount: number;
-  status: "placeholder";
-}
-
-export function resolveLayout(document: PresentationDocument): LayoutResult {
-  const normalized = normalizePresentation(document);
-
-  return {
-    slideCount: normalized.slides.length,
-    status: "placeholder",
-  };
-}
+export { resolveLayout } from "./engine/resolve-layout.js";
+export { resolveNormalizedLayout } from "./engine/resolve-normalized-layout.js";
+export type { LayoutResult, LayoutSlide } from "./types/layout.js";

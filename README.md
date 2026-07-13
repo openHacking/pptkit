@@ -53,7 +53,7 @@ const normalized = normalizePresentation(presentation);
 console.log(normalized.slides.length);
 ```
 
-`@pptkit/pptx-exporter` still exposes a placeholder export boundary and does not write a real `.pptx` file yet.
+`@pptkit/pptx-exporter` writes a minimal editable `.pptx` file for the current text, image, and basic shape model.
 
 ## Architecture
 

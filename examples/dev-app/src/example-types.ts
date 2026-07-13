@@ -90,3 +90,7 @@ export interface ExampleReport {
   };
   diagnostics: string[];
 }
+
+export interface ExampleSourceRequest {
+  source: string;
+}

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "Layout primitives and placeholder layout resolution for PPTKit.",
+  "description": "Layout primitives and export-ready layout resolution for PPTKit.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -23,4 +23,3 @@
     "test": "pnpm run build && node --test test/*.test.mjs"
   }
 }
-

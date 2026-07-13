@@ -2,6 +2,8 @@
 
 This document defines the intended responsibilities of the initial PPTKit packages.
 
+Package-internal structure follows the responsibility-first rules in [Source Organization](source-organization.md).
+
 ## Core Rule
 
 Each package should have one primary responsibility.
@@ -40,6 +42,10 @@ Expected responsibilities:
 - Layout rules and constraints
 - Size calculation helpers
 - Normalized placement output for preview and export paths
+- Export-ready layout IR with detached slide and element structures
+- `resolveLayout(document)` is a compatibility adapter; normalized pipelines use `resolveNormalizedLayout(normalized)`
+- Internal responsibilities should remain separable as layout engine, constraints, measurement, and layout IR
+- Layout source keeps public orchestration at the root, engine behavior under `engine/`, and shared contracts under `types/`; future responsibility directories are added only with concrete implementations
 
 ### `@pptkit/pptx-exporter`
 
@@ -52,6 +58,9 @@ Expected responsibilities:
 - Asset packaging
 - Export configuration
 - Export validation
+- Asset loading diagnostics and OOXML/ZIP package writing
+- Internal responsibilities should remain separable as orchestration, assets, OOXML, package parts, ZIP, diagnostics, and output
+- Exporter source separates `assets/`, `ooxml/`, `packaging/`, `archive/`, and `output/`, with shared protocol constants and contracts kept outside those responsibility modules
 
 ### `@pptkit/pptx-parser`
 
@@ -105,6 +114,8 @@ Expected responsibilities:
 - Core normalized output must not share mutable references with its authoring document.
 - `@pptkit/layout` should not write files.
 - `@pptkit/pptx-exporter` should not become the owner of the public authoring model.
+- `@pptkit/pptx-exporter` should normalize once at the pipeline boundary and pass normalized IR to layout.
+- Public package entry points should orchestrate; format-specific helpers belong in internal responsibility modules.
 - `@pptkit/pptx-parser` should not depend on exporter internals as if export and parse were mirror images.
 - `@pptkit/svg-parser` and `@pptkit/svg-renderer` should not duplicate the full responsibility of the PPTX exporter.
 - CLI concerns should stay out of core package APIs.

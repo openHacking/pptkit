@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ExampleReport, WorkbenchPayload } from "../src/example-types";
@@ -55,7 +55,7 @@ function buildReport(id: string, feature: string, title: string): ExampleReport 
       expectedCapabilities: {
         normalize: "implemented",
         render: "placeholder",
-        exportPptx: "not-implemented",
+        exportPptx: "implemented",
       },
       status: "ready",
       createInput() {
@@ -88,7 +88,7 @@ function buildReport(id: string, feature: string, title: string): ExampleReport 
     exportResult: {
       output: `${id}.pptx`,
       slideCount: 1,
-      status: "not-implemented",
+      status: "written",
     },
     diagnostics: [`${title} diagnostic`],
   };
@@ -113,8 +113,26 @@ describe("workbench app", () => {
 
     vi.stubGlobal(
       "fetch",
-      vi.fn(async (input: RequestInfo | URL) => {
+      vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
         const url = String(input);
+
+        if (url.endsWith("/report") && init?.method === "POST") {
+          const body = JSON.parse(String(init.body)) as { source: string };
+          if (body.source === "not json") {
+            return new Response(JSON.stringify({ error: "Not found" }), { status: 404 });
+          }
+          const nextReport = buildReport("export-alpha", "export", "Applied Source");
+          nextReport.example.source.content = body.source;
+          nextReport.visualPreview.slides[0]!.title = "Applied Source";
+          return new Response(JSON.stringify(nextReport), { status: 200 });
+        }
+
+        if (url.endsWith("/export") && init?.method === "POST") {
+          return new Response("pptx-bytes", {
+            status: 200,
+            headers: { "content-type": "application/vnd.openxmlformats-officedocument.presentationml.presentation" },
+          });
+        }
 
         if (url.endsWith("/api/workbench")) {
           return new Response(JSON.stringify(payload), {
@@ -165,5 +183,50 @@ describe("workbench app", () => {
     });
 
     expect(screen.getByText("Export Alpha diagnostic")).toBeTruthy();
+  });
+
+  it("applies edited source before exporting it", async () => {
+    const user = userEvent.setup();
+    const createObjectURL = vi.fn(() => "blob:export");
+    const revokeObjectURL = vi.fn();
+    vi.stubGlobal("URL", { createObjectURL, revokeObjectURL });
+    render(<App />);
+
+    expect(await screen.findByText("PPTKit Workbench")).toBeTruthy();
+    const source = screen.getByRole("textbox", { name: "Import Alpha.md" });
+    await user.clear(source);
+    fireEvent.change(source, {
+      target: { value: '{"title":"Updated","slides":[{"title":"New slide","elements":["New line"]}]}' },
+    });
+
+    expect(screen.getByText("Unsaved changes")).toBeTruthy();
+    expect((screen.getByRole("button", { name: "Export PPTX" }) as HTMLButtonElement).disabled).toBe(true);
+
+    await user.click(screen.getByRole("button", { name: "Apply changes" }));
+    await waitFor(() => {
+      expect(screen.getAllByText("Applied Source").length).toBeGreaterThan(0);
+    });
+
+    await user.click(screen.getByRole("button", { name: "Export PPTX" }));
+    await waitFor(() => {
+      expect(createObjectURL).toHaveBeenCalledOnce();
+      expect(screen.getByText("PPTX exported successfully.")).toBeTruthy();
+    });
+  });
+
+  it("keeps the applied report when source JSON is invalid", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    expect(await screen.findByText("PPTKit Workbench")).toBeTruthy();
+    const source = screen.getByRole("textbox", { name: "Import Alpha.md" });
+    await user.clear(source);
+    await user.type(source, "not json");
+    await user.click(screen.getByRole("button", { name: "Apply changes" }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Not found")).toBeTruthy();
+    });
+    expect(screen.getByText("Import Alpha description")).toBeTruthy();
   });
 });

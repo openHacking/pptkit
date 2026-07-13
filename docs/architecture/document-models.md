@@ -108,7 +108,8 @@ For example:
 1. A user builds a slide with text, image, and layout helpers through `@pptkit/core`.
 2. The system normalizes those structures into canonical elements and references.
 3. `@pptkit/layout` resolves placement against the canonical structures.
-4. `@pptkit/pptx-exporter` translates the normalized result into package parts and XML.
+4. `@pptkit/layout` creates a detached export-ready layout result.
+5. `@pptkit/pptx-exporter` translates that result into package parts, relationships, XML, and ZIP output.
 
 ## Design Constraint
 

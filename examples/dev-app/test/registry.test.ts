@@ -26,7 +26,7 @@ describe("example registry", () => {
 
     expect(report.normalizedDocument.slideCount).toBeGreaterThan(0);
     expect(report.visualPreview.status).toBe("structural-preview");
-    expect(typeof report.exportResult.status).toBe("string");
+    expect(report.exportResult.status).toBe("not-exported");
     expect(Array.isArray(report.diagnostics)).toBe(true);
   });
 });
