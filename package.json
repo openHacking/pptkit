@@ -12,7 +12,8 @@
     "build": "pnpm -r build",
     "lint": "node ./scripts/lint.mjs && node ./scripts/check-boundaries.mjs && node ./scripts/check-docs.mjs",
     "docs:check": "node ./scripts/check-docs.mjs",
-    "test": "pnpm -r test",
+    "test": "node --test scripts/release.test.mjs && pnpm -r test",
+    "release:npm": "node ./scripts/release.mjs",
     "typecheck": "tsc -b --pretty false",
     "clean": "node ./scripts/clean.mjs",
     "prepare": "husky"

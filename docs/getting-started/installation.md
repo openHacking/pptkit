@@ -1,6 +1,6 @@
 # Installation
 
-PPTKit is in pre-release development and its packages are not published to npm. Use the monorepo workspace for current development and evaluation.
+PPTKit is in pre-release development. Use the monorepo workspace for current development and evaluation, or install the preview packages after they have been published.
 
 ## Requirements
 
@@ -51,6 +51,7 @@ or:
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-These commands describe the intended package split; they are not expected to succeed before publication.
+These commands are available after a preview release. The repository's local release
+workflow is documented in [Release Strategy](../migration/release-strategy.md).
 
 Continue with the [Quick Start](quick-start.md).

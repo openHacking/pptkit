@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/pptx-exporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "description": "PPTX export boundary for PPTKit.",
@@ -19,6 +19,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@pptkit/core": "workspace:*",
     "@pptkit/layout": "workspace:*",

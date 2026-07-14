@@ -2,7 +2,9 @@
 
 ## Are the packages published?
 
-No. PPTKit is currently evaluated and developed through this workspace. See [Installation](../getting-started/installation.md).
+PPTKit is in preview development. Packages are published manually when a release
+gate is satisfied; the local workflow is `pnpm release:npm`. See [Installation](../getting-started/installation.md)
+and [Release Strategy](../migration/release-strategy.md).
 
 ## Why can I not push into `presentation.slides` or `slide.elements`?
 

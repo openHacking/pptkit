@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "description": "Authoring-facing document model for PPTKit.",
@@ -15,9 +15,11 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "pnpm run build && node --test test/*.test.mjs"
   }
 }
-

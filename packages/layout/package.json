@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/layout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "type": "module",
   "description": "Layout primitives and export-ready layout resolution for PPTKit.",
@@ -15,6 +15,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@pptkit/core": "workspace:*"
   },

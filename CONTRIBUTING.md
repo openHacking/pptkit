@@ -25,6 +25,30 @@ To compile all initial packages:
 pnpm build
 ```
 
+## Publishing a preview release
+
+Publishing is a local, interactive operation. First authenticate with npm and verify
+that the account can publish the `@pptkit` scope:
+
+```bash
+npm login
+npm whoami
+```
+
+Run a complete non-publishing check with:
+
+```bash
+pnpm release:npm --dry-run
+```
+
+When the release gate is satisfied, run `pnpm release:npm`. It publishes all public
+packages under `packages/` at one unified version after lint, typecheck, tests,
+build, package-content checks, and confirmation. The command does not create Git
+commits or tags; review and commit the version changes manually after publishing.
+
+See [Release Strategy](docs/migration/release-strategy.md) for failure handling and
+the complete release policy.
+
 ## Contribution Workflow
 
 1. Fork the repository.
