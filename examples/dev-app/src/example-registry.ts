@@ -1,4 +1,5 @@
 import type { ExampleDefinition, ExampleInputData, ExampleSummary, FeatureId } from "./example-types.js";
+import { exportgptProExample } from "./examples/exportgpt-pro.js";
 import { saasHuntSwissStyleExample } from "./examples/saas-hunt-swiss-style.js";
 
 const exportFullFeatureDeckInput: ExampleInputData = {
@@ -363,6 +364,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     },
   },
   saasHuntSwissStyleExample,
+  exportgptProExample,
 ];
 
 export function listExamples(): ExampleDefinition[] {
