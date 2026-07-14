@@ -14,6 +14,14 @@ function defaultBox(element: Exclude<ExampleElementSpec, string>, y: number): Bo
     return { x: 48, y, width: 240, height: 120 };
   }
 
+  if (element.type === "group") {
+    return { x: 48, y, width: 320, height: 180 };
+  }
+
+  if (element.type === "table") {
+    return { x: 48, y, width: 624, height: 180 };
+  }
+
   return { x: 48, y, width: 640, height: 24 };
 }
 
@@ -74,12 +82,48 @@ function createSlideElements(
         type: "shape",
         shape: element.shape,
         box,
+        ...(element.text !== undefined ? {
+          text: {
+            content: element.text.content,
+            ...(element.text.textStylePreset !== undefined ? { textStylePreset: element.text.textStylePreset } : {}),
+            ...(element.text.frame !== undefined ? { frame: element.text.frame } : {}),
+          },
+        } : {}),
         ...(element.style !== undefined ? {
           style: {
             ...(element.style.fill !== undefined ? { fill: { type: "solid" as const, color: element.style.fill } } : {}),
             ...(stroke !== undefined ? { stroke } : {}),
           },
         } : {}),
+      };
+    }
+
+    if (element.type === "group") {
+      const box = element.box ?? defaultBox(element, nextY);
+      nextY = box.y + box.height + 24;
+      return {
+        type: "group",
+        box,
+        coordinateSize: element.coordinateSize,
+        children: createSlideElements(presentation, element.children),
+      };
+    }
+
+    if (element.type === "table") {
+      const box = element.box ?? defaultBox(element, nextY);
+      nextY = box.y + box.height + 24;
+      return {
+        type: "table",
+        box,
+        columns: element.columns,
+        rows: element.rows.map((row) => ({
+          ...(row.height !== undefined ? { height: row.height } : {}),
+          cells: row.cells.map((cell) => ({
+            content: cell.content,
+            ...(cell.rowSpan !== undefined ? { rowSpan: cell.rowSpan } : {}),
+            ...(cell.colSpan !== undefined ? { colSpan: cell.colSpan } : {}),
+          })),
+        })),
       };
     }
 
@@ -117,6 +161,7 @@ function createSlideElements(
       type: "text",
       content,
       box,
+      ...(element.textStylePreset !== undefined ? { textStylePreset: element.textStylePreset } : {}),
       ...(style?.autoFit !== undefined ? { frame: { autoFit: style.autoFit } } : {}),
     };
   });
@@ -126,6 +171,7 @@ export function createExamplePresentation(input: ExampleInputData): Presentation
   const presentation = createPresentation({
     metadata: { title: input.title },
     ...(input.size !== undefined ? { size: input.size } : {}),
+    ...(input.textStylePresets !== undefined ? { textStylePresets: input.textStylePresets } : {}),
   });
 
   for (const slide of input.slides) {

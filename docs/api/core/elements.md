@@ -44,6 +44,7 @@ Slide actions use `slideId`, never a page number that can become stale after reo
 interface TextElementInput extends Omit<ElementBaseInput, "box"> {
   type: "text";
   content: string | TextParagraphInput[];
+  textStylePreset?: string;
   box?: Omit<Box, "height"> & { height?: number };
   frame?: TextFrameStyleInput;
 }
@@ -97,6 +98,11 @@ interface ShapeElementInput extends ElementBaseInput {
   shape: "rect" | "roundRect" | "ellipse" | "triangle" |
     "diamond" | "arrow" | "chevron";
   style?: ShapeStyleInput;
+  text?: {
+    content: string | TextParagraphInput[];
+    textStylePreset?: string;
+    frame?: TextFrameStyleInput;
+  };
 }
 ```
 
@@ -114,6 +120,13 @@ slide.addElement({
       width: 2,
     },
   },
+});
+
+slide.addElement({
+  type: "shape",
+  shape: "roundRect",
+  box: { x: 48, y: 260, width: 240, height: 80 },
+  text: { content: "One editable shape", textStylePreset: "title" },
 });
 ```
 

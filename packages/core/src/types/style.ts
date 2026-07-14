@@ -123,6 +123,14 @@ export interface TextRunStyleInput {
   language?: string;
 }
 
+export interface TextStylePresetInput {
+  frame?: TextFrameStyleInput;
+  paragraph?: TextParagraphStyleInput;
+  run?: TextRunStyleInput;
+}
+
+export type TextStylePresetMap = Readonly<Record<string, TextStylePresetInput>>;
+
 export interface NormalizedTextRunStyle {
   fontFamily: FontFamilyValue;
   fontSize: number;

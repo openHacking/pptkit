@@ -7,6 +7,7 @@ The exporter consumes resolved IR and emits a deterministic `.pptx` package with
 - rich text paragraphs, runs, bullets, theme fonts, and links
 - image embedding, opacity, crop, contain, and cover behavior
 - editable shapes, connectors, nested groups, and native tables
+- native text bodies embedded in editable shapes
 - presentation themes, reusable slide layouts, and placeholders
 - slide backgrounds, hidden slides, speaker notes, and PPTKit metadata extensions
 - recoverable structured warnings for asset-loading failures

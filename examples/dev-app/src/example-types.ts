@@ -1,4 +1,4 @@
-import type { Box, PresentationAssetSource, PresentationSize } from "@pptkit/core";
+import type { Box, PresentationAssetSource, PresentationSize, TextFrameStyleInput, TextStylePresetMap } from "@pptkit/core";
 
 export type FeatureId = string;
 
@@ -22,6 +22,7 @@ export type ExampleTextBoxSpec = Omit<Box, "height"> & { height?: number };
 export interface ExampleTextElementSpec {
   type: "text";
   text: string;
+  textStylePreset?: string;
   box?: ExampleTextBoxSpec;
   style?: {
     fontSize?: number;
@@ -69,8 +70,13 @@ export interface ExampleImageElementSpec {
 
 export interface ExampleShapeElementSpec {
   type: "shape";
-  shape: "rect" | "ellipse" | "line";
+  shape: "rect" | "roundRect" | "ellipse" | "line";
   box?: Box;
+  text?: {
+    content: string;
+    textStylePreset?: string;
+    frame?: TextFrameStyleInput;
+  };
   style?: {
     fill?: string;
     stroke?: string;
@@ -78,11 +84,30 @@ export interface ExampleShapeElementSpec {
   };
 }
 
+export interface ExampleGroupElementSpec {
+  type: "group";
+  coordinateSize: { width: number; height: number };
+  children: ExampleElementSpec[];
+  box?: Box;
+}
+
+export interface ExampleTableElementSpec {
+  type: "table";
+  columns: number[];
+  rows: Array<{
+    height?: number;
+    cells: Array<{ content: string; rowSpan?: number; colSpan?: number }>;
+  }>;
+  box?: Box;
+}
+
 export type ExampleElementSpec =
   | string
   | ExampleTextElementSpec
   | ExampleImageElementSpec
-  | ExampleShapeElementSpec;
+  | ExampleShapeElementSpec
+  | ExampleGroupElementSpec
+  | ExampleTableElementSpec;
 
 export interface ExampleSlideSpec {
   id?: string;
@@ -95,6 +120,7 @@ export interface ExampleInputData {
   title: string;
   summary: string;
   size?: Partial<PresentationSize>;
+  textStylePresets?: TextStylePresetMap;
   slides: ExampleSlideSpec[];
 }
 

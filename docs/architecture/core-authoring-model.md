@@ -12,6 +12,7 @@ Core owns:
 - document-level stable identity and object ownership
 - method-managed authoring operations
 - format-independent themes, paints, rich text, actions, and accessibility
+- document-level named text style presets for reusable frame, paragraph, and run defaults
 - deterministic intrinsic height estimation for text boxes with a fixed width
 - complete validation and normalization into Canonical IR v1
 
@@ -115,6 +116,7 @@ Authoring input can remain concise, but ambiguity ends at normalization. Core ma
 - layout selection and effective backgrounds
 - base element name, box, transform, opacity, hidden state, and accessibility
 - text frame, paragraph, run, bullet, numbering, font, color, and language values
+- text bodies embedded in shapes while preserving one shape identity
 - paints, strokes, image fit/crop, connector style, and table cell style
 
 Text and visual precedence is fixed: local run/element values, paragraph/frame values, placeholder/layout values, presentation theme, then Core defaults. Normalized slides record background origin explicitly.
@@ -158,3 +160,13 @@ Core is organized by responsibility rather than element type:
 - `utils` contains state-independent helpers
 
 The package root only exports the intentional public surface. Core must remain independent of Layout and every exporter.
+
+### Text style presets
+
+`PresentationInit.textStylePresets` is an immutable, document-level registry of
+named partial text styles. Text elements, shape text bodies, placeholders, and
+table cells may reference a preset by name. Presets do not inherit from one
+another. During normalization, explicit local values override the preset,
+which overrides placeholder values and then Core defaults. Preset names are an
+authoring convenience and never appear in Canonical IR; the normalized result
+contains fully materialized text styles.

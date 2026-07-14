@@ -19,6 +19,54 @@ interface TextRunInput {
 
 String content is normalized into paragraphs and runs. Use structured content for mixed emphasis, lists, language metadata, or run-level links.
 
+## Document text style presets
+
+Documents may define immutable named partial styles once at construction time:
+
+```ts
+interface TextStylePresetInput {
+  frame?: TextFrameStyleInput;
+  paragraph?: TextParagraphStyleInput;
+  run?: TextRunStyleInput;
+}
+
+type TextStylePresetMap = Readonly<Record<string, TextStylePresetInput>>;
+```
+
+```ts
+const presentation = createPresentation({
+  textStylePresets: {
+    title: {
+      frame: { margin: 0, verticalAlign: "middle" },
+      paragraph: { align: "center" },
+      run: { fontSize: 32, bold: true },
+    },
+  },
+});
+
+slide.addElement({
+  type: "text",
+  content: "Preset-backed title",
+  textStylePreset: "title",
+  box: { x: 48, y: 48, width: 600, height: 48 },
+});
+```
+
+Text elements, shape text bodies, placeholders, and table cells can reference a
+preset. The fixed precedence is: explicit local value, referenced preset,
+placeholder style, theme, then Core default. Presets cannot inherit from one
+another. Unknown names and invalid preset values are reported by validation.
+
+| Preset field | Applies to |
+| --- | --- |
+| `frame` | Text elements and Shape text bodies; for table cells, `margin` and `verticalAlign` map to the cell. |
+| `paragraph` | Text elements, Shape text bodies, placeholders, and table cells. |
+| `run` | Text elements, Shape text bodies, placeholders, and table cells. |
+
+Preset keys are caller-defined, non-empty strings, such as `title`, `body`, or
+`cardLabel`; they are not a fixed enum. An unknown reference produces the
+`missing-text-style-preset` validation diagnostic.
+
 When a text element has a fixed `x`, `y`, and `width` but no `height`, Core calculates a deterministic estimated height during normalization. The estimate includes explicit paragraphs and line breaks, approximate wrapping, the largest run font size in each paragraph, line spacing, paragraph spacing, bullet indentation, frame margins, and a small font-size-based trailing safety buffer for renderer-specific ascent/descent differences. This keeps the Canonical IR and exported text box bounds complete while allowing authoring inputs to omit a fragile single-line height.
 
 ```ts
@@ -140,8 +188,8 @@ Rotation uses degrees. Flips apply within the element box. Element opacity multi
 
 Normalization resolves text using this fixed order, from most specific to least specific:
 
-1. Run or element-local values.
-2. Paragraph or frame values.
+1. Run, paragraph, or frame-local values.
+2. The referenced document text style preset.
 3. Bound placeholder defaults from the selected layout.
 4. Presentation theme values.
 5. Core defaults.

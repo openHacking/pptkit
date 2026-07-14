@@ -8,7 +8,7 @@ import type {
 import type { PresentationDiagnostic } from "../types/diagnostic.js";
 import type { Box } from "../types/geometry.js";
 import type { PresentationDocument, PresentationSlide, SlideLayoutDefinition } from "../types/presentation.js";
-import type { PaintInput, StrokeStyleInput, TextFrameStyleInput, TextParagraphStyleInput, TextRunStyleInput } from "../types/style.js";
+import type { PaintInput, StrokeStyleInput, TextFrameStyleInput, TextParagraphStyleInput, TextRunStyleInput, TextStylePresetInput } from "../types/style.js";
 import { duplicates } from "./collection.js";
 import { isFiniteNumber, isValidBox, isValidPoint, isValidSize } from "./geometry.js";
 import { isValidColor, isValidOpacity, isValidPaint } from "./style.js";
@@ -18,6 +18,7 @@ interface Context {
   slideIds: Set<string>;
   assetIds: Set<string>;
   globalElementIds: Set<string>;
+  textStylePresetNames: Set<string>;
 }
 
 function add(context: Context, diagnostic: Omit<PresentationDiagnostic, "severity"> & { severity?: "error" | "warning" }): void {
@@ -65,6 +66,18 @@ function validateRunStyle(context: Context, style: TextRunStyleInput | undefined
   if (style === undefined) return;
   if (style.fontSize !== undefined && (!isFiniteNumber(style.fontSize) || style.fontSize <= 0)) add(context, { code: "invalid-font-size", message: "fontSize must be positive.", path: `${path}.fontSize`, ...ids });
   if (style.color !== undefined && !isValidColor(style.color)) add(context, { code: "invalid-color", message: "Text color must be a six-digit RGB value or theme reference.", path: `${path}.color`, ...ids });
+}
+
+function validateTextStylePresetRef(context: Context, name: string | undefined, path: string, ids: Partial<PresentationDiagnostic>): void {
+  if (name !== undefined && !context.textStylePresetNames.has(name)) {
+    add(context, { code: "missing-text-style-preset", message: `Unknown text style preset "${name}".`, path, ...ids });
+  }
+}
+
+function validateTextStylePreset(context: Context, preset: TextStylePresetInput, path: string): void {
+  validateFrame(context, preset.frame, `${path}.frame`, {});
+  validateParagraphStyle(context, preset.paragraph, `${path}.paragraph`, {});
+  validateRunStyle(context, preset.run, `${path}.run`, {});
 }
 
 function validateAction(context: Context, action: PresentationElement["action"], path: string, ids: Partial<PresentationDiagnostic>): void {
@@ -127,6 +140,7 @@ function validateElement(
   if (element.type === "text") {
     validateText(context, element.content, `${path}.content`, identity);
     validateFrame(context, element.frame, `${path}.frame`, identity);
+    validateTextStylePresetRef(context, element.textStylePreset, `${path}.textStylePreset`, identity);
   } else if (element.type === "image") {
     if (!context.assetIds.has(element.assetId)) add(context, { code: "missing-image-asset", message: `Image references missing asset "${element.assetId}".`, path: `${path}.assetId`, assetId: element.assetId, ...identity });
     const crop = { left: 0, top: 0, right: 0, bottom: 0, ...element.crop };
@@ -135,6 +149,11 @@ function validateElement(
   } else if (element.type === "shape") {
     validatePaint(context, element.style?.fill, `${path}.style.fill`, identity);
     validateStroke(context, element.style?.stroke, `${path}.style.stroke`, identity);
+    if (element.text !== undefined) {
+      validateText(context, element.text.content, `${path}.text.content`, identity);
+      validateFrame(context, element.text.frame, `${path}.text.frame`, identity);
+      validateTextStylePresetRef(context, element.text.textStylePreset, `${path}.text.textStylePreset`, identity);
+    }
   } else if (element.type === "connector") {
     for (const [key, endpoint] of [["start", element.start], ["end", element.end]] as const) {
       const reference = endpointReference(endpoint);
@@ -157,6 +176,7 @@ function validateElement(
       row.cells.forEach((cell, cellIndex) => {
         if (!Number.isInteger(cell.rowSpan ?? 1) || (cell.rowSpan ?? 1) < 1 || !Number.isInteger(cell.colSpan ?? 1) || (cell.colSpan ?? 1) < 1) add(context, { code: "invalid-table-span", message: "rowSpan and colSpan must be positive integers.", path: `${path}.rows.${rowIndex}.cells.${cellIndex}`, ...identity });
         validateText(context, cell.content, `${path}.rows.${rowIndex}.cells.${cellIndex}.content`, identity);
+        validateTextStylePresetRef(context, cell.textStylePreset, `${path}.rows.${rowIndex}.cells.${cellIndex}.textStylePreset`, identity);
         validatePaint(context, cell.style?.fill, `${path}.rows.${rowIndex}.cells.${cellIndex}.style.fill`, identity);
         validateStroke(context, cell.style?.stroke, `${path}.rows.${rowIndex}.cells.${cellIndex}.style.stroke`, identity);
       });
@@ -174,6 +194,7 @@ function validateLayout(context: Context, layout: SlideLayoutDefinition, index: 
     validateFrame(context, placeholder.textStyle?.frame, `layouts.${index}.placeholders.${placeholderIndex}.textStyle.frame`, identity);
     validateParagraphStyle(context, placeholder.textStyle?.paragraph, `layouts.${index}.placeholders.${placeholderIndex}.textStyle.paragraph`, identity);
     validateRunStyle(context, placeholder.textStyle?.run, `layouts.${index}.placeholders.${placeholderIndex}.textStyle.run`, identity);
+    validateTextStylePresetRef(context, placeholder.textStylePreset, `layouts.${index}.placeholders.${placeholderIndex}.textStylePreset`, identity);
   });
   validatePaint(context, layout.background, `layouts.${index}.background`, identity);
   const scopeIds = new Set<string>();
@@ -193,11 +214,17 @@ export function validatePresentation(document: PresentationDocument): Presentati
   const diagnostics: PresentationDiagnostic[] = [];
   const slideIds = new Set(document.slides.map((slide) => slide.id));
   const assetIds = new Set(document.assets.map((asset) => asset.id));
-  const context: Context = { diagnostics, slideIds, assetIds, globalElementIds: new Set() };
+  const textStylePresetNames = new Set(Object.keys(document.textStylePresets));
+  const context: Context = { diagnostics, slideIds, assetIds, globalElementIds: new Set(), textStylePresetNames };
 
   for (const id of duplicates(document.slides.map((slide) => slide.id))) add(context, { code: "duplicate-slide-id", message: `Duplicate slide id "${id}".`, path: "slides" });
   for (const id of duplicates(document.assets.map((asset) => asset.id))) add(context, { code: "duplicate-asset-id", message: `Duplicate asset id "${id}".`, path: "assets", assetId: id });
   for (const id of duplicates(document.layouts.map((layout) => layout.id))) add(context, { code: "duplicate-layout-id", message: `Duplicate layout id "${id}".`, path: "layouts", layoutId: id });
+
+  for (const [name, preset] of Object.entries(document.textStylePresets)) {
+    if (name.trim() === "") add(context, { code: "invalid-text-style-preset-name", message: "Text style preset names must be non-empty.", path: "textStylePresets" });
+    validateTextStylePreset(context, preset, `textStylePresets.${name}`);
+  }
 
   for (const [role, color] of Object.entries(document.theme.colors ?? {})) if (!/^#?[0-9a-f]{6}$/i.test(color)) add(context, { code: "invalid-theme-color", message: `Theme color "${role}" must be six-digit RGB.`, path: `theme.colors.${role}` });
   document.assets.forEach((asset, index) => validateAsset(context, asset, index));

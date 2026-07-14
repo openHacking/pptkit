@@ -80,3 +80,21 @@ test("mutation methods reject duplicate identities immediately", () => {
   slide.addElement({ type: "shape", id: "same", shape: "rect", box: { x: 0, y: 0, width: 1, height: 1 } });
   assert.throws(() => slide.addElement({ type: "shape", id: "same", shape: "rect", box: { x: 0, y: 0, width: 1, height: 1 } }), /Duplicate element id/);
 });
+
+test("validation reports missing and malformed text style presets", () => {
+  const presentation = createPresentation({
+    textStylePresets: {
+      "": { run: { fontSize: 0 } },
+    },
+  });
+  presentation.addSlide({ elements: [{
+    type: "shape",
+    shape: "rect",
+    box: { x: 0, y: 0, width: 100, height: 50 },
+    text: { content: "Missing", textStylePreset: "missing" },
+  }] });
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "invalid-text-style-preset-name"));
+  assert.ok(diagnostics.some((item) => item.code === "invalid-font-size"));
+  assert.ok(diagnostics.some((item) => item.code === "missing-text-style-preset"));
+});

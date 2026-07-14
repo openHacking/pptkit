@@ -19,7 +19,15 @@ function describeElement(element: ExampleElementSpec): string {
   }
 
   if (element.type === "shape") {
-    return `Shape: ${element.shape}`;
+    return element.text === undefined ? `Shape: ${element.shape}` : `Shape: ${element.shape} — ${element.text.content}`;
+  }
+
+  if (element.type === "group") {
+    return `Group: ${element.children.length} children`;
+  }
+
+  if (element.type === "table") {
+    return `Table: ${element.columns.length} columns × ${element.rows.length} rows`;
   }
 
   const assetLabel =

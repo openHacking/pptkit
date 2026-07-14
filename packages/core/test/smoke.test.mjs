@@ -168,3 +168,48 @@ test("normalization detaches nested groups, tables, assets, and custom data", ()
   assert.equal(normalized.slides[0].elements[1].rows[0].cells[0].style.fill.opacity, 1);
   assert.notEqual(normalized.slides[0].customData, presentation.slides[0].customData);
 });
+
+test("shape text and document text style presets normalize as one editable object", () => {
+  const presentation = createPresentation({
+    textStylePresets: {
+      title: {
+        frame: { margin: 0, verticalAlign: "middle" },
+        paragraph: { align: "center" },
+        run: { fontSize: 30, bold: true, color: "123456" },
+      },
+      cell: { frame: { margin: 0, verticalAlign: "middle" }, paragraph: { align: "right" }, run: { fontSize: 12 } },
+    },
+  });
+  assert.throws(() => { presentation.textStylePresets.title.run.fontSize = 40; }, TypeError);
+
+  const slide = presentation.addSlide({ elements: [
+    {
+      type: "shape",
+      id: "title-card",
+      shape: "roundRect",
+      box: { x: 20, y: 20, width: 300, height: 80 },
+      text: { content: [{ style: { align: "left" }, runs: [{ text: "Hello" }] }], textStylePreset: "title" },
+    },
+    {
+      type: "table",
+      box: { x: 20, y: 120, width: 300, height: 40 },
+      columns: [300],
+      rows: [{ cells: [{ content: "Cell", textStylePreset: "cell" }] }],
+    },
+  ] });
+
+  const duplicate = slide.duplicateElement("title-card");
+  assert.notEqual(duplicate.id, "title-card");
+  const normalized = normalizePresentation(presentation);
+  const shape = normalized.slides[0].elements[0];
+  assert.equal(shape.type, "shape");
+  assert.equal(shape.text.plainText, "Hello");
+  assert.equal(shape.text.frame.verticalAlign, "middle");
+  assert.equal(shape.text.content[0].style.align, "left");
+  assert.equal(shape.text.content[0].runs[0].style.fontSize, 30);
+  assert.equal(shape.text.content[0].runs[0].style.bold, true);
+  assert.equal("textStylePreset" in shape, false);
+  assert.equal(normalized.slides[0].elements[2].rows[0].cells[0].content[0].style.align, "right");
+  assert.equal(normalized.slides[0].elements[2].rows[0].cells[0].style.margin.left, 0);
+  assert.equal(normalized.slides[0].elements[2].rows[0].cells[0].style.verticalAlign, "middle");
+});

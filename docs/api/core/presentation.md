@@ -20,6 +20,7 @@ Creates one authoring document. Inputs are cloned and frozen when accepted; late
 | `metadata` | `PresentationMetadataInput` | empty authoring metadata | Title, authoring and discovery metadata. |
 | `size` | `Partial<PresentationSize>` | `960 × 540 pt` | Presentation dimensions. Only points are supported. |
 | `theme` | `PresentationThemeInput` | Core theme | Partial theme overrides. |
+| `textStylePresets` | `Readonly<Record<string, TextStylePresetInput>>` | `{}` | Immutable named frame, paragraph, and run defaults. |
 
 `PresentationInit` intentionally contains no legacy top-level metadata aliases.
 
@@ -44,6 +45,7 @@ interface PresentationDocument {
   readonly metadata: Readonly<PresentationMetadataInput>;
   readonly size: Readonly<PresentationSize>;
   readonly theme: Readonly<PresentationThemeInput>;
+  readonly textStylePresets: Readonly<Record<string, TextStylePresetInput>>;
   readonly slides: readonly PresentationSlide[];
   readonly assets: readonly PresentationAsset[];
   readonly layouts: readonly SlideLayoutDefinition[];

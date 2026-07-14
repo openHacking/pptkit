@@ -9,7 +9,7 @@ import type {
   TextContentInput,
 } from "./element.js";
 import type { PresentationSize } from "./geometry.js";
-import type { NormalizedPaint, PaintInput } from "./style.js";
+import type { NormalizedPaint, PaintInput, TextStylePresetMap } from "./style.js";
 import type { NormalizedPresentationTheme, PresentationThemeInput } from "./theme.js";
 
 export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
@@ -86,6 +86,7 @@ export interface PresentationInit {
   metadata?: PresentationMetadataInput;
   size?: Partial<PresentationSize>;
   theme?: PresentationThemeInput;
+  textStylePresets?: TextStylePresetMap;
 }
 
 export interface PresentationDocument {
@@ -93,6 +94,7 @@ export interface PresentationDocument {
   readonly metadata: Readonly<PresentationMetadataInput>;
   readonly size: Readonly<PresentationSize>;
   readonly theme: Readonly<PresentationThemeInput>;
+  readonly textStylePresets: TextStylePresetMap;
   readonly slides: readonly PresentationSlide[];
   readonly assets: readonly PresentationAsset[];
   readonly layouts: readonly SlideLayoutDefinition[];

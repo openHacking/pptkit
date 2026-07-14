@@ -3,9 +3,12 @@ import type {
   ExampleImageAssetSpec,
   ExampleImageElementSpec,
   ExampleInputData,
+  ExampleGroupElementSpec,
+  ExampleTableElementSpec,
   ExampleShapeElementSpec,
   ExampleTextElementSpec,
 } from "./example-types.js";
+import type { TextFrameStyleInput, TextStylePresetInput, TextStylePresetMap } from "@pptkit/core";
 
 export class ExampleSourceError extends Error {
   constructor(message: string) {
@@ -20,6 +23,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
+}
+
+function isPositiveInteger(value: unknown): value is number {
+  return typeof value === "number" && Number.isInteger(value) && value > 0;
 }
 
 function parseBox(value: unknown, label: string) {
@@ -54,6 +61,32 @@ function parseRecord(value: unknown, label: string) {
   }
 
   return value;
+}
+
+function parseTextStylePresets(value: unknown): TextStylePresetMap {
+  const source = parseRecord(value, "Source field textStylePresets");
+  const presets: Record<string, TextStylePresetInput> = {};
+  for (const [name, presetValue] of Object.entries(source)) {
+    if (name.trim() === "") {
+      throw new ExampleSourceError("Source field textStylePresets cannot contain an empty preset name.");
+    }
+    const preset = parseRecord(presetValue, `Source field textStylePresets.${name}`);
+    if (preset.frame !== undefined && !isRecord(preset.frame)) {
+      throw new ExampleSourceError(`Source field textStylePresets.${name}.frame must be an object.`);
+    }
+    if (preset.paragraph !== undefined && !isRecord(preset.paragraph)) {
+      throw new ExampleSourceError(`Source field textStylePresets.${name}.paragraph must be an object.`);
+    }
+    if (preset.run !== undefined && !isRecord(preset.run)) {
+      throw new ExampleSourceError(`Source field textStylePresets.${name}.run must be an object.`);
+    }
+    presets[name] = {
+      ...(preset.frame !== undefined ? { frame: preset.frame as TextFrameStyleInput } : {}),
+      ...(preset.paragraph !== undefined ? { paragraph: preset.paragraph } : {}),
+      ...(preset.run !== undefined ? { run: preset.run } : {}),
+    };
+  }
+  return presets;
 }
 
 function parseSize(value: unknown) {
@@ -150,10 +183,14 @@ function parseElement(value: unknown, slideIndex: number, elementIndex: number):
     if (typeof value.text !== "string") {
       throw new ExampleSourceError(`${label}.text must be a string.`);
     }
+    if (value.textStylePreset !== undefined && typeof value.textStylePreset !== "string") {
+      throw new ExampleSourceError(`${label}.textStylePreset must be a string.`);
+    }
 
     const element: ExampleTextElementSpec = {
       type: "text",
       text: value.text,
+      ...(typeof value.textStylePreset === "string" ? { textStylePreset: value.textStylePreset } : {}),
       ...(value.box !== undefined ? { box: parseTextBox(value.box, `${label}.box`) } : {}),
       ...(value.style !== undefined ? { style: parseRecord(value.style, `${label}.style`) } : {}),
     };
@@ -161,13 +198,33 @@ function parseElement(value: unknown, slideIndex: number, elementIndex: number):
   }
 
   if (value.type === "shape") {
-    if (value.shape !== "rect" && value.shape !== "ellipse" && value.shape !== "line") {
-      throw new ExampleSourceError(`${label}.shape must be "rect", "ellipse", or "line".`);
+    if (value.shape !== "rect" && value.shape !== "roundRect" && value.shape !== "ellipse" && value.shape !== "line") {
+      throw new ExampleSourceError(`${label}.shape must be "rect", "roundRect", "ellipse", or "line".`);
+    }
+
+    if (value.text !== undefined && !isRecord(value.text)) {
+      throw new ExampleSourceError(`${label}.text must be an object.`);
+    }
+    if (isRecord(value.text) && typeof value.text.content !== "string") {
+      throw new ExampleSourceError(`${label}.text.content must be a string.`);
+    }
+    if (isRecord(value.text) && value.text.textStylePreset !== undefined && typeof value.text.textStylePreset !== "string") {
+      throw new ExampleSourceError(`${label}.text.textStylePreset must be a string.`);
+    }
+    if (isRecord(value.text) && value.text.frame !== undefined && !isRecord(value.text.frame)) {
+      throw new ExampleSourceError(`${label}.text.frame must be an object.`);
     }
 
     const element: ExampleShapeElementSpec = {
       type: "shape",
       shape: value.shape,
+      ...(isRecord(value.text) ? {
+        text: {
+          content: value.text.content as string,
+          ...(typeof value.text.textStylePreset === "string" ? { textStylePreset: value.text.textStylePreset } : {}),
+          ...(isRecord(value.text.frame) ? { frame: value.text.frame as TextFrameStyleInput } : {}),
+        },
+      } : {}),
       ...(value.box !== undefined ? { box: parseBox(value.box, `${label}.box`) } : {}),
       ...(value.style !== undefined ? { style: parseRecord(value.style, `${label}.style`) } : {}),
     };
@@ -190,7 +247,66 @@ function parseElement(value: unknown, slideIndex: number, elementIndex: number):
     return element;
   }
 
-  throw new ExampleSourceError(`${label}.type must be "text", "shape", or "image".`);
+  if (value.type === "group") {
+    if (!isRecord(value.coordinateSize) || !isPositiveInteger(value.coordinateSize.width) || !isPositiveInteger(value.coordinateSize.height)) {
+      throw new ExampleSourceError(`${label}.coordinateSize requires finite numeric width and height fields.`);
+    }
+    if (!Array.isArray(value.children)) {
+      throw new ExampleSourceError(`${label}.children must be an array.`);
+    }
+    const element: ExampleGroupElementSpec = {
+      type: "group",
+      coordinateSize: { width: value.coordinateSize.width, height: value.coordinateSize.height },
+      children: value.children.map((child, childIndex) => parseElement(child, slideIndex, elementIndex + childIndex + 1)),
+      ...(value.box !== undefined ? { box: parseBox(value.box, `${label}.box`) } : {}),
+    };
+    return element;
+  }
+
+  if (value.type === "table") {
+    if (!Array.isArray(value.columns) || value.columns.length === 0 || value.columns.some((column) => !isFiniteNumber(column) || column <= 0)) {
+      throw new ExampleSourceError(`${label}.columns must contain positive finite numbers.`);
+    }
+    if (!Array.isArray(value.rows) || value.rows.length === 0) {
+      throw new ExampleSourceError(`${label}.rows must be a non-empty array.`);
+    }
+    const rows = value.rows.map((row, rowIndex) => {
+      if (!isRecord(row) || !Array.isArray(row.cells)) {
+        throw new ExampleSourceError(`${label}.rows.${rowIndex}.cells must be an array.`);
+      }
+      if (row.height !== undefined && (!isFiniteNumber(row.height) || row.height <= 0)) {
+        throw new ExampleSourceError(`${label}.rows.${rowIndex}.height must be a positive finite number.`);
+      }
+      return {
+        ...(row.height !== undefined ? { height: row.height as number } : {}),
+        cells: row.cells.map((cell, cellIndex) => {
+          if (!isRecord(cell) || typeof cell.content !== "string") {
+            throw new ExampleSourceError(`${label}.rows.${rowIndex}.cells.${cellIndex}.content must be a string.`);
+          }
+          if (cell.rowSpan !== undefined && !isPositiveInteger(cell.rowSpan)) {
+            throw new ExampleSourceError(`${label}.rows.${rowIndex}.cells.${cellIndex}.rowSpan must be a positive integer.`);
+          }
+          if (cell.colSpan !== undefined && !isPositiveInteger(cell.colSpan)) {
+            throw new ExampleSourceError(`${label}.rows.${rowIndex}.cells.${cellIndex}.colSpan must be a positive integer.`);
+          }
+          return {
+            content: cell.content,
+            ...(cell.rowSpan !== undefined ? { rowSpan: cell.rowSpan as number } : {}),
+            ...(cell.colSpan !== undefined ? { colSpan: cell.colSpan as number } : {}),
+          };
+        }),
+      };
+    });
+    const element: ExampleTableElementSpec = {
+      type: "table",
+      columns: value.columns,
+      rows,
+      ...(value.box !== undefined ? { box: parseBox(value.box, `${label}.box`) } : {}),
+    };
+    return element;
+  }
+
+  throw new ExampleSourceError(`${label}.type must be "text", "shape", "image", "group", or "table".`);
 }
 
 export function parseExampleSource(source: string): ExampleInputData {
@@ -251,6 +367,7 @@ export function parseExampleSource(source: string): ExampleInputData {
     title: value.title,
     summary: value.summary ?? "",
     ...(value.size !== undefined ? { size: parseSize(value.size) } : {}),
+    ...(value.textStylePresets !== undefined ? { textStylePresets: parseTextStylePresets(value.textStylePresets) } : {}),
     slides,
   };
 }

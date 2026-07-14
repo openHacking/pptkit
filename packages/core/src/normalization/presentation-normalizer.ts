@@ -15,6 +15,7 @@ import type {
   NormalizedTextParagraph,
   PlaceholderDefinitionInput,
   PresentationElement,
+  TableCellInput,
   TextParagraphInput,
   TextContentInput,
 } from "../types/element.js";
@@ -28,6 +29,7 @@ import type {
   SlideLayoutDefinition,
 } from "../types/presentation.js";
 import type { NormalizedPresentationTheme } from "../types/theme.js";
+import type { NormalizedTextFrameStyle, NormalizedTextParagraphStyle, NormalizedTextRunStyle, TextStylePresetInput } from "../types/style.js";
 import { deepClone } from "../utils/clone.js";
 import { normalizeSize } from "../validation/geometry.js";
 import { estimateTextHeight } from "./measure-text.js";
@@ -80,17 +82,38 @@ export function normalizeTextContent(
   }));
 }
 
-function normalizePlaceholder(input: PlaceholderDefinitionInput): NormalizedPlaceholderDefinition {
+function normalizeTextFallbacks(
+  preset: TextStylePresetInput | undefined,
+  placeholder?: NormalizedPlaceholderDefinition,
+): { frame: NormalizedTextFrameStyle; paragraph: NormalizedTextParagraphStyle; run: NormalizedTextRunStyle } {
+  return {
+    frame: normalizeTextFrame(preset?.frame, placeholder?.textStyle.frame ?? DEFAULT_TEXT_FRAME_STYLE),
+    paragraph: normalizeTextParagraphStyle(preset?.paragraph, placeholder?.textStyle.paragraph ?? DEFAULT_TEXT_PARAGRAPH_STYLE),
+    run: normalizeTextRunStyle(preset?.run, placeholder?.textStyle.run ?? DEFAULT_TEXT_RUN_STYLE),
+  };
+}
+
+function normalizePlaceholder(input: PlaceholderDefinitionInput, presets: Readonly<Record<string, TextStylePresetInput>>): NormalizedPlaceholderDefinition {
+  const preset = input.textStylePreset === undefined ? undefined : presets[input.textStylePreset];
   return {
     key: input.key,
     kind: input.kind,
     box: deepClone(input.box),
     textStyle: {
-      frame: normalizeTextFrame(input.textStyle?.frame),
-      paragraph: normalizeTextParagraphStyle(input.textStyle?.paragraph),
-      run: normalizeTextRunStyle(input.textStyle?.run),
+      frame: normalizeTextFrame(input.textStyle?.frame, normalizeTextFrame(preset?.frame)),
+      paragraph: normalizeTextParagraphStyle(input.textStyle?.paragraph, normalizeTextParagraphStyle(preset?.paragraph)),
+      run: normalizeTextRunStyle(input.textStyle?.run, normalizeTextRunStyle(preset?.run)),
     },
   };
+}
+
+function normalizeCellStyle(cell: TableCellInput, presets: Readonly<Record<string, TextStylePresetInput>>) {
+  const preset = presets[cell.textStylePreset ?? ""];
+  return normalizeTableCellStyle({
+    ...cell.style,
+    ...(cell.style?.margin === undefined && preset?.frame?.margin !== undefined ? { margin: preset.frame.margin } : {}),
+    ...(cell.style?.verticalAlign === undefined && preset?.frame?.verticalAlign !== undefined ? { verticalAlign: preset.frame.verticalAlign } : {}),
+  });
 }
 
 function boxFromElement(element: PresentationElement, placeholder?: NormalizedPlaceholderDefinition): Box {
@@ -132,14 +155,19 @@ function normalizedBase(element: PresentationElement, placeholder?: NormalizedPl
   };
 }
 
-function normalizeElement(element: PresentationElement, placeholders: ReadonlyMap<string, NormalizedPlaceholderDefinition> = new Map()): NormalizedElement {
+function normalizeElement(
+  element: PresentationElement,
+  placeholders: ReadonlyMap<string, NormalizedPlaceholderDefinition> = new Map(),
+  presets: Readonly<Record<string, TextStylePresetInput>> = {},
+): NormalizedElement {
   const placeholder = element.placeholderKey === undefined ? undefined : placeholders.get(element.placeholderKey);
   const base = normalizedBase(element, placeholder);
   if (element.type === "text") {
-    const paragraphFallback = placeholder?.textStyle.paragraph ?? DEFAULT_TEXT_PARAGRAPH_STYLE;
-    const runFallback = placeholder?.textStyle.run ?? DEFAULT_TEXT_RUN_STYLE;
+    const fallbacks = normalizeTextFallbacks(element.textStylePreset === undefined ? undefined : presets[element.textStylePreset], placeholder);
+    const paragraphFallback = fallbacks.paragraph;
+    const runFallback = fallbacks.run;
     const content = normalizeTextContent(element.content, paragraphFallback, runFallback);
-    const frame = normalizeTextFrame(element.frame, placeholder?.textStyle.frame ?? DEFAULT_TEXT_FRAME_STYLE);
+    const frame = normalizeTextFrame(element.frame, fallbacks.frame);
     const box = element.box?.height === undefined && element.box !== undefined && placeholder === undefined
       ? { ...base.box, height: estimateTextHeight(base.box.width, content, frame) }
       : base.box;
@@ -161,7 +189,22 @@ function normalizeElement(element: PresentationElement, placeholders: ReadonlyMa
       crop: { left: 0, top: 0, right: 0, bottom: 0, ...(element.crop ?? {}) },
     };
   }
-  if (element.type === "shape") return { ...base, type: "shape", shape: element.shape, style: normalizeShapeStyle(element.style) };
+  if (element.type === "shape") {
+    if (element.text === undefined) return { ...base, type: "shape", shape: element.shape, style: normalizeShapeStyle(element.style) };
+    const fallbacks = normalizeTextFallbacks(element.text.textStylePreset === undefined ? undefined : presets[element.text.textStylePreset], placeholder);
+    const content = normalizeTextContent(element.text.content, fallbacks.paragraph, fallbacks.run);
+    return {
+      ...base,
+      type: "shape",
+      shape: element.shape,
+      style: normalizeShapeStyle(element.style),
+      text: {
+        content,
+        plainText: content.map((paragraph) => paragraph.runs.map((run) => run.text).join("")).join("\n"),
+        frame: normalizeTextFrame(element.text.frame, fallbacks.frame),
+      },
+    };
+  }
   if (element.type === "connector") {
     return {
       ...base,
@@ -177,7 +220,7 @@ function normalizeElement(element: PresentationElement, placeholders: ReadonlyMa
       ...base,
       type: "group",
       coordinateSize: deepClone(element.coordinateSize),
-      children: element.children.map((child) => normalizeElement(child)),
+      children: element.children.map((child) => normalizeElement(child, new Map(), presets)),
     };
   }
   const box = base.box;
@@ -188,23 +231,27 @@ function normalizeElement(element: PresentationElement, placeholders: ReadonlyMa
     rows: element.rows.map((row) => ({
       height: row.height ?? (element.rows.length === 0 ? 0 : box.height / element.rows.length),
       cells: row.cells.map((cell) => ({
-        content: normalizeTextContent(cell.content),
+        content: normalizeTextContent(
+          cell.content,
+          normalizeTextParagraphStyle(presets[cell.textStylePreset ?? ""]?.paragraph),
+          normalizeTextRunStyle(presets[cell.textStylePreset ?? ""]?.run),
+        ),
         rowSpan: cell.rowSpan ?? 1,
         colSpan: cell.colSpan ?? 1,
-        style: normalizeTableCellStyle(cell.style),
+        style: normalizeCellStyle(cell, presets),
       })),
     })),
   };
 }
 
-function normalizeLayout(layout: SlideLayoutDefinition): NormalizedSlideLayout {
-  const placeholders = layout.placeholders.map(normalizePlaceholder);
+function normalizeLayout(layout: SlideLayoutDefinition, presets: Readonly<Record<string, TextStylePresetInput>>): NormalizedSlideLayout {
+  const placeholders = layout.placeholders.map((placeholder) => normalizePlaceholder(placeholder, presets));
   const placeholderMap = new Map(placeholders.map((placeholder) => [placeholder.key, placeholder]));
   return {
     id: layout.id,
     name: layout.name,
     background: normalizePaint(layout.background, DEFAULT_BACKGROUND),
-    elements: layout.elements.map((element) => normalizeElement(element, placeholderMap)),
+    elements: layout.elements.map((element) => normalizeElement(element, placeholderMap, presets)),
     placeholders,
   };
 }
@@ -213,7 +260,12 @@ function defaultLayout(): NormalizedSlideLayout {
   return { id: DEFAULT_LAYOUT_ID, name: "Blank", background: deepClone(DEFAULT_BACKGROUND), elements: [], placeholders: [] };
 }
 
-function normalizeSlide(slide: PresentationSlide, layouts: ReadonlyMap<string, NormalizedSlideLayout>, sourceLayouts: ReadonlyMap<string, SlideLayoutDefinition>): NormalizedPresentation["slides"][number] {
+function normalizeSlide(
+  slide: PresentationSlide,
+  layouts: ReadonlyMap<string, NormalizedSlideLayout>,
+  sourceLayouts: ReadonlyMap<string, SlideLayoutDefinition>,
+  presets: Readonly<Record<string, TextStylePresetInput>>,
+): NormalizedPresentation["slides"][number] {
   const layoutId = slide.layoutId ?? DEFAULT_LAYOUT_ID;
   const layout = layouts.get(layoutId)!;
   const sourceLayout = sourceLayouts.get(layoutId);
@@ -224,7 +276,7 @@ function normalizeSlide(slide: PresentationSlide, layouts: ReadonlyMap<string, N
     layoutId,
     background: normalizePaint(slide.background, layout.background),
     backgroundSource,
-    elements: slide.elements.map((element) => normalizeElement(element, placeholderMap)),
+    elements: slide.elements.map((element) => normalizeElement(element, placeholderMap, presets)),
     notes: normalizeTextContent(slide.notes ?? ""),
     hidden: slide.hidden,
     ...(slide.section !== undefined ? { section: slide.section } : {}),
@@ -251,7 +303,7 @@ function normalizeAsset(asset: PresentationDocument["assets"][number]): Normaliz
 
 export class PresentationNormalizer {
   normalize(document: PresentationDocument): NormalizedPresentation {
-    const normalizedLayouts = document.layouts.map(normalizeLayout);
+    const normalizedLayouts = document.layouts.map((layout) => normalizeLayout(layout, document.textStylePresets));
     if (!normalizedLayouts.some((layout) => layout.id === DEFAULT_LAYOUT_ID)) normalizedLayouts.unshift(defaultLayout());
     const layouts = new Map(normalizedLayouts.map((layout) => [layout.id, layout]));
     const sourceLayouts = new Map(document.layouts.map((layout) => [layout.id, layout]));
@@ -263,7 +315,7 @@ export class PresentationNormalizer {
       theme: normalizeTheme(document),
       assets: document.assets.map(normalizeAsset),
       layouts: normalizedLayouts,
-      slides: document.slides.map((slide) => normalizeSlide(slide, layouts, sourceLayouts)),
+      slides: document.slides.map((slide) => normalizeSlide(slide, layouts, sourceLayouts, document.textStylePresets)),
     };
   }
 }

@@ -83,9 +83,13 @@ function bodyPropertiesXml(style: NormalizedTextFrameStyle): string {
   return `<a:bodyPr wrap="${style.wrap ? "square" : "none"}" anchor="${anchor}" lIns="${emu(style.margin.left)}" tIns="${emu(style.margin.top)}" rIns="${emu(style.margin.right)}" bIns="${emu(style.margin.bottom)}">${fit}</a:bodyPr>`;
 }
 
+function textBodyXml(content: NormalizedTextParagraph[], frame: NormalizedTextFrameStyle, context: ElementXmlContext, opacity: number): string {
+  return `<p:txBody>${bodyPropertiesXml(frame)}<a:lstStyle/>${textParagraphsXml(content, context, opacity)}</p:txBody>`;
+}
+
 function textXml(element: Extract<LayoutElement, { type: "text" }>, context: ElementXmlContext, inheritedOpacity: number): string {
   const opacity = inheritedOpacity * element.opacity;
-  return `<p:sp>${nonVisualProperties(element, context, "shape")}<p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody>${bodyPropertiesXml(element.frame)}<a:lstStyle/>${textParagraphsXml(element.content, context, opacity)}</p:txBody></p:sp>`;
+  return `<p:sp>${nonVisualProperties(element, context, "shape")}<p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr>${textBodyXml(element.content, element.frame, context, opacity)}</p:sp>`;
 }
 
 function imageXml(element: Extract<LayoutElement, { type: "image" }>, context: ElementXmlContext, inheritedOpacity: number): string {
@@ -102,7 +106,8 @@ function shapeGeometry(shape: Extract<LayoutElement, { type: "shape" }>["shape"]
 
 function shapeXml(element: Extract<LayoutElement, { type: "shape" }>, context: ElementXmlContext, inheritedOpacity: number): string {
   const opacity = inheritedOpacity * element.opacity;
-  return `<p:sp>${nonVisualProperties(element, context, "shape")}<p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="${shapeGeometry(element.shape)}"><a:avLst/></a:prstGeom>${paintXml(element.style.fill, opacity)}${strokeXml(element.style.stroke, opacity)}</p:spPr></p:sp>`;
+  const text = element.text === undefined ? "" : textBodyXml(element.text.content, element.text.frame, context, opacity);
+  return `<p:sp>${nonVisualProperties(element, context, "shape")}<p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="${shapeGeometry(element.shape)}"><a:avLst/></a:prstGeom>${paintXml(element.style.fill, opacity)}${strokeXml(element.style.stroke, opacity)}</p:spPr>${text}</p:sp>`;
 }
 
 function connectorXml(element: LayoutConnectorElement, context: ElementXmlContext, inheritedOpacity: number): string {

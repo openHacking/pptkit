@@ -89,6 +89,7 @@ export type TextBoxInput = Omit<Box, "height"> & { height?: number };
 export interface TextElementInput extends Omit<ElementBaseInput, "box"> {
   type: "text";
   content: TextContentInput;
+  textStylePreset?: string;
   box?: TextBoxInput;
   frame?: TextFrameStyleInput;
 }
@@ -97,6 +98,18 @@ export interface TextElement extends ElementBase, Omit<TextElementInput, keyof E
 
 export interface NormalizedTextElement extends NormalizedElementBase {
   type: "text";
+  content: NormalizedTextParagraph[];
+  plainText: string;
+  frame: NormalizedTextFrameStyle;
+}
+
+export interface ShapeTextInput {
+  content: TextContentInput;
+  textStylePreset?: string;
+  frame?: TextFrameStyleInput;
+}
+
+export interface NormalizedShapeText {
   content: NormalizedTextParagraph[];
   plainText: string;
   frame: NormalizedTextFrameStyle;
@@ -133,6 +146,7 @@ export interface ShapeElementInput extends ElementBaseInput {
   type: "shape";
   shape: ShapeKind;
   style?: ShapeStyleInput;
+  text?: ShapeTextInput;
 }
 
 export interface ShapeElement extends ElementBase, Omit<ShapeElementInput, keyof ElementBaseInput> {}
@@ -141,6 +155,7 @@ export interface NormalizedShapeElement extends NormalizedElementBase {
   type: "shape";
   shape: ShapeKind;
   style: NormalizedShapeStyle;
+  text?: NormalizedShapeText;
 }
 
 export type ConnectorAnchor = "top" | "right" | "bottom" | "left" | "center";
@@ -184,6 +199,7 @@ export interface NormalizedGroupElement extends NormalizedElementBase {
 
 export interface TableCellInput {
   content: TextContentInput;
+  textStylePreset?: string;
   rowSpan?: number;
   colSpan?: number;
   style?: TableCellStyleInput;
@@ -233,6 +249,7 @@ export interface PlaceholderDefinitionInput {
   kind: PlaceholderKind;
   box: Box;
   textStyle?: PlaceholderTextStyleInput;
+  textStylePreset?: string;
 }
 
 export interface NormalizedPlaceholderDefinition {

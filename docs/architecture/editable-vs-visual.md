@@ -9,6 +9,7 @@ They describe a real system tradeoff: presentation content often cannot be optim
 Some content maps well to native presentation objects:
 
 - text blocks
+- shapes with native editable text bodies
 - simple shapes
 - standard images
 - basic grouped structures
@@ -31,6 +32,7 @@ Favor native presentation objects wherever possible.
 This strategy should prefer:
 
 - editable text
+- one editable shape object when geometry and text belong together
 - editable shapes
 - native grouping where feasible
 - structure that survives post-export authoring

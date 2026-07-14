@@ -103,7 +103,7 @@ describe("workbench server", () => {
     };
 
     expect(exampleResponse.statusCode).toBe(200);
-    expect(examplePayload.normalizedDocument.slideCount).toBe(6);
+    expect(examplePayload.normalizedDocument.slideCount).toBe(8);
 
     const exportResponse = await invoke(
       "/api/examples/export-full-feature-deck/export",

@@ -12,6 +12,7 @@ import type {
   SlideLayoutInput,
 } from "../types/presentation.js";
 import type { PresentationThemeInput } from "../types/theme.js";
+import type { TextStylePresetMap } from "../types/style.js";
 import { deepClone, deepFreeze } from "../utils/clone.js";
 import { createDocumentId, IdAllocator } from "../utils/id.js";
 import { normalizeSize } from "../validation/geometry.js";
@@ -30,6 +31,7 @@ export class PresentationDocumentImpl implements PresentationDocument {
   private readonly metadataValue: Readonly<PresentationMetadataInput>;
   private readonly sizeValue: Readonly<PresentationSize>;
   private readonly themeValue: Readonly<PresentationThemeInput>;
+  private readonly textStylePresetsValue: TextStylePresetMap;
   private readonly slideEntries: PresentationSlideImpl[] = [];
   private readonly layoutEntries: SlideLayoutDefinition[] = [];
   private readonly assetRegistry = new AssetRegistry();
@@ -42,6 +44,7 @@ export class PresentationDocumentImpl implements PresentationDocument {
     this.metadataValue = deepFreeze(deepClone(init.metadata ?? {}));
     this.sizeValue = deepFreeze(normalizeSize(init.size, DEFAULT_PRESENTATION_SIZE));
     this.themeValue = deepFreeze(deepClone(init.theme ?? {}));
+    this.textStylePresetsValue = deepFreeze(deepClone(init.textStylePresets ?? {}));
   }
 
   get metadata(): Readonly<PresentationMetadataInput> {
@@ -54,6 +57,10 @@ export class PresentationDocumentImpl implements PresentationDocument {
 
   get theme(): Readonly<PresentationThemeInput> {
     return this.themeValue;
+  }
+
+  get textStylePresets(): TextStylePresetMap {
+    return this.textStylePresetsValue;
   }
 
   get slides(): readonly PresentationSlide[] {

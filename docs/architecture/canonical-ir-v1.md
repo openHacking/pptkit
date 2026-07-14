@@ -130,6 +130,11 @@ interface NormalizedShapeElement extends NormalizedElementBase {
   shape: "rect" | "roundRect" | "ellipse" | "triangle" |
     "diamond" | "arrow" | "chevron";
   style: NormalizedShapeStyle;
+  text?: {
+    content: NormalizedTextParagraph[];
+    plainText: string;
+    frame: NormalizedTextFrameStyle;
+  };
 }
 
 interface NormalizedConnectorElement extends NormalizedElementBase {
@@ -161,7 +166,9 @@ interface NormalizedTableElement extends NormalizedElementBase {
 }
 ```
 
-`NormalizedElement` is the union of these six interfaces.
+`NormalizedElement` is the union of these six interfaces. A shape may optionally
+carry an editable text body; this remains one element with one identity rather
+than becoming a shape plus an independent text element.
 
 ## Normalized style schema
 

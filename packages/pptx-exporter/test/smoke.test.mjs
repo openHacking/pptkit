@@ -186,3 +186,25 @@ test("connector extents stay positive for horizontal and vertical lines", async 
     { cx: 13, cy: 2743200 },
   ]);
 });
+
+test("shape text exports as editable text inside the native shape", async () => {
+  const presentation = createPresentation({
+    textStylePresets: {
+      title: { frame: { margin: 0, verticalAlign: "middle" }, paragraph: { align: "center" }, run: { fontSize: 24, bold: true } },
+    },
+  });
+  presentation.addSlide({ elements: [{
+    type: "shape",
+    shape: "roundRect",
+    box: { x: 20, y: 20, width: 200, height: 60 },
+    text: { content: "Card", textStylePreset: "title" },
+  }] });
+  const result = await generatePptx(presentation);
+  const slideXml = readZipEntries(result.bytes).get("ppt/slides/slide1.xml").toString();
+  const shape = slideXml.slice(slideXml.indexOf("<p:sp>"), slideXml.indexOf("</p:sp>") + 7);
+  assert.match(shape, /<a:prstGeom prst="roundRect"/);
+  assert.match(shape, /<p:txBody>/);
+  assert.match(shape, /<a:bodyPr[^>]*anchor="ctr"[^>]*lIns="0"/);
+  assert.match(shape, /<a:rPr[^>]*sz="2400"[^>]*b="1"/);
+  assert.doesNotMatch(shape, /txBox="1"/);
+});

@@ -4,6 +4,18 @@ import { saasHuntSwissStyleExample } from "./examples/saas-hunt-swiss-style.js";
 const exportFullFeatureDeckInput: ExampleInputData = {
   title: "PPTKit Export Full Feature Deck",
   summary: "Each slide isolates one or two exporter features and labels them in the slide content for quick export verification.",
+  textStylePresets: {
+    featureText: {
+      frame: { margin: 0, verticalAlign: "middle" },
+      paragraph: { align: "center" },
+      run: { fontSize: 24, bold: true, color: "1D4ED8" },
+    },
+    shapeLabel: {
+      frame: { margin: 0, verticalAlign: "middle" },
+      paragraph: { align: "center" },
+      run: { fontSize: 20, bold: true, color: "0F172A" },
+    },
+  },
   slides: [
     {
       id: "text-structure",
@@ -29,6 +41,7 @@ const exportFullFeatureDeckInput: ExampleInputData = {
         {
           type: "text",
           text: "Feature: bold, italic, underline, strike, color, size, and auto-fit",
+          textStylePreset: "featureText",
           box: { x: 48, y: 72, width: 624, height: 48 },
           style: {
             fontSize: 24,
@@ -59,12 +72,16 @@ const exportFullFeatureDeckInput: ExampleInputData = {
     },
     {
       id: "basic-shapes",
-      title: "Feature: rectangle + ellipse shapes",
+      title: "Feature: native shape text + text style preset",
       elements: [
         {
           type: "shape",
           shape: "rect",
           box: { x: 48, y: 72, width: 260, height: 160 },
+          text: {
+            content: "Feature: editable text inside one rectangle shape",
+            textStylePreset: "shapeLabel",
+          },
           style: { fill: "#DCEBFF", stroke: "#2563EB", strokeWidth: 2 },
         },
         {
@@ -72,6 +89,49 @@ const exportFullFeatureDeckInput: ExampleInputData = {
           shape: "ellipse",
           box: { x: 380, y: 92, width: 180, height: 120 },
           style: { fill: "#DCFCE7", stroke: "#16A34A", strokeWidth: 2 },
+        },
+      ],
+    },
+    {
+      id: "group",
+      title: "Feature: nested group",
+      elements: [
+        "Feature: group — verify local child coordinates and grouped export",
+        {
+          type: "group",
+          box: { x: 160, y: 96, width: 400, height: 220 },
+          coordinateSize: { width: 400, height: 220 },
+          children: [
+            {
+              type: "shape",
+              shape: "rect",
+              box: { x: 24, y: 28, width: 160, height: 120 },
+              style: { fill: "#DBEAFE", stroke: "#2563EB", strokeWidth: 2 },
+            },
+            {
+              type: "shape",
+              shape: "ellipse",
+              box: { x: 216, y: 64, width: 140, height: 96 },
+              style: { fill: "#DCFCE7", stroke: "#16A34A", strokeWidth: 2 },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "table",
+      title: "Feature: native editable table",
+      elements: [
+        "Feature: native table — verify editable cells, column widths, and colSpan",
+        {
+          type: "table",
+          box: { x: 48, y: 104, width: 624, height: 220 },
+          columns: [220, 180, 180],
+          rows: [
+            { cells: [{ content: "Quarterly results", colSpan: 3 }] },
+            { cells: [{ content: "Workstream" }, { content: "Owner" }, { content: "Status" }] },
+            { cells: [{ content: "Export" }, { content: "PPTKit" }, { content: "Ready" }] },
+          ],
         },
       ],
     },
