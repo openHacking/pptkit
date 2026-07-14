@@ -11,6 +11,23 @@ const skillRoot = path.join(repoRoot, "skills", "pptkit-presentation");
 const initScript = path.join(skillRoot, "scripts", "init-project.mjs");
 const tsxLoader = path.join(repoRoot, "examples", "dev-app", "node_modules", "tsx", "dist", "loader.mjs");
 
+test("presentation skill requires progressive native interaction and an approval gate", () => {
+  const skill = readFileSync(path.join(skillRoot, "SKILL.md"), "utf8");
+  const workflow = readFileSync(path.join(skillRoot, "references", "workflow.md"), "utf8");
+  const guide = readFileSync(path.join(repoRoot, "docs", "guides", "presentation-skill.md"), "utf8");
+
+  assert.match(skill, /one at a time in this order: purpose and audience, theme, then page count and asset strategy/i);
+  assert.match(skill, /request_user_input/i);
+  assert.match(skill, /Approve and generate.*Change the plan.*Cancel/is);
+  assert.match(skill, /Do not initialize a project, install dependencies, copy sources, or generate a PPTX before/i);
+  assert.match(workflow, /# Interaction capability/);
+  assert.match(workflow, /Choose one option for <decision>:/);
+  assert.match(workflow, /custom in-chat plugin form/i);
+  assert.match(workflow, /Treat every outcome except \*\*Approve and generate\*\* as a stop/);
+  assert.match(guide, /one at a time/i);
+  assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
+});
+
 function linkDirectory(target, link) {
   mkdirSync(path.dirname(link), { recursive: true });
   symlinkSync(target, link, process.platform === "win32" ? "junction" : "dir");

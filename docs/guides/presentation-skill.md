@@ -2,9 +2,21 @@
 
 The `pptkit-presentation` skill packages PPTKit's developer APIs as a guided workflow for local coding agents. It produces an editable `.pptx`, the TypeScript deck specification, extracted source evidence, and a machine-readable build report.
 
-## Install
+## Install or update
 
-Install the skill with:
+In a skill-enabled agent such as Codex, you do not need a terminal. Send one of these
+sentences in chat:
+
+> Install the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+
+> Update my installed `pptkit-presentation` skill to the latest version from the GitHub repository `openHacking/pptkit`.
+
+The agent should confirm the installation or update before you use the skill. Updating
+reinstalls the skill files; it does not alter deck projects that were already generated.
+Use the same update sentence after a new version is published.
+
+If your agent does not offer skill installation in chat, use its documented installer.
+For the command-line installer, run:
 
 ```bash
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
@@ -32,7 +44,9 @@ Start with a plain request and attach or name the relevant files:
 Use PPTKit to turn this quarterly report into an editable 10-slide PPTX for our executive review.
 ```
 
-The skill inspects the material, asks only for decisions it cannot infer, shows three local style previews, and confirms one slide-by-slide outline before generation. Hosts with structured question tools use them; other hosts ask the same intake in ordinary chat.
+The skill inspects the material, then asks only for decisions it cannot infer, one at a time: purpose and audience, theme, then scope and asset strategy. It uses the host's native question control when one is available (Codex uses its native option card); other agents use their equivalent control. A host without that capability receives a numbered text choice and the skill waits for a reply.
+
+Before any project is created, the skill shows a short, always-visible decision summary and keeps the full slide-by-slide outline separate; it uses an expandable detail section when the host provides one. The user must choose **Approve and generate**, **Change the plan**, or **Cancel**. Only approval permits project initialization and PPTX generation; change reopens only the affected decision, and cancel leaves no project artifacts. This confirmation is skipped only for a complete brief that explicitly requests generation without confirmation. The skill cannot add a custom ChatCut-style form to hosts that do not provide one.
 
 The bundled themes are:
 

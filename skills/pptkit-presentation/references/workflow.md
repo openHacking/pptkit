@@ -2,13 +2,26 @@
 
 ## Intake
 
-Derive everything possible from the user's prompt and files first. Ask only for missing decisions that change the result. Group the intake into at most three questions:
+Derive everything possible from the user's prompt and files first. Ask only for missing decisions that change the result. Ask one decision at a time, in this order:
 
-1. **Purpose:** audience, delivery setting, desired outcome, language, and duration/page range.
-2. **Material:** authoritative sources, required claims/data, image policy, confidentiality, and citations.
-3. **Design:** preferred theme, brand constraints, format, and non-negotiable content.
+1. **Purpose:** audience, delivery setting, desired outcome, and language.
+2. **Design:** preferred theme, brand constraints, format, and non-negotiable content.
+3. **Scope and material:** duration/page range, authoritative sources, image policy, confidentiality, and citations.
 
-When the host offers structured questions, use it. Otherwise ask the same fields in concise prose. Do not pretend that a custom in-chat plugin form exists.
+## Interaction capability
+
+Prefer the host's native user-input capability. Use single-select, multi-select, or text input as the decision needs; include a recommended choice, mutually exclusive choices where applicable, and free-form input. In Codex, call `request_user_input`; on another agent, call its equivalent native question/form tool when it exists.
+
+If the host has no native user-input capability, use this fallback exactly, then stop and wait for a reply:
+
+```text
+Choose one option for <decision>:
+1. <recommended option> — <effect>
+2. <alternative> — <effect>
+3. Other — reply with your preference
+```
+
+Do not claim that this skill creates a custom in-chat plugin form. It can request the host's native control, but the host owns its UI.
 
 ## Theme selection
 
@@ -22,14 +35,20 @@ Respect an explicit user choice. Never mix themes within one deck.
 
 ## Confirmation gate
 
-Confirm these fields together:
+After the outline is ready, show a short decision summary that remains visible:
 
-- working title, audience, purpose, language, and expected slide count
+- working title and expected slide count
 - selected theme and image strategy
-- hard constraints and known gaps
-- one line per slide: role, title, message, visual, and source IDs
+- material constraints or known gaps
+- outline overview
 
-Wait for explicit confirmation. Skip the wait only if the user supplied a complete specification and explicitly requested uninterrupted generation.
+Put the full per-slide plan (role, title, message, visual, and source IDs) after the summary. Use an expandable detail section when the host provides one, but do not rely on it for the confirmation control. Then request exactly one outcome through the host's native control, or the numbered fallback:
+
+1. **Approve and generate** — create the project and continue.
+2. **Change the plan** — ask again only for the affected decision, refresh the outline, and present confirmation again.
+3. **Cancel** — summarize the collected brief and do not create project artifacts.
+
+Treat every outcome except **Approve and generate** as a stop. Do not initialize a project, install dependencies, copy sources, or generate a PPTX before approval. Skip the gate only if the user supplied a complete specification and explicitly requested generation without confirmation.
 
 ## Project artifacts
 
