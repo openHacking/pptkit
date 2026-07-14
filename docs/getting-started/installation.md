@@ -1,45 +1,16 @@
-# Installation
+# Install PPTKit
 
-PPTKit is in pre-release development. Install the current preview packages for application use, or use the monorepo workspace for contribution and local evaluation.
+This guide is for application developers installing PPTKit to build presentations.
+For contributing to PPTKit itself, use the [Developer Workflow](../guides/developer-workflow.md).
+
+PPTKit is in pre-release development. The package API may change before the stable release.
 
 ## Requirements
 
 - Node.js 20 or newer
-- pnpm 10.13 or compatible pnpm 10 release
+- pnpm 10.13 or compatible pnpm 10 release, or npm
 
-## Workspace setup
-
-```bash
-git clone <your-pptkit-repository-url>
-cd pptkit
-pnpm install
-pnpm build
-pnpm typecheck
-pnpm lint
-pnpm test
-```
-
-Start the local examples workbench with:
-
-```bash
-pnpm dev
-```
-
-The workbench is served at `http://localhost:3210`.
-
-## Current package entry points
-
-| Import | Runtime |
-| --- | --- |
-| `@pptkit/core` | Browser and Node.js |
-| `@pptkit/layout` | Browser and Node.js |
-| `@pptkit/pptx-exporter` | Browser-neutral generation; URL assets |
-| `@pptkit/pptx-exporter/node` | Node.js generation/file output; URL and path assets |
-| `@pptkit/cli` | Node.js command line |
-
-## Package installation
-
-Install the preview packages with:
+## Install the packages
 
 ```bash
 pnpm add @pptkit/core @pptkit/pptx-exporter
@@ -51,6 +22,21 @@ or:
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-The repository's release workflow is documented in [Release Strategy](../migration/release-strategy.md).
+## Package entry points
 
-Continue with the [Quick Start](quick-start.md).
+| Import | Runtime |
+| --- | --- |
+| `@pptkit/core` | Browser and Node.js |
+| `@pptkit/layout` | Browser and Node.js |
+| `@pptkit/pptx-exporter` | Browser-neutral generation; returns PPTX bytes and loads URL assets |
+| `@pptkit/pptx-exporter/node` | Node.js generation and file output; loads URL and local path assets |
+| `@pptkit/cli` | Node.js command line |
+
+For a typical application, import `@pptkit/core` to create and validate a
+presentation. Use `@pptkit/pptx-exporter` when the application needs bytes for a
+browser download, or `@pptkit/pptx-exporter/node` when a Node.js process should write
+an editable `.pptx` file.
+
+## Next step
+
+Continue with the [Quick Start](quick-start.md) to create and export your first deck.

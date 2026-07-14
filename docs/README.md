@@ -2,9 +2,9 @@
 
 The documentation is organized by audience and task. Current behavior is written in the present tense; parser, rendering, and other unimplemented systems are labeled as future architecture.
 
-## Start here
+## Start using PPTKit
 
-- [Installation](getting-started/installation.md)
+- [Install PPTKit](getting-started/installation.md)
 - [Quick Start](getting-started/quick-start.md)
 - [Create Your First Deck](guides/create-your-first-deck.md)
 - [Generate a Deck with the Presentation Skill](guides/presentation-skill.md)

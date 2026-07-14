@@ -16,7 +16,8 @@ PPTKit is a developer-first TypeScript toolkit for building structured, editable
 
 ## Installation
 
-Install the current preview packages from npm:
+PPTKit requires Node.js 20 or newer. Install the current preview packages in your
+application with pnpm:
 
 ```bash
 pnpm add @pptkit/core @pptkit/pptx-exporter
@@ -28,29 +29,12 @@ or:
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-Use `@pptkit/core` to create and validate a presentation, then use the Node entry
-of `@pptkit/pptx-exporter` to write an editable `.pptx` file:
+Use `@pptkit/core` for authoring and validation. Use the default exporter entry for
+browser generation, or the Node entry when writing a local `.pptx` file:
 
-```ts
-import { createPresentation } from "@pptkit/core";
-import { writePptx } from "@pptkit/pptx-exporter/node";
-
-const presentation = createPresentation({
-  metadata: { title: "Hello PPTKit", author: "Example Team" },
-});
-
-const slide = presentation.addSlide();
-slide.addElement({
-  type: "text",
-  content: "Hello PPTKit",
-  box: { x: 64, y: 64, width: 520, height: 72 },
-});
-
-await writePptx(presentation, { output: "./hello-pptkit.pptx" });
-```
-
-PPTKit is currently pre-release. See the [installation guide](docs/getting-started/installation.md)
-for package and workspace setup, browser generation, assets, validation, and warnings.
+PPTKit is currently pre-release. See [Install PPTKit](docs/getting-started/installation.md)
+for package entry points, runtime requirements, and asset behavior. Then continue
+with the [Quick Start](docs/getting-started/quick-start.md) to create your first deck.
 
 ### Presentation Skill
 
@@ -73,14 +57,8 @@ repository-local evaluation steps.
 
 ## Quick Start
 
-For workspace development, install dependencies and build the packages first:
-
-```bash
-pnpm install
-pnpm build
-```
-
-The following example writes an editable `hello-pptkit.pptx` file.
+The following example assumes PPTKit is installed in your project and writes an
+editable `hello-pptkit.pptx` file.
 
 <!-- doc-test: docs/examples/quick-start.ts -->
 ```ts
@@ -119,17 +97,9 @@ const result = await writePptx(presentation, {
 console.log(result.status, result.output, result.warnings);
 ```
 
-The checked copy of this example lives at `docs/examples/quick-start.ts`. Run it from the workspace with:
-
-```bash
-pnpm --filter @pptkit/dev-app exec tsx \
-  --tsconfig ../../docs/examples/tsconfig.json \
-  ../../docs/examples/quick-start.ts
-```
-
-This writes `hello-pptkit.pptx` in `examples/dev-app/`.
-
-See the full [Quick Start](docs/getting-started/quick-start.md) for how validation, browser generation, assets, and warnings fit together.
+See the full [Quick Start](docs/getting-started/quick-start.md) for validation,
+browser generation, assets, and warnings. Contributors can run the checked example
+from the [Developer Workflow](docs/guides/developer-workflow.md).
 
 ## Packages
 
@@ -156,7 +126,7 @@ The separation keeps mutable authoring state, layout behavior, and OOXML packagi
 ## Documentation
 
 - [Documentation index](docs/README.md)
-- [Installation](docs/getting-started/installation.md)
+- [Install PPTKit](docs/getting-started/installation.md)
 - [Quick Start](docs/getting-started/quick-start.md)
 - [Create Your First Deck](docs/guides/create-your-first-deck.md)
 - [API reference](docs/api/README.md)
@@ -167,7 +137,9 @@ The separation keeps mutable authoring state, layout behavior, and OOXML packagi
 
 ## Development
 
-PPTKit requires Node.js 20 or newer and uses pnpm 10.
+This section is for contributors working from the PPTKit monorepo. The complete
+[Developer Workflow](docs/guides/developer-workflow.md) covers setup, validation,
+documentation checks, and the examples workbench.
 
 ```bash
 pnpm install
@@ -178,7 +150,8 @@ pnpm lint
 pnpm test
 ```
 
-`pnpm dev` starts the local examples workbench at `http://localhost:3210`. Contribution and package-boundary expectations are documented in [CONTRIBUTING.md](CONTRIBUTING.md).
+`pnpm dev` starts the local examples workbench at `http://localhost:3210`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations.
 
 ## Roadmap
 

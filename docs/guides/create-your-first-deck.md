@@ -4,7 +4,7 @@ This walkthrough builds a two-slide presentation with a theme, reusable layout, 
 
 ## Before you begin
 
-Complete the [workspace installation](../getting-started/installation.md) and place an image at `./assets/overview.png` relative to the process that runs the example. Supplying its pixel dimensions allows Layout to resolve `cover` cropping deterministically.
+Complete [Install PPTKit](../getting-started/installation.md) and place an image at `./assets/overview.png` relative to the process that runs the example. Supplying its pixel dimensions allows Layout to resolve `cover` cropping deterministically.
 
 ## Complete example
 

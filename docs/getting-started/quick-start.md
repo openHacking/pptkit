@@ -1,19 +1,13 @@
 # Quick Start
 
-This guide takes you from a local checkout to an editable `.pptx` file using the current pre-release API.
+This guide takes you from an installed PPTKit package to an editable `.pptx` file
+using the current pre-release API. It is for application developers; contributors
+should use the [Developer Workflow](../guides/developer-workflow.md).
 
 ## Prerequisites
 
-- Node.js 20 or newer
-- pnpm 10
-- a local checkout of this repository
-
-For repository development, install and build the workspace before running an example:
-
-```bash
-pnpm install
-pnpm build
-```
+- Node.js 20 or newer for the Node.js file-output example
+- PPTKit installed in your TypeScript or Node.js project; see [Install PPTKit](installation.md)
 
 ## Create and export a presentation
 
@@ -58,16 +52,6 @@ console.log(result.status, result.output, result.warnings);
 
 Run it with your TypeScript runner or compile it with your project.
 
-The repository keeps the checked source at `docs/examples/quick-start.ts`. To execute that exact file with the workbench's TypeScript runner:
-
-```bash
-pnpm --filter @pptkit/dev-app exec tsx \
-  --tsconfig ../../docs/examples/tsconfig.json \
-  ../../docs/examples/quick-start.ts
-```
-
-The command writes `hello-pptkit.pptx` in `examples/dev-app/`.
-
 The Node exporter creates parent directories when necessary and returns:
 
 - `status`: `written` or `written-with-warnings`
@@ -76,6 +60,9 @@ The Node exporter creates parent directories when necessary and returns:
 - `warnings`: recoverable asset-loading problems
 
 Core validation errors are not warnings. `writePptx()` rejects with `PresentationValidationError` before packaging when the document is invalid.
+
+The checked copy of this example lives at `docs/examples/quick-start.ts`. Contributors
+can run it with the command documented in the [Developer Workflow](../guides/developer-workflow.md).
 
 ## Why the code uses methods
 

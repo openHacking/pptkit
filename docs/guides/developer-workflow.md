@@ -1,16 +1,26 @@
 # Developer Workflow
 
-This guide describes the contributor workflow for the implemented TypeScript workspace.
+This guide is for PPTKit contributors and maintainers working in the TypeScript
+monorepo. It is not required for application developers using the published packages;
+start with [Install PPTKit](../getting-started/installation.md) instead.
 
 ## Prerequisites
 
 - Node.js 20 or newer
-- `pnpm`
+- pnpm 10.13 or compatible pnpm 10 release
 
 ## Local Setup
 
 ```bash
+git clone <your-pptkit-repository-url>
+cd pptkit
 pnpm install
+```
+
+Build the workspace before running checked examples or the workbench:
+
+```bash
+pnpm build
 ```
 
 ## Common Commands
@@ -19,8 +29,32 @@ pnpm install
 pnpm lint
 pnpm typecheck
 pnpm test
+pnpm dev
 pnpm build
 ```
+
+`pnpm dev` starts the local examples workbench at `http://localhost:3210`.
+
+Run the repository's checked Quick Start example with the workbench TypeScript runner:
+
+```bash
+pnpm --filter @pptkit/dev-app exec tsx \
+  --tsconfig ../../docs/examples/tsconfig.json \
+  ../../docs/examples/quick-start.ts
+```
+
+This writes `hello-pptkit.pptx` in `examples/dev-app/`.
+
+## Documentation checks
+
+Documentation links, checked snippets, stale API references, and documentation
+example types are validated with:
+
+```bash
+pnpm docs:check
+```
+
+Run this when changing Markdown or files referenced by a `doc-test` marker.
 
 ## Adding a New Package
 

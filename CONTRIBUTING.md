@@ -10,7 +10,9 @@ Thanks for your interest in contributing to PPTKit.
 
 ## Local Development
 
-The monorepo workspace is now bootstrapped. The standard validation workflow is:
+The complete monorepo setup and validation workflow is documented in the
+[Developer Workflow](docs/guides/developer-workflow.md). The standard validation
+commands are:
 
 ```bash
 pnpm install
