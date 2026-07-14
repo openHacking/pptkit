@@ -1,6 +1,6 @@
 # Architecture Overview
 
-PPTKit is a TypeScript presentation document engine with explicit boundaries between authoring, normalization, layout, parsing, preview, and file export. Core, Layout, and editable PPTX export are implemented; parsing and preview/rendering remain roadmap work.
+PPTKit is a TypeScript presentation document engine with explicit boundaries between authoring, normalization, layout, parsing, preview, and file export. Core, Layout, editable PPTX export, and foundational browser SVG preview are implemented; parsing remains roadmap work.
 
 ## Goal
 
@@ -26,12 +26,10 @@ Canonical Presentation IR v1
     ▼
 Layout Result (@pptkit/layout)
     │
-    ├────────► future preview/render paths
-    ▼
-PPTX Package Model (@pptkit/pptx-exporter)
+    ├────────► SVG preview (@pptkit/svg-renderer)
     │
     ▼
-editable .pptx
+PPTX Package Model (@pptkit/pptx-exporter) → editable .pptx
 ```
 
 A future parse flow starts at package-level data, classifies editable/preserved/fallback/unsupported structures, and maps supported semantics toward Canonical IR. Export and parse are related but are not assumed to be perfect inverses.
@@ -41,9 +39,10 @@ A future parse flow starts at package-level data, classifies editable/preserved/
 - `@pptkit/core` owns authoring semantics, identity, validation, and IR v1.
 - `@pptkit/layout` resolves connector anchors and image fitting into detached layout output.
 - `@pptkit/pptx-exporter` loads assets and serializes editable PPTX packages; its Node adapter writes files.
+- `@pptkit/svg-renderer` creates browser-oriented per-slide hybrid SVG previews from Layout state.
 - `@pptkit/cli` is a thin workflow shell without a stable authoring command surface yet.
 
-Planned parser and SVG packages are described in [Package Boundaries](package-boundaries.md).
+The planned PPTX and SVG parser packages are described in [Package Boundaries](package-boundaries.md).
 
 ## Why the separation matters
 
@@ -68,4 +67,4 @@ The separation allows PPTKit to:
 
 ## Current maturity
 
-The repository is pre-release. Core IR v1 and a foundational editable PPTX pipeline exist, including rich text, themes, layouts/placeholders, images, shapes, connectors, groups, tables, notes, and metadata. Text measurement, automatic layout, parsing, round-trip preservation, rendering, and publication hardening remain active roadmap areas.
+The repository is pre-release. Core IR v1, editable PPTX output, and a foundational browser preview pipeline exist, including rich text, themes, layouts/placeholders, images, shapes, connectors, groups, tables, notes, and metadata. Higher-fidelity text measurement, automatic layout, parsing, round-trip preservation, cross-browser visual baselines, and publication hardening remain active roadmap areas.

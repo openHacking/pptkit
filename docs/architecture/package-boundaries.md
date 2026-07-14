@@ -40,6 +40,19 @@ Owns editable PPTX output:
 
 The exporter translates explicit Core/Layout semantics and does not own authoring defaults or public presentation types.
 
+### `@pptkit/svg-renderer`
+
+Owns browser-oriented preview transformation over detached Layout state:
+
+- per-slide standalone SVG serialization
+- SVG geometry, connector, image, crop, and group rendering
+- native SVG simple text with deterministic wrapping, plus XHTML `foreignObject`
+  fallback for mixed-run rich text and tables
+- runtime-neutral asset URL resolution hooks and fidelity warnings
+
+The renderer has no filesystem, framework, editor, PPTX, OOXML, ZIP, or parser concerns.
+It depends only on public Core and Layout exports and never becomes authoritative state.
+
 ### `@pptkit/cli`
 
 Owns thin command-line orchestration. Its current public surface is minimal; future generation and inspection commands must call package APIs rather than reimplement document, layout, parser, or exporter logic.
@@ -50,9 +63,9 @@ Owns thin command-line orchestration. Its current public surface is minimal; fut
 
 Will own PPTX package inspection, supported semantic conversion, diagnostics, and preservation/degradation of unknown structures. It must not depend on exporter internals as if parse and export were exact inverses.
 
-### `@pptkit/svg-parser` and `@pptkit/svg-renderer`
+### `@pptkit/svg-parser`
 
-Will own directional SVG parsing and output transformations without duplicating the PPTX exporter or turning Core into an SVG DOM.
+Will own directional SVG parsing without duplicating the renderer or turning Core into an SVG DOM.
 
 ## Dependency rules
 

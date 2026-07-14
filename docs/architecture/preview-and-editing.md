@@ -23,6 +23,20 @@ In other words:
 - `IR -> SVG renderer -> preview`
 - `IR -> PPTX exporter -> delivery`
 
+The implemented renderer resolves the IR through `@pptkit/layout` and emits standalone
+per-slide SVG strings. SVG geometry handles shapes, connectors, images, groups, and
+simple text with explicit PowerPoint-oriented lines and baselines. Browser XHTML
+`foreignObject` remains the fallback for mixed-run rich text and tables. Consumers may display these
+strings in a gallery, but must keep authoring/normalized state as the source of truth.
+
+## Fidelity boundary
+
+The preview is designed for modern-browser QA: missing images, clipping, overlap,
+drawing order, transforms, table structure, and broad visual composition. Browser font
+metrics differ from PowerPoint, and hybrid SVG is not a promise of portable SVG or
+pixel-identical Office rendering. Renderer warnings are evidence to review, not edits to
+the document.
+
 ## Why Not Edit Raw PPTX State
 
 Raw package structures are too format-specific to serve as the main editing surface.

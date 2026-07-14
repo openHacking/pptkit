@@ -37,6 +37,10 @@ The workbench is intentionally honest about implementation status.
 - normalized document output should be inspectable
 - preview may be structural rather than visually final
 - browser export generates and downloads bytes locally, while server export exercises the Node.js file adapter
+- **Preview SVG** renders the applied example through `@pptkit/svg-renderer` and displays every slide locally in the browser
+
+The SVG gallery is a QA demonstration, not an editor. It uses the same authored
+presentation as PPTX export and reports renderer warning counts alongside the slides.
 - both export paths use the currently applied source; visual preview may still be structural
 
 That honesty makes `pnpm dev` useful now without pretending unfinished subsystems are complete.

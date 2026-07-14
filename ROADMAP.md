@@ -17,6 +17,7 @@ PPTKit is building a format-independent presentation document engine with editab
 - **Templates:** presentation themes, reusable slide layouts, typed placeholders, placeholder binding, and explicit inheritance.
 - **Layout:** detached resolution for connector anchors, connector bounds, image contain/cover, and nested group traversal.
 - **PPTX export:** browser-neutral bytes, Node file output, native themes/layouts/tables/notes/media relationships, validation failures, and recoverable asset warnings.
+- **Browser preview:** deterministic per-slide hybrid SVG from Layout state, all current element families, asset/fidelity warnings, workbench integration, and Chromium visual fixtures.
 
 ## Public preview gate — Next
 
@@ -54,7 +55,7 @@ Layout remains deterministic and independently testable; exporters do not become
 
 - broader preset geometry plus custom paths
 - SVG parsing and rendering boundaries
-- browser preview derived from Canonical IR
+- higher-fidelity browser preview text measurement and cross-browser visual baselines
 - higher-level authoring/layout recipes without expanding Core into a catch-all API
 - practical CLI generation and inspection workflows
 - plugin extension points with explicit ownership and capability negotiation

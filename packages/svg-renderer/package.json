@@ -1,0 +1,29 @@
+{
+  "name": "@pptkit/svg-renderer",
+  "version": "0.1.1",
+  "private": false,
+  "type": "module",
+  "description": "Browser-oriented SVG preview rendering for PPTKit presentations.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/layout": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm run build && node --test test/*.test.mjs"
+  }
+}

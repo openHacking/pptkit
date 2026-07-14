@@ -4,7 +4,6 @@ import type {
   ExampleDefinition,
   ExampleReport,
   NormalizedDocumentReport,
-  VisualPreviewSlide,
 } from "./example-types.js";
 import { parseExampleSource } from "./source-parser.js";
 import { createExamplePresentation } from "./presentation-builder.js";
@@ -58,14 +57,6 @@ function buildNormalizedDocument(input: ReturnType<ExampleDefinition["createInpu
   };
 }
 
-function buildVisualPreview(normalizedDocument: NormalizedDocumentReport): VisualPreviewSlide[] {
-  return normalizedDocument.slides.map((slide) => ({
-    id: slide.id,
-    title: slide.title,
-    body: slide.elements,
-  }));
-}
-
 export async function buildExampleReport(example: ExampleDefinition, sourceOverride?: string): Promise<ExampleReport> {
   const input = sourceOverride === undefined ? example.createInput() : parseExampleSource(sourceOverride);
   const normalizedDocument = buildNormalizedDocument(input);
@@ -84,21 +75,11 @@ export async function buildExampleReport(example: ExampleDefinition, sourceOverr
     `Export: ${example.expectedCapabilities.exportPptx}`,
   ];
 
-  if (example.expectedCapabilities.render !== "implemented") {
-    diagnostics.push(
-      "Visual preview uses a structural slide mock instead of a production renderer.",
-    );
-  }
-
   diagnostics.push("PPTX export is available from the Export PPTX action.");
 
   return {
     example: sourceOverride === undefined ? example : { ...example, source: { ...example.source, content: sourceOverride } },
     normalizedDocument,
-    visualPreview: {
-      status: "structural-preview",
-      slides: buildVisualPreview(normalizedDocument),
-    },
     renderResult,
     exportResult,
     diagnostics,

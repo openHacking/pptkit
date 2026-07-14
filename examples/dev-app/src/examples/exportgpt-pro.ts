@@ -275,7 +275,7 @@ export const exportgptProExample: ExampleDefinition = {
     content: "https://exportgpt.pro/\nOfficial product claims used: one-click export; 9 formats; selective export; edit and preview; image and share-link export; local-first processing; Screenshot/PDF server-side processing and automatic deletion within 24 hours.",
   },
   scenarioTags: ["product-introduction", "reference-style", "editable", "export"],
-  expectedCapabilities: { normalize: "implemented", render: "placeholder", exportPptx: "implemented" },
+  expectedCapabilities: { normalize: "implemented", render: "implemented", exportPptx: "implemented" },
   status: "ready",
   createInput() {
     return structuredClone(input);

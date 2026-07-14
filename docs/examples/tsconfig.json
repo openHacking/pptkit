@@ -5,12 +5,14 @@
     "composite": false,
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "baseUrl": "../..",
     "paths": {
       "@pptkit/core": ["packages/core/src/index.ts"],
       "@pptkit/layout": ["packages/layout/src/index.ts"],
       "@pptkit/pptx-exporter": ["packages/pptx-exporter/src/index.ts"],
-      "@pptkit/pptx-exporter/node": ["packages/pptx-exporter/src/node.ts"]
+      "@pptkit/pptx-exporter/node": ["packages/pptx-exporter/src/node.ts"],
+      "@pptkit/svg-renderer": ["packages/svg-renderer/src/index.ts"]
     }
   },
   "include": ["./*.ts"]

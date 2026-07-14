@@ -13,11 +13,13 @@ PPTKit is a developer-first TypeScript toolkit for building structured, editable
 - Detached layout resolution for connector anchors and image contain/cover behavior.
 - Editable PPTX generation with native layouts, theme parts, notes, tables, media, and relationships.
 - Browser-neutral byte generation plus a Node.js adapter for local assets and file output.
+- Modern-browser SVG previews for slide QA without parsing or rendering PPTX.
 
 ## Installation
 
-PPTKit requires Node.js 20 or newer. Install the current preview packages in your
-application with pnpm:
+PPTKit's development and installation toolchain requires Node.js 20 or newer. The
+default Core, SVG renderer, and PPTX byte-generation entry points run in modern
+browsers without Node APIs. Install the current preview packages with pnpm:
 
 ```bash
 pnpm add @pptkit/core @pptkit/pptx-exporter
@@ -113,6 +115,7 @@ from the [Developer Workflow](docs/guides/developer-workflow.md).
 | `@pptkit/core` | Authoring model, elements, assets, themes/layouts, validation, and Canonical IR. |
 | `@pptkit/layout` | Detached connector and image geometry resolution. |
 | `@pptkit/pptx-exporter` | Browser-neutral editable PPTX generation and Node.js file output. |
+| `@pptkit/svg-renderer` | Browser-oriented SVG preview generation from resolved presentation state. |
 | `@pptkit/cli` | Thin command workflow shell; its authoring command surface is not stable yet. |
 
 Parser, SVG, preview, and rendering packages remain roadmap work. See the [package overview](docs/api/package-overview.md).

@@ -20,6 +20,7 @@ pnpm test
 - **Core:** operation semantics, immutable snapshots, IDs, duplication/removal, full diagnostics, normalized defaults, inheritance, and detached IR.
 - **Layout:** detached results, connector anchors/bounds, image contain/cover, and nested group traversal.
 - **PPTX exporter:** deterministic ZIP structure, OOXML parts/relationships, editable feature serialization, runtime asset behavior, warnings, and Node output.
+- **SVG renderer:** deterministic serialization, all current element families, input detachment, asset/fidelity warnings, escaping, and real-Chromium visual fixtures.
 - **CLI:** stable command entry behavior appropriate to its current minimal surface.
 
 Tests prefer focused documents that isolate one contract. Cross-package tests cover boundaries where a feature would otherwise be “modeled but not exported.”
@@ -33,6 +34,11 @@ Tests prefer focused documents that isolate one contract. Cross-package tests co
 5. Open/save representative decks in PowerPoint and LibreOffice.
 
 The first three layers are automated today. Visual fixture coverage and a formal cross-application matrix are public-preview gates in the [Roadmap](../../ROADMAP.md).
+
+SVG renderer fixtures run in pinned Playwright Chromium. Install the local browser once
+with `pnpm exec playwright install chromium`; CI installs Chromium and its Linux
+dependencies before `pnpm test`. Fixed viewport, device scale, color scheme, and a small
+cross-platform pixel tolerance keep the preview snapshots reviewable.
 
 ## Fixtures and regressions
 

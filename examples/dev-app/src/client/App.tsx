@@ -1,6 +1,7 @@
-import { AlertCircle, Check, Download, LoaderCircle, Presentation, RotateCcw, TriangleAlert } from "lucide-react";
+import { AlertCircle, Check, Download, Eye, LoaderCircle, Presentation, RotateCcw, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 import { generatePptx } from "@pptkit/pptx-exporter";
+import { renderPresentationToSvg, type SvgRenderResult } from "@pptkit/svg-renderer";
 import type { CapabilityStatus, ExampleReport, ExampleSummary, FeatureId, WorkbenchPayload } from "../example-types";
 import { createExamplePresentation } from "../presentation-builder";
 import { parseExampleSource } from "../source-parser";
@@ -78,11 +79,13 @@ function SourceEditor({
   applying,
   browserExporting,
   serverExporting,
+  previewing,
   onChange,
   onApply,
   onReset,
   onBrowserExport,
   onServerExport,
+  onPreview,
 }: {
   label: string;
   value: string;
@@ -91,13 +94,15 @@ function SourceEditor({
   applying: boolean;
   browserExporting: boolean;
   serverExporting: boolean;
+  previewing: boolean;
   onChange: (value: string) => void;
   onApply: () => void;
   onReset: () => void;
   onBrowserExport: () => void;
   onServerExport: () => void;
+  onPreview: () => void;
 }) {
-  const busy = applying || browserExporting || serverExporting;
+  const busy = applying || browserExporting || serverExporting || previewing;
 
   return (
     <div className="space-y-2">
@@ -116,6 +121,10 @@ function SourceEditor({
           <Button type="button" size="sm" onClick={onApply} disabled={!dirty || busy}>
             {applying ? <LoaderCircle className="animate-spin" /> : <Check />}
             {applying ? "Applying..." : "Apply changes"}
+          </Button>
+          <Button type="button" variant="outline" size="sm" onClick={onPreview} disabled={dirty || busy}>
+            {previewing ? <LoaderCircle className="animate-spin" /> : <Eye />}
+            {previewing ? "Rendering preview..." : "Preview SVG"}
           </Button>
           <Button type="button" variant="secondary" size="sm" onClick={onBrowserExport} disabled={dirty || busy}>
             {browserExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
@@ -189,6 +198,23 @@ function ExampleList({
   );
 }
 
+async function buildPreviewResultFromNormalizedDocument(report: ExampleReport): Promise<SvgRenderResult> {
+  const presentation = createExamplePresentation({
+    title: report.normalizedDocument.title,
+    summary: report.normalizedDocument.summary,
+    slides: report.normalizedDocument.slides.map((slide) => ({
+      title: slide.title,
+      elements: slide.elements,
+    })),
+  });
+  return renderPresentationToSvg(presentation);
+}
+
+async function buildPreviewResultFromSource(source: string): Promise<SvgRenderResult> {
+  const presentation = createExamplePresentation(parseExampleSource(source));
+  return renderPresentationToSvg(presentation);
+}
+
 function ReportView({
   report,
   source,
@@ -197,12 +223,15 @@ function ReportView({
   applying,
   browserExporting,
   serverExporting,
+  previewing,
+  previewResult,
   exportMessage,
   onSourceChange,
   onApply,
   onReset,
   onBrowserExport,
   onServerExport,
+  onPreview,
 }: {
   report: ExampleReport;
   source: string;
@@ -211,12 +240,15 @@ function ReportView({
   applying: boolean;
   browserExporting: boolean;
   serverExporting: boolean;
+  previewing: boolean;
+  previewResult: SvgRenderResult;
   exportMessage: string | null;
   onSourceChange: (value: string) => void;
   onApply: () => void;
   onReset: () => void;
   onBrowserExport: () => void;
   onServerExport: () => void;
+  onPreview: () => void;
 }) {
   return (
     <div className="flex h-full flex-col gap-5">
@@ -263,23 +295,20 @@ function ReportView({
 
       <Card className="gap-4 py-5">
         <CardHeader>
-          <CardTitle>Structural Preview</CardTitle>
+          <CardTitle>SVG Browser Preview</CardTitle>
+          <p className="text-muted-foreground text-sm">
+            {previewResult.slides.length} slide{previewResult.slides.length === 1 ? "" : "s"} · {previewResult.warnings.length} warning{previewResult.warnings.length === 1 ? "" : "s"}
+          </p>
         </CardHeader>
-        <CardContent className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {report.visualPreview.slides.map((slide, index) => (
-            <Card key={slide.id} className="gap-3 py-5">
-              <CardHeader>
-                <div className="text-muted-foreground text-sm">Slide {index + 1}</div>
-                <CardTitle className="text-base">{slide.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm">
-                  {slide.body.map((line) => (
-                    <li key={line}>{line}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+        <CardContent className="grid gap-4 md:grid-cols-2">
+          {previewResult.slides.map((slide) => (
+            <div key={slide.slideId} className="overflow-hidden rounded-md border bg-muted/30 p-2">
+              <div className="mb-2 text-xs text-muted-foreground">Slide {slide.index + 1}{slide.hidden ? " · hidden" : ""}</div>
+              <div
+                className="aspect-video w-full overflow-hidden bg-white [&>svg]:h-full [&>svg]:w-full"
+                dangerouslySetInnerHTML={{ __html: slide.svg }}
+              />
+            </div>
           ))}
         </CardContent>
       </Card>
@@ -304,11 +333,13 @@ function ReportView({
                 applying={applying}
                 browserExporting={browserExporting}
                 serverExporting={serverExporting}
+                previewing={previewing}
                 onChange={onSourceChange}
                 onApply={onApply}
                 onReset={onReset}
                 onBrowserExport={onBrowserExport}
                 onServerExport={onServerExport}
+                onPreview={onPreview}
               />
               {exportMessage !== null && (
                 <p className="flex items-center gap-2 text-sm text-emerald-700">
@@ -372,6 +403,14 @@ export default function App() {
   const [applying, setApplying] = useState(false);
   const [browserExporting, setBrowserExporting] = useState(false);
   const [serverExporting, setServerExporting] = useState(false);
+  const [previewing, setPreviewing] = useState(false);
+  const [previewResult, setPreviewResult] = useState<SvgRenderResult>({
+    width: 0,
+    height: 0,
+    slides: [],
+    warnings: [],
+    status: "rendered",
+  });
   const [exportMessage, setExportMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -401,9 +440,12 @@ export default function App() {
           return;
         }
 
+        const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+
         setPayload(nextPayload);
         setActiveFeature(initialFeature);
         setActiveExampleId(initialExample.id);
+        setPreviewResult(nextPreviewResult);
         setReport(nextReport);
         setSource(nextReport.example.source.content);
         setAppliedSource(nextReport.example.source.content);
@@ -442,8 +484,11 @@ export default function App() {
 
     try {
       const nextReport = await fetchJson<ExampleReport>(`/api/examples/${nextExample.id}`);
+      const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+
       setActiveFeature(feature);
       setActiveExampleId(nextExample.id);
+      setPreviewResult(nextPreviewResult);
       setReport(nextReport);
       setSource(nextReport.example.source.content);
       setAppliedSource(nextReport.example.source.content);
@@ -466,7 +511,10 @@ export default function App() {
 
     try {
       const nextReport = await fetchJson<ExampleReport>(`/api/examples/${exampleId}`);
+      const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+
       setActiveExampleId(exampleId);
+      setPreviewResult(nextPreviewResult);
       setReport(nextReport);
       setSource(nextReport.example.source.content);
       setAppliedSource(nextReport.example.source.content);
@@ -491,6 +539,9 @@ export default function App() {
 
     try {
       const nextReport = await postJson<ExampleReport>(`/api/examples/${report.example.id}/report`, { source });
+      const nextPreviewResult = await buildPreviewResultFromSource(source);
+
+      setPreviewResult(nextPreviewResult);
       setReport(nextReport);
       setAppliedSource(source);
       setSourceError(null);
@@ -517,6 +568,19 @@ export default function App() {
     link.download = filename;
     link.click();
     URL.revokeObjectURL(downloadUrl);
+  }
+
+  async function previewSvg() {
+    if (report === null || source !== appliedSource) return;
+    setPreviewing(true);
+    setSourceError(null);
+    try {
+      setPreviewResult(await buildPreviewResultFromSource(appliedSource));
+    } catch (nextError) {
+      setSourceError(String(nextError).replace(/^Error: /, ""));
+    } finally {
+      setPreviewing(false);
+    }
   }
 
   async function exportInBrowser() {
@@ -638,6 +702,8 @@ export default function App() {
                 applying={applying}
                 browserExporting={browserExporting}
                 serverExporting={serverExporting}
+                previewing={previewing}
+                previewResult={previewResult}
                 exportMessage={exportMessage}
                 onSourceChange={(value) => {
                   setSource(value);
@@ -648,6 +714,7 @@ export default function App() {
                 onReset={resetSource}
                 onBrowserExport={() => void exportInBrowser()}
                 onServerExport={() => void exportViaServer()}
+                onPreview={() => void previewSvg()}
               />
             </div>
           </ScrollArea>

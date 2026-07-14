@@ -19,7 +19,7 @@ function relativeToPackages(file) {
 
 if (!existsSync(path.join(root, "AGENTS.md"))) issues.push("Missing project AGENTS.md");
 
-for (const packageName of ["layout", "pptx-exporter"]) {
+for (const packageName of ["layout", "pptx-exporter", "svg-renderer"]) {
   const packageRoot = path.join(packagesRoot, packageName);
   const sourceRoot = path.join(packagesRoot, packageName, "src");
   const manifest = JSON.parse(readFileSync(path.join(packageRoot, "package.json"), "utf8"));
@@ -47,6 +47,18 @@ for (const file of sourceFiles(path.join(packagesRoot, "layout", "src"))) {
   const value = readFileSync(file, "utf8");
   if (/from ["']node:|from ["'](?:node:)?(?:fs|http|https|zlib)/.test(value) || /\.xml|\.rels|createZip/.test(value)) {
     issues.push(`layout contains output side effects or OOXML concerns: ${relativeToPackages(file)}`);
+  }
+}
+
+for (const file of sourceFiles(path.join(packagesRoot, "svg-renderer", "src"))) {
+  const value = readFileSync(file, "utf8");
+  if (/from ["']node:|from ["'](?:node:)?(?:fs|http|https|zlib)/.test(value) || /@pptkit\/pptx-exporter|\.xml|\.rels|createZip/.test(value)) {
+    issues.push(`svg-renderer contains Node, PPTX, ZIP, or OOXML concerns: ${relativeToPackages(file)}`);
+  }
+  for (const match of value.matchAll(/from ["'](@pptkit\/[a-z0-9-]+)["']/gi)) {
+    if (match[1] !== "@pptkit/core" && match[1] !== "@pptkit/layout") {
+      issues.push(`svg-renderer imports disallowed package ${match[1]}: ${relativeToPackages(file)}`);
+    }
   }
 }
 

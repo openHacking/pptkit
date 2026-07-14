@@ -77,10 +77,6 @@ function buildReport(id: string, feature: string, title: string): ExampleReport 
       slideCount: 1,
       slides: [{ id: `${id}-1`, title, elements: ["One", "Two"] }],
     },
-    visualPreview: {
-      status: "structural-preview",
-      slides: [{ id: `${id}-slide`, title, body: ["One", "Two"] }],
-    },
     renderResult: {
       slideCount: 1,
       status: "placeholder",
@@ -123,7 +119,6 @@ describe("workbench app", () => {
           }
           const nextReport = buildReport("export-alpha", "export", "Applied Source");
           nextReport.example.source.content = body.source;
-          nextReport.visualPreview.slides[0]!.title = "Applied Source";
           return new Response(JSON.stringify(nextReport), { status: 200 });
         }
 
@@ -200,6 +195,7 @@ describe("workbench app", () => {
     });
 
     expect(screen.getByText("Unsaved changes")).toBeTruthy();
+    expect((screen.getByRole("button", { name: "Preview SVG" }) as HTMLButtonElement).disabled).toBe(true);
     expect((screen.getByRole("button", { name: "Export in browser" }) as HTMLButtonElement).disabled).toBe(true);
     expect((screen.getByRole("button", { name: "Export via server" }) as HTMLButtonElement).disabled).toBe(true);
 
@@ -221,6 +217,28 @@ describe("workbench app", () => {
       expect(screen.getByText("PPTX exported via server successfully.")).toBeTruthy();
     });
     expect(vi.mocked(fetch).mock.calls.filter(([url]) => String(url).endsWith("/export"))).toHaveLength(1);
+  });
+
+  it("renders the applied presentation as an SVG browser preview", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    expect(await screen.findByText("PPTKit Workbench")).toBeTruthy();
+    await waitFor(() => expect(screen.getByText("SVG Browser Preview")).toBeTruthy());
+    expect(screen.getByText("1 slide · 0 warnings")).toBeTruthy();
+    expect(document.querySelector("svg[data-pptkit-slide-id]")).toBeTruthy();
+
+    const source = screen.getByRole("textbox", { name: "Import Alpha.md" });
+    await user.clear(source);
+    fireEvent.change(source, {
+      target: { value: '{"title":"Preview","slides":[{"title":"SVG slide","elements":["Rendered in browser"]}]}' },
+    });
+    await user.click(screen.getByRole("button", { name: "Apply changes" }));
+    await waitFor(() => expect(screen.getByText("Applied source")).toBeTruthy());
+
+    await user.click(screen.getByRole("button", { name: "Preview SVG" }));
+    await waitFor(() => expect(screen.getByText("SVG Browser Preview")).toBeTruthy());
+    expect(document.querySelector("svg[data-pptkit-slide-id]")).toBeTruthy();
   });
 
   it("keeps the applied report when source JSON is invalid", async () => {

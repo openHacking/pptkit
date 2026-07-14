@@ -209,7 +209,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     scenarioTags: ["basic-deck", "marketing"],
     expectedCapabilities: {
       normalize: "implemented",
-      render: "placeholder",
+      render: "implemented",
       exportPptx: "implemented",
     },
     status: "ready",
@@ -261,7 +261,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     scenarioTags: ["basic-deck", "status-update"],
     expectedCapabilities: {
       normalize: "implemented",
-      render: "placeholder",
+      render: "implemented",
       exportPptx: "implemented",
     },
     status: "ready",
@@ -315,7 +315,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     scenarioTags: ["basic-deck", "product-brief"],
     expectedCapabilities: {
       normalize: "implemented",
-      render: "placeholder",
+      render: "implemented",
       exportPptx: "implemented",
     },
     status: "ready",
@@ -355,7 +355,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     scenarioTags: ["full-coverage", "pitch-deck", "mixed-media", "export"],
     expectedCapabilities: {
       normalize: "implemented",
-      render: "placeholder",
+      render: "implemented",
       exportPptx: "implemented",
     },
     status: "ready",

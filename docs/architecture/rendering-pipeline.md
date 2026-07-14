@@ -63,6 +63,10 @@ Preview Transform
 Preview Output
 ```
 
+The implemented preview transform is `@pptkit/svg-renderer`. It consumes the detached
+`LayoutResult`, combines layout-static and slide-local drawing order, and returns one
+standalone hybrid SVG string per slide. Asset paths remain an environment-adapter concern.
+
 The preview path should remain derived from normalized document state rather than becoming the system of record.
 
 ## Export Path
@@ -108,6 +112,10 @@ Canonical Presentation IR
 The export path normalizes the authoring document exactly once, passes that normalized IR to `resolveNormalizedLayout`, and then passes the detached layout result to the exporter package builder. `resolveLayout(document)` is the authoring convenience entry point; downstream pipelines should prefer the normalized entry point.
 
 The runtime-neutral exporter entry orchestrates asset loading, OOXML generation, package-part collection, and ZIP encoding into `Uint8Array` output. Filesystem output and local-path asset loading belong to the explicit Node.js subpath, so importing the default entry never pulls Node built-ins into a browser dependency graph.
+
+The SVG renderer is a sibling output transform rather than an exporter implementation
+detail. It does not read PPTX packages or reuse OOXML serializers. Its browser preview
+may warn and degrade independently while preserving the same Core/Layout semantics.
 
 The exporter writes one theme and master plus the normalized reusable slide-layout roster. Placeholder bindings, layout backgrounds, static layout content, notes, and slide-local content remain separate native package structures without leaking OOXML into `@pptkit/core`.
 

@@ -16,6 +16,7 @@ commands are:
 
 ```bash
 pnpm install
+pnpm exec playwright install chromium
 pnpm lint
 pnpm typecheck
 pnpm test

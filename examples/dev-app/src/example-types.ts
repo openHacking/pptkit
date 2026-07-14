@@ -163,19 +163,9 @@ export interface NormalizedDocumentReport {
   }>;
 }
 
-export interface VisualPreviewSlide {
-  id: string;
-  title: string;
-  body: string[];
-}
-
 export interface ExampleReport {
   example: ExampleDefinition;
   normalizedDocument: NormalizedDocumentReport;
-  visualPreview: {
-    status: "structural-preview";
-    slides: VisualPreviewSlide[];
-  };
   renderResult: {
     slideCount: number;
     status: string;

@@ -14,7 +14,7 @@ export const saasHuntSwissStyleExample: ExampleDefinition = {
   scenarioTags: ["swiss-style", "editable", "reference-fidelity"],
   expectedCapabilities: {
     normalize: "implemented",
-    render: "placeholder",
+    render: "implemented",
     exportPptx: "implemented",
   },
   status: "ready",

@@ -1,7 +1,12 @@
 # Renderer
 
-PPTKit currently provides editable PPTX export, not a general preview renderer.
+PPTKit provides browser-oriented slide preview through `@pptkit/svg-renderer`.
 
-The implemented forward path is Core authoring → Canonical IR → Layout Result → PPTX package. A future browser/SVG renderer should consume the same normalized/layout contracts and remain a derived view rather than authoritative editor state.
+The implemented preview path is Core authoring → Canonical IR → Layout Result → one
+standalone hybrid SVG per slide. Geometry uses SVG primitives; rich text and tables use
+XHTML `foreignObject`. Preview output remains derived rather than authoritative state.
 
-Renderer work must define fidelity strategy, font and asset resolution, unsupported-feature diagnostics, and visual regression fixtures. See [Rendering Pipeline](../architecture/rendering-pipeline.md), [Preview and Editing](../architecture/preview-and-editing.md), and the [Roadmap](../../ROADMAP.md).
+The renderer exposes asset resolution and fidelity diagnostics and has Chromium visual
+regression fixtures. It does not promise PowerPoint pixel parity, general SVG portability,
+PPTX parsing, or browser editing. See the [API](../api/svg-renderer.md),
+[Rendering Pipeline](../architecture/rendering-pipeline.md), and [Roadmap](../../ROADMAP.md).

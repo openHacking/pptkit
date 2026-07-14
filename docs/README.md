@@ -1,6 +1,6 @@
 # PPTKit Documentation
 
-The documentation is organized by audience and task. Current behavior is written in the present tense; parser, rendering, and other unimplemented systems are labeled as future architecture.
+The documentation is organized by audience and task. Current behavior is written in the present tense; parser and other unimplemented systems are labeled as future architecture.
 
 ## Start using PPTKit
 
@@ -15,6 +15,7 @@ The documentation is organized by audience and task. Current behavior is written
 - [`@pptkit/core`](api/core.md)
 - [`@pptkit/layout`](api/layout.md)
 - [`@pptkit/pptx-exporter`](api/pptx-exporter.md)
+- [`@pptkit/svg-renderer`](api/svg-renderer.md)
 - [Package overview](api/package-overview.md)
 
 ## Understand the system
@@ -36,4 +37,4 @@ The documentation is organized by audience and task. Current behavior is written
 
 ## Future areas
 
-The [Roadmap](../ROADMAP.md) is the source of truth for planned capability areas. Parser preservation, preview/rendering, plugins, and advanced Office features are not presented as current APIs.
+The [Roadmap](../ROADMAP.md) is the source of truth for planned capability areas. Parser preservation, higher-fidelity preview, plugins, and advanced Office features are not presented as current APIs.
