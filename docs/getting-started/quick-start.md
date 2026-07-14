@@ -8,7 +8,7 @@ This guide takes you from a local checkout to an editable `.pptx` file using the
 - pnpm 10
 - a local checkout of this repository
 
-PPTKit packages are not published yet. Install and build the workspace before running an example:
+For repository development, install and build the workspace before running an example:
 
 ```bash
 pnpm install

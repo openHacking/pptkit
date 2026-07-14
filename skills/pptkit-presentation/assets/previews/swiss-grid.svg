@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Swiss Grid theme preview</title>
+  <desc id="desc">A strict modular presentation with black type, red accents, visible grid rhythm, and data-led hierarchy.</desc>
+  <defs><pattern id="grid" width="75" height="75" patternUnits="userSpaceOnUse"><path d="M75 0H0V75" fill="none" stroke="#D8D6CF" stroke-width="1"/></pattern></defs>
+  <rect width="1200" height="675" fill="#F5F4EF"/>
+  <rect width="1200" height="675" fill="url(#grid)" opacity="0.7"/>
+  <rect x="50" y="48" width="12" height="12" fill="#E33B2E"/>
+  <text x="82" y="60" fill="#111111" font-family="Arial" font-size="16" font-weight="700" letter-spacing="2">PPTKIT / SWISS GRID</text>
+  <text x="50" y="170" fill="#111111" font-family="Arial" font-size="72" font-weight="900">SYSTEMS</text>
+  <text x="50" y="242" fill="#E33B2E" font-family="Arial" font-size="72" font-weight="900">BECOME</text>
+  <text x="50" y="314" fill="#111111" font-family="Arial" font-size="72" font-weight="900">VISIBLE.</text>
+  <g transform="translate(650 110)">
+    <text x="0" y="0" fill="#5F5F5F" font-family="Arial" font-size="14">THROUGHPUT / WEEK</text>
+    <text x="0" y="100" fill="#111111" font-family="Arial" font-size="94" font-weight="900">4.2×</text>
+    <rect x="0" y="132" width="450" height="2" fill="#111111"/>
+    <rect x="0" y="168" width="330" height="42" fill="#E33B2E"/>
+    <rect x="0" y="226" width="248" height="42" fill="#111111"/>
+    <rect x="0" y="284" width="392" height="42" fill="#1D4ED8"/>
+    <text x="0" y="368" fill="#111111" font-family="Arial" font-size="22" font-weight="700">01 / Instrument</text>
+    <text x="0" y="410" fill="#111111" font-family="Arial" font-size="22" font-weight="700">02 / Learn</text>
+    <text x="0" y="452" fill="#111111" font-family="Arial" font-size="22" font-weight="700">03 / Scale</text>
+  </g>
+  <rect x="50" y="610" width="1100" height="3" fill="#111111"/>
+  <text x="50" y="642" fill="#5F5F5F" font-family="Arial" font-size="14">MODULAR GRID · HIGH CONTRAST · ONE FUNCTIONAL ACCENT</text>
+</svg>

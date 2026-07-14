@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Editorial Story theme preview</title>
+  <desc id="desc">A warm editorial presentation with serif display typography, asymmetric framing, captions, and terracotta accents.</desc>
+  <rect width="1200" height="675" fill="#F3EEE5"/>
+  <text x="62" y="66" fill="#746D64" font-family="Arial" font-size="15" letter-spacing="3">FIELD NOTE 07 / PPTKIT</text>
+  <rect x="62" y="92" width="1076" height="1" fill="#B8AEA0"/>
+  <text x="62" y="188" fill="#2B2926" font-family="Georgia" font-size="62" font-weight="700">The details we ignore</text>
+  <text x="62" y="257" fill="#B94F35" font-family="Georgia" font-size="62" font-style="italic">shape the whole story.</text>
+  <g transform="translate(62 330)">
+    <rect width="610" height="265" fill="#2F6D62"/>
+    <circle cx="175" cy="130" r="88" fill="#F3EEE5" opacity="0.16"/>
+    <path d="M55 205 C160 90, 280 270, 400 118 S565 168, 590 62" fill="none" stroke="#F3EEE5" stroke-width="5" opacity="0.8"/>
+    <text x="28" y="238" fill="#F3EEE5" font-family="Arial" font-size="14">EVIDENCE / PATTERN / CONSEQUENCE</text>
+  </g>
+  <g transform="translate(720 330)">
+    <text x="0" y="12" fill="#B94F35" font-family="Arial" font-size="14" font-weight="700">01 — OBSERVATION</text>
+    <text x="0" y="62" fill="#2B2926" font-family="Georgia" font-size="28" font-weight="700">A quieter visual language</text>
+    <text x="0" y="102" fill="#2B2926" font-family="Georgia" font-size="28" font-weight="700">can carry a stronger idea.</text>
+    <text x="0" y="156" fill="#746D64" font-family="Arial" font-size="18">Asymmetric rhythm, evidence-led imagery,</text>
+    <text x="0" y="184" fill="#746D64" font-family="Arial" font-size="18">and captions that reward attention.</text>
+    <rect x="0" y="224" width="82" height="5" fill="#B94F35"/>
+  </g>
+  <text x="1060" y="642" fill="#746D64" font-family="Arial" font-size="14">03 / 12</text>
+</svg>

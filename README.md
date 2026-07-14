@@ -2,7 +2,7 @@
 
 PPTKit is a developer-first TypeScript toolkit for building structured, editable presentations. It provides a format-independent authoring model, a stable Canonical Presentation IR, an independent layout stage, and editable PPTX output without exposing OOXML to application code.
 
-> **Project status:** PPTKit is under active pre-release development. Workspace packages are implemented and tested locally, but they are not published to npm and the public API may still change before the first preview release.
+> **Project status:** PPTKit is under active pre-release development. Preview packages are available on npm, and the public API may still change before a stable release.
 
 ## Features
 
@@ -14,9 +14,66 @@ PPTKit is a developer-first TypeScript toolkit for building structured, editable
 - Editable PPTX generation with native layouts, theme parts, notes, tables, media, and relationships.
 - Browser-neutral byte generation plus a Node.js adapter for local assets and file output.
 
+## Installation
+
+Install the current preview packages from npm:
+
+```bash
+pnpm add @pptkit/core @pptkit/pptx-exporter
+```
+
+or:
+
+```bash
+npm install @pptkit/core @pptkit/pptx-exporter
+```
+
+Use `@pptkit/core` to create and validate a presentation, then use the Node entry
+of `@pptkit/pptx-exporter` to write an editable `.pptx` file:
+
+```ts
+import { createPresentation } from "@pptkit/core";
+import { writePptx } from "@pptkit/pptx-exporter/node";
+
+const presentation = createPresentation({
+  metadata: { title: "Hello PPTKit", author: "Example Team" },
+});
+
+const slide = presentation.addSlide();
+slide.addElement({
+  type: "text",
+  content: "Hello PPTKit",
+  box: { x: 64, y: 64, width: 520, height: 72 },
+});
+
+await writePptx(presentation, { output: "./hello-pptkit.pptx" });
+```
+
+PPTKit is currently pre-release. See the [installation guide](docs/getting-started/installation.md)
+for package and workspace setup, browser generation, assets, validation, and warnings.
+
+### Presentation Skill
+
+PPTKit also includes the cross-agent `pptkit-presentation` skill for turning text,
+documents, spreadsheets, and images into an editable PPTX plus its TypeScript source
+project. Install the skill globally with:
+
+```bash
+npx skills add openHacking/pptkit --skill pptkit-presentation -g
+```
+
+Then ask your agent to create a presentation, for example: “Use PPTKit to turn this
+quarterly report into an editable 10-slide PPTX.” The skill guides the brief and
+outline, offers three curated visual themes, generates through the public PPTKit APIs,
+and runs structural/package checks before delivery.
+
+The skill pins matching PPTKit preview packages inside each generated project. See the
+[Presentation Skill guide](docs/guides/presentation-skill.md) for the workflow and
+repository-local evaluation steps.
+
 ## Quick Start
 
-PPTKit is currently used from this workspace. Install dependencies and build the packages first:
+For workspace development, install dependencies and build the packages first:
 
 ```bash
 pnpm install

@@ -4,7 +4,7 @@
 
 ## Installation status
 
-PPTKit is not published yet. Inside this repository, workspace packages can import Core directly:
+PPTKit preview packages are available on npm. Inside this repository, workspace packages import Core directly:
 
 ```ts
 import {
@@ -14,7 +14,7 @@ import {
 } from "@pptkit/core";
 ```
 
-The intended package installation command after the first preview release is:
+The package installation command is:
 
 ```bash
 pnpm add @pptkit/core

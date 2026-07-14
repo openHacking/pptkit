@@ -1,6 +1,6 @@
 # Installation
 
-PPTKit is in pre-release development. Use the monorepo workspace for current development and evaluation, or install the preview packages after they have been published.
+PPTKit is in pre-release development. Install the current preview packages for application use, or use the monorepo workspace for contribution and local evaluation.
 
 ## Requirements
 
@@ -37,9 +37,9 @@ The workbench is served at `http://localhost:3210`.
 | `@pptkit/pptx-exporter/node` | Node.js generation/file output; URL and path assets |
 | `@pptkit/cli` | Node.js command line |
 
-## Intended published installation
+## Package installation
 
-After the first preview release, the standard installation will be:
+Install the preview packages with:
 
 ```bash
 pnpm add @pptkit/core @pptkit/pptx-exporter
@@ -51,7 +51,6 @@ or:
 npm install @pptkit/core @pptkit/pptx-exporter
 ```
 
-These commands are available after a preview release. The repository's local release
-workflow is documented in [Release Strategy](../migration/release-strategy.md).
+The repository's release workflow is documented in [Release Strategy](../migration/release-strategy.md).
 
 Continue with the [Quick Start](quick-start.md).
