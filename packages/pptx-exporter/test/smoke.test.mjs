@@ -106,7 +106,7 @@ test("generatePptx exports the IR v1 feature surface", async () => {
     assert.match(slide1, /Q1 &amp; &lt;ready&gt;/);
     assert.match(slide1, /<a:buChar char="→"/);
     assert.match(slide1, /<a:normAutofit fontScale="95000"/);
-    assert.match(slide1, /<p:cxnSp>/);
+    assert.doesNotMatch(slide1, /<p:cxnSp>/);
     assert.match(slide1, /<a:custGeom>/);
     assert.match(slide1, /<p:grpSp>/);
     assert.match(slide1, /<a:srcRect l="7143"[^>]*r="7143"/);
@@ -154,4 +154,35 @@ test("default entry reports path assets as unsupported", async () => {
   const result = await generatePptx(presentation);
   assert.equal(result.status, "generated-with-warnings");
   assert.match(result.warnings.find((warning) => warning.code === "asset-read-failed")?.message ?? "", /only supported by @pptkit\/pptx-exporter\/node/);
+});
+
+test("connector extents stay positive for horizontal and vertical lines", async () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide();
+  slide.addElement({
+    type: "connector",
+    start: { x: 48, y: 128 },
+    end: { x: 624, y: 128 },
+    style: { width: 3, paint: { type: "solid", color: "0F172A" } },
+  });
+  slide.addElement({
+    type: "connector",
+    start: { x: 96, y: 72 },
+    end: { x: 96, y: 288 },
+    style: { width: 3, paint: { type: "solid", color: "0F172A" } },
+  });
+
+  const result = await generatePptx(presentation);
+  const slideXml = readZipEntries(result.bytes).get("ppt/slides/slide1.xml").toString();
+  assert.equal(slideXml.includes("<p:cxnSp>"), false);
+  const extents = slideXml.split("<p:sp>").slice(1).map((connector) => {
+    const match = connector.match(/<a:ext cx="(\d+)" cy="(\d+)"\/>/);
+    assert.ok(match);
+    return { cx: Number(match[1]), cy: Number(match[2]) };
+  });
+
+  assert.deepEqual(extents, [
+    { cx: 7315200, cy: 13 },
+    { cx: 13, cy: 2743200 },
+  ]);
 });

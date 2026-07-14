@@ -79,7 +79,7 @@ describe("workbench server", () => {
       title: "Applied deck",
       slides: [{ title: "Changed", elements: ["A", "B"] }],
     });
-    const reportResponse = await invoke("/api/examples/export-pitch-deck/report", "POST", JSON.stringify({ source }));
+    const reportResponse = await invoke("/api/examples/export-full-feature-deck/report", "POST", JSON.stringify({ source }));
     const reportPayload = JSON.parse(reportResponse.body) as {
       normalizedDocument: { title: string; slideCount: number };
     };
@@ -88,16 +88,36 @@ describe("workbench server", () => {
     expect(reportPayload.normalizedDocument.title).toBe("Applied deck");
     expect(reportPayload.normalizedDocument.slideCount).toBe(1);
 
-    const exportResponse = await invoke("/api/examples/export-pitch-deck/export", "POST", JSON.stringify({ source }));
+    const exportResponse = await invoke("/api/examples/export-full-feature-deck/export", "POST", JSON.stringify({ source }));
     expect(exportResponse.statusCode).toBe(200);
     expect(exportResponse.headers["content-type"]).toContain("presentationml.presentation");
-    expect(exportResponse.headers["content-disposition"]).toContain("export-pitch-deck.pptx");
+    expect(exportResponse.headers["content-disposition"]).toContain("export-full-feature-deck.pptx");
+    expect(exportResponse.body.length).toBeGreaterThan(0);
+  });
+
+  it("exports the default full-feature deck", async () => {
+    const exampleResponse = await invoke("/api/examples/export-full-feature-deck");
+    const examplePayload = JSON.parse(exampleResponse.body) as {
+      example: { source: { content: string } };
+      normalizedDocument: { slideCount: number };
+    };
+
+    expect(exampleResponse.statusCode).toBe(200);
+    expect(examplePayload.normalizedDocument.slideCount).toBe(6);
+
+    const exportResponse = await invoke(
+      "/api/examples/export-full-feature-deck/export",
+      "POST",
+      JSON.stringify({ source: examplePayload.example.source.content }),
+    );
+
+    expect(exportResponse.statusCode).toBe(200);
     expect(exportResponse.body.length).toBeGreaterThan(0);
   });
 
   it("rejects invalid source requests", async () => {
     const response = await invoke(
-      "/api/examples/export-pitch-deck/report",
+      "/api/examples/export-full-feature-deck/report",
       "POST",
       JSON.stringify({ source: "not json" }),
     );

@@ -17,6 +17,21 @@ describe("example registry", () => {
     expect(ids).toHaveLength(new Set(ids).size);
   });
 
+  it("registers one labeled full-feature export case", () => {
+    const examples = listExamples();
+    const fullFeatureDeck = examples.find((example) => example.id === "export-full-feature-deck");
+
+    expect(fullFeatureDeck).toBeDefined();
+    expect(examples.some((example) => example.id === "export-pitch-deck")).toBe(false);
+    expect(examples.some((example) => example.id === "export-mixed-media-slide")).toBe(false);
+
+    const input = fullFeatureDeck!.createInput();
+    expect(input.slides).toHaveLength(6);
+    expect(input.slides.every((slide) => slide.title.startsWith("Feature:"))).toBe(true);
+    expect(input.slides.every((slide) => slide.elements.length >= 1 && slide.elements.length <= 2)).toBe(true);
+    expect(fullFeatureDeck!.source.content).toContain('"Feature: image asset + alt text"');
+  });
+
   it("builds placeholder-friendly report data", async () => {
     const example = listExamples()[0];
 

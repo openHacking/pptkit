@@ -109,13 +109,24 @@ function connectorXml(element: LayoutConnectorElement, context: ElementXmlContex
   const points = [element.start, ...element.route, element.end];
   const width = Math.max(element.box.width, 0.001);
   const height = Math.max(element.box.height, 0.001);
+  // DrawingML requires a positive shape extent. A horizontal or vertical
+  // connector can legitimately have a zero-sized bounding-box dimension,
+  // but emitting cy/cx="0" makes PowerPoint repair the package on open.
+  const transformBox = {
+    ...element.box,
+    width,
+    height,
+  };
   const path = points.map((point, index) => {
     const x = emu(point.x - element.box.x);
     const y = emu(point.y - element.box.y);
     return index === 0 ? `<a:moveTo><a:pt x="${x}" y="${y}"/></a:moveTo>` : `<a:lnTo><a:pt x="${x}" y="${y}"/></a:lnTo>`;
   }).join("");
   const geometry = `<a:custGeom><a:avLst/><a:gdLst/><a:ahLst/><a:cxnLst/><a:rect l="l" t="t" r="r" b="b"/><a:pathLst><a:path w="${emu(width)}" h="${emu(height)}" fill="none">${path}</a:path></a:pathLst></a:custGeom>`;
-  return `<p:cxnSp>${nonVisualProperties(element, context, "connector")}<p:spPr>${transformXml(element.box, element.transform)}${geometry}${strokeXml(element.style, inheritedOpacity * element.opacity)}</p:spPr></p:cxnSp>`;
+  // Custom geometry is valid on a regular shape but is not accepted inside
+  // PowerPoint's connector container. Keep the connector's resolved path and
+  // styling, while using the interoperable shape container for serialization.
+  return `<p:sp>${nonVisualProperties(element, context, "shape")}<p:spPr>${transformXml(transformBox, element.transform)}${geometry}${strokeXml(element.style, inheritedOpacity * element.opacity)}</p:spPr></p:sp>`;
 }
 
 function groupXml(element: LayoutGroupElement, context: ElementXmlContext, inheritedOpacity: number): string {

@@ -1,5 +1,105 @@
-import type { ExampleDefinition, ExampleSummary, FeatureId } from "./example-types.js";
+import type { ExampleDefinition, ExampleInputData, ExampleSummary, FeatureId } from "./example-types.js";
 import { saasHuntSwissStyleExample } from "./examples/saas-hunt-swiss-style.js";
+
+const exportFullFeatureDeckInput: ExampleInputData = {
+  title: "PPTKit Export Full Feature Deck",
+  summary: "Each slide isolates one or two exporter features and labels them in the slide content for quick export verification.",
+  slides: [
+    {
+      id: "text-structure",
+      title: "Feature: slide structure + plain text",
+      elements: [
+        "Feature: slide title and ordered multi-slide structure",
+        "Feature: plain text element — verify readable content and line spacing",
+      ],
+    },
+    {
+      id: "styled-text",
+      title: "Feature: styled text",
+      elements: [
+        {
+          type: "text",
+          text: "Feature: bold, color, size, alignment, and auto-fit",
+          box: { x: 48, y: 72, width: 624, height: 48 },
+          style: {
+            fontSize: 24,
+            fontWeight: "bold",
+            color: "#2563EB",
+            align: "center",
+            autoFit: { mode: "shrink", fontScale: 0.8 },
+          },
+        },
+        "Export check: styled text should remain legible and centered.",
+      ],
+    },
+    {
+      id: "basic-shapes",
+      title: "Feature: rectangle + ellipse shapes",
+      elements: [
+        {
+          type: "shape",
+          shape: "rect",
+          box: { x: 48, y: 72, width: 260, height: 160 },
+          style: { fill: "#DCEBFF", stroke: "#2563EB", strokeWidth: 2 },
+        },
+        {
+          type: "shape",
+          shape: "ellipse",
+          box: { x: 380, y: 92, width: 180, height: 120 },
+          style: { fill: "#DCFCE7", stroke: "#16A34A", strokeWidth: 2 },
+        },
+      ],
+    },
+    {
+      id: "connector",
+      title: "Feature: connector line",
+      elements: [
+        "Feature: connector line — verify start/end coordinates and stroke",
+        {
+          type: "shape",
+          shape: "line",
+          box: { x: 48, y: 128, width: 576, height: 0 },
+          style: { stroke: "#0F172A", strokeWidth: 3 },
+        },
+      ],
+    },
+    {
+      id: "image-asset",
+      title: "Feature: image asset + alt text",
+      elements: [
+        "Feature: image asset registered from a data URL with accessibility text",
+        {
+          type: "image",
+          altText: "Blue accent pixel used to verify image export",
+          asset: {
+            id: "accent-pixel",
+            source: {
+              type: "url",
+              value: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+            },
+            mimeType: "image/png",
+            altText: "Blue accent pixel used to verify image export",
+          },
+          box: { x: 48, y: 104, width: 220, height: 180 },
+        },
+      ],
+    },
+    {
+      id: "background-and-summary",
+      title: "Feature: slide background + mixed content",
+      background: "#FFF7ED",
+      elements: [
+        {
+          type: "text",
+          text: "Feature: solid slide background",
+          box: { x: 48, y: 72, width: 624, height: 32 },
+          style: { fontSize: 22, fontWeight: "bold", color: "#9A3412" },
+        },
+        "Feature: final multi-slide export summary — review all previous labels in one PPTX.",
+      ],
+    },
+  ],
+};
 
 const exampleDefinitions: ExampleDefinition[] = [
   {
@@ -157,23 +257,16 @@ const exampleDefinitions: ExampleDefinition[] = [
     },
   },
   {
-    id: "export-pitch-deck",
-    title: "Export Pitch Deck",
+    id: "export-full-feature-deck",
+    title: "Export Full Feature Deck",
     feature: "export-pptx",
-    description: "Exercise the real PPTX export path with a scenario-rich multi-slide case.",
+    description: "Exercise the complete PPTX export path with one labeled slide per feature pair.",
     inputKind: "presentation-config",
     source: {
-      label: "Pitch deck outline",
-      content: `{
-  "title": "Pitch Deck",
-  "slides": [
-    { "title": "Problem", "elements": ["Manual deck work is slow"] },
-    { "title": "Solution", "elements": ["PPTKit automates structured output"] },
-    { "title": "Roadmap", "elements": ["Preview", "Export", "Editing"] }
-  ]
-}`,
+      label: "Full feature deck config",
+      content: JSON.stringify(exportFullFeatureDeckInput, null, 2),
     },
-    scenarioTags: ["pitch-deck", "founder-story"],
+    scenarioTags: ["full-coverage", "pitch-deck", "mixed-media", "export"],
     expectedCapabilities: {
       normalize: "implemented",
       render: "placeholder",
@@ -181,142 +274,7 @@ const exampleDefinitions: ExampleDefinition[] = [
     },
     status: "ready",
     createInput() {
-      return {
-        title: "Pitch Deck",
-        summary: "A higher-context scenario keeps export work grounded in a realistic multi-slide story.",
-        slides: [
-          {
-            title: "Problem",
-            elements: [
-              "Manual deck work is slow",
-              "Reformatting steals time from content",
-            ],
-          },
-          {
-            title: "Solution",
-            elements: [
-              "PPTKit automates structured output",
-              "One IR supports preview and export",
-            ],
-          },
-          {
-            title: "Roadmap",
-            elements: [
-              "Milestone: Preview workbench",
-              "Milestone: PPTX export",
-              "Milestone: Editing workflows",
-            ],
-          },
-        ],
-      };
-    },
-  },
-  {
-    id: "export-mixed-media-slide",
-    title: "Export Mixed Media Slide",
-    feature: "export-pptx",
-    description: "Prove the dev workbench can author and export text, shapes, and images from one source payload.",
-    inputKind: "presentation-config",
-    source: {
-      label: "Mixed media slide config",
-      content: `{
-  "title": "Mixed Media Demo",
-  "summary": "A single slide combining text, shapes, and an image asset.",
-  "slides": [
-    {
-      "title": "Overview",
-      "elements": [
-        {
-          "type": "text",
-          "text": "PPTKit visual elements",
-          "box": { "x": 48, "y": 40, "width": 360, "height": 28 },
-          "style": { "fontSize": 24, "fontWeight": "bold" }
-        },
-        {
-          "type": "shape",
-          "shape": "rect",
-          "box": { "x": 48, "y": 92, "width": 240, "height": 120 },
-          "style": { "fill": "#DCEBFF", "stroke": "#2563EB", "strokeWidth": 2 }
-        },
-        {
-          "type": "image",
-          "altText": "Blue accent pixel",
-          "asset": {
-            "id": "accent-pixel",
-            "source": {
-              "type": "url",
-              "value": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9WnR8WQAAAAASUVORK5CYII="
-            },
-            "mimeType": "image/png",
-            "altText": "Blue accent pixel"
-          },
-          "box": { "x": 320, "y": 92, "width": 180, "height": 180 }
-        },
-        {
-          "type": "shape",
-          "shape": "line",
-          "box": { "x": 48, "y": 236, "width": 452, "height": 4 },
-          "style": { "stroke": "#0F172A", "strokeWidth": 2 }
-        },
-        "Caption: Mixed element authoring now reaches the exporter."
-      ]
-    }
-  ]
-}`,
-    },
-    scenarioTags: ["mixed-media", "export"],
-    expectedCapabilities: {
-      normalize: "implemented",
-      render: "placeholder",
-      exportPptx: "implemented",
-    },
-    status: "ready",
-    createInput() {
-      return {
-        title: "Mixed Media Demo",
-        summary: "A single slide combining text, shapes, and an image asset.",
-        slides: [
-          {
-            title: "Overview",
-            elements: [
-              {
-                type: "text",
-                text: "PPTKit visual elements",
-                box: { x: 48, y: 40, width: 360, height: 28 },
-                style: { fontSize: 24, fontWeight: "bold" },
-              },
-              {
-                type: "shape",
-                shape: "rect",
-                box: { x: 48, y: 92, width: 240, height: 120 },
-                style: { fill: "#DCEBFF", stroke: "#2563EB", strokeWidth: 2 },
-              },
-              {
-                type: "image",
-                altText: "Blue accent pixel",
-                asset: {
-                  id: "accent-pixel",
-                  source: {
-                    type: "url",
-                    value:
-                      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9WnR8WQAAAAASUVORK5CYII=",
-                  },
-                  mimeType: "image/png",
-                  altText: "Blue accent pixel",
-                },
-                box: { x: 320, y: 92, width: 180, height: 180 },
-              },
-              {
-                type: "shape",
-                shape: "line",
-                box: { x: 48, y: 236, width: 452, height: 4 },
-                style: { stroke: "#0F172A", strokeWidth: 2 },
-              },
-              "Caption: Mixed element authoring now reaches the exporter.",
-            ],
-          },
-        ],
-      };
+      return exportFullFeatureDeckInput;
     },
   },
   saasHuntSwissStyleExample,
