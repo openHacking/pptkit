@@ -78,6 +78,27 @@ describe("example presentation builder", () => {
     });
   });
 
+  it("turns styled text line breaks into separate paragraphs", () => {
+    const presentation = createExamplePresentation(parseExampleSource(JSON.stringify({
+      title: "Numbered list",
+      slides: [{
+        title: "List",
+        elements: [{
+          type: "text",
+          text: "First\nSecond\nThird",
+          style: { bullet: { type: "number", style: "alphaLowerPeriod" } },
+        }],
+      }],
+    })));
+    const textElement = presentation.slides[0]?.elements[0];
+
+    expect(textElement).toMatchObject({ type: "text", content: [
+      { runs: [{ text: "First" }], style: { bullet: { type: "number" } } },
+      { runs: [{ text: "Second" }], style: { bullet: { type: "number" } } },
+      { runs: [{ text: "Third" }], style: { bullet: { type: "number" } } },
+    ] });
+  });
+
   it("parses and builds the complete SaaS Hunt Swiss Style reference", async () => {
     const parsed = parseExampleSource(saasHuntSwissStyleExample.source.content);
     const presentation = createExamplePresentation(parsed);

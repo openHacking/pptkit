@@ -84,9 +84,12 @@ export interface NormalizedTextParagraph {
   style: NormalizedTextParagraphStyle;
 }
 
-export interface TextElementInput extends ElementBaseInput {
+export type TextBoxInput = Omit<Box, "height"> & { height?: number };
+
+export interface TextElementInput extends Omit<ElementBaseInput, "box"> {
   type: "text";
   content: TextContentInput;
+  box?: TextBoxInput;
   frame?: TextFrameStyleInput;
 }
 

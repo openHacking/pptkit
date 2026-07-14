@@ -17,17 +17,35 @@ export interface ExampleSource {
   content: string;
 }
 
+export type ExampleTextBoxSpec = Omit<Box, "height"> & { height?: number };
+
 export interface ExampleTextElementSpec {
   type: "text";
   text: string;
-  box?: Box;
+  box?: ExampleTextBoxSpec;
   style?: {
     fontSize?: number;
     fontFamily?: string;
     fontWeight?: "normal" | "bold";
+    italic?: boolean;
+    underline?: boolean;
+    strike?: boolean;
     color?: string;
+    language?: string;
     align?: "left" | "center" | "right" | "justify";
+    indent?: number;
+    hanging?: number;
     lineSpacing?: number;
+    spaceBefore?: number;
+    spaceAfter?: number;
+    bullet?:
+      | { type: "none" }
+      | { type: "bullet"; character?: string }
+      | {
+          type: "number";
+          style?: "arabicPeriod" | "arabicParen" | "alphaLowerPeriod" | "alphaUpperPeriod";
+          startAt?: number;
+        };
     autoFit?: { mode: "none" } | { mode: "shrink"; fontScale?: number };
   };
 }

@@ -19,10 +19,12 @@ interface TextRunInput {
 
 String content is normalized into paragraphs and runs. Use structured content for mixed emphasis, lists, language metadata, or run-level links.
 
+When a text element has a fixed `x`, `y`, and `width` but no `height`, Core calculates a deterministic estimated height during normalization. The estimate includes explicit paragraphs and line breaks, approximate wrapping, the largest run font size in each paragraph, line spacing, paragraph spacing, bullet indentation, frame margins, and a small font-size-based trailing safety buffer for renderer-specific ascent/descent differences. This keeps the Canonical IR and exported text box bounds complete while allowing authoring inputs to omit a fragile single-line height.
+
 ```ts
 slide.addElement({
   type: "text",
-  box: { x: 48, y: 48, width: 600, height: 180 },
+  box: { x: 48, y: 48, width: 600 },
   frame: {
     margin: { left: 12, right: 12 },
     verticalAlign: "middle",

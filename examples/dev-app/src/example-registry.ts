@@ -7,29 +7,54 @@ const exportFullFeatureDeckInput: ExampleInputData = {
   slides: [
     {
       id: "text-structure",
-      title: "Feature: slide structure + plain text",
+      title: "Feature: plain text + bullet list",
       elements: [
-        "Feature: slide title and ordered multi-slide structure",
         "Feature: plain text element — verify readable content and line spacing",
+        {
+          type: "text",
+          text: "Feature: bullet paragraph — verify bullet character and spacing",
+          box: { x: 48, y: 112, width: 624, height: 32 },
+          style: {
+            fontSize: 20,
+            bullet: { type: "bullet", character: "•" },
+            spaceAfter: 8,
+          },
+        },
       ],
     },
     {
       id: "styled-text",
-      title: "Feature: styled text",
+      title: "Feature: character styles + numbered list",
       elements: [
         {
           type: "text",
-          text: "Feature: bold, color, size, alignment, and auto-fit",
+          text: "Feature: bold, italic, underline, strike, color, size, and auto-fit",
           box: { x: 48, y: 72, width: 624, height: 48 },
           style: {
             fontSize: 24,
+            fontFamily: "Arial",
             fontWeight: "bold",
+            italic: true,
+            underline: true,
+            strike: true,
             color: "#2563EB",
+            language: "en-US",
             align: "center",
+            lineSpacing: 1.1,
             autoFit: { mode: "shrink", fontScale: 0.8 },
           },
         },
-        "Export check: styled text should remain legible and centered.",
+        {
+          type: "text",
+          text: "Feature: numbered paragraph — verify alpha numbering\nFirst numbered item\nSecond numbered item",
+          box: { x: 48, y: 152, width: 624 },
+          style: {
+            fontSize: 20,
+            bullet: { type: "number", style: "alphaLowerPeriod", startAt: 1 },
+            indent: 18,
+            hanging: 9,
+          },
+        },
       ],
     },
     {

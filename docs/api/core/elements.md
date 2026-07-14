@@ -41,14 +41,17 @@ Slide actions use `slideId`, never a page number that can become stale after reo
 ## Text
 
 ```ts
-interface TextElementInput extends ElementBaseInput {
+interface TextElementInput extends Omit<ElementBaseInput, "box"> {
   type: "text";
   content: string | TextParagraphInput[];
+  box?: Omit<Box, "height"> & { height?: number };
   frame?: TextFrameStyleInput;
 }
 ```
 
 `content` is required. A string is an authoring convenience; normalized output always contains paragraphs and runs. See [Text and styles](text-and-styles.md) for rich text and inheritance.
+
+Text boxes may omit `height` when `x`, `y`, and `width` are provided. Core estimates the intrinsic height from normalized paragraphs, wrapping, font sizes, line spacing, paragraph spacing, indentation, and text-frame margins. An explicit `height` remains authoritative. Width is never inferred because it defines the wrapping boundary.
 
 ```ts
 slide.addElement({

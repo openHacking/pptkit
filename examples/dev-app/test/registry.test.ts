@@ -30,6 +30,17 @@ describe("example registry", () => {
     expect(input.slides.every((slide) => slide.title.startsWith("Feature:"))).toBe(true);
     expect(input.slides.every((slide) => slide.elements.length >= 1 && slide.elements.length <= 2)).toBe(true);
     expect(fullFeatureDeck!.source.content).toContain('"Feature: image asset + alt text"');
+    expect(fullFeatureDeck!.source.content).toContain('"type": "bullet"');
+    expect(fullFeatureDeck!.source.content).toContain('"italic": true');
+    expect(fullFeatureDeck!.source.content).toContain('"type": "number"');
+
+    const numberedParagraph = input.slides[1]?.elements[1];
+    expect(numberedParagraph).toMatchObject({
+      type: "text",
+      box: { x: 48, y: 152, width: 624 },
+      text: expect.stringContaining("\nFirst numbered item\nSecond numbered item"),
+    });
+    expect((numberedParagraph as { box?: { height?: number } }).box?.height).toBeUndefined();
   });
 
   it("builds placeholder-friendly report data", async () => {

@@ -1,6 +1,6 @@
 # `@pptkit/layout`
 
-`@pptkit/layout` converts validated Canonical Presentation IR into a detached, export-ready layout result. It currently resolves connector anchors and image `contain`/`cover` geometry. It does not measure text, paginate tables, write files, or serialize OOXML.
+`@pptkit/layout` converts validated Canonical Presentation IR into a detached, export-ready layout result. It currently resolves connector anchors and image `contain`/`cover` geometry. Fixed-width text auto-height is resolved earlier by Core normalization; Layout itself does not perform environment-dependent text measurement, paginate tables, write files, or serialize OOXML.
 
 ## `resolveLayout(document)`
 
@@ -91,4 +91,4 @@ Group children remain in their local coordinate system. Layout recursively resol
 
 ## Current limits
 
-The current package does not perform text measurement, overflow management, constraints, automatic placement, table pagination, or cross-slide pagination. These are roadmap capabilities, not hidden exporter behavior.
+The current package does not perform environment-dependent text measurement, overflow management, constraints, automatic placement, table pagination, or cross-slide pagination. Core's deterministic fixed-width text height estimate is part of normalization, not a Layout measurement service.

@@ -93,6 +93,54 @@ test("normalizePresentation materializes IR v1 defaults and rich text", () => {
   assert.equal(normalized.slides[0].notes[0].runs[0].text, "Speaker note");
 });
 
+test("auto-sizes text height from width, paragraphs, and styles", () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide({
+    elements: [
+      {
+        type: "text",
+        content: "Short line",
+        box: { x: 40, y: 40, width: 200 },
+      },
+      {
+        type: "text",
+        content: "A deliberately long line that wraps within the fixed text width",
+        box: { x: 40, y: 90, width: 200 },
+        frame: { margin: { top: 10, bottom: 10 } },
+      },
+      {
+        type: "text",
+        content: [{
+          style: { bullet: { type: "bullet" }, lineSpacing: 1.5, spaceAfter: 8 },
+          runs: [{ text: "First" }],
+        }, {
+          style: { bullet: { type: "bullet" }, lineSpacing: 1.5, spaceAfter: 8 },
+          runs: [{ text: "Second" }],
+        }],
+        box: { x: 40, y: 180, width: 200 },
+      },
+      {
+        type: "text",
+        content: "Explicit height remains authoritative",
+        box: { x: 40, y: 280, width: 200, height: 42 },
+      },
+    ],
+  });
+
+  const normalized = normalizePresentation(presentation);
+  const [shortText, wrappedText, bulletText, explicitText] = normalized.slides[0].elements;
+
+  assert.equal(shortText.type, "text");
+  assert.equal(wrappedText.type, "text");
+  assert.equal(bulletText.type, "text");
+  assert.equal(explicitText.type, "text");
+  assert.ok(shortText.box.height >= 28);
+  assert.ok(wrappedText.box.height > shortText.box.height);
+  assert.ok(bulletText.box.height > shortText.box.height);
+  assert.equal(explicitText.box.height, 42);
+  assert.equal(slide.elements[0].box.height, undefined);
+});
+
 test("normalization detaches nested groups, tables, assets, and custom data", () => {
   const presentation = createPresentation();
   const asset = presentation.registerAsset({

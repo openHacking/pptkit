@@ -6,16 +6,16 @@
 
 The package accepts a `PresentationDocument` through `resolveLayout()` or Canonical IR through `resolveNormalizedLayout()`. It returns detached metadata, theme, assets, layouts, slides, and resolved elements.
 
-Implemented resolution covers connector anchors/bounds, image contain/cover geometry, and recursive group processing. Layout neither mutates its input nor writes files.
+Implemented resolution covers connector anchors/bounds, image contain/cover geometry, and recursive group processing. Layout neither mutates its input nor writes files. Core normalization may already have resolved deterministic text-box heights before Layout receives the Canonical IR.
 
 ## Expansion direction
 
 Layout is the owner for future:
 
-- text measurement interfaces and font metrics
+- environment-backed text measurement interfaces and font metrics
 - overflow detection and diagnostics
 - alignment, spacing, stacking, and grid-like composition
-- intrinsic sizing and constraints
+- intrinsic sizing beyond Core's fixed-width text height estimation, and constraints
 - table measurement and pagination
 - slide boundary checks and cross-page continuation
 

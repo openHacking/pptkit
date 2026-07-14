@@ -12,13 +12,14 @@ Core owns:
 - document-level stable identity and object ownership
 - method-managed authoring operations
 - format-independent themes, paints, rich text, actions, and accessibility
+- deterministic intrinsic height estimation for text boxes with a fixed width
 - complete validation and normalization into Canonical IR v1
 
 Core does not own:
 
 - filesystem or network access
 - binary asset loading or storage
-- text measurement, automatic placement, overflow, or pagination
+- browser/native font measurement, automatic placement, overflow, or pagination
 - PPTX parts, relationships, XML, ZIP encoding, or file output
 - parser preservation fragments for unknown OOXML
 

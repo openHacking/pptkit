@@ -35,6 +35,19 @@ function parseBox(value: unknown, label: string) {
   return { x, y, width, height };
 }
 
+function parseTextBox(value: unknown, label: string) {
+  if (!isRecord(value)) {
+    throw new ExampleSourceError(`${label} must be an object.`);
+  }
+
+  const { x, y, width, height } = value;
+  if (!isFiniteNumber(x) || !isFiniteNumber(y) || !isFiniteNumber(width) || (height !== undefined && !isFiniteNumber(height))) {
+    throw new ExampleSourceError(`${label} requires finite numeric x, y, and width fields; height is optional.`);
+  }
+
+  return { x, y, width, ...(height !== undefined ? { height } : {}) };
+}
+
 function parseRecord(value: unknown, label: string) {
   if (!isRecord(value)) {
     throw new ExampleSourceError(`${label} must be an object.`);
@@ -141,7 +154,7 @@ function parseElement(value: unknown, slideIndex: number, elementIndex: number):
     const element: ExampleTextElementSpec = {
       type: "text",
       text: value.text,
-      ...(value.box !== undefined ? { box: parseBox(value.box, `${label}.box`) } : {}),
+      ...(value.box !== undefined ? { box: parseTextBox(value.box, `${label}.box`) } : {}),
       ...(value.style !== undefined ? { style: parseRecord(value.style, `${label}.style`) } : {}),
     };
     return element;

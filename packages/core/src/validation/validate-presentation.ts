@@ -114,6 +114,10 @@ function validateElement(
   context.globalElementIds.add(element.id);
   if (element.box === undefined) {
     if (element.type !== "connector" && (element.placeholderKey === undefined || !placeholderBoxes.has(element.placeholderKey))) add(context, { code: "missing-element-box", message: "Elements require a box or a valid placeholder binding.", path: `${path}.box`, ...identity });
+  } else if (element.type === "text" && element.box.height === undefined) {
+    if (!isFiniteNumber(element.box.x) || !isFiniteNumber(element.box.y) || !isFiniteNumber(element.box.width) || element.box.width < 0) {
+      add(context, { code: "invalid-text-auto-size-box", message: "Auto-sized text boxes require finite x, y, and non-negative width values.", path: `${path}.box`, ...identity });
+    }
   } else if (!isValidBox(element.box)) add(context, { code: "invalid-element-box", message: "Element box must contain finite coordinates and non-negative dimensions.", path: `${path}.box`, ...identity });
   if (element.placeholderKey !== undefined && !placeholderBoxes.has(element.placeholderKey)) add(context, { code: "missing-placeholder", message: `Unknown placeholder key "${element.placeholderKey}".`, path: `${path}.placeholderKey`, ...identity });
   if (element.opacity !== undefined && !isValidOpacity(element.opacity)) add(context, { code: "invalid-opacity", message: "Element opacity must be between 0 and 1.", path: `${path}.opacity`, ...identity });

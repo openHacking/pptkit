@@ -30,6 +30,7 @@ import type {
 import type { NormalizedPresentationTheme } from "../types/theme.js";
 import { deepClone } from "../utils/clone.js";
 import { normalizeSize } from "../validation/geometry.js";
+import { estimateTextHeight } from "./measure-text.js";
 import {
   normalizePaint,
   normalizeShapeStyle,
@@ -93,7 +94,12 @@ function normalizePlaceholder(input: PlaceholderDefinitionInput): NormalizedPlac
 }
 
 function boxFromElement(element: PresentationElement, placeholder?: NormalizedPlaceholderDefinition): Box {
-  if (element.box !== undefined) return deepClone(element.box);
+  if (element.box !== undefined) {
+    return {
+      ...deepClone(element.box),
+      ...(element.type === "text" && element.box.height === undefined ? { height: 0 } : {}),
+    };
+  }
   if (placeholder !== undefined) return deepClone(placeholder.box);
   if (element.type === "connector" && !("elementId" in element.start) && !("elementId" in element.end)) {
     const xs = [element.start.x, element.end.x, ...(element.route ?? []).map((point) => point.x)];
@@ -133,12 +139,17 @@ function normalizeElement(element: PresentationElement, placeholders: ReadonlyMa
     const paragraphFallback = placeholder?.textStyle.paragraph ?? DEFAULT_TEXT_PARAGRAPH_STYLE;
     const runFallback = placeholder?.textStyle.run ?? DEFAULT_TEXT_RUN_STYLE;
     const content = normalizeTextContent(element.content, paragraphFallback, runFallback);
+    const frame = normalizeTextFrame(element.frame, placeholder?.textStyle.frame ?? DEFAULT_TEXT_FRAME_STYLE);
+    const box = element.box?.height === undefined && element.box !== undefined && placeholder === undefined
+      ? { ...base.box, height: estimateTextHeight(base.box.width, content, frame) }
+      : base.box;
     return {
       ...base,
+      box,
       type: "text",
       content,
       plainText: content.map((paragraph) => paragraph.runs.map((run) => run.text).join("")).join("\n"),
-      frame: normalizeTextFrame(element.frame, placeholder?.textStyle.frame ?? DEFAULT_TEXT_FRAME_STYLE),
+      frame,
     };
   }
   if (element.type === "image") {

@@ -59,6 +59,20 @@ test("validation accepts groups, connectors, tables, and placeholder references"
   assert.deepEqual(validatePresentation(presentation), []);
 });
 
+test("validation reports missing width for auto-sized text boxes", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "text",
+      content: "Needs a width",
+      box: { x: 20, y: 20 },
+    }],
+  });
+
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "invalid-text-auto-size-box"));
+});
+
 test("mutation methods reject duplicate identities immediately", () => {
   const presentation = createPresentation();
   const slide = presentation.addSlide({ id: "intro" });

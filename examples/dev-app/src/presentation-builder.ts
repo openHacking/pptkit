@@ -30,10 +30,9 @@ function createSlideElements(
       return { type: "text", content: element, box };
     }
 
-    const box = element.box ?? defaultBox(element, nextY);
-    nextY = box.y + box.height + 24;
-
     if (element.type === "image") {
+      const box = element.box ?? defaultBox(element, nextY);
+      nextY = box.y + box.height + 24;
       const asset = presentation.registerAsset({
         kind: "image",
         source: element.asset.source,
@@ -55,6 +54,8 @@ function createSlideElements(
     }
 
     if (element.type === "shape") {
+      const box = element.box ?? defaultBox(element, nextY);
+      nextY = box.y + box.height + 24;
       const stroke = element.style?.stroke === undefined
         ? undefined
         : {
@@ -82,30 +83,41 @@ function createSlideElements(
       };
     }
 
-    return {
-      type: "text",
-      content: element.text,
-      box,
-      ...(element.style !== undefined ? {
-        frame: { ...(element.style.autoFit !== undefined ? { autoFit: element.style.autoFit } : {}) },
-      } : {}),
-      ...(element.style !== undefined ? {
-        content: [{
+    const box = element.box ?? defaultBox(element, nextY);
+    nextY = box.y + (box.height ?? 24) + 24;
+    const style = element.style;
+    const content = style === undefined
+      ? element.text
+      : element.text.split(/\r\n|\r|\n/).map((text) => ({
           style: {
-            ...(element.style.align !== undefined ? { align: element.style.align } : {}),
-            ...(element.style.lineSpacing !== undefined ? { lineSpacing: element.style.lineSpacing } : {}),
+            ...(style.align !== undefined ? { align: style.align } : {}),
+            ...(style.indent !== undefined ? { indent: style.indent } : {}),
+            ...(style.hanging !== undefined ? { hanging: style.hanging } : {}),
+            ...(style.lineSpacing !== undefined ? { lineSpacing: style.lineSpacing } : {}),
+            ...(style.spaceBefore !== undefined ? { spaceBefore: style.spaceBefore } : {}),
+            ...(style.spaceAfter !== undefined ? { spaceAfter: style.spaceAfter } : {}),
+            ...(style.bullet !== undefined ? { bullet: style.bullet } : {}),
           },
           runs: [{
-            text: element.text,
+            text,
             style: {
-              ...(element.style.fontSize !== undefined ? { fontSize: element.style.fontSize } : {}),
-              ...(element.style.fontFamily !== undefined ? { fontFamily: element.style.fontFamily } : {}),
-              ...(element.style.fontWeight !== undefined ? { bold: element.style.fontWeight === "bold" } : {}),
-              ...(element.style.color !== undefined ? { color: element.style.color } : {}),
+              ...(style.fontSize !== undefined ? { fontSize: style.fontSize } : {}),
+              ...(style.fontFamily !== undefined ? { fontFamily: style.fontFamily } : {}),
+              ...(style.fontWeight !== undefined ? { bold: style.fontWeight === "bold" } : {}),
+              ...(style.italic !== undefined ? { italic: style.italic } : {}),
+              ...(style.underline !== undefined ? { underline: style.underline } : {}),
+              ...(style.strike !== undefined ? { strike: style.strike } : {}),
+              ...(style.color !== undefined ? { color: style.color } : {}),
+              ...(style.language !== undefined ? { language: style.language } : {}),
             },
           }],
-        }],
-      } : {}),
+        }));
+
+    return {
+      type: "text",
+      content,
+      box,
+      ...(style?.autoFit !== undefined ? { frame: { autoFit: style.autoFit } } : {}),
     };
   });
 }
