@@ -39,7 +39,16 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build presentation preview
-        run: pnpm --filter "...@pptkit/presentation-preview" build
+        run: >-
+          pnpm --filter @pptkit/core
+          --filter @pptkit/layout
+          --filter @pptkit/pptx-exporter
+          --filter @pptkit/presentation-workflow
+          --filter @pptkit/svg-renderer
+          build
+
+      - name: Build presentation preview app
+        run: pnpm --filter @pptkit/presentation-preview build
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
