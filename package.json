@@ -18,6 +18,7 @@
     "test:visual": "pnpm --filter @pptkit/svg-renderer build && playwright test --config packages/svg-renderer/playwright.config.mjs",
     "release:npm": "node ./scripts/release.mjs",
     "typecheck": "tsc -b --pretty false",
+    "deploy:preview": "node ./scripts/deploy-pages.mjs",
     "clean": "node ./scripts/clean.mjs",
     "prepare": "husky"
   },
