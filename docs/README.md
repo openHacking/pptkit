@@ -6,6 +6,7 @@ The documentation is organized by audience and task. Current behavior is written
 
 - [Install PPTKit](getting-started/installation.md)
 - [Quick Start](getting-started/quick-start.md)
+- [Use PPTKit Directly in a Browser](guides/browser-cdn.md)
 - [Create Your First Deck](guides/create-your-first-deck.md)
 - [Generate a Deck with the Presentation Skill](guides/presentation-skill.md)
 

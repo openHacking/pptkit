@@ -10,9 +10,11 @@
   "scripts": {
     "dev": "node ./scripts/dev.mjs",
     "build": "pnpm -r build",
+    "build:browser": "pnpm --filter @pptkit/core --filter @pptkit/layout --filter @pptkit/pptx-exporter --filter @pptkit/svg-renderer build",
     "lint": "node ./scripts/lint.mjs && node ./scripts/check-boundaries.mjs && node ./scripts/check-docs.mjs",
     "docs:check": "node ./scripts/check-docs.mjs",
-    "test": "node --test scripts/release.test.mjs && pnpm -r test && pnpm test:visual && node --test scripts/pptkit-skill.test.mjs",
+    "test": "node --test scripts/release.test.mjs && pnpm -r test && pnpm test:visual && pnpm test:browser-bundles && node --test scripts/pptkit-skill.test.mjs",
+    "test:browser-bundles": "pnpm run build:browser && node --test scripts/browser-bundles.test.mjs",
     "test:visual": "pnpm --filter @pptkit/svg-renderer build && playwright test --config packages/svg-renderer/playwright.config.mjs",
     "release:npm": "node ./scripts/release.mjs",
     "typecheck": "tsc -b --pretty false",
@@ -21,8 +23,11 @@
   },
   "devDependencies": {
     "@playwright/test": "1.61.1",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
     "@types/node": "^24.3.0",
     "husky": "^9.1.7",
+    "rollup": "^4.62.2",
     "typescript": "^5.9.2"
   }
 }

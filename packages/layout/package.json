@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/layout",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "type": "module",
   "description": "Layout primitives and export-ready layout resolution for PPTKit.",
@@ -10,6 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/browser/index.js"
     }
   },
   "files": [
@@ -22,7 +26,7 @@
     "@pptkit/core": "workspace:*"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node ../../scripts/build-browser-bundle.mjs @pptkit/layout",
     "test": "pnpm run build && node --test test/*.test.mjs"
   }
 }

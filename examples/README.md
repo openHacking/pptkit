@@ -35,3 +35,4 @@ Do not treat any specific feature list as fixed: the first batch of cases should
 ## Current Layout
 
 - `dev-app/`: internal preview server, registry, and workbench UI
+- `browser-esm/`: zero-build CDN example for SVG preview and browser PPTX download

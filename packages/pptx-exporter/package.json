@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/pptx-exporter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "type": "module",
   "description": "PPTX export boundary for PPTKit.",
@@ -10,6 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/browser/index.js"
     },
     "./node": {
       "types": "./dist/node.d.ts",
@@ -28,7 +32,7 @@
     "fflate": "^0.8.3"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node ../../scripts/build-browser-bundle.mjs @pptkit/pptx-exporter",
     "test": "pnpm run build && node --test test/*.test.mjs"
   }
 }

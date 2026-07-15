@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "type": "module",
   "description": "Authoring-facing document model for PPTKit.",
@@ -10,6 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./browser": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/browser/index.js"
     }
   },
   "files": [
@@ -19,7 +23,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node ../../scripts/build-browser-bundle.mjs @pptkit/core",
     "test": "pnpm run build && node --test test/*.test.mjs"
   }
 }

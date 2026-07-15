@@ -14,6 +14,9 @@ The default Core, exporter, and SVG renderer entry points do not require Node AP
 runtime in the browser. Node is required by the repository toolchain, package managers,
 and explicit `/node` entry points.
 
+For a zero-build static page, use the official per-package ESM or global browser bundles
+described in [Use PPTKit Directly in a Browser](../guides/browser-cdn.md).
+
 ## Install the packages
 
 ```bash
@@ -36,6 +39,10 @@ npm install @pptkit/core @pptkit/pptx-exporter @pptkit/svg-renderer
 | `@pptkit/pptx-exporter/node` | Node.js generation and file output; loads URL and local path assets |
 | `@pptkit/svg-renderer` | Browser-oriented per-slide SVG preview strings; URL assets or a custom resolver |
 | `@pptkit/cli` | Node.js command line |
+
+The four browser-safe packages also expose a `./browser` ESM subpath. Their published
+`dist/browser/global.js` files can be loaded in dependency order when import maps are
+not available.
 
 For a typical application, import `@pptkit/core` to create and validate a
 presentation. Use `@pptkit/pptx-exporter` when the application needs bytes for a
