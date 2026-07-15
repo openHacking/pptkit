@@ -29,6 +29,8 @@ import type {
 } from "../types/style.js";
 import { deepClone } from "../utils/clone.js";
 
+const POWERPOINT_DEFAULT_LIST_INDENT = 27;
+
 export function normalizePaint(input: PaintInput | undefined, fallback: NormalizedPaint = { type: "none" }): NormalizedPaint {
   if (input === undefined) return deepClone(fallback);
   if (input.type === "none") return { type: "none" };
@@ -78,14 +80,18 @@ function normalizeBullet(input: TextBulletInput | undefined, fallback: Normalize
 }
 
 export function normalizeTextParagraphStyle(input?: TextParagraphStyleInput, fallback: NormalizedTextParagraphStyle = DEFAULT_TEXT_PARAGRAPH_STYLE): NormalizedTextParagraphStyle {
+  const bullet = normalizeBullet(input?.bullet, fallback.bullet);
+  const enablesList = input?.bullet !== undefined && input.bullet.type !== "none" && fallback.bullet.type === "none";
+  const defaultIndent = enablesList ? POWERPOINT_DEFAULT_LIST_INDENT : fallback.indent;
+  const defaultHanging = enablesList ? POWERPOINT_DEFAULT_LIST_INDENT : fallback.hanging;
   return {
     align: input?.align ?? fallback.align,
-    indent: input?.indent ?? fallback.indent,
-    hanging: input?.hanging ?? fallback.hanging,
+    indent: input?.indent ?? defaultIndent,
+    hanging: input?.hanging ?? defaultHanging,
     lineSpacing: input?.lineSpacing ?? fallback.lineSpacing,
     spaceBefore: input?.spaceBefore ?? fallback.spaceBefore,
     spaceAfter: input?.spaceAfter ?? fallback.spaceAfter,
-    bullet: normalizeBullet(input?.bullet, fallback.bullet),
+    bullet,
   };
 }
 

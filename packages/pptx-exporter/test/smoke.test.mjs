@@ -105,6 +105,7 @@ test("generatePptx exports the IR v1 feature surface", async () => {
     assert.doesNotMatch(slide1, /<p:bg>/);
     assert.match(slide1, /Q1 &amp; &lt;ready&gt;/);
     assert.match(slide1, /<a:buChar char="→"/);
+    assert.match(slide1, /<a:pPr algn="l" marL="342900" indent="-342900">/);
     assert.match(slide1, /<a:normAutofit fontScale="95000"/);
     assert.doesNotMatch(slide1, /<p:cxnSp>/);
     assert.match(slide1, /<a:custGeom>/);

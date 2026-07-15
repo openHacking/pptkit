@@ -115,8 +115,8 @@ A numeric margin applies to all sides. `fontScale` is in `0..1` and defaults to 
 | Field | Type | Core default |
 | --- | --- | --- |
 | `align` | `left`, `center`, `right`, `justify` | `left` |
-| `indent` | non-negative points | `0` |
-| `hanging` | non-negative points | `0` |
+| `indent` | non-negative points | `0`; `27` when enabling a list |
+| `hanging` | non-negative points | `0`; `27` when enabling a list |
 | `lineSpacing` | positive multiplier | `1` |
 | `spaceBefore` / `spaceAfter` | non-negative points | `0` |
 | `bullet` | none, bullet, or number | none |
@@ -134,6 +134,9 @@ type TextBulletInput =
 ```
 
 The default bullet character is `•`; numbered lists default to `arabicPeriod` starting at `1`.
+When a paragraph enables bullets or numbering without specifying `indent` or
+`hanging`, Core uses PowerPoint's first-level list defaults: both are `27` pt.
+Explicit indentation values are preserved.
 
 ## Run style
 

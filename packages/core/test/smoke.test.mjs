@@ -90,7 +90,28 @@ test("normalizePresentation materializes IR v1 defaults and rich text", () => {
   assert.equal(text.plainText, "Hello PPTKit");
   assert.equal(text.content[0].runs[0].style.fontSize, 36);
   assert.equal(text.content[0].runs[1].style.italic, true);
+  assert.equal(text.content[0].style.indent, 27);
+  assert.equal(text.content[0].style.hanging, 27);
   assert.equal(normalized.slides[0].notes[0].runs[0].text, "Speaker note");
+});
+
+test("list indentation matches PowerPoint defaults and preserves explicit values", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({ elements: [{
+    type: "text",
+    box: { x: 40, y: 40, width: 400, height: 100 },
+    content: [{
+      style: { bullet: { type: "number", style: "alphaLowerPeriod" } },
+      runs: [{ text: "Default" }],
+    }, {
+      style: { bullet: { type: "bullet" }, indent: 18, hanging: 9 },
+      runs: [{ text: "Custom" }],
+    }],
+  }] });
+
+  const [defaultList, customList] = normalizePresentation(presentation).slides[0].elements[0].content;
+  assert.deepEqual([defaultList.style.indent, defaultList.style.hanging], [27, 27]);
+  assert.deepEqual([customList.style.indent, customList.style.hanging], [18, 9]);
 });
 
 test("auto-sizes text height from width, paragraphs, and styles", () => {

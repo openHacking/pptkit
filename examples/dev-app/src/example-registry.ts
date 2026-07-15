@@ -65,8 +65,6 @@ const exportFullFeatureDeckInput: ExampleInputData = {
           style: {
             fontSize: 20,
             bullet: { type: "number", style: "alphaLowerPeriod", startAt: 1 },
-            indent: 18,
-            hanging: 9,
           },
         },
       ],

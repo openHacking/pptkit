@@ -32,7 +32,7 @@ function paragraph(
       align: options.align ?? "left",
       spaceAfter: options.bullet ? 8 : 0,
       bullet: options.bullet ? { type: "bullet" } : { type: "none" },
-      ...(options.bullet ? { indent: 18, hanging: 5 } : {}),
+      ...(options.bullet ? { indent: 27, hanging: 27 } : {}),
     },
     runs: [{
       text,
