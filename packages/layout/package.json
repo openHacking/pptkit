@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/layout",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "type": "module",
   "description": "Layout primitives and export-ready layout resolution for PPTKit.",

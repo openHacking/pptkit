@@ -44,30 +44,24 @@ After the outline is ready, show a short decision summary that remains visible:
 
 Put the full per-slide plan (role, title, message, visual, and source IDs) after the summary. Use an expandable detail section when the host provides one, but do not rely on it for the confirmation control. Then request exactly one outcome through the host's native control, or the numbered fallback:
 
-1. **Approve and generate** — create the project and continue.
+1. **Approve and generate** — create the deck session and continue to preview.
 2. **Change the plan** — ask again only for the affected decision, refresh the outline, and present confirmation again.
 3. **Cancel** — summarize the collected brief and do not create project artifacts.
 
-Treat every outcome except **Approve and generate** as a stop. Do not initialize a project, install dependencies, copy sources, or generate a PPTX before approval. Skip the gate only if the user supplied a complete specification and explicitly requested generation without confirmation.
+Treat every outcome except **Approve and generate** as a stop. Do not create session/project artifacts, open a preview, install dependencies, copy sources, or generate PPTX bytes before approval. Skip the gate only if the user supplied a complete specification and explicitly requested generation without confirmation.
 
 ## Project artifacts
 
-Use this project shape:
+Use this browser-first project shape:
 
 ```text
 project/
 ├── deck-brief.md
-├── sources/
-├── assets/
 ├── content/sources.json
-├── src/deck-spec.ts
-└── output/
-    ├── deck.pptx
-    ├── build-report.json
-    └── rendered/             # optional
+└── deck-session.json
 ```
 
-The editable source of truth is `src/deck-spec.ts`; extracted content is evidence, not slide copy. Summarize and structure it deliberately.
+The browser source of truth is `deck-session.json`; extracted content is evidence, not slide copy. The Node fallback retains its isolated TypeScript project shape from `node-workflow.md`.
 
 ## Iteration
 

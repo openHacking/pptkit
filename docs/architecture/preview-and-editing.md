@@ -29,6 +29,15 @@ simple text with explicit PowerPoint-oriented lines and baselines. Browser XHTML
 `foreignObject` remains the fallback for mixed-run rich text and tables. Consumers may display these
 strings in a gallery, but must keep authoring/normalized state as the source of truth.
 
+The browser-first presentation workflow stores a versioned `DeckSessionV1` in IndexedDB.
+The session owns the semantic deck, extracted evidence, and asset metadata; object URLs,
+SVG strings, PPTX bytes, and build reports are derived state. A deployed static HTTPS
+application can therefore restore review state without uploading presentation data.
+
+PPTX generation is deferred until the user requests a download. Previewing does not
+allocate package bytes, and a failed package inspection withholds the PPTX while still
+returning an actionable report.
+
 ## Fidelity boundary
 
 The preview is designed for modern-browser QA: missing images, clipping, overlap,

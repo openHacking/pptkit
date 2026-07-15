@@ -1,0 +1,26 @@
+{
+  "name": "@pptkit/presentation-preview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "HTTPS-ready local-first browser review application for PPTKit deck sessions.",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "pnpm run build && node --test test/*.test.mjs",
+    "typecheck": "tsc -b tsconfig.json --pretty false"
+  },
+  "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/pptx-exporter": "workspace:*",
+    "@pptkit/presentation-workflow": "workspace:*",
+    "@pptkit/svg-renderer": "workspace:*",
+    "mammoth": "1.9.1",
+    "pdfjs-dist": "4.10.38",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "vite": "^8.1.4"
+  }
+}

@@ -14,16 +14,24 @@ const tsxLoader = path.join(repoRoot, "examples", "dev-app", "node_modules", "ts
 test("presentation skill requires progressive native interaction and an approval gate", () => {
   const skill = readFileSync(path.join(skillRoot, "SKILL.md"), "utf8");
   const workflow = readFileSync(path.join(skillRoot, "references", "workflow.md"), "utf8");
+  const browserWorkflow = readFileSync(path.join(skillRoot, "references", "browser-workflow.md"), "utf8");
+  const nodeWorkflow = readFileSync(path.join(skillRoot, "references", "node-workflow.md"), "utf8");
   const guide = readFileSync(path.join(repoRoot, "docs", "guides", "presentation-skill.md"), "utf8");
 
   assert.match(skill, /one at a time in this order: purpose and audience, theme, then page count and asset strategy/i);
   assert.match(skill, /request_user_input/i);
   assert.match(skill, /Approve and generate.*Change the plan.*Cancel/is);
-  assert.match(skill, /Do not initialize a project, install dependencies, copy sources, or generate a PPTX before/i);
+  assert.match(skill, /Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before/i);
+  assert.match(skill, /Prefer the browser workflow/i);
+  assert.match(skill, /Generate & download PPTX/i);
   assert.match(workflow, /# Interaction capability/);
   assert.match(workflow, /Choose one option for <decision>:/);
   assert.match(workflow, /custom in-chat plugin form/i);
   assert.match(workflow, /Treat every outcome except \*\*Approve and generate\*\* as a stop/);
+  assert.match(browserWorkflow, /PPTKIT_PREVIEW_URL/);
+  assert.match(browserWorkflow, /Do not activate \*\*Generate & download PPTX\*\* for the user/);
+  assert.match(browserWorkflow, /IndexedDB/);
+  assert.match(nodeWorkflow, /State the fallback reason/i);
   assert.match(guide, /one at a time/i);
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
 });
@@ -37,7 +45,12 @@ function wireWorkspace(project) {
   linkDirectory(path.join(repoRoot, "packages", "core"), path.join(project, "node_modules", "@pptkit", "core"));
   linkDirectory(path.join(repoRoot, "packages", "layout"), path.join(project, "node_modules", "@pptkit", "layout"));
   linkDirectory(path.join(repoRoot, "packages", "pptx-exporter"), path.join(project, "node_modules", "@pptkit", "pptx-exporter"));
+  linkDirectory(path.join(repoRoot, "packages", "presentation-workflow"), path.join(project, "node_modules", "@pptkit", "presentation-workflow"));
   linkDirectory(realpathSync(path.join(repoRoot, "packages", "pptx-exporter", "node_modules", "fflate")), path.join(project, "node_modules", "fflate"));
+  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "mammoth")), path.join(project, "node_modules", "mammoth"));
+  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "pdfjs-dist")), path.join(project, "node_modules", "pdfjs-dist"));
+  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "xlsx")), path.join(project, "node_modules", "xlsx"));
+  linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "@types", "node")), path.join(project, "node_modules", "@types", "node"));
 }
 
 function runTypeScript(project, entry, args = [], env = process.env) {
@@ -64,7 +77,7 @@ export const deckSpec: DeckSpec = {
     { id: "agenda", role: "agenda", title: "The path ahead", items: ["Clarify the goal", "Organize evidence", "Author the slides", "Validate delivery"] },
     { id: "section", role: "section", title: "01 / Why", message: "Clarify the problem before choosing the format." },
     { id: "statement", role: "statement", title: "Core judgment", message: "Structured content and controlled layouts turn generation quality into a verifiable engineering result.", items: ["Local assets", "Native objects", "Explicit diagnostics"], sourceRefs: [{ id: "src-01-report" }] },
-    { id: "image", role: "image", title: "Visual evidence", message: "Images fill controlled slots instead of determining the page structure.", items: ["Preserve aspect ratio", "Choose contain or cover", "Provide alt text"], image: { path: "assets/fixture.svg", alt: "Theme fixture", width: 1200, height: 675, fit: "cover" } },
+    { id: "image", role: "image", title: "Visual evidence", message: "Images fill controlled slots instead of determining the page structure.", items: ["Preserve aspect ratio", "Choose contain or cover", "Provide alt text"], image: { assetId: "fixture.svg", alt: "Theme fixture", width: 1200, height: 675, fit: "cover" } },
     { id: "kpi", role: "kpi", title: "Key metrics", kpis: [{ value: "+18%", label: "Activation", detail: "Quarter over quarter" }, { value: "72%", label: "Retention" }, { value: "3.4×", label: "Velocity" }] },
     { id: "comparison", role: "comparison", title: "Two paths", comparison: { left: { heading: "Before", items: ["Repeated coordinates", "Implicit defaults", "Hard to inspect"] }, right: { heading: "After", items: ["Semantic plan", "Theme tokens", "Automated report"] } } },
     { id: "process", role: "process", title: "The workflow", steps: ["Intake", "Outline", "Author", "Validate", "Export"] },
@@ -120,8 +133,13 @@ for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
       wireWorkspace(project);
       copyFileSync(path.join(skillRoot, "assets", "previews", `${themeId}.svg`), path.join(project, "assets", "fixture.svg"));
       writeFileSync(path.join(project, "src", "deck-spec.ts"), fixtureSpec(themeId));
+      if (themeId === "clean-business") {
+        const typecheck = spawnSync(process.execPath, [path.join(repoRoot, "node_modules", "typescript", "bin", "tsc"), "--noEmit"], { cwd: project, encoding: "utf8" });
+        assert.equal(typecheck.status, 0, `${typecheck.stdout}\n${typecheck.stderr}`);
+      }
       const result = runTypeScript(project, "src/build.ts");
-      assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+      const reportText = existsSync(path.join(project, "output", "build-report.json")) ? readFileSync(path.join(project, "output", "build-report.json"), "utf8") : "no report";
+      assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}\n${reportText}`);
       const report = JSON.parse(readFileSync(path.join(project, "output", "build-report.json"), "utf8"));
       assert.equal(report.slideCount, 12);
       assert.deepEqual(report.diagnostics, []);
@@ -151,7 +169,7 @@ test("missing image is reported as an export failure", () => {
     writeFileSync(path.join(project, "src", "deck-spec.ts"), `import type { DeckSpec } from "./contracts.js";
 export const deckSpec: DeckSpec = {
   brief: { title: "Missing asset", audience: "QA", purpose: "Failure test", language: "en-US", slideCountRange: [1, 1], themeId: "clean-business", imagePolicy: "Local", constraints: [] },
-  slides: [{ id: "image", role: "image", title: "Missing image", image: { path: "assets/does-not-exist.png", alt: "Missing fixture", width: 100, height: 100 } }],
+  slides: [{ id: "image", role: "image", title: "Missing image", image: { assetId: "does-not-exist.png", alt: "Missing fixture", width: 100, height: 100 } }],
 };
 `);
     const result = runTypeScript(project, "src/build.ts");

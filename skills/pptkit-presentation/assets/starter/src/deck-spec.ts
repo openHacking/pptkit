@@ -8,7 +8,7 @@ export const deckSpec: DeckSpec = {
     language: "en-US",
     slideCountRange: [3, 5],
     themeId: "clean-business",
-    imagePolicy: "Use only supplied local assets",
+    imagePolicy: "Use asset IDs backed by supplied local files",
     constraints: ["Keep every visible object editable in PowerPoint"],
     author: "PPTKit",
   },

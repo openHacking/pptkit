@@ -4,13 +4,15 @@
 
 | Component | v1 contract |
 | --- | --- |
-| Node.js | `>=20` |
-| `@pptkit/core` | exact `0.1.1` in the starter |
-| `@pptkit/pptx-exporter` | exact `0.1.1` in the starter |
+| Browser | modern HTTPS browser with IndexedDB, Blob, URL, fetch, typed arrays, and structuredClone |
+| Node.js fallback | `>=20` |
+| `@pptkit/core` | exact `0.1.3` in the preview app and starter |
+| `@pptkit/pptx-exporter` | exact `0.1.3` in the preview app and starter |
+| `@pptkit/presentation-workflow` | exact `0.1.3` in the preview app and starter |
 | TypeScript | exact version in the starter manifest |
 | PowerPoint/LibreOffice | manual compatibility review required for public release |
 
-Keep PPTKit package versions aligned. Update the starter only after the workspace build, typecheck, lint, tests, package dry-run, and representative deck fixtures pass together.
+Keep PPTKit package versions aligned. Update the HTTPS preview application and Node starter together only after the workspace build, typecheck, lint, tests, package dry-run, and representative browser/Node deck fixtures pass.
 
 ## Installation
 
@@ -20,7 +22,7 @@ Install the skill with:
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
 ```
 
-Skill installation does not install project dependencies globally. `init-project.mjs` creates an isolated project and installs its pinned dependencies on first use.
+Skill installation does not install project dependencies globally. Browser mode uses the configured deployed preview application. `init-project.mjs` creates an isolated project and installs pinned dependencies only when the Node fallback is selected.
 
 ## Publishing boundary
 

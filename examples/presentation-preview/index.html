@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>PPTKit Presentation Preview</title>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div>
+          <h1 id="deck-title">PPTKit Preview</h1>
+        </div>
+        <div class="topbar-actions">
+          <button id="import-toggle" type="button" class="secondary">Import deck session</button>
+          <button id="download" type="button" disabled>Generate &amp; download PPTX</button>
+        </div>
+      </header>
+
+      <section id="import-panel" class="import-panel" aria-labelledby="import-heading">
+        <div>
+          <h2 id="import-heading">Import DeckSessionV1</h2>
+          <p>Paste the complete JSON session. Importing renders SVG only; it does not generate PPTX bytes.</p>
+        </div>
+        <textarea id="session-input" spellcheck="false" placeholder="Paste DeckSessionV1 JSON"></textarea>
+        <div class="import-actions">
+          <label id="source-drop" class="file-control">Add or drop local sources <input id="source-files" type="file" multiple accept=".md,.markdown,.txt,.pdf,.docx,.csv,.xls,.xlsx,.png,.jpg,.jpeg,.gif,.svg" /></label>
+          <button id="import" type="button">Import and preview</button>
+        </div>
+        <p id="import-error" class="error" role="alert"></p>
+      </section>
+
+      <section class="statusbar" aria-live="polite">
+        <span id="status">Waiting for a deck session.</span>
+        <span id="deck-meta"></span>
+      </section>
+
+      <main class="workspace">
+        <aside class="filmstrip" aria-label="Slide thumbnails">
+          <div id="thumbnails"></div>
+        </aside>
+        <section class="stage-panel" aria-label="Current slide">
+          <div id="stage" class="stage"><p>Import a deck session to start browser review.</p></div>
+          <div class="stage-controls">
+            <button id="previous" type="button" class="secondary" disabled>Previous</button>
+            <span id="page-status">0 / 0</span>
+            <button id="next" type="button" class="secondary" disabled>Next</button>
+          </div>
+          <p class="fidelity-note">This is a browser QA preview. Font metrics and wrapping may differ in PowerPoint or LibreOffice.</p>
+        </section>
+        <aside class="issues-panel" aria-labelledby="issues-heading">
+          <h2 id="issues-heading">Review findings</h2>
+          <div id="issues"><p>No deck loaded.</p></div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>

@@ -40,6 +40,7 @@ A future parse flow starts at package-level data, classifies editable/preserved/
 - `@pptkit/layout` resolves connector anchors and image fitting into detached layout output.
 - `@pptkit/pptx-exporter` loads assets and serializes editable PPTX packages; its Node adapter writes files.
 - `@pptkit/svg-renderer` creates browser-oriented per-slide hybrid SVG previews from Layout state.
+- `@pptkit/presentation-workflow` owns portable deck sessions and shared browser/Node guided-presentation recipes and checks.
 - `@pptkit/cli` is a thin workflow shell without a stable authoring command surface yet.
 
 The planned PPTX and SVG parser packages are described in [Package Boundaries](package-boundaries.md).

@@ -5,7 +5,9 @@
     { "path": "./packages/layout" },
     { "path": "./packages/pptx-exporter" },
     { "path": "./packages/svg-renderer" },
+    { "path": "./packages/presentation-workflow" },
     { "path": "./packages/cli" },
-    { "path": "./examples/dev-app" }
+    { "path": "./examples/dev-app" },
+    { "path": "./examples/presentation-preview" }
   ]
 }

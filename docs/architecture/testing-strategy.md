@@ -21,6 +21,7 @@ pnpm test
 - **Layout:** detached results, connector anchors/bounds, image contain/cover, and nested group traversal.
 - **PPTX exporter:** deterministic ZIP structure, OOXML parts/relationships, editable feature serialization, runtime asset behavior, warnings, and Node output.
 - **SVG renderer:** deterministic serialization, all current element families, input detachment, asset/fidelity warnings, escaping, and real-Chromium visual fixtures.
+- **Presentation workflow:** session/schema limits, portable asset references, source-byte orchestration, role/theme parity, structural checks, and byte-level package inspection without Node APIs.
 - **CLI:** stable command entry behavior appropriate to its current minimal surface.
 
 Tests prefer focused documents that isolate one contract. Cross-package tests cover boundaries where a feature would otherwise be “modeled but not exported.”
@@ -39,6 +40,11 @@ SVG renderer fixtures run in pinned Playwright Chromium. Install the local brows
 with `pnpm exec playwright install chromium`; CI installs Chromium and its Linux
 dependencies before `pnpm test`. Fixed viewport, device scale, color scheme, and a small
 cross-platform pixel tolerance keep the preview snapshots reviewable.
+
+The presentation preview application adds Chromium coverage for session import,
+IndexedDB restore, stable-slide revision behavior, warning navigation, deferred export,
+downloads, and final ZIP signatures. Its test server is local-only and does not represent
+the production HTTPS deployment.
 
 ## Fixtures and regressions
 

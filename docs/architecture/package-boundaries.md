@@ -53,6 +53,18 @@ Owns browser-oriented preview transformation over detached Layout state:
 The renderer has no filesystem, framework, editor, PPTX, OOXML, ZIP, or parser concerns.
 It depends only on public Core and Layout exports and never becomes authoritative state.
 
+### `@pptkit/presentation-workflow`
+
+Owns browser-neutral guided-deck contracts and deterministic presentation recipes:
+
+- versioned deck sessions, source evidence, asset references, and build reports
+- curated theme/slide-role authoring used by browser and Node skill runtimes
+- byte-oriented source parsing orchestration and PPTX package inspection
+- deck and layout quality checks shared by runtime adapters
+
+It depends on public Core contracts and contains no filesystem, process, browser UI, or
+network behavior. Browser `File`/IndexedDB and Node path/file adapters remain outside it.
+
 ### `@pptkit/cli`
 
 Owns thin command-line orchestration. Its current public surface is minimal; future generation and inspection commands must call package APIs rather than reimplement document, layout, parser, or exporter logic.

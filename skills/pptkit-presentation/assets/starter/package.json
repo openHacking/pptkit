@@ -14,10 +14,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pptkit/core": "0.1.1",
-    "@pptkit/pptx-exporter": "0.1.1",
+    "@pptkit/core": "0.1.3",
+    "@pptkit/pptx-exporter": "0.1.3",
+    "@pptkit/presentation-workflow": "0.1.3",
     "fflate": "0.8.3",
-    "image-size": "1.2.1",
     "mammoth": "1.9.1",
     "pdfjs-dist": "4.10.38",
     "xlsx": "0.18.5"

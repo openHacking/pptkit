@@ -116,9 +116,10 @@ from the [Developer Workflow](docs/guides/developer-workflow.md).
 | `@pptkit/layout` | Detached connector and image geometry resolution. |
 | `@pptkit/pptx-exporter` | Browser-neutral editable PPTX generation and Node.js file output. |
 | `@pptkit/svg-renderer` | Browser-oriented SVG preview generation from resolved presentation state. |
+| `@pptkit/presentation-workflow` | Portable guided-deck sessions and shared browser/Node presentation recipes and checks. |
 | `@pptkit/cli` | Thin command workflow shell; its authoring command surface is not stable yet. |
 
-Parser, SVG, preview, and rendering packages remain roadmap work. See the [package overview](docs/api/package-overview.md).
+Parser packages remain roadmap work. See the [package overview](docs/api/package-overview.md).
 
 ## Architecture
 
@@ -141,6 +142,7 @@ The separation keeps mutable authoring state, layout behavior, and OOXML packagi
 - [Core API](docs/api/core.md)
 - [Layout API](docs/api/layout.md)
 - [PPTX exporter API](docs/api/pptx-exporter.md)
+- [Presentation workflow API](docs/api/presentation-workflow.md)
 - [Architecture](docs/architecture/README.md)
 
 ## Development

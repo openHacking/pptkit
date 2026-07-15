@@ -40,7 +40,7 @@ Use warm paper, charcoal text, terracotta accents, serif display type, asymmetri
 
 ## Images
 
-- Copy PNG, JPEG, GIF, or SVG images into `assets/` and reference relative paths from `deck-spec.ts`. Convert WebP/HEIC assets before authoring because the v1 exporter does not preserve those encodings safely.
+- Reference PNG, JPEG, GIF, or SVG images by stable `assetId`. Browser sessions resolve `data:`/`blob:` assets; Node fallback projects copy the files into `assets/`. Convert WebP/HEIC before authoring because the v1 exporter does not preserve those encodings safely.
 - Provide width and height from `content/sources.json` so PPTKit can resolve `contain` and `cover` deterministically.
 - Use `cover` for photographic crops and `contain` for screenshots, diagrams, and UI evidence.
 - Preserve sensitive or text-heavy screenshots; do not redraw them without explicit permission.

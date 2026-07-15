@@ -19,6 +19,8 @@ function run(binary: string, args: string[]) {
 
 const reportPath = path.resolve("output/build-report.json");
 const report = JSON.parse(await readFile(reportPath, "utf8")) as BuildReport;
+if (!report.output) throw new Error("Build report does not contain a Node output path.");
+const pptxOutput = report.output;
 const rendered = path.resolve("output/rendered");
 await mkdir(rendered, { recursive: true });
 
@@ -31,7 +33,7 @@ if (!office) {
 }
 
 try {
-  run(office, ["--headless", "--convert-to", "pdf", "--outdir", rendered, report.output]);
+  run(office, ["--headless", "--convert-to", "pdf", "--outdir", rendered, pptxOutput]);
 } catch (error) {
   report.renderStatus = "skipped";
   const message = `LibreOffice was detected but could not render the deck: ${error instanceof Error ? error.message : String(error)}`;
@@ -40,7 +42,7 @@ try {
   process.stdout.write(`${message}. Review output/deck.pptx manually.\n`);
   process.exit(0);
 }
-const pdf = path.join(rendered, `${path.basename(report.output, path.extname(report.output))}.pdf`);
+const pdf = path.join(rendered, `${path.basename(pptxOutput, path.extname(pptxOutput))}.pdf`);
 const pdftoppm = command(["pdftoppm"]);
 if (!pdftoppm) {
   report.renderStatus = "partial";
