@@ -10,7 +10,7 @@ In a skill-enabled agent such as Codex, ask it to install or update `pptkit-pres
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
 ```
 
-Configure the deployed HTTPS review application as `PPTKIT_PREVIEW_URL`. The skill uses browser mode only when this URL and an in-app browser are available; otherwise it explains why it selected the Node fallback.
+The installed skill uses `https://openhacking.github.io/pptkit/` as its default HTTPS review application, so customers do not need to configure a preview URL. For a private deployment, staging environment, or local development, supply a URL for the current task or set `PPTKIT_PREVIEW_URL`; either overrides the official default. The skill uses browser mode when the resolved URL and an in-app browser are available, otherwise it explains why it selected the Node fallback.
 
 ## Ask for a deck
 

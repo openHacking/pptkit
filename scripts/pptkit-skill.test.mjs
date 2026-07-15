@@ -29,9 +29,13 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(workflow, /custom in-chat plugin form/i);
   assert.match(workflow, /Treat every outcome except \*\*Approve and generate\*\* as a stop/);
   assert.match(browserWorkflow, /PPTKIT_PREVIEW_URL/);
+  assert.match(browserWorkflow, /https:\/\/openhacking\.github\.io\/pptkit\//);
+  assert.match(browserWorkflow, /explicitly supplied[\s\S]*PPTKIT_PREVIEW_URL[\s\S]*official PPTKit preview application/i);
+  assert.match(browserWorkflow, /resolved URL is unreachable or incompatible/i);
   assert.match(browserWorkflow, /Do not activate \*\*Generate & download PPTX\*\* for the user/);
   assert.match(browserWorkflow, /IndexedDB/);
   assert.match(nodeWorkflow, /State the fallback reason/i);
+  assert.match(guide, /customers do not need to configure a preview URL/i);
   assert.match(guide, /one at a time/i);
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
 });

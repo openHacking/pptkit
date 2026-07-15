@@ -15,7 +15,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 4. Build the normalized brief and slide-by-slide outline. Keep the detailed outline separate from the short decision summary.
 5. Require exactly one confirmation outcome: **Approve and generate**, **Change the plan**, or **Cancel**. Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before approval. Skip this gate only for a complete specification that explicitly requests generation without confirmation.
 6. After approval, choose the runtime:
-   - Use [browser-workflow.md](references/browser-workflow.md) when an in-app browser and configured HTTPS preview URL are available, assets fit the transfer limits, and the user did not require unattended local output or Office/LibreOffice rendering.
+   - Use [browser-workflow.md](references/browser-workflow.md) when an in-app browser and the official or configured HTTPS preview URL are available, assets fit the transfer limits, and the user did not require unattended local output or Office/LibreOffice rendering.
    - Use [node-workflow.md](references/node-workflow.md) otherwise, and state the fallback reason.
 7. Read [design-system.md](references/design-system.md) before authoring. Use `deck-session.json` as the browser source of truth and stable slide IDs across revisions.
 8. Treat validation errors, missing required assets, out-of-bounds elements, risky overlaps, malformed packages, and unexpected exporter warnings as failures. Read [quality.md](references/quality.md).

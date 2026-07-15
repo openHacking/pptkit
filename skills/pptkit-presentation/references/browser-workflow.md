@@ -4,9 +4,13 @@ Use this workflow only after the confirmation gate.
 
 ## Preconditions
 
-- Resolve the HTTPS application from `PPTKIT_PREVIEW_URL` or the host's configured PPTKit preview URL. Never invent a deployment URL.
+- Resolve the HTTPS preview application in this order:
+  1. A URL explicitly supplied by the user or host for the current task.
+  2. `PPTKIT_PREVIEW_URL`, when available.
+  3. The official PPTKit preview application at `https://openhacking.github.io/pptkit/`.
+- Require the resolved application to support `DeckSessionV1` with `schemaVersion: 1`. Never invent another deployment URL.
 - Require modern browser support for `fetch`, `Blob`, `URL`, typed arrays, `structuredClone`, and IndexedDB.
-- Fall back to the Node workflow when the URL is missing or unreachable, IndexedDB or required APIs are unavailable, one inline asset exceeds 5 MB, all inline assets exceed 20 MB, or strict Office/LibreOffice rendering is required.
+- Fall back to the Node workflow when the resolved URL is unreachable or incompatible, IndexedDB or required APIs are unavailable, one inline asset exceeds 5 MB, all inline assets exceed 20 MB, or strict Office/LibreOffice rendering is required.
 
 ## Create the session
 
@@ -38,7 +42,7 @@ Use stable source, asset, and slide IDs. Put small images in `assets[].dataUrl`;
 
 ## Open and verify
 
-1. Open the configured HTTPS URL with the host's browser capability. In Codex, load and follow the in-app Browser skill.
+1. Open the resolved HTTPS URL with the host's browser capability. In Codex, load and follow the in-app Browser skill.
 2. Paste the complete `deck-session.json` into **Import DeckSessionV1** and activate **Import and preview**.
 3. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, and the complete findings list.
 4. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
