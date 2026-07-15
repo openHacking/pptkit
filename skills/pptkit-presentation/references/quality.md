@@ -31,10 +31,13 @@ Inspect every rendered slide for:
 
 - clipped or unexpectedly wrapped text
 - low contrast or unreadable captions
+- ordinary copy below 18 pt or table/detail copy below 15 pt
 - collisions and accidental tangencies
 - inconsistent margins, alignment, or page rhythm
+- repeated main compositions, stranded text blocks, or filler used to occupy empty space
 - stretched/cropped evidence and substituted fonts
 - unsupported glyphs or missing media
+- visible internal source IDs, filenames, paths, template names, or workflow commentary
 
 ## Adversarial review
 
@@ -46,5 +49,7 @@ Attack at least these failure modes before delivery:
 4. Font substitution changes wrapping or hierarchy across PowerPoint and LibreOffice.
 5. IndexedDB, browser API, HTTPS URL, or asset-size failures leave a session that appears saved or complete.
 6. A host without structured forms skips a required product decision.
+7. Provenance disappears when the visible source footer is removed, or leaks back into visible copy through a source label.
+8. A layout passes geometry checks but still creates weak hierarchy, excessive whitespace, or three repeated compositions in sequence.
 
 Fix the underlying source or layout. Do not dismiss a failure because a `.pptx` file exists.

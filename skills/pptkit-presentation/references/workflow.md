@@ -44,6 +44,8 @@ After the outline is ready, show a short decision summary that remains visible:
 
 Put the full per-slide plan (role, title, message, visual, and source IDs) after the summary. Use an expandable detail section when the host provides one, but do not rely on it for the confirmation control. Then request exactly one outcome through the host's native control, or the numbered fallback:
 
+For each slide, also record a short **composition intent** (`hero`, `split`, `ledger`, `grid`, `divided`, `timeline`, `image-split`, or `image-hero`) and a density check (`airy`, `balanced`, or `dense`). These are planning language, not new `DeckSpec` fields. Revise the outline when several adjacent slides repeat the same composition or when dense copy would require text below the theme floor.
+
 1. **Approve and generate** — create the deck session and continue to preview.
 2. **Change the plan** — ask again only for the affected decision, refresh the outline, and present confirmation again.
 3. **Cancel** — summarize the collected brief and do not create project artifacts.
@@ -66,3 +68,5 @@ The browser source of truth is `deck-session.json`; extracted content is evidenc
 ## Iteration
 
 Translate feedback into changes to the brief or slide plan, then rebuild the whole deck. Keep stable slide IDs when the slide's semantic identity is unchanged. Report which pages changed and whether warnings remain.
+
+Before importing the session, inspect every string that will be visible. Remove internal source IDs, source filenames, paths, template names, preview labels, and workflow commentary. Keep that evidence in `sourceRefs`, extracted sources, and speaker notes.

@@ -21,27 +21,60 @@ export interface ThemeTokens {
   captionSize: number;
 }
 
+export interface ThemeTypography {
+  displaySize: number;
+  leadSize: number;
+  detailSize: number;
+  titleLineSpacing: number;
+  bodyLineSpacing: number;
+  compactLineSpacing: number;
+  paragraphGap: number;
+  minimumAutoFitScale: number;
+}
+
 const THEMES: Record<ThemeId, ThemeTokens> = {
   "clean-business": {
     id: "clean-business", name: "Clean Business", background: "F7F8FA", surface: "FFFFFF",
     text: "172033", muted: "647083", accent: "2457D6", accent2: "11A683",
-    headingFont: "Aptos Display", bodyFont: "Aptos", margin: 56, gap: 20, radius: 14,
-    titleSize: 30, bodySize: 17, captionSize: 11,
+    headingFont: "Aptos Display", bodyFont: "Aptos", margin: 54, gap: 18, radius: 8,
+    titleSize: 36, bodySize: 19, captionSize: 10,
   },
   "swiss-grid": {
     id: "swiss-grid", name: "Swiss Grid", background: "F4F1EA", surface: "FFFFFF",
-    text: "111111", muted: "5F5A50", accent: "E6402B", accent2: "2255CC",
+    text: "111111", muted: "5F5A50", accent: "E6402B", accent2: "111111",
     headingFont: "Arial", bodyFont: "Arial", margin: 48, gap: 16, radius: 0,
-    titleSize: 32, bodySize: 17, captionSize: 11,
+    titleSize: 38, bodySize: 19, captionSize: 10,
   },
   "editorial-story": {
     id: "editorial-story", name: "Editorial Story", background: "FBF7F0", surface: "FFFDFC",
     text: "2B2118", muted: "766A5E", accent: "A33C2E", accent2: "236A73",
-    headingFont: "Georgia", bodyFont: "Aptos", margin: 60, gap: 24, radius: 8,
-    titleSize: 31, bodySize: 18, captionSize: 11,
+    headingFont: "Georgia", bodyFont: "Aptos", margin: 58, gap: 22, radius: 4,
+    titleSize: 36, bodySize: 20, captionSize: 10,
+  },
+};
+
+const TYPOGRAPHY: Record<ThemeId, ThemeTypography> = {
+  "clean-business": {
+    displaySize: 52, leadSize: 27, detailSize: 16,
+    titleLineSpacing: 0.98, bodyLineSpacing: 1.14, compactLineSpacing: 1.06,
+    paragraphGap: 5, minimumAutoFitScale: 0.9,
+  },
+  "swiss-grid": {
+    displaySize: 54, leadSize: 28, detailSize: 16,
+    titleLineSpacing: 0.94, bodyLineSpacing: 1.1, compactLineSpacing: 1.04,
+    paragraphGap: 4, minimumAutoFitScale: 0.9,
+  },
+  "editorial-story": {
+    displaySize: 48, leadSize: 27, detailSize: 17,
+    titleLineSpacing: 0.98, bodyLineSpacing: 1.18, compactLineSpacing: 1.08,
+    paragraphGap: 6, minimumAutoFitScale: 0.9,
   },
 };
 
 export function getTheme(id: ThemeId): ThemeTokens {
   return THEMES[id];
+}
+
+export function getTypography(id: ThemeId): ThemeTypography {
+  return TYPOGRAPHY[id];
 }

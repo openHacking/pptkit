@@ -111,11 +111,13 @@ function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: numb
   let first = true;
   let segments: NativeTextSegment[] = [];
   let width = 0;
+  let hasContent = false;
   let pendingSpace: TextRun | undefined;
 
   const startLine = (): void => {
     segments = [];
     width = 0;
+    hasContent = false;
     if (first && bullet !== "") {
       appendSegment(segments, firstRun, bullet);
       width = textWidth(bullet, firstRun, scale);
@@ -132,8 +134,7 @@ function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: numb
     const space = pendingSpace === undefined || segments.length === 0 ? "" : " ";
     const maximum = first ? firstWidth : laterWidth;
     const candidateWidth = width + textWidth(space, pendingSpace ?? run, scale) + textWidth(word, run, scale);
-    const hasText = segments.length > (first && bullet !== "" ? 1 : 0);
-    if (hasText && candidateWidth > maximum) finishLine();
+    if (hasContent && candidateWidth > maximum) finishLine();
     if (pendingSpace !== undefined && segments.length > 0) {
       appendSegment(segments, pendingSpace, " ");
       width += textWidth(" ", pendingSpace, scale);
@@ -141,10 +142,10 @@ function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: numb
     for (const character of word) {
       const characterMeasure = characterWidth(character, run, scale);
       const activeMaximum = first ? firstWidth : laterWidth;
-      const activeHasText = segments.length > (first && bullet !== "" ? 1 : 0);
-      if (activeHasText && width + characterMeasure > activeMaximum) finishLine();
+      if (hasContent && width + characterMeasure > activeMaximum) finishLine();
       appendSegment(segments, run, character);
       width += characterMeasure;
+      hasContent = true;
     }
     pendingSpace = undefined;
   };

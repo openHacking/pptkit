@@ -251,6 +251,28 @@ test("uses native SVG baselines and PowerPoint-oriented wrapping for simple text
   assert.match(founderVisibility.svg, /<text x="62\.5" y="181\.249682" text-anchor="start" data-pptkit-text-line="0">/);
 });
 
+test("wraps long single-run bullet paragraphs instead of overflowing the frame", async () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    id: "bullet-wrap",
+    elements: [{
+      type: "text",
+      id: "bullet-copy",
+      content: [{
+        style: { bullet: { type: "bullet" }, indent: 22, hanging: 22, lineSpacing: 1.12 },
+        runs: [{ text: "Long-term visibility through listings and Coming Soon pages", style: { fontFamily: "Arial", fontSize: 18 } }],
+      }],
+      box: { x: 526, y: 258, width: 350, height: 100 },
+      frame: { autoFit: { mode: "shrink", fontScale: 0.9 } },
+    }],
+  });
+  const result = await renderPresentationToSvg(presentation);
+  const svg = result.slides[0].svg;
+  assert.match(svg, /data-pptkit-text-line="1"/);
+  assert.match(svg, /<text x="555"[^>]+data-pptkit-text-line="1"/);
+  assert.doesNotMatch(svg, />• Long-term visibility through listings and Coming Soon pages</);
+});
+
 test("renderLayoutToSvg matches the authoring convenience API", async () => {
   const presentation = createFixture();
   const layout = resolveNormalizedLayout(normalizePresentation(presentation));

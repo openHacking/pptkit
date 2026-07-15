@@ -12,7 +12,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 1. Inspect the request and every supplied source before asking questions. Read [workflow.md](references/workflow.md).
 2. Ask only for decisions that cannot be inferred. Ask them one at a time in this order: purpose and audience, theme, then page count and asset strategy. Use the host's native question/form tool (in Codex, `request_user_input`) whenever available.
 3. Show the three style previews in `assets/previews/` unless the user already chose a theme. Recommend exactly one theme.
-4. Build the normalized brief and slide-by-slide outline. Keep the detailed outline separate from the short decision summary.
+4. Build the normalized brief and slide-by-slide outline. Record each slide's role, composition intent, density, visual evidence, and source IDs. Keep the detailed outline separate from the short decision summary.
 5. Require exactly one confirmation outcome: **Approve and generate**, **Change the plan**, or **Cancel**. Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before approval. Skip this gate only for a complete specification that explicitly requests generation without confirmation.
 6. After approval, choose the runtime:
    - Use [browser-workflow.md](references/browser-workflow.md) when an in-app browser and the official or configured HTTPS preview URL are available, assets fit the transfer limits, and the user did not require unattended local output or Office/LibreOffice rendering.
@@ -34,8 +34,10 @@ Create a structured deck session, preview it in the browser, and generate an edi
 
 ## Control quality
 
-- Prefer one message per slide; preserve citations and source IDs in `sourceRefs`.
-- Split content instead of shrinking below the theme minimum.
+- Prefer one message per slide; preserve citations and source IDs in `sourceRefs`, which are provenance metadata and are not visible slide footers.
+- Never place internal source IDs, input filenames, local paths, template/style names, or workflow instructions in visible slide copy. If a visible citation is explicitly required, author a human-readable citation as content and keep the internal ID in `sourceRefs`.
+- Split content instead of shrinking below the theme minimum. Treat 18–22 pt as ordinary body copy, 15–18 pt as detail/table copy, and 9–11 pt as metadata only.
+- Use theme-specific compositions and vary narrative rhythm. Do not solve empty space with filler, decorative numbering, repeated rounded cards, or arbitrary icons.
 - Rebuild and re-preview after each material revision; keep the current slide selected by stable slide ID.
 - Treat SVG renderer warnings as review evidence, not as proof of Office fidelity.
 - Perform the final adversarial review in [quality.md](references/quality.md).

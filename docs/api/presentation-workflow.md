@@ -23,6 +23,10 @@ const session: DeckSessionV1 = {
 
 Images use stable `assetId` values. `authorPresentation(deck, resolver)` asks the runtime adapter to resolve each ID into a browser URL or Node path without adding environment-specific fields to the deck spec.
 
+`sourceRefs` are provenance metadata. The authoring runtime merges them into speaker notes and never creates an automatic visible source footer. A visible citation must be authored explicitly as human-readable slide content.
+
+The three stable theme IDs use distinct deterministic layout recipes rather than a shared geometry with different colors. Role, content length, item count, image presence, and slide position determine the composition; no random layout selection is used.
+
 ## Source extraction
 
 `extractSource` and `extractSources` accept `{ name, mimeType, bytes }`. Runtime adapters provide PDF, DOCX, workbook, and image parsers. Plain text parsing, source IDs, result normalization, and failure reporting remain shared.
@@ -31,7 +35,7 @@ Images use stable `assetId` values. `authorPresentation(deck, resolver)` asks th
 
 ## Validation and package inspection
 
-- `validateDeckSpec` checks semantic role requirements, IDs, density, and asset availability.
+- `validateDeckSpec` checks semantic role requirements, IDs, role and text density, internal-metadata leakage, and asset availability.
 - `inspectStructure` checks resolved slide bounds and risky overlaps.
 - `inspectPptxPackage(bytes)` checks required ZIP/XML parts directly from `Uint8Array` in either runtime.
 - `parseDeckSession` validates schema version and enforces 5 MB per-inline-asset and 20 MB total-inline-asset limits.

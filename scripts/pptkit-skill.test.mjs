@@ -16,6 +16,8 @@ test("presentation skill requires progressive native interaction and an approval
   const workflow = readFileSync(path.join(skillRoot, "references", "workflow.md"), "utf8");
   const browserWorkflow = readFileSync(path.join(skillRoot, "references", "browser-workflow.md"), "utf8");
   const nodeWorkflow = readFileSync(path.join(skillRoot, "references", "node-workflow.md"), "utf8");
+  const designSystem = readFileSync(path.join(skillRoot, "references", "design-system.md"), "utf8");
+  const quality = readFileSync(path.join(skillRoot, "references", "quality.md"), "utf8");
   const guide = readFileSync(path.join(repoRoot, "docs", "guides", "presentation-skill.md"), "utf8");
 
   assert.match(skill, /one at a time in this order: purpose and audience, theme, then page count and asset strategy/i);
@@ -35,6 +37,10 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /Do not activate \*\*Generate & download PPTX\*\* for the user/);
   assert.match(browserWorkflow, /IndexedDB/);
   assert.match(nodeWorkflow, /State the fallback reason/i);
+  assert.match(designSystem, /sourceRefs.*provenance metadata/is);
+  assert.match(designSystem, /46–60 pt/);
+  assert.match(designSystem, /hero.*split.*ledger.*timeline/is);
+  assert.match(quality, /visible internal source IDs/i);
   assert.match(guide, /customers do not need to configure a preview URL/i);
   assert.match(guide, /one at a time/i);
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);

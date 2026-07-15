@@ -20,7 +20,9 @@ Attach or name the relevant files and describe the audience and outcome:
 Use PPTKit to turn this quarterly report into an editable 10-slide presentation for our executive review.
 ```
 
-The skill inspects available material, asks only for missing decisions one at a time, shows a theme preview, and proposes a slide-by-slide outline. It does not create artifacts until the user selects **Approve and generate**. **Change the plan** returns to the affected decision, while **Cancel** stops without artifacts.
+The skill inspects available material, asks only for missing decisions one at a time, shows a theme preview, and proposes a slide-by-slide outline with a composition intent and density check for every page. It does not create artifacts until the user selects **Approve and generate**. **Change the plan** returns to the affected decision, while **Cancel** stops without artifacts.
+
+The generated deck keeps source IDs and filenames out of visible slide copy. `sourceRefs` remain available as provenance and are written to speaker notes; visible citations are included only when the user requests a human-readable citation treatment.
 
 ## Browser-first review
 
@@ -29,6 +31,8 @@ After approval, browser mode creates `deck-brief.md`, `deck-session.json`, and `
 The agent imports `DeckSessionV1` into the HTTPS review application. The page renders one standalone SVG per slide, shows blocking issues and warnings, stores the session and assets in IndexedDB, and keeps the review tab open. It does not upload deck data and does not generate PPTX bytes during preview.
 
 Users can revise the deck in chat without losing their place: revisions retain stable slide IDs, increment the session revision, re-import the complete session, and report changed pages.
+
+All runtimes use the same theme-specific authoring recipes. Clean Business emphasizes information axes and rules, Swiss Grid uses modular asymmetry and numeric anchors, and Editorial Story uses narrow measures and narrative image/text compositions.
 
 The explicit **Generate & download PPTX** action generates bytes in the browser, verifies ZIP/XML package structure, downloads `build-report.json`, and downloads the PPTX only when package checks pass. Browser SVG preview is a QA surface, not a pixel-identical PowerPoint renderer.
 
