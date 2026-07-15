@@ -79,6 +79,7 @@ export async function buildExampleReport(example: ExampleDefinition, sourceOverr
 
   return {
     example: sourceOverride === undefined ? example : { ...example, source: { ...example.source, content: sourceOverride } },
+    presentationInput: input,
     normalizedDocument,
     renderResult,
     exportResult,

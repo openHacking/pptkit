@@ -2,11 +2,10 @@ import { AlertCircle, Check, Download, Eye, LoaderCircle, Presentation, RotateCc
 import { useEffect, useState } from "react";
 import { generatePptx } from "@pptkit/pptx-exporter";
 import { renderPresentationToSvg, type SvgRenderResult } from "@pptkit/svg-renderer";
-import type { CapabilityStatus, ExampleReport, ExampleSummary, FeatureId, WorkbenchPayload } from "../example-types";
+import type { ExampleInputData, ExampleReport, ExampleSummary, FeatureId, WorkbenchPayload } from "../example-types";
 import { createExamplePresentation } from "../presentation-builder";
 import { parseExampleSource } from "../source-parser";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -37,30 +36,6 @@ async function postJson<T>(url: string, body: unknown): Promise<T> {
   return (await response.json()) as T;
 }
 
-function capabilityVariant(value: CapabilityStatus): "default" | "secondary" | "outline" {
-  if (value === "implemented") {
-    return "default";
-  }
-
-  if (value === "placeholder") {
-    return "secondary";
-  }
-
-  return "outline";
-}
-
-function statusVariant(value: string): "default" | "secondary" | "outline" {
-  if (value === "ready" || value === "implemented") {
-    return "default";
-  }
-
-  if (value === "placeholder") {
-    return "secondary";
-  }
-
-  return "outline";
-}
-
 function JsonBlock({ value }: { value: unknown }) {
   return (
     <ScrollArea className="h-[28rem] rounded-md border">
@@ -76,64 +51,22 @@ function SourceEditor({
   value,
   dirty,
   error,
-  applying,
-  browserExporting,
-  serverExporting,
-  previewing,
   onChange,
-  onApply,
-  onReset,
-  onBrowserExport,
-  onServerExport,
-  onPreview,
 }: {
   label: string;
   value: string;
   dirty: boolean;
   error: string | null;
-  applying: boolean;
-  browserExporting: boolean;
-  serverExporting: boolean;
-  previewing: boolean;
   onChange: (value: string) => void;
-  onApply: () => void;
-  onReset: () => void;
-  onBrowserExport: () => void;
-  onServerExport: () => void;
-  onPreview: () => void;
 }) {
-  const busy = applying || browserExporting || serverExporting || previewing;
-
   return (
     <div className="space-y-2">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div>
         <div>
           <p className="text-muted-foreground text-sm">{label}</p>
           <p className="text-muted-foreground mt-1 text-xs">
             {dirty ? "Unsaved changes" : "Applied source"}
           </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" onClick={onReset} disabled={!dirty || busy}>
-            <RotateCcw />
-            Reset
-          </Button>
-          <Button type="button" size="sm" onClick={onApply} disabled={!dirty || busy}>
-            {applying ? <LoaderCircle className="animate-spin" /> : <Check />}
-            {applying ? "Applying..." : "Apply changes"}
-          </Button>
-          <Button type="button" variant="outline" size="sm" onClick={onPreview} disabled={dirty || busy}>
-            {previewing ? <LoaderCircle className="animate-spin" /> : <Eye />}
-            {previewing ? "Rendering preview..." : "Preview SVG"}
-          </Button>
-          <Button type="button" variant="secondary" size="sm" onClick={onBrowserExport} disabled={dirty || busy}>
-            {browserExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
-            {browserExporting ? "Exporting in browser..." : "Export in browser"}
-          </Button>
-          <Button type="button" variant="outline" size="sm" onClick={onServerExport} disabled={dirty || busy}>
-            {serverExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
-            {serverExporting ? "Exporting via server..." : "Export via server"}
-          </Button>
         </div>
       </div>
       <textarea
@@ -198,20 +131,8 @@ function ExampleList({
   );
 }
 
-async function buildPreviewResultFromNormalizedDocument(report: ExampleReport): Promise<SvgRenderResult> {
-  const presentation = createExamplePresentation({
-    title: report.normalizedDocument.title,
-    summary: report.normalizedDocument.summary,
-    slides: report.normalizedDocument.slides.map((slide) => ({
-      title: slide.title,
-      elements: slide.elements,
-    })),
-  });
-  return renderPresentationToSvg(presentation);
-}
-
-async function buildPreviewResultFromSource(source: string): Promise<SvgRenderResult> {
-  const presentation = createExamplePresentation(parseExampleSource(source));
+async function buildPreviewResult(input: ExampleInputData): Promise<SvgRenderResult> {
+  const presentation = createExamplePresentation(input);
   return renderPresentationToSvg(presentation);
 }
 
@@ -250,55 +171,42 @@ function ReportView({
   onServerExport: () => void;
   onPreview: () => void;
 }) {
+  const busy = applying || browserExporting || serverExporting || previewing;
+
   return (
     <div className="flex h-full flex-col gap-5">
-      <div className="flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h2 className="sr-only">{report.example.title}</h2>
-          <p className="text-muted-foreground text-sm">{report.example.description}</p>
-        </div>
-        <Badge variant={statusVariant(report.example.status)}>{report.example.status}</Badge>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-3">
-        <Card className="gap-3 py-5">
-          <CardHeader>
-            <CardTitle className="text-base">Normalize</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Badge variant={capabilityVariant(report.example.expectedCapabilities.normalize)}>
-              {report.example.expectedCapabilities.normalize}
-            </Badge>
-          </CardContent>
-        </Card>
-        <Card className="gap-3 py-5">
-          <CardHeader>
-            <CardTitle className="text-base">Render</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Badge variant={capabilityVariant(report.example.expectedCapabilities.render)}>
-              {report.example.expectedCapabilities.render}
-            </Badge>
-          </CardContent>
-        </Card>
-        <Card className="gap-3 py-5">
-          <CardHeader>
-            <CardTitle className="text-base">Export PPTX</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Badge variant={capabilityVariant(report.example.expectedCapabilities.exportPptx)}>
-              {report.example.expectedCapabilities.exportPptx}
-            </Badge>
-          </CardContent>
-        </Card>
-      </div>
-
       <Card className="gap-4 py-5">
-        <CardHeader>
-          <CardTitle>SVG Browser Preview</CardTitle>
-          <p className="text-muted-foreground text-sm">
-            {previewResult.slides.length} slide{previewResult.slides.length === 1 ? "" : "s"} · {previewResult.warnings.length} warning{previewResult.warnings.length === 1 ? "" : "s"}
-          </p>
+        <CardHeader className="gap-4">
+          <div className="flex flex-col gap-3 border-b pb-4 lg:flex-row lg:items-start lg:justify-between">
+            <div>
+              <CardTitle>SVG Browser Preview</CardTitle>
+              <p className="text-muted-foreground mt-1 text-sm">
+                {previewResult.slides.length} slide{previewResult.slides.length === 1 ? "" : "s"} · {previewResult.warnings.length} warning{previewResult.warnings.length === 1 ? "" : "s"}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2" aria-label="Preview tools">
+              <Button type="button" variant="outline" size="sm" onClick={onReset} disabled={!sourceDirty || busy}>
+                <RotateCcw />
+                Reset
+              </Button>
+              <Button type="button" size="sm" onClick={onApply} disabled={!sourceDirty || busy}>
+                {applying ? <LoaderCircle className="animate-spin" /> : <Check />}
+                {applying ? "Applying..." : "Apply changes"}
+              </Button>
+              <Button type="button" variant="outline" size="sm" onClick={onPreview} disabled={sourceDirty || busy}>
+                {previewing ? <LoaderCircle className="animate-spin" /> : <Eye />}
+                {previewing ? "Rendering preview..." : "Preview SVG"}
+              </Button>
+              <Button type="button" variant="secondary" size="sm" onClick={onBrowserExport} disabled={sourceDirty || busy}>
+                {browserExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
+                {browserExporting ? "Exporting in browser..." : "Export in browser"}
+              </Button>
+              <Button type="button" variant="outline" size="sm" onClick={onServerExport} disabled={sourceDirty || busy}>
+                {serverExporting ? <LoaderCircle className="animate-spin" /> : <Download />}
+                {serverExporting ? "Exporting via server..." : "Export via server"}
+              </Button>
+            </div>
+          </div>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
           {previewResult.slides.map((slide) => (
@@ -330,16 +238,7 @@ function ReportView({
                 value={source}
                 dirty={sourceDirty}
                 error={sourceError}
-                applying={applying}
-                browserExporting={browserExporting}
-                serverExporting={serverExporting}
-                previewing={previewing}
                 onChange={onSourceChange}
-                onApply={onApply}
-                onReset={onReset}
-                onBrowserExport={onBrowserExport}
-                onServerExport={onServerExport}
-                onPreview={onPreview}
               />
               {exportMessage !== null && (
                 <p className="flex items-center gap-2 text-sm text-emerald-700">
@@ -440,7 +339,7 @@ export default function App() {
           return;
         }
 
-        const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+        const nextPreviewResult = await buildPreviewResult(nextReport.presentationInput);
 
         setPayload(nextPayload);
         setActiveFeature(initialFeature);
@@ -484,7 +383,7 @@ export default function App() {
 
     try {
       const nextReport = await fetchJson<ExampleReport>(`/api/examples/${nextExample.id}`);
-      const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+      const nextPreviewResult = await buildPreviewResult(nextReport.presentationInput);
 
       setActiveFeature(feature);
       setActiveExampleId(nextExample.id);
@@ -511,7 +410,7 @@ export default function App() {
 
     try {
       const nextReport = await fetchJson<ExampleReport>(`/api/examples/${exampleId}`);
-      const nextPreviewResult = await buildPreviewResultFromNormalizedDocument(nextReport);
+      const nextPreviewResult = await buildPreviewResult(nextReport.presentationInput);
 
       setActiveExampleId(exampleId);
       setPreviewResult(nextPreviewResult);
@@ -539,7 +438,7 @@ export default function App() {
 
     try {
       const nextReport = await postJson<ExampleReport>(`/api/examples/${report.example.id}/report`, { source });
-      const nextPreviewResult = await buildPreviewResultFromSource(source);
+      const nextPreviewResult = await buildPreviewResult(nextReport.presentationInput);
 
       setPreviewResult(nextPreviewResult);
       setReport(nextReport);
@@ -575,7 +474,7 @@ export default function App() {
     setPreviewing(true);
     setSourceError(null);
     try {
-      setPreviewResult(await buildPreviewResultFromSource(appliedSource));
+      setPreviewResult(await buildPreviewResult(report.presentationInput));
     } catch (nextError) {
       setSourceError(String(nextError).replace(/^Error: /, ""));
     } finally {
@@ -670,9 +569,6 @@ export default function App() {
 
       <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[280px_minmax(0,1fr)]">
         <Card className="min-h-0 gap-4 py-5">
-          <CardHeader>
-            <CardTitle>Feature Cases</CardTitle>
-          </CardHeader>
           <CardContent className="min-h-0 flex-1">
             <ScrollArea className="h-full pr-3">
               <ExampleList

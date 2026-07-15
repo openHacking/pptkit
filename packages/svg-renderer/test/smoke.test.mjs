@@ -152,6 +152,26 @@ test("uses native SVG baselines and PowerPoint-oriented wrapping for simple text
   const presentation = createPresentation();
   const cases = [
     {
+      id: "build-traction-title",
+      text: "Build traction before launch.",
+      fontSize: 43.5,
+      fontScale: 0.96105,
+      lineSpacing: 0.9,
+      box: { x: 55.5, y: 94.5, width: 457.5, height: 97.5 },
+      bold: true,
+      expected: ["Build traction before", "launch."],
+    },
+    {
+      id: "earlier-visibility-title",
+      text: "Earlier visibility\nbecomes the product.",
+      fontSize: 24.75,
+      fontScale: 0.98555,
+      lineSpacing: 0.96,
+      box: { x: 598.5, y: 198, width: 213.75, height: 91.5 },
+      bold: true,
+      expected: ["Earlier visibility", "becomes the", "product."],
+    },
+    {
       id: "launch-title",
       text: "Launch-day momentum is too narrow.",
       fontSize: 33,
@@ -226,7 +246,9 @@ test("uses native SVG baselines and PowerPoint-oriented wrapping for simple text
     assert.deepEqual(lines, item.expected, item.id);
     assert.ok(!svg.includes("<foreignObject"));
   }
-  assert.match(result.slides[1].svg, /<text x="62\.5" y="181\.249682" text-anchor="start" data-pptkit-text-line="0">/);
+  const founderVisibility = result.slides.find((slide) => slide.slideId === "founder-visibility");
+  assert.ok(founderVisibility);
+  assert.match(founderVisibility.svg, /<text x="62\.5" y="181\.249682" text-anchor="start" data-pptkit-text-line="0">/);
 });
 
 test("renderLayoutToSvg matches the authoring convenience API", async () => {

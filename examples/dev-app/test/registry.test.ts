@@ -63,6 +63,7 @@ describe("example registry", () => {
 
     const report = await buildExampleReport(example!);
 
+    expect(report.presentationInput.slides).toHaveLength(report.normalizedDocument.slideCount);
     expect(report.normalizedDocument.slideCount).toBeGreaterThan(0);
     expect(report.exportResult.status).toBe("not-exported");
     expect(Array.isArray(report.diagnostics)).toBe(true);

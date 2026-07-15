@@ -165,6 +165,7 @@ export interface NormalizedDocumentReport {
 
 export interface ExampleReport {
   example: ExampleDefinition;
+  presentationInput: ExampleInputData;
   normalizedDocument: NormalizedDocumentReport;
   renderResult: {
     slideCount: number;

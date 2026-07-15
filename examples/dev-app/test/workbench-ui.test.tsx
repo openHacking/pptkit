@@ -71,6 +71,24 @@ function buildReport(id: string, feature: string, title: string): ExampleReport 
         };
       },
     },
+    presentationInput: {
+      title: `${title} source deck`,
+      summary: `${title} source summary`,
+      slides: [
+        {
+          title: `${title} source slide`,
+          elements: [
+            {
+              type: "shape",
+              shape: "rect",
+              box: { x: 48, y: 48, width: 320, height: 120 },
+              text: { content: `Source-rendered ${title}` },
+              style: { fill: "#123456" },
+            },
+          ],
+        },
+      ],
+    },
     normalizedDocument: {
       title,
       summary: `${title} summary`,
@@ -119,6 +137,7 @@ describe("workbench app", () => {
           }
           const nextReport = buildReport("export-alpha", "export", "Applied Source");
           nextReport.example.source.content = body.source;
+          nextReport.presentationInput = JSON.parse(body.source);
           return new Response(JSON.stringify(nextReport), { status: 200 });
         }
 
@@ -163,18 +182,23 @@ describe("workbench app", () => {
     render(<App />);
 
     expect(await screen.findByText("PPTKit Workbench")).toBeTruthy();
-    expect(screen.getByText("Import Alpha description")).toBeTruthy();
+    expect(screen.getByRole("textbox", { name: "Import Alpha.md" })).toBeTruthy();
+    expect(screen.queryByText("Feature Cases")).toBeNull();
+    expect(screen.queryByText("Normalize")).toBeNull();
+    expect(screen.queryByText("ready")).toBeNull();
     expect(screen.queryByText(/^Input:/)).toBeNull();
     expect(screen.queryByText("fixtures")).toBeNull();
 
     await user.click(screen.getByRole("button", { name: /Import Beta/ }));
     await waitFor(() => {
-      expect(screen.getByText("Import Beta description")).toBeTruthy();
+      expect(screen.getByRole("textbox", { name: "Import Beta.md" })).toBeTruthy();
+      expect(document.querySelector("svg[data-pptkit-slide-id]")?.textContent).toContain("Source-rendered Import Beta");
     });
 
     await user.click(screen.getByRole("tab", { name: "export" }));
     await waitFor(() => {
-      expect(screen.getByText("Export Alpha description")).toBeTruthy();
+      expect(screen.getByRole("textbox", { name: "Export Alpha.md" })).toBeTruthy();
+      expect(document.querySelector("svg[data-pptkit-slide-id]")?.textContent).toContain("Source-rendered Export Alpha");
     });
 
     expect(screen.getByText("Export Alpha diagnostic")).toBeTruthy();
@@ -201,7 +225,7 @@ describe("workbench app", () => {
 
     await user.click(screen.getByRole("button", { name: "Apply changes" }));
     await waitFor(() => {
-      expect(screen.getAllByText("Applied Source").length).toBeGreaterThan(0);
+      expect(screen.getByText("Applied source")).toBeTruthy();
     });
 
     await user.click(screen.getByRole("button", { name: "Export in browser" }));
@@ -226,7 +250,10 @@ describe("workbench app", () => {
     expect(await screen.findByText("PPTKit Workbench")).toBeTruthy();
     await waitFor(() => expect(screen.getByText("SVG Browser Preview")).toBeTruthy());
     expect(screen.getByText("1 slide · 0 warnings")).toBeTruthy();
-    expect(document.querySelector("svg[data-pptkit-slide-id]")).toBeTruthy();
+    const initialSvg = document.querySelector("svg[data-pptkit-slide-id]");
+    expect(initialSvg).toBeTruthy();
+    expect(initialSvg?.textContent).toContain("Source-rendered Import Alpha");
+    expect(initialSvg?.textContent).not.toContain("One");
 
     const source = screen.getByRole("textbox", { name: "Import Alpha.md" });
     await user.clear(source);
@@ -254,6 +281,6 @@ describe("workbench app", () => {
     await waitFor(() => {
       expect(screen.getByText("Not found")).toBeTruthy();
     });
-    expect(screen.getByText("Import Alpha description")).toBeTruthy();
+    expect(screen.getByRole("textbox", { name: "Import Alpha.md" })).toBeTruthy();
   });
 });

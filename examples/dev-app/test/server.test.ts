@@ -57,12 +57,14 @@ describe("workbench server", () => {
     const exampleResponse = await invoke(`/api/examples/${workbenchPayload.examples[0]!.id}`);
     const examplePayload = JSON.parse(exampleResponse.body) as {
       example: { id: string };
+      presentationInput: { slides: unknown[] };
       diagnostics: string[];
       exportResult: { output: string; status: string };
     };
 
     expect(exampleResponse.statusCode).toBe(200);
     expect(examplePayload.example.id).toBe(workbenchPayload.examples[0]!.id);
+    expect(examplePayload.presentationInput.slides.length).toBeGreaterThan(0);
     expect(examplePayload.diagnostics.length).toBeGreaterThan(0);
     expect(examplePayload.exportResult.status).toBe("not-exported");
     expect(examplePayload.exportResult.output).toBe("");
@@ -81,10 +83,13 @@ describe("workbench server", () => {
     });
     const reportResponse = await invoke("/api/examples/export-full-feature-deck/report", "POST", JSON.stringify({ source }));
     const reportPayload = JSON.parse(reportResponse.body) as {
+      presentationInput: { title: string; slides: unknown[] };
       normalizedDocument: { title: string; slideCount: number };
     };
 
     expect(reportResponse.statusCode).toBe(200);
+    expect(reportPayload.presentationInput.title).toBe("Applied deck");
+    expect(reportPayload.presentationInput.slides).toHaveLength(1);
     expect(reportPayload.normalizedDocument.title).toBe("Applied deck");
     expect(reportPayload.normalizedDocument.slideCount).toBe(1);
 

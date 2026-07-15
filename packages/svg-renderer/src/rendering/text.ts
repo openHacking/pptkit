@@ -32,14 +32,19 @@ interface NativeTextLine {
   y: number;
 }
 
-// PowerPoint generally measures Latin text slightly wider than Chromium. These
-// deterministic coefficients preserve PPT-oriented wrap points without making
-// SVG generation depend on a browser canvas or hidden host font state.
-const NORMAL_CHARACTER_WIDTH = 0.48;
-const BOLD_CHARACTER_WIDTH = 0.52;
+// Keep wrapping deterministic without depending on browser canvas metrics or
+// hidden host fonts. Latin glyph advances vary too much for one average width:
+// treating "i" like "m" makes compact bold headings wrap substantially earlier
+// than they do in PowerPoint.
+const NORMAL_CHARACTER_WIDTH = 0.52;
+const NARROW_CHARACTER_WIDTH = 0.3;
+const WIDE_CHARACTER_WIDTH = 0.72;
+const UPPERCASE_CHARACTER_WIDTH = 0.6;
+const DIGIT_CHARACTER_WIDTH = 0.55;
 const SPACE_WIDTH = 0.28;
-const PUNCTUATION_WIDTH = 0.35;
-const BOLD_RENDERER_HEADROOM = 1.06;
+const PUNCTUATION_WIDTH = 0.32;
+const POWERPOINT_WIDTH_HEADROOM = 1.06;
+const BOLD_WIDTH_MULTIPLIER = 1.03;
 // An alphabetic baseline at 0.8em removes the lower HTML line-box offset while
 // retaining the authored top inset used by the DrawingML exporter.
 const TEXT_BASELINE_RATIO = 0.8;
@@ -71,10 +76,16 @@ function characterWidth(character: string, run: TextRun, scale: number): number 
       ? 1
       : /[,.;:!?()[\]{}'"`-]/u.test(character)
         ? PUNCTUATION_WIDTH
-        : run.style.bold
-          ? BOLD_CHARACTER_WIDTH
-          : NORMAL_CHARACTER_WIDTH;
-  return fontSize * base * (run.style.bold ? BOLD_RENDERER_HEADROOM : 1) * (run.style.italic ? 1.02 : 1);
+        : /[fijltIr|]/u.test(character)
+          ? NARROW_CHARACTER_WIDTH
+          : /[mMwWOQ%@]/u.test(character)
+            ? WIDE_CHARACTER_WIDTH
+            : /\d/u.test(character)
+              ? DIGIT_CHARACTER_WIDTH
+              : /[A-Z]/u.test(character)
+                ? UPPERCASE_CHARACTER_WIDTH
+                : NORMAL_CHARACTER_WIDTH;
+  return fontSize * base * POWERPOINT_WIDTH_HEADROOM * (run.style.bold && !isWideCharacter(character) ? BOLD_WIDTH_MULTIPLIER : 1) * (run.style.italic ? 1.02 : 1);
 }
 
 function textWidth(text: string, run: TextRun, scale: number): number {
