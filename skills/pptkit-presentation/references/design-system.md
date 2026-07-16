@@ -29,7 +29,7 @@ The 960×540 canvas uses this presentation-scale hierarchy:
 
 ### clean-business
 
-Use a quiet light canvas, deep navy text, restrained blue accents, strong information axes, and thin dividers. Prefer open columns and data bands over stacks of rounded cards. Use for executive reviews, product plans, project updates, and pitches.
+Use a quiet light canvas, deep navy text, restrained blue accents, strong information axes, thin dividers, and square geometry. Prefer open columns and data bands over rounded UI-card panels. Use for executive reviews, product plans, project updates, and pitches.
 
 ### swiss-grid
 

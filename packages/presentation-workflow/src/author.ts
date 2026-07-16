@@ -6,6 +6,7 @@ import type {
   DeckSessionV1,
   DeckSpec,
   SlidePlan,
+  SourceRef,
   StructuralIssue,
 } from "./contracts.js";
 import { getTheme, SLIDE } from "./themes.js";
@@ -38,14 +39,18 @@ function containsInternalMetadata(value: string): boolean {
 }
 
 function sourceNotes(plan: SlidePlan): string | undefined {
-  const refs = plan.sourceRefs ?? [];
+  // Early DeckSessionV1 producers emitted source IDs as strings. Keep those
+  // sessions usable without restoring the old visible source-footer behavior.
+  const refs = (plan.sourceRefs ?? []) as Array<SourceRef | string>;
   if (!plan.notes?.trim() && refs.length === 0) return undefined;
   const sections: string[] = [];
   if (plan.notes?.trim()) sections.push(plan.notes.trim());
   if (refs.length > 0) {
     sections.push([
       "Source references (provenance only — not slide content):",
-      ...refs.map((source) => `- ${source.id}${source.label ? ` — ${source.label}` : ""}`),
+      ...refs.map((source) => typeof source === "string"
+        ? `- ${source}`
+        : `- ${source.id}${source.label ? ` — ${source.label}` : ""}`),
     ].join("\n"));
   }
   return sections.join("\n\n");

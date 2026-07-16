@@ -36,7 +36,7 @@ const THEMES: Record<ThemeId, ThemeTokens> = {
   "clean-business": {
     id: "clean-business", name: "Clean Business", background: "F7F8FA", surface: "FFFFFF",
     text: "172033", muted: "647083", accent: "2457D6", accent2: "11A683",
-    headingFont: "Aptos Display", bodyFont: "Aptos", margin: 54, gap: 18, radius: 8,
+    headingFont: "Aptos Display", bodyFont: "Aptos", margin: 54, gap: 18, radius: 0,
     titleSize: 36, bodySize: 19, captionSize: 10,
   },
   "swiss-grid": {

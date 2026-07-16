@@ -42,11 +42,13 @@ Use stable source, asset, and slide IDs. Put small images in `assets[].dataUrl`;
 
 ## Open and verify
 
-1. Open the resolved HTTPS URL with the host's browser capability. In Codex, load and follow the in-app Browser skill.
-2. Paste the complete `deck-session.json` into **Import DeckSessionV1** and activate **Import and preview**.
-3. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, and the complete findings list.
-4. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
-5. Keep the preview tab as a deliverable tab so the user can review it before export.
+1. Open the resolved HTTPS URL with the host's browser capability. In Codex, the listed in-app Browser skill is an available preview channel and must be loaded and followed.
+2. If Codex browser controls are not directly visible, discover `browser:control-in-app-browser` (or the equivalent in-app Browser skill) and `node_repl js`. Follow the Browser skill to initialize its runtime, explicitly select the `iab` browser, make it visible for the user-facing preview, and open or reuse the resolved URL. Do not give up solely because the initial tool list omits browser controls.
+3. Treat a successful open or focus operation as proof that the preview channel is available. Only fall back after the Browser skill's setup or navigation actually fails; name the failed step and preserve the resolved preview URL as a direct review link.
+4. Paste the complete `deck-session.json` into **Import DeckSessionV1** and activate **Import and preview**.
+5. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, and the complete findings list.
+6. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
+7. Keep the preview tab as a deliverable tab so the user can review it before export. In Codex, finalize the browser session with this tab marked `deliverable`; do not clean it up as an intermediate research tab.
 
 Do not download automatically. Export is allowed when the user clicks **Generate & download PPTX** or explicitly asks the agent to trigger the export/download after preview.
 

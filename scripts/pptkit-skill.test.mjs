@@ -10,12 +10,23 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 const skillRoot = path.join(repoRoot, "skills", "pptkit-presentation");
 const initScript = path.join(skillRoot, "scripts", "init-project.mjs");
 const tsxLoader = path.join(repoRoot, "examples", "dev-app", "node_modules", "tsx", "dist", "loader.mjs");
+const testFallbackArgs = [
+  "--fallback-reason",
+  "unattended-local-output",
+  "--browser-check",
+  "not-required",
+  "--browser-step",
+  "user-requirement",
+  "--fallback-evidence",
+  "Automated test requires isolated local output",
+];
 
 test("presentation skill requires progressive native interaction and an approval gate", () => {
   const skill = readFileSync(path.join(skillRoot, "SKILL.md"), "utf8");
   const workflow = readFileSync(path.join(skillRoot, "references", "workflow.md"), "utf8");
   const browserWorkflow = readFileSync(path.join(skillRoot, "references", "browser-workflow.md"), "utf8");
   const nodeWorkflow = readFileSync(path.join(skillRoot, "references", "node-workflow.md"), "utf8");
+  const runtimeRouting = readFileSync(path.join(skillRoot, "references", "runtime-routing.md"), "utf8");
   const designSystem = readFileSync(path.join(skillRoot, "references", "design-system.md"), "utf8");
   const quality = readFileSync(path.join(skillRoot, "references", "quality.md"), "utf8");
   const guide = readFileSync(path.join(repoRoot, "docs", "guides", "presentation-skill.md"), "utf8");
@@ -25,6 +36,11 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(skill, /Approve and generate.*Change the plan.*Cancel/is);
   assert.match(skill, /Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before/i);
   assert.match(skill, /Prefer the browser workflow/i);
+  assert.match(skill, /node_repl js/);
+  assert.match(skill, /explicitly select the `iab` browser/i);
+  assert.match(skill, /Do not infer unavailability from the initial tool list/i);
+  assert.match(skill, /runtime-routing\.md/);
+  assert.match(skill, /guarded initializer/i);
   assert.match(skill, /Generate & download PPTX/i);
   assert.match(workflow, /# Interaction capability/);
   assert.match(workflow, /Choose one option for <decision>:/);
@@ -34,15 +50,22 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /https:\/\/openhacking\.github\.io\/pptkit\//);
   assert.match(browserWorkflow, /explicitly supplied[\s\S]*PPTKIT_PREVIEW_URL[\s\S]*official PPTKit preview application/i);
   assert.match(browserWorkflow, /resolved URL is unreachable or incompatible/i);
+  assert.match(browserWorkflow, /Do not give up solely because the initial tool list omits browser controls/i);
+  assert.match(browserWorkflow, /successful open or focus operation as proof/i);
+  assert.match(browserWorkflow, /marked `deliverable`/i);
   assert.match(browserWorkflow, /Do not download automatically/);
   assert.match(browserWorkflow, /explicitly asks the agent to trigger the export\/download/);
   assert.match(browserWorkflow, /IndexedDB/);
   assert.match(nodeWorkflow, /State the fallback reason/i);
+  assert.match(nodeWorkflow, /runtime-decision\.json/i);
+  assert.match(runtimeRouting, /Do not read or execute `node-workflow\.md` while the decision is unresolved/i);
+  assert.match(runtimeRouting, /Do not claim a browser failure without a tool result/i);
   assert.match(designSystem, /sourceRefs.*provenance metadata/is);
   assert.match(designSystem, /46–60 pt/);
   assert.match(designSystem, /hero.*split.*ledger.*timeline/is);
   assert.match(quality, /visible internal source IDs/i);
   assert.match(guide, /customers do not need to configure a preview URL/i);
+  assert.match(guide, /does not treat an abbreviated initial tool list as evidence that no browser exists/i);
   assert.match(guide, /one at a time/i);
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
 });
@@ -105,11 +128,58 @@ test("initializer creates an isolated starter and applies theme", () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-init-"));
   const project = path.join(root, "deck");
   try {
-    const result = spawnSync(process.execPath, [initScript, "--output", project, "--title", "demo-deck", "--theme", "editorial-story", "--no-install"], { encoding: "utf8" });
+    const result = spawnSync(process.execPath, [initScript, "--output", project, "--title", "demo-deck", "--theme", "editorial-story", "--no-install", ...testFallbackArgs], { encoding: "utf8" });
     assert.equal(result.status, 0, result.stderr);
     assert.equal(JSON.parse(readFileSync(path.join(project, "package.json"), "utf8")).name, "demo-deck");
     assert.match(readFileSync(path.join(project, "src", "deck-spec.ts"), "utf8"), /themeId: "editorial-story"/);
     assert.ok(existsSync(path.join(project, "deck-brief.md")));
+    assert.deepEqual(JSON.parse(readFileSync(path.join(project, "runtime-decision.json"), "utf8")), {
+      schemaVersion: 1,
+      selectedRuntime: "node",
+      reason: "unattended-local-output",
+      resolvedPreviewUrl: "https://openhacking.github.io/pptkit/",
+      browserCheck: {
+        status: "not-required",
+        step: "user-requirement",
+        evidence: "Automated test requires isolated local output",
+      },
+    });
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("initializer rejects missing or contradictory runtime-routing evidence before creating output", () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-routing-"));
+  try {
+    const missingOutput = path.join(root, "missing");
+    const missing = spawnSync(process.execPath, [initScript, "--output", missingOutput, "--no-install"], { encoding: "utf8" });
+    assert.equal(missing.status, 2);
+    assert.match(missing.stderr, /fallback-reason/i);
+    assert.equal(existsSync(missingOutput), false);
+
+    const contradictoryOutput = path.join(root, "contradictory");
+    const contradictory = spawnSync(
+      process.execPath,
+      [
+        initScript,
+        "--output",
+        contradictoryOutput,
+        "--no-install",
+        "--fallback-reason",
+        "browser-setup-failed",
+        "--browser-check",
+        "not-required",
+        "--browser-step",
+        "setup",
+        "--fallback-evidence",
+        "No browser control was visible initially",
+      ],
+      { encoding: "utf8" },
+    );
+    assert.equal(contradictory.status, 2);
+    assert.match(contradictory.stderr, /requires --browser-check failed/i);
+    assert.equal(existsSync(contradictoryOutput), false);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -119,7 +189,7 @@ test("text source extraction preserves provenance without optional parsers", () 
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-extract-"));
   const project = path.join(root, "deck");
   try {
-    assert.equal(spawnSync(process.execPath, [initScript, "--output", project, "--no-install"], { encoding: "utf8" }).status, 0);
+    assert.equal(spawnSync(process.execPath, [initScript, "--output", project, "--no-install", ...testFallbackArgs], { encoding: "utf8" }).status, 0);
     wireWorkspace(project);
     const source = path.join(root, "report.txt");
     writeFileSync(source, "Revenue increased 18%.\nRetention is the next focus.\n");
@@ -139,7 +209,7 @@ for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
     const root = mkdtempSync(path.join(os.tmpdir(), `pptkit-skill-${themeId}-`));
     const project = path.join(root, "deck");
     try {
-      const initialized = spawnSync(process.execPath, [initScript, "--output", project, "--theme", themeId, "--no-install"], { encoding: "utf8" });
+      const initialized = spawnSync(process.execPath, [initScript, "--output", project, "--theme", themeId, "--no-install", ...testFallbackArgs], { encoding: "utf8" });
       assert.equal(initialized.status, 0, initialized.stderr);
       wireWorkspace(project);
       copyFileSync(path.join(skillRoot, "assets", "previews", `${themeId}.svg`), path.join(project, "assets", "fixture.svg"));
@@ -175,7 +245,7 @@ test("missing image is reported as an export failure", () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-missing-image-"));
   const project = path.join(root, "deck");
   try {
-    assert.equal(spawnSync(process.execPath, [initScript, "--output", project, "--no-install"], { encoding: "utf8" }).status, 0);
+    assert.equal(spawnSync(process.execPath, [initScript, "--output", project, "--no-install", ...testFallbackArgs], { encoding: "utf8" }).status, 0);
     wireWorkspace(project);
     writeFileSync(path.join(project, "src", "deck-spec.ts"), `import type { DeckSpec } from "./contracts.js";
 export const deckSpec: DeckSpec = {

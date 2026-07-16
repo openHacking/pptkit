@@ -22,7 +22,7 @@ Install the skill with:
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
 ```
 
-Skill installation does not install project dependencies globally or modify the user's environment. Browser mode uses `https://openhacking.github.io/pptkit/` by default, so a normal installation requires no preview configuration. A user- or host-supplied URL takes precedence, followed by `PPTKIT_PREVIEW_URL`, for private deployments, staging, or local development. `init-project.mjs` creates an isolated project and installs pinned dependencies only when the Node fallback is selected.
+Skill installation does not install project dependencies globally or modify the user's environment. Browser mode uses `https://openhacking.github.io/pptkit/` by default, so a normal installation requires no preview configuration. A user- or host-supplied URL takes precedence, followed by `PPTKIT_PREVIEW_URL`, for private deployments, staging, or local development. `init-project.mjs` creates an isolated project and installs pinned dependencies only when the Node fallback is selected and supplies a valid runtime-routing receipt. This guarded CLI requirement is intentional; older unguarded initializer commands must be updated with the documented fallback fields.
 
 ## Publishing boundary
 

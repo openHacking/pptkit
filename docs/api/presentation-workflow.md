@@ -25,7 +25,7 @@ Images use stable `assetId` values. `authorPresentation(deck, resolver)` asks th
 
 `sourceRefs` are provenance metadata. The authoring runtime merges them into speaker notes and never creates an automatic visible source footer. A visible citation must be authored explicitly as human-readable slide content.
 
-The three stable theme IDs use distinct deterministic layout recipes rather than a shared geometry with different colors. Role, content length, item count, image presence, and slide position determine the composition; no random layout selection is used.
+The three stable theme IDs use distinct deterministic layout recipes rather than a shared geometry with different colors. Role, content length, item count, image presence, and slide position determine the composition; no random layout selection is used. Clean Business uses square geometry, open columns, and rules instead of rounded UI-card panels. Workflow-authored bullets inherit Core's PowerPoint-compatible list indentation rather than applying a theme-local override.
 
 ## Source extraction
 

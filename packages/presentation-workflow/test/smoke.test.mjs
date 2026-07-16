@@ -117,6 +117,20 @@ test("keeps provenance in speaker notes and out of visible slide text", () => {
   assert.match(notes, /slides\.md/);
 });
 
+test("keeps legacy string source references in notes without restoring a footer", () => {
+  const spec = deck("clean-business");
+  spec.slides[1].sourceRefs = ["src-legacy-outline"];
+  const normalized = normalizePresentation(authorPresentation(spec));
+  const visible = normalized.slides[1].elements
+    .filter((element) => element.type === "text")
+    .map((element) => element.plainText)
+    .join("\n");
+  const notes = normalized.slides[1].notes.flatMap((paragraph) => paragraph.runs.map((run) => run.text)).join("\n");
+  assert.doesNotMatch(visible, /Sources:|src-legacy-outline/);
+  assert.match(notes, /src-legacy-outline/);
+  assert.doesNotMatch(notes, /undefined/);
+});
+
 test("uses presentation-scale font floors for ordinary visible copy", () => {
   const normalized = normalizePresentation(authorPresentation(allRolesDeck("clean-business")));
   for (const slide of normalized.slides) {
@@ -133,6 +147,28 @@ test("uses presentation-scale font floors for ordinary visible copy", () => {
       }
     }
   }
+});
+
+test("inherits PowerPoint list indentation instead of overriding it in the workflow", () => {
+  const normalized = normalizePresentation(authorPresentation(allRolesDeck("clean-business")));
+  const bulletParagraphs = normalized.slides
+    .flatMap((slide) => slide.elements)
+    .filter((element) => element.type === "text")
+    .flatMap((element) => element.content)
+    .filter((paragraph) => paragraph.style.bullet.type === "bullet");
+  assert.ok(bulletParagraphs.length > 0);
+  for (const paragraph of bulletParagraphs) {
+    assert.equal(paragraph.style.indent, 27);
+    assert.equal(paragraph.style.hanging, 27);
+  }
+});
+
+test("keeps Clean Business geometry square and restrained", () => {
+  const normalized = normalizePresentation(authorPresentation(allRolesDeck("clean-business")));
+  const roundedShapes = normalized.slides
+    .flatMap((slide) => slide.elements)
+    .filter((element) => element.type === "shape" && element.shape === "roundRect");
+  assert.deepEqual(roundedShapes, []);
 });
 
 test("keeps chart categories at the 15 pt data-detail floor", () => {

@@ -38,7 +38,6 @@ export function paragraph(
       lineSpacing: options.lineSpacing ?? typography.bodyLineSpacing,
       spaceAfter: options.spaceAfter ?? (options.bullet ? typography.paragraphGap : 0),
       bullet: options.bullet ? { type: "bullet", character: "•" } : { type: "none" },
-      ...(options.bullet ? { indent: 22, hanging: 22 } : {}),
     },
     runs: [{
       text,

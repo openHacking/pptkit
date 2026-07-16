@@ -10,7 +10,7 @@ In a skill-enabled agent such as Codex, ask it to install or update `pptkit-pres
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
 ```
 
-The installed skill uses `https://openhacking.github.io/pptkit/` as its default HTTPS review application, so customers do not need to configure a preview URL. For a private deployment, staging environment, or local development, supply a URL for the current task or set `PPTKIT_PREVIEW_URL`; either overrides the official default. The skill uses browser mode when the resolved URL and an in-app browser are available, otherwise it explains why it selected the Node fallback.
+The installed skill uses `https://openhacking.github.io/pptkit/` as its default HTTPS review application, so customers do not need to configure a preview URL. For a private deployment, staging environment, or local development, supply a URL for the current task or set `PPTKIT_PREVIEW_URL`; either overrides the official default. In Codex, the skill discovers the in-app Browser controls and `node_repl js`, initializes the `iab` browser, and attempts to open the resolved URL before declaring browser review unavailable. It does not treat an abbreviated initial tool list as evidence that no browser exists. The skill selects the Node fallback only after a real browser setup/navigation failure or when another documented fallback condition applies, and it explains the reason.
 
 ## Ask for a deck
 
@@ -44,15 +44,19 @@ Automated JSON imports may inline assets up to 5 MB each and 20 MB total. Larger
 
 ## Node fallback
 
-The skill initializes its isolated TypeScript starter when browser review is unavailable, assets cannot be transferred safely, unattended local output is required, or the user requests LibreOffice/PowerPoint-oriented rendering:
+The skill initializes its isolated TypeScript starter when browser review is unavailable, assets cannot be transferred safely, unattended local output is required, or the user requests LibreOffice/PowerPoint-oriented rendering. Runtime routing is a guarded decision: the initializer refuses to create a project unless the caller supplies a valid reason, matching browser-check status and step, and concrete evidence.
 
 ```bash
 node skills/pptkit-presentation/scripts/init-project.mjs \
   --output /tmp/my-pptkit-deck \
   --title my-pptkit-deck \
-  --theme clean-business
+  --theme clean-business \
+  --fallback-reason strict-office-rendering \
+  --browser-check not-required \
+  --browser-step user-requirement \
+  --fallback-evidence "The user explicitly requested LibreOffice rendering"
 ```
 
 The Node adapter converts paths to the same portable asset contract, while deck authoring, validation, structure inspection, and byte-level package inspection come from `@pptkit/presentation-workflow`.
 
-The fallback delivers `output/deck.pptx`, `output/build-report.json`, `deck-brief.md`, `src/deck-spec.ts`, `content/sources.json`, and optional rendered pages.
+The initializer records the accepted routing receipt in `runtime-decision.json`. The fallback also delivers `output/deck.pptx`, `output/build-report.json`, `deck-brief.md`, `src/deck-spec.ts`, `content/sources.json`, and optional rendered pages.

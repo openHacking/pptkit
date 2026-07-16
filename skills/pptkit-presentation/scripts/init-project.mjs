@@ -8,10 +8,24 @@ import { fileURLToPath } from "node:url";
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const starterRoot = path.join(skillRoot, "assets", "starter");
 const themeIds = new Set(["clean-business", "swiss-grid", "editorial-story"]);
+const previewUrlDefault = "https://openhacking.github.io/pptkit/";
+const fallbackRules = new Map([
+  ["browser-setup-failed", { browserCheck: "failed", steps: new Set(["setup", "selection"]) }],
+  ["preview-navigation-failed", { browserCheck: "failed", steps: new Set(["navigation"]) }],
+  ["preview-incompatible", { browserCheck: "failed", steps: new Set(["compatibility"]) }],
+  ["browser-api-unavailable", { browserCheck: "failed", steps: new Set(["api-check"]) }],
+  ["asset-transfer-limit", { browserCheck: "not-required", steps: new Set(["asset-limit"]) }],
+  ["unattended-local-output", { browserCheck: "not-required", steps: new Set(["user-requirement"]) }],
+  ["strict-office-rendering", { browserCheck: "not-required", steps: new Set(["user-requirement"]) }],
+]);
 
 function usage(message) {
   if (message) process.stderr.write(`${message}\n\n`);
-  process.stderr.write("Usage: init-project.mjs --output <directory> [--title <slug>] [--theme <id>] [--no-install]\n");
+  process.stderr.write(
+    "Usage: init-project.mjs --output <directory> --fallback-reason <reason> --fallback-evidence <text> " +
+      "--browser-check <failed|not-required> --browser-step <step> [--preview-url <https-url>] " +
+      "[--title <slug>] [--theme <id>] [--no-install]\n",
+  );
   process.exit(2);
 }
 
@@ -20,7 +34,16 @@ function parseArgs(args) {
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     if (arg === "--no-install") options.install = false;
-    else if (arg === "--output" || arg === "--title" || arg === "--theme") {
+    else if (
+      arg === "--output" ||
+      arg === "--title" ||
+      arg === "--theme" ||
+      arg === "--fallback-reason" ||
+      arg === "--fallback-evidence" ||
+      arg === "--browser-check" ||
+      arg === "--browser-step" ||
+      arg === "--preview-url"
+    ) {
       const value = args[index + 1];
       if (!value) usage(`Missing value for ${arg}`);
       options[arg.slice(2)] = value;
@@ -30,6 +53,26 @@ function parseArgs(args) {
   if (!options.output) usage("--output is required");
   if (!themeIds.has(options.theme)) usage(`Unknown theme: ${options.theme}`);
   if (!/^[a-z0-9][a-z0-9._-]*$/i.test(options.title)) usage("--title must be a filesystem-safe slug");
+  const fallbackRule = fallbackRules.get(options["fallback-reason"]);
+  if (!fallbackRule) usage(`Unknown or missing --fallback-reason. Choose one of: ${[...fallbackRules.keys()].join(", ")}`);
+  if (options["browser-check"] !== fallbackRule.browserCheck) {
+    usage(`--fallback-reason ${options["fallback-reason"]} requires --browser-check ${fallbackRule.browserCheck}`);
+  }
+  if (!fallbackRule.steps.has(options["browser-step"])) {
+    usage(`--fallback-reason ${options["fallback-reason"]} is incompatible with --browser-step ${options["browser-step"] ?? "<missing>"}`);
+  }
+  if (!options["fallback-evidence"] || options["fallback-evidence"].trim().length < 12) {
+    usage("--fallback-evidence must contain a concrete failure result, user requirement, or measured asset limit");
+  }
+  const previewUrl = options["preview-url"] ?? previewUrlDefault;
+  let parsedPreviewUrl;
+  try {
+    parsedPreviewUrl = new URL(previewUrl);
+  } catch {
+    usage("--preview-url must be a valid HTTPS URL");
+  }
+  if (parsedPreviewUrl.protocol !== "https:") usage("--preview-url must be a valid HTTPS URL");
+  options["preview-url"] = parsedPreviewUrl.href;
   return options;
 }
 
@@ -51,6 +94,19 @@ const spec = readFileSync(specPath, "utf8")
   .replace('title: "Untitled PPTKit Deck"', `title: ${JSON.stringify(options.title.replace(/[-_]+/g, " "))}`);
 writeFileSync(specPath, spec);
 
+const runtimeDecision = {
+  schemaVersion: 1,
+  selectedRuntime: "node",
+  reason: options["fallback-reason"],
+  resolvedPreviewUrl: options["preview-url"],
+  browserCheck: {
+    status: options["browser-check"],
+    step: options["browser-step"],
+    evidence: options["fallback-evidence"].trim(),
+  },
+};
+writeFileSync(path.join(output, "runtime-decision.json"), `${JSON.stringify(runtimeDecision, null, 2)}\n`);
+
 if (options.install) {
   const result = spawnSync("npm", ["install", "--no-audit", "--no-fund"], {
     cwd: output,
@@ -62,4 +118,4 @@ if (options.install) {
   }
 }
 
-process.stdout.write(`${JSON.stringify({ output, theme: options.theme, installed: options.install }, null, 2)}\n`);
+process.stdout.write(`${JSON.stringify({ output, theme: options.theme, installed: options.install, runtimeDecision }, null, 2)}\n`);
