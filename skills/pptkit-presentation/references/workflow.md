@@ -8,6 +8,8 @@ Derive everything possible from the user's prompt and files first. Ask only for 
 2. **Design:** preferred theme, brand constraints, format, and non-negotiable content.
 3. **Scope and material:** duration/page range, authoritative sources, image policy, confidentiality, and citations.
 
+Treat every supplied source consistently. Extract available text and structured data, then inspect tables, charts, diagrams, flow direction, grouping, hierarchy, and other information architecture when present. Do not assume that text extraction alone captures the source: a DOCX, PDF, PPTX, spreadsheet, or image may all contain essential visual structure. Normalize the resulting evidence into `sources` before outlining.
+
 ## Interaction capability
 
 Prefer the host's native user-input capability. Use single-select, multi-select, or text input as the decision needs; include a recommended choice, mutually exclusive choices where applicable, and free-form input. In Codex, call `request_user_input`; on another agent, call its equivalent native question/form tool when it exists.

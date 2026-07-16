@@ -41,7 +41,7 @@ with the [Quick Start](docs/getting-started/quick-start.md) to create your first
 ### Presentation Skill
 
 PPTKit also includes the cross-agent `pptkit-presentation` skill for turning text,
-documents, spreadsheets, and images into an editable PPTX. In a skill-enabled agent
+presentations, documents, spreadsheets, and images into an editable PPTX. In a skill-enabled agent
 such as Codex, install it without using a terminal by sending this prompt:
 
 ```text

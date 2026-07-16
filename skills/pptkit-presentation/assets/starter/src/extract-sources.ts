@@ -2,6 +2,7 @@ import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { extractSource, measureImageDimensions, type SourceParsers } from "@pptkit/presentation-workflow";
+import { parsePptxSource } from "./pptx-source.js";
 
 const inputs = process.argv.slice(2);
 if (inputs.length === 0) throw new Error("Usage: npm run extract -- <source paths...>");
@@ -34,6 +35,7 @@ const parsers: SourceParsers = {
   async image(input) {
     return measureImageDimensions(input);
   },
+  pptx: parsePptxSource,
 };
 
 const sources = [];

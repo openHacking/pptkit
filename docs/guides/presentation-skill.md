@@ -54,9 +54,9 @@ All runtimes use the same theme-specific authoring recipes. Clean Business empha
 
 After preview, the explicit **Generate & download PPTX** action—clicked by the user or triggered by the agent after an explicit user request—generates bytes in the browser, verifies ZIP/XML package structure, downloads `build-report.json`, and downloads the PPTX only when package checks pass. Browser SVG preview is a QA surface, not a pixel-identical PowerPoint renderer.
 
-## Browser source support
+## Source material support
 
-The agent inspects TXT/Markdown, PDF, DOCX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG sources with host-native tools, then sends normalized session evidence and supported assets through the chunk protocol. Evidence and binary assets remain in IndexedDB. PPTX parsing and template reuse are not supported.
+The agent treats TXT/Markdown, PDF, DOCX, PPTX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG files uniformly as source material. It extracts available text and structured data, and inspects charts, diagrams, flow direction, grouping, and information architecture whenever those visual structures are present in any source format. Evidence and binary assets remain local and are transferred to IndexedDB only when the approved browser session needs them.
 
 Sessions never contain `dataUrl` assets. File size alone does not select Node; browser storage quota and verified transfer results determine whether Browser mode can continue.
 

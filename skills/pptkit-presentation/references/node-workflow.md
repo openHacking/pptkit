@@ -17,7 +17,7 @@ Use this workflow only after `runtime-routing.md` has selected Node. State the f
    ```
 
    Use `--no-install` only when dependencies are unavailable or when preparing files without execution. The initializer writes `runtime-decision.json` and refuses missing or contradictory routing evidence before creating the project. Never modify the bundled starter or bypass the routing guard.
-2. Copy source files into `<PROJECT_DIR>/sources/`, run `npm run extract -- <paths...>`, and read `content/sources.json`.
+2. Copy source files into `<PROJECT_DIR>/sources/`, run `npm run extract -- <paths...>`, and read `content/sources.json`. The source adapters use PDF.js for PDF, Mammoth for DOCX, `officeparser@7.1.0` for PPTX, SheetJS for workbooks, and byte-level image measurement.
 3. Write `deck-brief.md` and edit `src/deck-spec.ts`. Reference copied images by `assetId`, relative to the project's `assets/` directory.
 4. Run `npm run build`. The shared workflow runtime validates the deck, inspects layout, generates bytes through the Node asset adapter, writes `output/deck.pptx`, and checks the package from `Uint8Array`.
 5. Run `npm run render` when LibreOffice/Poppler review is required. Missing render tools produce a reported skip, not a false success.

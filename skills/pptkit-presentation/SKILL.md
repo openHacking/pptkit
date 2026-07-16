@@ -1,6 +1,6 @@
 ---
 name: pptkit-presentation
-description: Create polished, structured, editable PowerPoint presentations with PPTKit from a topic, pasted text, Markdown, TXT, PDF, DOCX, CSV, XLSX, or image assets. Use when the user asks to make, generate, design, revise, preview, or export a PPT, PPTX, slide deck, presentation, pitch deck, report deck, or training deck, including requests such as “create a presentation”, “turn this report into slides”, or “create an editable PowerPoint”.
+description: Create polished, structured, editable PowerPoint presentations with PPTKit from a topic, pasted text, PPTX, Markdown, TXT, PDF, DOCX, CSV, XLSX, or image assets. Use when the user asks to make, generate, design, revise, preview, or export a PPT, PPTX, slide deck, presentation, pitch deck, report deck, or training deck, including requests such as “create a presentation”, “turn this report into slides”, or “create an editable PowerPoint”.
 ---
 
 # PPTKit Presentation
@@ -9,7 +9,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 
 ## Run the workflow
 
-1. Inspect the request and every supplied source before asking questions. Read [workflow.md](references/workflow.md).
+1. Inspect the request and every supplied source before asking questions. Extract its text, tables, charts, diagrams, flow, and information architecture when present. Read [workflow.md](references/workflow.md).
 2. Ask only for decisions that cannot be inferred. Ask them one at a time in this order: purpose and audience, theme, then page count and asset strategy. Use the host's native question/form tool (in Codex, `request_user_input`) whenever available.
 3. Show the three style previews in `assets/previews/` unless the user already chose a theme. Recommend exactly one theme.
 4. Build the normalized brief and slide-by-slide outline. Record each slide's role, composition intent, density, visual evidence, and source IDs. Keep the detailed outline separate from the short decision summary.
@@ -31,7 +31,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 - Use native PPTKit text, shapes, connectors, images, and tables. Editable shape-based charts are not native data-bound PowerPoint charts.
 - Keep source material local. Browser sessions and assets use the unified chunk protocol and IndexedDB-backed `blob:` URLs; Node projects copy assets into `assets/`.
 - Use only PPTKit public exports. Do not import `dist` files or private implementation paths.
-- Do not claim PPTX parsing, template fill, animation, SmartArt, audio/video, browser editing, cross-device preview links, or pixel-identical PowerPoint preview.
+- Do not claim template fill, lossless round-trip, animation, editable SmartArt, audio/video, browser editing, cross-device preview links, or pixel-identical PowerPoint preview.
 - Do not copy templates, code, or assets from other presentation skills.
 
 ## Control quality
@@ -46,4 +46,4 @@ Create a structured deck session, preview it in the browser, and generate an edi
 
 ## Compatibility
 
-Read [compatibility.md](references/compatibility.md) before changing dependency versions, the preview URL, or publishing the skill. Old PPTX files remain reference material only.
+Read [compatibility.md](references/compatibility.md) before changing dependency versions, the preview URL, or publishing the skill.

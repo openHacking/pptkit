@@ -29,7 +29,7 @@ The three stable theme IDs use distinct deterministic layout recipes rather than
 
 ## Source extraction
 
-`extractSource` and `extractSources` accept `{ name, mimeType, bytes }`. Runtime adapters provide PDF, DOCX, workbook, and image parsers. Plain text parsing, source IDs, result normalization, and failure reporting remain shared.
+`extractSource` and `extractSources` accept `{ name, mimeType, bytes }`. Runtime adapters provide PDF, DOCX, PPTX, workbook, and image parsers. Plain text parsing, source IDs, result normalization, and failure reporting remain shared.
 
 `blobToSourceInput` is a convenience adapter for browser `File`/`Blob` values.
 

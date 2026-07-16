@@ -15,6 +15,7 @@ export interface SourceParsers {
   docx?: SourceParser;
   workbook?: SourceParser;
   image?: SourceParser;
+  pptx?: SourceParser;
 }
 
 export function measureImageDimensions(input: SourceInput): { width?: number; height?: number } {
@@ -68,13 +69,12 @@ export async function extractSource(input: SourceInput, index: number, parsers: 
   if ([".md", ".markdown", ".txt"].includes(extension) || input.mimeType.startsWith("text/")) {
     return { ...base, type: "text", content: new TextDecoder().decode(input.bytes) };
   }
-  if (extension === ".pptx") {
-    return { ...base, type: "document", warnings: ["PPTX parsing and template reuse are not supported; treat this file as a manual visual reference."] };
-  }
   const parser = extension === ".pdf"
     ? parsers.pdf
     : extension === ".docx"
       ? parsers.docx
+      : extension === ".pptx"
+        ? parsers.pptx
       : [".csv", ".xlsx", ".xls"].includes(extension)
         ? parsers.workbook
         : [".png", ".jpg", ".jpeg", ".gif", ".svg"].includes(extension)

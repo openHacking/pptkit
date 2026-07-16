@@ -71,7 +71,7 @@ Translate feedback into the brief or slide plan, increment `revision`, refresh `
 
 ## Browser source extraction
 
-Inspect attached sources with host-native file tools and place normalized evidence in `sources`. Transfer supported PNG/JPEG/GIF/SVG assets through the unified chunk protocol; the preview stores them in IndexedDB without uploading them. PPTX input remains an unsupported manual reference.
+Inspect TXT/Markdown, PDF, DOCX, PPTX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG sources with host-native file tools and place normalized evidence in `sources`. For every format, inspect diagrams, charts, flow, grouping, and information architecture when present instead of relying only on extracted text. Transfer supported PNG/JPEG/GIF/SVG assets through the unified chunk protocol; the preview stores them in IndexedDB without uploading them.
 
 ## Export
 

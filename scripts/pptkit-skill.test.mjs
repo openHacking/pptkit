@@ -36,6 +36,9 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(skill, /request_user_input/i);
   assert.match(skill, /Approve and generate.*Change the plan.*Cancel/is);
   assert.match(skill, /Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before/i);
+  assert.match(workflow, /every supplied source.*text.*tables.*diagrams.*information architecture/is);
+  assert.match(browserWorkflow, /TXT\/Markdown, PDF, DOCX, PPTX, CSV\/XLS\/XLSX/is);
+  assert.match(nodeWorkflow, /officeparser@7\.1\.0/i);
   assert.match(skill, /Prefer the browser workflow/i);
   assert.match(skill, /node_repl js/);
   assert.match(skill, /explicitly select the `iab` browser/i);
@@ -112,6 +115,7 @@ function wireWorkspace(project) {
   linkDirectory(path.join(repoRoot, "packages", "presentation-workflow"), path.join(project, "node_modules", "@pptkit", "presentation-workflow"));
   linkDirectory(realpathSync(path.join(repoRoot, "packages", "pptx-exporter", "node_modules", "fflate")), path.join(project, "node_modules", "fflate"));
   linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "mammoth")), path.join(project, "node_modules", "mammoth"));
+  linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "officeparser")), path.join(project, "node_modules", "officeparser"));
   linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "pdfjs-dist")), path.join(project, "node_modules", "pdfjs-dist"));
   linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "xlsx")), path.join(project, "node_modules", "xlsx"));
   linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "@types", "node")), path.join(project, "node_modules", "@types", "node"));
@@ -234,6 +238,25 @@ test("text source extraction preserves provenance without optional parsers", () 
   }
 });
 
+test("corrupt PPTX extraction reports failure without modifying source bytes", () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-corrupt-pptx-"));
+  const project = path.join(root, "deck");
+  try {
+    assert.equal(spawnSync(process.execPath, [initScript, "--output", project, "--no-install", ...testFallbackArgs], { encoding: "utf8" }).status, 0);
+    wireWorkspace(project);
+    const source = path.join(root, "corrupt.pptx");
+    const bytes = Buffer.from("not-a-pptx-package");
+    writeFileSync(source, bytes);
+    const result = runTypeScript(project, "src/extract-sources.ts", [source], { ...process.env, PATH: "" });
+    assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
+    const extracted = JSON.parse(readFileSync(path.join(project, "content", "sources.json"), "utf8")).sources[0];
+    assert.match(extracted.warnings.join(" "), /Extraction failed:/i);
+    assert.ok(readFileSync(source).equals(bytes));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
   test(`end-to-end fixture builds all roles with ${themeId}`, () => {
     const root = mkdtempSync(path.join(os.tmpdir(), `pptkit-skill-${themeId}-`));
@@ -260,6 +283,15 @@ for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
       assert.equal(report.packageChecks.slideParts, 12);
       assert.ok(existsSync(path.join(project, "output", "deck.pptx")));
       if (themeId === "clean-business") {
+        const sourcePptx = path.join(project, "output", "deck.pptx");
+        const sourceBytes = readFileSync(sourcePptx);
+        const extractedResult = runTypeScript(project, "src/extract-sources.ts", [sourcePptx], { ...process.env, PATH: "" });
+        assert.equal(extractedResult.status, 0, `${extractedResult.stdout}\n${extractedResult.stderr}`);
+        const extracted = JSON.parse(readFileSync(path.join(project, "content", "sources.json"), "utf8")).sources[0];
+        assert.match(extracted.content, /From source material to editable PPTX|Core judgment/);
+        assert.match(extracted.content, /Delivery matrix|src-01-report/);
+        assert.deepEqual(extracted.warnings, []);
+        assert.ok(readFileSync(sourcePptx).equals(sourceBytes));
         const rendered = runTypeScript(project, "src/render.ts", [], { ...process.env, PATH: "" });
         assert.equal(rendered.status, 0, `${rendered.stdout}\n${rendered.stderr}`);
         const renderReport = JSON.parse(readFileSync(path.join(project, "output", "build-report.json"), "utf8"));

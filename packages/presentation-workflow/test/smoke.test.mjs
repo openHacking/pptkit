@@ -242,6 +242,13 @@ test("extracts text bytes without filesystem APIs", async () => {
   assert.equal(source.content, "# Evidence");
 });
 
+test("extracts PPTX content through the same source parser contract", async () => {
+  const input = { name: "reference.pptx", mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation", bytes: new Uint8Array([1, 2, 3]) };
+  const source = await extractSource(input, 0, { pptx: async () => ({ content: "Slide 1\nKeep this message" }) });
+  assert.equal(source.content, "Slide 1\nKeep this message");
+  assert.deepEqual(source.warnings, []);
+});
+
 test("measures browser-neutral PNG, GIF, and SVG bytes", () => {
   const png = new Uint8Array(24);
   new DataView(png.buffer).setUint32(16, 640);
