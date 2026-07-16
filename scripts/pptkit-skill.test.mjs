@@ -34,7 +34,8 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /https:\/\/openhacking\.github\.io\/pptkit\//);
   assert.match(browserWorkflow, /explicitly supplied[\s\S]*PPTKIT_PREVIEW_URL[\s\S]*official PPTKit preview application/i);
   assert.match(browserWorkflow, /resolved URL is unreachable or incompatible/i);
-  assert.match(browserWorkflow, /Do not activate \*\*Generate & download PPTX\*\* for the user/);
+  assert.match(browserWorkflow, /Do not download automatically/);
+  assert.match(browserWorkflow, /explicitly asks the agent to trigger the export\/download/);
   assert.match(browserWorkflow, /IndexedDB/);
   assert.match(nodeWorkflow, /State the fallback reason/i);
   assert.match(designSystem, /sourceRefs.*provenance metadata/is);

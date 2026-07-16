@@ -5,7 +5,7 @@ description: Create polished, structured, editable PowerPoint presentations with
 
 # PPTKit Presentation
 
-Create a structured deck session, preview it in the browser, and generate an editable `.pptx` only when the user requests the download. Prefer the browser workflow; keep the Node project workflow as a compatibility and strict-rendering fallback.
+Create a structured deck session, preview it in the browser, and generate an editable `.pptx` only after the user explicitly chooses export. Prefer the browser workflow; keep the Node project workflow as a compatibility and strict-rendering fallback.
 
 ## Run the workflow
 
@@ -19,7 +19,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
    - Use [node-workflow.md](references/node-workflow.md) otherwise, and state the fallback reason.
 7. Read [design-system.md](references/design-system.md) before authoring. Use `deck-session.json` as the browser source of truth and stable slide IDs across revisions.
 8. Treat validation errors, missing required assets, out-of-bounds elements, risky overlaps, malformed packages, and unexpected exporter warnings as failures. Read [quality.md](references/quality.md).
-9. Deliver the browser preview without automatically downloading a PPTX. Generate PPTX bytes only after the user activates **Generate & download PPTX**. Mention every remaining warning and the SVG-versus-Office fidelity boundary.
+9. Deliver the browser preview first and do not download automatically. After preview, export only when the user clicks **Generate & download PPTX** or explicitly asks the agent to export/download it. Mention every remaining warning and the SVG-versus-Office fidelity boundary.
 
 ## Keep these contracts
 

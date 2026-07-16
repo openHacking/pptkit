@@ -46,9 +46,9 @@ Use stable source, asset, and slide IDs. Put small images in `assets[].dataUrl`;
 2. Paste the complete `deck-session.json` into **Import DeckSessionV1** and activate **Import and preview**.
 3. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, and the complete findings list.
 4. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
-5. Keep the preview tab as a deliverable tab so the user can review it without downloading a file.
+5. Keep the preview tab as a deliverable tab so the user can review it before export.
 
-Do not activate **Generate & download PPTX** for the user. That control is the user's explicit export decision.
+Do not download automatically. Export is allowed when the user clicks **Generate & download PPTX** or explicitly asks the agent to trigger the export/download after preview.
 
 ## Revise
 
@@ -62,4 +62,4 @@ When the host cannot automate a native file picker, inspect attached sources wit
 
 ## Export
 
-When the user clicks **Generate & download PPTX**, the application generates bytes, inspects ZIP/XML parts, downloads `build-report.json`, and downloads the PPTX only when package checks pass. Browser preview does not replace a final PowerPoint or LibreOffice review.
+When the user clicks **Generate & download PPTX**, or explicitly asks the agent to export/download, the application generates bytes, inspects ZIP/XML parts, downloads `build-report.json`, and downloads the PPTX only when package checks pass. Browser preview does not replace a final PowerPoint or LibreOffice review.
