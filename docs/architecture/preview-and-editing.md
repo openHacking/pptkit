@@ -36,6 +36,16 @@ asset metadata; object URLs, SVG strings, PPTX bytes, and build reports are deri
 A deployed static HTTPS application can therefore restore review state without uploading
 presentation data or embedding binary data in the session JSON.
 
+The preview publishes protocol compatibility, native-page API checks, and resumable
+transfer progress as JSON in a hidden read-only DOM bridge. Keeping observation in the DOM
+and mutation in the existing transfer controls lets browser hosts with isolated evaluation
+contexts inspect the workflow without assuming access to the page's `window` object.
+The mutation controls are progressively disclosed from a compact agent-connection trigger:
+the payload form occupies no review-layout space after the session and declared assets are
+available, while the trigger remains reachable for revisions and visible failure recovery.
+This presentation-layer behavior does not change the transfer protocol or make the preview
+state authoritative.
+
 PPTX generation is deferred until the user requests a download. Previewing does not
 allocate package bytes, and a failed package inspection withholds the PPTX while still
 returning an actionable report.

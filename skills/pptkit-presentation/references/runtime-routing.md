@@ -9,7 +9,7 @@ Use this gate only after the user has approved generation. It owns the Browser-v
    - the user requires unattended local output; or
    - the user requires Office/LibreOffice rendering.
 3. If none applies, load the in-app Browser skill, initialize its runtime, explicitly select `iab`, and try to open the resolved URL. An abbreviated tool list is not a failed check.
-4. If the page opens, verify its read-only bridge reports `protocol: "pptkit-transfer-v1"` and a positive `maxChunkBytes`, then continue with `browser-workflow.md`. File size is not a Node routing condition.
+4. If the page opens, read the JSON text from the unique `[data-testid="pptkit-preview-bridge"]` DOM node. Verify that it reports `protocol: "pptkit-transfer-v1"`, a positive `maxChunkBytes`, and `true` for every entry in `apis`, then continue with `browser-workflow.md`. Do not probe `globalThis`, `window`, or browser APIs from the Browser tool's read-only evaluation sandbox: that sandbox is not the preview page's native global context and may report page APIs as unavailable. File size is not a Node routing condition.
 5. If setup, selection, navigation, compatibility, required browser API verification, or a real transfer actually fails, record the exact failed step and returned error. Then continue with `node-workflow.md`.
 
 Do not read or execute `node-workflow.md` while the decision is unresolved. Do not claim a browser failure without a tool result. A timeout or tool error is evidence; the absence of an initially visible control is not.

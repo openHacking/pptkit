@@ -10,7 +10,7 @@ Use this workflow only after the confirmation gate.
   3. The official PPTKit preview application at `https://openhacking.github.io/pptkit/`.
 - Require the resolved application to support `DeckSessionV1` with `schemaVersion: 1`. Never invent another deployment URL.
 - Require modern browser support for `fetch`, `Blob`, `URL`, typed arrays, `structuredClone`, Web Crypto, storage estimation, and IndexedDB.
-- Require the read-only `__pptkitPreviewBridge` to report `pptkit-transfer-v1`. Fall back only when the resolved URL is unreachable or incompatible, IndexedDB or required APIs are unavailable, a real chunk transfer fails, or strict Office/LibreOffice rendering is required. File size alone is never a fallback reason.
+- Require the read-only `[data-testid="pptkit-preview-bridge"]` DOM bridge to report `pptkit-transfer-v1`. Its JSON is authored by the preview page in the page's native context and includes `protocol`, `maxChunkBytes`, required `apis`, and resumable transfer `state`. Do not infer page API availability from globals visible to the Browser tool's isolated read-only evaluation sandbox. Fall back only when the resolved URL is unreachable or incompatible, the DOM bridge reports IndexedDB or another required API unavailable, a real chunk transfer fails, or strict Office/LibreOffice rendering is required. File size alone is never a fallback reason.
 
 ## Create the session
 
@@ -46,7 +46,7 @@ Use `scripts/transfer-payload.mjs` from this skill through Codex's managed JavaS
 
 1. Prepare every referenced asset first and copy the helper's `byteLength` and `sha256` into its `SessionAsset` manifest entry; this preparation does not send bytes.
 2. Serialize the completed manifest to `deck-session.json`, then prepare it as a `session` payload with `application/json`, using the session ID as `payloadId`.
-3. Read `__pptkitPreviewBridge.getState()` and send only its missing chunk indexes through the stable `pptkit-transfer-input` and `pptkit-transfer-submit` controls.
+3. Parse the JSON text of the unique `[data-testid="pptkit-preview-bridge"]` node. Before sending a chunk, open the progressive transfer surface through `[data-testid="pptkit-transfer-toggle"]` when its `aria-expanded` value is not `true`, then send only the chunk indexes listed in `state.transfers[].missing` through the stable `pptkit-transfer-input` and `pptkit-transfer-submit` controls. Re-read the bridge after every submitted chunk. The payload form closes when the session and declared assets are complete; a compact connection trigger remains available for later revisions without occupying review-layout space. The legacy `window.__pptkitPreviewBridge` exists for ordinary page automation compatibility, but Codex Browser must use the DOM bridge.
 4. Confirm the completed session ID before sending assets.
 5. Send each prepared asset with its session ID, asset ID, and declared MIME type; send only missing chunks and verify `completed` after every asset.
 6. Treat quota, hash, MIME, manifest, or transfer-state errors as real Browser failures. Record the exact bridge error before considering Node.
@@ -59,7 +59,7 @@ Do not call a mutable console API, paste a complete session, use a native file p
 2. If Codex browser controls are not directly visible, discover `browser:control-in-app-browser` (or the equivalent in-app Browser skill) and `node_repl js`. Follow the Browser skill to initialize its runtime, explicitly select the `iab` browser, make it visible for the user-facing preview, and open or reuse the resolved URL. Do not give up solely because the initial tool list omits browser controls.
 3. Treat a successful open or focus operation as proof that the preview channel is available. Only fall back after the Browser skill's setup or navigation actually fails; name the failed step and preserve the resolved preview URL as a direct review link.
 4. Transfer the complete session and referenced assets through `pptkit-transfer-v1`.
-5. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, completed transfer states, and the complete findings list.
+5. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, completed transfer states from the DOM bridge, and the complete findings list.
 6. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
 7. Keep the preview tab as a deliverable tab so the user can review it before export. In Codex, finalize the browser session with this tab marked `deliverable`; do not clean it up as an intermediate research tab.
 

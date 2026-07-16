@@ -60,7 +60,7 @@ The agent inspects TXT/Markdown, PDF, DOCX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG 
 
 Sessions never contain `dataUrl` assets. File size alone does not select Node; browser storage quota and verified transfer results determine whether Browser mode can continue.
 
-The preview exposes a read-only `window.__pptkitPreviewBridge` integration surface with the protocol name, maximum chunk size, and `getState()` transfer progress. State changes are accepted only through the `pptkit-transfer-input` and `pptkit-transfer-submit` DOM controls, which keeps browser automation auditable and prevents arbitrary console mutation.
+The preview exposes a hidden, read-only `[data-testid="pptkit-preview-bridge"]` DOM integration surface. Its JSON contains the protocol name, maximum chunk size, API availability measured by the page itself, and resumable transfer progress. Codex Browser reads this DOM contract because its isolated read-only evaluation sandbox is intentionally not the page's native global context. The legacy `window.__pptkitPreviewBridge` remains available for ordinary browser automation. State changes are accepted only after opening the progressive `[data-testid="pptkit-transfer-toggle"]` surface and using the stable `pptkit-transfer-input` and `pptkit-transfer-submit` DOM controls. This keeps browser automation auditable without leaving a human-oriented payload form in the finished review UI.
 
 ## Node fallback
 

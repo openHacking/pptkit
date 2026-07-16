@@ -58,6 +58,11 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /explicitly asks the agent to trigger the export\/download/);
   assert.match(browserWorkflow, /IndexedDB/);
   assert.match(browserWorkflow, /pptkit-transfer-v1/);
+  assert.match(browserWorkflow, /data-testid="pptkit-preview-bridge"/);
+  assert.match(browserWorkflow, /data-testid="pptkit-transfer-toggle"/);
+  assert.match(browserWorkflow, /aria-expanded/);
+  assert.match(browserWorkflow, /isolated read-only evaluation sandbox/i);
+  assert.match(runtimeRouting, /Do not probe `globalThis`, `window`, or browser APIs/i);
   assert.match(browserWorkflow, /never include `dataUrl`/i);
   assert.match(runtimeRouting, /File size is not a Node routing condition/i);
   assert.doesNotMatch(runtimeRouting, /asset-transfer-limit|asset-limit/);

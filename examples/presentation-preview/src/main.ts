@@ -23,19 +23,37 @@ import "./styles.css";
 
 const byId = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const deckTitle = byId<HTMLHeadingElement>("deck-title");
-const transferInput = byId<HTMLTextAreaElement>("transfer-input");
-const transferButton = byId<HTMLButtonElement>("transfer-submit");
-const transferError = byId<HTMLParagraphElement>("transfer-error");
-const transferProgress = byId<HTMLDivElement>("transfer-progress");
-const status = byId<HTMLSpanElement>("status");
 const deckMeta = byId<HTMLSpanElement>("deck-meta");
-const thumbnails = byId<HTMLDivElement>("thumbnails");
+const status = byId<HTMLOutputElement>("status");
+const workspace = byId<HTMLElement>("workspace");
 const stage = byId<HTMLDivElement>("stage");
-const issuesContainer = byId<HTMLDivElement>("issues");
 const previousButton = byId<HTMLButtonElement>("previous");
 const nextButton = byId<HTMLButtonElement>("next");
 const pageStatus = byId<HTMLSpanElement>("page-status");
 const downloadButton = byId<HTMLButtonElement>("download");
+
+const transferShell = byId<HTMLElement>("transfer-shell");
+const transferToggle = byId<HTMLButtonElement>("transfer-toggle");
+const transferToggleLabel = byId<HTMLSpanElement>("transfer-toggle-label");
+const transferClose = byId<HTMLButtonElement>("transfer-close");
+const transferPanel = byId<HTMLElement>("transfer-panel");
+const transferInput = byId<HTMLTextAreaElement>("transfer-input");
+const transferButton = byId<HTMLButtonElement>("transfer-submit");
+const transferError = byId<HTMLParagraphElement>("transfer-error");
+const transferProgress = byId<HTMLDivElement>("transfer-progress");
+const previewBridge = byId<HTMLOutputElement>("preview-bridge");
+
+const filmstrip = byId<HTMLElement>("filmstrip");
+const filmstripToggle = byId<HTMLButtonElement>("filmstrip-toggle");
+const filmstripCount = byId<HTMLSpanElement>("filmstrip-count");
+const thumbnails = byId<HTMLDivElement>("thumbnails");
+
+const findingsShell = byId<HTMLElement>("findings-shell");
+const findingsToggle = byId<HTMLButtonElement>("findings-toggle");
+const findingsClose = byId<HTMLButtonElement>("findings-close");
+const findingsCount = byId<HTMLSpanElement>("findings-count");
+const issuesPanel = byId<HTMLElement>("issues-panel");
+const issuesContainer = byId<HTMLDivElement>("issues");
 
 let session: DeckSessionV1 | undefined;
 let presentation: PresentationDocument | undefined;
@@ -47,6 +65,92 @@ let currentExportStatus: BuildReport["exportStatus"] = "not-run";
 let objectUrls: string[] = [];
 let persisted = true;
 let transfers: TransferProgress[] = [];
+let missingAssetCount = 0;
+
+function setStatus(message: string, tone: "neutral" | "busy" | "success" | "error" = "neutral") {
+  status.textContent = message;
+  status.title = message;
+  status.dataset.tone = tone;
+}
+
+function setDisclosure(button: HTMLButtonElement, panel: HTMLElement, open: boolean) {
+  button.setAttribute("aria-expanded", String(open));
+  panel.dataset.open = String(open);
+  panel.setAttribute("aria-hidden", String(!open));
+  panel.inert = !open;
+}
+
+function setTransferOpen(open: boolean) {
+  if (!open && transferPanel.contains(document.activeElement)) transferToggle.focus({ preventScroll: true });
+  setDisclosure(transferToggle, transferPanel, open);
+}
+
+function setFindingsOpen(open: boolean) {
+  if (!open && issuesPanel.contains(document.activeElement)) findingsToggle.focus({ preventScroll: true });
+  setDisclosure(findingsToggle, issuesPanel, open);
+}
+
+function setFilmstripPinned(pinned: boolean) {
+  if (pinned) delete filmstrip.dataset.suppressHover;
+  filmstrip.dataset.pinned = String(pinned);
+  filmstripToggle.setAttribute("aria-expanded", String(pinned));
+  filmstripToggle.setAttribute("aria-label", pinned ? "Hide slide thumbnails" : "Show slide thumbnails");
+}
+
+function closeTransientSurfaces(except?: "transfer" | "findings") {
+  if (except !== "transfer") setTransferOpen(false);
+  if (except !== "findings") setFindingsOpen(false);
+}
+
+function bridgeState() {
+  return {
+    protocol: PPTKIT_TRANSFER_PROTOCOL,
+    maxChunkBytes: MAX_TRANSFER_CHUNK_BYTES,
+    apis: {
+      Blob: typeof Blob === "function",
+      URL: typeof URL === "function",
+      crypto: typeof crypto === "object" && typeof crypto.subtle === "object",
+      fetch: typeof fetch === "function",
+      indexedDB: typeof indexedDB === "object",
+      storageEstimate: typeof navigator.storage?.estimate === "function",
+      structuredClone: typeof structuredClone === "function",
+      Uint8Array: typeof Uint8Array === "function",
+    },
+    state: {
+      sessionId: session?.id,
+      transfers: transfers.map((item) => ({ ...item, received: [...item.received], missing: [...item.missing] })),
+    },
+  };
+}
+
+function renderBridgeState() {
+  previewBridge.textContent = JSON.stringify(bridgeState());
+}
+
+function updateTransferSurface() {
+  const active = transfers.some((item) => item.status === "receiving");
+  const failed = transfers.some((item) => item.status === "failed") || transferError.textContent.length > 0;
+  if (failed) {
+    transferToggleLabel.textContent = "Transfer failed";
+    transferToggle.dataset.tone = "error";
+  } else if (active) {
+    transferToggleLabel.textContent = "Receiving";
+    transferToggle.dataset.tone = "busy";
+  } else if (!session) {
+    transferToggleLabel.textContent = "Connect";
+    transferToggle.dataset.tone = "neutral";
+  } else if (missingAssetCount > 0) {
+    transferToggleLabel.textContent = `${missingAssetCount} asset${missingAssetCount === 1 ? "" : "s"}`;
+    transferToggle.dataset.tone = "busy";
+  } else {
+    transferToggleLabel.textContent = "Agent connection";
+    transferToggle.dataset.tone = "ready";
+  }
+
+  if (session && missingAssetCount === 0 && !active && !failed) setTransferOpen(false);
+  transferToggle.hidden = false;
+  if (failed) setTransferOpen(true);
+}
 
 function revokeObjectUrls() {
   for (const url of objectUrls) URL.revokeObjectURL(url);
@@ -75,17 +179,21 @@ function showCurrentSlide() {
   const slides = preview?.slides ?? [];
   const selected = slides[currentIndex];
   stage.replaceChildren();
+  stage.classList.toggle("has-slide", Boolean(selected));
   if (selected) {
     stage.innerHTML = selected.svg;
     stage.setAttribute("aria-label", `Slide ${currentIndex + 1}: ${selected.slideId}`);
   } else {
-    stage.innerHTML = "<p>No visible slide.</p>";
+    stage.innerHTML = `<div class="empty-state"><strong>Waiting for a presentation</strong><span>The preview will appear automatically when the agent connects it.</span></div>`;
+    stage.setAttribute("aria-label", "No presentation loaded");
   }
   pageStatus.textContent = `${slides.length === 0 ? 0 : currentIndex + 1} / ${slides.length}`;
   previousButton.disabled = currentIndex <= 0;
   nextButton.disabled = currentIndex >= slides.length - 1;
   for (const button of thumbnails.querySelectorAll<HTMLButtonElement>("button")) {
-    button.setAttribute("aria-current", button.dataset.index === String(currentIndex) ? "page" : "false");
+    const selectedButton = button.dataset.index === String(currentIndex);
+    button.setAttribute("aria-current", selectedButton ? "page" : "false");
+    if (selectedButton) button.scrollIntoView({ block: "nearest", inline: "nearest" });
   }
 }
 
@@ -93,10 +201,18 @@ function selectSlide(index: number) {
   if (!preview?.slides.length) return;
   currentIndex = Math.max(0, Math.min(index, preview.slides.length - 1));
   showCurrentSlide();
+  if (matchMedia("(max-width: 980px)").matches) setFilmstripPinned(false);
 }
 
 function showFindings(items: StructuralIssue[]) {
   issuesContainer.replaceChildren();
+  const blocking = items.filter((item) => item.severity === "error").length;
+  const warnings = items.length - blocking;
+  findingsToggle.hidden = !session;
+  findingsCount.textContent = items.length === 0 ? "✓" : String(items.length);
+  findingsToggle.dataset.tone = blocking > 0 ? "error" : warnings > 0 ? "warning" : "success";
+  findingsToggle.setAttribute("aria-label", `Review findings: ${blocking} errors, ${warnings} warnings`);
+
   if (items.length === 0) {
     issuesContainer.innerHTML = '<p class="success">No blocking findings.</p>';
     return;
@@ -114,6 +230,7 @@ function showFindings(items: StructuralIssue[]) {
       button.addEventListener("click", () => {
         const index = preview?.slides.findIndex((slide) => slide.slideId === item.slideId) ?? -1;
         if (index >= 0) selectSlide(index);
+        setFindingsOpen(false);
       });
     } else {
       button.disabled = true;
@@ -124,30 +241,42 @@ function showFindings(items: StructuralIssue[]) {
 
 function renderThumbnails() {
   thumbnails.replaceChildren();
-  for (const slide of preview?.slides ?? []) {
+  const slides = preview?.slides ?? [];
+  filmstrip.hidden = slides.length === 0;
+  workspace.dataset.state = slides.length === 0 ? "empty" : "ready";
+  filmstripCount.textContent = String(slides.length);
+  for (const slide of slides) {
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.index = String(slide.index);
     button.setAttribute("aria-label", `Show slide ${slide.index + 1}: ${slide.slideId}`);
     button.innerHTML = `<span>${slide.index + 1}</span>${slide.svg}`;
-    button.addEventListener("click", () => selectSlide(slide.index));
+    button.addEventListener("click", () => {
+      selectSlide(slide.index);
+      if (matchMedia("(max-width: 980px)").matches) {
+        filmstrip.dataset.suppressHover = "true";
+        stage.focus({ preventScroll: true });
+      }
+    });
     thumbnails.append(button);
   }
 }
 
 function renderTransferProgress() {
   transferProgress.replaceChildren();
-  if (transfers.length === 0) {
-    transferProgress.innerHTML = "<p>No active transfers.</p>";
-    return;
-  }
-  for (const item of transfers) {
+  renderBridgeState();
+  const visibleTransfers = transfers.filter((item) => item.status !== "completed");
+  transferProgress.hidden = visibleTransfers.length === 0;
+  for (const item of visibleTransfers) {
     const row = document.createElement("p");
     row.dataset.transferId = item.transferId;
     row.className = `transfer-status ${item.status}`;
-    row.textContent = `${item.kind}:${item.payloadId} · ${item.received.length}/${item.chunkCount} chunks · ${item.status}${item.error ? ` · ${item.error}` : ""}`;
+    const label = item.kind === "session" ? "Presentation" : `Asset ${item.payloadId}`;
+    const state = item.status === "failed" ? "Failed" : "Receiving";
+    row.textContent = `${label} · ${item.received.length} of ${item.chunkCount} parts · ${state}${item.error ? ` · ${item.error}` : ""}`;
     transferProgress.append(row);
   }
+  updateTransferSurface();
 }
 
 function recordTransfer(item: TransferProgress) {
@@ -183,6 +312,7 @@ async function renderSession(nextSession: DeckSessionV1, changed: string[] = [])
   const resolveAsset = await createAssetResolver(nextSession);
   presentation = authorPresentation(nextSession.deck, resolveAsset);
   const availableAssets = new Set(nextSession.assets.filter((asset) => resolveAsset(asset.id)).map((asset) => asset.id));
+  missingAssetCount = nextSession.assets.length - availableAssets.size;
   const specIssues = validateDeckSpec(nextSession.deck, availableAssets);
   const diagnostics = validatePresentation(presentation);
   currentDiagnostics = diagnostics.map((diagnostic) => ({ severity: diagnostic.severity, code: diagnostic.code, message: diagnostic.message, path: diagnostic.path }));
@@ -212,7 +342,9 @@ async function renderSession(nextSession: DeckSessionV1, changed: string[] = [])
   const blocking = findings.filter((item) => item.severity === "error").length;
   downloadButton.disabled = blocking > 0;
   const changedText = changed.length > 0 ? ` Changed slides: ${changed.join(", ")}.` : "";
-  status.textContent = `${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${findings.length - blocking} warnings.${changedText}`;
+  setStatus(`${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${findings.length - blocking} warnings.${changedText}`, blocking > 0 ? "error" : "success");
+  renderBridgeState();
+  updateTransferSurface();
 }
 
 function download(bytes: Uint8Array, mimeType: string, filename: string) {
@@ -227,7 +359,7 @@ function download(bytes: Uint8Array, mimeType: string, filename: string) {
 async function generateAndDownload() {
   if (!session || !presentation || findings.some((item) => item.severity === "error")) return;
   downloadButton.disabled = true;
-  status.textContent = "Generating and inspecting PPTX in this browser…";
+  setStatus("Generating and inspecting PPTX in this browser…", "busy");
   try {
     const result = await generatePptx(presentation);
     const packageChecks = inspectPptxPackage(result.bytes);
@@ -246,21 +378,40 @@ async function generateAndDownload() {
     download(new TextEncoder().encode(`${JSON.stringify(report, null, 2)}\n`), "application/json", "build-report.json");
     if (report.exportStatus === "generated") {
       download(result.bytes, "application/vnd.openxmlformats-officedocument.presentationml.presentation", `${session.id}.pptx`);
-      status.textContent = `Generated ${result.slideCount} slides (${result.byteLength} bytes) and passed package inspection.`;
+      setStatus(`Generated ${result.slideCount} slides (${result.byteLength} bytes) and passed package inspection.`, "success");
     } else {
-      status.textContent = "PPTX failed package inspection. The build report was downloaded; the PPTX was withheld.";
+      setStatus("PPTX failed package inspection. The build report was downloaded; the PPTX was withheld.", "error");
+      setFindingsOpen(true);
     }
   } catch (error) {
     currentExportStatus = "failed";
-    status.textContent = `PPTX generation failed: ${error instanceof Error ? error.message : String(error)}`;
+    setStatus(`PPTX generation failed: ${error instanceof Error ? error.message : String(error)}`, "error");
   } finally {
     downloadButton.disabled = findings.some((item) => item.severity === "error");
   }
 }
 
+transferToggle.addEventListener("click", () => {
+  const open = transferToggle.getAttribute("aria-expanded") !== "true";
+  closeTransientSurfaces("transfer");
+  setTransferOpen(open);
+  if (open) transferInput.focus();
+});
+transferClose.addEventListener("click", () => setTransferOpen(false));
+findingsToggle.addEventListener("click", () => {
+  const open = findingsToggle.getAttribute("aria-expanded") !== "true";
+  closeTransientSurfaces("findings");
+  setFindingsOpen(open);
+});
+findingsClose.addEventListener("click", () => setFindingsOpen(false));
+filmstripToggle.addEventListener("click", () => setFilmstripPinned(filmstrip.dataset.pinned !== "true"));
+filmstrip.addEventListener("pointerleave", () => delete filmstrip.dataset.suppressHover);
+
 transferButton.addEventListener("click", async () => {
   transferError.textContent = "";
   transferButton.disabled = true;
+  transferPanel.setAttribute("aria-busy", "true");
+  setStatus("Processing transfer…", "busy");
   try {
     const result = await receiveTransferChunk(transferInput.value, session);
     recordTransfer(result);
@@ -272,24 +423,43 @@ transferButton.addEventListener("click", async () => {
       await renderSession(session, changed);
     } else if (result.completedAssetId && session) {
       await renderSession(session);
-      status.textContent = `Asset ${result.completedAssetId} completed and the preview was refreshed.`;
+      setStatus(`Asset ${result.completedAssetId} completed and the preview was refreshed.`, "success");
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     transferError.textContent = message;
+    setStatus("Couldn’t load the presentation.", "error");
     await refreshStoredTransfers().catch(() => undefined);
+    setTransferOpen(true);
   } finally {
     transferButton.disabled = false;
+    transferPanel.removeAttribute("aria-busy");
+    updateTransferSurface();
   }
 });
 
 previousButton.addEventListener("click", () => selectSlide(currentIndex - 1));
 nextButton.addEventListener("click", () => selectSlide(currentIndex + 1));
 downloadButton.addEventListener("click", () => void generateAndDownload());
+
+document.addEventListener("click", (event) => {
+  const target = event.target as Node;
+  if (!transferShell.contains(target)) setTransferOpen(false);
+  if (!findingsShell.contains(target)) setFindingsOpen(false);
+  if (!filmstrip.contains(target) && matchMedia("(max-width: 980px)").matches) setFilmstripPinned(false);
+});
+
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeTransientSurfaces();
+    setFilmstripPinned(false);
+    return;
+  }
   if (event.target instanceof HTMLTextAreaElement || event.target instanceof HTMLInputElement) return;
   if (event.key === "ArrowLeft") selectSlide(currentIndex - 1);
   if (event.key === "ArrowRight") selectSlide(currentIndex + 1);
+  if (event.key === "Home") selectSlide(0);
+  if (event.key === "End") selectSlide((preview?.slides.length ?? 1) - 1);
 });
 
 const requestedSession = decodeURIComponent(location.hash.slice(1));
@@ -299,10 +469,17 @@ Promise.all([
 ]).then(async ([stored, storedTransfers]) => {
   transfers = storedTransfers.map(storedTransferProgress);
   renderTransferProgress();
-  if (!stored) return;
+  if (!stored) {
+    showCurrentSlide();
+    return;
+  }
   session = stored;
   await renderSession(stored);
-}).catch(() => { persisted = false; });
+}).catch(() => {
+  persisted = false;
+  setStatus("Browser storage is unavailable. The presentation will stay in memory.", "error");
+  updateTransferSurface();
+});
 
 window.addEventListener("beforeunload", revokeObjectUrls);
 
@@ -313,10 +490,13 @@ Object.defineProperty(globalThis, "__pptkitPreviewBridge", {
   value: Object.freeze({
     protocol: PPTKIT_TRANSFER_PROTOCOL,
     maxChunkBytes: MAX_TRANSFER_CHUNK_BYTES,
-    getState: () => ({ sessionId: session?.id, transfers: transfers.map((item) => ({ ...item, received: [...item.received], missing: [...item.missing] })) }),
+    getState: () => bridgeState().state,
   }),
 });
 
 Object.defineProperty(globalThis, "__pptkitPreviewState", {
   get: () => ({ sessionId: session?.id, slideCount: preview?.slides.length ?? 0, findings, exportStatus: currentExportStatus, packageStatus: currentExportStatus === "not-run" ? NOT_RUN_PACKAGE_CHECK.status : "checked", transfers }),
 });
+
+renderBridgeState();
+updateTransferSurface();

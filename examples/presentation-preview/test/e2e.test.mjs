@@ -76,6 +76,8 @@ async function sendPayload(page, { bytes, kind, payloadId, mimeType, sessionId, 
       byteLength: bytes.byteLength, sha256, chunkIndex: index, chunkCount: count,
       chunkByteLength: chunk.byteLength, chunkSha256: digest(chunk), dataBase64: chunk.toString("base64"),
     });
+    const toggle = page.getByTestId("pptkit-transfer-toggle");
+    if (await toggle.getAttribute("aria-expanded") !== "true") await toggle.click();
     await page.getByTestId("pptkit-transfer-input").fill(envelope);
     await page.getByTestId("pptkit-transfer-submit").click();
     await page.waitForFunction(({ id, index }) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && (item.received.includes(index) || item.status === "failed")), { id: transferId, index });
@@ -86,9 +88,39 @@ async function sendPayload(page, { bytes, kind, payloadId, mimeType, sessionId, 
   return { transferId, chunkCount: count };
 }
 
+async function assertNoPageScroll(page) {
+  const overflow = await page.evaluate(() => ({
+    bodyWidth: document.body.scrollWidth,
+    bodyHeight: document.body.scrollHeight,
+    viewportWidth: document.documentElement.clientWidth,
+    viewportHeight: document.documentElement.clientHeight,
+  }));
+  assert.equal(overflow.bodyWidth, overflow.viewportWidth);
+  assert.equal(overflow.bodyHeight, overflow.viewportHeight);
+}
+
+async function assertElementCentered(page, containerSelector, elementSelector) {
+  const offsets = await page.evaluate(({ containerSelector, elementSelector }) => {
+    const container = document.querySelector(containerSelector)?.getBoundingClientRect();
+    const element = document.querySelector(elementSelector)?.getBoundingClientRect();
+    if (!container || !element) throw new Error(`Missing ${containerSelector} or ${elementSelector}.`);
+    return {
+      x: element.left + element.width / 2 - (container.left + container.width / 2),
+      y: element.top + element.height / 2 - (container.top + container.height / 2),
+    };
+  }, { containerSelector, elementSelector });
+  assert.ok(Math.abs(offsets.x) <= 0.5, `${elementSelector} is horizontally offset by ${offsets.x}px.`);
+  assert.ok(Math.abs(offsets.y) <= 0.5, `${elementSelector} is vertically offset by ${offsets.y}px.`);
+}
+
 async function sendSession(page, session) {
   const bytes = Buffer.from(JSON.stringify(session));
   await sendPayload(page, { bytes, kind: "session", payloadId: session.id, mimeType: "application/json" });
+}
+
+async function domBridge(page) {
+  await page.waitForFunction(() => Boolean(document.querySelector('[data-testid="pptkit-preview-bridge"]')?.textContent));
+  return JSON.parse(await page.getByTestId("pptkit-preview-bridge").textContent());
 }
 
 function largeSvg(byteLength, label) {
@@ -106,15 +138,42 @@ test("imports, persists, revises, previews, and exports through the chunk protoc
   await page.goto(url);
   assert.equal(await page.locator("#session-input").count(), 0);
   assert.equal(await page.locator("[data-testid=pptkit-transfer-input]").count(), 1);
+  assert.equal(await page.getByText("Open a presentation").count(), 0);
+  assert.equal(await page.getByTestId("pptkit-transfer-toggle").isVisible(), true);
+  assert.equal(await page.locator("#transfer-panel").isHidden(), true);
+  assert.equal(await page.getByText(/Loading your presentation/i).count(), 0);
+  assert.equal(await page.locator("#transfer-progress").isHidden(), true);
+  assert.equal(await page.locator("#issues-panel").isHidden(), true);
+  assert.equal(await page.locator("#status").innerText(), "Ready");
+  assert.equal(await page.locator("#filmstrip").isHidden(), true);
+  await assertNoPageScroll(page);
+  const compatibility = await domBridge(page);
+  assert.equal(compatibility.protocol, protocol);
+  assert.equal(compatibility.maxChunkBytes, chunkBytes);
+  assert.deepEqual(Object.values(compatibility.apis), Object.values(compatibility.apis).map(() => true));
 
   await sendSession(page, fixture());
   await page.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
+  assert.equal(await page.locator("#transfer-progress").isHidden(), true);
+  assert.equal(await page.getByTestId("pptkit-transfer-toggle").isVisible(), true);
+  assert.equal(await page.getByTestId("pptkit-transfer-toggle").getAttribute("aria-expanded"), "false");
+  assert.equal(await page.locator("#issues-panel").isHidden(), true);
+  assert.equal(await page.getByTestId("pptkit-findings-toggle").isVisible(), true);
+  await page.getByTestId("pptkit-findings-toggle").click();
+  assert.equal(await page.locator("#issues-panel").isVisible(), true);
+  await page.getByRole("button", { name: "Close review findings" }).click();
   assert.equal(await page.locator("#stage svg").count(), 1);
   assert.match(await page.locator("#status").innerText(), /Saved in this browser/);
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
+  assert.equal((await domBridge(page)).state.sessionId, "browser-review");
 
   await page.getByRole("button", { name: "Next" }).click();
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
+  await page.keyboard.press("End");
+  assert.equal(await page.locator("#page-status").innerText(), "3 / 3");
+  await page.keyboard.press("Home");
+  assert.equal(await page.locator("#page-status").innerText(), "1 / 3");
+  await page.getByRole("button", { name: "Next" }).click();
   await sendSession(page, fixture(2));
   await page.waitForFunction(() => document.querySelector("#status")?.textContent?.includes("Changed slides: process"));
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
@@ -152,8 +211,11 @@ test("transfers assets larger than 5 MB and more than 20 MB in total", async (t)
     height: 675,
   }));
   await sendSession(page, fixture(1, assets, assets));
+  assert.equal(await page.getByTestId("pptkit-transfer-toggle").isVisible(), true);
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), false);
   const partial = await sendPayload(page, { bytes: payloads[0], kind: "asset", payloadId: assets[0].id, sessionId: "browser-review", mimeType: assets[0].mimeType, indexes: [0, 1], expectComplete: false });
+  assert.equal(await page.locator("#transfer-progress").isVisible(), true);
+  assert.match(await page.locator("#transfer-progress").innerText(), /Asset large-1 · 2 of \d+ parts · Receiving/);
   await page.reload();
   await page.waitForFunction((id) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && item.received.includes(1)), partial.transferId);
   await sendPayload(page, { bytes: payloads[0], kind: "asset", payloadId: assets[0].id, sessionId: "browser-review", mimeType: assets[0].mimeType, indexes: Array.from({ length: partial.chunkCount - 2 }, (_, index) => index + 2) });
@@ -174,6 +236,7 @@ test("rejects inconsistent chunks and never reuses stale asset bytes across revi
   await page.goto(url);
 
   const oneByte = Buffer.from("x");
+  await page.getByTestId("pptkit-transfer-toggle").click();
   await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify({
     protocol, transferId: "invalid-count", kind: "session", payloadId: "invalid", mimeType: "application/json",
     byteLength: 1, sha256: digest(oneByte), chunkIndex: 0, chunkCount: 2,
@@ -217,4 +280,54 @@ test("rejects inconsistent chunks and never reuses stale asset bytes across revi
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), false);
   await sendPayload(page, { bytes: replacement, kind: "asset", payloadId: replacementAsset.id, sessionId: "browser-review", mimeType: replacementAsset.mimeType });
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
+});
+
+test("keeps the stage in the viewport and progressively discloses navigation", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+
+  const narrow = await browser.newPage({ viewport: { width: 760, height: 900 } });
+  await narrow.goto(url);
+  await assertElementCentered(narrow, "#transfer-toggle", "#transfer-toggle .status-dot");
+  await sendSession(narrow, fixture());
+  await narrow.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
+  await assertElementCentered(narrow, "#transfer-toggle", "#transfer-toggle .status-dot");
+  await assertNoPageScroll(narrow);
+  assert.equal(Math.round((await narrow.locator("#filmstrip").boundingBox()).width), 42);
+  assert.equal(await narrow.locator("#filmstrip-surface").isHidden(), true);
+  await narrow.getByTestId("pptkit-filmstrip-toggle").hover();
+  assert.equal(await narrow.locator("#filmstrip-surface").isVisible(), true);
+  await narrow.getByTestId("pptkit-filmstrip-toggle").click();
+  assert.equal(await narrow.getByTestId("pptkit-filmstrip-toggle").getAttribute("aria-expanded"), "true");
+  await narrow.getByRole("button", { name: /Show slide 2/ }).click();
+  assert.equal(await narrow.locator("#page-status").innerText(), "2 / 3");
+  assert.equal(await narrow.getByTestId("pptkit-filmstrip-toggle").getAttribute("aria-expanded"), "false");
+  await narrow.waitForFunction(() => getComputedStyle(document.querySelector("#filmstrip-surface")).visibility === "hidden");
+  const narrowStage = await narrow.locator("#stage svg").boundingBox();
+  assert.ok(narrowStage.width > 0 && narrowStage.height > 0);
+  assert.ok(narrowStage.x >= 0 && narrowStage.y >= 0);
+  assert.ok(narrowStage.x + narrowStage.width <= 760 && narrowStage.y + narrowStage.height <= 900);
+
+  const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await phone.goto(url);
+  await sendSession(phone, fixture());
+  await phone.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
+  await assertNoPageScroll(phone);
+  await phone.getByTestId("pptkit-filmstrip-toggle").click();
+  assert.equal(await phone.locator("#filmstrip-surface").isVisible(), true);
+  const phoneStage = await phone.locator("#stage svg").boundingBox();
+  assert.ok(phoneStage.width > 0 && phoneStage.height > 0);
+  assert.ok(phoneStage.x >= 0 && phoneStage.y >= 0);
+  assert.ok(phoneStage.x + phoneStage.width <= 390 && phoneStage.y + phoneStage.height <= 844);
+  await phone.keyboard.press("Escape");
+  assert.equal(await phone.getByTestId("pptkit-filmstrip-toggle").getAttribute("aria-expanded"), "false");
+});
+
+test("declares reduced motion, transparency, and contrast fallbacks", async () => {
+  const css = await readFile(path.join(root, "src", "styles.css"), "utf8");
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /prefers-reduced-transparency:\s*reduce/);
+  assert.match(css, /prefers-contrast:\s*more/);
 });
