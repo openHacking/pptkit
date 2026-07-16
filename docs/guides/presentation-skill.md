@@ -4,10 +4,28 @@ The `pptkit-presentation` skill turns source material into a versioned deck sess
 
 ## Install or update
 
-In a skill-enabled agent such as Codex, ask it to install or update `pptkit-presentation` from `openHacking/pptkit`. If the agent does not support skill installation in chat, use:
+In a skill-enabled agent such as Codex, install the skill by sending:
+
+```text
+Install the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+```
+
+To update the installed skill from the same repository, send:
+
+```text
+Update the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+```
+
+If the agent does not support skill installation in chat, install it globally with:
 
 ```bash
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
+```
+
+Update installed skills with:
+
+```bash
+npx skills update
 ```
 
 The installed skill uses `https://openhacking.github.io/pptkit/` as its default HTTPS review application, so customers do not need to configure a preview URL. For a private deployment, staging environment, or local development, supply a URL for the current task or set `PPTKIT_PREVIEW_URL`; either overrides the official default. In Codex, the skill discovers the in-app Browser controls and `node_repl js`, initializes the `iab` browser, and attempts to open the resolved URL before declaring browser review unavailable. It does not treat an abbreviated initial tool list as evidence that no browser exists. The skill selects the Node fallback only after a real browser setup/navigation failure or when another documented fallback condition applies, and it explains the reason.

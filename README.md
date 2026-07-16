@@ -41,16 +41,29 @@ with the [Quick Start](docs/getting-started/quick-start.md) to create your first
 ### Presentation Skill
 
 PPTKit also includes the cross-agent `pptkit-presentation` skill for turning text,
-documents, spreadsheets, and images into an editable PPTX plus its TypeScript source
-project. In a skill-enabled agent such as Codex, install it without using a terminal
-by sending this one sentence:
+documents, spreadsheets, and images into an editable PPTX. In a skill-enabled agent
+such as Codex, install it without using a terminal by sending this prompt:
 
-> Install the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+```text
+Install the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+```
+
+To update the installed skill from the same repository, send:
+
+```text
+Update the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
+```
 
 If you prefer the command line, install the skill globally with:
 
 ```bash
 npx skills add openHacking/pptkit --skill pptkit-presentation -g
+```
+
+Update installed skills with:
+
+```bash
+npx skills update
 ```
 
 Then ask your agent to create a presentation, for example: “Use PPTKit to turn this
