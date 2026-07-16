@@ -62,7 +62,13 @@
               aria-label="Review findings"
               hidden
             >
-              <span aria-hidden="true">!</span>
+              <span class="findings-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
+              </span>
               <span id="findings-count" class="count-badge">0</span>
             </button>
             <aside id="issues-panel" class="anchored-panel issues-panel" aria-labelledby="issues-heading" aria-hidden="true" inert>
@@ -112,9 +118,9 @@
         <section class="stage-panel" aria-label="Current slide">
           <div id="stage" class="stage" tabindex="-1"><p>Your slides will appear here.</p></div>
           <nav class="stage-controls" aria-label="Slide controls">
-            <button id="previous" type="button" class="secondary" disabled aria-label="Previous slide">‹</button>
+            <button id="previous" type="button" class="secondary" disabled aria-label="Previous slide"><span class="chevron-icon chevron-icon-previous" aria-hidden="true"></span></button>
             <span id="page-status">0 / 0</span>
-            <button id="next" type="button" class="secondary" disabled aria-label="Next slide">›</button>
+            <button id="next" type="button" class="secondary" disabled aria-label="Next slide"><span class="chevron-icon chevron-icon-next" aria-hidden="true"></span></button>
           </nav>
         </section>
       </main>

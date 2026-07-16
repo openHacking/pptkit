@@ -100,6 +100,19 @@ test("authors every role without structural failures across every theme", () => 
   }
 });
 
+test("renders the closing title exactly once across every theme", () => {
+  for (const theme of ["clean-business", "swiss-grid", "editorial-story"]) {
+    const spec = deck(theme);
+    const normalized = normalizePresentation(authorPresentation(spec));
+    const closing = normalized.slides.at(-1);
+    const titleElements = closing.elements.filter(
+      (element) => element.type === "text" && element.plainText === "Ready",
+    );
+
+    assert.deepEqual(titleElements.map((element) => element.name), ["Closing message"]);
+  }
+});
+
 test("keeps provenance in speaker notes and out of visible slide text", () => {
   const spec = deck("swiss-grid");
   spec.slides[1].notes = "Presenter context.";

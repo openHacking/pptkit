@@ -294,6 +294,22 @@ test("keeps the stage in the viewport and progressively discloses navigation", a
   await sendSession(narrow, fixture());
   await narrow.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
   await assertElementCentered(narrow, "#transfer-toggle", "#transfer-toggle .status-dot");
+  await assertElementCentered(narrow, "#previous", "#previous .chevron-icon");
+  await assertElementCentered(narrow, "#next", "#next .chevron-icon");
+  const indicatorStyles = await narrow.evaluate(() => {
+    const status = getComputedStyle(document.querySelector("#status"));
+    const findings = getComputedStyle(document.querySelector("#findings-toggle"));
+    return {
+      statusBorder: status.borderTopWidth,
+      statusBackground: status.backgroundColor,
+      findingsBorder: findings.borderTopWidth,
+      findingsShadow: findings.boxShadow,
+    };
+  });
+  assert.equal(indicatorStyles.statusBorder, "0px");
+  assert.equal(indicatorStyles.statusBackground, "rgba(0, 0, 0, 0)");
+  assert.equal(indicatorStyles.findingsBorder, "0px");
+  assert.equal(indicatorStyles.findingsShadow, "none");
   await assertNoPageScroll(narrow);
   assert.equal(Math.round((await narrow.locator("#filmstrip").boundingBox()).width), 42);
   assert.equal(await narrow.locator("#filmstrip-surface").isHidden(), true);

@@ -509,6 +509,10 @@ export function renderSlide(
     return;
   }
   addChrome(slide, tokens, plan, index);
+  if (plan.role === "closing") {
+    renderClosing(slide, tokens, plan, index);
+    return slide;
+  }
   addTitle(slide, tokens, plan.title);
   if (plan.role === "agenda") renderAgenda(slide, tokens, plan);
   else if (plan.role === "section") renderSection(slide, tokens, plan, index);
@@ -518,6 +522,5 @@ export function renderSlide(
   else if (plan.role === "comparison") renderComparison(slide, tokens, plan);
   else if (plan.role === "process") renderProcess(slide, tokens, plan);
   else if (plan.role === "table") renderTable(slide, tokens, plan);
-  else if (plan.role === "closing") renderClosing(slide, tokens, plan, index);
   return slide;
 }
