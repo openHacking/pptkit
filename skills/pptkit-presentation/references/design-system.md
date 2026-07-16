@@ -80,7 +80,7 @@ Do not use numbering unless order, navigation, or comparison needs it. Do not pl
 
 ## Images
 
-- Reference PNG, JPEG, GIF, or SVG images by stable `assetId`. Browser sessions resolve `data:`/`blob:` assets; Node fallback projects copy files into `assets/`.
+- Reference PNG, JPEG, GIF, or SVG images by stable `assetId`. Browser sessions resolve transferred IndexedDB `blob:` assets; Node fallback projects copy files into `assets/`.
 - Provide width and height from `content/sources.json` so `contain` and `cover` are deterministic.
 - Use `cover` for photographic crops and `contain` for screenshots, diagrams, and UI evidence.
 - Preserve sensitive or text-heavy screenshots; do not redraw them without explicit permission.

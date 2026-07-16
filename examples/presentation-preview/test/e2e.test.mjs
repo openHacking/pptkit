@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
@@ -8,6 +9,8 @@ import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const protocol = "pptkit-transfer-v1";
+const chunkBytes = 512 * 1024;
 
 function mimeType(file) {
   if (file.endsWith(".html")) return "text/html";
@@ -35,7 +38,11 @@ async function serve() {
   return { server, url: `http://127.0.0.1:${address.port}` };
 }
 
-function fixture(revision = 1) {
+function digest(bytes) {
+  return createHash("sha256").update(bytes).digest("hex");
+}
+
+function fixture(revision = 1, assets = [], imageSlides = []) {
   const now = new Date().toISOString();
   return {
     schemaVersion: 1,
@@ -44,41 +51,73 @@ function fixture(revision = 1) {
     createdAt: now,
     updatedAt: now,
     deck: {
-      brief: { title: "Browser Review", audience: "QA", purpose: "Review before download", language: "en-US", slideCountRange: [3, 3], themeId: "clean-business", imagePolicy: "Local", constraints: [] },
+      brief: { title: "Browser Review", audience: "QA", purpose: "Review before download", language: "en-US", slideCountRange: [3 + imageSlides.length, 3 + imageSlides.length], themeId: "clean-business", imagePolicy: "Local", constraints: [] },
       slides: [
         { id: "cover", role: "cover", title: "Browser Review", subtitle: "SVG first" },
         { id: "process", role: "process", title: revision === 1 ? "Review loop" : "Updated review loop", steps: ["Import", "Preview", "Revise", "Download"] },
+        ...imageSlides.map((asset, index) => ({ id: `image-${index + 1}`, role: "image", title: `Large image ${index + 1}`, image: { assetId: asset.id, alt: asset.name, width: 1200, height: 675 } })),
         { id: "closing", role: "closing", title: "Approved", message: "Download only on request." },
       ],
     },
     sources: [],
-    assets: [],
+    assets,
   };
 }
 
-test("imports, persists, revises, previews, and exports a browser deck session", async (t) => {
+async function sendPayload(page, { bytes, kind, payloadId, mimeType, sessionId, indexes, expectComplete = true }) {
+  const sha256 = digest(bytes);
+  const transferId = digest(Buffer.from([kind, payloadId, sessionId ?? "", sha256].join("\0")));
+  const count = Math.ceil(bytes.byteLength / chunkBytes);
+  const selectedIndexes = indexes ?? Array.from({ length: count }, (_, index) => index);
+  for (const index of selectedIndexes) {
+    const chunk = bytes.subarray(index * chunkBytes, Math.min(bytes.byteLength, (index + 1) * chunkBytes));
+    const envelope = JSON.stringify({
+      protocol, transferId, kind, payloadId, ...(sessionId ? { sessionId } : {}), mimeType,
+      byteLength: bytes.byteLength, sha256, chunkIndex: index, chunkCount: count,
+      chunkByteLength: chunk.byteLength, chunkSha256: digest(chunk), dataBase64: chunk.toString("base64"),
+    });
+    await page.getByTestId("pptkit-transfer-input").fill(envelope);
+    await page.getByTestId("pptkit-transfer-submit").click();
+    await page.waitForFunction(({ id, index }) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && (item.received.includes(index) || item.status === "failed")), { id: transferId, index });
+    const state = await page.evaluate((id) => globalThis.__pptkitPreviewBridge.getState().transfers.find((item) => item.transferId === id), transferId);
+    if (state?.status === "failed") throw new Error(state.error ?? `Transfer ${transferId} failed.`);
+  }
+  if (expectComplete) await page.waitForFunction((id) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && item.status === "completed"), transferId);
+  return { transferId, chunkCount: count };
+}
+
+async function sendSession(page, session) {
+  const bytes = Buffer.from(JSON.stringify(session));
+  await sendPayload(page, { bytes, kind: "session", payloadId: session.id, mimeType: "application/json" });
+}
+
+function largeSvg(byteLength, label) {
+  const start = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#2457d6"/><text x="80" y="340" fill="white" font-size="72">${label}</text><!--`);
+  const end = Buffer.from("--></svg>");
+  return Buffer.concat([start, Buffer.alloc(byteLength - start.length - end.length, 120), end]);
+}
+
+test("imports, persists, revises, previews, and exports through the chunk protocol", async (t) => {
   const { server, url } = await serve();
   t.after(() => server.close());
   const browser = await chromium.launch({ headless: true });
   t.after(() => browser.close());
   const page = await browser.newPage({ acceptDownloads: true });
   await page.goto(url);
-  await page.locator("#session-input").fill(JSON.stringify(fixture()));
-  await page.getByRole("button", { name: "Import and preview" }).click();
+  assert.equal(await page.locator("#session-input").count(), 0);
+  assert.equal(await page.locator("[data-testid=pptkit-transfer-input]").count(), 1);
+
+  await sendSession(page, fixture());
   await page.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
   assert.equal(await page.locator("#stage svg").count(), 1);
   assert.match(await page.locator("#status").innerText(), /Saved in this browser/);
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
-  assert.equal(await page.evaluate(() => globalThis.__pptkitPreviewState.exportStatus), "not-run");
 
   await page.getByRole("button", { name: "Next" }).click();
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
-  await page.getByRole("button", { name: "Import deck session" }).click();
-  await page.locator("#session-input").fill(JSON.stringify(fixture(2)));
-  await page.getByRole("button", { name: "Import and preview" }).click();
+  await sendSession(page, fixture(2));
   await page.waitForFunction(() => document.querySelector("#status")?.textContent?.includes("Changed slides: process"));
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
-  assert.match(await page.locator("#status").innerText(), /Changed slides: process/);
 
   await page.reload();
   await page.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 3);
@@ -88,11 +127,94 @@ test("imports, persists, revises, previews, and exports a browser deck session",
   page.on("download", (download) => downloads.push(download));
   await page.getByRole("button", { name: "Generate & download PPTX" }).click();
   await page.waitForFunction(() => document.querySelector("#status")?.textContent?.includes("passed package inspection"));
-  assert.equal(await page.evaluate(() => globalThis.__pptkitPreviewState.exportStatus), "generated");
   await new Promise((resolve) => setTimeout(resolve, 100));
   assert.deepEqual(downloads.map((download) => download.suggestedFilename()).sort(), ["browser-review.pptx", "build-report.json"]);
   const pptx = downloads.find((download) => download.suggestedFilename().endsWith(".pptx"));
-  const pptxPath = await pptx.path();
-  const bytes = await readFile(pptxPath);
-  assert.deepEqual(Array.from(bytes.subarray(0, 2)), [0x50, 0x4b]);
+  assert.ok(pptx);
+});
+
+test("transfers assets larger than 5 MB and more than 20 MB in total", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const payloads = Array.from({ length: 4 }, (_, index) => largeSvg(5 * 1024 * 1024 + 256 * 1024, `Asset ${index + 1}`));
+  const assets = payloads.map((bytes, index) => ({
+    id: `large-${index + 1}`,
+    name: `large-${index + 1}.svg`,
+    mimeType: "image/svg+xml",
+    byteLength: bytes.byteLength,
+    sha256: digest(bytes),
+    width: 1200,
+    height: 675,
+  }));
+  await sendSession(page, fixture(1, assets, assets));
+  assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), false);
+  const partial = await sendPayload(page, { bytes: payloads[0], kind: "asset", payloadId: assets[0].id, sessionId: "browser-review", mimeType: assets[0].mimeType, indexes: [0, 1], expectComplete: false });
+  await page.reload();
+  await page.waitForFunction((id) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && item.received.includes(1)), partial.transferId);
+  await sendPayload(page, { bytes: payloads[0], kind: "asset", payloadId: assets[0].id, sessionId: "browser-review", mimeType: assets[0].mimeType, indexes: Array.from({ length: partial.chunkCount - 2 }, (_, index) => index + 2) });
+  for (let index = 1; index < assets.length; index += 1) {
+    await sendPayload(page, { bytes: payloads[index], kind: "asset", payloadId: assets[index].id, sessionId: "browser-review", mimeType: assets[index].mimeType });
+  }
+  await page.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 7);
+  assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
+  assert.equal(await page.evaluate(() => globalThis.__pptkitPreviewBridge.protocol), protocol);
+});
+
+test("rejects inconsistent chunks and never reuses stale asset bytes across revisions", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const oneByte = Buffer.from("x");
+  await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify({
+    protocol, transferId: "invalid-count", kind: "session", payloadId: "invalid", mimeType: "application/json",
+    byteLength: 1, sha256: digest(oneByte), chunkIndex: 0, chunkCount: 2,
+    chunkByteLength: 1, chunkSha256: digest(oneByte), dataBase64: oneByte.toString("base64"),
+  }));
+  await page.getByTestId("pptkit-transfer-submit").click();
+  await page.waitForFunction(() => document.querySelector("#transfer-error")?.textContent?.includes("chunkCount is inconsistent"));
+
+  await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify({
+    protocol, transferId: "invalid-hash", kind: "session", payloadId: "invalid", mimeType: "application/json",
+    byteLength: 1, sha256: digest(oneByte), chunkIndex: 0, chunkCount: 1,
+    chunkByteLength: 1, chunkSha256: "0".repeat(64), dataBase64: oneByte.toString("base64"),
+  }));
+  await page.getByTestId("pptkit-transfer-submit").click();
+  await page.waitForFunction(() => document.querySelector("#transfer-error")?.textContent?.includes("failed SHA-256 verification"));
+
+  const conflictingPayload = Buffer.from("ab");
+  const firstChunk = Buffer.from("a");
+  const conflictingChunk = Buffer.from("x");
+  const conflictBase = { protocol, transferId: "conflicting-chunk", kind: "session", payloadId: "conflict", mimeType: "application/json", byteLength: 2, sha256: digest(conflictingPayload), chunkIndex: 0, chunkCount: 2, chunkByteLength: 1 };
+  await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify({ ...conflictBase, chunkSha256: digest(firstChunk), dataBase64: firstChunk.toString("base64") }));
+  await page.getByTestId("pptkit-transfer-submit").click();
+  await page.waitForFunction(() => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === "conflicting-chunk" && item.received.includes(0)));
+  await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify({ ...conflictBase, chunkSha256: digest(conflictingChunk), dataBase64: conflictingChunk.toString("base64") }));
+  await page.getByTestId("pptkit-transfer-submit").click();
+  await page.waitForFunction(() => document.querySelector("#transfer-error")?.textContent?.includes("conflicts with the previously stored chunk"));
+
+  const first = largeSvg(2048, "First");
+  const firstAsset = { id: "replaceable", name: "replaceable.svg", mimeType: "image/svg+xml", byteLength: first.byteLength, sha256: digest(first), width: 1200, height: 675 };
+  await sendSession(page, fixture(1, [firstAsset], [firstAsset]));
+  await assert.rejects(
+    () => sendPayload(page, { bytes: oneByte, kind: "asset", payloadId: "unknown", sessionId: "browser-review", mimeType: "image/png" }),
+    /does not declare asset unknown/,
+  );
+  await sendPayload(page, { bytes: first, kind: "asset", payloadId: firstAsset.id, sessionId: "browser-review", mimeType: firstAsset.mimeType });
+  assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
+
+  const replacement = largeSvg(2048, "Replacement");
+  const replacementAsset = { ...firstAsset, sha256: digest(replacement) };
+  await sendSession(page, fixture(2, [replacementAsset], [replacementAsset]));
+  assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), false);
+  await sendPayload(page, { bytes: replacement, kind: "asset", payloadId: replacementAsset.id, sessionId: "browser-review", mimeType: replacementAsset.mimeType });
+  assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
 });

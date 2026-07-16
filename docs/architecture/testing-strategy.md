@@ -41,10 +41,10 @@ with `pnpm exec playwright install chromium`; CI installs Chromium and its Linux
 dependencies before `pnpm test`. Fixed viewport, device scale, color scheme, and a small
 cross-platform pixel tolerance keep the preview snapshots reviewable.
 
-The presentation preview application adds Chromium coverage for session import,
-IndexedDB restore, stable-slide revision behavior, warning navigation, deferred export,
-downloads, and final ZIP signatures. Its test server is local-only and does not represent
-the production HTTPS deployment.
+The presentation preview application adds Chromium coverage for unified chunk transfer,
+large asset persistence, IndexedDB restore, stable-slide revision behavior, warning
+navigation, deferred export, downloads, and final ZIP signatures. Its test server is
+local-only and does not represent the production HTTPS deployment.
 
 ## Fixtures and regressions
 

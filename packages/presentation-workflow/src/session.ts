@@ -1,14 +1,8 @@
 import type { DeckSessionV1 } from "./contracts.js";
 
 export const SESSION_SCHEMA_VERSION = 1 as const;
-export const MAX_INLINE_ASSET_BYTES = 5 * 1024 * 1024;
-export const MAX_INLINE_ASSETS_BYTES = 20 * 1024 * 1024;
-
-function approximateDataUrlBytes(value: string) {
-  const comma = value.indexOf(",");
-  if (comma < 0) return value.length;
-  return Math.ceil((value.length - comma - 1) * 0.75);
-}
+const SUPPORTED_ASSET_MIME_TYPES = new Set(["image/png", "image/jpeg", "image/gif", "image/svg+xml"]);
+const SHA256 = /^[a-f0-9]{64}$/i;
 
 export function parseDeckSession(value: string | unknown): DeckSessionV1 {
   const input: unknown = typeof value === "string" ? JSON.parse(value) : value;
@@ -16,15 +10,20 @@ export function parseDeckSession(value: string | unknown): DeckSessionV1 {
   const candidate = input as Partial<DeckSessionV1>;
   if (candidate.schemaVersion !== SESSION_SCHEMA_VERSION) throw new Error(`Unsupported deck session schema: ${String(candidate.schemaVersion)}.`);
   if (!candidate.id || !candidate.deck || !Array.isArray(candidate.sources) || !Array.isArray(candidate.assets)) throw new Error("Deck session is missing required fields.");
-  let total = 0;
+  const assetIds = new Set<string>();
   for (const asset of candidate.assets) {
     if (!asset?.id || !asset.name || !asset.mimeType) throw new Error("Every session asset requires id, name, and mimeType.");
-    if (!asset.dataUrl) continue;
-    const size = approximateDataUrlBytes(asset.dataUrl);
-    if (size > MAX_INLINE_ASSET_BYTES) throw new Error(`Inline asset ${asset.name} exceeds the 5 MB limit; choose the file manually or use the Node fallback.`);
-    total += size;
+    if ("dataUrl" in asset) throw new Error(`Session asset ${asset.name} must not contain inline dataUrl content.`);
+    if (!Number.isSafeInteger(asset.byteLength) || asset.byteLength <= 0) throw new Error(`Session asset ${asset.name} requires a positive byteLength.`);
+    if (!SHA256.test(asset.sha256)) throw new Error(`Session asset ${asset.name} requires a valid SHA-256 digest.`);
+    if (!SUPPORTED_ASSET_MIME_TYPES.has(asset.mimeType)) throw new Error(`Unsupported session asset MIME type: ${asset.mimeType}.`);
+    if (assetIds.has(asset.id)) throw new Error(`Duplicate session asset id: ${asset.id}.`);
+    assetIds.add(asset.id);
   }
-  if (total > MAX_INLINE_ASSETS_BYTES) throw new Error("Inline session assets exceed the 20 MB limit; choose files manually or use the Node fallback.");
+  if (!Array.isArray(candidate.deck.slides)) throw new Error("Deck session slides must be an array.");
+  for (const slide of candidate.deck.slides) {
+    if (slide.image && !assetIds.has(slide.image.assetId)) throw new Error(`Slide ${slide.id} references undeclared asset ${slide.image.assetId}.`);
+  }
   return candidate as DeckSessionV1;
 }
 

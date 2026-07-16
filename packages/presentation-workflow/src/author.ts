@@ -3,7 +3,6 @@ import { createPresentation, type PresentationDocument } from "@pptkit/core";
 import { renderSlide } from "./authoring/recipes.js";
 import type {
   AssetResolver,
-  DeckSessionV1,
   DeckSpec,
   SlidePlan,
   SourceRef,
@@ -151,13 +150,4 @@ export function authorPresentation(spec: DeckSpec, resolveAsset: AssetResolver =
   });
   spec.slides.forEach((slide, index) => renderSlide(document, slide, tokens, index + 1, resolveAsset, sourceNotes(slide)));
   return document;
-}
-
-export function createSessionAssetResolver(session: DeckSessionV1): AssetResolver {
-  const assets = new Map(session.assets.map((asset) => [asset.id, asset]));
-  return (assetId) => {
-    const asset = assets.get(assetId);
-    if (!asset?.dataUrl) return undefined;
-    return { source: { type: "url", value: asset.dataUrl }, mimeType: asset.mimeType, dedupeKey: asset.id };
-  };
 }

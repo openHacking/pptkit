@@ -46,7 +46,7 @@ The generated deck keeps source IDs and filenames out of visible slide copy. `so
 
 After approval, browser mode creates `deck-brief.md`, `deck-session.json`, and `content/sources.json`.
 
-The agent imports `DeckSessionV1` into the HTTPS review application. The page renders one standalone SVG per slide, shows blocking issues and warnings, stores the session and assets in IndexedDB, and keeps the review tab open. It does not upload deck data and does not generate PPTX bytes during preview.
+The agent transfers `DeckSessionV1` JSON bytes and every referenced asset through the same resumable `pptkit-transfer-v1` protocol. The page renders one standalone SVG per slide, shows blocking issues and warnings, stores the session and assets in IndexedDB, and keeps the review tab open. It does not upload deck data and does not generate PPTX bytes during preview.
 
 Users can revise the deck in chat without losing their place: revisions retain stable slide IDs, increment the session revision, re-import the complete session, and report changed pages.
 
@@ -56,13 +56,15 @@ After preview, the explicit **Generate & download PPTX** action—clicked by the
 
 ## Browser source support
 
-The application accepts TXT/Markdown, PDF, DOCX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG through browser `File`/`Blob` inputs. Evidence and binary assets remain in IndexedDB. PPTX parsing and template reuse are not supported.
+The agent inspects TXT/Markdown, PDF, DOCX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG sources with host-native tools, then sends normalized session evidence and supported assets through the chunk protocol. Evidence and binary assets remain in IndexedDB. PPTX parsing and template reuse are not supported.
 
-Automated JSON imports may inline assets up to 5 MB each and 20 MB total. Larger assets require user file selection or the Node fallback.
+Sessions never contain `dataUrl` assets. File size alone does not select Node; browser storage quota and verified transfer results determine whether Browser mode can continue.
+
+The preview exposes a read-only `window.__pptkitPreviewBridge` integration surface with the protocol name, maximum chunk size, and `getState()` transfer progress. State changes are accepted only through the `pptkit-transfer-input` and `pptkit-transfer-submit` DOM controls, which keeps browser automation auditable and prevents arbitrary console mutation.
 
 ## Node fallback
 
-The skill initializes its isolated TypeScript starter when browser review is unavailable, assets cannot be transferred safely, unattended local output is required, or the user requests LibreOffice/PowerPoint-oriented rendering. Runtime routing is a guarded decision: the initializer refuses to create a project unless the caller supplies a valid reason, matching browser-check status and step, and concrete evidence.
+The skill initializes its isolated TypeScript starter when browser review is unavailable, the unified transfer protocol actually fails, unattended local output is required, or the user requests LibreOffice/PowerPoint-oriented rendering. Runtime routing is a guarded decision: the initializer refuses to create a project unless the caller supplies a valid reason, matching browser-check status and step, and concrete evidence.
 
 ```bash
 node skills/pptkit-presentation/scripts/init-project.mjs \

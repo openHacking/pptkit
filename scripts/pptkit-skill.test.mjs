@@ -4,7 +4,7 @@ import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpat
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const skillRoot = path.join(repoRoot, "skills", "pptkit-presentation");
@@ -27,6 +27,7 @@ test("presentation skill requires progressive native interaction and an approval
   const browserWorkflow = readFileSync(path.join(skillRoot, "references", "browser-workflow.md"), "utf8");
   const nodeWorkflow = readFileSync(path.join(skillRoot, "references", "node-workflow.md"), "utf8");
   const runtimeRouting = readFileSync(path.join(skillRoot, "references", "runtime-routing.md"), "utf8");
+  const transferHelper = readFileSync(path.join(skillRoot, "scripts", "transfer-payload.mjs"), "utf8");
   const designSystem = readFileSync(path.join(skillRoot, "references", "design-system.md"), "utf8");
   const quality = readFileSync(path.join(skillRoot, "references", "quality.md"), "utf8");
   const guide = readFileSync(path.join(repoRoot, "docs", "guides", "presentation-skill.md"), "utf8");
@@ -56,6 +57,12 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /Do not download automatically/);
   assert.match(browserWorkflow, /explicitly asks the agent to trigger the export\/download/);
   assert.match(browserWorkflow, /IndexedDB/);
+  assert.match(browserWorkflow, /pptkit-transfer-v1/);
+  assert.match(browserWorkflow, /never include `dataUrl`/i);
+  assert.match(runtimeRouting, /File size is not a Node routing condition/i);
+  assert.doesNotMatch(runtimeRouting, /asset-transfer-limit|asset-limit/);
+  assert.match(runtimeRouting, /browser-transfer-failed/);
+  assert.match(transferHelper, /DEFAULT_CHUNK_BYTES = 512 \* 1024/);
   assert.match(nodeWorkflow, /State the fallback reason/i);
   assert.match(nodeWorkflow, /runtime-decision\.json/i);
   assert.match(runtimeRouting, /Do not read or execute `node-workflow\.md` while the decision is unresolved/i);
@@ -70,6 +77,24 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
 });
 
+test("transfer helper creates deterministic resumable envelopes without leaking the file path", async () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-transfer-helper-"));
+  const file = path.join(root, "session.json");
+  try {
+    writeFileSync(file, JSON.stringify({ schemaVersion: 1, id: "transfer-test" }));
+    const { preparePptkitTransfer } = await import(pathToFileURL(path.join(skillRoot, "scripts", "transfer-payload.mjs")).href);
+    const prepared = await preparePptkitTransfer({ file, kind: "session", payloadId: "transfer-test", mimeType: "application/json", chunkBytes: 8 });
+    assert.ok(prepared.chunkCount > 1);
+    const envelope = JSON.parse(await prepared.envelope(0));
+    assert.equal(envelope.protocol, "pptkit-transfer-v1");
+    assert.equal(envelope.chunkByteLength, 8);
+    assert.equal(envelope.dataBase64.length > 0, true);
+    assert.doesNotMatch(JSON.stringify(envelope), new RegExp(file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 function linkDirectory(target, link) {
   mkdirSync(path.dirname(link), { recursive: true });
   symlinkSync(target, link, process.platform === "win32" ? "junction" : "dir");
@@ -81,9 +106,9 @@ function wireWorkspace(project) {
   linkDirectory(path.join(repoRoot, "packages", "pptx-exporter"), path.join(project, "node_modules", "@pptkit", "pptx-exporter"));
   linkDirectory(path.join(repoRoot, "packages", "presentation-workflow"), path.join(project, "node_modules", "@pptkit", "presentation-workflow"));
   linkDirectory(realpathSync(path.join(repoRoot, "packages", "pptx-exporter", "node_modules", "fflate")), path.join(project, "node_modules", "fflate"));
-  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "mammoth")), path.join(project, "node_modules", "mammoth"));
-  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "pdfjs-dist")), path.join(project, "node_modules", "pdfjs-dist"));
-  linkDirectory(realpathSync(path.join(repoRoot, "examples", "presentation-preview", "node_modules", "xlsx")), path.join(project, "node_modules", "xlsx"));
+  linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "mammoth")), path.join(project, "node_modules", "mammoth"));
+  linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "pdfjs-dist")), path.join(project, "node_modules", "pdfjs-dist"));
+  linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "xlsx")), path.join(project, "node_modules", "xlsx"));
   linkDirectory(realpathSync(path.join(repoRoot, "node_modules", "@types", "node")), path.join(project, "node_modules", "@types", "node"));
 }
 

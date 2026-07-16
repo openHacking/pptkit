@@ -14,9 +14,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pptkit/core": "0.1.4",
-    "@pptkit/pptx-exporter": "0.1.4",
-    "@pptkit/presentation-workflow": "0.1.4",
+    "@pptkit/core": "0.1.5",
+    "@pptkit/pptx-exporter": "0.1.5",
+    "@pptkit/presentation-workflow": "0.1.5",
     "fflate": "0.8.3",
     "mammoth": "1.9.1",
     "pdfjs-dist": "4.10.38",

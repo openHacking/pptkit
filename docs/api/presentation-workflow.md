@@ -38,6 +38,6 @@ The three stable theme IDs use distinct deterministic layout recipes rather than
 - `validateDeckSpec` checks semantic role requirements, IDs, role and text density, internal-metadata leakage, and asset availability.
 - `inspectStructure` checks resolved slide bounds and risky overlaps.
 - `inspectPptxPackage(bytes)` checks required ZIP/XML parts directly from `Uint8Array` in either runtime.
-- `parseDeckSession` validates schema version and enforces 5 MB per-inline-asset and 20 MB total-inline-asset limits.
+- `parseDeckSession` validates schema version, external asset metadata, supported image MIME types, unique asset IDs, and slide asset references. Session assets contain byte length and SHA-256 metadata and never inline data URLs.
 
 The package has no filesystem, process, IndexedDB, DOM, UI, or network behavior.

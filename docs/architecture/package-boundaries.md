@@ -63,7 +63,7 @@ Owns browser-neutral guided-deck contracts and deterministic presentation recipe
 - deck and layout quality checks shared by runtime adapters
 
 It depends on public Core contracts and contains no filesystem, process, browser UI, or
-network behavior. Browser `File`/IndexedDB and Node path/file adapters remain outside it.
+network behavior. Browser chunk-transfer/IndexedDB and Node path/file adapters remain outside it.
 
 ### `@pptkit/cli`
 

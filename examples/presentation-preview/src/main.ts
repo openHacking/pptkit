@@ -2,12 +2,9 @@ import { normalizePresentation, validatePresentation, type PresentationDocument 
 import { generatePptx } from "@pptkit/pptx-exporter";
 import {
   authorPresentation,
-  blobToSourceInput,
-  extractSource,
   inspectPptxPackage,
   inspectStructure,
   NOT_RUN_PACKAGE_CHECK,
-  parseDeckSession,
   validateDeckSpec,
   type BuildReport,
   type DeckSessionV1,
@@ -15,16 +12,21 @@ import {
 } from "@pptkit/presentation-workflow";
 import { renderPresentationToSvg, type SvgRenderResult } from "@pptkit/svg-renderer";
 
-import { browserSourceParsers } from "./extractors.js";
-import { loadAssetBlob, loadSession, saveAssetBlob, saveSession } from "./storage.js";
+import { listTransfers, loadAssetBlob, loadSession, type StoredTransfer } from "./storage.js";
+import {
+  MAX_TRANSFER_CHUNK_BYTES,
+  PPTKIT_TRANSFER_PROTOCOL,
+  receiveTransferChunk,
+  type TransferProgress,
+} from "./transfer.js";
 import "./styles.css";
 
 const byId = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const deckTitle = byId<HTMLHeadingElement>("deck-title");
-const importPanel = byId<HTMLElement>("import-panel");
-const sessionInput = byId<HTMLTextAreaElement>("session-input");
-const importError = byId<HTMLParagraphElement>("import-error");
-const sourceFiles = byId<HTMLInputElement>("source-files");
+const transferInput = byId<HTMLTextAreaElement>("transfer-input");
+const transferButton = byId<HTMLButtonElement>("transfer-submit");
+const transferError = byId<HTMLParagraphElement>("transfer-error");
+const transferProgress = byId<HTMLDivElement>("transfer-progress");
 const status = byId<HTMLSpanElement>("status");
 const deckMeta = byId<HTMLSpanElement>("deck-meta");
 const thumbnails = byId<HTMLDivElement>("thumbnails");
@@ -44,29 +46,17 @@ let currentDiagnostics: BuildReport["diagnostics"] = [];
 let currentExportStatus: BuildReport["exportStatus"] = "not-run";
 let objectUrls: string[] = [];
 let persisted = true;
+let transfers: TransferProgress[] = [];
 
 function revokeObjectUrls() {
   for (const url of objectUrls) URL.revokeObjectURL(url);
   objectUrls = [];
 }
 
-function dataUrlToBlob(dataUrl: string) {
-  const [header = "", payload = ""] = dataUrl.split(",", 2);
-  const mimeType = header.match(/^data:([^;,]+)/)?.[1] ?? "application/octet-stream";
-  const bytes = header.includes(";base64")
-    ? Uint8Array.from(atob(payload), (character) => character.charCodeAt(0))
-    : new TextEncoder().encode(decodeURIComponent(payload));
-  return new Blob([bytes], { type: mimeType });
-}
-
 async function createAssetResolver(activeSession: DeckSessionV1) {
   const resolved = new Map<string, { source: { type: "url"; value: string }; mimeType: string; dedupeKey: string }>();
   for (const asset of activeSession.assets) {
-    if (asset.dataUrl) {
-      resolved.set(asset.id, { source: { type: "url", value: asset.dataUrl }, mimeType: asset.mimeType, dedupeKey: asset.id });
-      continue;
-    }
-    const blob = await loadAssetBlob(activeSession.id, asset.id).catch(() => undefined);
+    const blob = await loadAssetBlob(activeSession.id, asset).catch(() => undefined);
     if (!blob) continue;
     const url = URL.createObjectURL(blob);
     objectUrls.push(url);
@@ -145,12 +135,54 @@ function renderThumbnails() {
   }
 }
 
+function renderTransferProgress() {
+  transferProgress.replaceChildren();
+  if (transfers.length === 0) {
+    transferProgress.innerHTML = "<p>No active transfers.</p>";
+    return;
+  }
+  for (const item of transfers) {
+    const row = document.createElement("p");
+    row.dataset.transferId = item.transferId;
+    row.className = `transfer-status ${item.status}`;
+    row.textContent = `${item.kind}:${item.payloadId} · ${item.received.length}/${item.chunkCount} chunks · ${item.status}${item.error ? ` · ${item.error}` : ""}`;
+    transferProgress.append(row);
+  }
+}
+
+function recordTransfer(item: TransferProgress) {
+  transfers = [...transfers.filter((candidate) => candidate.transferId !== item.transferId), item];
+  renderTransferProgress();
+}
+
+function storedTransferProgress(item: StoredTransfer): TransferProgress {
+  const received = [...item.received].sort((left, right) => left - right);
+  const receivedSet = new Set(received);
+  return {
+    transferId: item.transferId,
+    kind: item.kind,
+    payloadId: item.payloadId,
+    received,
+    missing: Array.from({ length: item.chunkCount }, (_, index) => index).filter((index) => !receivedSet.has(index)),
+    chunkCount: item.chunkCount,
+    status: item.status,
+    ...(item.error ? { error: item.error } : {}),
+  };
+}
+
+async function refreshStoredTransfers() {
+  const stored = (await listTransfers()).map(storedTransferProgress);
+  const storedIds = new Set(stored.map((item) => item.transferId));
+  transfers = [...transfers.filter((item) => item.status === "completed" && !storedIds.has(item.transferId)), ...stored];
+  renderTransferProgress();
+}
+
 async function renderSession(nextSession: DeckSessionV1, changed: string[] = []) {
   const selectedSlideId = preview?.slides[currentIndex]?.slideId;
   revokeObjectUrls();
   const resolveAsset = await createAssetResolver(nextSession);
   presentation = authorPresentation(nextSession.deck, resolveAsset);
-  const availableAssets = new Set(nextSession.assets.filter((asset) => asset.dataUrl || resolveAsset(asset.id)).map((asset) => asset.id));
+  const availableAssets = new Set(nextSession.assets.filter((asset) => resolveAsset(asset.id)).map((asset) => asset.id));
   const specIssues = validateDeckSpec(nextSession.deck, availableAssets);
   const diagnostics = validatePresentation(presentation);
   currentDiagnostics = diagnostics.map((diagnostic) => ({ severity: diagnostic.severity, code: diagnostic.code, message: diagnostic.message, path: diagnostic.path }));
@@ -181,24 +213,6 @@ async function renderSession(nextSession: DeckSessionV1, changed: string[] = [])
   downloadButton.disabled = blocking > 0;
   const changedText = changed.length > 0 ? ` Changed slides: ${changed.join(", ")}.` : "";
   status.textContent = `${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${findings.length - blocking} warnings.${changedText}`;
-}
-
-async function importSession(value: string) {
-  const next = parseDeckSession(value);
-  const changed = changedSlides(session, next);
-  try {
-    await saveSession(next);
-    for (const asset of next.assets) {
-      if (asset.dataUrl) await saveAssetBlob(next.id, asset.id, dataUrlToBlob(asset.dataUrl));
-    }
-    persisted = true;
-  } catch {
-    persisted = false;
-  }
-  session = next;
-  location.hash = encodeURIComponent(next.id);
-  await renderSession(next, changed);
-  importPanel.hidden = true;
 }
 
 function download(bytes: Uint8Array, mimeType: string, filename: string) {
@@ -244,59 +258,31 @@ async function generateAndDownload() {
   }
 }
 
-async function attachSources(files: FileList | File[]) {
-  if (!session) throw new Error("Import a deck session before adding local sources.");
-  const fileArray = Array.from(files);
-  const inputs = await Promise.all(fileArray.map(blobToSourceInput));
-  const extracted = await Promise.all(inputs.map((input, index) => extractSource(input, session!.sources.length + index, browserSourceParsers)));
-  for (let index = 0; index < extracted.length; index += 1) {
-    const source = extracted[index]!;
-    const file = fileArray[index]!;
-    if (source.type === "image" && source.assetId) {
-      await saveAssetBlob(session.id, source.assetId, file);
-      session.assets = [...session.assets.filter((asset) => asset.id !== source.assetId), {
-        id: source.assetId, name: source.name, mimeType: source.mimeType,
-        ...(source.width === undefined ? {} : { width: source.width }),
-        ...(source.height === undefined ? {} : { height: source.height }),
-      }];
+transferButton.addEventListener("click", async () => {
+  transferError.textContent = "";
+  transferButton.disabled = true;
+  try {
+    const result = await receiveTransferChunk(transferInput.value, session);
+    recordTransfer(result);
+    transferInput.value = "";
+    if (result.session) {
+      const changed = changedSlides(session, result.session);
+      session = result.session;
+      location.hash = encodeURIComponent(session.id);
+      await renderSession(session, changed);
+    } else if (result.completedAssetId && session) {
+      await renderSession(session);
+      status.textContent = `Asset ${result.completedAssetId} completed and the preview was refreshed.`;
     }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    transferError.textContent = message;
+    await refreshStoredTransfers().catch(() => undefined);
+  } finally {
+    transferButton.disabled = false;
   }
-  session.sources = [...session.sources, ...extracted];
-  session.revision += 1;
-  session.updatedAt = new Date().toISOString();
-  await saveSession(session);
-  sessionInput.value = JSON.stringify(session, null, 2);
-  await renderSession(session);
-  status.textContent = `Extracted ${extracted.length} local source${extracted.length === 1 ? "" : "s"}; data remains in this browser.`;
-}
+});
 
-byId<HTMLButtonElement>("import-toggle").addEventListener("click", () => { importPanel.hidden = !importPanel.hidden; });
-byId<HTMLButtonElement>("import").addEventListener("click", async () => {
-  importError.textContent = "";
-  try { await importSession(sessionInput.value); }
-  catch (error) { importError.textContent = error instanceof Error ? error.message : String(error); }
-});
-sourceFiles.addEventListener("change", async () => {
-  if (!sourceFiles.files?.length) return;
-  importError.textContent = "";
-  try { await attachSources(sourceFiles.files); }
-  catch (error) { importError.textContent = error instanceof Error ? error.message : String(error); }
-  finally { sourceFiles.value = ""; }
-});
-const sourceDrop = byId<HTMLLabelElement>("source-drop");
-for (const eventName of ["dragenter", "dragover"]) {
-  sourceDrop.addEventListener(eventName, (event) => { event.preventDefault(); sourceDrop.classList.add("dragging"); });
-}
-for (const eventName of ["dragleave", "drop"]) {
-  sourceDrop.addEventListener(eventName, (event) => { event.preventDefault(); sourceDrop.classList.remove("dragging"); });
-}
-sourceDrop.addEventListener("drop", async (event) => {
-  const files = event.dataTransfer?.files;
-  if (!files?.length) return;
-  importError.textContent = "";
-  try { await attachSources(files); }
-  catch (error) { importError.textContent = error instanceof Error ? error.message : String(error); }
-});
 previousButton.addEventListener("click", () => selectSlide(currentIndex - 1));
 nextButton.addEventListener("click", () => selectSlide(currentIndex + 1));
 downloadButton.addEventListener("click", () => void generateAndDownload());
@@ -307,19 +293,30 @@ document.addEventListener("keydown", (event) => {
 });
 
 const requestedSession = decodeURIComponent(location.hash.slice(1));
-if (requestedSession) {
-  loadSession(requestedSession).then(async (stored) => {
-    if (!stored) return;
-    session = stored;
-    sessionInput.value = JSON.stringify(stored, null, 2);
-    await renderSession(stored);
-    importPanel.hidden = true;
-  }).catch(() => { persisted = false; });
-}
+Promise.all([
+  requestedSession ? loadSession(requestedSession) : Promise.resolve(undefined),
+  listTransfers(),
+]).then(async ([stored, storedTransfers]) => {
+  transfers = storedTransfers.map(storedTransferProgress);
+  renderTransferProgress();
+  if (!stored) return;
+  session = stored;
+  await renderSession(stored);
+}).catch(() => { persisted = false; });
 
 window.addEventListener("beforeunload", revokeObjectUrls);
 
-// Test-only observability. This exposes state, not mutation hooks.
+Object.defineProperty(globalThis, "__pptkitPreviewBridge", {
+  configurable: false,
+  enumerable: true,
+  writable: false,
+  value: Object.freeze({
+    protocol: PPTKIT_TRANSFER_PROTOCOL,
+    maxChunkBytes: MAX_TRANSFER_CHUNK_BYTES,
+    getState: () => ({ sessionId: session?.id, transfers: transfers.map((item) => ({ ...item, received: [...item.received], missing: [...item.missing] })) }),
+  }),
+});
+
 Object.defineProperty(globalThis, "__pptkitPreviewState", {
-  get: () => ({ sessionId: session?.id, slideCount: preview?.slides.length ?? 0, findings, exportStatus: currentExportStatus, packageStatus: currentExportStatus === "not-run" ? NOT_RUN_PACKAGE_CHECK.status : "checked" }),
+  get: () => ({ sessionId: session?.id, slideCount: preview?.slides.length ?? 0, findings, exportStatus: currentExportStatus, packageStatus: currentExportStatus === "not-run" ? NOT_RUN_PACKAGE_CHECK.status : "checked", transfers }),
 });

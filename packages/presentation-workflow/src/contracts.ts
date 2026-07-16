@@ -85,7 +85,8 @@ export interface SessionAsset {
   id: string;
   name: string;
   mimeType: string;
-  dataUrl?: string;
+  byteLength: number;
+  sha256: string;
   width?: number;
   height?: number;
 }

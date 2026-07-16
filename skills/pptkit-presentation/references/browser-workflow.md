@@ -9,8 +9,8 @@ Use this workflow only after the confirmation gate.
   2. `PPTKIT_PREVIEW_URL`, when available.
   3. The official PPTKit preview application at `https://openhacking.github.io/pptkit/`.
 - Require the resolved application to support `DeckSessionV1` with `schemaVersion: 1`. Never invent another deployment URL.
-- Require modern browser support for `fetch`, `Blob`, `URL`, typed arrays, `structuredClone`, and IndexedDB.
-- Fall back to the Node workflow when the resolved URL is unreachable or incompatible, IndexedDB or required APIs are unavailable, one inline asset exceeds 5 MB, all inline assets exceed 20 MB, or strict Office/LibreOffice rendering is required.
+- Require modern browser support for `fetch`, `Blob`, `URL`, typed arrays, `structuredClone`, Web Crypto, storage estimation, and IndexedDB.
+- Require the read-only `__pptkitPreviewBridge` to report `pptkit-transfer-v1`. Fall back only when the resolved URL is unreachable or incompatible, IndexedDB or required APIs are unavailable, a real chunk transfer fails, or strict Office/LibreOffice rendering is required. File size alone is never a fallback reason.
 
 ## Create the session
 
@@ -38,15 +38,28 @@ Use this top-level shape:
 }
 ```
 
-Use stable source, asset, and slide IDs. Put small images in `assets[].dataUrl`; do not inline an asset over 5 MB or more than 20 MB in total. Use the browser's local-file control for larger user-selected assets or switch to Node when unattended automation is required.
+Use stable source, asset, and slide IDs. Every `SessionAsset` contains `id`, `name`, `mimeType`, `byteLength`, and `sha256`; never include `dataUrl` or filesystem paths.
+
+## Transfer the session and assets
+
+Use `scripts/transfer-payload.mjs` from this skill through Codex's managed JavaScript runtime. This is part of the Browser workflow and does not require Node to be installed in the user's project.
+
+1. Prepare every referenced asset first and copy the helper's `byteLength` and `sha256` into its `SessionAsset` manifest entry; this preparation does not send bytes.
+2. Serialize the completed manifest to `deck-session.json`, then prepare it as a `session` payload with `application/json`, using the session ID as `payloadId`.
+3. Read `__pptkitPreviewBridge.getState()` and send only its missing chunk indexes through the stable `pptkit-transfer-input` and `pptkit-transfer-submit` controls.
+4. Confirm the completed session ID before sending assets.
+5. Send each prepared asset with its session ID, asset ID, and declared MIME type; send only missing chunks and verify `completed` after every asset.
+6. Treat quota, hash, MIME, manifest, or transfer-state errors as real Browser failures. Record the exact bridge error before considering Node.
+
+Do not call a mutable console API, paste a complete session, use a native file picker, or place Base64/data URLs in `deck-session.json`.
 
 ## Open and verify
 
 1. Open the resolved HTTPS URL with the host's browser capability. In Codex, the listed in-app Browser skill is an available preview channel and must be loaded and followed.
 2. If Codex browser controls are not directly visible, discover `browser:control-in-app-browser` (or the equivalent in-app Browser skill) and `node_repl js`. Follow the Browser skill to initialize its runtime, explicitly select the `iab` browser, make it visible for the user-facing preview, and open or reuse the resolved URL. Do not give up solely because the initial tool list omits browser controls.
 3. Treat a successful open or focus operation as proof that the preview channel is available. Only fall back after the Browser skill's setup or navigation actually fails; name the failed step and preserve the resolved preview URL as a direct review link.
-4. Paste the complete `deck-session.json` into **Import DeckSessionV1** and activate **Import and preview**.
-5. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, and the complete findings list.
+4. Transfer the complete session and referenced assets through `pptkit-transfer-v1`.
+5. Confirm the title, theme, revision, slide count, one SVG per slide, IndexedDB save status, completed transfer states, and the complete findings list.
 6. Inspect every slide in the stage or thumbnail gallery. Treat blocking findings as failures and renderer warnings as required review items.
 7. Keep the preview tab as a deliverable tab so the user can review it before export. In Codex, finalize the browser session with this tab marked `deliverable`; do not clean it up as an intermediate research tab.
 
@@ -58,9 +71,7 @@ Translate feedback into the brief or slide plan, increment `revision`, refresh `
 
 ## Browser source extraction
 
-The preview application accepts TXT/Markdown, PDF, DOCX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG through `File`/`Blob`. It stores extracted evidence and binary assets in IndexedDB without uploading them. PPTX input remains an unsupported manual reference.
-
-When the host cannot automate a native file picker, inspect attached sources with host-native file tools and place normalized evidence in `sources`; use the Node fallback for large binary assets that cannot be transferred safely.
+Inspect attached sources with host-native file tools and place normalized evidence in `sources`. Transfer supported PNG/JPEG/GIF/SVG assets through the unified chunk protocol; the preview stores them in IndexedDB without uploading them. PPTX input remains an unsupported manual reference.
 
 ## Export
 

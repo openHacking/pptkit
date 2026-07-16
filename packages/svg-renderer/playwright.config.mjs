@@ -1,4 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
+import os from "node:os";
+import path from "node:path";
 
 export default defineConfig({
   testDir: "./test",
@@ -6,7 +8,7 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   reporter: "line",
-  outputDir: "/tmp/pptkit-svg-renderer-playwright",
+  outputDir: path.join(os.tmpdir(), "pptkit-svg-renderer-playwright"),
   snapshotPathTemplate: "{testDir}/snapshots/{arg}{ext}",
   expect: {
     toHaveScreenshot: { animations: "disabled", maxDiffPixelRatio: 0.04, threshold: 0.25 },

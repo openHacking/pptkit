@@ -255,11 +255,18 @@ test("measures browser-neutral PNG, GIF, and SVG bytes", () => {
   assert.deepEqual(measureImageDimensions({ name: "image.svg", mimeType: "image/svg+xml", bytes: svg }), { width: 1200, height: 675 });
 });
 
-test("validates session schema and inline asset limits", () => {
+test("validates session schema and external asset metadata", () => {
   const now = new Date().toISOString();
   const session = { schemaVersion: 1, id: "session-1", revision: 1, createdAt: now, updatedAt: now, deck: deck(), sources: [], assets: [] };
   assert.equal(parseDeckSession(session).id, "session-1");
   assert.throws(() => parseDeckSession({ ...session, schemaVersion: 2 }), /Unsupported/);
+  assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.png", mimeType: "image/png", dataUrl: "data:image/png;base64,AA==" }] }), /must not contain inline dataUrl/);
+  assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.mp4", mimeType: "video/mp4", byteLength: 1, sha256: "a".repeat(64) }] }), /Unsupported session asset MIME type/);
+  assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.png", mimeType: "image/png", byteLength: 0, sha256: "a".repeat(64) }] }), /positive byteLength/);
+  assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.png", mimeType: "image/png", byteLength: 1, sha256: "invalid" }] }), /valid SHA-256/);
+  const imageDeck = deck();
+  imageDeck.slides.push({ id: "missing-image", role: "image", title: "Missing", image: { assetId: "missing", alt: "Missing" } });
+  assert.throws(() => parseDeckSession({ ...session, deck: imageDeck }), /references undeclared asset/);
 });
 
 test("package inspection reports invalid bytes instead of throwing", () => {

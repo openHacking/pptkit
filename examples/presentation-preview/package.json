@@ -15,10 +15,7 @@
     "@pptkit/core": "workspace:*",
     "@pptkit/pptx-exporter": "workspace:*",
     "@pptkit/presentation-workflow": "workspace:*",
-    "@pptkit/svg-renderer": "workspace:*",
-    "mammoth": "1.9.1",
-    "pdfjs-dist": "4.10.38",
-    "xlsx": "0.18.5"
+    "@pptkit/svg-renderer": "workspace:*"
   },
   "devDependencies": {
     "vite": "^8.1.4"

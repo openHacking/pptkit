@@ -28,7 +28,10 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@types/node": "^24.3.0",
     "husky": "^9.1.7",
+    "mammoth": "1.9.1",
+    "pdfjs-dist": "4.10.38",
     "rollup": "^4.62.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "xlsx": "0.18.5"
   }
 }

@@ -14,7 +14,7 @@ const fallbackRules = new Map([
   ["preview-navigation-failed", { browserCheck: "failed", steps: new Set(["navigation"]) }],
   ["preview-incompatible", { browserCheck: "failed", steps: new Set(["compatibility"]) }],
   ["browser-api-unavailable", { browserCheck: "failed", steps: new Set(["api-check"]) }],
-  ["asset-transfer-limit", { browserCheck: "not-required", steps: new Set(["asset-limit"]) }],
+  ["browser-transfer-failed", { browserCheck: "failed", steps: new Set(["transfer"]) }],
   ["unattended-local-output", { browserCheck: "not-required", steps: new Set(["user-requirement"]) }],
   ["strict-office-rendering", { browserCheck: "not-required", steps: new Set(["user-requirement"]) }],
 ]);
@@ -62,7 +62,7 @@ function parseArgs(args) {
     usage(`--fallback-reason ${options["fallback-reason"]} is incompatible with --browser-step ${options["browser-step"] ?? "<missing>"}`);
   }
   if (!options["fallback-evidence"] || options["fallback-evidence"].trim().length < 12) {
-    usage("--fallback-evidence must contain a concrete failure result, user requirement, or measured asset limit");
+    usage("--fallback-evidence must contain a concrete browser failure result or user requirement");
   }
   const previewUrl = options["preview-url"] ?? previewUrlDefault;
   let parsedPreviewUrl;

@@ -17,7 +17,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 6. After approval, choose the runtime:
    - Read [runtime-routing.md](references/runtime-routing.md) and complete its state machine. Runtime selection is a recorded decision, not an inference from which tools happen to be visible.
    - In Codex, treat the listed in-app Browser skill as the browser capability. If browser controls are not directly visible, discover the Browser instructions and the `node_repl js` tool, initialize the Browser runtime, and explicitly select the `iab` browser before deciding that browser preview is unavailable. Do not infer unavailability from the initial tool list or silently choose Node.
-   - Use [browser-workflow.md](references/browser-workflow.md) when the in-app browser can open the official or configured HTTPS preview URL, assets fit the transfer limits, and the user did not require unattended local output or Office/LibreOffice rendering.
+   - Use [browser-workflow.md](references/browser-workflow.md) when the in-app browser can open the official or configured HTTPS preview URL, supports `pptkit-transfer-v1`, and the user did not require unattended local output or Office/LibreOffice rendering.
    - Use [node-workflow.md](references/node-workflow.md) otherwise, state the fallback reason, and pass the required routing evidence to the guarded initializer. If the initializer rejects the evidence, stop; do not bypass or modify the guard.
 7. Read [design-system.md](references/design-system.md) before authoring. Use `deck-session.json` as the browser source of truth and stable slide IDs across revisions.
 8. Treat validation errors, missing required assets, out-of-bounds elements, risky overlaps, malformed packages, and unexpected exporter warnings as failures. Read [quality.md](references/quality.md).
@@ -29,7 +29,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 - Use `assetId` references in `ImagePlan`; never leak temporary filesystem paths into the browser-neutral deck spec.
 - Use one of `clean-business`, `swiss-grid`, or `editorial-story` and the ten supported slide roles.
 - Use native PPTKit text, shapes, connectors, images, and tables. Editable shape-based charts are not native data-bound PowerPoint charts.
-- Keep source material local. Browser sessions use IndexedDB and `data:`/`blob:` assets; Node projects copy assets into `assets/`.
+- Keep source material local. Browser sessions and assets use the unified chunk protocol and IndexedDB-backed `blob:` URLs; Node projects copy assets into `assets/`.
 - Use only PPTKit public exports. Do not import `dist` files or private implementation paths.
 - Do not claim PPTX parsing, template fill, animation, SmartArt, audio/video, browser editing, cross-device preview links, or pixel-identical PowerPoint preview.
 - Do not copy templates, code, or assets from other presentation skills.
