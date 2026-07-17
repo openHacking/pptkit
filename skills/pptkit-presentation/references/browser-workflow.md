@@ -73,6 +73,8 @@ Translate feedback into the brief or slide plan, increment `revision`, refresh `
 
 Inspect TXT/Markdown, PDF, DOCX, PPTX, CSV/XLS/XLSX, PNG/JPEG/GIF, and SVG sources with host-native file tools and place normalized evidence in `sources`. For every format, inspect diagrams, charts, flow, grouping, and information architecture when present instead of relying only on extracted text. Transfer supported PNG/JPEG/GIF/SVG assets through the unified chunk protocol; the preview stores them in IndexedDB without uploading them.
 
+For PPTX restyle work, populate `ExtractedSource.pptx`, set `brief.mode` to `restyle`, and map source pages with `SourceRef.slideNumbers`. Mark rendered slides as `source-slide-preview`; they are inspection-only. Mark a necessary diagram-only crop as `source-slide-crop` with its source page and crop rectangle. The browser export records the same `restyleAudit` as Node.
+
 ## Export
 
 When the user clicks **Generate & download PPTX**, or explicitly asks the agent to export/download, the application generates bytes, inspects ZIP/XML parts, downloads `build-report.json`, and downloads the PPTX only when package checks pass. Browser preview does not replace a final PowerPoint or LibreOffice review.

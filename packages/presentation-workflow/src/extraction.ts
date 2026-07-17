@@ -1,7 +1,8 @@
-import type { ExtractedSource, SourceInput } from "./contracts.js";
+import type { ExtractedSource, PptxEvidence, SourceInput } from "./contracts.js";
 
 export interface SourceParserResult {
   content?: string;
+  pptx?: PptxEvidence;
   sheets?: Array<{ name: string; rows: unknown[][] }>;
   width?: number;
   height?: number;
@@ -90,7 +91,13 @@ export async function extractSource(input: SourceInput, index: number, parsers: 
       ...(result.height === undefined ? {} : { height: result.height }),
       warnings: result.warnings ?? [],
     };
-    return { ...base, type: "document", ...(result.content === undefined ? {} : { content: result.content }), warnings: result.warnings ?? [] };
+    return {
+      ...base,
+      type: "document",
+      ...(result.content === undefined ? {} : { content: result.content }),
+      ...(result.pptx === undefined ? {} : { pptx: result.pptx }),
+      warnings: result.warnings ?? [],
+    };
   } catch (error) {
     return { ...base, type: "document", warnings: [`Extraction failed: ${error instanceof Error ? error.message : String(error)}`] };
   }

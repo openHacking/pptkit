@@ -1,7 +1,8 @@
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 
-import { extractSource, measureImageDimensions, type SourceParsers } from "@pptkit/presentation-workflow";
+import { extractPptxEmbeddedAssets, extractSource, measureImageDimensions, type SessionAsset, type SourceParsers } from "@pptkit/presentation-workflow";
 import { parsePptxSource } from "./pptx-source.js";
 
 const inputs = process.argv.slice(2);
@@ -39,13 +40,42 @@ const parsers: SourceParsers = {
 };
 
 const sources = [];
+const assets: SessionAsset[] = [];
 let failures = 0;
 for (let index = 0; index < inputs.length; index += 1) {
   const file = path.resolve(inputs[index]!);
   try {
     const bytes = new Uint8Array(await readFile(file));
     const source = await extractSource({ name: path.basename(file), mimeType: mimeTypeFor(file), bytes }, index, parsers);
-    if (source.type === "image" && source.assetId) await copyFile(file, path.resolve("assets", source.assetId));
+    if (source.type === "image" && source.assetId) {
+      await copyFile(file, path.resolve("assets", source.assetId));
+      assets.push({
+        id: source.assetId,
+        name: path.basename(file),
+        mimeType: source.mimeType,
+        byteLength: bytes.byteLength,
+        sha256: createHash("sha256").update(bytes).digest("hex"),
+        ...(source.width === undefined ? {} : { width: source.width }),
+        ...(source.height === undefined ? {} : { height: source.height }),
+        origin: { kind: "user" },
+      });
+    }
+    if (source.pptx) {
+      for (const embedded of extractPptxEmbeddedAssets(bytes, source.pptx)) {
+        const assetId = `${source.id}-${embedded.name}`;
+        await writeFile(path.resolve("assets", assetId), embedded.bytes);
+        assets.push({
+          id: assetId,
+          name: embedded.name,
+          mimeType: embedded.mimeType,
+          byteLength: embedded.bytes.byteLength,
+          sha256: createHash("sha256").update(embedded.bytes).digest("hex"),
+          ...(embedded.width === undefined ? {} : { width: embedded.width }),
+          ...(embedded.height === undefined ? {} : { height: embedded.height }),
+          origin: { kind: "source-embedded", sourceId: source.id, slideNumbers: embedded.slideNumbers, partName: embedded.partName },
+        });
+      }
+    }
     if (source.warnings.some((warning) => warning.startsWith("Extraction failed:"))) failures += 1;
     sources.push(source);
   } catch (error) {
@@ -55,7 +85,8 @@ for (let index = 0; index < inputs.length; index += 1) {
 }
 
 await writeFile("content/sources.json", `${JSON.stringify({ generatedAt: new Date().toISOString(), sources }, null, 2)}\n`);
-process.stdout.write(`${JSON.stringify({ sources: sources.length, failures, output: path.resolve("content/sources.json") }, null, 2)}\n`);
+await writeFile("content/assets.json", `${JSON.stringify({ generatedAt: new Date().toISOString(), assets }, null, 2)}\n`);
+process.stdout.write(`${JSON.stringify({ sources: sources.length, assets: assets.length, failures, output: path.resolve("content/sources.json") }, null, 2)}\n`);
 if (failures > 0) process.exitCode = 1;
 
 function mimeTypeFor(file: string) {

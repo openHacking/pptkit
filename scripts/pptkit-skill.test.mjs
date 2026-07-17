@@ -37,6 +37,12 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(skill, /Approve and generate.*Change the plan.*Cancel/is);
   assert.match(skill, /Do not create artifacts, open a preview, install dependencies, or generate PPTX bytes before/i);
   assert.match(workflow, /every supplied source.*text.*tables.*diagrams.*information architecture/is);
+  assert.match(workflow, /DeckBrief\.mode.*restyle/is);
+  assert.match(workflow, /Never accept a title plus a whole-slide thumbnail/i);
+  assert.match(browserWorkflow, /source-slide-preview.*inspection-only/is);
+  assert.match(nodeWorkflow, /content\/assets\.json/i);
+  assert.match(skill, /rasterized-slide-risk/i);
+  assert.match(designSystem, /rendered source slide is not a screenshot asset/i);
   assert.match(browserWorkflow, /TXT\/Markdown, PDF, DOCX, PPTX, CSV\/XLS\/XLSX/is);
   assert.match(nodeWorkflow, /officeparser@7\.1\.0/i);
   assert.match(skill, /Prefer the browser workflow/i);
@@ -305,7 +311,7 @@ for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
   });
 }
 
-test("missing image is reported as an export failure", () => {
+test("missing image is reported before export", () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-skill-missing-image-"));
   const project = path.join(root, "deck");
   try {
@@ -321,9 +327,9 @@ export const deckSpec: DeckSpec = {
     const result = runTypeScript(project, "src/build.ts");
     assert.equal(result.status, 1);
     const report = JSON.parse(readFileSync(path.join(project, "output", "build-report.json"), "utf8"));
-    assert.ok(report.exportWarnings.length >= 1);
-    assert.match(report.exportWarnings.map((warning) => warning.message).join(" "), /does-not-exist|ENOENT|read/i);
-    assert.ok(report.structuralIssues.some((issue) => issue.severity === "error"));
+    assert.deepEqual(report.exportWarnings, []);
+    assert.ok(report.structuralIssues.some((issue) => issue.severity === "error" && issue.code === "missing-asset"));
+    assert.equal(report.exportStatus, "not-run");
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -10,6 +10,10 @@ Derive everything possible from the user's prompt and files first. Ask only for 
 
 Treat every supplied source consistently. Extract available text and structured data, then inspect tables, charts, diagrams, flow direction, grouping, hierarchy, and other information architecture when present. Do not assume that text extraction alone captures the source: a DOCX, PDF, PPTX, spreadsheet, or image may all contain essential visual structure. Normalize the resulting evidence into `sources` before outlining.
 
+For an existing PPTX, set `DeckBrief.mode` to `restyle` and require `ExtractedSource.pptx` evidence before outlining. Build a source-to-output map with `SourceRef.slideNumbers`; merging, splitting, and reordering are allowed only when every meaningful source slide remains mapped. Rendered source slides may be used for visual inspection, but register them as `source-slide-preview` and do not use them as ordinary deck assets.
+
+Reconstruct ordinary text, tables, processes, and architecture labels as native PPTKit content. Prefer semantic shapes and connectors for diagrams. When an unsupported diagram cannot be reconstructed reliably, crop only the smallest necessary region, register it as `source-slide-crop` with its source page and crop rectangle, and retain explanatory native copy around it. Never accept a title plus a whole-slide thumbnail as a finished slide.
+
 ## Interaction capability
 
 Prefer the host's native user-input capability. Use single-select, multi-select, or text input as the decision needs; include a recommended choice, mutually exclusive choices where applicable, and free-form input. In Codex, call `request_user_input`; on another agent, call its equivalent native question/form tool when it exists.
@@ -74,3 +78,5 @@ The brief should also state one visual thesis, subject-specific motifs that may 
 Translate feedback into changes to the brief or slide plan, then rebuild the whole deck. Keep stable slide IDs when the slide's semantic identity is unchanged. Report which pages changed and whether warnings remain.
 
 Before importing the session, inspect every string that will be visible. Remove internal source IDs, source filenames, paths, template names, preview labels, and workflow commentary. Keep that evidence in `sourceRefs`, extracted sources, and speaker notes.
+
+For restyle sessions, also inspect `restyleAudit`: verify source-page coverage, review low text-retention pages, and rebuild every `rasterized-slide-risk` page. Audit warnings do not corrupt the PPTX package and therefore do not block byte generation, but they are unresolved quality findings and must be reported.

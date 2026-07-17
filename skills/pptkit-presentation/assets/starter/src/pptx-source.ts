@@ -1,5 +1,5 @@
 import { OfficeParser, type OfficeContentNode } from "officeparser";
-import type { SourceInput, SourceParserResult } from "@pptkit/presentation-workflow";
+import { analyzePptxEvidence, type SourceInput, type SourceParserResult } from "@pptkit/presentation-workflow";
 
 function nodeText(node: OfficeContentNode): string {
   const children = (node.children ?? []).map(nodeText).filter(Boolean);
@@ -7,6 +7,7 @@ function nodeText(node: OfficeContentNode): string {
 }
 
 export async function parsePptxSource(input: SourceInput): Promise<SourceParserResult> {
+  const pptx = analyzePptxEvidence(input.bytes);
   const ast = await OfficeParser.parseOffice(input.bytes, {
     fileType: "pptx",
     extractAttachments: false,
@@ -32,6 +33,10 @@ export async function parsePptxSource(input: SourceInput): Promise<SourceParserR
   }).join("\n\n");
   return {
     content,
-    warnings: ast.warnings.map((warning) => `${warning.code}: ${warning.message}`),
+    pptx,
+    warnings: [
+      ...ast.warnings.map((warning) => `${warning.code}: ${warning.message}`),
+      ...pptx.slides.flatMap((slide) => slide.warnings.map((warning) => `Slide ${slide.slideNumber}: ${warning}`)),
+    ],
   };
 }

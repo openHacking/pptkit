@@ -9,7 +9,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 
 ## Run the workflow
 
-1. Inspect the request and every supplied source before asking questions. Extract its text, tables, charts, diagrams, flow, and information architecture when present. Read [workflow.md](references/workflow.md).
+1. Inspect the request and every supplied source before asking questions. Extract its text, tables, charts, diagrams, flow, and information architecture when present. For an existing PPTX, use structured per-slide evidence; a rendered slide is review evidence, never default slide content. Read [workflow.md](references/workflow.md).
 2. Ask only for decisions that cannot be inferred. Ask them one at a time in this order: purpose and audience, theme, then page count and asset strategy. Use the host's native question/form tool (in Codex, `request_user_input`) whenever available.
 3. Show the three style previews in `assets/previews/` unless the user already chose a theme. Recommend exactly one theme.
 4. Build the normalized brief and slide-by-slide outline. Record each slide's role, composition intent, density, visual evidence, and source IDs. Persist `composition` and `density` on each `SlidePlan`; they are runtime inputs, not commentary. Keep the detailed outline separate from the short decision summary.
@@ -30,6 +30,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 - Use one of `clean-business`, `swiss-grid`, or `editorial-story` and the ten supported slide roles.
 - Treat the three previews as design languages, not fixed final templates. Use `DeckSpec.design.seed` for reproducible variation and use only `design.theme.overrides` color/font fields when brand adaptation is required.
 - Use native PPTKit text, shapes, connectors, images, and tables. Editable shape-based charts are not native data-bound PowerPoint charts.
+- Set `brief.mode` to `restyle` when revising an existing deck, map `SourceRef.slideNumbers`, and review `restyleAudit`. A title plus a rendered source-slide image is not an acceptable reconstruction.
 - Keep source material local. Browser sessions and assets use the unified chunk protocol and IndexedDB-backed `blob:` URLs; Node projects copy assets into `assets/`.
 - Use only PPTKit public exports. Do not import `dist` files or private implementation paths.
 - Do not claim template fill, lossless round-trip, animation, editable SmartArt, audio/video, browser editing, cross-device preview links, or pixel-identical PowerPoint preview.
@@ -44,6 +45,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 - Treat `incompatible-composition` as an authoring error. Review `layoutDecisions` in the build report; do not hide or manually rewrite an unexpected seeded choice after export.
 - Rebuild and re-preview after each material revision; keep the current slide selected by stable slide ID.
 - Treat SVG renderer warnings as review evidence, not as proof of Office fidelity.
+- Treat whole-slide preview use, oversized source-slide crops, missing source mapping, weak text retention, and `rasterized-slide-risk` as restyle defects. They remain report warnings so a package can be inspected, but must be disclosed and revised unless the user explicitly accepts them.
 - Perform the final adversarial review in [quality.md](references/quality.md).
 
 ## Compatibility

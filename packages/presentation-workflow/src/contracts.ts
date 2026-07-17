@@ -51,6 +51,7 @@ export type SlideRole =
 export interface SourceRef {
   id: string;
   label?: string;
+  slideNumbers?: number[];
 }
 
 export interface DeckBrief {
@@ -61,7 +62,78 @@ export interface DeckBrief {
   slideCountRange: [number, number];
   imagePolicy: string;
   constraints: string[];
+  mode?: "create" | "restyle";
   author?: string;
+}
+
+export interface SourceBox {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface SourceTextBlock {
+  id: string;
+  text: string;
+  box?: SourceBox;
+  groupPath: string[];
+  fontSize?: number;
+  bold?: boolean;
+}
+
+export interface SourceShapeEvidence {
+  id: string;
+  kind: "shape" | "connector" | "group" | "table" | "image" | "chart" | "diagram";
+  name?: string;
+  box?: SourceBox;
+  text?: string;
+  groupPath: string[];
+  relationshipTarget?: string;
+}
+
+export interface SourceTableEvidence {
+  id: string;
+  box?: SourceBox;
+  rows: string[][];
+  groupPath: string[];
+}
+
+export interface SourceDiagramEvidence {
+  id: string;
+  box?: SourceBox;
+  labels: string[];
+  edges: Array<{ from: string; to: string }>;
+  groupPath: string[];
+}
+
+export interface SourceSlideEvidence {
+  slideNumber: number;
+  partName: string;
+  title?: string;
+  text: string;
+  textBlocks: SourceTextBlock[];
+  shapes: SourceShapeEvidence[];
+  tables: SourceTableEvidence[];
+  diagrams: SourceDiagramEvidence[];
+  notes?: string;
+  warnings: string[];
+}
+
+export interface PptxEvidence {
+  slideCount: number;
+  size?: { width: number; height: number };
+  slides: SourceSlideEvidence[];
+}
+
+export interface PptxEmbeddedAsset {
+  partName: string;
+  name: string;
+  mimeType: "image/png" | "image/jpeg" | "image/gif" | "image/svg+xml";
+  bytes: Uint8Array;
+  slideNumbers: number[];
+  width?: number;
+  height?: number;
 }
 
 export interface ImagePlan {
@@ -135,6 +207,14 @@ export interface SessionAsset {
   sha256: string;
   width?: number;
   height?: number;
+  origin?: {
+    kind: "user" | "source-embedded" | "source-slide-preview" | "source-slide-crop";
+    sourceId?: string;
+    slideNumber?: number;
+    slideNumbers?: number[];
+    partName?: string;
+    crop?: SourceBox;
+  };
 }
 
 export interface ExtractedSource {
@@ -147,6 +227,7 @@ export interface ExtractedSource {
   assetId?: string;
   width?: number;
   height?: number;
+  pptx?: PptxEvidence;
   warnings: string[];
 }
 
@@ -191,9 +272,31 @@ export interface BuildReport {
   layoutDecisions: LayoutDecision[];
   packageChecks: PackageCheck;
   previewStatus: "not-run" | "rendered" | "rendered-with-warnings" | "failed";
-  exportStatus: "not-run" | "generated" | "failed";
+  exportStatus: "not-run" | "generated" | "generated-with-warnings" | "failed";
   renderStatus: "not-run" | "skipped" | "partial" | "rendered";
+  restyleAudit?: RestyleAudit;
   generatedAt: string;
+}
+
+export interface RestyleSlideAudit {
+  sourceId: string;
+  slideNumber: number;
+  mappedOutputSlideIds: string[];
+  textRetention: number;
+  warnings: string[];
+}
+
+export interface RestyleAudit {
+  status: "not-applicable" | "checked";
+  sourceSlideCount: number;
+  referencedSourceSlideCount: number;
+  sourceCoverage: number;
+  aggregateTextRetention: number;
+  unreferencedSourceSlides: Array<{ sourceId: string; slideNumber: number }>;
+  rasterizedSlideRiskIds: string[];
+  assetIssueIds: string[];
+  slideAudits: RestyleSlideAudit[];
+  issues: StructuralIssue[];
 }
 
 export type AssetResolver = (assetId: string) =>

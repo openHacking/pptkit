@@ -2,6 +2,8 @@ import { normalizePresentation, validatePresentation, type PresentationDocument 
 import { generatePptx } from "@pptkit/pptx-exporter";
 import {
   authorDeck,
+  analyzePptxEvidence,
+  auditRestyleTransformation,
   inspectPptxPackage,
   inspectStructure,
   NOT_RUN_PACKAGE_CHECK,
@@ -393,22 +395,30 @@ async function generateAndDownload() {
   try {
     const result = await generatePptx(presentation);
     const packageChecks = inspectPptxPackage(result.bytes);
+    let restyleAudit;
+    try {
+      restyleAudit = auditRestyleTransformation(session.deck, session.sources, session.assets, analyzePptxEvidence(result.bytes));
+    } catch (error) {
+      const fallback = auditRestyleTransformation(session.deck, session.sources, session.assets);
+      const issue: StructuralIssue = { severity: "warning", code: "restyle-output-analysis-failed", message: `The generated PPTX could not be structurally compared with its source: ${error instanceof Error ? error.message : String(error)}` };
+      restyleAudit = { ...fallback, issues: [...fallback.issues, issue] };
+    }
     const exportIssues: StructuralIssue[] = result.warnings.map((warning) => ({ severity: "error", code: `export-${warning.code}`, message: warning.message, ...(warning.slideId ? { slideId: warning.slideId } : {}) }));
     if (!packageChecks.valid) exportIssues.push(...packageChecks.issues.map((message) => ({ severity: "error" as const, code: "invalid-package", message })));
     if (packageChecks.slideParts !== presentation.slides.length) exportIssues.push({ severity: "error", code: "slide-part-count", message: `Expected ${presentation.slides.length} slide parts, found ${packageChecks.slideParts}.` });
-    findings = [...findings, ...exportIssues];
+    findings = [...findings, ...restyleAudit.issues, ...exportIssues];
     showFindings(findings);
     const report: BuildReport = {
       runtime: "browser", sessionId: session.id, slideCount: result.slideCount, byteLength: result.byteLength,
       diagnostics: currentDiagnostics, exportWarnings: result.warnings, structuralIssues: findings, layoutDecisions, packageChecks,
-      previewStatus: preview?.status ?? "failed", exportStatus: exportIssues.some((issue) => issue.severity === "error") ? "failed" : "generated",
-      renderStatus: "not-run", generatedAt: new Date().toISOString(),
+      previewStatus: preview?.status ?? "failed", exportStatus: exportIssues.some((issue) => issue.severity === "error") ? "failed" : restyleAudit.issues.length > 0 ? "generated-with-warnings" : "generated",
+      renderStatus: "not-run", restyleAudit, generatedAt: new Date().toISOString(),
     };
     currentExportStatus = report.exportStatus;
     download(new TextEncoder().encode(`${JSON.stringify(report, null, 2)}\n`), "application/json", "build-report.json");
-    if (report.exportStatus === "generated") {
+    if (report.exportStatus === "generated" || report.exportStatus === "generated-with-warnings") {
       download(result.bytes, "application/vnd.openxmlformats-officedocument.presentationml.presentation", `${session.id}.pptx`);
-      setStatus(`Generated ${result.slideCount} slides (${result.byteLength} bytes) and passed package inspection.`, "success");
+      setStatus(`Generated ${result.slideCount} slides (${result.byteLength} bytes) and passed package inspection${report.exportStatus === "generated-with-warnings" ? " with restyle warnings" : ""}.`, "success");
     } else {
       setStatus("PPTX failed package inspection. The build report was downloaded; the PPTX was withheld.", "error");
       setFindingsOpen(true);

@@ -39,6 +39,10 @@ The three stable theme IDs use distinct deterministic layout recipes rather than
 
 `extractSource` and `extractSources` accept `{ name, mimeType, bytes }`. Runtime adapters provide PDF, DOCX, PPTX, workbook, and image parsers. Plain text parsing, source IDs, result normalization, and failure reporting remain shared.
 
+`analyzePptxEvidence(bytes)` is a limited, browser-neutral source-analysis API for presentation workflows. It resolves presentation slide order and summarizes slide size, text blocks, shapes, nested groups, connectors, tables, images, diagrams, and notes. It does not return Canonical IR and does not claim lossless PPTX import or round-trip support. `extractPptxEmbeddedAssets()` returns supported embedded image payloads with the slide numbers that reference them.
+
+For existing-deck revisions, set `DeckBrief.mode` to `restyle` and use `SourceRef.slideNumbers` to map output slides back to source slides. Session assets may record `origin` as user material, embedded source media, a source-slide preview, or a cropped source-slide region.
+
 `blobToSourceInput` is a convenience adapter for browser `File`/`Blob` values.
 
 ## Validation and package inspection
@@ -48,5 +52,6 @@ The three stable theme IDs use distinct deterministic layout recipes rather than
 - `inspectStructure` checks resolved slide bounds and risky overlaps.
 - `inspectPptxPackage(bytes)` checks required ZIP/XML parts directly from `Uint8Array` in either runtime.
 - `parseDeckSession` validates schema version, external asset metadata, supported image MIME types, unique asset IDs, and slide asset references. Session assets contain byte length and SHA-256 metadata and never inline data URLs.
+- `auditRestyleTransformation` reports source-page coverage, text retention, asset provenance problems, oversized crops, and complex source slides that appear to have been replaced by a single slide-shaped image. It warns below 25% per-slide or 50% aggregate informative-token retention and when a source crop covers at least 80% of the original slide. These findings are warnings and are stored in `BuildReport.restyleAudit`.
 
 The package has no filesystem, process, IndexedDB, DOM, UI, or network behavior.

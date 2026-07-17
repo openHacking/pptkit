@@ -11,6 +11,7 @@ In browser mode, require a successful session import and SVG render. In Node mod
 - no exporter warning unless explicitly accepted and reported
 - before export: one preview SVG per planned slide and no blocking session/layout/asset issue
 - before export: review the build report's `layoutDecisions` and a whole-deck contact sheet in addition to individual slides
+- for restyle work: review source-page coverage, text-retention warnings, asset provenance, oversized crops, and rasterized-slide risks
 - after the user requests export: a readable ZIP containing content types, presentation, slide, and relationship parts
 - after export: XML-shaped package parts with matching slide count
 
@@ -54,5 +55,6 @@ Attack at least these failure modes before delivery:
 6. A host without structured forms skips a required product decision.
 7. Provenance disappears when the visible source footer is removed, or leaks back into visible copy through a source label.
 8. A layout passes geometry checks but still creates weak hierarchy, excessive whitespace, or three repeated compositions in sequence.
+9. A restyle deck appears polished but replaces editable source pages with rendered thumbnails, loses unmapped source slides, or hides poor text retention inside images.
 
 Fix the underlying source or layout. Do not dismiss a failure because a `.pptx` file exists.

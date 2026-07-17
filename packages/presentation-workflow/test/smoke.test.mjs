@@ -1,11 +1,15 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { zipSync } from "fflate";
 
 import { normalizePresentation } from "@pptkit/core";
 
 import {
   authorDeck,
+  analyzePptxEvidence,
+  auditRestyleTransformation,
+  extractPptxEmbeddedAssets,
   extractSource,
   inspectPptxPackage,
   inspectStructure,
@@ -85,6 +89,21 @@ function saasHuntDeck() {
 
 function presentationOf(spec, resolveAsset) {
   return authorDeck(spec, resolveAsset).presentation;
+}
+
+function pptxEvidenceFixture() {
+  const xml = (value) => new TextEncoder().encode(value);
+  const entries = {
+    "ppt/presentation.xml": xml(`<?xml version="1.0"?><p:presentation xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><p:sldIdLst><p:sldId id="256" r:id="rId2"/><p:sldId id="257" r:id="rId1"/></p:sldIdLst><p:sldSz cx="12192000" cy="6858000"/></p:presentation>`),
+    "ppt/_rels/presentation.xml.rels": xml(`<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide2.xml"/></Relationships>`),
+    "ppt/slides/slide1.xml": xml(`<?xml version="1.0"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><p:cSld><p:spTree><p:sp><p:nvSpPr><p:cNvPr id="2" name="Second file"/></p:nvSpPr><p:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="3000000" cy="500000"/></a:xfrm></p:spPr><p:txBody><a:p><a:r><a:t>Second file in package</a:t></a:r></a:p></p:txBody></p:sp></p:spTree></p:cSld></p:sld>`),
+    "ppt/slides/slide2.xml": xml(`<?xml version="1.0"?><p:sld xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram"><p:cSld><p:spTree><p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:nvPr><p:ph type="title"/></p:nvPr></p:nvSpPr><p:spPr><a:xfrm><a:off x="500000" y="200000"/><a:ext cx="4000000" cy="500000"/></a:xfrm></p:spPr><p:txBody><a:p><a:r><a:rPr sz="3200" b="1"/><a:t>Architecture evidence</a:t></a:r></a:p></p:txBody></p:sp><p:grpSp><p:nvGrpSpPr><p:cNvPr id="3" name="Capability group"/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="1000000" y="1000000"/><a:ext cx="4000000" cy="2000000"/><a:chOff x="0" y="0"/><a:chExt cx="2000000" cy="1000000"/></a:xfrm></p:grpSpPr><p:sp><p:nvSpPr><p:cNvPr id="4" name="Node"/></p:nvSpPr><p:spPr><a:xfrm><a:off x="500000" y="250000"/><a:ext cx="1000000" cy="500000"/></a:xfrm></p:spPr><p:txBody><a:p><a:r><a:t>Inventory node</a:t></a:r></a:p></p:txBody></p:sp></p:grpSp><p:cxnSp><p:nvCxnSpPr><p:cNvPr id="5" name="Flow"/></p:nvCxnSpPr><p:spPr><a:xfrm><a:off x="2000000" y="2000000"/><a:ext cx="1000000" cy="0"/></a:xfrm></p:spPr></p:cxnSp><p:pic><p:nvPicPr><p:cNvPr id="6" name="Photo"/></p:nvPicPr><p:blipFill><a:blip r:embed="rIdImage"/></p:blipFill><p:spPr><a:xfrm><a:off x="7000000" y="1000000"/><a:ext cx="2000000" cy="1000000"/></a:xfrm></p:spPr></p:pic><p:graphicFrame><p:nvGraphicFramePr><p:cNvPr id="7" name="Table"/></p:nvGraphicFramePr><p:xfrm><a:off x="1000000" y="4000000"/><a:ext cx="4000000" cy="1000000"/></p:xfrm><a:graphic><a:graphicData><a:tbl><a:tr><a:tc><a:txBody><a:p><a:r><a:t>Area</a:t></a:r></a:p></a:txBody></a:tc><a:tc><a:txBody><a:p><a:r><a:t>Owner</a:t></a:r></a:p></a:txBody></a:tc></a:tr></a:tbl></a:graphicData></a:graphic></p:graphicFrame><p:graphicFrame><p:nvGraphicFramePr><p:cNvPr id="8" name="SmartArt"/></p:nvGraphicFramePr><p:xfrm><a:off x="6000000" y="3500000"/><a:ext cx="4000000" cy="1500000"/></p:xfrm><a:graphic><a:graphicData><dgm:relIds r:dm="rIdDiagram"/></a:graphicData></a:graphic></p:graphicFrame></p:spTree></p:cSld></p:sld>`),
+    "ppt/slides/_rels/slide2.xml.rels": xml(`<?xml version="1.0"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rIdImage" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/image1.png"/><Relationship Id="rIdDiagram" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramData" Target="../diagrams/data1.xml"/><Relationship Id="rIdNotes" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide" Target="../notesSlides/notesSlide1.xml"/></Relationships>`),
+    "ppt/diagrams/data1.xml": xml(`<?xml version="1.0"?><dgm:dataModel xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><dgm:ptLst><dgm:pt modelId="a"><dgm:t><a:p><a:r><a:t>Order</a:t></a:r></a:p></dgm:t></dgm:pt><dgm:pt modelId="b"><dgm:t><a:p><a:r><a:t>Delivery</a:t></a:r></a:p></dgm:t></dgm:pt></dgm:ptLst><dgm:cxnLst><dgm:cxn srcId="a" destId="b"/></dgm:cxnLst></dgm:dataModel>`),
+    "ppt/notesSlides/notesSlide1.xml": xml(`<?xml version="1.0"?><p:notes xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><p:cSld><p:spTree><p:sp><p:txBody><a:p><a:r><a:t>Presenter note</a:t></a:r></a:p></p:txBody></p:sp></p:spTree></p:cSld></p:notes>`),
+    "ppt/media/image1.png": new Uint8Array(24),
+  };
+  return zipSync(entries);
 }
 
 test("authors the same portable deck across every theme", () => {
@@ -327,6 +346,58 @@ test("extracts PPTX content through the same source parser contract", async () =
   assert.deepEqual(source.warnings, []);
 });
 
+test("analyzes PPTX evidence in presentation order with groups, tables, diagrams, images, and notes", () => {
+  const evidence = analyzePptxEvidence(pptxEvidenceFixture());
+  assert.equal(evidence.slideCount, 2);
+  assert.deepEqual(evidence.size, { width: 13.333333333333334, height: 7.5 });
+  assert.equal(evidence.slides[0].partName, "ppt/slides/slide2.xml");
+  assert.equal(evidence.slides[0].title, "Architecture evidence");
+  assert.equal(evidence.slides[0].shapes.filter((shape) => shape.kind === "group").length, 1);
+  assert.equal(evidence.slides[0].shapes.filter((shape) => shape.kind === "connector").length, 1);
+  assert.equal(evidence.slides[0].shapes.find((shape) => shape.name === "Node").box.x, 2.1872265966754156);
+  assert.deepEqual(evidence.slides[0].tables[0].rows, [["Area", "Owner"]]);
+  assert.deepEqual(evidence.slides[0].diagrams[0].labels, ["Order", "Delivery"]);
+  assert.deepEqual(evidence.slides[0].diagrams[0].edges, [{ from: "a", to: "b" }]);
+  assert.equal(evidence.slides[0].shapes.find((shape) => shape.kind === "image").relationshipTarget, "ppt/media/image1.png");
+  assert.match(evidence.slides[0].notes, /Presenter note/);
+  const embedded = extractPptxEmbeddedAssets(pptxEvidenceFixture(), evidence);
+  assert.deepEqual(embedded.map((asset) => ({ partName: asset.partName, slideNumbers: asset.slideNumbers })), [{ partName: "ppt/media/image1.png", slideNumbers: [1] }]);
+});
+
+test("audits restyle mapping, text retention, asset provenance, and rasterized slide risk without blocking create decks", () => {
+  const sourcePptx = analyzePptxEvidence(pptxEvidenceFixture());
+  const source = { id: "src-01-reference", name: "reference.pptx", mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation", type: "document", pptx: sourcePptx, warnings: [] };
+  const good = deck();
+  good.brief.mode = "restyle";
+  good.slides = [
+    { id: "architecture", role: "statement", title: "Architecture evidence", message: "Inventory node connects Order and Delivery. Area ownership remains explicit.", sourceRefs: [{ id: source.id, slideNumbers: [1] }] },
+    { id: "package-order", role: "statement", title: "Second file in package", message: "The source presentation order is preserved as evidence.", sourceRefs: [{ id: source.id, slideNumbers: [2] }] },
+    { id: "close", role: "closing", title: "Ready", message: "Review the editable reconstruction." },
+  ];
+  good.brief.slideCountRange = [3, 3];
+  const goodAudit = auditRestyleTransformation(good, [source]);
+  assert.equal(goodAudit.sourceCoverage, 1);
+  assert.equal(goodAudit.rasterizedSlideRiskIds.length, 0);
+  assert.doesNotMatch(goodAudit.issues.map((issue) => issue.code).join(" "), /unreferenced|rasterized|asset/);
+
+  const bad = structuredClone(good);
+  bad.slides[0] = { id: "screenshot", role: "image", title: "Architecture evidence", image: { assetId: "slide-preview.png", alt: "Whole source slide" }, sourceRefs: [{ id: source.id, slideNumbers: [1] }] };
+  const complexSource = structuredClone(sourcePptx);
+  complexSource.slides[0].shapes = Array.from({ length: 12 }, (_, index) => ({ id: `shape-${index}`, kind: "shape", groupPath: [] }));
+  complexSource.slides[0].text = "Architecture evidence Inventory node Order Delivery Area Owner and additional detailed source content that must remain editable in the output.";
+  const outputEvidence = { slideCount: 3, size: sourcePptx.size, slides: [
+    { slideNumber: 1, partName: "ppt/slides/slide1.xml", title: "Architecture evidence", text: "Architecture evidence", textBlocks: [], shapes: [{ id: "image", kind: "image", box: { x: 1, y: 1, width: 8, height: 4.5 }, groupPath: [] }], tables: [], diagrams: [], warnings: [] },
+    { slideNumber: 2, partName: "ppt/slides/slide2.xml", text: "Second file in package", textBlocks: [], shapes: [], tables: [], diagrams: [], warnings: [] },
+    { slideNumber: 3, partName: "ppt/slides/slide3.xml", text: "Ready", textBlocks: [], shapes: [], tables: [], diagrams: [], warnings: [] },
+  ] };
+  const asset = { id: "slide-preview.png", name: "slide-preview.png", mimeType: "image/png", byteLength: 10, sha256: "a".repeat(64), origin: { kind: "source-slide-preview", sourceId: source.id, slideNumber: 1 } };
+  const badAudit = auditRestyleTransformation(bad, [{ ...source, pptx: complexSource }], [asset], outputEvidence);
+  assert.ok(badAudit.rasterizedSlideRiskIds.includes("screenshot"));
+  assert.match(badAudit.issues.map((issue) => issue.code).join(" "), /rasterized-slide-risk/);
+  assert.match(badAudit.issues.map((issue) => issue.code).join(" "), /source-slide-preview-used/);
+  assert.equal(auditRestyleTransformation(deck(), [source], [asset], outputEvidence).status, "not-applicable");
+});
+
 test("measures browser-neutral PNG, GIF, and SVG bytes", () => {
   const png = new Uint8Array(24);
   new DataView(png.buffer).setUint32(16, 640);
@@ -349,6 +420,7 @@ test("validates session schema and external asset metadata", () => {
   assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.mp4", mimeType: "video/mp4", byteLength: 1, sha256: "a".repeat(64) }] }), /Unsupported session asset MIME type/);
   assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.png", mimeType: "image/png", byteLength: 0, sha256: "a".repeat(64) }] }), /positive byteLength/);
   assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "asset.png", mimeType: "image/png", byteLength: 1, sha256: "invalid" }] }), /valid SHA-256/);
+  assert.throws(() => parseDeckSession({ ...session, assets: [{ id: "asset", name: "crop.png", mimeType: "image/png", byteLength: 1, sha256: "a".repeat(64), origin: { kind: "source-slide-crop", sourceId: "src-01", slideNumber: 1 } }] }), /positive crop rectangle/);
   const imageDeck = deck();
   imageDeck.slides.push({ id: "missing-image", role: "image", title: "Missing", image: { assetId: "missing", alt: "Missing" } });
   assert.throws(() => parseDeckSession({ ...session, deck: imageDeck }), /references undeclared asset/);

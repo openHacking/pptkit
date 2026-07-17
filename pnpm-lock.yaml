@@ -167,6 +167,9 @@ importers:
       '@pptkit/core':
         specifier: workspace:*
         version: link:../core
+      '@xmldom/xmldom':
+        specifier: 0.9.10
+        version: 0.9.10
       fflate:
         specifier: 0.8.3
         version: 0.8.3

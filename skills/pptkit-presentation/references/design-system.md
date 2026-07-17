@@ -85,5 +85,6 @@ Theme tokens are safety rails, not a page template. Brand adaptation may overrid
 - Reference PNG, JPEG, GIF, or SVG images by stable `assetId`. Browser sessions resolve transferred IndexedDB `blob:` assets; Node fallback projects copy files into `assets/`.
 - Provide width and height from `content/sources.json` so `contain` and `cover` are deterministic.
 - Use `cover` for photographic crops and `contain` for screenshots, diagrams, and UI evidence.
-- Preserve sensitive or text-heavy screenshots; do not redraw them without explicit permission.
+- Preserve genuine UI screenshots, scans, and user-supplied evidence images when redrawing would change their meaning. A rendered source slide is not a screenshot asset: in restyle work, extract and reconstruct its text and information structure instead.
+- If a complex source diagram needs raster fallback, crop only the diagram region and pair it with native explanatory copy. Record the crop provenance; using 80% or more of the source slide triggers an oversized-crop warning.
 - Align image slots to the composition grid. Repeated images in one group must share height, crop behavior, and visual weight.

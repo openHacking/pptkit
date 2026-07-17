@@ -141,6 +141,9 @@ export function validateDeckSpec(spec: DeckSpec, availableAssetIds: ReadonlySet<
       issues.push({ severity: "error", code: "invalid-image-dimensions", message: "Image width and height metadata must be positive.", slideId: slide.id });
     }
     if (slide.image?.fit === "stretch") issues.push({ severity: "warning", code: "image-stretch", message: "Stretch may distort evidence; prefer contain or cover unless distortion is intentional.", slideId: slide.id });
+    if (slide.sourceRefs?.some((reference) => reference.slideNumbers?.some((number) => !Number.isSafeInteger(number) || number <= 0))) {
+      issues.push({ severity: "error", code: "invalid-source-slide-number", message: "Source slide numbers must be positive integers.", slideId: slide.id });
+    }
     if (visibleStrings(slide).some(containsInternalMetadata)) {
       issues.push({
         severity: "warning",

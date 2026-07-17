@@ -59,11 +59,12 @@ Owns browser-neutral guided-deck contracts and deterministic presentation recipe
 
 - versioned deck sessions, source evidence, asset references, and build reports
 - curated theme/slide-role authoring, deterministic seeded recipe planning, and deck-level rhythm diagnostics used by browser and Node skill runtimes
-- byte-oriented source parsing orchestration and PPTX package inspection
+- byte-oriented source parsing orchestration, limited PPTX workflow evidence analysis, and PPTX package inspection
 - deck and layout quality checks shared by runtime adapters
 
 It depends on public Core contracts and contains no filesystem, process, browser UI, or
 network behavior. Browser chunk-transfer/IndexedDB and Node path/file adapters remain outside it.
+Its PPTX evidence analysis exists to support source-aware authoring and quality audits; it does not produce Canonical IR or replace the planned preservation-oriented `@pptkit/pptx-parser`.
 
 ### `@pptkit/cli`
 
