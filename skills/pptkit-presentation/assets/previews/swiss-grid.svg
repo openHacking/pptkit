@@ -1,54 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc" data-preview-layout="single-slide">
   <title id="title">Swiss Grid theme preview</title>
-  <desc id="desc">Three representative slides showing modular asymmetry, divided comparison, and numeric data hierarchy.</desc>
-  <rect width="1200" height="675" fill="#E9E5DC"/>
-  <text x="56" y="54" font-family="Arial" font-size="14" font-weight="700" letter-spacing="2" fill="#E6402B">SWISS GRID</text>
-  <text x="1144" y="54" text-anchor="end" font-family="Arial" font-size="13" fill="#5F5A50">MODULAR · ASYMMETRIC · FUNCTIONAL</text>
-  <g transform="translate(56 86)">
-    <rect width="336" height="492" fill="#F4F1EA" stroke="#CFC9BE"/>
-    <rect width="8" height="492" fill="#E6402B"/>
-    <text x="28" y="32" font-family="Arial" font-size="8" font-weight="700" fill="#E6402B">PPTKIT / PRESENTATION</text>
-    <text x="308" y="32" text-anchor="end" font-family="Arial" font-size="9" fill="#5F5A50">01</text>
-    <line x1="28" y1="46" x2="308" y2="46" stroke="#5F5A50" opacity=".3"/>
-    <text x="30" y="156" font-family="Arial" font-size="36" fill="#111">SYSTEMS</text>
-    <text x="30" y="198" font-family="Arial" font-size="36" fill="#111">BECOME</text>
-    <text x="30" y="240" font-family="Arial" font-size="36" fill="#111">VISIBLE.</text>
-    <line x1="30" y1="278" x2="118" y2="278" stroke="#E6402B" stroke-width="3"/>
-    <rect x="224" y="112" width="84" height="224" fill="#FFF" stroke="#CFC9BE"/>
-    <text x="242" y="166" font-family="Arial" font-size="30" fill="#E6402B">01</text>
-    <text x="242" y="242" font-family="Arial" font-size="11" font-weight="700" fill="#111">STRICT</text>
-    <text x="242" y="260" font-family="Arial" font-size="11" font-weight="700" fill="#111">GRID</text>
+  <desc id="desc">A single 16:9 technical slide with a strict modular grid, black typography, one red accent, and a large numeric anchor.</desc>
+  <defs>
+    <pattern id="grid" width="75" height="75" patternUnits="userSpaceOnUse">
+      <path d="M75 0H0V75" fill="none" stroke="#CFC9BE" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="675" fill="#F4F1EA"/>
+  <rect width="1200" height="675" fill="url(#grid)" opacity=".54"/>
+
+  <rect x="50" y="48" width="12" height="12" fill="#E6402B"/>
+  <text x="82" y="60" font-family="Arial" font-size="16" font-weight="700" letter-spacing="2" fill="#111111">PPTKIT / SWISS GRID</text>
+  <text x="1150" y="60" text-anchor="end" font-family="Arial" font-size="14" fill="#5F5A50">SYSTEM PERFORMANCE / 06</text>
+
+  <text x="50" y="177" font-family="Arial" font-size="75" font-weight="900" letter-spacing="-2.5" fill="#111111">SYSTEMS</text>
+  <text x="50" y="251" font-family="Arial" font-size="75" font-weight="900" letter-spacing="-2.5" fill="#E6402B">BECOME</text>
+  <text x="50" y="325" font-family="Arial" font-size="75" font-weight="900" letter-spacing="-2.5" fill="#111111">VISIBLE.</text>
+  <line x1="50" y1="360" x2="500" y2="360" stroke="#111111" stroke-width="3"/>
+  <text x="50" y="404" font-family="Arial" font-size="18" fill="#5F5A50">Instrument the work.</text>
+  <text x="50" y="436" font-family="Arial" font-size="18" fill="#5F5A50">Learn from the signal.</text>
+  <text x="50" y="468" font-family="Arial" font-size="18" fill="#5F5A50">Scale what compounds.</text>
+
+  <g transform="translate(650 126)">
+    <text x="0" y="0" font-family="Arial" font-size="14" font-weight="700" letter-spacing="1.4" fill="#5F5A50">THROUGHPUT / WEEK</text>
+    <text x="0" y="106" font-family="Arial" font-size="98" font-weight="900" letter-spacing="-4" fill="#E6402B">4.2×</text>
+    <rect x="0" y="139" width="450" height="3" fill="#111111"/>
+
+    <text x="0" y="190" font-family="Arial" font-size="13" font-weight="700" fill="#111111">01 / INSTRUMENT</text>
+    <rect x="0" y="207" width="405" height="28" fill="#E6402B"/>
+    <text x="0" y="282" font-family="Arial" font-size="13" font-weight="700" fill="#111111">02 / LEARN</text>
+    <rect x="0" y="299" width="298" height="28" fill="#111111"/>
+    <text x="0" y="374" font-family="Arial" font-size="13" font-weight="700" fill="#111111">03 / SCALE</text>
+    <rect x="0" y="391" width="364" height="28" fill="#5F5A50"/>
   </g>
-  <g transform="translate(432 86)">
-    <rect width="336" height="492" fill="#F4F1EA" stroke="#CFC9BE"/>
-    <rect width="8" height="492" fill="#E6402B"/>
-    <text x="28" y="32" font-family="Arial" font-size="8" font-weight="700" fill="#E6402B">POSITIONING</text>
-    <text x="308" y="32" text-anchor="end" font-family="Arial" font-size="9" fill="#5F5A50">04</text>
-    <line x1="28" y1="46" x2="308" y2="46" stroke="#5F5A50" opacity=".3"/>
-    <text x="28" y="88" font-family="Arial" font-size="20" fill="#111">A longer discovery cycle.</text>
-    <line x1="168" y1="126" x2="168" y2="390" stroke="#E6402B" stroke-width="3"/>
-    <text x="28" y="160" font-family="Arial" font-size="9" fill="#5F5A50">BEFORE</text>
-    <text x="28" y="206" font-family="Arial" font-size="20" fill="#111">A launch-day</text>
-    <text x="28" y="231" font-family="Arial" font-size="20" fill="#111">spike.</text>
-    <text x="194" y="160" font-family="Arial" font-size="9" fill="#E6402B">AFTER</text>
-    <text x="194" y="206" font-family="Arial" font-size="20" fill="#111">A persistent</text>
-    <text x="194" y="231" font-family="Arial" font-size="20" fill="#111">system.</text>
-  </g>
-  <g transform="translate(808 86)">
-    <rect width="336" height="492" fill="#F4F1EA" stroke="#CFC9BE"/>
-    <rect width="8" height="492" fill="#E6402B"/>
-    <text x="28" y="32" font-family="Arial" font-size="8" font-weight="700" fill="#E6402B">PERFORMANCE</text>
-    <text x="308" y="32" text-anchor="end" font-family="Arial" font-size="9" fill="#5F5A50">06</text>
-    <line x1="28" y1="46" x2="308" y2="46" stroke="#5F5A50" opacity=".3"/>
-    <text x="28" y="90" font-family="Arial" font-size="20" fill="#111">Throughput / week</text>
-    <text x="28" y="176" font-family="Arial" font-size="54" fill="#E6402B">4.2×</text>
-    <line x1="28" y1="202" x2="308" y2="202" stroke="#111"/>
-    <rect x="28" y="232" width="238" height="24" fill="#E6402B"/>
-    <rect x="28" y="276" width="174" height="24" fill="#111"/>
-    <rect x="28" y="320" width="270" height="24" fill="#5F5A50"/>
-    <text x="28" y="388" font-family="Arial" font-size="10" font-weight="700" fill="#111">01 / Instrument</text>
-    <text x="28" y="410" font-family="Arial" font-size="10" font-weight="700" fill="#111">02 / Learn</text>
-    <text x="28" y="432" font-family="Arial" font-size="10" font-weight="700" fill="#111">03 / Scale</text>
-  </g>
-  <text x="56" y="626" font-family="Arial" font-size="14" fill="#5F5A50">Square geometry · large numeric anchors · one red accent · strict reading order</text>
+
+  <rect x="50" y="610" width="1100" height="3" fill="#111111"/>
+  <text x="50" y="642" font-family="Arial" font-size="14" font-weight="700" fill="#111111">MODULAR GRID · HIGH CONTRAST · FUNCTIONAL ACCENT</text>
+  <text x="1150" y="642" text-anchor="end" font-family="Arial" font-size="14" fill="#5F5A50">STRICT READING ORDER</text>
 </svg>

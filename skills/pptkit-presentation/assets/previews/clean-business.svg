@@ -1,53 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc" data-preview-layout="single-slide">
   <title id="title">Clean Business theme preview</title>
-  <desc id="desc">Three representative slides showing an executive cover, a divided argument, and a data ledger.</desc>
-  <rect width="1200" height="675" fill="#EEF2F7"/>
-  <text x="56" y="54" font-family="Arial" font-size="14" font-weight="700" letter-spacing="2" fill="#2457D6">CLEAN BUSINESS</text>
-  <text x="1144" y="54" text-anchor="end" font-family="Arial" font-size="13" fill="#647083">COVER · ARGUMENT · DATA</text>
-  <g transform="translate(56 86)">
-    <rect width="336" height="492" rx="8" fill="#F7F8FA" stroke="#D6DEE9"/>
-    <rect width="7" height="492" fill="#2457D6"/>
-    <text x="34" y="48" font-family="Arial" font-size="9" font-weight="700" fill="#2457D6">PPTKIT</text>
-    <line x1="34" y1="62" x2="310" y2="62" stroke="#172033" opacity=".15"/>
-    <text x="34" y="162" font-family="Arial" font-size="34" font-weight="700" fill="#172033">Clarity moves</text>
-    <text x="34" y="202" font-family="Arial" font-size="34" font-weight="700" fill="#172033">decisions.</text>
-    <text x="34" y="248" font-family="Arial" font-size="14" fill="#647083">Clear hierarchy. Focused evidence.</text>
-    <rect x="258" y="128" width="52" height="178" fill="#2457D6"/>
-    <text x="270" y="166" font-family="Arial" font-size="25" font-weight="700" fill="#FFF">01</text>
-    <text x="270" y="242" font-family="Arial" font-size="8" font-weight="700" fill="#FFF">CLEAR</text>
-    <text x="270" y="257" font-family="Arial" font-size="8" font-weight="700" fill="#FFF">FOCUSED</text>
-    <text x="270" y="272" font-family="Arial" font-size="8" font-weight="700" fill="#FFF">EDITABLE</text>
+  <desc id="desc">A single 16:9 executive slide with strong information axes, restrained blue accents, and an open performance ledger.</desc>
+  <rect width="1200" height="675" fill="#F7F8FA"/>
+  <rect width="14" height="675" fill="#2457D6"/>
+
+  <text x="68" y="62" font-family="Arial" font-size="15" font-weight="700" letter-spacing="2.4" fill="#2457D6">PPTKIT / CLEAN BUSINESS</text>
+  <text x="1132" y="62" text-anchor="end" font-family="Arial" font-size="14" fill="#647083">EXECUTIVE REVIEW · Q3</text>
+  <line x1="68" y1="88" x2="1132" y2="88" stroke="#172033" stroke-opacity=".14"/>
+
+  <text x="68" y="185" font-family="Arial" font-size="61" font-weight="700" letter-spacing="-1.5" fill="#172033">Clarity moves</text>
+  <text x="68" y="249" font-family="Arial" font-size="61" font-weight="700" letter-spacing="-1.5" fill="#172033">decisions forward.</text>
+  <text x="70" y="301" font-family="Arial" font-size="21" fill="#647083">One operating model. Three signals that make momentum visible.</text>
+
+  <g transform="translate(68 370)">
+    <text x="0" y="0" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1.5" fill="#647083">THE DECISION</text>
+    <text x="0" y="51" font-family="Arial" font-size="27" font-weight="700" fill="#172033">Make onboarding</text>
+    <text x="0" y="86" font-family="Arial" font-size="27" font-weight="700" fill="#172033">the growth loop.</text>
+    <line x1="0" y1="116" x2="116" y2="116" stroke="#2457D6" stroke-width="5"/>
+    <text x="0" y="158" font-family="Arial" font-size="16" fill="#647083">Align evidence, ownership, and the next action.</text>
   </g>
-  <g transform="translate(432 86)">
-    <rect width="336" height="492" rx="8" fill="#F7F8FA" stroke="#D6DEE9"/>
-    <text x="28" y="34" font-family="Arial" font-size="8" font-weight="700" fill="#2457D6">STATEMENT</text>
-    <text x="308" y="34" text-anchor="end" font-family="Arial" font-size="9" fill="#647083">03</text>
-    <line x1="28" y1="48" x2="308" y2="48" stroke="#172033" opacity=".15"/>
-    <text x="28" y="90" font-family="Arial" font-size="20" font-weight="700" fill="#172033">One operating model.</text>
-    <text x="28" y="168" font-family="Arial" font-size="20" font-weight="700" fill="#172033">Structure turns</text>
-    <text x="28" y="195" font-family="Arial" font-size="20" font-weight="700" fill="#172033">evidence into</text>
-    <text x="28" y="222" font-family="Arial" font-size="20" font-weight="700" fill="#172033">action.</text>
-    <line x1="214" y1="134" x2="214" y2="382" stroke="#2457D6" stroke-width="2"/>
-    <text x="232" y="168" font-family="Arial" font-size="10" fill="#647083">• Name the decision</text>
-    <text x="232" y="202" font-family="Arial" font-size="10" fill="#647083">• Show evidence</text>
-    <text x="232" y="236" font-family="Arial" font-size="10" fill="#647083">• Clarify ownership</text>
+
+  <g transform="translate(610 350)">
+    <line x1="0" y1="0" x2="522" y2="0" stroke="#2457D6" stroke-width="3"/>
+    <text x="0" y="34" font-family="Arial" font-size="12" font-weight="700" letter-spacing="1.4" fill="#2457D6">PERFORMANCE LEDGER</text>
+    <text x="522" y="34" text-anchor="end" font-family="Arial" font-size="12" fill="#647083">QUARTER OVER QUARTER</text>
+
+    <text x="0" y="89" font-family="Arial" font-size="17" font-weight="700" fill="#172033">Activation</text>
+    <text x="522" y="89" text-anchor="end" font-family="Arial" font-size="29" font-weight="700" fill="#2457D6">+18%</text>
+    <line x1="0" y1="108" x2="522" y2="108" stroke="#172033" stroke-opacity=".12"/>
+
+    <text x="0" y="151" font-family="Arial" font-size="17" font-weight="700" fill="#172033">Retention</text>
+    <text x="522" y="151" text-anchor="end" font-family="Arial" font-size="29" font-weight="700" fill="#172033">72%</text>
+    <line x1="0" y1="170" x2="522" y2="170" stroke="#172033" stroke-opacity=".12"/>
+
+    <text x="0" y="213" font-family="Arial" font-size="17" font-weight="700" fill="#172033">Delivery velocity</text>
+    <text x="522" y="213" text-anchor="end" font-family="Arial" font-size="29" font-weight="700" fill="#172033">3.4×</text>
   </g>
-  <g transform="translate(808 86)">
-    <rect width="336" height="492" rx="8" fill="#F7F8FA" stroke="#D6DEE9"/>
-    <text x="28" y="34" font-family="Arial" font-size="8" font-weight="700" fill="#2457D6">PERFORMANCE</text>
-    <text x="308" y="34" text-anchor="end" font-family="Arial" font-size="9" fill="#647083">05</text>
-    <line x1="28" y1="48" x2="308" y2="48" stroke="#172033" opacity=".15"/>
-    <text x="28" y="90" font-family="Arial" font-size="20" font-weight="700" fill="#172033">Momentum compounds</text>
-    <line x1="28" y1="122" x2="308" y2="122" stroke="#2457D6" stroke-width="2"/>
-    <text x="28" y="152" font-family="Arial" font-size="10" font-weight="700" fill="#172033">Activation</text>
-    <text x="212" y="152" font-family="Arial" font-size="10" fill="#647083">+18% quarter over quarter</text>
-    <line x1="28" y1="174" x2="308" y2="174" stroke="#172033" opacity=".12"/>
-    <text x="28" y="204" font-family="Arial" font-size="10" font-weight="700" fill="#172033">Retention</text>
-    <text x="212" y="204" font-family="Arial" font-size="10" fill="#647083">72% active teams</text>
-    <line x1="28" y1="226" x2="308" y2="226" stroke="#172033" opacity=".12"/>
-    <text x="28" y="256" font-family="Arial" font-size="10" font-weight="700" fill="#172033">Velocity</text>
-    <text x="212" y="256" font-family="Arial" font-size="10" fill="#647083">3.4× delivery rate</text>
-    <line x1="28" y1="278" x2="308" y2="278" stroke="#172033" opacity=".12"/>
-  </g>
-  <text x="56" y="626" font-family="Arial" font-size="14" fill="#647083">Strong information axes · restrained accents · open, editable structure</text>
+
+  <text x="68" y="636" font-family="Arial" font-size="13" fill="#647083">STRONG HIERARCHY · RESTRAINED ACCENTS · OPEN, EDITABLE STRUCTURE</text>
+  <text x="1132" y="636" text-anchor="end" font-family="Arial" font-size="13" font-weight="700" fill="#2457D6">05 / 12</text>
 </svg>

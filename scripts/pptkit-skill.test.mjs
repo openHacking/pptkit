@@ -91,6 +91,19 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(guide, /Approve and generate.*Change the plan.*Cancel/is);
 });
 
+test("theme previews remain single-slide 16:9 compositions", () => {
+  const previews = path.join(skillRoot, "assets", "previews");
+
+  for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
+    const svg = readFileSync(path.join(previews, `${themeId}.svg`), "utf8");
+
+    assert.match(svg, /<svg\b[^>]*\bwidth="1200"[^>]*\bheight="675"[^>]*\bviewBox="0 0 1200 675"/i, `${themeId} must use the 16:9 preview canvas`);
+    assert.match(svg, /<svg\b[^>]*\bdata-preview-layout="single-slide"/i, `${themeId} must declare a single-slide composition`);
+    assert.match(svg, /<desc\b[^>]*>[^<]*single 16:9[^<]*<\/desc>/i, `${themeId} must describe the preview as one 16:9 slide`);
+    assert.doesNotMatch(svg, /width="336"\s+height="492"|Three representative slides/i, `${themeId} must not use the compressed portrait montage`);
+  }
+});
+
 test("transfer helper creates deterministic resumable envelopes without leaking the file path", async () => {
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-transfer-helper-"));
   const file = path.join(root, "session.json");
