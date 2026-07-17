@@ -8,7 +8,6 @@ This section documents the public package contracts currently implemented by PPT
 - [`@pptkit/layout`](layout.md) — connector and image geometry resolution over normalized documents.
 - [`@pptkit/pptx-exporter`](pptx-exporter.md) — browser-neutral PPTX generation and Node.js file output.
 - [`@pptkit/svg-renderer`](svg-renderer.md) — browser-oriented SVG previews from Core/Layout state.
-- [`@pptkit/presentation-workflow`](presentation-workflow.md) — portable deck sessions, curated presentation recipes, source-byte orchestration, and shared browser/Node quality checks.
 - [Package overview](package-overview.md) — package responsibilities and entry points at a glance.
 
 `@pptkit/cli` remains a minimal workflow shell and does not yet expose a stable presentation-authoring command surface. Planned parser packages are documented as architecture direction, not current APIs.
@@ -20,6 +19,5 @@ This section documents the public package contracts currently implemented by PPT
 3. Read [Layout](layout.md) when working with resolved geometry.
 4. Read the [SVG renderer](svg-renderer.md) for browser preview and QA behavior.
 5. Read the [PPTX exporter](pptx-exporter.md) for runtime, asset-loading, and output behavior.
-6. Read the [Presentation workflow](presentation-workflow.md) when building browser-first guided deck generation.
 
 All examples use the current pre-release contract. PPTKit does not maintain documentation for superseded unpublished APIs.

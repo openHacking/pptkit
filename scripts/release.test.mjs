@@ -32,3 +32,16 @@ test("package discovery selects only public packages", async () => {
 test("package discovery returns no packages for a missing workspace", () => {
   assert.deepEqual(getPublishablePackages("/tmp/pptkit-release-missing"), []);
 });
+
+test("repository release set contains only the five engine packages", () => {
+  assert.deepEqual(
+    getPublishablePackages().map((pkg) => pkg.name),
+    [
+      "@pptkit/cli",
+      "@pptkit/core",
+      "@pptkit/layout",
+      "@pptkit/pptx-exporter",
+      "@pptkit/svg-renderer",
+    ],
+  );
+});

@@ -62,18 +62,6 @@ for (const file of sourceFiles(path.join(packagesRoot, "svg-renderer", "src"))) 
   }
 }
 
-for (const file of sourceFiles(path.join(packagesRoot, "presentation-workflow", "src"))) {
-  const value = readFileSync(file, "utf8");
-  if (/from ["']node:|from ["'](?:node:)?(?:fs|http|https|zlib)|\bprocess(?:\.|\[)/.test(value)) {
-    issues.push(`presentation-workflow contains Node or process concerns: ${relativeToPackages(file)}`);
-  }
-  for (const match of value.matchAll(/from ["'](@pptkit\/[a-z0-9-]+)["']/gi)) {
-    if (match[1] !== "@pptkit/core") {
-      issues.push(`presentation-workflow imports disallowed package ${match[1]}: ${relativeToPackages(file)}`);
-    }
-  }
-}
-
 for (const packageEntry of readdirSync(packagesRoot, { withFileTypes: true }).filter((entry) => entry.isDirectory())) {
   const sourceRoot = path.join(packagesRoot, packageEntry.name, "src");
   if (!existsSync(sourceRoot)) continue;

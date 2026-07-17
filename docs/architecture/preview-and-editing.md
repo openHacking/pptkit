@@ -29,33 +29,10 @@ simple text with explicit PowerPoint-oriented lines and baselines. Browser XHTML
 `foreignObject` remains the fallback for mixed-run rich text and tables. Consumers may display these
 strings in a gallery, but must keep authoring/normalized state as the source of truth.
 
-The browser-first presentation workflow sends session JSON and binary assets through one
-resumable, integrity-checked chunk protocol and stores the completed `DeckSessionV2` and
-asset Blobs in IndexedDB. The session owns the semantic deck, extracted evidence, and
-asset metadata; object URLs, SVG strings, PPTX bytes, and build reports are derived state.
-A deployed static HTTPS application can therefore restore review state without uploading
-presentation data or embedding binary data in the session JSON.
-
-Browser state is scoped by the session ID in the URL fragment. The fragment-free URL is
-a clean entry point and never restores stored sessions or transfers; a `#<sessionId>` URL
-restores only that session. New tasks receive unique IDs, while revisions retain the same
-ID and stable slide identities. Completed session data expires 30 days after its last
-update, incomplete transfers expire after 24 hours, and failed transfers remain only as
-transient diagnostics. Session deletion also removes owned assets, transfers, and chunks.
-
-The preview publishes protocol compatibility, native-page API checks, and resumable
-transfer progress as JSON in a hidden read-only DOM bridge. Keeping observation in the DOM
-and mutation in the existing transfer controls lets browser hosts with isolated evaluation
-contexts inspect the workflow without assuming access to the page's `window` object.
-The mutation controls are progressively disclosed from a compact agent-connection trigger:
-the payload form occupies no review-layout space after the session and declared assets are
-available, while the trigger remains reachable for revisions and visible failure recovery.
-This presentation-layer behavior does not change the transfer protocol or make the preview
-state authoritative.
-
-PPTX generation is deferred until the user requests a download. Previewing does not
-allocate package bytes, and a failed package inspection withholds the PPTX while still
-returning an actionable report.
+Application-level review sessions, persistence, transfer protocols, and download behavior
+remain consumer concerns. The guided implementation maintained by PPTKit lives in the
+external [PPTKit Presentation](https://github.com/openHacking/pptkit-presentation)
+repository and consumes only the public engine APIs.
 
 ## Fidelity boundary
 

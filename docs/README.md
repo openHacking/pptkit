@@ -8,7 +8,7 @@ The documentation is organized by audience and task. Current behavior is written
 - [Quick Start](getting-started/quick-start.md)
 - [Use PPTKit Directly in a Browser](guides/browser-cdn.md)
 - [Create Your First Deck](guides/create-your-first-deck.md)
-- [Generate a Deck with the Presentation Skill](guides/presentation-skill.md)
+- [PPTKit Presentation product](https://github.com/openHacking/pptkit-presentation)
 
 ## Use the API
 
@@ -17,7 +17,6 @@ The documentation is organized by audience and task. Current behavior is written
 - [`@pptkit/layout`](api/layout.md)
 - [`@pptkit/pptx-exporter`](api/pptx-exporter.md)
 - [`@pptkit/svg-renderer`](api/svg-renderer.md)
-- [`@pptkit/presentation-workflow`](api/presentation-workflow.md)
 - [Package overview](api/package-overview.md)
 
 ## Understand the system

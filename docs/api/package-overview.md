@@ -10,7 +10,6 @@ PPTKit is a TypeScript monorepo organized by cohesive responsibility. Public aut
 | `@pptkit/layout` | package root | Detached geometric resolution over authoring or normalized documents. |
 | `@pptkit/pptx-exporter` | package root, `/node` | Editable PPTX generation, asset loading, OOXML packaging, and Node file output. |
 | `@pptkit/svg-renderer` | package root | Modern-browser SVG preview generation over resolved Layout state. |
-| `@pptkit/presentation-workflow` | package root | Portable guided-deck sessions, curated authoring recipes, source-byte orchestration, and shared quality checks. |
 | `@pptkit/cli` | package root/bin | Thin command orchestration; presentation-authoring commands are not stable yet. |
 
 ## Data flow
@@ -33,8 +32,6 @@ Canonical Presentation IR v1
     ▼               ▼
   .pptx        per-slide SVG preview
 ```
-
-`@pptkit/presentation-workflow` sits at the application/workflow layer. It authors Core documents and validates derived output while browser and Node adapters own their respective side effects.
 
 The exporter orchestrates normalization and layout for convenience, so ordinary callers can pass a `PresentationDocument` directly to `generatePptx()` or `writePptx()`.
 

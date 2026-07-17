@@ -53,22 +53,14 @@ Owns browser-oriented preview transformation over detached Layout state:
 The renderer has no filesystem, framework, editor, PPTX, OOXML, ZIP, or parser concerns.
 It depends only on public Core and Layout exports and never becomes authoritative state.
 
-### `@pptkit/presentation-workflow`
-
-Owns browser-neutral guided-deck contracts and deterministic presentation recipes:
-
-- versioned deck sessions, source evidence, asset references, and build reports
-- curated theme/slide-role authoring, deterministic seeded recipe planning, and deck-level rhythm diagnostics used by browser and Node skill runtimes
-- byte-oriented source parsing orchestration, limited PPTX workflow evidence analysis, and PPTX package inspection
-- deck and layout quality checks shared by runtime adapters
-
-It depends on public Core contracts and contains no filesystem, process, browser UI, or
-network behavior. Browser chunk-transfer/IndexedDB and Node path/file adapters remain outside it.
-Its PPTX evidence analysis exists to support source-aware authoring and quality audits; it does not produce Canonical IR or replace the planned preservation-oriented `@pptkit/pptx-parser`.
-
 ### `@pptkit/cli`
 
 Owns thin command-line orchestration. Its current public surface is minimal; future generation and inspection commands must call package APIs rather than reimplement document, layout, parser, or exporter logic.
+
+Guided presentation workflow, skill, preview UI, themes, and authoring recipes are
+application-level consumer concerns. They live in the external
+[PPTKit Presentation](https://github.com/openHacking/pptkit-presentation) repository
+and depend only on the engine's public package APIs.
 
 ## Planned packages
 

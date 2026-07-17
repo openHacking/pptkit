@@ -40,40 +40,9 @@ with the [Quick Start](docs/getting-started/quick-start.md) to create your first
 
 ### Presentation Skill
 
-PPTKit also includes the cross-agent `pptkit-presentation` skill for turning text,
-presentations, documents, spreadsheets, and images into an editable PPTX. In a skill-enabled agent
-such as Codex, install it without using a terminal by sending this prompt:
-
-```text
-Install the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
-```
-
-To update the installed skill from the same repository, send:
-
-```text
-Update the `pptkit-presentation` skill from the GitHub repository `openHacking/pptkit`.
-```
-
-If you prefer the command line, install the skill globally with:
-
-```bash
-npx skills add openHacking/pptkit --skill pptkit-presentation -g
-```
-
-Update installed skills with:
-
-```bash
-npx skills update
-```
-
-Then ask your agent to create a presentation, for example: “Use PPTKit to turn this
-quarterly report into an editable 10-slide PPTX.” The skill guides the brief and
-outline, offers three curated visual themes, generates through the public PPTKit APIs,
-and runs structural/package checks before delivery.
-
-The skill pins matching PPTKit preview packages inside each generated project. See the
-[Presentation Skill guide](docs/guides/presentation-skill.md) for installation,
-updating, workflow, and repository-local evaluation steps.
+The ordinary-user `pptkit-presentation` skill and its guided presentation workflow now
+live in the separate [PPTKit Presentation](https://github.com/openHacking/pptkit-presentation)
+product repository.
 
 ## Quick Start
 
@@ -129,7 +98,6 @@ from the [Developer Workflow](docs/guides/developer-workflow.md).
 | `@pptkit/layout` | Detached connector and image geometry resolution. |
 | `@pptkit/pptx-exporter` | Browser-neutral editable PPTX generation and Node.js file output. |
 | `@pptkit/svg-renderer` | Browser-oriented SVG preview generation from resolved presentation state. |
-| `@pptkit/presentation-workflow` | Portable guided-deck sessions and shared browser/Node presentation recipes and checks. |
 | `@pptkit/cli` | Thin command workflow shell; its authoring command surface is not stable yet. |
 
 Parser packages remain roadmap work. See the [package overview](docs/api/package-overview.md).
@@ -155,7 +123,6 @@ The separation keeps mutable authoring state, layout behavior, and OOXML packagi
 - [Core API](docs/api/core.md)
 - [Layout API](docs/api/layout.md)
 - [PPTX exporter API](docs/api/pptx-exporter.md)
-- [Presentation workflow API](docs/api/presentation-workflow.md)
 - [Architecture](docs/architecture/README.md)
 
 ## Development
