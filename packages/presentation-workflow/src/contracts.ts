@@ -1,5 +1,41 @@
 export type ThemeId = "clean-business" | "swiss-grid" | "editorial-story";
 
+export type CompositionIntent =
+  | "hero"
+  | "split"
+  | "ledger"
+  | "grid"
+  | "divided"
+  | "timeline"
+  | "image-split"
+  | "image-hero";
+
+export type SlideDensity = "airy" | "balanced" | "dense";
+export type DesignVariation = "restrained" | "balanced" | "expressive";
+
+export interface ThemeOverrides {
+  colors?: Partial<{
+    background: string;
+    surface: string;
+    text: string;
+    muted: string;
+    accent: string;
+    accent2: string;
+  }>;
+  fonts?: Partial<{ heading: string; body: string }>;
+}
+
+export interface DeckTheme {
+  id: ThemeId;
+  overrides?: ThemeOverrides;
+}
+
+export interface DeckDesign {
+  theme: DeckTheme;
+  seed: string;
+  variation: DesignVariation;
+}
+
 export type SlideRole =
   | "cover"
   | "agenda"
@@ -23,7 +59,6 @@ export interface DeckBrief {
   purpose: string;
   language: string;
   slideCountRange: [number, number];
-  themeId: ThemeId;
   imagePolicy: string;
   constraints: string[];
   author?: string;
@@ -74,11 +109,22 @@ export interface SlidePlan {
   chart?: ChartPlan;
   notes?: string;
   sourceRefs?: SourceRef[];
+  composition?: CompositionIntent;
+  density?: SlideDensity;
 }
 
 export interface DeckSpec {
   brief: DeckBrief;
   slides: SlidePlan[];
+  design: DeckDesign;
+}
+
+export interface LayoutDecision {
+  slideId: string;
+  composition: CompositionIntent;
+  density: SlideDensity;
+  recipeId: string;
+  reason: string;
 }
 
 export interface SessionAsset {
@@ -110,8 +156,8 @@ export interface SourceInput {
   bytes: Uint8Array;
 }
 
-export interface DeckSessionV1 {
-  schemaVersion: 1;
+export interface DeckSessionV2 {
+  schemaVersion: 2;
   id: string;
   revision: number;
   createdAt: string;
@@ -142,6 +188,7 @@ export interface BuildReport {
   diagnostics: Array<{ severity: string; code: string; message: string; path: string }>;
   exportWarnings: Array<{ code: string; message: string; slideId?: string; assetId?: string }>;
   structuralIssues: StructuralIssue[];
+  layoutDecisions: LayoutDecision[];
   packageChecks: PackageCheck;
   previewStatus: "not-run" | "rendered" | "rendered-with-warnings" | "failed";
   exportStatus: "not-run" | "generated" | "failed";

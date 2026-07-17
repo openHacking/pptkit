@@ -1,13 +1,17 @@
 import type { DeckSpec } from "./contracts.js";
 
 export const deckSpec: DeckSpec = {
+  design: {
+    theme: { id: "clean-business" },
+    seed: "untitled-pptkit-deck",
+    variation: "balanced",
+  },
   brief: {
     title: "Untitled PPTKit Deck",
     audience: "Project stakeholders",
     purpose: "Explain one clear idea and agree on the next action",
     language: "en-US",
     slideCountRange: [3, 5],
-    themeId: "clean-business",
     imagePolicy: "Use asset IDs backed by supplied local files",
     constraints: ["Keep every visible object editable in PowerPoint"],
     author: "PPTKit",

@@ -1,14 +1,15 @@
 import { createPresentation, type PresentationDocument } from "@pptkit/core";
 
+import { planDeckLayout, validateLayoutPlan } from "./authoring/planner.js";
 import { renderSlide } from "./authoring/recipes.js";
 import type {
   AssetResolver,
   DeckSpec,
+  LayoutDecision,
   SlidePlan,
-  SourceRef,
   StructuralIssue,
 } from "./contracts.js";
-import { getTheme, SLIDE } from "./themes.js";
+import { resolveTheme, SLIDE } from "./themes.js";
 
 function visibleStrings(plan: SlidePlan): string[] {
   return [
@@ -38,18 +39,14 @@ function containsInternalMetadata(value: string): boolean {
 }
 
 function sourceNotes(plan: SlidePlan): string | undefined {
-  // Early DeckSessionV1 producers emitted source IDs as strings. Keep those
-  // sessions usable without restoring the old visible source-footer behavior.
-  const refs = (plan.sourceRefs ?? []) as Array<SourceRef | string>;
+  const refs = plan.sourceRefs ?? [];
   if (!plan.notes?.trim() && refs.length === 0) return undefined;
   const sections: string[] = [];
   if (plan.notes?.trim()) sections.push(plan.notes.trim());
   if (refs.length > 0) {
     sections.push([
       "Source references (provenance only — not slide content):",
-      ...refs.map((source) => typeof source === "string"
-        ? `- ${source}`
-        : `- ${source.id}${source.label ? ` — ${source.label}` : ""}`),
+      ...refs.map((source) => `- ${source.id}${source.label ? ` — ${source.label}` : ""}`),
     ].join("\n"));
   }
   return sections.join("\n\n");
@@ -93,8 +90,36 @@ function addDensityIssues(plan: SlidePlan, issues: StructuralIssue[]) {
   }
 }
 
+const HEX_COLOR = /^[A-F0-9]{6}$/i;
+
+function colorLuminance(color: string): number {
+  const channels = [0, 2, 4].map((offset) => Number.parseInt(color.slice(offset, offset + 2), 16) / 255)
+    .map((channel) => channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+  return channels[0]! * 0.2126 + channels[1]! * 0.7152 + channels[2]! * 0.0722;
+}
+
+function addThemeOverrideIssues(spec: DeckSpec, issues: StructuralIssue[]) {
+  const overrides = spec.design.theme.overrides;
+  if (!overrides) return;
+  for (const [role, color] of Object.entries(overrides.colors ?? {})) {
+    if (!HEX_COLOR.test(color)) issues.push({ severity: "error", code: "invalid-theme-color", message: `Theme override ${role} must be a six-digit RGB hex value without #.` });
+  }
+  for (const [role, font] of Object.entries(overrides.fonts ?? {})) {
+    if (!font.trim()) issues.push({ severity: "error", code: "invalid-theme-font", message: `Theme override ${role} font must not be empty.` });
+  }
+  const theme = resolveTheme(spec.design.theme.id, overrides);
+  if (HEX_COLOR.test(theme.text) && HEX_COLOR.test(theme.background)) {
+    const light = Math.max(colorLuminance(theme.text), colorLuminance(theme.background));
+    const dark = Math.min(colorLuminance(theme.text), colorLuminance(theme.background));
+    if ((light + 0.05) / (dark + 0.05) < 4.5) {
+      issues.push({ severity: "error", code: "theme-contrast", message: "Theme text and background overrides must preserve at least 4.5:1 contrast." });
+    }
+  }
+}
+
 export function validateDeckSpec(spec: DeckSpec, availableAssetIds: ReadonlySet<string> = new Set()): StructuralIssue[] {
   const issues: StructuralIssue[] = [];
+  addThemeOverrideIssues(spec, issues);
   if (spec.slides.length < spec.brief.slideCountRange[0] || spec.slides.length > spec.brief.slideCountRange[1]) {
     issues.push({ severity: "warning", code: "slide-count-range", message: `Slide count ${spec.slides.length} is outside ${spec.brief.slideCountRange.join("–")}.` });
   }
@@ -112,6 +137,10 @@ export function validateDeckSpec(spec: DeckSpec, availableAssetIds: ReadonlySet<
       issues.push({ severity: "warning", code: "role-density", message: "The selected role contains more items than its readable layout supports; split the slide instead of truncating it.", slideId: slide.id });
     }
     if (slide.image && !availableAssetIds.has(slide.image.assetId)) issues.push({ severity: "error", code: "missing-asset", message: `Image asset ${slide.image.assetId} is not available.`, slideId: slide.id });
+    if (slide.image && ((slide.image.width !== undefined && slide.image.width <= 0) || (slide.image.height !== undefined && slide.image.height <= 0))) {
+      issues.push({ severity: "error", code: "invalid-image-dimensions", message: "Image width and height metadata must be positive.", slideId: slide.id });
+    }
+    if (slide.image?.fit === "stretch") issues.push({ severity: "warning", code: "image-stretch", message: "Stretch may distort evidence; prefer contain or cover unless distortion is intentional.", slideId: slide.id });
     if (visibleStrings(slide).some(containsInternalMetadata)) {
       issues.push({
         severity: "warning",
@@ -122,12 +151,19 @@ export function validateDeckSpec(spec: DeckSpec, availableAssetIds: ReadonlySet<
     }
     addDensityIssues(slide, issues);
   }
+  issues.push(...validateLayoutPlan(spec));
   return issues;
 }
 
-export function authorPresentation(spec: DeckSpec, resolveAsset: AssetResolver = () => undefined): PresentationDocument {
-  const tokens = getTheme(spec.brief.themeId);
-  const document = createPresentation({
+export interface AuthoredDeck {
+  presentation: PresentationDocument;
+  layoutDecisions: LayoutDecision[];
+}
+
+export function authorDeck(spec: DeckSpec, resolveAsset: AssetResolver = () => undefined): AuthoredDeck {
+  const tokens = resolveTheme(spec.design.theme.id, spec.design.theme.overrides);
+  const layoutDecisions = planDeckLayout(spec);
+  const presentation = createPresentation({
     metadata: {
       title: spec.brief.title,
       author: spec.brief.author ?? "PPTKit",
@@ -148,6 +184,10 @@ export function authorPresentation(spec: DeckSpec, resolveAsset: AssetResolver =
       fonts: { heading: tokens.headingFont, body: tokens.bodyFont },
     },
   });
-  spec.slides.forEach((slide, index) => renderSlide(document, slide, tokens, index + 1, resolveAsset, sourceNotes(slide)));
-  return document;
+  spec.slides.forEach((slide, index) => {
+    const decision = layoutDecisions.find((candidate) => candidate.slideId === slide.id);
+    if (!decision) throw new Error(`No compatible layout recipe for slide ${slide.id}.`);
+    renderSlide(presentation, slide, tokens, index + 1, resolveAsset, decision, sourceNotes(slide));
+  });
+  return { presentation, layoutDecisions };
 }

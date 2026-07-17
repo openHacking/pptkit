@@ -1,13 +1,13 @@
 import { normalizePresentation, validatePresentation, type PresentationDocument } from "@pptkit/core";
 import { generatePptx } from "@pptkit/pptx-exporter";
 import {
-  authorPresentation,
+  authorDeck,
   inspectPptxPackage,
   inspectStructure,
   NOT_RUN_PACKAGE_CHECK,
   validateDeckSpec,
   type BuildReport,
-  type DeckSessionV1,
+  type DeckSessionV2,
   type StructuralIssue,
 } from "@pptkit/presentation-workflow";
 import { renderPresentationToSvg, type SvgRenderResult } from "@pptkit/svg-renderer";
@@ -55,8 +55,9 @@ const findingsCount = byId<HTMLSpanElement>("findings-count");
 const issuesPanel = byId<HTMLElement>("issues-panel");
 const issuesContainer = byId<HTMLDivElement>("issues");
 
-let session: DeckSessionV1 | undefined;
+let session: DeckSessionV2 | undefined;
 let presentation: PresentationDocument | undefined;
+let layoutDecisions: BuildReport["layoutDecisions"] = [];
 let preview: SvgRenderResult | undefined;
 let currentIndex = 0;
 let findings: StructuralIssue[] = [];
@@ -157,7 +158,7 @@ function revokeObjectUrls() {
   objectUrls = [];
 }
 
-async function createAssetResolver(activeSession: DeckSessionV1) {
+async function createAssetResolver(activeSession: DeckSessionV2) {
   const resolved = new Map<string, { source: { type: "url"; value: string }; mimeType: string; dedupeKey: string }>();
   for (const asset of activeSession.assets) {
     const blob = await loadAssetBlob(activeSession.id, asset).catch(() => undefined);
@@ -169,7 +170,7 @@ async function createAssetResolver(activeSession: DeckSessionV1) {
   return (assetId: string) => resolved.get(assetId);
 }
 
-function changedSlides(previous: DeckSessionV1 | undefined, next: DeckSessionV1) {
+function changedSlides(previous: DeckSessionV2 | undefined, next: DeckSessionV2) {
   if (!previous || previous.id !== next.id) return [];
   const before = new Map(previous.deck.slides.map((slide) => [slide.id, JSON.stringify(slide)]));
   return next.deck.slides.filter((slide) => before.get(slide.id) !== JSON.stringify(slide)).map((slide) => slide.id);
@@ -306,11 +307,13 @@ async function refreshStoredTransfers() {
   renderTransferProgress();
 }
 
-async function renderSession(nextSession: DeckSessionV1, changed: string[] = []) {
+async function renderSession(nextSession: DeckSessionV2, changed: string[] = []) {
   const selectedSlideId = preview?.slides[currentIndex]?.slideId;
   revokeObjectUrls();
   const resolveAsset = await createAssetResolver(nextSession);
-  presentation = authorPresentation(nextSession.deck, resolveAsset);
+  const authored = authorDeck(nextSession.deck, resolveAsset);
+  presentation = authored.presentation;
+  layoutDecisions = authored.layoutDecisions;
   const availableAssets = new Set(nextSession.assets.filter((asset) => resolveAsset(asset.id)).map((asset) => asset.id));
   missingAssetCount = nextSession.assets.length - availableAssets.size;
   const specIssues = validateDeckSpec(nextSession.deck, availableAssets);
@@ -338,7 +341,7 @@ async function renderSession(nextSession: DeckSessionV1, changed: string[] = [])
   showCurrentSlide();
   showFindings(findings);
   deckTitle.textContent = nextSession.deck.brief.title;
-  deckMeta.textContent = `${nextSession.deck.brief.themeId} · ${preview.slides.length} slides · revision ${nextSession.revision}`;
+  deckMeta.textContent = `${nextSession.deck.design.theme.id} · ${preview.slides.length} slides · revision ${nextSession.revision}`;
   const blocking = findings.filter((item) => item.severity === "error").length;
   downloadButton.disabled = blocking > 0;
   const changedText = changed.length > 0 ? ` Changed slides: ${changed.join(", ")}.` : "";
@@ -370,7 +373,7 @@ async function generateAndDownload() {
     showFindings(findings);
     const report: BuildReport = {
       runtime: "browser", sessionId: session.id, slideCount: result.slideCount, byteLength: result.byteLength,
-      diagnostics: currentDiagnostics, exportWarnings: result.warnings, structuralIssues: findings, packageChecks,
+      diagnostics: currentDiagnostics, exportWarnings: result.warnings, structuralIssues: findings, layoutDecisions, packageChecks,
       previewStatus: preview?.status ?? "failed", exportStatus: exportIssues.some((issue) => issue.severity === "error") ? "failed" : "generated",
       renderStatus: "not-run", generatedAt: new Date().toISOString(),
     };

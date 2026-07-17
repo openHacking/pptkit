@@ -26,6 +26,7 @@ export function inspectStructure(input: PresentationDocument | NormalizedPresent
   const issues: StructuralIssue[] = [];
   for (const slide of document.slides) {
     const visible: NormalizedElement[] = [];
+    const content: NormalizedElement[] = [];
     visitElements(slide.elements, (element) => {
       if (element.hidden) return;
       const { x, y, width, height } = element.box;
@@ -33,6 +34,7 @@ export function inspectStructure(input: PresentationDocument | NormalizedPresent
         issues.push({ severity: "error", code: "out-of-bounds", message: `Element ${element.name} exceeds the ${document.size.width}×${document.size.height} slide.`, slideId: slide.id, elementId: element.id });
       }
       if (element.type !== "connector" && !element.accessibility.decorative) visible.push(element);
+      if (element.type !== "connector" && !element.accessibility.decorative && !element.name.startsWith("Metadata") && element.name !== "Slide title") content.push(element);
     });
     for (let left = 0; left < visible.length; left += 1) {
       for (let right = left + 1; right < visible.length; right += 1) {
@@ -43,6 +45,16 @@ export function inspectStructure(input: PresentationDocument | NormalizedPresent
         if (smaller > 0 && overlap / smaller > 0.35) {
           issues.push({ severity: "error", code: "high-overlap", message: `${a.name} substantially overlaps ${b.name}; adjust the layout and inspect the rendered slide.`, slideId: slide.id, elementId: b.id });
         }
+      }
+    }
+    if (content.length >= 1) {
+      const left = Math.min(...content.map((element) => element.box.x));
+      const top = Math.min(...content.map((element) => element.box.y));
+      const right = Math.max(...content.map((element) => element.box.x + element.box.width));
+      const bottom = Math.max(...content.map((element) => element.box.y + element.box.height));
+      const occupancy = ((right - left) * (bottom - top)) / (document.size.width * document.size.height);
+      if (occupancy < 0.12) {
+        issues.push({ severity: "warning", code: "content-island", message: "Visible content occupies a small isolated region; inspect the rendered slide before accepting the whitespace.", slideId: slide.id });
       }
     }
   }

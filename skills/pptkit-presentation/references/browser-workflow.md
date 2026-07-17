@@ -8,7 +8,7 @@ Use this workflow only after the confirmation gate.
   1. A URL explicitly supplied by the user or host for the current task.
   2. `PPTKIT_PREVIEW_URL`, when available.
   3. The official PPTKit preview application at `https://openhacking.github.io/pptkit/`.
-- Require the resolved application to support `DeckSessionV1` with `schemaVersion: 1`. Never invent another deployment URL.
+- Require the resolved application to support `DeckSessionV2` with `schemaVersion: 2`. Never invent another deployment URL.
 - Require modern browser support for `fetch`, `Blob`, `URL`, typed arrays, `structuredClone`, Web Crypto, storage estimation, and IndexedDB.
 - Require the read-only `[data-testid="pptkit-preview-bridge"]` DOM bridge to report `pptkit-transfer-v1`. Its JSON is authored by the preview page in the page's native context and includes `protocol`, `maxChunkBytes`, required `apis`, and resumable transfer `state`. Do not infer page API availability from globals visible to the Browser tool's isolated read-only evaluation sandbox. Fall back only when the resolved URL is unreachable or incompatible, the DOM bridge reports IndexedDB or another required API unavailable, a real chunk transfer fails, or strict Office/LibreOffice rendering is required. File size alone is never a fallback reason.
 

@@ -1,4 +1,4 @@
-import { parseDeckSession, type DeckSessionV1 } from "@pptkit/presentation-workflow";
+import { parseDeckSession, type DeckSessionV2 } from "@pptkit/presentation-workflow";
 
 import {
   completeAssetTransfer,
@@ -43,7 +43,7 @@ export interface TransferProgress {
 }
 
 export type TransferResult = TransferProgress & {
-  session?: DeckSessionV1;
+  session?: DeckSessionV2;
   completedAssetId?: string;
 };
 
@@ -135,7 +135,7 @@ function createStoredTransfer(envelope: PptkitTransferV1): StoredTransfer {
   };
 }
 
-export async function receiveTransferChunk(serialized: string, activeSession?: DeckSessionV1): Promise<TransferResult> {
+export async function receiveTransferChunk(serialized: string, activeSession?: DeckSessionV2): Promise<TransferResult> {
   const envelope = parseEnvelope(serialized);
   let transfer = await loadTransfer(envelope.transferId);
   if (!transfer) {

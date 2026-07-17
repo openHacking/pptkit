@@ -10,6 +10,7 @@ In browser mode, require a successful session import and SVG render. In Node mod
 - no missing required image
 - no exporter warning unless explicitly accepted and reported
 - before export: one preview SVG per planned slide and no blocking session/layout/asset issue
+- before export: review the build report's `layoutDecisions` and a whole-deck contact sheet in addition to individual slides
 - after the user requests export: a readable ZIP containing content types, presentation, slide, and relationship parts
 - after export: XML-shaped package parts with matching slide count
 
@@ -38,6 +39,8 @@ Inspect every rendered slide for:
 - stretched/cropped evidence and substituted fonts
 - unsupported glyphs or missing media
 - visible internal source IDs, filenames, paths, template names, or workflow commentary
+
+Use the contact sheet to judge sequence-level rhythm. Geometry checks can identify repeated recipes or isolated content, but a `content-island` warning requires visual judgment: intentional negative space is valid; stranded copy is not.
 
 ## Adversarial review
 

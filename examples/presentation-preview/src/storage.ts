@@ -1,4 +1,4 @@
-import type { DeckSessionV1 } from "@pptkit/presentation-workflow";
+import type { DeckSessionV2 } from "@pptkit/presentation-workflow";
 
 const DATABASE = "pptkit-presentation-preview-transfer-v2";
 const VERSION = 1;
@@ -71,7 +71,7 @@ function requestValue<T>(request: IDBRequest<T>, message: string) {
   });
 }
 
-export async function saveSession(session: DeckSessionV1) {
+export async function saveSession(session: DeckSessionV2) {
   const database = await openDatabase();
   const transaction = database.transaction(SESSIONS, "readwrite");
   transaction.objectStore(SESSIONS).put(session);
@@ -82,13 +82,13 @@ export async function saveSession(session: DeckSessionV1) {
 export async function loadSession(id: string) {
   const database = await openDatabase();
   const transaction = database.transaction(SESSIONS, "readonly");
-  const result = await requestValue(transaction.objectStore(SESSIONS).get(id), "Session could not be loaded.") as DeckSessionV1 | undefined;
+  const result = await requestValue(transaction.objectStore(SESSIONS).get(id), "Session could not be loaded.") as DeckSessionV2 | undefined;
   await complete(transaction);
   database.close();
   return result;
 }
 
-export async function loadAssetBlob(sessionId: string, asset: DeckSessionV1["assets"][number]) {
+export async function loadAssetBlob(sessionId: string, asset: DeckSessionV2["assets"][number]) {
   const database = await openDatabase();
   const transaction = database.transaction(ASSETS, "readonly");
   const result = await requestValue(transaction.objectStore(ASSETS).get(`${sessionId}:${asset.id}`), "Asset could not be loaded.") as StoredAsset | undefined;
@@ -153,7 +153,7 @@ async function deleteTransferIn(transaction: IDBTransaction, transferId: string)
   for (const key of keys) chunks.delete(key);
 }
 
-export async function completeSessionTransfer(transferId: string, session: DeckSessionV1) {
+export async function completeSessionTransfer(transferId: string, session: DeckSessionV2) {
   const database = await openDatabase();
   const transaction = database.transaction([SESSIONS, ASSETS, TRANSFERS, CHUNKS], "readwrite");
   transaction.objectStore(SESSIONS).put(session);

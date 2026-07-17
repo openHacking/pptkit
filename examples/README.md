@@ -36,4 +36,4 @@ Do not treat any specific feature list as fixed: the first batch of cases should
 
 - `dev-app/`: internal preview server, registry, and workbench UI
 - `browser-esm/`: zero-build CDN example for SVG preview and browser PPTX download
-- `presentation-preview/`: deployable local-first HTTPS review application for `DeckSessionV1`, IndexedDB persistence, SVG-first review, source extraction, and on-demand PPTX export
+- `presentation-preview/`: deployable local-first HTTPS review application for `DeckSessionV2`, IndexedDB persistence, SVG-first review, source extraction, and on-demand PPTX export

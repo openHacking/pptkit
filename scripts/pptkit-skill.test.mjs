@@ -89,7 +89,7 @@ test("transfer helper creates deterministic resumable envelopes without leaking 
   const root = mkdtempSync(path.join(os.tmpdir(), "pptkit-transfer-helper-"));
   const file = path.join(root, "session.json");
   try {
-    writeFileSync(file, JSON.stringify({ schemaVersion: 1, id: "transfer-test" }));
+    writeFileSync(file, JSON.stringify({ schemaVersion: 2, id: "transfer-test" }));
     const { preparePptkitTransfer } = await import(pathToFileURL(path.join(skillRoot, "scripts", "transfer-payload.mjs")).href);
     const prepared = await preparePptkitTransfer({ file, kind: "session", payloadId: "transfer-test", mimeType: "application/json", chunkBytes: 8 });
     assert.ok(prepared.chunkCount > 1);
@@ -129,13 +129,13 @@ function fixtureSpec(themeId) {
   return `import type { DeckSpec } from "./contracts.js";
 
 export const deckSpec: DeckSpec = {
+  design: { theme: { id: ${JSON.stringify(themeId)} }, seed: "pptkit-skill-fixture", variation: "balanced" },
   brief: {
     title: "PPTKit Skill Fixture",
     audience: "Cross-functional teams",
     purpose: "Validate the editable presentation generation workflow",
     language: "en-US",
     slideCountRange: [12, 12],
-    themeId: ${JSON.stringify(themeId)},
     imagePolicy: "Local assets only",
     constraints: ["No unsupported warnings"],
     author: "PPTKit",
@@ -165,7 +165,7 @@ test("initializer creates an isolated starter and applies theme", () => {
     const result = spawnSync(process.execPath, [initScript, "--output", project, "--title", "demo-deck", "--theme", "editorial-story", "--no-install", ...testFallbackArgs], { encoding: "utf8" });
     assert.equal(result.status, 0, result.stderr);
     assert.equal(JSON.parse(readFileSync(path.join(project, "package.json"), "utf8")).name, "demo-deck");
-    assert.match(readFileSync(path.join(project, "src", "deck-spec.ts"), "utf8"), /themeId: "editorial-story"/);
+    assert.match(readFileSync(path.join(project, "src", "deck-spec.ts"), "utf8"), /theme: \{ id: "editorial-story" \}/);
     assert.ok(existsSync(path.join(project, "deck-brief.md")));
     assert.deepEqual(JSON.parse(readFileSync(path.join(project, "runtime-decision.json"), "utf8")), {
       schemaVersion: 1,
@@ -279,6 +279,8 @@ for (const themeId of ["clean-business", "swiss-grid", "editorial-story"]) {
       assert.deepEqual(report.diagnostics, []);
       assert.deepEqual(report.exportWarnings, []);
       assert.deepEqual(report.structuralIssues, []);
+      assert.equal(report.layoutDecisions.length, report.slideCount);
+      assert.ok(report.layoutDecisions.every((decision) => decision.recipeId && decision.reason));
       assert.equal(report.packageChecks.valid, true);
       assert.equal(report.packageChecks.slideParts, 12);
       assert.ok(existsSync(path.join(project, "output", "deck.pptx")));
@@ -311,7 +313,8 @@ test("missing image is reported as an export failure", () => {
     wireWorkspace(project);
     writeFileSync(path.join(project, "src", "deck-spec.ts"), `import type { DeckSpec } from "./contracts.js";
 export const deckSpec: DeckSpec = {
-  brief: { title: "Missing asset", audience: "QA", purpose: "Failure test", language: "en-US", slideCountRange: [1, 1], themeId: "clean-business", imagePolicy: "Local", constraints: [] },
+  design: { theme: { id: "clean-business" }, seed: "missing-asset", variation: "balanced" },
+  brief: { title: "Missing asset", audience: "QA", purpose: "Failure test", language: "en-US", slideCountRange: [1, 1], imagePolicy: "Local", constraints: [] },
   slides: [{ id: "image", role: "image", title: "Missing image", image: { assetId: "does-not-exist.png", alt: "Missing fixture", width: 100, height: 100 } }],
 };
 `);

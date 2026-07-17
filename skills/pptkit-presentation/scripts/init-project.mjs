@@ -90,7 +90,8 @@ writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
 const specPath = path.join(output, "src", "deck-spec.ts");
 const spec = readFileSync(specPath, "utf8")
-  .replace('themeId: "clean-business"', `themeId: "${options.theme}"`)
+  .replace('theme: { id: "clean-business" }', `theme: { id: "${options.theme}" }`)
+  .replace('seed: "untitled-pptkit-deck"', `seed: ${JSON.stringify(options.title)}`)
   .replace('title: "Untitled PPTKit Deck"', `title: ${JSON.stringify(options.title.replace(/[-_]+/g, " "))}`);
 writeFileSync(specPath, spec);
 

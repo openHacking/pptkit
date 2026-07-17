@@ -45,13 +45,14 @@ function digest(bytes) {
 function fixture(revision = 1, assets = [], imageSlides = []) {
   const now = new Date().toISOString();
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     id: "browser-review",
     revision,
     createdAt: now,
     updatedAt: now,
     deck: {
-      brief: { title: "Browser Review", audience: "QA", purpose: "Review before download", language: "en-US", slideCountRange: [3 + imageSlides.length, 3 + imageSlides.length], themeId: "clean-business", imagePolicy: "Local", constraints: [] },
+      design: { theme: { id: "clean-business" }, seed: "browser-review", variation: "balanced" },
+      brief: { title: "Browser Review", audience: "QA", purpose: "Review before download", language: "en-US", slideCountRange: [3 + imageSlides.length, 3 + imageSlides.length], imagePolicy: "Local", constraints: [] },
       slides: [
         { id: "cover", role: "cover", title: "Browser Review", subtitle: "SVG first" },
         { id: "process", role: "process", title: revision === 1 ? "Review loop" : "Updated review loop", steps: ["Import", "Preview", "Revise", "Download"] },

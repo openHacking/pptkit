@@ -58,7 +58,7 @@ It depends only on public Core and Layout exports and never becomes authoritativ
 Owns browser-neutral guided-deck contracts and deterministic presentation recipes:
 
 - versioned deck sessions, source evidence, asset references, and build reports
-- curated theme/slide-role authoring used by browser and Node skill runtimes
+- curated theme/slide-role authoring, deterministic seeded recipe planning, and deck-level rhythm diagnostics used by browser and Node skill runtimes
 - byte-oriented source parsing orchestration and PPTX package inspection
 - deck and layout quality checks shared by runtime adapters
 

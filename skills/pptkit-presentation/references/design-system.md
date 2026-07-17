@@ -43,7 +43,7 @@ Never mix themes within one deck. Across a deck, alternate composition and densi
 
 ## Composition language
 
-The ten public roles remain semantic. The authoring runtime selects deterministic theme-specific geometry from the content:
+The ten public roles remain semantic. Composition is an optional public intent and recipe IDs remain internal. The authoring runtime selects deterministic theme-specific geometry from explicit composition, content shape, density, adjacent rhythm, theme, and seed:
 
 - `hero`: one dominant statement, used for cover/section/closing transitions.
 - `split`: argument plus counterpoint, evidence, action, or image.
@@ -54,6 +54,8 @@ The ten public roles remain semantic. The authoring runtime selects deterministi
 - `image-split` / `image-hero`: imagery as evidence, not decoration.
 
 Do not use numbering unless order, navigation, or comparison needs it. Do not place every idea in a card. Do not repeat the same main composition on three consecutive slides.
+
+Theme tokens are safety rails, not a page template. Brand adaptation may override the six theme colors and heading/body fonts, but must preserve contrast and the typography floors. Never expose arbitrary coordinates, margins, radii, or per-element sizes through the deck spec.
 
 ## Ten roles
 

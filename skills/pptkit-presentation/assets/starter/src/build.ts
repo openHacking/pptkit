@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { normalizePresentation, validatePresentation } from "@pptkit/core";
 import { generatePptx } from "@pptkit/pptx-exporter/node";
-import { authorPresentation, inspectPptxPackage, inspectStructure, validateDeckSpec } from "@pptkit/presentation-workflow";
+import { authorDeck, inspectPptxPackage, inspectStructure, validateDeckSpec } from "@pptkit/presentation-workflow";
 
 import type { BuildReport, StructuralIssue } from "./contracts.js";
 import { deckSpec } from "./deck-spec.js";
@@ -17,7 +17,7 @@ await mkdir(outputDir, { recursive: true });
 
 const availableAssetIds = new Set(deckSpec.slides.flatMap((slide) => slide.image ? [slide.image.assetId] : []));
 const specIssues = validateDeckSpec(deckSpec, availableAssetIds);
-const document = authorPresentation(deckSpec, (assetId) => resolveNodeAsset(assetId, mimeTypeForAsset(assetId)));
+const { presentation: document, layoutDecisions } = authorDeck(deckSpec, (assetId) => resolveNodeAsset(assetId, mimeTypeForAsset(assetId)));
 const diagnostics = validatePresentation(document);
 const diagnosticIssues: StructuralIssue[] = diagnostics
   .filter((item) => item.severity === "error")
@@ -34,6 +34,7 @@ let report: BuildReport = {
   diagnostics: diagnostics.map(({ severity, code, message, path: diagnosticPath }) => ({ severity, code, message, path: diagnosticPath })),
   exportWarnings: [],
   structuralIssues,
+  layoutDecisions,
   packageChecks: { status: "not-run", valid: false, parts: 0, slideParts: 0, issues: [] },
   previewStatus: "not-run",
   exportStatus: "not-run",

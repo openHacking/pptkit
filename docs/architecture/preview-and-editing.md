@@ -30,7 +30,7 @@ simple text with explicit PowerPoint-oriented lines and baselines. Browser XHTML
 strings in a gallery, but must keep authoring/normalized state as the source of truth.
 
 The browser-first presentation workflow sends session JSON and binary assets through one
-resumable, integrity-checked chunk protocol and stores the completed `DeckSessionV1` and
+resumable, integrity-checked chunk protocol and stores the completed `DeckSessionV2` and
 asset Blobs in IndexedDB. The session owns the semantic deck, extracted evidence, and
 asset metadata; object URLs, SVG strings, PPTX bytes, and build reports are derived state.
 A deployed static HTTPS application can therefore restore review state without uploading

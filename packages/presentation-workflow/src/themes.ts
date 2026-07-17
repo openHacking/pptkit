@@ -1,4 +1,4 @@
-import type { ThemeId } from "./contracts.js";
+import type { ThemeId, ThemeOverrides } from "./contracts.js";
 
 export const SLIDE = { width: 960, height: 540 } as const;
 
@@ -30,7 +30,19 @@ export interface ThemeTypography {
   compactLineSpacing: number;
   paragraphGap: number;
   minimumAutoFitScale: number;
+  ranges: {
+    display: readonly [number, number];
+    title: readonly [number, number];
+    lead: readonly [number, number];
+    body: readonly [number, number];
+    detail: readonly [number, number];
+    metadata: readonly [number, number];
+  };
 }
+
+const TYPOGRAPHY_RANGES = {
+  display: [46, 60], title: [34, 40], lead: [24, 30], body: [18, 22], detail: [15, 18], metadata: [9, 11],
+} as const;
 
 const THEMES: Record<ThemeId, ThemeTokens> = {
   "clean-business": {
@@ -58,16 +70,19 @@ const TYPOGRAPHY: Record<ThemeId, ThemeTypography> = {
     displaySize: 52, leadSize: 27, detailSize: 16,
     titleLineSpacing: 0.98, bodyLineSpacing: 1.14, compactLineSpacing: 1.06,
     paragraphGap: 5, minimumAutoFitScale: 0.9,
+    ranges: TYPOGRAPHY_RANGES,
   },
   "swiss-grid": {
     displaySize: 54, leadSize: 28, detailSize: 16,
     titleLineSpacing: 0.94, bodyLineSpacing: 1.1, compactLineSpacing: 1.04,
     paragraphGap: 4, minimumAutoFitScale: 0.9,
+    ranges: TYPOGRAPHY_RANGES,
   },
   "editorial-story": {
     displaySize: 48, leadSize: 27, detailSize: 17,
     titleLineSpacing: 0.98, bodyLineSpacing: 1.18, compactLineSpacing: 1.08,
     paragraphGap: 6, minimumAutoFitScale: 0.9,
+    ranges: TYPOGRAPHY_RANGES,
   },
 };
 
@@ -77,4 +92,15 @@ export function getTheme(id: ThemeId): ThemeTokens {
 
 export function getTypography(id: ThemeId): ThemeTypography {
   return TYPOGRAPHY[id];
+}
+
+export function resolveTheme(id: ThemeId, overrides?: ThemeOverrides): ThemeTokens {
+  const base = THEMES[id];
+  if (!overrides) return base;
+  return {
+    ...base,
+    ...(overrides.colors ?? {}),
+    headingFont: overrides.fonts?.heading ?? base.headingFont,
+    bodyFont: overrides.fonts?.body ?? base.bodyFont,
+  };
 }

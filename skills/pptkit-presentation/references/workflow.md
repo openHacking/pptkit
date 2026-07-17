@@ -46,7 +46,7 @@ After the outline is ready, show a short decision summary that remains visible:
 
 Put the full per-slide plan (role, title, message, visual, and source IDs) after the summary. Use an expandable detail section when the host provides one, but do not rely on it for the confirmation control. Then request exactly one outcome through the host's native control, or the numbered fallback:
 
-For each slide, also record a short **composition intent** (`hero`, `split`, `ledger`, `grid`, `divided`, `timeline`, `image-split`, or `image-hero`) and a density check (`airy`, `balanced`, or `dense`). These are planning language, not new `DeckSpec` fields. Revise the outline when several adjacent slides repeat the same composition or when dense copy would require text below the theme floor.
+For each slide, record and persist `composition` (`hero`, `split`, `ledger`, `grid`, `divided`, `timeline`, `image-split`, or `image-hero`) and `density` (`airy`, `balanced`, or `dense`) on `SlidePlan`. Choose an explicit composition when the argument requires it; otherwise omit it and let the deterministic deck planner select from role/content/theme/adjacent rhythm using `DeckSpec.design.seed`. Revise the outline when several adjacent slides repeat the same composition or when dense copy would require text below the theme floor.
 
 1. **Approve and generate** — create the deck session and continue to preview.
 2. **Change the plan** — ask again only for the affected decision, refresh the outline, and present confirmation again.
@@ -66,6 +66,8 @@ project/
 ```
 
 The browser source of truth is `deck-session.json`; extracted content is evidence, not slide copy. The Node fallback retains its isolated TypeScript project shape from `node-workflow.md`.
+
+The brief should also state one visual thesis, subject-specific motifs that may be used, and generic defaults to avoid. Keep those judgments in `deck-brief.md`; do not add them as runtime fields or visible slide copy.
 
 ## Iteration
 

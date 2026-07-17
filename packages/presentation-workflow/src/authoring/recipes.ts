@@ -1,6 +1,6 @@
 import type { Box, PresentationDocument, PresentationSlide } from "@pptkit/core";
 
-import type { AssetResolver, ChartPlan, SlidePlan } from "../contracts.js";
+import type { AssetResolver, ChartPlan, LayoutDecision, SlidePlan } from "../contracts.js";
 import { getTypography, SLIDE, type ThemeTokens } from "../themes.js";
 import { addImage, addRect, addRule, addText, paragraph, solid } from "./primitives.js";
 
@@ -41,10 +41,12 @@ function addChrome(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePla
   }
 }
 
-function addTitle(slide: PresentationSlide, tokens: ThemeTokens, title: string) {
+function addTitle(slide: PresentationSlide, tokens: ThemeTokens, title: string, decision: LayoutDecision) {
   const typography = getTypography(tokens.id);
+  const [minimum, maximum] = typography.ranges.title;
+  const size = decision.density === "airy" ? maximum : decision.density === "dense" ? minimum : Math.min(maximum, Math.max(minimum, tokens.titleSize));
   addText(slide, tokens, title, { x: tokens.margin, y: 68, width: 800, height: 56 }, {
-    size: tokens.titleSize,
+    size,
     bold: tokens.id !== "editorial-story",
     font: tokens.headingFont,
     lineSpacing: typography.titleLineSpacing,
@@ -125,6 +127,27 @@ function renderCover(slide: PresentationSlide, tokens: ThemeTokens, plan: SlideP
   });
 }
 
+function renderCoverSplit(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const typography = getTypography(tokens.id);
+  const fieldOnRight = tokens.id !== "editorial-story";
+  const fieldX = fieldOnRight ? 610 : 0;
+  addRect(slide, tokens, { x: fieldX, y: 0, width: 350, height: SLIDE.height }, { fill: tokens.accent, strokeOpacity: 0, radius: false });
+  const textX = fieldOnRight ? tokens.margin : 410;
+  addText(slide, tokens, "PPTKIT / PRESENTATION", { x: textX, y: 34, width: 250, height: 18 }, {
+    size: 9, color: fieldOnRight ? tokens.accent : tokens.muted, bold: true, lineSpacing: 1, name: "Metadata — deck label",
+  });
+  addText(slide, tokens, plan.title, { x: textX, y: 132, width: 490, height: 176 }, {
+    size: typography.displaySize, bold: tokens.id !== "editorial-story", font: tokens.headingFont,
+    lineSpacing: typography.titleLineSpacing, verticalAlign: "middle", name: "Cover title",
+  });
+  addText(slide, tokens, plan.subtitle ?? "", { x: textX, y: 344, width: 430, height: 74 }, {
+    size: typography.leadSize, color: tokens.muted, lineSpacing: 1.1, name: "Cover subtitle",
+  });
+  addText(slide, tokens, "01", { x: fieldX + 48, y: 190, width: 240, height: 110 }, {
+    size: 76, color: "FFFFFF", font: tokens.headingFont, lineSpacing: 1, name: "Cover numeric anchor",
+  });
+}
+
 function renderAgenda(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
   const items = (plan.items ?? []).slice(0, 6);
   if (tokens.id === "swiss-grid") {
@@ -161,6 +184,28 @@ function renderAgenda(slide: PresentationSlide, tokens: ThemeTokens, plan: Slide
   });
 }
 
+function renderAgendaGrid(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const items = (plan.items ?? []).slice(0, 6);
+  const columns = items.length <= 3 ? items.length : 3;
+  const rows = Math.ceil(items.length / Math.max(1, columns));
+  const width = (SLIDE.width - tokens.margin * 2 - tokens.gap * Math.max(0, columns - 1)) / Math.max(1, columns);
+  const height = rows === 1 ? 218 : 132;
+  items.forEach((item, itemIndex) => {
+    const column = itemIndex % columns;
+    const row = Math.floor(itemIndex / columns);
+    const x = tokens.margin + column * (width + tokens.gap);
+    const y = 154 + row * (height + tokens.gap);
+    addRule(slide, { x, y }, { x: x + width, y }, itemIndex === 0 ? tokens.accent : tokens.text, itemIndex === 0 ? 3 : 1, itemIndex === 0 ? 1 : 0.18);
+    addText(slide, tokens, String(itemIndex + 1).padStart(2, "0"), { x, y: y + 18, width: 48, height: 28 }, {
+      size: 16, color: tokens.accent, bold: true, lineSpacing: 1, name: "Agenda sequence",
+    });
+    addText(slide, tokens, item, { x, y: y + 58, width, height: height - 68 }, {
+      size: 20, bold: tokens.id !== "editorial-story", font: tokens.id === "editorial-story" ? tokens.headingFont : tokens.bodyFont,
+      lineSpacing: 1.08, verticalAlign: "middle", name: "Agenda item",
+    });
+  });
+}
+
 function renderSection(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan, index: number) {
   const typography = getTypography(tokens.id);
   const message = plan.message ?? plan.subtitle ?? "";
@@ -188,10 +233,36 @@ function renderSection(slide: PresentationSlide, tokens: ThemeTokens, plan: Slid
   });
 }
 
-function renderStatement(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+function renderSectionDivided(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan, index: number) {
+  const typography = getTypography(tokens.id);
+  addRect(slide, tokens, { x: 0, y: 132, width: 360, height: 408 }, { fill: tokens.accent, strokeOpacity: 0, radius: false });
+  addText(slide, tokens, String(index).padStart(2, "0"), { x: 58, y: 190, width: 230, height: 100 }, {
+    size: 72, color: "FFFFFF", font: tokens.headingFont, lineSpacing: 1, name: "Section numeric anchor",
+  });
+  addText(slide, tokens, plan.message ?? plan.subtitle ?? "", { x: 420, y: 178, width: 454, height: 220 }, {
+    size: 34, bold: tokens.id !== "editorial-story", font: tokens.headingFont,
+    lineSpacing: typography.titleLineSpacing, verticalAlign: "middle", name: "Section message",
+  });
+}
+
+function renderStatement(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan, recipeId: string) {
   const typography = getTypography(tokens.id);
   const items = (plan.items ?? []).slice(0, 4);
-  if (items.length > 0) {
+  if (recipeId === "statement-divided") {
+    addRect(slide, tokens, { x: tokens.margin, y: 156, width: 280, height: 276 }, { fill: tokens.accent, strokeOpacity: 0, radius: false });
+    addText(slide, tokens, plan.message ?? "", { x: tokens.margin + 26, y: 182, width: 228, height: 224 }, {
+      size: 28, color: "FFFFFF", bold: tokens.id !== "editorial-story", font: tokens.headingFont,
+      lineSpacing: typography.titleLineSpacing, verticalAlign: "middle", name: "Statement message",
+    });
+    if (items.length) addText(slide, tokens, items, { x: 400, y: 182, width: 470, height: 210 }, {
+      size: 20, color: tokens.muted, bullet: true, lineSpacing: 1.16, verticalAlign: "middle", name: "Statement support",
+    });
+    else addText(slide, tokens, plan.title, { x: 400, y: 194, width: 450, height: 160 }, {
+      size: 32, font: tokens.headingFont, lineSpacing: 1.02, verticalAlign: "middle", name: "Statement support",
+    });
+    return;
+  }
+  if (recipeId === "statement-split" && items.length > 0) {
     const dividerX = tokens.id === "swiss-grid" ? 610 : 598;
     addText(slide, tokens, plan.message ?? "", { x: tokens.margin, y: 158, width: dividerX - tokens.margin - 42, height: 232 }, {
       size: tokens.id === "editorial-story" ? 32 : 31,
@@ -228,8 +299,9 @@ function renderImage(
   tokens: ThemeTokens,
   plan: SlidePlan,
   resolveAsset: AssetResolver,
+  recipeId: string,
 ) {
-  if (plan.image && !(plan.items?.length)) {
+  if (recipeId === "image-hero" && plan.image) {
     const imageBox: Box = { x: tokens.margin, y: CONTENT_TOP + 4, width: SLIDE.width - tokens.margin * 2, height: 220 };
     addImage(document, slide, plan.image, imageBox, resolveAsset);
     const overlayFill = tokens.id === "editorial-story" ? tokens.surface : tokens.id === "swiss-grid" ? tokens.accent : tokens.text;
@@ -245,7 +317,7 @@ function renderImage(
     });
     return;
   }
-  const imageOnLeft = tokens.id === "editorial-story";
+  const imageOnLeft = recipeId === "image-evidence-split" ? tokens.id !== "editorial-story" : tokens.id === "editorial-story";
   const imageBox: Box = imageOnLeft
     ? { x: 58, y: CONTENT_TOP + 6, width: 500, height: 326 }
     : { x: 468, y: CONTENT_TOP + 4, width: 438, height: 326 };
@@ -289,6 +361,25 @@ function renderKpi(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePla
   });
 }
 
+function renderKpiLedger(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const kpis = (plan.kpis ?? []).slice(0, 4);
+  const rowHeight = 282 / Math.max(1, kpis.length);
+  kpis.forEach((kpi, index) => {
+    const y = 152 + index * rowHeight;
+    addText(slide, tokens, kpi.value, { x: tokens.margin, y: y + 8, width: 210, height: rowHeight - 16 }, {
+      size: Math.max(30, 46 - kpis.length * 2), color: tokens.accent, bold: tokens.id !== "editorial-story",
+      font: tokens.headingFont, lineSpacing: 1, verticalAlign: "middle", name: "KPI value",
+    });
+    addText(slide, tokens, kpi.label, { x: 302, y: y + 8, width: 230, height: rowHeight - 16 }, {
+      size: 20, bold: true, lineSpacing: 1.05, verticalAlign: "middle", name: "KPI label",
+    });
+    addText(slide, tokens, kpi.detail ?? "", { x: 566, y: y + 8, width: 320, height: rowHeight - 16 }, {
+      size: 16, color: tokens.muted, lineSpacing: 1.1, verticalAlign: "middle", name: "KPI detail",
+    });
+    addRule(slide, { x: tokens.margin, y: y + rowHeight }, { x: 906, y: y + rowHeight }, tokens.text, 0.75, 0.14);
+  });
+}
+
 function renderComparison(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
   const columns = [plan.comparison?.left, plan.comparison?.right];
   const dividerX = 480;
@@ -306,6 +397,22 @@ function renderComparison(slide: PresentationSlide, tokens: ThemeTokens, plan: S
     addText(slide, tokens, (column?.items ?? []).slice(0, 5), { x, y: 258, width, height: 156 }, {
       size: 18, color: tokens.muted, bullet: true, lineSpacing: 1.12,
       name: "Comparison points",
+    });
+  });
+}
+
+function renderComparisonSplit(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const columns = [plan.comparison?.left, plan.comparison?.right];
+  columns.forEach((column, index) => {
+    const x = index === 0 ? 0 : 480;
+    const fill = index === 0 ? tokens.surface : tokens.accent;
+    const color = index === 0 ? tokens.text : "FFFFFF";
+    addRect(slide, tokens, { x, y: 138, width: 480, height: 402 }, { fill, strokeOpacity: 0, radius: false });
+    addText(slide, tokens, column?.heading ?? "", { x: x + 54, y: 184, width: 360, height: 62 }, {
+      size: 28, color, bold: tokens.id !== "editorial-story", font: tokens.headingFont, lineSpacing: 1.02, name: "Comparison heading",
+    });
+    addText(slide, tokens, (column?.items ?? []).slice(0, 5), { x: x + 54, y: 278, width: 350, height: 190 }, {
+      size: 18, color: index === 0 ? tokens.muted : "FFFFFF", bullet: true, lineSpacing: 1.14, name: "Comparison points",
     });
   });
 }
@@ -338,6 +445,41 @@ function renderProcess(slide: PresentationSlide, tokens: ThemeTokens, plan: Slid
       });
       if (stepIndex < steps.length - 1) addRule(slide, { x: x + width, y: 309 }, { x: x + width + tokens.gap, y: 309 }, tokens.accent, 1.5);
     }
+  });
+}
+
+function renderProcessLedger(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const steps = (plan.steps ?? []).slice(0, 6);
+  const rowHeight = 286 / Math.max(1, steps.length);
+  steps.forEach((step, index) => {
+    const y = 150 + index * rowHeight;
+    addText(slide, tokens, String(index + 1).padStart(2, "0"), { x: tokens.margin, y: y + 6, width: 70, height: rowHeight - 12 }, {
+      size: 18, color: tokens.accent, bold: true, lineSpacing: 1, verticalAlign: "middle", name: "Process sequence",
+    });
+    addText(slide, tokens, step, { x: tokens.margin + 92, y: y + 6, width: 720, height: rowHeight - 12 }, {
+      size: 19, font: tokens.id === "editorial-story" ? tokens.headingFont : tokens.bodyFont,
+      lineSpacing: 1.08, verticalAlign: "middle", name: "Process step",
+    });
+    addRule(slide, { x: tokens.margin + 92, y: y + rowHeight }, { x: 906, y: y + rowHeight }, tokens.text, 0.75, 0.14);
+  });
+}
+
+function renderProcessDivided(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
+  const steps = (plan.steps ?? []).slice(0, 6);
+  const midpoint = Math.ceil(steps.length / 2);
+  addRule(slide, { x: 480, y: 154 }, { x: 480, y: 440 }, tokens.accent, 2.5);
+  [steps.slice(0, midpoint), steps.slice(midpoint)].forEach((column, columnIndex) => {
+    column.forEach((step, rowIndex) => {
+      const index = columnIndex === 0 ? rowIndex : midpoint + rowIndex;
+      const x = columnIndex === 0 ? tokens.margin : 526;
+      const y = 168 + rowIndex * 86;
+      addText(slide, tokens, String(index + 1).padStart(2, "0"), { x, y, width: 52, height: 28 }, {
+        size: 16, color: tokens.accent, bold: true, lineSpacing: 1, name: "Process sequence",
+      });
+      addText(slide, tokens, step, { x: x + 64, y: y - 2, width: 300, height: 58 }, {
+        size: 18, lineSpacing: 1.08, verticalAlign: "middle", name: "Process step",
+      });
+    });
   });
 }
 
@@ -413,8 +555,8 @@ function renderLedger(slide: PresentationSlide, tokens: ThemeTokens, plan: Slide
   });
 }
 
-function renderTable(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan) {
-  if (plan.chart) {
+function renderTable(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan, recipeId: string) {
+  if (recipeId === "table-split-chart" && plan.chart) {
     addChart(slide, tokens, plan.chart, { x: tokens.margin, y: 154, width: 610, height: 286 });
     addText(slide, tokens, plan.chart.series.slice(0, 2).map((series, index) => `${index === 0 ? "●" : "■"} ${series.name}`), {
       x: 718, y: 184, width: 180, height: 96,
@@ -422,7 +564,7 @@ function renderTable(slide: PresentationSlide, tokens: ThemeTokens, plan: SlideP
     return;
   }
   if (!plan.table) return;
-  if (plan.table.headers.length === 2 && plan.table.rows.length <= 6) {
+  if (recipeId === "table-ledger") {
     renderLedger(slide, tokens, plan);
     return;
   }
@@ -491,12 +633,28 @@ function renderClosing(slide: PresentationSlide, tokens: ThemeTokens, plan: Slid
   });
 }
 
+function renderClosingSplit(slide: PresentationSlide, tokens: ThemeTokens, plan: SlidePlan, index: number) {
+  const typography = getTypography(tokens.id);
+  addRect(slide, tokens, { x: 620, y: 0, width: 340, height: 540 }, { fill: tokens.accent, strokeOpacity: 0, radius: false });
+  addText(slide, tokens, plan.title, { x: 64, y: 150, width: 500, height: 170 }, {
+    size: typography.displaySize, bold: tokens.id !== "editorial-story", font: tokens.headingFont,
+    lineSpacing: typography.titleLineSpacing, verticalAlign: "middle", name: "Closing message",
+  });
+  addText(slide, tokens, plan.message ?? "", { x: 66, y: 356, width: 440, height: 72 }, {
+    size: 23, color: tokens.muted, lineSpacing: 1.14, name: "Closing action",
+  });
+  addText(slide, tokens, String(index).padStart(2, "0"), { x: 674, y: 186, width: 190, height: 100 }, {
+    size: 72, color: "FFFFFF", font: tokens.headingFont, lineSpacing: 1, name: "Closing numeric anchor",
+  });
+}
+
 export function renderSlide(
   document: PresentationDocument,
   plan: SlidePlan,
   tokens: ThemeTokens,
   index: number,
   resolveAsset: AssetResolver,
+  decision: LayoutDecision,
   notes?: string,
 ) {
   const slide = document.addSlide({
@@ -505,22 +663,27 @@ export function renderSlide(
     ...(notes ? { notes } : {}),
   });
   if (plan.role === "cover") {
-    renderCover(slide, tokens, plan);
+    if (decision.recipeId === "cover-split") renderCoverSplit(slide, tokens, plan);
+    else renderCover(slide, tokens, plan);
     return;
   }
   addChrome(slide, tokens, plan, index);
   if (plan.role === "closing") {
-    renderClosing(slide, tokens, plan, index);
+    if (decision.recipeId === "closing-split") renderClosingSplit(slide, tokens, plan, index);
+    else renderClosing(slide, tokens, plan, index);
     return slide;
   }
-  addTitle(slide, tokens, plan.title);
-  if (plan.role === "agenda") renderAgenda(slide, tokens, plan);
-  else if (plan.role === "section") renderSection(slide, tokens, plan, index);
-  else if (plan.role === "statement") renderStatement(slide, tokens, plan);
-  else if (plan.role === "image") renderImage(document, slide, tokens, plan, resolveAsset);
-  else if (plan.role === "kpi") renderKpi(slide, tokens, plan);
-  else if (plan.role === "comparison") renderComparison(slide, tokens, plan);
-  else if (plan.role === "process") renderProcess(slide, tokens, plan);
-  else if (plan.role === "table") renderTable(slide, tokens, plan);
+  addTitle(slide, tokens, plan.title, decision);
+  if (plan.role === "agenda") decision.recipeId === "agenda-grid" ? renderAgendaGrid(slide, tokens, plan) : renderAgenda(slide, tokens, plan);
+  else if (plan.role === "section") decision.recipeId === "section-divided" ? renderSectionDivided(slide, tokens, plan, index) : renderSection(slide, tokens, plan, index);
+  else if (plan.role === "statement") renderStatement(slide, tokens, plan, decision.recipeId);
+  else if (plan.role === "image") renderImage(document, slide, tokens, plan, resolveAsset, decision.recipeId);
+  else if (plan.role === "kpi") decision.recipeId === "kpi-ledger" ? renderKpiLedger(slide, tokens, plan) : renderKpi(slide, tokens, plan);
+  else if (plan.role === "comparison") decision.recipeId === "comparison-split" ? renderComparisonSplit(slide, tokens, plan) : renderComparison(slide, tokens, plan);
+  else if (plan.role === "process") {
+    if (decision.recipeId === "process-ledger") renderProcessLedger(slide, tokens, plan);
+    else if (decision.recipeId === "process-divided") renderProcessDivided(slide, tokens, plan);
+    else renderProcess(slide, tokens, plan);
+  } else if (plan.role === "table") renderTable(slide, tokens, plan, decision.recipeId);
   return slide;
 }
