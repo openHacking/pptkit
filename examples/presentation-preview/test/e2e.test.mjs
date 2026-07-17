@@ -283,6 +283,50 @@ test("rejects inconsistent chunks and never reuses stale asset bytes across revi
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
 });
 
+test("isolates SVG definition IDs between hidden thumbnails and the stage", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage({ viewport: { width: 760, height: 900 } });
+  await page.goto(url);
+
+  const bytes = largeSvg(2048, "Responsive image");
+  const asset = {
+    id: "responsive-image",
+    name: "responsive-image.svg",
+    mimeType: "image/svg+xml",
+    byteLength: bytes.byteLength,
+    sha256: digest(bytes),
+    width: 1200,
+    height: 675,
+  };
+  await sendSession(page, fixture(1, [asset], [asset]));
+  await sendPayload(page, { bytes, kind: "asset", payloadId: asset.id, sessionId: "browser-review", mimeType: asset.mimeType });
+  await page.waitForFunction(() => document.querySelectorAll("#thumbnails button").length === 4);
+  await page.getByRole("button", { name: "Next" }).click();
+  await page.getByRole("button", { name: "Next" }).click();
+
+  const evidence = await page.evaluate(() => {
+    const ids = [...document.querySelectorAll("[id]")].map((element) => element.id);
+    const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
+    const image = document.querySelector("#stage image");
+    const clipPath = image?.parentElement?.getAttribute("clip-path") ?? "";
+    const clipId = clipPath.match(/#([^\)]+)/)?.[1];
+    const resolvedClip = clipId ? document.getElementById(clipId) : null;
+    return {
+      duplicates,
+      filmstripVisibility: getComputedStyle(document.querySelector("#filmstrip-surface")).visibility,
+      imageCount: document.querySelectorAll("#stage image").length,
+      resolvedClipOwner: resolvedClip?.closest("#stage, #thumbnails")?.id,
+    };
+  });
+  assert.deepEqual(evidence.duplicates, []);
+  assert.equal(evidence.filmstripVisibility, "hidden");
+  assert.equal(evidence.imageCount, 1);
+  assert.equal(evidence.resolvedClipOwner, "stage");
+});
+
 test("keeps the stage in the viewport and progressively discloses navigation", async (t) => {
   const { server, url } = await serve();
   t.after(() => server.close());

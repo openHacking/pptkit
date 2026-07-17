@@ -176,13 +176,37 @@ function changedSlides(previous: DeckSessionV2 | undefined, next: DeckSessionV2)
   return next.deck.slides.filter((slide) => before.get(slide.id) !== JSON.stringify(slide)).map((slide) => slide.id);
 }
 
+function mountSvg(container: HTMLElement, svg: string, namespace: string) {
+  container.insertAdjacentHTML("beforeend", svg);
+  const idMap = new Map<string, string>();
+  for (const element of container.querySelectorAll<HTMLElement>("[id]")) {
+    const scopedId = `${namespace}-${element.id}`;
+    idMap.set(element.id, scopedId);
+    element.id = scopedId;
+  }
+
+  for (const element of container.querySelectorAll("*")) {
+    for (const attribute of [...element.attributes]) {
+      let value = attribute.value;
+      for (const [id, scopedId] of idMap) {
+        value = value.replaceAll(`url(#${id})`, `url(#${scopedId})`);
+        if (value === `#${id}`) value = `#${scopedId}`;
+      }
+      if (attribute.name === "aria-labelledby" || attribute.name === "aria-describedby") {
+        value = value.split(/\s+/).map((id) => idMap.get(id) ?? id).join(" ");
+      }
+      if (value !== attribute.value) element.setAttribute(attribute.name, value);
+    }
+  }
+}
+
 function showCurrentSlide() {
   const slides = preview?.slides ?? [];
   const selected = slides[currentIndex];
   stage.replaceChildren();
   stage.classList.toggle("has-slide", Boolean(selected));
   if (selected) {
-    stage.innerHTML = selected.svg;
+    mountSvg(stage, selected.svg, `stage-${selected.index}`);
     stage.setAttribute("aria-label", `Slide ${currentIndex + 1}: ${selected.slideId}`);
   } else {
     stage.innerHTML = `<div class="empty-state"><strong>Waiting for a presentation</strong><span>The preview will appear automatically when the agent connects it.</span></div>`;
@@ -251,7 +275,10 @@ function renderThumbnails() {
     button.type = "button";
     button.dataset.index = String(slide.index);
     button.setAttribute("aria-label", `Show slide ${slide.index + 1}: ${slide.slideId}`);
-    button.innerHTML = `<span>${slide.index + 1}</span>${slide.svg}`;
+    const number = document.createElement("span");
+    number.textContent = String(slide.index + 1);
+    button.append(number);
+    mountSvg(button, slide.svg, `thumbnail-${slide.index}`);
     button.addEventListener("click", () => {
       selectSlide(slide.index);
       if (matchMedia("(max-width: 980px)").matches) {
