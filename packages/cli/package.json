@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/cli",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "type": "module",
   "description": "Command-line entry points for PPTKit.",
