@@ -172,6 +172,22 @@ async function storageCounts(page) {
   });
 }
 
+test("keeps the manual transfer envelope in sync with its DeckSession fixture", async () => {
+  const fixtures = path.join(root, "test", "fixtures");
+  const sessionBytes = await readFile(path.join(fixtures, "manual-deck-session.json"));
+  const envelope = JSON.parse(await readFile(path.join(fixtures, "manual-transfer-envelope.json"), "utf8"));
+  assert.equal(envelope.protocol, protocol);
+  assert.equal(envelope.kind, "session");
+  assert.equal(envelope.payloadId, JSON.parse(sessionBytes).id);
+  assert.equal(envelope.chunkCount, 1);
+  assert.equal(envelope.chunkIndex, 0);
+  assert.equal(envelope.byteLength, sessionBytes.byteLength);
+  assert.equal(envelope.chunkByteLength, sessionBytes.byteLength);
+  assert.equal(envelope.sha256, digest(sessionBytes));
+  assert.equal(envelope.chunkSha256, digest(sessionBytes));
+  assert.deepEqual(Buffer.from(envelope.dataBase64, "base64"), sessionBytes);
+});
+
 test("imports, persists, revises, previews, and exports through the chunk protocol", async (t) => {
   const { server, url } = await serve();
   t.after(() => server.close());
@@ -206,9 +222,22 @@ test("imports, persists, revises, previews, and exports through the chunk protoc
   assert.equal(await page.locator("#issues-panel").isVisible(), true);
   await page.getByRole("button", { name: "Close review findings" }).click();
   assert.equal(await page.locator("#stage svg").count(), 1);
-  assert.match(await page.locator("#status").innerText(), /Saved in this browser/);
+  assert.equal(await page.locator("#status").innerText(), "Saved locally · Ready");
+  assert.match(await page.locator("#status").getAttribute("title"), /Saved in this browser/);
+  assert.equal(await page.locator("#findings-count").isHidden(), true);
+  assert.equal(await page.locator(".findings-mark-success").isVisible(), true);
   assert.equal(await page.getByRole("button", { name: "Generate & download PPTX" }).isEnabled(), true);
   assert.equal((await domBridge(page)).state.sessionId, "browser-review");
+
+  const warningSession = fixture();
+  warningSession.deck.brief.slideCountRange = [4, 4];
+  await sendSession(page, warningSession);
+  await page.waitForFunction(() => document.querySelector("#findings-toggle")?.getAttribute("data-tone") === "warning");
+  assert.ok(Number(await page.locator("#findings-count").innerText()) > 0);
+  assert.equal(await page.locator(".findings-mark-success").isHidden(), true);
+  assert.equal(await page.locator(".findings-mark-attention").first().isVisible(), true);
+  await sendSession(page, fixture());
+  await page.waitForFunction(() => document.querySelector("#status")?.textContent === "Saved locally · Ready");
 
   await page.getByRole("button", { name: "Next" }).click();
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
@@ -218,7 +247,7 @@ test("imports, persists, revises, previews, and exports through the chunk protoc
   assert.equal(await page.locator("#page-status").innerText(), "1 / 3");
   await page.getByRole("button", { name: "Next" }).click();
   await sendSession(page, fixture(2));
-  await page.waitForFunction(() => document.querySelector("#status")?.textContent?.includes("Changed slides: process"));
+  await page.waitForFunction(() => document.querySelector("#status")?.getAttribute("title")?.includes("Changed slides: process"));
   assert.equal(await page.locator("#page-status").innerText(), "2 / 3");
 
   await page.reload();

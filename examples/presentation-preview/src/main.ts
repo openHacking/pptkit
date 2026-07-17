@@ -263,7 +263,8 @@ function showFindings(items: StructuralIssue[]) {
   const blocking = items.filter((item) => item.severity === "error").length;
   const warnings = items.length - blocking;
   findingsToggle.hidden = !session;
-  findingsCount.textContent = items.length === 0 ? "✓" : String(items.length);
+  findingsCount.hidden = items.length === 0;
+  findingsCount.textContent = String(items.length);
   findingsToggle.dataset.tone = blocking > 0 ? "error" : warnings > 0 ? "warning" : "success";
   findingsToggle.setAttribute("aria-label", `Review findings: ${blocking} errors, ${warnings} warnings`);
 
@@ -412,8 +413,16 @@ async function renderSession(nextSession: DeckSessionV2, changed: string[] = [])
   deckMeta.textContent = `${nextSession.deck.design.theme.id} · ${preview.slides.length} slides · revision ${nextSession.revision}`;
   const blocking = findings.filter((item) => item.severity === "error").length;
   downloadButton.disabled = blocking > 0;
+  const warnings = findings.length - blocking;
+  const storageLabel = persisted ? "Saved locally" : "Memory only";
+  const reviewLabel = blocking > 0
+    ? `${blocking} blocking${warnings > 0 ? ` · ${warnings} warning${warnings === 1 ? "" : "s"}` : ""}`
+    : warnings > 0
+      ? `${warnings} warning${warnings === 1 ? "" : "s"}`
+      : "Ready";
   const changedText = changed.length > 0 ? ` Changed slides: ${changed.join(", ")}.` : "";
-  setStatus(`${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${findings.length - blocking} warnings.${changedText}`, blocking > 0 ? "error" : "success");
+  setStatus(`${storageLabel} · ${reviewLabel}`, blocking > 0 ? "error" : "success");
+  status.title = `${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${warnings} warnings.${changedText}`;
   renderBridgeState();
   updateTransferSurface();
 }

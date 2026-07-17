@@ -69,11 +69,14 @@
               <span class="findings-icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
                   <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 16v-4"></path>
-                  <path d="M12 8h.01"></path>
+                  <path class="findings-mark findings-mark-success" d="m8 12 2.7 2.7L16 9.4"></path>
+                  <g class="findings-mark findings-mark-attention">
+                    <path d="M12 7.5v5.25"></path>
+                    <circle cx="12" cy="16.5" r="1" fill="currentColor" stroke="none"></circle>
+                  </g>
                 </svg>
               </span>
-              <span id="findings-count" class="count-badge">0</span>
+              <span id="findings-count" class="count-badge" hidden>0</span>
             </button>
             <aside id="issues-panel" class="anchored-panel issues-panel" aria-labelledby="issues-heading" aria-hidden="true" inert>
               <div class="panel-heading">
