@@ -40,6 +40,8 @@ Use this top-level shape:
 
 Use stable source, asset, and slide IDs. Every `SessionAsset` contains `id`, `name`, `mimeType`, `byteLength`, and `sha256`; never include `dataUrl` or filesystem paths.
 
+Create a unique session ID for every newly approved task; do not reuse a title-derived ID from another conversation. Preserve that ID across revisions within the task. The hash-free preview URL is always a clean new-task entry point, while `#<sessionId>` is the dedicated restore URL for one task.
+
 ## Transfer the session and assets
 
 Use `scripts/transfer-payload.mjs` from this skill through Codex's managed JavaScript runtime. This is part of the Browser workflow and does not require Node to be installed in the user's project.
@@ -55,7 +57,7 @@ Do not call a mutable console API, paste a complete session, use a native file p
 
 ## Open and verify
 
-1. Open the resolved HTTPS URL with the host's browser capability. In Codex, the listed in-app Browser skill is an available preview channel and must be loaded and followed.
+1. Open the resolved HTTPS URL with the host's browser capability. For a new task, explicitly navigate to the hash-free base URL even when reusing an existing tab; use the dedicated `#<sessionId>` URL only for a revision or requested restore. In Codex, the listed in-app Browser skill is an available preview channel and must be loaded and followed.
 2. If Codex browser controls are not directly visible, discover `browser:control-in-app-browser` (or the equivalent in-app Browser skill) and `node_repl js`. Follow the Browser skill to initialize its runtime, explicitly select the `iab` browser, make it visible for the user-facing preview, and open or reuse the resolved URL. Do not give up solely because the initial tool list omits browser controls.
 3. Treat a successful open or focus operation as proof that the preview channel is available. Only fall back after the Browser skill's setup or navigation actually fails; name the failed step and preserve the resolved preview URL as a direct review link.
 4. Transfer the complete session and referenced assets through `pptkit-transfer-v1`.
@@ -64,6 +66,8 @@ Do not call a mutable console API, paste a complete session, use a native file p
 7. Keep the preview tab as a deliverable tab so the user can review it before export. In Codex, finalize the browser session with this tab marked `deliverable`; do not clean it up as an intermediate research tab.
 
 Do not download automatically. Export is allowed when the user clicks **Generate & download PPTX** or explicitly asks the agent to trigger the export/download after preview.
+
+Completed sessions and their assets remain local for 30 days from the session's last update. Incomplete transfers remain resumable for 24 hours. The preview removes failed transfers immediately and provides controls to delete the current presentation or all PPTKit preview data stored by the site.
 
 ## Revise
 

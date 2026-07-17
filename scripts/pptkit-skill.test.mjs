@@ -63,6 +63,10 @@ test("presentation skill requires progressive native interaction and an approval
   assert.match(browserWorkflow, /Do not give up solely because the initial tool list omits browser controls/i);
   assert.match(browserWorkflow, /successful open or focus operation as proof/i);
   assert.match(browserWorkflow, /marked `deliverable`/i);
+  assert.match(browserWorkflow, /hash-free base URL/i);
+  assert.match(browserWorkflow, /unique session ID for every newly approved task/i);
+  assert.match(browserWorkflow, /remain resumable for 24 hours/i);
+  assert.match(browserWorkflow, /remain local for 30 days/i);
   assert.match(browserWorkflow, /Do not download automatically/);
   assert.match(browserWorkflow, /explicitly asks the agent to trigger the export\/download/);
   assert.match(browserWorkflow, /IndexedDB/);

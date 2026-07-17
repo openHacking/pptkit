@@ -32,6 +32,7 @@ Create a structured deck session, preview it in the browser, and generate an edi
 - Use native PPTKit text, shapes, connectors, images, and tables. Editable shape-based charts are not native data-bound PowerPoint charts.
 - Set `brief.mode` to `restyle` when revising an existing deck, map `SourceRef.slideNumbers`, and review `restyleAudit`. A title plus a rendered source-slide image is not an acceptable reconstruction.
 - Keep source material local. Browser sessions and assets use the unified chunk protocol and IndexedDB-backed `blob:` URLs; Node projects copy assets into `assets/`.
+- Give every newly approved task a unique session ID and keep it stable only for revisions within that task. Open the hash-free preview URL for a new task; use a session-specific hash URL only to revise or restore that task.
 - Use only PPTKit public exports. Do not import `dist` files or private implementation paths.
 - Do not claim template fill, lossless round-trip, animation, editable SmartArt, audio/video, browser editing, cross-device preview links, or pixel-identical PowerPoint preview.
 - Do not copy templates, code, or assets from other presentation skills.

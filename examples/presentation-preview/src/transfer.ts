@@ -3,7 +3,7 @@ import { parseDeckSession, type DeckSessionV2 } from "@pptkit/presentation-workf
 import {
   completeAssetTransfer,
   completeSessionTransfer,
-  failTransfer,
+  discardTransfer,
   loadTransfer,
   loadTransferChunks,
   saveTransferChunk,
@@ -46,6 +46,13 @@ export type TransferResult = TransferProgress & {
   session?: DeckSessionV2;
   completedAssetId?: string;
 };
+
+export class TransferReceiveError extends Error {
+  constructor(message: string, readonly progress: TransferProgress) {
+    super(message);
+    this.name = "TransferReceiveError";
+  }
+}
 
 function integer(value: unknown, name: string, minimum = 0) {
   if (!Number.isSafeInteger(value) || Number(value) < minimum) throw new Error(`${name} must be an integer greater than or equal to ${minimum}.`);
@@ -132,17 +139,21 @@ function createStoredTransfer(envelope: PptkitTransferV1): StoredTransfer {
     chunkCount: envelope.chunkCount,
     received: [],
     status: "receiving",
+    lastActivityAt: new Date().toISOString(),
   };
 }
 
 export async function receiveTransferChunk(serialized: string, activeSession?: DeckSessionV2): Promise<TransferResult> {
   const envelope = parseEnvelope(serialized);
   let transfer = await loadTransfer(envelope.transferId);
+  if (transfer?.status === "failed") {
+    await discardTransfer(transfer.transferId);
+    transfer = undefined;
+  }
   if (!transfer) {
     await ensureStorageCapacity(envelope.byteLength);
     transfer = createStoredTransfer(envelope);
   } else {
-    if (transfer.status === "failed") throw new Error(transfer.error ?? "Transfer previously failed.");
     if (!metadataMatches(transfer, envelope)) throw new Error("Transfer metadata conflicts with the stored transfer.");
   }
 
@@ -177,7 +188,8 @@ export async function receiveTransferChunk(serialized: string, activeSession?: D
     return { ...progress(transfer, "completed"), completedAssetId: asset.id };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    await failTransfer(transfer, message).catch(() => undefined);
-    throw new Error(message);
+    await discardTransfer(transfer.transferId).catch(() => undefined);
+    const failed = { ...transfer, received: [], status: "failed" as const, error: message };
+    throw new TransferReceiveError(message, progress(failed, "failed"));
   }
 }

@@ -71,6 +71,10 @@ button.secondary { display: grid; place-items: center; width: 34px; height: 34px
 .transfer-progress { display: grid; gap: 6px; max-height: 180px; overflow: auto; overscroll-behavior: contain; }
 .transfer-status { margin: 0; padding: 8px 10px; border: 1px solid #dce3ed; border-radius: 8px; background: rgb(248 250 252 / 88%); color: #475467; font-size: 12px; line-height: 1.35; }
 .transfer-status.failed { color: #b42318; }
+.storage-actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 2px; border-top: 1px solid rgb(203 213 225 / 58%); }
+.storage-action { min-height: 30px; padding: 6px 8px; background: transparent; color: #475467; font-size: 11px; font-weight: 650; }
+.storage-action:hover:not(:disabled) { background: rgb(203 213 225 / 28%); }
+.storage-action.danger { color: #b42318; }
 
 .issues-panel { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 12px; width: min(360px, calc(100vw - 24px)); max-height: min(66dvh, 620px); padding: 14px; border: 1px solid rgb(255 255 255 / 80%); border-radius: 16px; background: var(--material); box-shadow: 0 22px 56px rgb(23 32 51 / 18%); backdrop-filter: blur(24px) saturate(170%); }
 #issues { display: grid; gap: 8px; overflow: auto; overscroll-behavior: contain; }

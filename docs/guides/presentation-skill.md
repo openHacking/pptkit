@@ -48,6 +48,10 @@ After approval, browser mode creates `deck-brief.md`, `deck-session.json`, and `
 
 The agent transfers `DeckSessionV2` JSON bytes and every referenced asset through the same resumable `pptkit-transfer-v1` protocol. The page renders one standalone SVG per slide, shows blocking issues and warnings, stores the session and assets in IndexedDB, and keeps the review tab open. It does not upload deck data and does not generate PPTX bytes during preview.
 
+Each newly approved task receives a unique session ID. The hash-free preview URL always opens a clean workspace; a `#<sessionId>` URL restores only that task. Revisions within the same task retain the ID, while a new conversation never inherits the previous task's preview, assets, or transfer errors.
+
+Completed sessions and assets are retained locally for 30 days from the last session update, and incomplete transfers remain resumable for 24 hours. Failed transfers are not persisted. The transfer panel can delete the current presentation or, after confirmation, all PPTKit preview data stored by the site.
+
 Users can revise the deck in chat without losing their place: revisions retain stable slide IDs, increment the session revision, re-import the complete session, and report changed pages.
 
 All runtimes use the same theme-specific recipe registry and deck-level planner. Clean Business emphasizes information axes and rules, Swiss Grid uses modular asymmetry and numeric anchors, and Editorial Story uses narrow measures and narrative image/text compositions. Theme previews communicate these visual languages rather than promising one fixed page template.

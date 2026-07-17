@@ -130,6 +130,48 @@ function largeSvg(byteLength, label) {
   return Buffer.concat([start, Buffer.alloc(byteLength - start.length - end.length, 120), end]);
 }
 
+async function updateStoredTransfer(page, transferId, patch) {
+  await page.evaluate(async ({ transferId, patch }) => {
+    const database = await new Promise((resolve, reject) => {
+      const request = indexedDB.open("pptkit-presentation-preview-transfer-v2", 2);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    const transaction = database.transaction("transfers", "readwrite");
+    const store = transaction.objectStore("transfers");
+    const transfer = await new Promise((resolve, reject) => {
+      const request = store.get(transferId);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    store.put({ ...transfer, ...patch });
+    await new Promise((resolve, reject) => {
+      transaction.oncomplete = resolve;
+      transaction.onerror = () => reject(transaction.error);
+    });
+    database.close();
+  }, { transferId, patch });
+}
+
+async function storageCounts(page) {
+  return page.evaluate(async () => {
+    const database = await new Promise((resolve, reject) => {
+      const request = indexedDB.open("pptkit-presentation-preview-transfer-v2", 2);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    const names = ["sessions", "assets", "transfers", "chunks"];
+    const transaction = database.transaction(names, "readonly");
+    const entries = await Promise.all(names.map((name) => new Promise((resolve, reject) => {
+      const request = transaction.objectStore(name).count();
+      request.onsuccess = () => resolve([name, request.result]);
+      request.onerror = () => reject(request.error);
+    })));
+    database.close();
+    return Object.fromEntries(entries);
+  });
+}
+
 test("imports, persists, revises, previews, and exports through the chunk protocol", async (t) => {
   const { server, url } = await serve();
   t.after(() => server.close());
@@ -191,6 +233,143 @@ test("imports, persists, revises, previews, and exports through the chunk protoc
   assert.deepEqual(downloads.map((download) => download.suggestedFilename()).sort(), ["browser-review.pptx", "build-report.json"]);
   const pptx = downloads.find((download) => download.suggestedFilename().endsWith(".pptx"));
   assert.ok(pptx);
+});
+
+test("scopes restored state to the hash and keeps the base URL clean", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const bytes = largeSvg(1024 * 1024, "Resumable");
+  const asset = { id: "resumable", name: "resumable.svg", mimeType: "image/svg+xml", byteLength: bytes.byteLength, sha256: digest(bytes), width: 1200, height: 675 };
+  await sendSession(page, fixture(1, [asset], [asset]));
+  const partial = await sendPayload(page, { bytes, kind: "asset", payloadId: asset.id, sessionId: "browser-review", mimeType: asset.mimeType, indexes: [0], expectComplete: false });
+  assert.equal(new URL(page.url()).hash, "#browser-review");
+  assert.equal((await domBridge(page)).state.transfers.some((item) => item.transferId === partial.transferId), true);
+
+  await page.evaluate(() => { location.hash = ""; });
+  await page.waitForFunction(() => globalThis.__pptkitPreviewState.sessionId === undefined && document.querySelectorAll("#stage svg").length === 0);
+  assert.deepEqual((await domBridge(page)).state.transfers, []);
+  assert.equal(await page.locator("#deck-title").innerText(), "PPTKit Preview");
+  assert.equal(await page.locator("#status").innerText(), "Ready");
+
+  await page.evaluate(() => { location.hash = "browser-review"; });
+  await page.waitForFunction(() => globalThis.__pptkitPreviewState.sessionId === "browser-review");
+  assert.equal((await domBridge(page)).state.transfers.some((item) => item.transferId === partial.transferId), true);
+  await sendPayload(page, { bytes, kind: "asset", payloadId: asset.id, sessionId: "browser-review", mimeType: asset.mimeType, indexes: [1] });
+  assert.equal((await storageCounts(page)).assets, 1);
+  await page.getByTestId("pptkit-transfer-toggle").click();
+  await page.getByRole("button", { name: "Delete current presentation" }).click();
+  await page.waitForFunction(() => document.querySelector("#status")?.textContent === "Local presentation data deleted.");
+  assert.equal(new URL(page.url()).hash, "");
+  await page.evaluate(() => { location.hash = "browser-review"; });
+  await page.waitForFunction(() => document.querySelector("#status")?.textContent === "Presentation not found in this browser.");
+  assert.equal((await domBridge(page)).state.sessionId, undefined);
+  assert.deepEqual(await storageCounts(page), { sessions: 0, assets: 0, transfers: 0, chunks: 0 });
+});
+
+test("keeps same-named assets isolated between sessions", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const firstBytes = largeSvg(2048, "First session");
+  const secondBytes = largeSvg(2048, "Second session");
+  const firstAsset = { id: "shared-id", name: "shared.svg", mimeType: "image/svg+xml", byteLength: firstBytes.byteLength, sha256: digest(firstBytes), width: 1200, height: 675 };
+  const secondAsset = { ...firstAsset, sha256: digest(secondBytes) };
+  const firstSession = fixture(1, [firstAsset], [firstAsset]);
+  const secondSession = fixture(1, [secondAsset], [secondAsset]);
+  secondSession.id = "other-review";
+  secondSession.deck.design.seed = secondSession.id;
+
+  await sendSession(page, firstSession);
+  await sendPayload(page, { bytes: firstBytes, kind: "asset", payloadId: firstAsset.id, sessionId: firstSession.id, mimeType: firstAsset.mimeType });
+  await sendSession(page, secondSession);
+  await sendPayload(page, { bytes: secondBytes, kind: "asset", payloadId: secondAsset.id, sessionId: secondSession.id, mimeType: secondAsset.mimeType });
+
+  async function renderedImageText(sessionId) {
+    await page.evaluate((id) => { location.hash = id; }, sessionId);
+    await page.waitForFunction((id) => globalThis.__pptkitPreviewState.sessionId === id && document.querySelectorAll("#thumbnails image").length === 1, sessionId);
+    return page.evaluate(async () => {
+      const image = document.querySelector("#thumbnails image");
+      return fetch(image.href.baseVal).then((response) => response.text());
+    });
+  }
+
+  assert.match(await renderedImageText(firstSession.id), /First session/);
+  assert.match(await renderedImageText(secondSession.id), /Second session/);
+});
+
+test("keeps failures transient and allows the same transfer to retry", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const session = fixture();
+  const bytes = Buffer.from(JSON.stringify(session));
+  const transferId = digest(Buffer.from(["session", session.id, "", digest(bytes)].join("\0")));
+  const envelope = {
+    protocol, transferId, kind: "session", payloadId: session.id, mimeType: "application/json",
+    byteLength: bytes.byteLength, sha256: digest(bytes), chunkIndex: 0, chunkCount: 1,
+    chunkByteLength: bytes.byteLength, chunkSha256: "0".repeat(64), dataBase64: bytes.toString("base64"),
+  };
+  await page.getByTestId("pptkit-transfer-toggle").click();
+  await page.getByTestId("pptkit-transfer-input").fill(JSON.stringify(envelope));
+  await page.getByTestId("pptkit-transfer-submit").click();
+  await page.waitForFunction((id) => globalThis.__pptkitPreviewBridge.getState().transfers.some((item) => item.transferId === id && item.status === "failed"), transferId);
+  assert.equal((await storageCounts(page)).transfers, 0);
+  assert.equal((await storageCounts(page)).chunks, 0);
+
+  await sendSession(page, session);
+  await page.waitForFunction(() => globalThis.__pptkitPreviewState.sessionId === "browser-review");
+  const retried = (await domBridge(page)).state.transfers.find((item) => item.transferId === transferId);
+  assert.equal(retried.status, "completed");
+});
+
+test("prunes expired sessions, assets, and incomplete transfers", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+
+  const bytes = largeSvg(1024 * 1024, "Expired");
+  const asset = { id: "expired", name: "expired.svg", mimeType: "image/svg+xml", byteLength: bytes.byteLength, sha256: digest(bytes), width: 1200, height: 675 };
+  const expiredSession = fixture(1, [asset], [asset]);
+  expiredSession.updatedAt = new Date(Date.now() - 31 * 24 * 60 * 60 * 1000).toISOString();
+  await sendSession(page, expiredSession);
+  const partial = await sendPayload(page, { bytes, kind: "asset", payloadId: asset.id, sessionId: expiredSession.id, mimeType: asset.mimeType, indexes: [0], expectComplete: false });
+  await updateStoredTransfer(page, partial.transferId, { lastActivityAt: new Date(Date.now() - 25 * 60 * 60 * 1000).toISOString() });
+
+  await page.reload();
+  await page.waitForFunction(() => document.querySelector("#status")?.textContent === "Presentation not found in this browser.");
+  assert.deepEqual(await storageCounts(page), { sessions: 0, assets: 0, transfers: 0, chunks: 0 });
+});
+
+test("clears all locally stored preview data after confirmation", async (t) => {
+  const { server, url } = await serve();
+  t.after(() => server.close());
+  const browser = await chromium.launch({ headless: true });
+  t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.goto(url);
+  await sendSession(page, fixture());
+  await page.getByTestId("pptkit-transfer-toggle").click();
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Clear all local preview data" }).click();
+  await page.waitForFunction(() => document.querySelector("#status")?.textContent === "All local preview data deleted.");
+  assert.equal(new URL(page.url()).hash, "");
+  assert.deepEqual(await storageCounts(page), { sessions: 0, assets: 0, transfers: 0, chunks: 0 });
 });
 
 test("transfers assets larger than 5 MB and more than 20 MB in total", async (t) => {

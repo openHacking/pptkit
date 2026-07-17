@@ -14,11 +14,20 @@ import {
 } from "@pptkit/presentation-workflow";
 import { renderPresentationToSvg, type SvgRenderResult } from "@pptkit/svg-renderer";
 
-import { listTransfers, loadAssetBlob, loadSession, type StoredTransfer } from "./storage.js";
+import {
+  clearAllPreviewData,
+  deleteSessionData,
+  listTransfers,
+  loadAssetBlob,
+  loadSession,
+  pruneExpiredStorage,
+  type StoredTransfer,
+} from "./storage.js";
 import {
   MAX_TRANSFER_CHUNK_BYTES,
   PPTKIT_TRANSFER_PROTOCOL,
   receiveTransferChunk,
+  TransferReceiveError,
   type TransferProgress,
 } from "./transfer.js";
 import "./styles.css";
@@ -44,6 +53,8 @@ const transferButton = byId<HTMLButtonElement>("transfer-submit");
 const transferError = byId<HTMLParagraphElement>("transfer-error");
 const transferProgress = byId<HTMLDivElement>("transfer-progress");
 const previewBridge = byId<HTMLOutputElement>("preview-bridge");
+const clearCurrentButton = byId<HTMLButtonElement>("clear-current");
+const clearAllButton = byId<HTMLButtonElement>("clear-all");
 
 const filmstrip = byId<HTMLElement>("filmstrip");
 const filmstripToggle = byId<HTMLButtonElement>("filmstrip-toggle");
@@ -69,6 +80,20 @@ let objectUrls: string[] = [];
 let persisted = true;
 let transfers: TransferProgress[] = [];
 let missingAssetCount = 0;
+let routeGeneration = 0;
+let renderGeneration = 0;
+
+function routeSessionId() {
+  try { return decodeURIComponent(location.hash.slice(1)); }
+  catch { return ""; }
+}
+
+function replaceRouteSessionId(sessionId?: string) {
+  const url = new URL(location.href);
+  url.hash = sessionId ? encodeURIComponent(sessionId) : "";
+  history.replaceState(null, "", url);
+  clearCurrentButton.disabled = !sessionId;
+}
 
 function setStatus(message: string, tone: "neutral" | "busy" | "success" | "error" = "neutral") {
   status.textContent = message;
@@ -152,6 +177,7 @@ function updateTransferSurface() {
 
   if (session && missingAssetCount === 0 && !active && !failed) setTransferOpen(false);
   transferToggle.hidden = false;
+  clearCurrentButton.disabled = !routeSessionId();
   if (failed) setTransferOpen(true);
 }
 
@@ -162,14 +188,15 @@ function revokeObjectUrls() {
 
 async function createAssetResolver(activeSession: DeckSessionV2) {
   const resolved = new Map<string, { source: { type: "url"; value: string }; mimeType: string; dedupeKey: string }>();
+  const urls: string[] = [];
   for (const asset of activeSession.assets) {
     const blob = await loadAssetBlob(activeSession.id, asset).catch(() => undefined);
     if (!blob) continue;
     const url = URL.createObjectURL(blob);
-    objectUrls.push(url);
+    urls.push(url);
     resolved.set(asset.id, { source: { type: "url", value: url }, mimeType: asset.mimeType, dedupeKey: asset.id });
   }
-  return (assetId: string) => resolved.get(assetId);
+  return { resolveAsset: (assetId: string) => resolved.get(assetId), urls };
 }
 
 function changedSlides(previous: DeckSessionV2 | undefined, next: DeckSessionV2) {
@@ -330,25 +357,24 @@ function storedTransferProgress(item: StoredTransfer): TransferProgress {
 }
 
 async function refreshStoredTransfers() {
-  const stored = (await listTransfers()).map(storedTransferProgress);
+  const targetSessionId = routeSessionId() || session?.id;
+  const stored = targetSessionId ? (await listTransfers(targetSessionId)).map(storedTransferProgress) : [];
   const storedIds = new Set(stored.map((item) => item.transferId));
-  transfers = [...transfers.filter((item) => item.status === "completed" && !storedIds.has(item.transferId)), ...stored];
+  transfers = [...transfers.filter((item) => item.status !== "receiving" && !storedIds.has(item.transferId)), ...stored];
   renderTransferProgress();
 }
 
 async function renderSession(nextSession: DeckSessionV2, changed: string[] = []) {
+  const generation = ++renderGeneration;
   const selectedSlideId = preview?.slides[currentIndex]?.slideId;
-  revokeObjectUrls();
-  const resolveAsset = await createAssetResolver(nextSession);
+  const { resolveAsset, urls } = await createAssetResolver(nextSession);
   const authored = authorDeck(nextSession.deck, resolveAsset);
-  presentation = authored.presentation;
-  layoutDecisions = authored.layoutDecisions;
+  const nextPresentation = authored.presentation;
   const availableAssets = new Set(nextSession.assets.filter((asset) => resolveAsset(asset.id)).map((asset) => asset.id));
-  missingAssetCount = nextSession.assets.length - availableAssets.size;
+  const nextMissingAssetCount = nextSession.assets.length - availableAssets.size;
   const specIssues = validateDeckSpec(nextSession.deck, availableAssets);
-  const diagnostics = validatePresentation(presentation);
-  currentDiagnostics = diagnostics.map((diagnostic) => ({ severity: diagnostic.severity, code: diagnostic.code, message: diagnostic.message, path: diagnostic.path }));
-  currentExportStatus = "not-run";
+  const diagnostics = validatePresentation(nextPresentation);
+  const nextDiagnostics = diagnostics.map((diagnostic) => ({ severity: diagnostic.severity, code: diagnostic.code, message: diagnostic.message, path: diagnostic.path }));
   const diagnosticIssues: StructuralIssue[] = diagnostics.map((diagnostic) => ({
     severity: diagnostic.severity === "error" ? "error" : "warning",
     code: diagnostic.code,
@@ -356,14 +382,27 @@ async function renderSession(nextSession: DeckSessionV2, changed: string[] = [])
     ...(diagnostic.slideId ? { slideId: diagnostic.slideId } : {}),
     ...(diagnostic.elementId ? { elementId: diagnostic.elementId } : {}),
   }));
-  const structural = diagnostics.some((diagnostic) => diagnostic.severity === "error") ? [] : inspectStructure(normalizePresentation(presentation));
-  preview = await renderPresentationToSvg(presentation);
-  findings = [
+  const structural = diagnostics.some((diagnostic) => diagnostic.severity === "error") ? [] : inspectStructure(normalizePresentation(nextPresentation));
+  const nextPreview = await renderPresentationToSvg(nextPresentation);
+  const nextFindings = [
     ...specIssues,
     ...diagnosticIssues,
     ...structural,
-    ...preview.warnings.map((warning) => ({ severity: "warning" as const, code: warning.code, message: warning.message, ...(warning.slideId ? { slideId: warning.slideId } : {}), ...(warning.elementId ? { elementId: warning.elementId } : {}) })),
+    ...nextPreview.warnings.map((warning) => ({ severity: "warning" as const, code: warning.code, message: warning.message, ...(warning.slideId ? { slideId: warning.slideId } : {}), ...(warning.elementId ? { elementId: warning.elementId } : {}) })),
   ];
+  if (generation !== renderGeneration) {
+    for (const url of urls) URL.revokeObjectURL(url);
+    return;
+  }
+  revokeObjectUrls();
+  objectUrls = urls;
+  presentation = nextPresentation;
+  layoutDecisions = authored.layoutDecisions;
+  missingAssetCount = nextMissingAssetCount;
+  currentDiagnostics = nextDiagnostics;
+  currentExportStatus = "not-run";
+  preview = nextPreview;
+  findings = nextFindings;
   renderThumbnails();
   const retainedIndex = selectedSlideId ? preview.slides.findIndex((slide) => slide.slideId === selectedSlideId) : -1;
   currentIndex = retainedIndex >= 0 ? retainedIndex : 0;
@@ -377,6 +416,53 @@ async function renderSession(nextSession: DeckSessionV2, changed: string[] = [])
   setStatus(`${persisted ? "Saved in this browser." : "Previewing in memory; browser storage unavailable."} ${blocking} blocking findings, ${findings.length - blocking} warnings.${changedText}`, blocking > 0 ? "error" : "success");
   renderBridgeState();
   updateTransferSurface();
+}
+
+function resetPreviewState(message = "Ready") {
+  renderGeneration += 1;
+  revokeObjectUrls();
+  session = undefined;
+  presentation = undefined;
+  layoutDecisions = [];
+  preview = undefined;
+  currentIndex = 0;
+  findings = [];
+  currentDiagnostics = [];
+  currentExportStatus = "not-run";
+  transfers = [];
+  missingAssetCount = 0;
+  transferInput.value = "";
+  transferError.textContent = "";
+  deckTitle.textContent = "PPTKit Preview";
+  deckMeta.textContent = "";
+  downloadButton.disabled = true;
+  renderThumbnails();
+  showCurrentSlide();
+  showFindings([]);
+  setFindingsOpen(false);
+  setTransferOpen(false);
+  setStatus(message);
+  renderTransferProgress();
+}
+
+async function loadCurrentRoute() {
+  const generation = ++routeGeneration;
+  const targetSessionId = routeSessionId();
+  resetPreviewState();
+  if (!targetSessionId) return;
+  const [stored, storedTransfers] = await Promise.all([
+    loadSession(targetSessionId),
+    listTransfers(targetSessionId),
+  ]);
+  if (generation !== routeGeneration) return;
+  transfers = storedTransfers.map(storedTransferProgress);
+  renderTransferProgress();
+  if (!stored) {
+    setStatus(transfers.length > 0 ? "Waiting for the remaining presentation data…" : "Presentation not found in this browser.", transfers.length > 0 ? "busy" : "neutral");
+    return;
+  }
+  session = stored;
+  await renderSession(stored);
 }
 
 function download(bytes: Uint8Array, mimeType: string, filename: string) {
@@ -449,17 +535,33 @@ filmstrip.addEventListener("pointerleave", () => delete filmstrip.dataset.suppre
 
 transferButton.addEventListener("click", async () => {
   transferError.textContent = "";
+  try {
+    const candidate = JSON.parse(transferInput.value) as { transferId?: unknown };
+    if (typeof candidate.transferId === "string") {
+      const retained = transfers.filter((item) => item.transferId !== candidate.transferId || item.status !== "failed");
+      if (retained.length !== transfers.length) {
+        transfers = retained;
+        renderTransferProgress();
+      }
+    }
+  } catch {
+    // The transfer parser reports malformed JSON with the full validation context below.
+  }
   transferButton.disabled = true;
   transferPanel.setAttribute("aria-busy", "true");
   setStatus("Processing transfer…", "busy");
   try {
     const result = await receiveTransferChunk(transferInput.value, session);
+    if (result.kind === "session") {
+      if (session && session.id !== result.payloadId) resetPreviewState("Receiving a new presentation…");
+      replaceRouteSessionId(result.payloadId);
+    }
     recordTransfer(result);
     transferInput.value = "";
     if (result.session) {
       const changed = changedSlides(session, result.session);
       session = result.session;
-      location.hash = encodeURIComponent(session.id);
+      replaceRouteSessionId(session.id);
       await renderSession(session, changed);
     } else if (result.completedAssetId && session) {
       await renderSession(session);
@@ -467,6 +569,10 @@ transferButton.addEventListener("click", async () => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
+    if (error instanceof TransferReceiveError) {
+      if (error.progress.kind === "session") replaceRouteSessionId(error.progress.payloadId);
+      recordTransfer(error.progress);
+    }
     transferError.textContent = message;
     setStatus("Couldn’t load the presentation.", "error");
     await refreshStoredTransfers().catch(() => undefined);
@@ -475,6 +581,34 @@ transferButton.addEventListener("click", async () => {
     transferButton.disabled = false;
     transferPanel.removeAttribute("aria-busy");
     updateTransferSurface();
+  }
+});
+
+clearCurrentButton.addEventListener("click", async () => {
+  const targetSessionId = routeSessionId() || session?.id;
+  if (!targetSessionId) return;
+  clearCurrentButton.disabled = true;
+  try {
+    await deleteSessionData(targetSessionId);
+    replaceRouteSessionId();
+    resetPreviewState("Local presentation data deleted.");
+  } catch (error) {
+    setStatus(`Couldn’t delete local presentation data: ${error instanceof Error ? error.message : String(error)}`, "error");
+    updateTransferSurface();
+  }
+});
+
+clearAllButton.addEventListener("click", async () => {
+  if (!window.confirm("Clear every PPTKit presentation and asset saved in this browser? Downloaded files will not be affected.")) return;
+  clearAllButton.disabled = true;
+  try {
+    await clearAllPreviewData();
+    replaceRouteSessionId();
+    resetPreviewState("All local preview data deleted.");
+  } catch (error) {
+    setStatus(`Couldn’t clear local preview data: ${error instanceof Error ? error.message : String(error)}`, "error");
+  } finally {
+    clearAllButton.disabled = false;
   }
 });
 
@@ -502,23 +636,22 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "End") selectSlide((preview?.slides.length ?? 1) - 1);
 });
 
-const requestedSession = decodeURIComponent(location.hash.slice(1));
-Promise.all([
-  requestedSession ? loadSession(requestedSession) : Promise.resolve(undefined),
-  listTransfers(),
-]).then(async ([stored, storedTransfers]) => {
-  transfers = storedTransfers.map(storedTransferProgress);
-  renderTransferProgress();
-  if (!stored) {
-    showCurrentSlide();
-    return;
-  }
-  session = stored;
-  await renderSession(stored);
-}).catch(() => {
+async function initialize() {
+  await pruneExpiredStorage();
+  await loadCurrentRoute();
+}
+
+void initialize().catch(() => {
   persisted = false;
   setStatus("Browser storage is unavailable. The presentation will stay in memory.", "error");
   updateTransferSurface();
+});
+
+window.addEventListener("hashchange", () => {
+  void loadCurrentRoute().catch(() => {
+    persisted = false;
+    setStatus("Browser storage is unavailable. The presentation will stay in memory.", "error");
+  });
 });
 
 window.addEventListener("beforeunload", revokeObjectUrls);

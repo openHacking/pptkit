@@ -43,7 +43,8 @@ cross-platform pixel tolerance keep the preview snapshots reviewable.
 
 The presentation preview application adds Chromium coverage for unified chunk transfer,
 large asset persistence, IndexedDB restore, stable-slide revision behavior, warning
-navigation, deferred export, downloads, and final ZIP signatures. Its test server is
+navigation, hash-scoped session isolation, retention cleanup, manual deletion, deferred
+export, downloads, and final ZIP signatures. Its test server is
 local-only and does not represent the production HTTPS deployment.
 
 ## Fixtures and regressions

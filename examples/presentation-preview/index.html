@@ -47,6 +47,10 @@
               <button id="transfer-submit" data-testid="pptkit-transfer-submit" type="button">Send part</button>
               <p id="transfer-error" class="error" role="alert"></p>
               <div id="transfer-progress" class="transfer-progress" hidden></div>
+              <div class="storage-actions" aria-label="Local preview data">
+                <button id="clear-current" class="storage-action" type="button" disabled>Delete current presentation</button>
+                <button id="clear-all" class="storage-action danger" type="button">Clear all local preview data</button>
+              </div>
               <output id="preview-bridge" data-testid="pptkit-preview-bridge" hidden></output>
             </section>
           </div>

@@ -36,6 +36,13 @@ asset metadata; object URLs, SVG strings, PPTX bytes, and build reports are deri
 A deployed static HTTPS application can therefore restore review state without uploading
 presentation data or embedding binary data in the session JSON.
 
+Browser state is scoped by the session ID in the URL fragment. The fragment-free URL is
+a clean entry point and never restores stored sessions or transfers; a `#<sessionId>` URL
+restores only that session. New tasks receive unique IDs, while revisions retain the same
+ID and stable slide identities. Completed session data expires 30 days after its last
+update, incomplete transfers expire after 24 hours, and failed transfers remain only as
+transient diagnostics. Session deletion also removes owned assets, transfers, and chunks.
+
 The preview publishes protocol compatibility, native-page API checks, and resumable
 transfer progress as JSON in a hidden read-only DOM bridge. Keeping observation in the DOM
 and mutation in the existing transfer controls lets browser hosts with isolated evaluation

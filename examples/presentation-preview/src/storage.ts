@@ -1,11 +1,13 @@
 import type { DeckSessionV2 } from "@pptkit/presentation-workflow";
 
 const DATABASE = "pptkit-presentation-preview-transfer-v2";
-const VERSION = 1;
+const VERSION = 2;
 const SESSIONS = "sessions";
 const ASSETS = "assets";
 const TRANSFERS = "transfers";
 const CHUNKS = "chunks";
+const SESSION_RETENTION_MS = 30 * 24 * 60 * 60 * 1000;
+const TRANSFER_RETENTION_MS = 24 * 60 * 60 * 1000;
 
 export interface StoredTransfer {
   transferId: string;
@@ -18,6 +20,7 @@ export interface StoredTransfer {
   chunkCount: number;
   received: number[];
   status: "receiving" | "failed";
+  lastActivityAt: string;
   error?: string;
 }
 
@@ -45,12 +48,16 @@ function openDatabase() {
     request.onerror = () => reject(request.error ?? new Error("IndexedDB could not be opened."));
     request.onupgradeneeded = () => {
       const database = request.result;
-      database.createObjectStore(SESSIONS, { keyPath: "id" });
-      const assets = database.createObjectStore(ASSETS, { keyPath: "key" });
-      assets.createIndex("sessionId", "sessionId");
-      database.createObjectStore(TRANSFERS, { keyPath: "transferId" });
-      const chunks = database.createObjectStore(CHUNKS, { keyPath: "key" });
-      chunks.createIndex("transferId", "transferId");
+      if (!database.objectStoreNames.contains(SESSIONS)) database.createObjectStore(SESSIONS, { keyPath: "id" });
+      if (!database.objectStoreNames.contains(ASSETS)) {
+        const assets = database.createObjectStore(ASSETS, { keyPath: "key" });
+        assets.createIndex("sessionId", "sessionId");
+      }
+      if (!database.objectStoreNames.contains(TRANSFERS)) database.createObjectStore(TRANSFERS, { keyPath: "transferId" });
+      if (!database.objectStoreNames.contains(CHUNKS)) {
+        const chunks = database.createObjectStore(CHUNKS, { keyPath: "key" });
+        chunks.createIndex("transferId", "transferId");
+      }
     };
     request.onsuccess = () => resolve(request.result);
   });
@@ -110,13 +117,13 @@ export async function loadTransfer(transferId: string) {
   return result;
 }
 
-export async function listTransfers() {
+export async function listTransfers(sessionId: string) {
   const database = await openDatabase();
   const transaction = database.transaction(TRANSFERS, "readonly");
   const result = await requestValue(transaction.objectStore(TRANSFERS).getAll(), "Transfers could not be listed.") as StoredTransfer[];
   await complete(transaction);
   database.close();
-  return result;
+  return result.filter((transfer) => transfer.kind === "session" ? transfer.payloadId === sessionId : transfer.sessionId === sessionId);
 }
 
 export async function saveTransferChunk(transfer: StoredTransfer, index: number, sha256: string, blob: Blob) {
@@ -131,7 +138,7 @@ export async function saveTransferChunk(transfer: StoredTransfer, index: number,
     throw new Error(`Transfer chunk ${index} conflicts with the previously stored chunk.`);
   }
   if (!existing) chunks.put({ key, transferId: transfer.transferId, index, sha256, blob } satisfies StoredChunk);
-  transaction.objectStore(TRANSFERS).put(transfer);
+  transaction.objectStore(TRANSFERS).put({ ...transfer, lastActivityAt: new Date().toISOString() });
   await complete(transaction);
   database.close();
 }
@@ -180,13 +187,89 @@ export async function completeAssetTransfer(transferId: string, sessionId: strin
   database.close();
 }
 
-export async function failTransfer(transfer: StoredTransfer, error: string) {
+export async function discardTransfer(transferId: string) {
   const database = await openDatabase();
   const transaction = database.transaction([TRANSFERS, CHUNKS], "readwrite");
-  const chunks = transaction.objectStore(CHUNKS);
-  const keys = await requestValue(chunks.index("transferId").getAllKeys(transfer.transferId), "Transfer chunk keys could not be loaded.");
-  for (const key of keys) chunks.delete(key);
-  transaction.objectStore(TRANSFERS).put({ ...transfer, received: [], status: "failed", error });
+  await deleteTransferIn(transaction, transferId);
+  await complete(transaction);
+  database.close();
+}
+
+function transferBelongsToSession(transfer: StoredTransfer, sessionId: string) {
+  return transfer.kind === "session" ? transfer.payloadId === sessionId : transfer.sessionId === sessionId;
+}
+
+export async function deleteSessionData(sessionId: string) {
+  const database = await openDatabase();
+  const transaction = database.transaction([SESSIONS, ASSETS, TRANSFERS, CHUNKS], "readwrite");
+  transaction.objectStore(SESSIONS).delete(sessionId);
+  const assets = transaction.objectStore(ASSETS);
+  const assetKeys = await requestValue(assets.index("sessionId").getAllKeys(sessionId), "Session asset keys could not be loaded.");
+  for (const key of assetKeys) assets.delete(key);
+  const storedTransfers = await requestValue(transaction.objectStore(TRANSFERS).getAll(), "Transfers could not be listed.") as StoredTransfer[];
+  for (const transfer of storedTransfers) {
+    if (transferBelongsToSession(transfer, sessionId)) await deleteTransferIn(transaction, transfer.transferId);
+  }
+  await complete(transaction);
+  database.close();
+}
+
+export async function clearAllPreviewData() {
+  const database = await openDatabase();
+  const transaction = database.transaction([SESSIONS, ASSETS, TRANSFERS, CHUNKS], "readwrite");
+  transaction.objectStore(SESSIONS).clear();
+  transaction.objectStore(ASSETS).clear();
+  transaction.objectStore(TRANSFERS).clear();
+  transaction.objectStore(CHUNKS).clear();
+  await complete(transaction);
+  database.close();
+}
+
+export async function pruneExpiredStorage(now = Date.now()) {
+  const database = await openDatabase();
+  const transaction = database.transaction([SESSIONS, ASSETS, TRANSFERS, CHUNKS], "readwrite");
+  const sessionsStore = transaction.objectStore(SESSIONS);
+  const assetsStore = transaction.objectStore(ASSETS);
+  const transfersStore = transaction.objectStore(TRANSFERS);
+  const chunksStore = transaction.objectStore(CHUNKS);
+  const sessionRequest = sessionsStore.getAll();
+  const assetRequest = assetsStore.getAll();
+  const transferRequest = transfersStore.getAll();
+  const chunkRequest = chunksStore.getAll();
+  const [sessions, assets, transfers, chunks] = await Promise.all([
+    requestValue(sessionRequest, "Sessions could not be listed.") as Promise<DeckSessionV2[]>,
+    requestValue(assetRequest, "Assets could not be listed.") as Promise<StoredAsset[]>,
+    requestValue(transferRequest, "Transfers could not be listed.") as Promise<StoredTransfer[]>,
+    requestValue(chunkRequest, "Chunks could not be listed.") as Promise<StoredChunk[]>,
+  ]);
+
+  const retainedSessionIds = new Set<string>();
+  for (const storedSession of sessions) {
+    const updatedAt = Date.parse(storedSession.updatedAt);
+    if (!Number.isFinite(updatedAt) || now - updatedAt > SESSION_RETENTION_MS) sessionsStore.delete(storedSession.id);
+    else retainedSessionIds.add(storedSession.id);
+  }
+
+  for (const asset of assets) {
+    if (!retainedSessionIds.has(asset.sessionId)) assetsStore.delete(asset.key);
+  }
+
+  const retainedTransferIds = new Set<string>();
+  for (const transfer of transfers) {
+    const lastActivityAt = Date.parse(transfer.lastActivityAt);
+    const referencesMissingSession = transfer.kind === "asset" && (!transfer.sessionId || !retainedSessionIds.has(transfer.sessionId));
+    const expired = transfer.status === "failed"
+      || !Number.isFinite(lastActivityAt)
+      || now - lastActivityAt > TRANSFER_RETENTION_MS
+      || referencesMissingSession;
+    if (expired) transfersStore.delete(transfer.transferId);
+    else retainedTransferIds.add(transfer.transferId);
+  }
+
+  for (const chunk of chunks) {
+    if (!retainedTransferIds.has(chunk.transferId)) chunksStore.delete(chunk.key);
+  }
+
   await complete(transaction);
   database.close();
 }
