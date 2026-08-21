@@ -98,3 +98,129 @@ test("validation reports missing and malformed text style presets", () => {
   assert.ok(diagnostics.some((item) => item.code === "invalid-font-size"));
   assert.ok(diagnostics.some((item) => item.code === "missing-text-style-preset"));
 });
+
+test("validation accepts valid bar, line, and pie charts", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [
+      {
+        type: "chart",
+        chartType: "bar",
+        categories: ["Q1", "Q2", "Q3"],
+        series: [{ name: "Sales", values: [10, 20, 30] }],
+        title: "Revenue",
+        showLegend: true,
+        xAxis: { show: true, labels: true },
+        yAxis: { show: true },
+        box: { x: 0, y: 0, width: 400, height: 300 },
+      },
+      {
+        type: "chart",
+        chartType: "line",
+        categories: ["A", "B"],
+        series: [{ name: "X", values: [1, 2] }, { name: "Y", values: [3, 4] }],
+        showLegend: false,
+        xAxis: { show: true, labels: false },
+        yAxis: { show: false },
+        box: { x: 0, y: 0, width: 400, height: 300 },
+      },
+      {
+        type: "chart",
+        chartType: "pie",
+        categories: ["A", "B", "C"],
+        series: [{ name: "Share", values: [30, 50, 20], color: { theme: "accent1" } }],
+        showLegend: true,
+        xAxis: { show: false, labels: false },
+        yAxis: { show: false },
+        box: { x: 0, y: 0, width: 400, height: 300 },
+      },
+    ],
+  });
+  assert.deepEqual(validatePresentation(presentation), []);
+});
+
+test("validation accepts charts without optional config fields", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "chart",
+      chartType: "bar",
+      categories: ["Q1", "Q2"],
+      series: [{ name: "Sales", values: [10, 20] }],
+      box: { x: 0, y: 0, width: 400, height: 300 },
+    }],
+  });
+  assert.deepEqual(validatePresentation(presentation), []);
+});
+
+test("validation reports pie charts with multiple series", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "chart",
+      chartType: "pie",
+      categories: ["A", "B"],
+      series: [{ name: "X", values: [1, 2] }, { name: "Y", values: [3, 4] }],
+      showLegend: true,
+      xAxis: { show: true, labels: true },
+      yAxis: { show: true },
+      box: { x: 0, y: 0, width: 400, height: 300 },
+    }],
+  });
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "pie-single-series"));
+});
+
+test("validation reports chart series values length mismatch", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "chart",
+      chartType: "bar",
+      categories: ["Q1", "Q2", "Q3"],
+      series: [{ name: "Sales", values: [10, 20] }],
+      showLegend: true,
+      xAxis: { show: true, labels: true },
+      yAxis: { show: true },
+      box: { x: 0, y: 0, width: 400, height: 300 },
+    }],
+  });
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "chart-values-length"));
+});
+
+test("validation reports non-finite chart values", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "chart",
+      chartType: "bar",
+      categories: ["Q1", "Q2"],
+      series: [{ name: "Sales", values: [10, NaN] }],
+      showLegend: true,
+      xAxis: { show: true, labels: true },
+      yAxis: { show: true },
+      box: { x: 0, y: 0, width: 400, height: 300 },
+    }],
+  });
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "chart-values-finite"));
+});
+
+test("validation reports empty chart categories", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({
+    elements: [{
+      type: "chart",
+      chartType: "bar",
+      categories: [],
+      series: [{ name: "Sales", values: [] }],
+      showLegend: true,
+      xAxis: { show: true, labels: true },
+      yAxis: { show: true },
+      box: { x: 0, y: 0, width: 400, height: 300 },
+    }],
+  });
+  const diagnostics = validatePresentation(presentation);
+  assert.ok(diagnostics.some((item) => item.code === "empty-chart-categories"));
+});

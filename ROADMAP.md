@@ -14,6 +14,7 @@ PPTKit is building a format-independent presentation document engine with editab
 - **Core contract:** method-managed authoring state, readonly collections, document-wide IDs, complete diagnostics, and Canonical Presentation IR v1.
 - **Editable content:** rich text, theme/direct colors, paints, strokes, actions, image fitting/crop, transforms, and accessibility metadata.
 - **Structured elements:** preset shapes, anchored connectors, nested groups, editable tables with spans, notes, hidden slides, sections, tags, and custom data.
+- **Charts:** native bar, line, and pie chart elements with category/series data, SVG rendering, and editable OOXML `c:chartSpace` export.
 - **Templates:** presentation themes, reusable slide layouts, typed placeholders, placeholder binding, and explicit inheritance.
 - **Layout:** detached resolution for connector anchors, connector bounds, image contain/cover, and nested group traversal.
 - **PPTX export:** browser-neutral bytes, Node file output, native themes/layouts/tables/notes/media relationships, validation failures, and recoverable asset warnings.
@@ -75,7 +76,7 @@ Layout remains deterministic and independently testable; exporters do not become
 
 These depend on stable identity, rich text, themes, groups, assets, layout, and preservation contracts. Each should ship as an independent vertical slice rather than a large flat options expansion.
 
-- native charts and SmartArt
+- SmartArt
 - audio and video
 - transitions and animation timelines
 - comments and collaborative review metadata

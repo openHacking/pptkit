@@ -8,26 +8,13 @@ import type {
   NormalizedStrokeStyle,
 } from "@pptkit/core";
 import type { LayoutElement, LayoutGroupElement } from "@pptkit/layout";
-import type { SvgAssetResolver, SvgRenderWarning } from "../types/public.js";
 import { escapeXml, safeActionUrl, safeId, safeUrl } from "./escape.js";
+import { chartElement } from "./chart.js";
 import { paintAttributes, strokeAttributes, transformAttribute } from "./style.js";
 import { canRenderTextNatively, textHtml, textSvg } from "./text.js";
+import { accessibility, type RenderContext } from "./context.js";
 
-export interface RenderContext {
-  slideId: string;
-  theme: NormalizedPresentationTheme;
-  assets: ReadonlyMap<string, NormalizedAsset>;
-  resolveAsset?: SvgAssetResolver;
-  assetCache: Map<string, Promise<string | undefined>>;
-  warnings: SvgRenderWarning[];
-  defs: string[];
-}
-
-function accessibility(element: LayoutElement): string {
-  const identity = ` data-pptkit-element-id="${escapeXml(element.id)}"`;
-  if (element.accessibility.decorative) return `${identity} aria-hidden="true"`;
-  return `${identity} role="img" aria-label="${escapeXml(element.accessibility.description ?? element.name)}"`;
-}
+export type { RenderContext };
 
 function actionWrapper(element: LayoutElement, body: string, context: RenderContext): string {
   const action: ElementAction | undefined = element.action;
@@ -198,6 +185,9 @@ export async function renderElement(element: LayoutElement, context: RenderConte
     const markers = `${start === undefined ? "" : ` marker-start="url(#${start})"`}${end === undefined ? "" : ` marker-end="url(#${end})"`}`;
     const path = `<polyline points="${points.map((point) => `${point.x},${point.y}`).join(" ")}" fill="none" ${strokeAttributes(element.style, context.theme)}${markers}/>`;
     return actionWrapper(element, `<g${transformAttribute(element.box, element.transform)} opacity="${element.opacity}"${accessibility(element)}>${path}</g>`, context);
+  }
+  if (element.type === "chart") {
+    return actionWrapper(element, chartElement(element, context), context);
   }
   if (element.type === "table") {
     return actionWrapper(element, foreignObject(element.box, tableHtml(element, context), transformAttribute(element.box, element.transform), element.opacity, accessibility(element)), context);

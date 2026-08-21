@@ -29,7 +29,7 @@ import type {
   SlideLayoutDefinition,
 } from "../types/presentation.js";
 import type { NormalizedPresentationTheme } from "../types/theme.js";
-import type { NormalizedTextFrameStyle, NormalizedTextParagraphStyle, NormalizedTextRunStyle, TextStylePresetInput } from "../types/style.js";
+import type { ColorValue, NormalizedTextFrameStyle, NormalizedTextParagraphStyle, NormalizedTextRunStyle, TextStylePresetInput, ThemeColorRole } from "../types/style.js";
 import { deepClone } from "../utils/clone.js";
 import { normalizeSize } from "../validation/geometry.js";
 import { estimateTextHeight } from "./measure-text.js";
@@ -155,10 +155,26 @@ function normalizedBase(element: PresentationElement, placeholder?: NormalizedPl
   };
 }
 
+const CHART_PALETTE_ROLES: readonly ThemeColorRole[] = ["accent1", "accent2", "accent3", "accent4", "accent5", "accent6"];
+
+function ensureHexColor(color: string): string {
+  return color.startsWith("#") ? color : `#${color}`;
+}
+
+function resolveChartColor(color: ColorValue | undefined, theme: NormalizedPresentationTheme, index: number): string {
+  if (color !== undefined) {
+    if (typeof color === "string") return ensureHexColor(color);
+    return ensureHexColor(theme.colors[color.theme]);
+  }
+  const role = CHART_PALETTE_ROLES[index % CHART_PALETTE_ROLES.length] ?? "accent1";
+  return ensureHexColor(theme.colors[role]);
+}
+
 function normalizeElement(
   element: PresentationElement,
   placeholders: ReadonlyMap<string, NormalizedPlaceholderDefinition> = new Map(),
   presets: Readonly<Record<string, TextStylePresetInput>> = {},
+  theme: NormalizedPresentationTheme = DEFAULT_THEME,
 ): NormalizedElement {
   const placeholder = element.placeholderKey === undefined ? undefined : placeholders.get(element.placeholderKey);
   const base = normalizedBase(element, placeholder);
@@ -220,38 +236,60 @@ function normalizeElement(
       ...base,
       type: "group",
       coordinateSize: deepClone(element.coordinateSize),
-      children: element.children.map((child) => normalizeElement(child, new Map(), presets)),
+      children: element.children.map((child) => normalizeElement(child, new Map(), presets, theme)),
     };
   }
-  const box = base.box;
-  return {
-    ...base,
-    type: "table",
-    columns: [...element.columns],
-    rows: element.rows.map((row) => ({
-      height: row.height ?? (element.rows.length === 0 ? 0 : box.height / element.rows.length),
-      cells: row.cells.map((cell) => ({
-        content: normalizeTextContent(
-          cell.content,
-          normalizeTextParagraphStyle(presets[cell.textStylePreset ?? ""]?.paragraph),
-          normalizeTextRunStyle(presets[cell.textStylePreset ?? ""]?.run),
-        ),
-        rowSpan: cell.rowSpan ?? 1,
-        colSpan: cell.colSpan ?? 1,
-        style: normalizeCellStyle(cell, presets),
+  if (element.type === "chart") {
+    const isPie = element.chartType === "pie";
+    return {
+      ...base,
+      type: "chart",
+      chartType: element.chartType,
+      categories: [...element.categories],
+      series: element.series.map((series, index) => ({
+        name: series.name,
+        values: [...series.values],
+        color: resolveChartColor(series.color, theme, index),
       })),
-    })),
-  };
+      ...(element.title !== undefined ? { title: element.title } : {}),
+      showLegend: element.showLegend ?? true,
+      xAxis: isPie ? { show: false, labels: false } : { show: element.xAxis?.show ?? true, labels: element.xAxis?.labels ?? true },
+      yAxis: isPie ? { show: false } : { show: element.yAxis?.show ?? true },
+    };
+  }
+  if (element.type === "table") {
+    const box = base.box;
+    return {
+      ...base,
+      type: "table",
+      columns: [...element.columns],
+      rows: element.rows.map((row) => ({
+        height: row.height ?? (element.rows.length === 0 ? 0 : box.height / element.rows.length),
+        cells: row.cells.map((cell) => ({
+          content: normalizeTextContent(
+            cell.content,
+            normalizeTextParagraphStyle(presets[cell.textStylePreset ?? ""]?.paragraph),
+            normalizeTextRunStyle(presets[cell.textStylePreset ?? ""]?.run),
+          ),
+          rowSpan: cell.rowSpan ?? 1,
+          colSpan: cell.colSpan ?? 1,
+          style: normalizeCellStyle(cell, presets),
+        })),
+      })),
+    };
+  }
+  const _exhaustive: never = element;
+  throw new Error(`Unknown element type: ${JSON.stringify(_exhaustive)}`);
 }
 
-function normalizeLayout(layout: SlideLayoutDefinition, presets: Readonly<Record<string, TextStylePresetInput>>): NormalizedSlideLayout {
+function normalizeLayout(layout: SlideLayoutDefinition, presets: Readonly<Record<string, TextStylePresetInput>>, theme: NormalizedPresentationTheme): NormalizedSlideLayout {
   const placeholders = layout.placeholders.map((placeholder) => normalizePlaceholder(placeholder, presets));
   const placeholderMap = new Map(placeholders.map((placeholder) => [placeholder.key, placeholder]));
   return {
     id: layout.id,
     name: layout.name,
     background: normalizePaint(layout.background, DEFAULT_BACKGROUND),
-    elements: layout.elements.map((element) => normalizeElement(element, placeholderMap, presets)),
+    elements: layout.elements.map((element) => normalizeElement(element, placeholderMap, presets, theme)),
     placeholders,
   };
 }
@@ -265,6 +303,7 @@ function normalizeSlide(
   layouts: ReadonlyMap<string, NormalizedSlideLayout>,
   sourceLayouts: ReadonlyMap<string, SlideLayoutDefinition>,
   presets: Readonly<Record<string, TextStylePresetInput>>,
+  theme: NormalizedPresentationTheme,
 ): NormalizedPresentation["slides"][number] {
   const layoutId = slide.layoutId ?? DEFAULT_LAYOUT_ID;
   const layout = layouts.get(layoutId)!;
@@ -276,7 +315,7 @@ function normalizeSlide(
     layoutId,
     background: normalizePaint(slide.background, layout.background),
     backgroundSource,
-    elements: slide.elements.map((element) => normalizeElement(element, placeholderMap, presets)),
+    elements: slide.elements.map((element) => normalizeElement(element, placeholderMap, presets, theme)),
     notes: normalizeTextContent(slide.notes ?? ""),
     hidden: slide.hidden,
     ...(slide.section !== undefined ? { section: slide.section } : {}),
@@ -303,7 +342,8 @@ function normalizeAsset(asset: PresentationDocument["assets"][number]): Normaliz
 
 export class PresentationNormalizer {
   normalize(document: PresentationDocument): NormalizedPresentation {
-    const normalizedLayouts = document.layouts.map((layout) => normalizeLayout(layout, document.textStylePresets));
+    const theme = normalizeTheme(document);
+    const normalizedLayouts = document.layouts.map((layout) => normalizeLayout(layout, document.textStylePresets, theme));
     if (!normalizedLayouts.some((layout) => layout.id === DEFAULT_LAYOUT_ID)) normalizedLayouts.unshift(defaultLayout());
     const layouts = new Map(normalizedLayouts.map((layout) => [layout.id, layout]));
     const sourceLayouts = new Map(document.layouts.map((layout) => [layout.id, layout]));
@@ -312,10 +352,10 @@ export class PresentationNormalizer {
       id: document.id,
       metadata: normalizeMetadata(document),
       size: normalizeSize(document.size, DEFAULT_PRESENTATION_SIZE),
-      theme: normalizeTheme(document),
+      theme,
       assets: document.assets.map(normalizeAsset),
       layouts: normalizedLayouts,
-      slides: document.slides.map((slide) => normalizeSlide(slide, layouts, sourceLayouts, document.textStylePresets)),
+      slides: document.slides.map((slide) => normalizeSlide(slide, layouts, sourceLayouts, document.textStylePresets, theme)),
     };
   }
 }

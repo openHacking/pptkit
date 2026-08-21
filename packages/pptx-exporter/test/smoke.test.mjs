@@ -209,3 +209,72 @@ test("shape text exports as editable text inside the native shape", async () => 
   assert.match(shape, /<a:rPr[^>]*sz="2400"[^>]*b="1"/);
   assert.doesNotMatch(shape, /txBox="1"/);
 });
+
+test("generatePptx exports native editable charts", async () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide();
+  slide.addElement({
+    type: "chart",
+    chartType: "bar",
+    categories: ["A", "B", "C"],
+    series: [{ name: "Series 1", values: [10, 20, 30], color: "FF0000" }],
+    box: { x: 10, y: 10, width: 300, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    chartType: "line",
+    categories: ["X", "Y"],
+    series: [{ name: "Line 1", values: [5, 15], color: "00FF00" }],
+    box: { x: 320, y: 10, width: 300, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    chartType: "pie",
+    categories: ["P", "Q", "R"],
+    series: [{ name: "Pie 1", values: [25, 35, 40], color: "0000FF" }],
+    box: { x: 10, y: 220, width: 300, height: 200 },
+  });
+
+  const result = await generatePptx(presentation);
+  const repeated = await generatePptx(presentation);
+  assert.deepEqual(result.bytes, repeated.bytes);
+
+  const entries = readZipEntries(result.bytes);
+  const slideXml = entries.get("ppt/slides/slide1.xml").toString();
+  const slideRels = entries.get("ppt/slides/_rels/slide1.xml.rels").toString();
+  const contentTypes = entries.get("[Content_Types].xml").toString();
+
+  assert.match(slideXml, /graphicData uri="http:\/\/schemas\.openxmlformats\.org\/drawingml\/2006\/chart"/);
+  assert.ok(slideXml.includes("<c:chart"));
+  assert.match(slideRels, /relationships\/chart/);
+  assert.match(slideRels, /Target="\.\.\/charts\/chart1\.xml"/);
+  assert.match(slideRels, /Target="\.\.\/charts\/chart2\.xml"/);
+  assert.match(slideRels, /Target="\.\.\/charts\/chart3\.xml"/);
+
+  assert.ok(entries.has("ppt/charts/chart1.xml"));
+  assert.ok(entries.has("ppt/charts/chart2.xml"));
+  assert.ok(entries.has("ppt/charts/chart3.xml"));
+
+  const chart1 = entries.get("ppt/charts/chart1.xml").toString();
+  const chart2 = entries.get("ppt/charts/chart2.xml").toString();
+  const chart3 = entries.get("ppt/charts/chart3.xml").toString();
+
+  assert.match(chart1, /<c:chartSpace/);
+  assert.match(chart1, /<c:barChart/);
+  assert.match(chart1, /<c:barDir val="col"/);
+  assert.match(chart1, /<c:grouping val="clustered"/);
+
+  assert.match(chart2, /<c:chartSpace/);
+  assert.match(chart2, /<c:lineChart/);
+  assert.match(chart2, /<c:grouping val="standard"/);
+
+  assert.match(chart3, /<c:chartSpace/);
+  assert.match(chart3, /<c:pieChart/);
+
+  assert.match(chart1, /<c:numCache><c:ptCount val="3"/);
+  assert.match(chart2, /<c:numCache><c:ptCount val="2"/);
+  assert.match(chart3, /<c:numCache><c:ptCount val="3"/);
+
+  assert.match(contentTypes, /\/ppt\/charts\/chart1\.xml/);
+  assert.match(contentTypes, /application\/vnd\.openxmlformats-officedocument\.drawingml\.chart\+xml/);
+});

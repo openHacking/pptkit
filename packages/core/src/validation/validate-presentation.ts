@@ -13,6 +13,8 @@ import { duplicates } from "./collection.js";
 import { isFiniteNumber, isValidBox, isValidPoint, isValidSize } from "./geometry.js";
 import { isValidColor, isValidOpacity, isValidPaint } from "./style.js";
 
+const CHART_TYPES = new Set<string>(["bar", "line", "pie"]);
+
 interface Context {
   diagnostics: PresentationDiagnostic[];
   slideIds: Set<string>;
@@ -167,7 +169,24 @@ function validateElement(
     const childIds = new Set<string>();
     collectElementIds(element.children, childIds);
     element.children.forEach((child, index) => validateElement(context, child, `${path}.children.${index}`, childIds, new Map(), ids));
-  } else {
+  } else if (element.type === "chart") {
+    if (!CHART_TYPES.has(element.chartType)) add(context, { code: "invalid-chart-type", message: "chartType must be one of: bar, line, pie.", path: `${path}.chartType`, ...identity });
+    if (element.categories.length === 0 || element.categories.some((category) => category.length === 0)) add(context, { code: "empty-chart-categories", message: "Chart categories must be a non-empty array of non-empty strings.", path: `${path}.categories`, ...identity });
+    if (element.series.length === 0) add(context, { code: "empty-chart-series", message: "Chart series must be a non-empty array.", path: `${path}.series`, ...identity });
+    element.series.forEach((series, seriesIndex) => {
+      if (series.name.length === 0) add(context, { code: "chart-series-name", message: "Chart series name must be a non-empty string.", path: `${path}.series.${seriesIndex}.name`, ...identity });
+      if (series.values.length !== element.categories.length) add(context, { code: "chart-values-length", message: "Chart series values length must match categories length.", path: `${path}.series.${seriesIndex}.values`, ...identity });
+      series.values.forEach((value, valueIndex) => {
+        if (!isFiniteNumber(value)) add(context, { code: "chart-values-finite", message: "Chart series values must be finite numbers.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
+      });
+      if (series.color !== undefined && !isValidColor(series.color)) add(context, { code: "invalid-chart-color", message: "Chart series color must be a valid color.", path: `${path}.series.${seriesIndex}.color`, ...identity });
+    });
+    if (element.chartType === "pie" && element.series.length !== 1) add(context, { code: "pie-single-series", message: "Pie charts must have exactly one series.", path: `${path}.series`, ...identity });
+    if (element.title !== undefined && element.title.length === 0) add(context, { code: "invalid-chart-title", message: "Chart title must be a non-empty string.", path: `${path}.title`, ...identity });
+    if (element.showLegend !== undefined && typeof element.showLegend !== "boolean") add(context, { code: "invalid-chart-config", message: "showLegend must be a boolean.", path: `${path}.showLegend`, ...identity });
+    if (element.xAxis !== undefined && (typeof element.xAxis.show !== "boolean" || typeof element.xAxis.labels !== "boolean")) add(context, { code: "invalid-chart-config", message: "xAxis show and labels must be booleans.", path: `${path}.xAxis`, ...identity });
+    if (element.yAxis !== undefined && typeof element.yAxis.show !== "boolean") add(context, { code: "invalid-chart-config", message: "yAxis show must be a boolean.", path: `${path}.yAxis`, ...identity });
+  } else if (element.type === "table") {
     if (element.columns.length === 0 || element.columns.some((width) => !isFiniteNumber(width) || width <= 0)) add(context, { code: "invalid-table-columns", message: "Table columns must contain positive widths.", path: `${path}.columns`, ...identity });
     element.rows.forEach((row, rowIndex) => {
       if (row.height !== undefined && (!isFiniteNumber(row.height) || row.height <= 0)) add(context, { code: "invalid-table-row-height", message: "Table row height must be positive.", path: `${path}.rows.${rowIndex}.height`, ...identity });
@@ -181,6 +200,9 @@ function validateElement(
         validateStroke(context, cell.style?.stroke, `${path}.rows.${rowIndex}.cells.${cellIndex}.style.stroke`, identity);
       });
     });
+  } else {
+    const _exhaustive: never = element;
+    void _exhaustive;
   }
 }
 

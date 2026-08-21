@@ -101,13 +101,22 @@ export interface ExampleTableElementSpec {
   box?: Box;
 }
 
+export interface ExampleChartElementSpec {
+  type: "chart";
+  chartType: "bar" | "line" | "pie";
+  categories: string[];
+  series: Array<{ name: string; values: number[] }>;
+  box?: Box;
+}
+
 export type ExampleElementSpec =
   | string
   | ExampleTextElementSpec
   | ExampleImageElementSpec
   | ExampleShapeElementSpec
   | ExampleGroupElementSpec
-  | ExampleTableElementSpec;
+  | ExampleTableElementSpec
+  | ExampleChartElementSpec;
 
 export interface ExampleSlideSpec {
   id?: string;

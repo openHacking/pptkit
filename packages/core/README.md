@@ -8,7 +8,7 @@ Authoring model and Canonical Presentation IR for PPTKit.
 - rich text paragraphs and runs
 - native text-bearing shapes and document-level text style presets
 - theme colors and fonts
-- text, image, shape, connector, group, and table elements
+- text, image, shape, connector, group, table, and chart (bar/line/pie) elements
 - placeholders, speaker notes, hidden slides, sections, tags, and custom data
 - structured validation and fully materialized IR v1 normalization
 

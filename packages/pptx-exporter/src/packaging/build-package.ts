@@ -5,6 +5,7 @@ import { REL } from "../constants/ooxml.js";
 import { elementXml, type ElementXmlContext } from "../ooxml/elements.js";
 import {
   appPropertiesXml,
+  chartPartXml,
   contentTypesXml,
   corePropertiesXml,
   notesMasterXml,
@@ -25,11 +26,14 @@ import type { AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types
 interface PartContextResult {
   context: ElementXmlContext;
   relationships: Relationship[];
+  chartParts: { id: number; xml: string }[];
 }
 
 function mediaFilename(value: string): string {
   return value.slice(value.lastIndexOf("/") + 1);
 }
+
+let globalChartCount = 0;
 
 function createPartContext(options: {
   baseRelationships: Relationship[];
@@ -42,6 +46,7 @@ function createPartContext(options: {
   const relationships = [...options.baseRelationships];
   let nextRelationship = relationships.length + 1;
   let nextObject = 2;
+  const chartParts: { id: number; xml: string }[] = [];
   const context: ElementXmlContext = {
     ...(options.slideId !== undefined ? { slideId: options.slideId } : {}),
     warnings: options.warnings,
@@ -68,8 +73,20 @@ function createPartContext(options: {
       relationships.push({ id, type: REL.slide, target: `../slides/slide${index + 1}.xml` });
       return id;
     },
+    nextChartId: () => ++globalChartCount,
+    chartRelationship(chartId) {
+      const id = `rId${nextRelationship++}`;
+      relationships.push({ id, type: REL.chart, target: `../charts/chart${chartId}.xml` });
+      return id;
+    },
+    registerChart(chartId, xml) {
+      chartParts.push({ id: chartId, xml });
+    },
+    buildChartPart(chart) {
+      return chartPartXml(chart);
+    },
   };
-  return { context, relationships };
+  return { context, relationships, chartParts };
 }
 
 function elementsXml(elements: readonly LayoutElement[], context: ElementXmlContext): string[] {
@@ -81,6 +98,7 @@ export async function buildPackage(
   warnings: ExportWarning[],
   loadAsset: AssetLoader,
 ): Promise<ZipPart[]> {
+  globalChartCount = 0;
   const parts: ZipPart[] = [];
   const media = new Map<string, PackagedMedia>();
   for (const asset of layout.assets) {
@@ -111,6 +129,8 @@ export async function buildPackage(
     parts.push({ name: `ppt/slideLayouts/_rels/slideLayout${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });
   }
 
+  const allChartParts: { id: number; xml: string }[] = [];
+
   for (let index = 0; index < layout.slides.length; index += 1) {
     const slide = layout.slides[index]!;
     const layoutIndex = layoutIndexes.get(slide.layoutId)!;
@@ -127,6 +147,7 @@ export async function buildPackage(
       slideId: slide.id,
     });
     const xml = elementsXml(slide.elements, partContext.context);
+    allChartParts.push(...partContext.chartParts);
     parts.push({
       name: `ppt/slides/slide${index + 1}.xml`,
       data: encodeUtf8(slideXml(xml, slide.backgroundSource === "slide" ? slide.background : undefined, slide.hidden, {
@@ -151,6 +172,10 @@ export async function buildPackage(
     parts.push({ name: `ppt/notesSlides/_rels/notesSlide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(notesContext.relationships)) });
   }
 
+  for (const chartPart of allChartParts) {
+    parts.push({ name: `ppt/charts/chart${chartPart.id}.xml`, data: encodeUtf8(chartPart.xml) });
+  }
+
   const presentationRelationships: Relationship[] = [
     { id: "rId1", type: REL.slideMaster, target: "slideMasters/slideMaster1.xml" },
   ];
@@ -166,7 +191,7 @@ export async function buildPackage(
   masterRelationships.push({ id: `rId${layout.layouts.length + 1}`, type: REL.theme, target: "../theme/theme1.xml" });
 
   parts.push(
-    { name: "[Content_Types].xml", data: encodeUtf8(contentTypesXml(media, layout.slideCount, layout.layouts.length)) },
+    { name: "[Content_Types].xml", data: encodeUtf8(contentTypesXml(media, layout.slideCount, layout.layouts.length, allChartParts.length)) },
     { name: "_rels/.rels", data: encodeUtf8(rootRelationshipsXml()) },
     { name: "ppt/presentation.xml", data: encodeUtf8(presentationXml(layout)) },
     { name: "ppt/_rels/presentation.xml.rels", data: encodeUtf8(relationshipsXml(presentationRelationships)) },

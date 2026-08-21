@@ -29,6 +29,10 @@ function describeElement(element: ExampleElementSpec): string {
     return `Table: ${element.columns.length} columns × ${element.rows.length} rows`;
   }
 
+  if (element.type === "chart") {
+    return `Chart: ${element.chartType} — ${element.series.length} series`;
+  }
+
   const assetLabel =
     element.altText ??
     element.asset.altText ??

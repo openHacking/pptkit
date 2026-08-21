@@ -11,7 +11,7 @@ preview.innerHTML = result.slides[0]?.svg ?? "";
 ```
 
 The output uses SVG geometry, images, and native `<text>/<tspan>` layout for simple
-text. XHTML `foreignObject` remains a fallback for mixed-run rich text and tables. It
+text. Bar, line, and pie charts render as native SVG geometry. XHTML `foreignObject` remains a fallback for mixed-run rich text and tables. It
 targets modern browsers and is intended for QA previews, not as a
 pixel-identical PowerPoint renderer or a portable SVG interchange format. URL assets
 work by default; local path assets require a custom `SvgAssetResolver`.

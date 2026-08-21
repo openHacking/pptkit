@@ -164,9 +164,24 @@ interface NormalizedTableElement extends NormalizedElementBase {
     }>;
   }>;
 }
+
+interface NormalizedChartElement extends NormalizedElementBase {
+  type: "chart";
+  chartType: "bar" | "line" | "pie";
+  categories: string[];
+  series: Array<{
+    name: string;
+    values: number[];
+    color: string;
+  }>;
+  title?: string;
+  showLegend: boolean;
+  xAxis: { show: boolean; labels: boolean };
+  yAxis: { show: boolean };
+}
 ```
 
-`NormalizedElement` is the union of these six interfaces. A shape may optionally
+`NormalizedElement` is the union of these seven interfaces. A shape may optionally
 carry an editable text body; this remains one element with one identity rather
 than becoming a shape plus an independent text element.
 
@@ -249,7 +264,7 @@ Layout elements are not copied into slide-local element arrays. Downstream consu
 
 ## Elements
 
-IR v1 supports text, image, shape, connector, group, and table elements.
+IR v1 supports text, image, shape, connector, group, table, and chart elements.
 
 - Text contains structured paragraphs/runs and a normalized frame.
 - Images contain stable asset references, explicit fit mode, and four crop edges.
@@ -257,6 +272,7 @@ IR v1 supports text, image, shape, connector, group, and table elements.
 - Connectors retain point or element-anchor intent until Layout resolves it.
 - Groups retain a local coordinate size and recursively normalized children.
 - Tables contain explicit column widths, row heights, cell spans, rich text, and cell styles.
+- Charts contain a chart type, categories, data series with colors, axis/legend visibility, and an optional title.
 
 ## Default ownership
 

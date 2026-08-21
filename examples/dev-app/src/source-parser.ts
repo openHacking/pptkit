@@ -7,6 +7,7 @@ import type {
   ExampleTableElementSpec,
   ExampleShapeElementSpec,
   ExampleTextElementSpec,
+  ExampleChartElementSpec,
 } from "./example-types.js";
 import type { TextFrameStyleInput, TextStylePresetInput, TextStylePresetMap } from "@pptkit/core";
 
@@ -306,7 +307,36 @@ function parseElement(value: unknown, slideIndex: number, elementIndex: number):
     return element;
   }
 
-  throw new ExampleSourceError(`${label}.type must be "text", "shape", "image", "group", or "table".`);
+  if (value.type === "chart") {
+    if (value.chartType !== "bar" && value.chartType !== "line" && value.chartType !== "pie") {
+      throw new ExampleSourceError(`${label}.chartType must be "bar", "line", or "pie".`);
+    }
+    if (!Array.isArray(value.categories) || value.categories.some((category) => typeof category !== "string")) {
+      throw new ExampleSourceError(`${label}.categories must be an array of strings.`);
+    }
+    if (!Array.isArray(value.series) || value.series.length === 0) {
+      throw new ExampleSourceError(`${label}.series must be a non-empty array.`);
+    }
+    const series = value.series.map((entry, seriesIndex) => {
+      if (!isRecord(entry) || typeof entry.name !== "string") {
+        throw new ExampleSourceError(`${label}.series.${seriesIndex}.name must be a string.`);
+      }
+      if (!Array.isArray(entry.values) || entry.values.some((v) => !isFiniteNumber(v))) {
+        throw new ExampleSourceError(`${label}.series.${seriesIndex}.values must be an array of finite numbers.`);
+      }
+      return { name: entry.name, values: entry.values as number[] };
+    });
+    const element: ExampleChartElementSpec = {
+      type: "chart",
+      chartType: value.chartType,
+      categories: value.categories as string[],
+      series,
+      ...(value.box !== undefined ? { box: parseBox(value.box, `${label}.box`) } : {}),
+    };
+    return element;
+  }
+
+  throw new ExampleSourceError(`${label}.type must be "text", "shape", "image", "group", "table", or "chart".`);
 }
 
 export function parseExampleSource(source: string): ExampleInputData {

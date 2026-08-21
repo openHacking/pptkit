@@ -18,6 +18,10 @@ export interface ElementXmlContext {
   nextObjectId(): number;
   imageRelationship(assetId: string): string | undefined;
   actionRelationship(action: ElementAction): string | undefined;
+  nextChartId(): number;
+  chartRelationship(chartId: number): string;
+  registerChart(chartId: number, xml: string): void;
+  buildChartPart(chart: Extract<LayoutElement, { type: "chart" }>): string;
 }
 
 function actionXml(action: ElementAction | undefined, context: ElementXmlContext): string {
@@ -188,6 +192,13 @@ function tableXml(element: Extract<LayoutElement, { type: "table" }>, context: E
   return `<p:graphicFrame>${nonVisualProperties(element, context, "graphic")}<p:xfrm><a:off x="${emu(element.box.x)}" y="${emu(element.box.y)}"/><a:ext cx="${emu(element.box.width)}" cy="${emu(element.box.height)}"/></p:xfrm><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/table"><a:tbl><a:tblPr firstRow="1" bandRow="1"><a:tableStyleId>{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}</a:tableStyleId></a:tblPr><a:tblGrid>${element.columns.map((width) => `<a:gridCol w="${emu(width)}"/>`).join("")}</a:tblGrid>${tableRowsXml(element, context, opacity)}</a:tbl></a:graphicData></a:graphic></p:graphicFrame>`;
 }
 
+function chartXml(element: Extract<LayoutElement, { type: "chart" }>, context: ElementXmlContext, inheritedOpacity: number): string {
+  const chartId = context.nextChartId();
+  context.registerChart(chartId, context.buildChartPart(element));
+  const rId = context.chartRelationship(chartId);
+  return `<p:graphicFrame>${nonVisualProperties(element, context, "graphic")}<p:xfrm><a:off x="${emu(element.box.x)}" y="${emu(element.box.y)}"/><a:ext cx="${emu(element.box.width)}" cy="${emu(element.box.height)}"/></p:xfrm><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart"><c:chart xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" r:id="${rId}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/></a:graphicData></a:graphic></p:graphicFrame>`;
+}
+
 export function elementXml(element: LayoutElement, context: ElementXmlContext, inheritedOpacity = 1): string {
   if (element.hidden) return "";
   if (element.type === "text") return textXml(element, context, inheritedOpacity);
@@ -196,6 +207,7 @@ export function elementXml(element: LayoutElement, context: ElementXmlContext, i
   if (element.type === "connector") return connectorXml(element, context, inheritedOpacity);
   if (element.type === "group") return groupXml(element, context, inheritedOpacity);
   if (element.type === "table") return tableXml(element, context, inheritedOpacity);
+  if (element.type === "chart") return chartXml(element, context, inheritedOpacity);
   context.warnings.push({ code: "unsupported-element", message: `Unsupported element type was omitted.`, ...(context.slideId !== undefined ? { slideId: context.slideId } : {}) });
   return "";
 }

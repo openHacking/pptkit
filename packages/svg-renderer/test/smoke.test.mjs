@@ -353,3 +353,72 @@ test("autoFit resize and slide actions report explicit fidelity warnings", async
   assert.ok(result.warnings.some((warning) => warning.code === "slide-action-not-linked"));
   assert.match(result.slides[1].svg, /data-pptkit-slide-target="target"/);
 });
+
+test("renders bar, line, and pie charts as deterministic SVG", async () => {
+  const presentation = createPresentation({
+    metadata: { title: "Chart test" },
+    theme: { colors: { accent1: "2457D6", accent2: "E65A3A" } },
+  });
+  const slide = presentation.addSlide({ id: "chart-slide" });
+  slide.addElement({
+    type: "chart",
+    id: "bar-chart",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [
+      { name: "Revenue", values: [120, 200, 150], color: "2457D6" },
+      { name: "Cost", values: [80, 140, 110], color: "E65A3A" },
+    ],
+    title: "Bar Chart",
+    showLegend: true,
+    xAxis: { show: true, labels: true },
+    yAxis: { show: true },
+    box: { x: 40, y: 40, width: 280, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "line-chart",
+    chartType: "line",
+    categories: ["A", "B", "C"],
+    series: [
+      { name: "Trend", values: [10, 30, 20], color: "22C55E" },
+    ],
+    title: "Line Chart",
+    showLegend: false,
+    xAxis: { show: true, labels: true },
+    yAxis: { show: true },
+    box: { x: 340, y: 40, width: 280, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "pie-chart",
+    chartType: "pie",
+    categories: ["X", "Y", "Z"],
+    series: [
+      { name: "Share", values: [40, 35, 25], color: "8B5CF6" },
+    ],
+    title: "Pie Chart",
+    showLegend: true,
+    xAxis: { show: false, labels: false },
+    yAxis: { show: false },
+    box: { x: 640, y: 40, width: 280, height: 200 },
+  });
+
+  const result = await renderPresentationToSvg(presentation);
+  const again = await renderPresentationToSvg(presentation);
+  assert.equal(result.status, "rendered");
+  assert.equal(result.slides[0].svg, again.slides[0].svg);
+
+  const svg = result.slides[0].svg;
+  assert.match(svg, /<rect[^>]+fill="#2457D6"/);
+  assert.match(svg, /<polyline[^>]+stroke="#22C55E"/);
+  assert.match(svg, /<path[^>]+d="M[^"]+A[^"]+Z"/);
+  assert.match(svg, /<text[^>]*>Bar Chart<\/text>/);
+  assert.match(svg, /<text[^>]*>Line Chart<\/text>/);
+  assert.match(svg, /<text[^>]*>Pie Chart<\/text>/);
+  assert.match(svg, /<text[^>]*>Q1<\/text>/);
+  assert.match(svg, /<text[^>]*>Q2<\/text>/);
+  assert.match(svg, /<text[^>]*>Q3<\/text>/);
+  assert.match(svg, /<text[^>]*>Revenue<\/text>/);
+  assert.match(svg, /<text[^>]*>Share<\/text>/);
+});

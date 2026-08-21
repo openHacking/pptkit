@@ -97,6 +97,7 @@ Applications should display or log warnings even when output was generated succe
 - Editable rich text paragraphs and runs, direct/theme colors, theme fonts, bullets, numbering, hyperlinks, and slide actions.
 - Images with stretch, contain, cover, crop, opacity, accessibility, and media relationships.
 - Shapes, connectors, nested groups, and native editable tables with cell spans.
+- Native editable charts (`c:chartSpace`) for bar, line, and pie with cached values and no embedded workbook.
 - Reusable slide layouts, typed placeholders, backgrounds, theme parts, hidden slides, and speaker notes.
 - Presentation metadata plus PPTKit-owned slide metadata preservation for section, tags, and custom data.
 

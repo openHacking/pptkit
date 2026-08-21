@@ -8,6 +8,7 @@ import type {
   NormalizedTextParagraphStyle,
   NormalizedTextRunStyle,
   NormalizedTransform,
+  ColorValue,
   PaintInput,
   ShapeStyleInput,
   StrokeStyleInput,
@@ -236,6 +237,53 @@ export interface NormalizedTableElement extends NormalizedElementBase {
   rows: NormalizedTableRow[];
 }
 
+export type ChartType = "bar" | "line" | "pie";
+
+export interface ChartSeriesInput {
+  name: string;
+  values: number[];
+  color?: ColorValue;
+}
+
+export interface NormalizedChartSeries {
+  name: string;
+  values: number[];
+  color: string;
+}
+
+export interface ChartElementInput extends ElementBaseInput {
+  type: "chart";
+  chartType: ChartType;
+  categories: string[];
+  series: ChartSeriesInput[];
+  title?: string;
+  showLegend?: boolean;
+  xAxis?: { show?: boolean; labels?: boolean };
+  yAxis?: { show?: boolean };
+}
+
+export interface ChartElement extends ElementBase {
+  type: "chart";
+  chartType: ChartType;
+  categories: string[];
+  series: ChartSeriesInput[];
+  title?: string;
+  showLegend: boolean;
+  xAxis: { show: boolean; labels: boolean };
+  yAxis: { show: boolean };
+}
+
+export interface NormalizedChartElement extends NormalizedElementBase {
+  type: "chart";
+  chartType: ChartType;
+  categories: string[];
+  series: NormalizedChartSeries[];
+  title?: string;
+  showLegend: boolean;
+  xAxis: { show: boolean; labels: boolean };
+  yAxis: { show: boolean };
+}
+
 export type PlaceholderKind = "title" | "subtitle" | "body" | "image" | "table" | "footer" | "slideNumber";
 
 export interface PlaceholderTextStyleInput {
@@ -269,7 +317,8 @@ export type PresentationElementInput =
   | ShapeElementInput
   | ConnectorElementInput
   | GroupElementInput
-  | TableElementInput;
+  | TableElementInput
+  | ChartElementInput;
 
 export type PresentationElement =
   | TextElement
@@ -277,7 +326,8 @@ export type PresentationElement =
   | ShapeElement
   | ConnectorElement
   | GroupElement
-  | TableElement;
+  | TableElement
+  | ChartElement;
 
 export type NormalizedElement =
   | NormalizedTextElement
@@ -285,7 +335,8 @@ export type NormalizedElement =
   | NormalizedShapeElement
   | NormalizedConnectorElement
   | NormalizedGroupElement
-  | NormalizedTableElement;
+  | NormalizedTableElement
+  | NormalizedChartElement;
 
 export interface PlaceholderBindingStyle {
   frame?: TextFrameStyleInput;

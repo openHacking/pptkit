@@ -50,6 +50,38 @@ console.log(normalized.irVersion, normalized.slides.length);
 
 Authoring inputs may omit most defaults and IDs. Normalization validates the complete document, generates a detached IR, and materializes the values required by layout and exporters.
 
+## Chart elements
+
+Chart elements express categorical data as bar, line, or pie visualizations. A
+chart carries its categories, one or more data series, an optional title, and
+axis/legend visibility flags.
+
+```ts
+slide.addElement({
+  type: "chart",
+  chartType: "bar",
+  categories: ["Q1", "Q2", "Q3", "Q4"],
+  series: [
+    { name: "Revenue", values: [120, 150, 180, 210] },
+    { name: "Costs", values: [80, 90, 100, 120] },
+  ],
+  title: "Quarterly performance",
+  showLegend: true,
+  xAxis: { show: true, labels: true },
+  yAxis: { show: true },
+  box: { x: 48, y: 140, width: 624, height: 320 },
+});
+```
+
+Normalization validates chart structure and materializes defaults:
+
+- Pie charts require exactly one series; additional series are a validation error.
+- Every series `values` array length must match the `categories` length.
+- Series colors default from theme accents when omitted, so charts stay consistent
+  with the presentation theme without explicit per-series colors.
+
+The normalized contract is documented in [Canonical Presentation IR v1](../architecture/canonical-ir-v1.md).
+
 ## API reference
 
 - [Presentations and slides](core/presentation.md) — initialization, metadata, method-managed collections, ordering, duplication, and slide semantics.

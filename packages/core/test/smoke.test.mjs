@@ -234,3 +234,42 @@ test("shape text and document text style presets normalize as one editable objec
   assert.equal(normalized.slides[0].elements[2].rows[0].cells[0].style.margin.left, 0);
   assert.equal(normalized.slides[0].elements[2].rows[0].cells[0].style.verticalAlign, "middle");
 });
+
+test("normalizes chart elements with resolved series colors and axis defaults", () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide();
+  slide.addElement({
+    type: "chart",
+    chartType: "bar",
+    categories: ["Q1", "Q2"],
+    series: [{ name: "Sales", values: [10, 20] }],
+    box: { x: 0, y: 0, width: 400, height: 300 },
+  });
+  slide.addElement({
+    type: "chart",
+    chartType: "pie",
+    categories: ["A", "B"],
+    series: [{ name: "Share", values: [60, 40] }],
+    box: { x: 0, y: 320, width: 400, height: 300 },
+  });
+
+  const normalized = normalizePresentation(presentation);
+  const bar = normalized.slides[0].elements[0];
+  assert.equal(bar.type, "chart");
+  assert.equal(bar.chartType, "bar");
+  assert.equal(bar.showLegend, true);
+  assert.equal(typeof bar.series[0].color, "string");
+  assert.ok(bar.series[0].color.startsWith("#"));
+  assert.equal(bar.series[0].name, "Sales");
+  assert.deepEqual([...bar.series[0].values], [10, 20]);
+  assert.equal(bar.xAxis.show, true);
+  assert.equal(bar.xAxis.labels, true);
+  assert.equal(bar.yAxis.show, true);
+
+  const pie = normalized.slides[0].elements[1];
+  assert.equal(pie.type, "chart");
+  assert.equal(pie.chartType, "pie");
+  assert.equal(pie.xAxis.show, false);
+  assert.equal(pie.xAxis.labels, false);
+  assert.equal(pie.yAxis.show, false);
+});

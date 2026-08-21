@@ -22,6 +22,10 @@ function defaultBox(element: Exclude<ExampleElementSpec, string>, y: number): Bo
     return { x: 48, y, width: 624, height: 180 };
   }
 
+  if (element.type === "chart") {
+    return { x: 48, y, width: 624, height: 320 };
+  }
+
   return { x: 48, y, width: 640, height: 24 };
 }
 
@@ -124,6 +128,18 @@ function createSlideElements(
             ...(cell.colSpan !== undefined ? { colSpan: cell.colSpan } : {}),
           })),
         })),
+      };
+    }
+
+    if (element.type === "chart") {
+      const box = element.box ?? defaultBox(element, nextY);
+      nextY = box.y + box.height + 24;
+      return {
+        type: "chart",
+        chartType: element.chartType,
+        categories: element.categories,
+        series: element.series,
+        box,
       };
     }
 

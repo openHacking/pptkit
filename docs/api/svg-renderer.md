@@ -82,6 +82,8 @@ do not prevent other slides from rendering. Applications own blob URL lifetime.
 
 - SVG geometry for the seven Core shapes, connectors, arrows, image transforms, crop,
   opacity, nested groups, backgrounds, fills, and strokes.
+- Bar, line, and pie charts rendered as SVG geometry (rect, polyline, and path)
+  with axis labels and an optional legend.
 - Native SVG `<text>/<tspan>` output for simple text, with deterministic line breaks
   and baselines calibrated toward DrawingML output.
 - XHTML `foreignObject` fallback for mixed-run rich text, shape text, and tables with

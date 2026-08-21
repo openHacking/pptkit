@@ -11,6 +11,7 @@ Core owns:
 - presentation, slide, element, asset, layout, and placeholder contracts
 - document-level stable identity and object ownership
 - method-managed authoring operations
+- native chart elements (bar, line, pie) with categories, series, and axis control
 - format-independent themes, paints, rich text, actions, and accessibility
 - document-level named text style presets for reusable frame, paragraph, and run defaults
 - deterministic intrinsic height estimation for text boxes with a fixed width
@@ -146,7 +147,7 @@ A capability is available only when its vertical slice is complete:
 5. Exporters either serialize it or report a documented unsupported outcome.
 6. Focused tests, cross-package tests, examples, API reference, and architecture docs agree.
 
-This rule prevents “modeled but not exported” features and exporter-only defaults.
+This rule prevents “modeled but not exported” features and exporter-only defaults. The chart element (bar, line, pie) is a recent vertical slice: Core authoring and normalization, SVG rendering, and native OOXML chart export shipped together.
 
 ## Internal organization
 

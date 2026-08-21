@@ -26,7 +26,7 @@ describe("example registry", () => {
     expect(examples.some((example) => example.id === "export-mixed-media-slide")).toBe(false);
 
     const input = fullFeatureDeck!.createInput();
-    expect(input.slides).toHaveLength(8);
+    expect(input.slides).toHaveLength(11);
     expect(input.slides.every((slide) => slide.title.startsWith("Feature:"))).toBe(true);
     expect(input.slides.every((slide) => slide.elements.length >= 1 && slide.elements.length <= 2)).toBe(true);
     expect(fullFeatureDeck!.source.content).toContain('"Feature: image asset + alt text"');

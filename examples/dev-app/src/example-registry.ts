@@ -169,6 +169,54 @@ const exportFullFeatureDeckInput: ExampleInputData = {
       ],
     },
     {
+      id: "bar-chart",
+      title: "Feature: native bar chart",
+      elements: [
+        "Feature: native bar chart — verify categories, series, and editable chart export",
+        {
+          type: "chart",
+          chartType: "bar",
+          categories: ["Q1", "Q2", "Q3", "Q4"],
+          series: [
+            { name: "Drafts", values: [12, 18, 24, 30] },
+            { name: "Exports", values: [8, 14, 22, 28] },
+          ],
+          box: { x: 48, y: 120, width: 624, height: 320 },
+        },
+      ],
+    },
+    {
+      id: "line-chart",
+      title: "Feature: native line chart",
+      elements: [
+        "Feature: native line chart — verify trend series and axis export",
+        {
+          type: "chart",
+          chartType: "line",
+          categories: ["Jan", "Feb", "Mar", "Apr", "May"],
+          series: [
+            { name: "Previews", values: [4, 9, 15, 21, 26] },
+            { name: "Downloads", values: [2, 6, 11, 17, 23] },
+          ],
+          box: { x: 48, y: 120, width: 624, height: 320 },
+        },
+      ],
+    },
+    {
+      id: "pie-chart",
+      title: "Feature: native pie chart",
+      elements: [
+        "Feature: native pie chart — verify single series and slice export",
+        {
+          type: "chart",
+          chartType: "pie",
+          categories: ["Core", "Layout", "Exporter", "Renderer"],
+          series: [{ name: "Packages", values: [1, 1, 1, 1] }],
+          box: { x: 48, y: 120, width: 624, height: 320 },
+        },
+      ],
+    },
+    {
       id: "background-and-summary",
       title: "Feature: slide background + mixed content",
       background: "#FFF7ED",

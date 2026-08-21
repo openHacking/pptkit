@@ -1,4 +1,4 @@
-import type { NormalizedPaint, NormalizedPresentationMetadata, NormalizedPresentationTheme, NormalizedTextParagraph } from "@pptkit/core";
+import type { NormalizedChartElement, NormalizedPaint, NormalizedPresentationMetadata, NormalizedPresentationTheme, NormalizedTextParagraph } from "@pptkit/core";
 import type { LayoutResult, LayoutSlideLayout } from "@pptkit/layout";
 import { CONTENT_TYPES } from "../constants/ooxml.js";
 import type { PackagedMedia } from "../types/internal.js";
@@ -20,7 +20,7 @@ export function presentationXml(layout: LayoutResult): string {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" saveSubsetFonts="1" autoCompressPictures="0"><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/></p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="rId${layout.slideCount + 2}"/></p:notesMasterIdLst><p:sldIdLst>${layout.slides.map((_, index) => `<p:sldId id="${256 + index}" r:id="rId${index + 2}"/>`).join("")}</p:sldIdLst><p:sldSz cx="${emu(layout.size.width)}" cy="${emu(layout.size.height)}"/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="${escapeXml(layout.metadata.language)}"/></a:defPPr><a:lvl1pPr marL="0" algn="l" defTabSz="914400" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1"><a:defRPr sz="1800"/></a:lvl1pPr></p:defaultTextStyle></p:presentation>`;
 }
 
-export function contentTypesXml(media: ReadonlyMap<string, PackagedMedia>, slideCount: number, layoutCount: number): string {
+export function contentTypesXml(media: ReadonlyMap<string, PackagedMedia>, slideCount: number, layoutCount: number, chartCount = 0): string {
   const defaults = [
     `<Default Extension="rels" ContentType="${CONTENT_TYPES.rels}"/>`,
     `<Default Extension="xml" ContentType="application/xml"/>`,
@@ -50,6 +50,7 @@ export function contentTypesXml(media: ReadonlyMap<string, PackagedMedia>, slide
     overrides.push(`<Override PartName="/ppt/slides/slide${index}.xml" ContentType="${CONTENT_TYPES.slide}"/>`);
     overrides.push(`<Override PartName="/ppt/notesSlides/notesSlide${index}.xml" ContentType="${CONTENT_TYPES.notesSlide}"/>`);
   }
+  for (let index = 1; index <= chartCount; index += 1) overrides.push(`<Override PartName="/ppt/charts/chart${index}.xml" ContentType="${CONTENT_TYPES.chart}"/>`);
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">${defaults.join("")}${overrides.join("")}</Types>`;
 }
 
@@ -99,4 +100,47 @@ export function corePropertiesXml(metadata: NormalizedPresentationMetadata): str
 
 export function appPropertiesXml(slideCount: number, metadata: NormalizedPresentationMetadata): string {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"><Application>PPTKit</Application>${metadata.company === undefined ? "" : `<Company>${escapeXml(metadata.company)}</Company>`}<Slides>${slideCount}</Slides><PresentationFormat>On-screen Show (16:9)</PresentationFormat></Properties>`;
+}
+
+function chartCategoryXml(categories: string[]): string {
+  const pts = categories.map((cat, i) => `<c:pt idx="${i}"><c:v>${escapeXml(cat)}</c:v></c:pt>`).join("");
+  return `<c:cat><c:strRef><c:f>Sheet1!$B$1:$B$${categories.length}</c:f><c:strCache><c:ptCount val="${categories.length}"/>${pts}</c:strCache></c:strRef></c:cat>`;
+}
+
+function chartValueXml(values: number[]): string {
+  const pts = values.map((val, i) => `<c:pt idx="${i}"><c:v>${val}</c:v></c:pt>`).join("");
+  return `<c:val><c:numRef><c:f>Sheet1!$C$1:$C$${values.length}</c:f><c:numCache><c:ptCount val="${values.length}"/>${pts}</c:numCache></c:numRef></c:val>`;
+}
+
+function chartSeriesXml(series: NormalizedChartElement["series"], categories: string[]): string {
+  return series.map((s, i) => {
+    const color = s.color ? `<c:spPr><a:solidFill><a:srgbClr val="${colorValue(s.color)}"/></a:solidFill></c:spPr>` : "";
+    return `<c:ser><c:idx val="${i}"/><c:order val="${i}"/>${color}<c:tx><c:strRef><c:f>Sheet1!$A$${i + 1}</c:f><c:strCache><c:ptCount val="1"/><c:pt idx="0"><c:v>${escapeXml(s.name)}</c:v></c:pt></c:strCache></c:strRef></c:tx>${chartCategoryXml(categories)}${chartValueXml(s.values)}</c:ser>`;
+  }).join("");
+}
+
+function catAxXml(xAxis: NormalizedChartElement["xAxis"]): string {
+  const deleteVal = xAxis.show ? "0" : "1";
+  const tickLblPos = xAxis.labels ? "nextTo" : "none";
+  return `<c:catAx><c:axId val="1"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="${deleteVal}"/><c:axPos val="b"/><c:tickLblPos val="${tickLblPos}"/><c:crossAx val="2"/><c:crosses val="autoZero"/><c:auto val="1"/><c:lblAlgn val="ctr"/><c:lblOffset val="100"/></c:catAx>`;
+}
+
+function valAxXml(yAxis: NormalizedChartElement["yAxis"]): string {
+  const deleteVal = yAxis.show ? "0" : "1";
+  return `<c:valAx><c:axId val="2"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:delete val="${deleteVal}"/><c:axPos val="l"/><c:majorGridlines/><c:tickLblPos val="nextTo"/><c:crossAx val="1"/><c:crosses val="autoZero"/><c:crossBetween val="between"/></c:valAx>`;
+}
+
+export function chartPartXml(chart: NormalizedChartElement): string {
+  const series = chartSeriesXml(chart.series, chart.categories);
+  let plotAreaContent: string;
+  if (chart.chartType === "bar") {
+    plotAreaContent = `<c:barChart><c:barDir val="col"/><c:grouping val="clustered"/>${series}<c:axId val="1"/><c:axId val="2"/></c:barChart>${catAxXml(chart.xAxis)}${valAxXml(chart.yAxis)}`;
+  } else if (chart.chartType === "line") {
+    plotAreaContent = `<c:lineChart><c:grouping val="standard"/>${series}<c:axId val="1"/><c:axId val="2"/></c:lineChart>${catAxXml(chart.xAxis)}${valAxXml(chart.yAxis)}`;
+  } else {
+    plotAreaContent = `<c:pieChart>${series}</c:pieChart>`;
+  }
+  const legendXml = chart.showLegend ? `<c:legend><c:legendPos val="r"/><c:overlay val="0"/></c:legend>` : "";
+  const titleXml = chart.title ? `<c:title><c:tx><c:rich><a:bodyPr/><a:lstStyle/><a:p><a:r><a:rPr lang="en-US"/><a:t>${escapeXml(chart.title)}</a:t></a:r></a:p></c:rich></c:tx><c:overlay val="0"/></c:title>` : "";
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><c:chart>${titleXml}<c:plotArea>${plotAreaContent}</c:plotArea>${legendXml}</c:chart></c:chartSpace>`;
 }
