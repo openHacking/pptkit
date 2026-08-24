@@ -6,7 +6,7 @@ PPTKit is a TypeScript monorepo organized by cohesive responsibility. Public aut
 
 | Package | Public entry points | Responsibility |
 | --- | --- | --- |
-| `@pptkit/core` | package root | Method-managed authoring model, assets, themes, layouts, validation, and Canonical IR v1. |
+| `@pptkit/core` | package root | Method-managed authoring model, assets, themes, layouts, validation, and Canonical IR v2. |
 | `@pptkit/layout` | package root | Detached geometric resolution over authoring or normalized documents. |
 | `@pptkit/pptx-exporter` | package root, `/node` | Editable PPTX generation, asset loading, OOXML packaging, and Node file output. |
 | `@pptkit/svg-renderer` | package root | Modern-browser SVG preview generation over resolved Layout state. |
@@ -21,7 +21,7 @@ application
 @pptkit/core authoring state
     │ validate + normalize
     ▼
-Canonical Presentation IR v1
+Canonical Presentation IR v2
     │ resolve
     ▼
 @pptkit/layout result

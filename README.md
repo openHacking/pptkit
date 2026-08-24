@@ -7,7 +7,7 @@ PPTKit is a developer-first TypeScript toolkit for building structured, editable
 ## Features
 
 - Method-managed presentation and slide authoring with stable document-wide IDs.
-- Canonical Presentation IR v1 with complete diagnostics and materialized defaults.
+- Canonical Presentation IR v2 with complete diagnostics and materialized defaults.
 - Rich text, themes, paints, strokes, layouts, placeholders, notes, and accessibility metadata.
 - Images, preset shapes, anchored connectors, nested groups, and native editable tables.
 - Detached layout resolution for connector anchors and image contain/cover behavior.
@@ -107,7 +107,7 @@ Parser packages remain roadmap work. See the [package overview](docs/api/package
 The implemented forward pipeline is:
 
 ```text
-Authoring Model → validation/normalization → Canonical IR v1
+Authoring Model → validation/normalization → Canonical IR v2
                 → Layout Result → PPTX Package Model → .pptx
 ```
 

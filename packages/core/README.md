@@ -10,7 +10,7 @@ Authoring model and Canonical Presentation IR for PPTKit.
 - theme colors and fonts
 - text, image, shape, connector, group, table, and chart (bar/line/pie) elements
 - placeholders, speaker notes, hidden slides, sections, tags, and custom data
-- structured validation and fully materialized IR v1 normalization
+- structured validation and fully materialized IR v2 normalization
 
 ## Example
 

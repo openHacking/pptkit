@@ -1,182 +1,150 @@
-import type { NormalizedChartElement } from "@pptkit/core";
-import type { LayoutElement } from "@pptkit/layout";
+import type { NormalizedChartMarkerStyle, NormalizedChartTextStyle, NormalizedPaint, Point } from "@pptkit/core";
+import type { LayoutChartElement } from "@pptkit/layout";
 import { accessibility, type RenderContext } from "./context.js";
 import { escapeXml } from "./escape.js";
-import { colorValue, transformAttribute } from "./style.js";
+import { colorValue, paintAttributes, strokeAttributes, transformAttribute } from "./style.js";
 
-function formatNumber(value: number): number {
-  return Math.round(value * 1000) / 1000;
+function n(value: number): number { return Math.round(value * 1000) / 1000; }
+
+function textStyle(style: NormalizedChartTextStyle): string {
+  return `font-family="${escapeXml(style.fontFamily)}" font-size="${n(style.fontSize)}" font-weight="${style.bold ? "700" : "400"}" font-style="${style.italic ? "italic" : "normal"}" fill="${style.color}"`;
 }
 
-export function chartElement(
-  element: Extract<LayoutElement, { type: "chart" }>,
-  context: RenderContext,
-): string {
-  const { box } = element;
-  const { categories, series, title, showLegend, xAxis, yAxis, chartType } = element;
+function paintRect(box: { x: number; y: number; width: number; height: number }, paint: NormalizedPaint, context: RenderContext, role: string): string {
+  return `<rect x="${n(box.x)}" y="${n(box.y)}" width="${n(box.width)}" height="${n(box.height)}" ${paintAttributes(paint, context.theme, "fill")} data-chart-role="${role}"/>`;
+}
 
-  const padding = 8;
-  const titleHeight = title ? 20 : 0;
-  const legendHeight = showLegend ? 16 : 0;
-  const leftMargin = yAxis.show ? 36 : padding;
-  const bottomMargin = (xAxis.show && xAxis.labels ? 20 : 0) + legendHeight + padding;
-  const topMargin = padding + titleHeight;
-  const rightMargin = padding;
+function markerShape(marker: NormalizedChartMarkerStyle, point: Point, context: RenderContext, role: string): string {
+  const half = marker.size / 2;
+  const fill = paintAttributes(marker.fill, context.theme, "fill");
+  const stroke = strokeAttributes(marker.stroke, context.theme);
+  const attrs = `${fill} ${stroke} data-chart-role="${role}"`;
+  if (marker.shape === "circle") return `<circle cx="${n(point.x)}" cy="${n(point.y)}" r="${n(half)}" ${attrs}/>`;
+  if (marker.shape === "diamond") return `<path d="M${n(point.x)} ${n(point.y - half)} L${n(point.x + half)} ${n(point.y)} L${n(point.x)} ${n(point.y + half)} L${n(point.x - half)} ${n(point.y)} Z" ${attrs}/>`;
+  if (marker.shape === "triangle") return `<path d="M${n(point.x)} ${n(point.y - half)} L${n(point.x + half)} ${n(point.y + half)} L${n(point.x - half)} ${n(point.y + half)} Z" ${attrs}/>`;
+  if (marker.shape === "star") {
+    const points: string[] = [];
+    for (let index = 0; index < 10; index += 1) {
+      const radius = index % 2 === 0 ? half : half * 0.45;
+      const angle = -Math.PI / 2 + index * Math.PI / 5;
+      points.push(`${n(point.x + Math.cos(angle) * radius)},${n(point.y + Math.sin(angle) * radius)}`);
+    }
+    return `<polygon points="${points.join(" ")}" ${attrs}/>`;
+  }
+  if (marker.shape === "x" || marker.shape === "plus") {
+    const d = marker.shape === "x"
+      ? `M${n(point.x - half)} ${n(point.y - half)} L${n(point.x + half)} ${n(point.y + half)} M${n(point.x + half)} ${n(point.y - half)} L${n(point.x - half)} ${n(point.y + half)}`
+      : `M${n(point.x - half)} ${n(point.y)} L${n(point.x + half)} ${n(point.y)} M${n(point.x)} ${n(point.y - half)} L${n(point.x)} ${n(point.y + half)}`;
+    return `<path d="${d}" fill="none" ${stroke} data-chart-role="${role}"/>`;
+  }
+  if (marker.shape === "dash") return `<line x1="${n(point.x - half)}" y1="${n(point.y)}" x2="${n(point.x + half)}" y2="${n(point.y)}" ${stroke} data-chart-role="${role}"/>`;
+  return `<rect x="${n(point.x - half)}" y="${n(point.y - half)}" width="${n(marker.size)}" height="${n(marker.size)}" ${attrs}/>`;
+}
 
-  const plotX = leftMargin;
-  const plotY = topMargin;
-  const plotW = Math.max(1, box.width - leftMargin - rightMargin);
-  const plotH = Math.max(1, box.height - topMargin - bottomMargin);
+function piePath(center: Point, radius: number, start: number, end: number): string {
+  const span = end - start;
+  if (span >= Math.PI * 2 - 1e-6) return `M${n(center.x)} ${n(center.y - radius)} A${n(radius)} ${n(radius)} 0 1 1 ${n(center.x - 0.001)} ${n(center.y - radius)} Z`;
+  const x1 = center.x + radius * Math.cos(start);
+  const y1 = center.y + radius * Math.sin(start);
+  const x2 = center.x + radius * Math.cos(end);
+  const y2 = center.y + radius * Math.sin(end);
+  return `M${n(center.x)} ${n(center.y)} L${n(x1)} ${n(y1)} A${n(radius)} ${n(radius)} 0 ${span > Math.PI ? 1 : 0} 1 ${n(x2)} ${n(y2)} Z`;
+}
 
-  let minValue = Infinity;
-  let maxValue = -Infinity;
-  for (const s of series) {
-    for (const v of s.values) {
-      if (v < minValue) minValue = v;
-      if (v > maxValue) maxValue = v;
+function tickLength(mark: "none" | "inside" | "outside" | "cross"): { before: number; after: number } {
+  if (mark === "none") return { before: 0, after: 0 };
+  if (mark === "inside") return { before: 3, after: 0 };
+  if (mark === "cross") return { before: 3, after: 3 };
+  return { before: 0, after: 3 };
+}
+
+function axesSvg(element: Exclude<LayoutChartElement, { chartType: "pie" }>, context: RenderContext): string {
+  const { plotBox: plot, valueScale: scale, categoryPositions, categoryTickPositions } = element.chartLayout;
+  const horizontal = element.chartType === "bar" && element.orientation === "horizontal";
+  const pieces: string[] = [];
+  if (element.axes.category.visible) {
+    pieces.push(horizontal
+      ? `<line x1="${n(plot.x)}" y1="${n(plot.y)}" x2="${n(plot.x)}" y2="${n(plot.y + plot.height)}" ${strokeAttributes(element.axes.category.line, context.theme)} data-chart-role="category-axis"/>`
+      : `<line x1="${n(plot.x)}" y1="${n(plot.y + plot.height)}" x2="${n(plot.x + plot.width)}" y2="${n(plot.y + plot.height)}" ${strokeAttributes(element.axes.category.line, context.theme)} data-chart-role="category-axis"/>`);
+    const length = tickLength(element.axes.category.majorTick);
+    for (const position of categoryTickPositions) {
+      pieces.push(horizontal
+        ? `<line x1="${n(plot.x - length.after)}" y1="${n(position.y)}" x2="${n(plot.x + length.before)}" y2="${n(position.y)}" ${strokeAttributes(element.axes.category.line, context.theme)} data-chart-role="category-tick"/>`
+        : `<line x1="${n(position.x)}" y1="${n(plot.y + plot.height - length.before)}" x2="${n(position.x)}" y2="${n(plot.y + plot.height + length.after)}" ${strokeAttributes(element.axes.category.line, context.theme)} data-chart-role="category-tick"/>`);
+    }
+    for (const [index, position] of categoryPositions.entries()) {
+      if (element.axes.category.labels) pieces.push(horizontal
+        ? `<text x="${n(plot.x - length.after - 4)}" y="${n(position.y + element.axes.category.labelStyle.fontSize * 0.35)}" ${textStyle(element.axes.category.labelStyle)} text-anchor="end" data-chart-role="category-label">${escapeXml(element.categories[index] ?? "")}</text>`
+        : `<text x="${n(position.x)}" y="${n(plot.y + plot.height + length.after + element.axes.category.labelStyle.fontSize + 3)}" ${textStyle(element.axes.category.labelStyle)} text-anchor="middle" data-chart-role="category-label">${escapeXml(element.categories[index] ?? "")}</text>`);
     }
   }
-  if (!isFinite(minValue)) minValue = 0;
-  if (!isFinite(maxValue)) maxValue = 0;
-  const baseline = Math.min(0, minValue);
-  const range = Math.max(maxValue - minValue, 1e-6);
-
-  function yForValue(v: number): number {
-    return plotY + plotH - ((v - baseline) / range) * plotH;
-  }
-
-  const zeroY = yForValue(0);
-  const parts: string[] = [];
-  const legendParts: string[] = [];
-
-  if (title) {
-    parts.push(
-      `<text x="${formatNumber(box.width / 2)}" y="${formatNumber(padding + 14)}" font-family="Arial" font-size="12" fill="#333333" text-anchor="middle">${escapeXml(title)}</text>`,
-    );
-  }
-
-  if (chartType === "bar") {
-    const slotWidth = plotW / Math.max(categories.length, 1);
-    const groupGap = slotWidth * 0.2;
-    const barWidth = (slotWidth - groupGap) / Math.max(series.length, 1);
-
-    for (let c = 0; c < categories.length; c++) {
-      for (const [i, s] of series.entries()) {
-        const value = s.values[c] ?? 0;
-        const x = plotX + c * slotWidth + groupGap / 2 + i * barWidth;
-        const y = Math.min(yForValue(value), zeroY);
-        const height = Math.abs(yForValue(value) - zeroY);
-        const fill = colorValue(s.color, context.theme);
-        parts.push(
-          `<rect x="${formatNumber(x)}" y="${formatNumber(y)}" width="${formatNumber(barWidth)}" height="${formatNumber(height)}" fill="${fill}"/>`,
-        );
-      }
-    }
-  } else if (chartType === "line") {
-    const stepX = plotW / Math.max(categories.length, 1);
-
-    for (const s of series) {
-      const points: string[] = [];
-      for (let i = 0; i < categories.length; i++) {
-        const x = plotX + (i + 0.5) * stepX;
-        const y = yForValue(s.values[i] ?? 0);
-        points.push(`${formatNumber(x)},${formatNumber(y)}`);
-      }
-
-      if (points.length > 1) {
-        const stroke = colorValue(s.color, context.theme);
-        parts.push(
-          `<polyline points="${points.join(" ")}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
-        );
-      }
-
-      for (let i = 0; i < categories.length; i++) {
-        const x = plotX + (i + 0.5) * stepX;
-        const y = yForValue(s.values[i] ?? 0);
-        const fill = colorValue(s.color, context.theme);
-        parts.push(
-          `<rect x="${formatNumber(x - 3)}" y="${formatNumber(y - 3)}" width="6" height="6" fill="${fill}"/>`,
-        );
-      }
-    }
-  } else if (chartType === "pie") {
-    const firstSeries = series[0];
-    if (firstSeries) {
-      const total = firstSeries.values.reduce((sum, v) => sum + v, 0);
-      const cx = plotX + plotW / 2;
-      const cy = plotY + plotH / 2;
-      const radius = (Math.min(plotW, plotH) / 2) * 0.85;
-
-      let startAngle = -Math.PI / 2;
-
-      for (let i = 0; i < categories.length; i++) {
-        const value = firstSeries.values[i] ?? 0;
-        const sliceAngle = total > 0 ? (value / total) * 2 * Math.PI : 0;
-        const endAngle = startAngle + sliceAngle;
-
-        if (sliceAngle > 1e-9) {
-          const x1 = formatNumber(cx + radius * Math.cos(startAngle));
-          const y1 = formatNumber(cy + radius * Math.sin(startAngle));
-          const x2 = formatNumber(cx + radius * Math.cos(endAngle));
-          const y2 = formatNumber(cy + radius * Math.sin(endAngle));
-          const largeArc = sliceAngle > Math.PI ? 1 : 0;
-
-          const colorSource = series[i % series.length];
-          if (colorSource !== undefined) {
-            const fill = colorValue(colorSource.color, context.theme);
-            parts.push(
-              `<path d="M${formatNumber(cx)} ${formatNumber(cy)} L${x1} ${y1} A${formatNumber(radius)} ${formatNumber(radius)} 0 ${largeArc} 1 ${x2} ${y2} Z" fill="${fill}"/>`,
-            );
-          }
-        }
-
-        startAngle = endAngle;
-      }
+  if (element.axes.value.visible) {
+    pieces.push(horizontal
+      ? `<line x1="${n(plot.x)}" y1="${n(plot.y + plot.height)}" x2="${n(plot.x + plot.width)}" y2="${n(plot.y + plot.height)}" ${strokeAttributes(element.axes.value.line, context.theme)} data-chart-role="value-axis"/>`
+      : `<line x1="${n(plot.x)}" y1="${n(plot.y)}" x2="${n(plot.x)}" y2="${n(plot.y + plot.height)}" ${strokeAttributes(element.axes.value.line, context.theme)} data-chart-role="value-axis"/>`);
+    const length = tickLength(element.axes.value.majorTick);
+    for (const value of scale.ticks) {
+      const ratio = (value - scale.min) / (scale.max - scale.min);
+      const point = horizontal ? { x: plot.x + ratio * plot.width, y: plot.y + plot.height } : { x: plot.x, y: plot.y + plot.height - ratio * plot.height };
+      pieces.push(horizontal
+        ? `<line x1="${n(point.x)}" y1="${n(point.y - length.before)}" x2="${n(point.x)}" y2="${n(point.y + length.after)}" ${strokeAttributes(element.axes.value.line, context.theme)} data-chart-role="value-tick"/>`
+        : `<line x1="${n(point.x - length.after)}" y1="${n(point.y)}" x2="${n(point.x + length.before)}" y2="${n(point.y)}" ${strokeAttributes(element.axes.value.line, context.theme)} data-chart-role="value-tick"/>`);
+      if (element.axes.value.labels) pieces.push(horizontal
+        ? `<text x="${n(point.x)}" y="${n(point.y + length.after + element.axes.value.labelStyle.fontSize + 3)}" ${textStyle(element.axes.value.labelStyle)} text-anchor="middle" data-chart-role="value-label">${n(value)}</text>`
+        : `<text x="${n(point.x - length.after - 4)}" y="${n(point.y + element.axes.value.labelStyle.fontSize * 0.35)}" ${textStyle(element.axes.value.labelStyle)} text-anchor="end" data-chart-role="value-label">${n(value)}</text>`);
     }
   }
+  return pieces.join("");
+}
 
-  if (xAxis.show && chartType !== "pie") {
-    parts.push(
-      `<line x1="${formatNumber(plotX)}" y1="${formatNumber(plotY + plotH)}" x2="${formatNumber(plotX + plotW)}" y2="${formatNumber(plotY + plotH)}" stroke="#888888" stroke-width="1"/>`,
-    );
-  }
-  if (yAxis.show && chartType !== "pie") {
-    parts.push(
-      `<line x1="${formatNumber(plotX)}" y1="${formatNumber(plotY)}" x2="${formatNumber(plotX)}" y2="${formatNumber(plotY + plotH)}" stroke="#888888" stroke-width="1"/>`,
-    );
-  }
+function legendSvg(element: LayoutChartElement, context: RenderContext): string {
+  const box = element.chartLayout.legendBox;
+  if (!element.legend.visible || box === undefined) return "";
+  const items = element.chartLayout.legendItems;
+  return items.map((item) => {
+    const x = item.box.x + 2;
+    const y = item.box.y + (element.legend.position === "right" ? 0 : 3);
+    let glyph: string;
+    if (element.chartType === "line" && item.marker !== false) {
+      const line = element.series[item.seriesIndex ?? 0]?.line;
+      glyph = `${line === false || line === undefined ? "" : `<line x1="${n(x)}" y1="${n(y + 5)}" x2="${n(x + 16)}" y2="${n(y + 5)}" ${strokeAttributes(line, context.theme)} data-chart-role="legend-line"/>`}${markerShape(item.marker, { x: x + 8, y: y + 5 }, context, "legend-marker")}`;
+    } else glyph = `<rect x="${n(x + 3)}" y="${n(y + 1)}" width="8" height="8" fill="${colorValue(item.color, context.theme)}" data-chart-role="legend-swatch"/>`;
+    return `${glyph}<text x="${n(x + 20)}" y="${n(y + 9)}" ${textStyle(element.legend.textStyle)} text-anchor="start" data-chart-role="legend-label">${escapeXml(item.label)}</text>`;
+  }).join("");
+}
 
-  if (xAxis.show && xAxis.labels && chartType !== "pie") {
-    const stepX = plotW / Math.max(categories.length, 1);
-    for (const [i, cat] of categories.entries()) {
-      const x = plotX + (i + 0.5) * stepX;
-      const y = plotY + plotH + 14;
-      parts.push(
-        `<text x="${formatNumber(x)}" y="${formatNumber(y)}" font-family="Arial" font-size="9" fill="#666666" text-anchor="middle">${escapeXml(cat)}</text>`,
-      );
+export function chartElement(element: LayoutChartElement, context: RenderContext): string {
+  const layout = element.chartLayout;
+  const clipId = `pptkit-chart-${element.id.replace(/[^A-Za-z0-9_.-]/g, "-")}`;
+  context.defs.push(`<clipPath id="${clipId}"><rect x="${n(layout.plotBox.x)}" y="${n(layout.plotBox.y)}" width="${n(layout.plotBox.width)}" height="${n(layout.plotBox.height)}"/></clipPath>`);
+  const background = paintRect({ x: 0, y: 0, width: element.box.width, height: element.box.height }, element.style.chartArea, context, "chart-area");
+  const plotBackground = paintRect(layout.plotBox, element.style.plotArea, context, "plot-area");
+  const grid: string[] = [];
+  if (element.chartType !== "pie" && element.axes.category.majorGridlines !== false) {
+    const horizontal = element.chartType === "bar" && element.orientation === "horizontal";
+    for (const position of layout.categoryTickPositions) grid.push(horizontal
+      ? `<line x1="${n(layout.plotBox.x)}" y1="${n(position.y)}" x2="${n(layout.plotBox.x + layout.plotBox.width)}" y2="${n(position.y)}" ${strokeAttributes(element.axes.category.majorGridlines, context.theme)} data-chart-role="category-gridline"/>`
+      : `<line x1="${n(position.x)}" y1="${n(layout.plotBox.y)}" x2="${n(position.x)}" y2="${n(layout.plotBox.y + layout.plotBox.height)}" ${strokeAttributes(element.axes.category.majorGridlines, context.theme)} data-chart-role="category-gridline"/>`);
+  }
+  if (element.chartType !== "pie" && element.axes.value.majorGridlines !== false) {
+    const horizontal = element.chartType === "bar" && element.orientation === "horizontal";
+    for (const value of layout.valueScale.ticks) {
+      const ratio = (value - layout.valueScale.min) / (layout.valueScale.max - layout.valueScale.min);
+      grid.push(horizontal
+        ? `<line x1="${n(layout.plotBox.x + ratio * layout.plotBox.width)}" y1="${n(layout.plotBox.y)}" x2="${n(layout.plotBox.x + ratio * layout.plotBox.width)}" y2="${n(layout.plotBox.y + layout.plotBox.height)}" ${strokeAttributes(element.axes.value.majorGridlines, context.theme)} data-chart-role="gridline"/>`
+        : `<line x1="${n(layout.plotBox.x)}" y1="${n(layout.plotBox.y + layout.plotBox.height - ratio * layout.plotBox.height)}" x2="${n(layout.plotBox.x + layout.plotBox.width)}" y2="${n(layout.plotBox.y + layout.plotBox.height - ratio * layout.plotBox.height)}" ${strokeAttributes(element.axes.value.majorGridlines, context.theme)} data-chart-role="gridline"/>`);
     }
   }
-
-  if (showLegend) {
-    const legendY = box.height - legendHeight + 4;
-    const itemWidth = 80;
-    const totalWidth = series.length * itemWidth;
-    let legendX = plotX + (plotW - totalWidth) / 2;
-
-    for (const s of series) {
-      const fill = colorValue(s.color, context.theme);
-      legendParts.push(
-        `<rect x="${formatNumber(legendX)}" y="${formatNumber(legendY)}" width="8" height="8" fill="${fill}"/>`,
-      );
-      legendParts.push(
-        `<text x="${formatNumber(legendX + 12)}" y="${formatNumber(legendY + 7)}" font-family="Arial" font-size="8" fill="#666666" text-anchor="start">${escapeXml(s.name)}</text>`,
-      );
-      legendX += itemWidth;
-    }
-  }
-
-  const transform = transformAttribute(box, element.transform);
-  const legend = legendParts.length > 0 ? `<g${transform} opacity="${element.opacity}">${legendParts.join("")}</g>` : "";
-
-  return `<g${transform} opacity="${element.opacity}"${accessibility(element)}>${parts.join("")}</g>${legend}`;
+  const data: string[] = [];
+  if (element.chartType === "bar") for (const bar of layout.bars) data.push(`<rect x="${n(bar.box.x)}" y="${n(bar.box.y)}" width="${n(bar.box.width)}" height="${n(bar.box.height)}" fill="${colorValue(element.series[bar.seriesIndex]?.color ?? "#000000", context.theme)}" data-chart-role="bar"/>`);
+  else if (element.chartType === "line") for (const line of layout.lines) {
+    const series = element.series[line.seriesIndex];
+    if (series === undefined || series.line === false) continue;
+    data.push(`<polyline points="${line.points.map((point) => `${n(point.x)},${n(point.y)}`).join(" ")}" fill="none" ${strokeAttributes(series.line, context.theme)} data-chart-role="line"/>`);
+    if (series.marker !== false) for (const point of line.points) data.push(markerShape(series.marker, point, context, "series-marker"));
+  } else if (layout.pie !== undefined) for (const slice of layout.pie.slices) if (slice.endAngle - slice.startAngle > 1e-9) data.push(`<path d="${piePath(layout.pie.center, layout.pie.radius, slice.startAngle, slice.endAngle)}" fill="${colorValue(slice.color, context.theme)}" data-chart-role="pie-slice"/>`);
+  const axes = element.chartType === "pie" ? "" : axesSvg(element, context);
+  const title = element.title === undefined || layout.titleBox === undefined ? "" : `<text x="${n(layout.titleBox.x + layout.titleBox.width / 2)}" y="${n(layout.titleBox.y + element.titleStyle.fontSize + 2)}" ${textStyle(element.titleStyle)} text-anchor="middle" data-chart-role="title">${escapeXml(element.title)}</text>`;
+  const local = `${background}${plotBackground}<g data-chart-layer="grid">${grid.join("")}</g><g clip-path="url(#${clipId})" data-chart-layer="series">${data.join("")}</g><g data-chart-layer="axes">${axes}</g>${title}<g data-chart-layer="legend">${legendSvg(element, context)}</g>`;
+  return `<g${transformAttribute(element.box, element.transform)} opacity="${element.opacity}"${accessibility(element)}><g transform="translate(${n(element.box.x)} ${n(element.box.y)})">${local}</g></g>`;
 }

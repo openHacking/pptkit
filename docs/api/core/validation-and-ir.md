@@ -1,6 +1,6 @@
 # Validation and Canonical IR
 
-Validation is non-mutating and exhaustive. Normalization is the gate from ergonomic authoring state to detached, fully explicit Canonical Presentation IR v1.
+Validation is non-mutating and exhaustive. Normalization is the gate from ergonomic authoring state to detached, fully explicit Canonical Presentation IR v2.
 
 ## `validatePresentation(document)`
 
@@ -83,7 +83,7 @@ try {
 - Element order remains the drawing order.
 - Exporters do not supply Core business defaults.
 
-The complete schema and invariants are documented in [Canonical Presentation IR v1](../../architecture/canonical-ir-v1.md).
+The complete schema and invariants are documented in [Canonical Presentation IR v2](../../architecture/canonical-ir-v2.md).
 
 ## Error ownership
 

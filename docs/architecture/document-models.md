@@ -12,7 +12,7 @@ It owns construction and editing intent, not package storage. See [Core Authorin
 
 Canonical IR is the validated, detached, fully explicit document consumed across package boundaries. It resolves authoring ambiguity while remaining independent from PPTX.
 
-It owns normalized slides/elements, stable references, consistent geometry/style representation, and a shared contract for Layout and exporters. See [Canonical Presentation IR v1](canonical-ir-v1.md) for exact invariants.
+It owns normalized slides/elements, stable references, consistent geometry/style representation, and a shared contract for Layout and exporters. See [Canonical Presentation IR v2](canonical-ir-v2.md) for exact invariants.
 
 ## PPTX Package Model
 
@@ -26,7 +26,7 @@ It must not become the public authoring API. OOXML contains storage and compatib
 Authoring Model
       │ Core validation + normalization
       ▼
-Canonical Presentation IR v1
+Canonical Presentation IR v2
       │ Layout resolution
       ▼
 Layout Result

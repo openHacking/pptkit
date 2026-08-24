@@ -45,7 +45,7 @@ test("duplicateSlide creates fresh nested element identities", () => {
   assert.notEqual(duplicate.elements[0].children[0].id, slide.elements[0].children[0].id);
 });
 
-test("normalizePresentation materializes IR v1 defaults and rich text", () => {
+test("normalizePresentation materializes IR v2 defaults and rich text", () => {
   const presentation = createPresentation({
     metadata: { title: "Quarterly Update", language: "zh-CN" },
     theme: { colors: { accent1: "112233" }, fonts: { body: "Microsoft YaHei" } },
@@ -82,7 +82,7 @@ test("normalizePresentation materializes IR v1 defaults and rich text", () => {
 
   const normalized = normalizePresentation(presentation);
   const text = normalized.slides[0].elements[0];
-  assert.equal(normalized.irVersion, 1);
+  assert.equal(normalized.irVersion, 2);
   assert.equal(normalized.metadata.title, "Quarterly Update");
   assert.equal(normalized.theme.colors.accent1, "112233");
   assert.equal(normalized.slides[0].backgroundSource, "layout");
@@ -257,19 +257,68 @@ test("normalizes chart elements with resolved series colors and axis defaults", 
   const bar = normalized.slides[0].elements[0];
   assert.equal(bar.type, "chart");
   assert.equal(bar.chartType, "bar");
-  assert.equal(bar.showLegend, true);
+  assert.equal(bar.legend.visible, true);
+  assert.equal(bar.legend.position, "right");
+  assert.equal(bar.orientation, "vertical");
+  assert.equal(bar.grouping, "clustered");
   assert.equal(typeof bar.series[0].color, "string");
   assert.ok(bar.series[0].color.startsWith("#"));
   assert.equal(bar.series[0].name, "Sales");
   assert.deepEqual([...bar.series[0].values], [10, 20]);
-  assert.equal(bar.xAxis.show, true);
-  assert.equal(bar.xAxis.labels, true);
-  assert.equal(bar.yAxis.show, true);
+  assert.equal(bar.axes.category.visible, true);
+  assert.equal(bar.axes.category.labels, true);
+  assert.equal(bar.axes.category.majorTick, "none");
+  assert.equal(bar.axes.value.visible, true);
+  assert.equal(bar.axes.value.scale, "auto");
+  assert.equal(bar.axes.value.majorGridlines.paint.color, "#D9D9D9");
 
   const pie = normalized.slides[0].elements[1];
   assert.equal(pie.type, "chart");
   assert.equal(pie.chartType, "pie");
-  assert.equal(pie.xAxis.show, false);
-  assert.equal(pie.xAxis.labels, false);
-  assert.equal(pie.yAxis.show, false);
+  assert.equal("axes" in pie, false);
+  assert.equal(pie.legend.position, "right");
+  assert.equal(pie.series[0].pointColors.length, 2);
+  assert.ok(pie.series[0].pointColors.every((c) => typeof c === "string" && c.startsWith("#")));
+});
+
+test("normalizes pie slice colors deterministically by category index", () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide();
+  slide.addElement({
+    type: "chart",
+    chartType: "pie",
+    categories: ["Core", "Layout", "Exporter", "Renderer"],
+    series: [{ name: "Share", values: [25, 25, 25, 25] }],
+    box: { x: 0, y: 0, width: 400, height: 300 },
+  });
+
+  const normalized = normalizePresentation(presentation);
+  const pie = normalized.slides[0].elements[0];
+  assert.equal(pie.type, "chart");
+  assert.equal(pie.chartType, "pie");
+  assert.equal(pie.legend.position, "right");
+  assert.equal(pie.series[0].pointColors.length, 4);
+  assert.ok(pie.series[0].pointColors.every((c) => typeof c === "string" && c.startsWith("#")));
+  const distinct = new Set(pie.series[0].pointColors);
+  assert.ok(distinct.size >= 2, `expected at least 2 distinct colors, got ${distinct.size}`);
+});
+
+test("normalizes line chart with deterministic marker and legend defaults", () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide();
+  slide.addElement({
+    type: "chart",
+    chartType: "line",
+    categories: ["A", "B"],
+    series: [{ name: "X", values: [1, 2] }],
+    box: { x: 0, y: 0, width: 400, height: 300 },
+  });
+
+  const normalized = normalizePresentation(presentation);
+  const line = normalized.slides[0].elements[0];
+  assert.equal(line.type, "chart");
+  assert.equal(line.chartType, "line");
+  assert.equal(line.legend.position, "right");
+  assert.equal(line.series[0].marker.shape, "diamond");
+  assert.equal(line.series[0].line.width, 1.5);
 });

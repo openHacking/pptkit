@@ -15,7 +15,7 @@ Core owns:
 - format-independent themes, paints, rich text, actions, and accessibility
 - document-level named text style presets for reusable frame, paragraph, and run defaults
 - deterministic intrinsic height estimation for text boxes with a fixed width
-- complete validation and normalization into Canonical IR v1
+- complete validation and normalization into Canonical IR v2
 
 Core does not own:
 
@@ -39,7 +39,7 @@ State is changed through document and slide methods. Collection getters return r
 
 Canonical IR favors predictable downstream processing. Every ID, box, transform, style, crop, background, accessibility value, text paragraph, and inheritance result is explicit. It contains no authoring class instances and shares no mutable references with authoring state.
 
-The exact contract is documented in [Canonical Presentation IR v1](canonical-ir-v1.md).
+The exact contract is documented in [Canonical Presentation IR v2](canonical-ir-v2.md).
 
 ## Data flow
 
@@ -58,7 +58,7 @@ method-managed authoring document
 normalizePresentation()
        │
        ▼
-Canonical Presentation IR v1
+Canonical Presentation IR v2
        │
        ▼
 @pptkit/layout

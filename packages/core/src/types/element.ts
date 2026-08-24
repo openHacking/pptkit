@@ -9,6 +9,7 @@ import type {
   NormalizedTextRunStyle,
   NormalizedTransform,
   ColorValue,
+  FontFamilyValue,
   PaintInput,
   ShapeStyleInput,
   StrokeStyleInput,
@@ -238,51 +239,215 @@ export interface NormalizedTableElement extends NormalizedElementBase {
 }
 
 export type ChartType = "bar" | "line" | "pie";
+export type ChartOrientation = "vertical" | "horizontal";
+export type ChartGrouping = "clustered" | "stacked" | "percentStacked";
+export type ChartLegendPosition = "right" | "bottom";
+export type ChartTickMark = "none" | "inside" | "outside" | "cross";
+export type ChartMarkerShape = "diamond" | "square" | "circle" | "triangle" | "star" | "x" | "plus" | "dash";
 
-export interface ChartSeriesInput {
+export interface ChartTextStyleInput {
+  fontFamily?: FontFamilyValue;
+  fontSize?: number;
+  bold?: boolean;
+  italic?: boolean;
+  color?: ColorValue;
+}
+
+export interface NormalizedChartTextStyle {
+  fontFamily: string;
+  fontSize: number;
+  bold: boolean;
+  italic: boolean;
+  color: string;
+}
+
+export interface ChartLegendInput {
+  visible?: boolean;
+  position?: ChartLegendPosition;
+  textStyle?: ChartTextStyleInput;
+}
+
+export interface NormalizedChartLegend {
+  visible: boolean;
+  position: ChartLegendPosition;
+  textStyle: NormalizedChartTextStyle;
+}
+
+export interface CategoryAxisInput {
+  visible?: boolean;
+  labels?: boolean;
+  line?: StrokeStyleInput;
+  majorTick?: ChartTickMark;
+  majorGridlines?: false | StrokeStyleInput;
+  labelStyle?: ChartTextStyleInput;
+}
+
+export type ValueAxisScaleInput = "auto" | { min: number; max: number; majorUnit: number };
+
+export interface ValueAxisInput extends CategoryAxisInput {
+  scale?: ValueAxisScaleInput;
+}
+
+export interface ChartAxesInput {
+  category?: CategoryAxisInput;
+  value?: ValueAxisInput;
+}
+
+export interface NormalizedCategoryAxis {
+  visible: boolean;
+  labels: boolean;
+  line: NormalizedStrokeStyle;
+  majorTick: ChartTickMark;
+  majorGridlines: false | NormalizedStrokeStyle;
+  labelStyle: NormalizedChartTextStyle;
+}
+
+export interface NormalizedValueAxis extends NormalizedCategoryAxis {
+  scale: ValueAxisScaleInput;
+}
+
+export interface NormalizedChartAxes {
+  category: NormalizedCategoryAxis;
+  value: NormalizedValueAxis;
+}
+
+export interface ChartStyleInput {
+  chartArea?: PaintInput;
+  plotArea?: PaintInput;
+  textStyle?: ChartTextStyleInput;
+}
+
+export interface NormalizedChartStyle {
+  chartArea: NormalizedPaint;
+  plotArea: NormalizedPaint;
+  textStyle: NormalizedChartTextStyle;
+}
+
+export interface ChartSeriesBaseInput {
   name: string;
   values: number[];
   color?: ColorValue;
 }
 
-export interface NormalizedChartSeries {
+export interface ChartMarkerStyleInput {
+  shape: ChartMarkerShape;
+  size?: number;
+  fill?: PaintInput;
+  stroke?: StrokeStyleInput;
+}
+
+export type ChartMarkerInput = "auto" | false | ChartMarkerStyleInput;
+
+export interface BarChartSeriesInput extends ChartSeriesBaseInput {}
+export interface LineChartSeriesInput extends ChartSeriesBaseInput { line?: StrokeStyleInput; marker?: ChartMarkerInput }
+export interface PieChartSeriesInput extends ChartSeriesBaseInput { pointColors?: ColorValue[] }
+
+export interface NormalizedChartMarkerStyle {
+  shape: ChartMarkerShape;
+  size: number;
+  fill: NormalizedPaint;
+  stroke: NormalizedStrokeStyle;
+}
+
+export interface NormalizedChartSeriesBase {
   name: string;
   values: number[];
   color: string;
 }
 
-export interface ChartElementInput extends ElementBaseInput {
-  type: "chart";
-  chartType: ChartType;
-  categories: string[];
-  series: ChartSeriesInput[];
-  title?: string;
-  showLegend?: boolean;
-  xAxis?: { show?: boolean; labels?: boolean };
-  yAxis?: { show?: boolean };
+export interface NormalizedBarChartSeries extends NormalizedChartSeriesBase {}
+
+export interface NormalizedLineChartSeries extends NormalizedChartSeriesBase {
+  line: false | NormalizedStrokeStyle;
+  marker: false | NormalizedChartMarkerStyle;
 }
 
-export interface ChartElement extends ElementBase {
-  type: "chart";
-  chartType: ChartType;
-  categories: string[];
-  series: ChartSeriesInput[];
-  title?: string;
-  showLegend: boolean;
-  xAxis: { show: boolean; labels: boolean };
-  yAxis: { show: boolean };
+export interface NormalizedPieChartSeries extends NormalizedChartSeriesBase {
+  pointColors: string[];
 }
 
-export interface NormalizedChartElement extends NormalizedElementBase {
+interface ChartElementInputBase extends ElementBaseInput {
   type: "chart";
-  chartType: ChartType;
   categories: string[];
-  series: NormalizedChartSeries[];
   title?: string;
-  showLegend: boolean;
-  xAxis: { show: boolean; labels: boolean };
-  yAxis: { show: boolean };
+  titleStyle?: ChartTextStyleInput;
+  legend?: ChartLegendInput;
+  axes?: ChartAxesInput;
+  style?: ChartStyleInput;
 }
+
+export interface BarChartElementInput extends ChartElementInputBase {
+  chartType: "bar";
+  series: BarChartSeriesInput[];
+  orientation?: ChartOrientation;
+  grouping?: ChartGrouping;
+  seriesGap?: number;
+  categoryGap?: number;
+}
+
+export interface LineChartElementInput extends ChartElementInputBase {
+  chartType: "line";
+  series: LineChartSeriesInput[];
+}
+
+export interface PieChartElementInput extends Omit<ChartElementInputBase, "axes"> {
+  chartType: "pie";
+  series: PieChartSeriesInput[];
+  axes?: never;
+}
+
+export type ChartElementInput = BarChartElementInput | LineChartElementInput | PieChartElementInput;
+
+interface ChartElementBase extends ElementBase {
+  type: "chart";
+  categories: string[];
+  title?: string;
+  titleStyle?: ChartTextStyleInput;
+  legend?: ChartLegendInput;
+  axes?: ChartAxesInput;
+  style?: ChartStyleInput;
+}
+
+export interface BarChartElement extends ChartElementBase, Omit<BarChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "axes" | "style"> {
+  chartType: "bar";
+}
+export interface LineChartElement extends ChartElementBase, Omit<LineChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "axes" | "style"> {
+  chartType: "line";
+}
+export interface PieChartElement extends Omit<ChartElementBase, "axes">, Omit<PieChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "style"> {
+  chartType: "pie";
+}
+export type ChartElement = BarChartElement | LineChartElement | PieChartElement;
+
+interface NormalizedChartElementBase<TSeries extends NormalizedChartSeriesBase> extends NormalizedElementBase {
+  type: "chart";
+  categories: string[];
+  series: TSeries[];
+  title?: string;
+  titleStyle: NormalizedChartTextStyle;
+  legend: NormalizedChartLegend;
+  style: NormalizedChartStyle;
+}
+
+export interface NormalizedBarChartElement extends NormalizedChartElementBase<NormalizedBarChartSeries> {
+  chartType: "bar";
+  orientation: ChartOrientation;
+  grouping: ChartGrouping;
+  seriesGap: number;
+  categoryGap: number;
+  axes: NormalizedChartAxes;
+}
+
+export interface NormalizedLineChartElement extends NormalizedChartElementBase<NormalizedLineChartSeries> {
+  chartType: "line";
+  axes: NormalizedChartAxes;
+}
+
+export interface NormalizedPieChartElement extends NormalizedChartElementBase<NormalizedPieChartSeries> {
+  chartType: "pie";
+}
+
+export type NormalizedChartElement = NormalizedBarChartElement | NormalizedLineChartElement | NormalizedPieChartElement;
 
 export type PlaceholderKind = "title" | "subtitle" | "body" | "image" | "table" | "footer" | "slideNumber";
 

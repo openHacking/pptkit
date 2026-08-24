@@ -116,6 +116,14 @@ The runtime-neutral exporter entry orchestrates asset loading, OOXML generation,
 The SVG renderer is a sibling output transform rather than an exporter implementation
 detail. It does not read PPTX packages or reuse OOXML serializers. Its browser preview
 may warn and degrade independently while preserving the same Core/Layout semantics.
+A cross-renderer parity test validates that chart output remains consistent between
+the SVG renderer and PPTX exporter.
+
+For charts, Layout owns output-neutral geometry and placement semantics. In particular,
+legend row/column flow and category-axis label/tick anchoring are resolved before either
+output transform runs. SVG draws the resolved item boxes directly; PPTX maps the same
+semantics to native chart position and axis settings rather than injecting a manual legend
+box that Office can responsively reflow.
 
 The exporter writes one theme and master plus the normalized reusable slide-layout roster. Placeholder bindings, layout backgrounds, static layout content, notes, and slide-local content remain separate native package structures without leaking OOXML into `@pptkit/core`.
 

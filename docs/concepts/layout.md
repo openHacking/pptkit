@@ -6,7 +6,7 @@ Layout is a first-class transformation between normalized presentation semantics
 
 `@pptkit/layout` currently:
 
-- consumes authoring documents or Canonical IR v1
+- consumes authoring documents or Canonical IR v2
 - returns a detached export-ready layout result
 - resolves connector element anchors to points
 - derives connector bounds

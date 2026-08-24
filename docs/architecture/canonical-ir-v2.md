@@ -1,12 +1,12 @@
-# Canonical Presentation IR v1
+# Canonical Presentation IR v2
 
-Canonical Presentation IR is the stable, format-independent contract between Core and downstream layout, preview, parser, and exporter work. The implemented version is identified by `irVersion: 1`.
+Canonical Presentation IR is the stable, format-independent contract between Core and downstream layout, preview, parser, and exporter work. The implemented version is identified by `irVersion: 2`.
 
 ## Top-level shape
 
 ```ts
 interface NormalizedPresentation {
-  irVersion: 1;
+  irVersion: 2;
   id: string;
   metadata: NormalizedPresentationMetadata;
   size: PresentationSize;
@@ -165,21 +165,59 @@ interface NormalizedTableElement extends NormalizedElementBase {
   }>;
 }
 
-interface NormalizedChartElement extends NormalizedElementBase {
+type NormalizedChartElement =
+  | NormalizedBarChartElement
+  | NormalizedLineChartElement
+  | NormalizedPieChartElement;
+
+interface NormalizedChartBase extends NormalizedElementBase {
   type: "chart";
-  chartType: "bar" | "line" | "pie";
   categories: string[];
-  series: Array<{
-    name: string;
-    values: number[];
-    color: string;
-  }>;
   title?: string;
-  showLegend: boolean;
-  xAxis: { show: boolean; labels: boolean };
-  yAxis: { show: boolean };
+  titleStyle: NormalizedChartTextStyle;
+  legend: {
+    visible: boolean;
+    position: "right" | "bottom";
+    textStyle: NormalizedChartTextStyle;
+  };
+  style: { chartArea: NormalizedPaint; plotArea: NormalizedPaint };
+}
+
+interface NormalizedCartesianChartBase extends NormalizedChartBase {
+  axes: {
+    category: NormalizedCategoryAxis;
+    value: NormalizedValueAxis;
+  };
+}
+
+interface NormalizedBarChartElement extends NormalizedCartesianChartBase {
+  chartType: "bar";
+  orientation: "vertical" | "horizontal";
+  grouping: "clustered" | "stacked" | "percentStacked";
+  categoryGap: number;
+  seriesGap: number;
+  series: NormalizedChartSeriesBase[];
+}
+
+interface NormalizedLineChartElement extends NormalizedCartesianChartBase {
+  chartType: "line";
+  series: Array<NormalizedChartSeriesBase & {
+    line: false | NormalizedStrokeStyle;
+    marker: false | NormalizedChartMarkerStyle;
+  }>;
+}
+
+interface NormalizedPieChartElement extends NormalizedChartBase {
+  chartType: "pie";
+  series: Array<NormalizedChartSeriesBase & { pointColors: string[] }>;
 }
 ```
+
+All chart colors, font properties, axes, gridlines, ticks, marker styles, and
+type-specific options are explicit in IR v2. Value-axis `scale` is either
+`"auto"` or `{ min, max, majorUnit }`; automatic tick calculation belongs to
+Layout. Bar direction remains a semantic `orientation`, while exporters map it
+to their own vocabulary (for example OOXML `barDir`).
 
 `NormalizedElement` is the union of these seven interfaces. A shape may optionally
 carry an editable text body; this remains one element with one identity rather
@@ -264,7 +302,7 @@ Layout elements are not copied into slide-local element arrays. Downstream consu
 
 ## Elements
 
-IR v1 supports text, image, shape, connector, group, table, and chart elements.
+IR v2 supports text, image, shape, connector, group, table, and chart elements.
 
 - Text contains structured paragraphs/runs and a normalized frame.
 - Images contain stable asset references, explicit fit mode, and four crop edges.
@@ -272,7 +310,7 @@ IR v1 supports text, image, shape, connector, group, table, and chart elements.
 - Connectors retain point or element-anchor intent until Layout resolves it.
 - Groups retain a local coordinate size and recursively normalized children.
 - Tables contain explicit column widths, row heights, cell spans, rich text, and cell styles.
-- Charts contain a chart type, categories, data series with colors, axis/legend visibility, and an optional title.
+- Charts contain a chart type, categories, data series with colors, axis/legend visibility, an optional title, a derived legend position, and per-category pie slice colors. Bar category ticks default to `none`; line category ticks default to `outside`, allowing Layout to preserve each native chart family's category placement without misleading boundary ticks.
 
 ## Default ownership
 

@@ -132,9 +132,7 @@ test("renders bar, line, and pie charts in a real browser", async ({ page }) => 
       { name: "B", values: [20, 35, 25], color: { theme: "accent2" } },
     ],
     title: "Bar",
-    showLegend: true,
-    xAxis: { show: true, labels: true },
-    yAxis: { show: true },
+    legend: { visible: true },
     box: { x: 40, y: 40, width: 280, height: 220 },
   });
   slide.addElement({
@@ -146,9 +144,7 @@ test("renders bar, line, and pie charts in a real browser", async ({ page }) => 
       { name: "Growth", values: [10, 25, 20, 35], color: "22C55E" },
     ],
     title: "Line",
-    showLegend: false,
-    xAxis: { show: true, labels: true },
-    yAxis: { show: true },
+    legend: { visible: false },
     box: { x: 340, y: 40, width: 280, height: 220 },
   });
   slide.addElement({
@@ -160,9 +156,7 @@ test("renders bar, line, and pie charts in a real browser", async ({ page }) => 
       { name: "Slice", values: [45, 30, 25], color: "8B5CF6" },
     ],
     title: "Pie",
-    showLegend: true,
-    xAxis: { show: false, labels: false },
-    yAxis: { show: false },
+    legend: { visible: true },
     box: { x: 640, y: 40, width: 280, height: 220 },
   });
 
@@ -171,7 +165,7 @@ test("renders bar, line, and pie charts in a real browser", async ({ page }) => 
   await page.setContent(`<style>html,body{margin:0;background:#d1d5db}#frame{width:960px;height:540px;background:white}svg{display:block;width:960px;height:540px}</style><div id="frame">${result.slides[0].svg}</div>`);
 
   await expect(page.locator("svg[data-pptkit-slide-id='chart-visual']")).toHaveCount(1);
-  await expect(page.locator("[data-pptkit-element-id='visual-bar'] rect")).toHaveCount(6);
+  await expect(page.locator("[data-pptkit-element-id='visual-bar'] [data-chart-role='bar']")).toHaveCount(6);
   await expect(page.locator("[data-pptkit-element-id='visual-line'] polyline")).toHaveCount(1);
   await expect(page.locator("[data-pptkit-element-id='visual-pie'] path")).toHaveCount(3);
   await expect(page.locator("#frame")).toHaveScreenshot("charts.png");

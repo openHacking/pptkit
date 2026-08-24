@@ -1,6 +1,6 @@
 # `@pptkit/core`
 
-`@pptkit/core` is the format-independent authoring and document-contract package for PPTKit. It owns presentation construction, stable identities, validation, themes, layouts, assets, and Canonical Presentation IR v1. It does not read files, fetch URLs, calculate final layout, or write PPTX packages.
+`@pptkit/core` is the format-independent authoring and document-contract package for PPTKit. It owns presentation construction, stable identities, validation, themes, layouts, assets, and Canonical Presentation IR v2. It does not read files, fetch URLs, calculate final layout, or write PPTX packages.
 
 ## Installation status
 
@@ -52,9 +52,8 @@ Authoring inputs may omit most defaults and IDs. Normalization validates the com
 
 ## Chart elements
 
-Chart elements express categorical data as bar, line, or pie visualizations. A
-chart carries its categories, one or more data series, an optional title, and
-axis/legend visibility flags.
+Chart elements are a `chartType`-discriminated union. Core uses the general
+`bar` family name and expresses direction separately through `orientation`.
 
 ```ts
 slide.addElement({
@@ -66,9 +65,13 @@ slide.addElement({
     { name: "Costs", values: [80, 90, 100, 120] },
   ],
   title: "Quarterly performance",
-  showLegend: true,
-  xAxis: { show: true, labels: true },
-  yAxis: { show: true },
+  orientation: "vertical",
+  grouping: "clustered",
+  legend: { visible: true, position: "right" },
+  axes: {
+    category: { visible: true, labels: true },
+    value: { scale: { min: 0, max: 250, majorUnit: 50 } },
+  },
   box: { x: 48, y: 140, width: 624, height: 320 },
 });
 ```
@@ -79,8 +82,19 @@ Normalization validates chart structure and materializes defaults:
 - Every series `values` array length must match the `categories` length.
 - Series colors default from theme accents when omitted, so charts stay consistent
   with the presentation theme without explicit per-series colors.
+- Bar charts default to vertical, clustered layout. `categoryGap` and
+  `seriesGap` are normalized explicitly.
+- Cartesian charts receive explicit category/value axes, including line,
+  labels, major ticks, gridlines, text styles, and fixed or automatic scale. Category
+  major ticks default to `none` for bar charts (whose native axis boundaries fall between
+  labels) and `outside` for line charts.
+- Line markers accept `"auto"`, `false`, or an explicit shape/style. Automatic
+  shapes cycle deterministically through diamond, square, circle, triangle,
+  star, x, plus, and dash.
+- Pie `pointColors` resolve to one `#RRGGBB` value per category and pie charts
+  accept exactly one series.
 
-The normalized contract is documented in [Canonical Presentation IR v1](../architecture/canonical-ir-v1.md).
+The normalized contract is documented in [Canonical Presentation IR v2](../architecture/canonical-ir-v2.md).
 
 ## API reference
 
@@ -89,9 +103,9 @@ The normalized contract is documented in [Canonical Presentation IR v1](../archi
 - [Text and styles](core/text-and-styles.md) — paragraphs, runs, paints, strokes, transforms, bullets, links, and defaults.
 - [Themes and layouts](core/themes-and-layouts.md) — theme roles, reusable layouts, placeholders, and inheritance.
 - [Assets](core/assets.md) — registration, lookup, deduplication, and runtime boundaries.
-- [Validation and IR](core/validation-and-ir.md) — diagnostics, normalization failures, and IR v1 guarantees.
+- [Validation and IR](core/validation-and-ir.md) — diagnostics, normalization failures, and IR v2 guarantees.
 
-The exact normalized schema is documented separately in [Canonical Presentation IR v1](../architecture/canonical-ir-v1.md).
+The exact normalized schema is documented separately in [Canonical Presentation IR v2](../architecture/canonical-ir-v2.md).
 
 ## Public exports
 
@@ -101,7 +115,7 @@ Runtime exports:
 | --- | --- |
 | `createPresentation(init?)` | Creates method-managed authoring state. |
 | `validatePresentation(document)` | Returns every validation diagnostic found in a document. |
-| `normalizePresentation(document)` | Produces detached Canonical IR v1 or throws one validation error containing all error diagnostics. |
+| `normalizePresentation(document)` | Produces detached Canonical IR v2 or throws one validation error containing all error diagnostics. |
 | `PresentationValidationError` | Error class exposing a readonly `diagnostics` collection. |
 
 Core also exports its public TypeScript types, including authoring inputs, normalized structures, geometry, themes, styles, diagnostics, assets, and element unions.

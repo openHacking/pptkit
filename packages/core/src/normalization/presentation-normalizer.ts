@@ -9,6 +9,11 @@ import {
 } from "../constants/presentation.js";
 import type { NormalizedAsset } from "../types/asset.js";
 import type {
+  ChartMarkerInput,
+  ChartTextStyleInput,
+  NormalizedChartMarkerStyle,
+  NormalizedChartAxes,
+  NormalizedChartTextStyle,
   NormalizedElement,
   NormalizedElementBase,
   NormalizedPlaceholderDefinition,
@@ -29,7 +34,7 @@ import type {
   SlideLayoutDefinition,
 } from "../types/presentation.js";
 import type { NormalizedPresentationTheme } from "../types/theme.js";
-import type { ColorValue, NormalizedTextFrameStyle, NormalizedTextParagraphStyle, NormalizedTextRunStyle, TextStylePresetInput, ThemeColorRole } from "../types/style.js";
+import type { ColorValue, NormalizedPaint, NormalizedStrokeStyle, NormalizedTextFrameStyle, NormalizedTextParagraphStyle, NormalizedTextRunStyle, PaintInput, StrokeStyleInput, TextStylePresetInput, ThemeColorRole } from "../types/style.js";
 import { deepClone } from "../utils/clone.js";
 import { normalizeSize } from "../validation/geometry.js";
 import { estimateTextHeight } from "./measure-text.js";
@@ -156,6 +161,7 @@ function normalizedBase(element: PresentationElement, placeholder?: NormalizedPl
 }
 
 const CHART_PALETTE_ROLES: readonly ThemeColorRole[] = ["accent1", "accent2", "accent3", "accent4", "accent5", "accent6"];
+const CHART_MARKERS = ["diamond", "square", "circle", "triangle", "star", "x", "plus", "dash"] as const;
 
 function ensureHexColor(color: string): string {
   return color.startsWith("#") ? color : `#${color}`;
@@ -168,6 +174,70 @@ function resolveChartColor(color: ColorValue | undefined, theme: NormalizedPrese
   }
   const role = CHART_PALETTE_ROLES[index % CHART_PALETTE_ROLES.length] ?? "accent1";
   return ensureHexColor(theme.colors[role]);
+}
+
+function resolveChartPaint(input: PaintInput | undefined, fallback: NormalizedPaint, theme: NormalizedPresentationTheme): NormalizedPaint {
+  const paint = normalizePaint(input, fallback);
+  if (paint.type === "none") return paint;
+  return { ...paint, color: resolveChartColor(paint.color, theme, 0) };
+}
+
+function resolveChartStroke(input: StrokeStyleInput | undefined, fallback: NormalizedStrokeStyle, theme: NormalizedPresentationTheme): NormalizedStrokeStyle {
+  const stroke = normalizeStroke(input, fallback);
+  return {
+    ...stroke,
+    paint: stroke.paint.type === "none"
+      ? stroke.paint
+      : { ...stroke.paint, color: resolveChartColor(stroke.paint.color, theme, 0) },
+  };
+}
+
+function resolveChartTextStyle(
+  input: ChartTextStyleInput | undefined,
+  theme: NormalizedPresentationTheme,
+  fallback?: NormalizedChartTextStyle,
+): NormalizedChartTextStyle {
+  const fontFamily = input?.fontFamily ?? fallback?.fontFamily ?? { theme: "body" as const };
+  return {
+    fontFamily: typeof fontFamily === "string" ? fontFamily : theme.fonts[fontFamily.theme],
+    fontSize: input?.fontSize ?? fallback?.fontSize ?? 9,
+    bold: input?.bold ?? fallback?.bold ?? false,
+    italic: input?.italic ?? fallback?.italic ?? false,
+    color: resolveChartColor(input?.color ?? fallback?.color ?? "#595959", theme, 0),
+  };
+}
+
+const AXIS_STROKE: NormalizedStrokeStyle = {
+  paint: { type: "solid", color: "#7F7F7F", opacity: 1 },
+  width: 0.75,
+  dash: "solid",
+  beginArrow: "none",
+  endArrow: "none",
+};
+
+const GRIDLINE_STROKE: NormalizedStrokeStyle = {
+  paint: { type: "solid", color: "#D9D9D9", opacity: 1 },
+  width: 0.75,
+  dash: "solid",
+  beginArrow: "none",
+  endArrow: "none",
+};
+
+function normalizeChartMarker(
+  marker: ChartMarkerInput | undefined,
+  seriesColor: string,
+  seriesIndex: number,
+  theme: NormalizedPresentationTheme,
+): false | NormalizedChartMarkerStyle {
+  if (marker === false) return false;
+  const explicit = marker !== undefined && marker !== "auto" ? marker : undefined;
+  const shape = explicit?.shape ?? CHART_MARKERS[seriesIndex % CHART_MARKERS.length] ?? "diamond";
+  return {
+    shape,
+    size: explicit?.size ?? 6,
+    fill: resolveChartPaint(explicit?.fill, { type: "solid", color: seriesColor, opacity: 1 }, theme),
+    stroke: resolveChartStroke(explicit?.stroke, { ...AXIS_STROKE, paint: { type: "solid", color: seriesColor, opacity: 1 } }, theme),
+  };
 }
 
 function normalizeElement(
@@ -240,21 +310,89 @@ function normalizeElement(
     };
   }
   if (element.type === "chart") {
-    const isPie = element.chartType === "pie";
-    return {
+    const chartTextStyle = resolveChartTextStyle(element.style?.textStyle, theme);
+    const common = {
       ...base,
-      type: "chart",
-      chartType: element.chartType,
+      type: "chart" as const,
       categories: [...element.categories],
-      series: element.series.map((series, index) => ({
-        name: series.name,
-        values: [...series.values],
-        color: resolveChartColor(series.color, theme, index),
-      })),
       ...(element.title !== undefined ? { title: element.title } : {}),
-      showLegend: element.showLegend ?? true,
-      xAxis: isPie ? { show: false, labels: false } : { show: element.xAxis?.show ?? true, labels: element.xAxis?.labels ?? true },
-      yAxis: isPie ? { show: false } : { show: element.yAxis?.show ?? true },
+      titleStyle: resolveChartTextStyle(element.titleStyle, theme, { ...chartTextStyle, fontSize: 12, bold: true }),
+      legend: {
+        visible: element.legend?.visible ?? true,
+        position: element.legend?.position ?? "right",
+        textStyle: resolveChartTextStyle(element.legend?.textStyle, theme, chartTextStyle),
+      },
+      style: {
+        chartArea: resolveChartPaint(element.style?.chartArea, { type: "none" }, theme),
+        plotArea: resolveChartPaint(element.style?.plotArea, { type: "none" }, theme),
+        textStyle: chartTextStyle,
+      },
+    };
+    if (element.chartType === "pie") return {
+      ...common,
+      chartType: "pie",
+      series: element.series.map((item, index) => ({
+        name: item.name,
+        values: [...item.values],
+        color: resolveChartColor(item.color, theme, index),
+        pointColors: element.categories.map((_, pointIndex) => resolveChartColor(item.pointColors?.[pointIndex], theme, pointIndex)),
+      })),
+    };
+    const category = element.axes?.category;
+    const value = element.axes?.value;
+    const axes: NormalizedChartAxes = {
+      category: {
+        visible: category?.visible ?? true,
+        labels: category?.labels ?? true,
+        line: resolveChartStroke(category?.line, AXIS_STROKE, theme),
+        majorTick: category?.majorTick ?? (element.chartType === "bar" ? "none" : "outside"),
+        majorGridlines: category?.majorGridlines === false || category?.majorGridlines === undefined
+          ? false
+          : resolveChartStroke(category.majorGridlines, GRIDLINE_STROKE, theme),
+        labelStyle: resolveChartTextStyle(category?.labelStyle, theme, chartTextStyle),
+      },
+      value: {
+        visible: value?.visible ?? true,
+        labels: value?.labels ?? true,
+        line: resolveChartStroke(value?.line, AXIS_STROKE, theme),
+        majorTick: value?.majorTick ?? "outside",
+        labelStyle: resolveChartTextStyle(value?.labelStyle, theme, chartTextStyle),
+        scale: value?.scale ?? "auto",
+        majorGridlines: value?.majorGridlines === false
+          ? false
+          : resolveChartStroke(value?.majorGridlines, GRIDLINE_STROKE, theme),
+      },
+    };
+    if (element.chartType === "bar") {
+      return {
+        ...common,
+        chartType: "bar",
+        orientation: element.orientation ?? "vertical",
+        grouping: element.grouping ?? "clustered",
+        seriesGap: element.seriesGap ?? 0,
+        categoryGap: element.categoryGap ?? 150,
+        axes,
+        series: element.series.map((item, index) => ({
+          name: item.name,
+          values: [...item.values],
+          color: resolveChartColor(item.color, theme, index),
+        })),
+      };
+    }
+    return {
+      ...common,
+      chartType: "line",
+      axes,
+      series: element.series.map((item, index) => {
+        const color = resolveChartColor(item.color, theme, index);
+        return {
+          name: item.name,
+          values: [...item.values],
+          color,
+          line: resolveChartStroke(item.line, { ...AXIS_STROKE, width: 1.5, paint: { type: "solid", color, opacity: 1 } }, theme),
+          marker: normalizeChartMarker(item.marker, color, index, theme),
+        };
+      }),
     };
   }
   if (element.type === "table") {
@@ -348,7 +486,7 @@ export class PresentationNormalizer {
     const layouts = new Map(normalizedLayouts.map((layout) => [layout.id, layout]));
     const sourceLayouts = new Map(document.layouts.map((layout) => [layout.id, layout]));
     return {
-      irVersion: 1,
+      irVersion: 2,
       id: document.id,
       metadata: normalizeMetadata(document),
       size: normalizeSize(document.size, DEFAULT_PRESENTATION_SIZE),

@@ -11,7 +11,7 @@ Owns format-independent authoring and shared document contracts:
 - presentation, slide, element, asset, theme, layout, and placeholder types
 - method-managed state and document-wide identity
 - complete validation diagnostics
-- Canonical Presentation IR v1 normalization
+- Canonical Presentation IR v2 normalization
 
 Core contains no layout resolution, file I/O, network access, binary asset loading, XML, ZIP, or PPTX relationship behavior.
 

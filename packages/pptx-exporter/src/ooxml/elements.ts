@@ -7,7 +7,7 @@ import type {
   NormalizedTextParagraph,
   PlaceholderKind,
 } from "@pptkit/core";
-import type { LayoutConnectorElement, LayoutElement, LayoutGroupElement } from "@pptkit/layout";
+import type { LayoutChartElement, LayoutConnectorElement, LayoutElement, LayoutGroupElement } from "@pptkit/layout";
 import type { ExportWarning } from "../types/export.js";
 import { colorXml, emu, escapeXml, groupTransformXml, paintXml, paragraphAlignment, strokeXml, transformXml } from "./xml.js";
 
@@ -20,8 +20,7 @@ export interface ElementXmlContext {
   actionRelationship(action: ElementAction): string | undefined;
   nextChartId(): number;
   chartRelationship(chartId: number): string;
-  registerChart(chartId: number, xml: string): void;
-  buildChartPart(chart: Extract<LayoutElement, { type: "chart" }>): string;
+  registerChart(chartId: number, chart: LayoutChartElement): void;
 }
 
 function actionXml(action: ElementAction | undefined, context: ElementXmlContext): string {
@@ -194,7 +193,7 @@ function tableXml(element: Extract<LayoutElement, { type: "table" }>, context: E
 
 function chartXml(element: Extract<LayoutElement, { type: "chart" }>, context: ElementXmlContext, inheritedOpacity: number): string {
   const chartId = context.nextChartId();
-  context.registerChart(chartId, context.buildChartPart(element));
+  context.registerChart(chartId, element);
   const rId = context.chartRelationship(chartId);
   return `<p:graphicFrame>${nonVisualProperties(element, context, "graphic")}<p:xfrm><a:off x="${emu(element.box.x)}" y="${emu(element.box.y)}"/><a:ext cx="${emu(element.box.width)}" cy="${emu(element.box.height)}"/></p:xfrm><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart"><c:chart xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" r:id="${rId}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/></a:graphicData></a:graphic></p:graphicFrame>`;
 }

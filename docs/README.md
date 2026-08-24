@@ -24,7 +24,7 @@ The documentation is organized by audience and task. Current behavior is written
 - [Concepts](concepts/README.md)
 - [Architecture overview](architecture/overview.md)
 - [Core authoring model](architecture/core-authoring-model.md)
-- [Canonical Presentation IR v1](architecture/canonical-ir-v1.md)
+- [Canonical Presentation IR v2](architecture/canonical-ir-v2.md)
 - [Package boundaries](architecture/package-boundaries.md)
 - [Rendering pipeline](architecture/rendering-pipeline.md)
 

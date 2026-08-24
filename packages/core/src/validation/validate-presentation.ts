@@ -1,5 +1,7 @@
 import type { PresentationAsset } from "../types/asset.js";
 import type {
+  ChartTextStyleInput,
+  ChartMarkerInput,
   ConnectorEndpointInput,
   NormalizedElementAccessibility,
   PresentationElement,
@@ -8,12 +10,17 @@ import type {
 import type { PresentationDiagnostic } from "../types/diagnostic.js";
 import type { Box } from "../types/geometry.js";
 import type { PresentationDocument, PresentationSlide, SlideLayoutDefinition } from "../types/presentation.js";
-import type { PaintInput, StrokeStyleInput, TextFrameStyleInput, TextParagraphStyleInput, TextRunStyleInput, TextStylePresetInput } from "../types/style.js";
+import type { ColorValue, PaintInput, StrokeStyleInput, TextFrameStyleInput, TextParagraphStyleInput, TextRunStyleInput, TextStylePresetInput } from "../types/style.js";
 import { duplicates } from "./collection.js";
 import { isFiniteNumber, isValidBox, isValidPoint, isValidSize } from "./geometry.js";
 import { isValidColor, isValidOpacity, isValidPaint } from "./style.js";
 
 const CHART_TYPES = new Set<string>(["bar", "line", "pie"]);
+const CHART_MARKERS = new Set<string>(["diamond", "square", "circle", "triangle", "star", "x", "plus", "dash"]);
+const CHART_TICKS = new Set<string>(["none", "inside", "outside", "cross"]);
+const CHART_LEGEND_POSITIONS = new Set<string>(["right", "bottom"]);
+const CHART_ORIENTATIONS = new Set<string>(["vertical", "horizontal"]);
+const CHART_GROUPINGS = new Set<string>(["clustered", "stacked", "percentStacked"]);
 
 interface Context {
   diagnostics: PresentationDiagnostic[];
@@ -68,6 +75,31 @@ function validateRunStyle(context: Context, style: TextRunStyleInput | undefined
   if (style === undefined) return;
   if (style.fontSize !== undefined && (!isFiniteNumber(style.fontSize) || style.fontSize <= 0)) add(context, { code: "invalid-font-size", message: "fontSize must be positive.", path: `${path}.fontSize`, ...ids });
   if (style.color !== undefined && !isValidColor(style.color)) add(context, { code: "invalid-color", message: "Text color must be a six-digit RGB value or theme reference.", path: `${path}.color`, ...ids });
+}
+
+function validateChartTextStyle(context: Context, style: ChartTextStyleInput | undefined, path: string, ids: Partial<PresentationDiagnostic>): void {
+  if (style === undefined) return;
+  if (style.fontSize !== undefined && (!isFiniteNumber(style.fontSize) || style.fontSize <= 0)) add(context, { code: "invalid-chart-text-style", message: "Chart fontSize must be positive.", path: `${path}.fontSize`, ...ids });
+  if (style.color !== undefined && !isValidColor(style.color)) add(context, { code: "invalid-chart-text-style", message: "Chart text color must be valid.", path: `${path}.color`, ...ids });
+}
+
+function validateChartAxes(context: Context, axes: Extract<PresentationElement, { type: "chart"; chartType: "bar" | "line" }>["axes"], path: string, ids: Partial<PresentationDiagnostic>): void {
+  if (axes === undefined) return;
+  for (const [name, axis] of [["category", axes.category], ["value", axes.value]] as const) {
+    if (axis === undefined) continue;
+    if (axis.visible !== undefined && typeof axis.visible !== "boolean") add(context, { code: "invalid-chart-axis", message: "Axis visible must be boolean.", path: `${path}.${name}.visible`, ...ids });
+    if (axis.labels !== undefined && typeof axis.labels !== "boolean") add(context, { code: "invalid-chart-axis", message: "Axis labels must be boolean.", path: `${path}.${name}.labels`, ...ids });
+    if (axis.majorTick !== undefined && !CHART_TICKS.has(axis.majorTick)) add(context, { code: "invalid-chart-axis", message: "Axis majorTick must be none, inside, outside, or cross.", path: `${path}.${name}.majorTick`, ...ids });
+    validateStroke(context, axis.line, `${path}.${name}.line`, ids);
+    if (axis.majorGridlines !== undefined && axis.majorGridlines !== false) validateStroke(context, axis.majorGridlines, `${path}.${name}.majorGridlines`, ids);
+    validateChartTextStyle(context, axis.labelStyle, `${path}.${name}.labelStyle`, ids);
+  }
+  const scale = axes.value?.scale;
+  if (scale !== undefined && scale !== "auto") {
+    if (!isFiniteNumber(scale.min) || !isFiniteNumber(scale.max) || scale.min >= scale.max || !isFiniteNumber(scale.majorUnit) || scale.majorUnit <= 0) {
+      add(context, { code: "invalid-chart-scale", message: "A fixed value-axis scale requires finite min < max and majorUnit > 0.", path: `${path}.value.scale`, ...ids });
+    }
+  }
 }
 
 function validateTextStylePresetRef(context: Context, name: string | undefined, path: string, ids: Partial<PresentationDiagnostic>): void {
@@ -178,14 +210,45 @@ function validateElement(
       if (series.values.length !== element.categories.length) add(context, { code: "chart-values-length", message: "Chart series values length must match categories length.", path: `${path}.series.${seriesIndex}.values`, ...identity });
       series.values.forEach((value, valueIndex) => {
         if (!isFiniteNumber(value)) add(context, { code: "chart-values-finite", message: "Chart series values must be finite numbers.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
+        if (element.chartType === "pie" && isFiniteNumber(value) && value < 0) add(context, { code: "pie-negative-value", message: "Pie chart values must be non-negative.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
       });
       if (series.color !== undefined && !isValidColor(series.color)) add(context, { code: "invalid-chart-color", message: "Chart series color must be a valid color.", path: `${path}.series.${seriesIndex}.color`, ...identity });
+      const marker = (series as { marker?: ChartMarkerInput }).marker;
+      if (element.chartType !== "line" && ("marker" in series || "line" in series)) add(context, { code: "invalid-chart-series-field", message: "line and marker are only valid for line charts.", path: `${path}.series.${seriesIndex}`, ...identity });
+      if (element.chartType === "line") validateStroke(context, (series as { line?: StrokeStyleInput }).line, `${path}.series.${seriesIndex}.line`, identity);
+      if (element.chartType === "line" && marker !== undefined && marker !== false && marker !== "auto") {
+        if (!CHART_MARKERS.has(marker.shape)) add(context, { code: "invalid-chart-marker", message: "Unknown chart marker shape.", path: `${path}.series.${seriesIndex}.marker.shape`, ...identity });
+        if (marker.size !== undefined && (!isFiniteNumber(marker.size) || marker.size < 2 || marker.size > 72)) add(context, { code: "invalid-chart-marker", message: "Chart marker size must be between 2 and 72 points.", path: `${path}.series.${seriesIndex}.marker.size`, ...identity });
+        validatePaint(context, marker.fill, `${path}.series.${seriesIndex}.marker.fill`, identity);
+        validateStroke(context, marker.stroke, `${path}.series.${seriesIndex}.marker.stroke`, identity);
+      }
+      const pointColors = (series as { pointColors?: ColorValue[] }).pointColors;
+      if (element.chartType !== "pie" && "pointColors" in series) add(context, { code: "invalid-chart-series-field", message: "pointColors is only valid for pie charts.", path: `${path}.series.${seriesIndex}.pointColors`, ...identity });
+      if (element.chartType === "pie" && pointColors !== undefined) {
+        if (pointColors.length !== element.categories.length) add(context, { code: "chart-point-colors-length", message: "Pie pointColors length must match categories length.", path: `${path}.series.${seriesIndex}.pointColors`, ...identity });
+        pointColors.forEach((color, colorIndex) => { if (!isValidColor(color)) add(context, { code: "invalid-chart-color", message: "Pie point color must be valid.", path: `${path}.series.${seriesIndex}.pointColors.${colorIndex}`, ...identity }); });
+      }
     });
     if (element.chartType === "pie" && element.series.length !== 1) add(context, { code: "pie-single-series", message: "Pie charts must have exactly one series.", path: `${path}.series`, ...identity });
     if (element.title !== undefined && element.title.length === 0) add(context, { code: "invalid-chart-title", message: "Chart title must be a non-empty string.", path: `${path}.title`, ...identity });
-    if (element.showLegend !== undefined && typeof element.showLegend !== "boolean") add(context, { code: "invalid-chart-config", message: "showLegend must be a boolean.", path: `${path}.showLegend`, ...identity });
-    if (element.xAxis !== undefined && (typeof element.xAxis.show !== "boolean" || typeof element.xAxis.labels !== "boolean")) add(context, { code: "invalid-chart-config", message: "xAxis show and labels must be booleans.", path: `${path}.xAxis`, ...identity });
-    if (element.yAxis !== undefined && typeof element.yAxis.show !== "boolean") add(context, { code: "invalid-chart-config", message: "yAxis show must be a boolean.", path: `${path}.yAxis`, ...identity });
+    validateChartTextStyle(context, element.titleStyle, `${path}.titleStyle`, identity);
+    validateChartTextStyle(context, element.legend?.textStyle, `${path}.legend.textStyle`, identity);
+    validateChartTextStyle(context, element.style?.textStyle, `${path}.style.textStyle`, identity);
+    validatePaint(context, element.style?.chartArea, `${path}.style.chartArea`, identity);
+    validatePaint(context, element.style?.plotArea, `${path}.style.plotArea`, identity);
+    if (element.legend?.visible !== undefined && typeof element.legend.visible !== "boolean") add(context, { code: "invalid-chart-legend", message: "Legend visible must be boolean.", path: `${path}.legend.visible`, ...identity });
+    if (element.legend?.position !== undefined && !CHART_LEGEND_POSITIONS.has(element.legend.position)) add(context, { code: "invalid-chart-legend", message: "Legend position must be right or bottom.", path: `${path}.legend.position`, ...identity });
+    if (element.chartType === "pie") {
+      if ((element as { axes?: unknown }).axes !== undefined) add(context, { code: "invalid-chart-axis", message: "Pie charts do not support axes.", path: `${path}.axes`, ...identity });
+    } else {
+      validateChartAxes(context, element.axes, `${path}.axes`, identity);
+    }
+    if (element.chartType === "bar") {
+      if (element.orientation !== undefined && !CHART_ORIENTATIONS.has(element.orientation)) add(context, { code: "invalid-chart-orientation", message: "Bar orientation must be vertical or horizontal.", path: `${path}.orientation`, ...identity });
+      if (element.grouping !== undefined && !CHART_GROUPINGS.has(element.grouping)) add(context, { code: "invalid-chart-grouping", message: "Bar grouping must be clustered, stacked, or percentStacked.", path: `${path}.grouping`, ...identity });
+      if (element.seriesGap !== undefined && (!isFiniteNumber(element.seriesGap) || element.seriesGap < 0 || element.seriesGap > 100)) add(context, { code: "invalid-chart-gap", message: "seriesGap must be between 0 and 100 percent.", path: `${path}.seriesGap`, ...identity });
+      if (element.categoryGap !== undefined && (!isFiniteNumber(element.categoryGap) || element.categoryGap < 0 || element.categoryGap > 500)) add(context, { code: "invalid-chart-gap", message: "categoryGap must be between 0 and 500 percent.", path: `${path}.categoryGap`, ...identity });
+    }
   } else if (element.type === "table") {
     if (element.columns.length === 0 || element.columns.some((width) => !isFiniteNumber(width) || width <= 0)) add(context, { code: "invalid-table-columns", message: "Table columns must contain positive widths.", path: `${path}.columns`, ...identity });
     element.rows.forEach((row, rowIndex) => {

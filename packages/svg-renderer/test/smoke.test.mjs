@@ -370,9 +370,8 @@ test("renders bar, line, and pie charts as deterministic SVG", async () => {
       { name: "Cost", values: [80, 140, 110], color: "E65A3A" },
     ],
     title: "Bar Chart",
-    showLegend: true,
-    xAxis: { show: true, labels: true },
-    yAxis: { show: true },
+    legend: { visible: true },
+    axes: { category: { majorGridlines: { paint: { type: "solid", color: "ABCDEF" }, width: 0.5 } } },
     box: { x: 40, y: 40, width: 280, height: 200 },
   });
   slide.addElement({
@@ -384,9 +383,7 @@ test("renders bar, line, and pie charts as deterministic SVG", async () => {
       { name: "Trend", values: [10, 30, 20], color: "22C55E" },
     ],
     title: "Line Chart",
-    showLegend: false,
-    xAxis: { show: true, labels: true },
-    yAxis: { show: true },
+    legend: { visible: false },
     box: { x: 340, y: 40, width: 280, height: 200 },
   });
   slide.addElement({
@@ -398,9 +395,7 @@ test("renders bar, line, and pie charts as deterministic SVG", async () => {
       { name: "Share", values: [40, 35, 25], color: "8B5CF6" },
     ],
     title: "Pie Chart",
-    showLegend: true,
-    xAxis: { show: false, labels: false },
-    yAxis: { show: false },
+    legend: { visible: true },
     box: { x: 640, y: 40, width: 280, height: 200 },
   });
 
@@ -420,5 +415,304 @@ test("renders bar, line, and pie charts as deterministic SVG", async () => {
   assert.match(svg, /<text[^>]*>Q2<\/text>/);
   assert.match(svg, /<text[^>]*>Q3<\/text>/);
   assert.match(svg, /<text[^>]*>Revenue<\/text>/);
-  assert.match(svg, /<text[^>]*>Share<\/text>/);
+  assert.match(svg, /<text[^>]*>X<\/text>/);
+  assert.match(svg, /<text[^>]*>Y<\/text>/);
+  assert.match(svg, /<text[^>]*>Z<\/text>/);
+  assert.doesNotMatch(svg, /<text[^>]*>Share<\/text>/);
+  const barFragment = svg.slice(svg.indexOf('data-pptkit-element-id="bar-chart"'), svg.indexOf('data-pptkit-element-id="line-chart"'));
+  assert.ok(barFragment.indexOf('data-chart-layer="grid"') < barFragment.indexOf('data-chart-layer="series"'), "grid layer renders before bars");
+  assert.equal([...barFragment.matchAll(/data-chart-role="category-gridline"/g)].length, 4);
+  const lineFragment = svg.slice(svg.indexOf('data-pptkit-element-id="line-chart"'), svg.indexOf('data-pptkit-element-id="pie-chart"'));
+  assert.ok(lineFragment.indexOf('data-chart-layer="grid"') < lineFragment.indexOf('data-chart-layer="series"'), "grid layer renders before lines");
+});
+
+test("chart box origin, y-axis ticks, pie slice colors, and safe geometry", async () => {
+  const presentation = createPresentation({
+    metadata: { title: "Chart geometry" },
+    theme: { colors: { accent1: "2457D6", accent2: "E65A3A" } },
+  });
+  const slide = presentation.addSlide({ id: "geometry-slide" });
+  slide.addElement({
+    type: "chart",
+    id: "bar-with-yaxis",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [{ name: "Revenue", values: [120, 200, 150], color: "2457D6" }],
+    title: "Bar",
+    legend: { visible: false },
+    box: { x: 100, y: 50, width: 240, height: 180 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "bar-no-yaxis",
+    chartType: "bar",
+    categories: ["A", "B"],
+    series: [{ name: "Count", values: [3, 7], color: "22C55E" }],
+    legend: { visible: false },
+    axes: { value: { visible: false, labels: false, majorGridlines: false } },
+    box: { x: 360, y: 50, width: 200, height: 180 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "pie-slices",
+    chartType: "pie",
+    categories: ["A", "B", "C", "D"],
+    series: [{ name: "Share", values: [10, 20, 30, 40], pointColors: ["FF0000", "00FF00", "0000FF", "FFFF00"] }],
+    legend: { visible: false },
+    box: { x: 580, y: 50, width: 200, height: 180 },
+  });
+
+  const layout = resolveNormalizedLayout(normalizePresentation(presentation));
+
+  const result = await renderLayoutToSvg(layout);
+  assert.equal(result.status, "rendered");
+  const svg = result.slides[0].svg;
+
+  assert.match(svg, /<g transform="translate\(100 50\)">/);
+
+  const noYaxisStart = svg.indexOf('data-pptkit-element-id="bar-no-yaxis"');
+  const noYaxisEnd = svg.indexOf('data-pptkit-element-id="pie-slices"');
+  const noYaxisFragment = svg.slice(noYaxisStart, noYaxisEnd);
+  assert.doesNotMatch(noYaxisFragment, /text-anchor="end">-?\d/);
+
+  const pieStart = svg.indexOf('data-pptkit-element-id="pie-slices"');
+  const pieFragment = svg.slice(pieStart);
+  const piePaths = Array.from(pieFragment.matchAll(/<path[^>]*fill="(#[0-9A-Fa-f]+)"/g), (match) => match[1]);
+  assert.equal(piePaths.length, 4, "pie renders one path per positive category");
+  assert.deepEqual(piePaths, ["#FF0000", "#00FF00", "#0000FF", "#FFFF00"]);
+
+  assert.ok(!svg.includes("NaN"), "no NaN in svg");
+  assert.ok(!svg.includes("Infinity"), "no Infinity in svg");
+
+  const barOuter = svg.slice(svg.indexOf('data-pptkit-element-id="bar-with-yaxis"'));
+  assert.match(barOuter, /opacity="/);
+  assert.match(barOuter, /data-pptkit-element-id="bar-with-yaxis"/);
+});
+
+test("chart legend placement follows structured legend config with escaped labels", async () => {
+  const presentation = createPresentation({
+    metadata: { title: "Legend layout" },
+    theme: { colors: { accent1: "2457D6", accent2: "E65A3A", accent3: "22C55E" } },
+  });
+  const slide = presentation.addSlide({ id: "legend-slide" });
+  slide.addElement({
+    type: "chart",
+    id: "legend-right",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [
+      { name: "Revenue & Cost", values: [120, 200, 150], color: "2457D6" },
+      { name: "Profit", values: [40, 60, 35], color: "E65A3A" },
+    ],
+    title: "Right Legend",
+    legend: { visible: true, position: "right" },
+    box: { x: 40, y: 40, width: 280, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "legend-bottom",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [
+      { name: "Revenue & Cost", values: [120, 200, 150], color: "2457D6" },
+      { name: "Profit", values: [40, 60, 35], color: "E65A3A" },
+    ],
+    title: "Bottom Legend",
+    legend: { visible: true, position: "bottom" },
+    box: { x: 360, y: 40, width: 280, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "legend-none",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [
+      { name: "Revenue & Cost", values: [120, 200, 150], color: "2457D6" },
+      { name: "Profit", values: [40, 60, 35], color: "E65A3A" },
+    ],
+    title: "Hidden Legend",
+    legend: { visible: false },
+    box: { x: 680, y: 40, width: 280, height: 200 },
+  });
+
+  const result = await renderPresentationToSvg(presentation);
+  assert.equal(result.status, "rendered");
+  const svg = result.slides[0].svg;
+
+  const fragmentBetween = (fromId, toId) => {
+    const start = svg.indexOf(`data-pptkit-element-id="${fromId}"`);
+    const end = svg.indexOf(`data-pptkit-element-id="${toId}"`);
+    assert.ok(start >= 0, `${fromId} anchor present`);
+    assert.ok(end > start, `${toId} anchor follows ${fromId}`);
+    return svg.slice(start, end);
+  };
+  const fragmentFrom = (id) => {
+    const start = svg.indexOf(`data-pptkit-element-id="${id}"`);
+    assert.ok(start >= 0, `${id} anchor present`);
+    return svg.slice(start);
+  };
+  const matchXAxisLine = (fragment) => {
+    const match = fragment.match(
+      /<line[^>]*x1="([\d.]+)"[^>]*y1="([\d.]+)"[^>]*x2="([\d.]+)"[^>]*y2="([\d.]+)"[^>]*data-chart-role="category-axis"/,
+    );
+    assert.ok(match, "x-axis line found in chart fragment");
+    const x1 = Number(match[1]);
+    const y1 = Number(match[2]);
+    const x2 = Number(match[3]);
+    const y2 = Number(match[4]);
+    assert.equal(y1, y2, "matched line is horizontal (x-axis)");
+    return { x1, y1, x2, y2 };
+  };
+  const matchLegendText = (fragment) => {
+    const match = fragment.match(
+      /<text x="([\d.]+)" y="([\d.]+)"[^>]*data-chart-role="legend-label">([^<]+)<\/text>/,
+    );
+    assert.ok(match, "legend label found in chart fragment");
+    return { x: Number(match[1]), y: Number(match[2]), label: match[3] };
+  };
+
+  const rightFragment = fragmentBetween("legend-right", "legend-bottom");
+  assert.match(rightFragment, /Revenue &amp; Cost/);
+  assert.match(rightFragment, /Profit/);
+  const rightAxis = matchXAxisLine(rightFragment);
+  const rightLegend = matchLegendText(rightFragment);
+  assert.equal(rightLegend.label, "Revenue &amp; Cost");
+  assert.ok(
+    rightLegend.x > rightAxis.x2,
+    `right legend text x (${rightLegend.x}) must exceed x-axis x2 (${rightAxis.x2})`,
+  );
+
+  const bottomFragment = fragmentBetween("legend-bottom", "legend-none");
+  assert.match(bottomFragment, /Revenue &amp; Cost/);
+  assert.match(bottomFragment, /Profit/);
+  const bottomAxis = matchXAxisLine(bottomFragment);
+  const bottomLegend = matchLegendText(bottomFragment);
+  assert.ok(
+    bottomLegend.y > bottomAxis.y2,
+    `bottom legend text y (${bottomLegend.y}) must exceed x-axis y2 (${bottomAxis.y2})`,
+  );
+
+  const noneFragment = fragmentFrom("legend-none");
+  assert.doesNotMatch(noneFragment, /data-chart-role="legend-label"/);
+  assert.doesNotMatch(noneFragment, /Revenue &amp; Cost/);
+  assert.doesNotMatch(noneFragment, />Profit</);
+});
+
+test("chart axis labels and y-axis ticks follow show flags, and category labels are XML-escaped", async () => {
+  const presentation = createPresentation({
+    metadata: { title: "Axis and escape" },
+    theme: { colors: { accent1: "2457D6", accent2: "E65A3A" } },
+  });
+  const slide = presentation.addSlide({ id: "axis-escape-slide" });
+  slide.addElement({
+    type: "chart",
+    id: "bar-with-ticks",
+    chartType: "bar",
+    categories: ["Q1", "Q2", "Q3"],
+    series: [{ name: "Revenue", values: [120, 200, 150], color: "2457D6" }],
+    legend: { visible: false },
+    box: { x: 40, y: 40, width: 240, height: 180 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "bar-no-xlabels",
+    chartType: "bar",
+    categories: ["A", "B"],
+    series: [{ name: "Count", values: [3, 7], color: "22C55E" }],
+    legend: { visible: false },
+    axes: { category: { labels: false }, value: { visible: false, labels: false, majorGridlines: false } },
+    box: { x: 300, y: 40, width: 200, height: 180 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "bar-escaped-cat",
+    chartType: "bar",
+    categories: ["Q1 <script>alert(1)</script>", "Q2"],
+    series: [{ name: "Rev", values: [10, 20], color: "2457D6" }],
+    legend: { visible: true, position: "right" },
+    box: { x: 520, y: 40, width: 200, height: 180 },
+  });
+
+  const result = await renderPresentationToSvg(presentation);
+  assert.equal(result.status, "rendered");
+  const svg = result.slides[0].svg;
+
+  const withTicksFragment = svg.slice(
+    svg.indexOf('data-pptkit-element-id="bar-with-ticks"'),
+    svg.indexOf('data-pptkit-element-id="bar-no-xlabels"'),
+  );
+  assert.match(withTicksFragment, /text-anchor="end"[^>]*data-chart-role="value-label">\d/);
+  const tickLabels = Array.from(
+    withTicksFragment.matchAll(/<text[^>]*text-anchor="end"[^>]*data-chart-role="value-label">(-?\d+(?:\.\d+)?)<\/text>/g),
+    (match) => match[1],
+  );
+  assert.deepEqual(tickLabels, ["0", "50", "100", "150", "200", "250"], "nice-number value-axis ticks with headroom");
+  const gridlineCount = (withTicksFragment.match(/data-chart-role="gridline"/g) ?? []).length;
+  const valueTickCount = (withTicksFragment.match(/data-chart-role="value-tick"/g) ?? []).length;
+  const categoryTickCount = (withTicksFragment.match(/data-chart-role="category-tick"/g) ?? []).length;
+  assert.ok(gridlineCount >= 4, `major gridlines present (got ${gridlineCount})`);
+  assert.ok(valueTickCount >= 5, `value-axis tick marks present (got ${valueTickCount})`);
+  assert.ok(categoryTickCount >= 3, `category-axis tick marks present (got ${categoryTickCount})`);
+
+  const noXLabelsFragment = svg.slice(
+    svg.indexOf('data-pptkit-element-id="bar-no-xlabels"'),
+    svg.indexOf('data-pptkit-element-id="bar-escaped-cat"'),
+  );
+  assert.doesNotMatch(noXLabelsFragment, /<text[^>]*>A<\/text>/);
+  assert.doesNotMatch(noXLabelsFragment, /<text[^>]*>B<\/text>/);
+  assert.doesNotMatch(noXLabelsFragment, /data-chart-role="gridline"/);
+  assert.doesNotMatch(noXLabelsFragment, /data-chart-role="value-label"/);
+
+  const escapedFragment = svg.slice(svg.indexOf('data-pptkit-element-id="bar-escaped-cat"'));
+  assert.match(escapedFragment, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
+});
+
+test("line chart legend uses a line swatch while bar and pie use filled squares", async () => {
+  const presentation = createPresentation({
+    metadata: { title: "Legend swatch" },
+    theme: { colors: { accent1: "2457D6", accent2: "E65A3A", accent3: "22C55E" } },
+  });
+  const slide = presentation.addSlide({ id: "legend-swatch-slide" });
+  slide.addElement({
+    type: "chart",
+    id: "line-with-legend",
+    chartType: "line",
+    categories: ["A", "B", "C"],
+    series: [{ name: "Trend", values: [10, 30, 20], color: "22C55E" }],
+    legend: { visible: true, position: "right" },
+    box: { x: 40, y: 40, width: 280, height: 200 },
+  });
+  slide.addElement({
+    type: "chart",
+    id: "pie-with-legend",
+    chartType: "pie",
+    categories: ["X", "Y", "Z"],
+    series: [{ name: "Share", values: [40, 35, 25], color: "8B5CF6" }],
+    legend: { visible: true, position: "right" },
+    box: { x: 360, y: 40, width: 280, height: 200 },
+  });
+
+  const result = await renderPresentationToSvg(presentation);
+  assert.equal(result.status, "rendered");
+  const svg = result.slides[0].svg;
+
+  const lineFragment = svg.slice(
+    svg.indexOf('data-pptkit-element-id="line-with-legend"'),
+    svg.indexOf('data-pptkit-element-id="pie-with-legend"'),
+  );
+  assert.match(lineFragment, /<line[^>]+stroke="#22C55E"[^>]+data-chart-role="legend-line"/);
+  assert.match(lineFragment, /data-chart-role="legend-marker"/);
+  assert.doesNotMatch(lineFragment, /<rect[^>]+data-chart-role="legend-swatch"/);
+  assert.match(lineFragment, /<text[^>]*>Trend<\/text>/);
+
+  const pieFragment = svg.slice(svg.indexOf('data-pptkit-element-id="pie-with-legend"'));
+  const pieSwatches = Array.from(
+    pieFragment.matchAll(/<rect[^>]+fill="(#[0-9A-Fa-f]+)"[^>]+data-chart-role="legend-swatch"/g),
+    (match) => match[1],
+  );
+  assert.equal(pieSwatches.length, 3, "pie legend shows one swatch per slice");
+  assert.match(pieFragment, /<text[^>]*>X<\/text>/);
+  assert.match(pieFragment, /<text[^>]*>Y<\/text>/);
+  assert.match(pieFragment, /<text[^>]*>Z<\/text>/);
+  assert.doesNotMatch(pieFragment, /<text[^>]*>Share<\/text>/);
 });

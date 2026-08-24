@@ -20,6 +20,6 @@ const normalized = normalizePresentation(presentation);
 console.log(normalized.irVersion, normalized.slides.length);
 ```
 
-`normalizePresentation()` validates the document and returns detached Canonical IR v1 with IDs and defaults materialized. It throws `PresentationValidationError` with all error diagnostics when the authoring document is invalid.
+`normalizePresentation()` validates the document and returns detached Canonical IR v2 with IDs and defaults materialized. It throws `PresentationValidationError` with all error diagnostics when the authoring document is invalid.
 
 Read [Validation and IR](../api/core/validation-and-ir.md) for the complete contract.

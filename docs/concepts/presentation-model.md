@@ -22,5 +22,5 @@ The model deliberately does not promise that every OOXML structure has a clean a
 
 - [Core API](../api/core.md) for authoring calls and inputs.
 - [Core Authoring Model](../architecture/core-authoring-model.md) for identity and state rationale.
-- [Canonical Presentation IR v1](../architecture/canonical-ir-v1.md) for normalized invariants.
+- [Canonical Presentation IR v2](../architecture/canonical-ir-v2.md) for normalized invariants.
 - [Document Models](../architecture/document-models.md) for the authoring/IR/package separation.

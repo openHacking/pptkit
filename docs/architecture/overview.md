@@ -21,7 +21,7 @@ application
 Authoring Model (@pptkit/core)
     │ validate + normalize
     ▼
-Canonical Presentation IR v1
+Canonical Presentation IR v2
     │
     ▼
 Layout Result (@pptkit/layout)
@@ -36,7 +36,7 @@ A future parse flow starts at package-level data, classifies editable/preserved/
 
 ## Current package mapping
 
-- `@pptkit/core` owns authoring semantics, identity, validation, and IR v1.
+- `@pptkit/core` owns authoring semantics, identity, validation, and IR v2.
 - `@pptkit/layout` resolves connector anchors and image fitting into detached layout output.
 - `@pptkit/pptx-exporter` loads assets and serializes editable PPTX packages; its Node adapter writes files.
 - `@pptkit/svg-renderer` creates browser-oriented per-slide hybrid SVG previews from Layout state.
@@ -71,4 +71,4 @@ The separation allows PPTKit to:
 
 ## Current maturity
 
-The repository is pre-release. Core IR v1, editable PPTX output, and a foundational browser preview pipeline exist, including rich text, themes, layouts/placeholders, images, shapes, connectors, groups, tables, notes, and metadata. Higher-fidelity text measurement, automatic layout, parsing, round-trip preservation, cross-browser visual baselines, and publication hardening remain active roadmap areas.
+The repository is pre-release. Core IR v2, editable PPTX output, and a foundational browser preview pipeline exist, including rich text, themes, layouts/placeholders, images, shapes, connectors, groups, tables, notes, and metadata. Higher-fidelity text measurement, automatic layout, parsing, round-trip preservation, cross-browser visual baselines, and publication hardening remain active roadmap areas.

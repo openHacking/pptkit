@@ -6,7 +6,7 @@ These documents describe contributor-facing system boundaries, implemented contr
 
 1. [Architecture Overview](overview.md)
 2. [Core Authoring Model](core-authoring-model.md)
-3. [Canonical Presentation IR v1](canonical-ir-v1.md)
+3. [Canonical Presentation IR v2](canonical-ir-v2.md)
 4. [Document Models](document-models.md)
 5. [Package Boundaries](package-boundaries.md)
 6. [Rendering Pipeline](rendering-pipeline.md)

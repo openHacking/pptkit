@@ -8,6 +8,7 @@ import type {
   Point,
 } from "@pptkit/core";
 import type { LayoutElement, LayoutGroupElement, LayoutResult } from "../types/layout.js";
+import { resolveChartLayout } from "../chart/resolve-chart-layout.js";
 
 function anchorPoint(box: Box, anchor: ConnectorAnchor): Point {
   if (anchor === "top") return { x: box.x + box.width / 2, y: box.y };
@@ -83,6 +84,7 @@ function resolveElements(elements: readonly NormalizedElement[], assets: Readonl
       return group;
     }
     if (element.type === "image") return resolveImage(element, assets);
+    if (element.type === "chart") return { ...structuredClone(element), chartLayout: resolveChartLayout(element) };
     return structuredClone(element);
   });
 }

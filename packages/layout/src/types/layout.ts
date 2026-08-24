@@ -1,6 +1,9 @@
 import type {
+  Box,
   NormalizedAsset,
   NormalizedConnectorElement,
+  NormalizedChartElement,
+  NormalizedChartMarkerStyle,
   NormalizedElement,
   NormalizedGroupElement,
   NormalizedImageElement,
@@ -23,9 +26,61 @@ export interface LayoutGroupElement extends Omit<NormalizedGroupElement, "childr
   children: LayoutElement[];
 }
 
+export interface ChartValueScale {
+  min: number;
+  max: number;
+  majorUnit: number;
+  ticks: number[];
+}
+
+export interface ChartLegendItemLayout {
+  label: string;
+  color: string;
+  marker: false | NormalizedChartMarkerStyle;
+  box: Box;
+  seriesIndex?: number;
+  pointIndex?: number;
+}
+
+export interface ChartBarLayout {
+  seriesIndex: number;
+  categoryIndex: number;
+  value: number;
+  box: Box;
+}
+
+export interface ChartLineLayout {
+  seriesIndex: number;
+  points: Point[];
+}
+
+export interface ChartPieSliceLayout {
+  pointIndex: number;
+  startAngle: number;
+  endAngle: number;
+  color: string;
+}
+
+export interface ResolvedChartLayout {
+  plotBox: Box;
+  titleBox?: Box;
+  legendBox?: Box;
+  valueScale: ChartValueScale;
+  categoryPositions: Point[];
+  categoryTickPositions: Point[];
+  bars: ChartBarLayout[];
+  lines: ChartLineLayout[];
+  pie: { center: Point; radius: number; slices: ChartPieSliceLayout[] } | undefined;
+  legendItems: ChartLegendItemLayout[];
+  categoryAxisPlacement?: "onCategory" | "betweenCategories";
+}
+
+export type LayoutChartElement = NormalizedChartElement & { chartLayout: ResolvedChartLayout };
+
 export type LayoutElement =
-  | Exclude<NormalizedElement, NormalizedConnectorElement | NormalizedGroupElement>
+  | Exclude<NormalizedElement, NormalizedConnectorElement | NormalizedGroupElement | NormalizedChartElement>
   | LayoutConnectorElement
+  | LayoutChartElement
   | LayoutGroupElement;
 
 export interface LayoutSlideLayout {

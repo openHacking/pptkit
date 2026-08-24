@@ -1,6 +1,6 @@
 # `@pptkit/layout`
 
-Detached layout resolution for Canonical Presentation IR v1.
+Detached layout resolution for Canonical Presentation IR v2.
 
 `resolveNormalizedLayout()` clones normalized Core state into export-ready layout state. It resolves connector element anchors, recursively resolves group children, calculates image `contain` boxes and `cover` crops from asset dimensions, and keeps slide-layout content separate from slide-local content.
 

@@ -1,11 +1,10 @@
 import type { ElementAction, NormalizedPlaceholderDefinition } from "@pptkit/core";
-import type { LayoutElement, LayoutResult } from "@pptkit/layout";
+import type { LayoutChartElement, LayoutElement, LayoutResult } from "@pptkit/layout";
 import { encodeUtf8 } from "../binary/encode.js";
 import { REL } from "../constants/ooxml.js";
 import { elementXml, type ElementXmlContext } from "../ooxml/elements.js";
 import {
   appPropertiesXml,
-  chartPartXml,
   contentTypesXml,
   corePropertiesXml,
   notesMasterXml,
@@ -19,6 +18,8 @@ import {
   themeXml,
   viewPropertiesXml,
 } from "../ooxml/package-parts.js";
+import { chartPartXml } from "../ooxml/chart.js";
+import { chartWorkbook } from "../ooxml/chart-workbook.js";
 import { relationshipsXml, rootRelationshipsXml } from "../ooxml/relationships.js";
 import type { ExportWarning } from "../types/export.js";
 import type { AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types/internal.js";
@@ -26,7 +27,7 @@ import type { AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types
 interface PartContextResult {
   context: ElementXmlContext;
   relationships: Relationship[];
-  chartParts: { id: number; xml: string }[];
+  chartParts: { id: number; chart: LayoutChartElement }[];
 }
 
 function mediaFilename(value: string): string {
@@ -46,7 +47,7 @@ function createPartContext(options: {
   const relationships = [...options.baseRelationships];
   let nextRelationship = relationships.length + 1;
   let nextObject = 2;
-  const chartParts: { id: number; xml: string }[] = [];
+  const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const context: ElementXmlContext = {
     ...(options.slideId !== undefined ? { slideId: options.slideId } : {}),
     warnings: options.warnings,
@@ -79,11 +80,8 @@ function createPartContext(options: {
       relationships.push({ id, type: REL.chart, target: `../charts/chart${chartId}.xml` });
       return id;
     },
-    registerChart(chartId, xml) {
-      chartParts.push({ id: chartId, xml });
-    },
-    buildChartPart(chart) {
-      return chartPartXml(chart);
+    registerChart(chartId, chart) {
+      chartParts.push({ id: chartId, chart });
     },
   };
   return { context, relationships, chartParts };
@@ -114,6 +112,7 @@ export async function buildPackage(
 
   const slideIndexes = new Map(layout.slides.map((slide, index) => [slide.id, index]));
   const layoutIndexes = new Map(layout.layouts.map((item, index) => [item.id, index]));
+  const allChartParts: { id: number; chart: LayoutChartElement }[] = [];
 
   for (let index = 0; index < layout.layouts.length; index += 1) {
     const item = layout.layouts[index]!;
@@ -125,11 +124,10 @@ export async function buildPackage(
       warnings,
     });
     const xml = elementsXml(item.elements, partContext.context);
+    allChartParts.push(...partContext.chartParts);
     parts.push({ name: `ppt/slideLayouts/slideLayout${index + 1}.xml`, data: encodeUtf8(slideLayoutXml(item, xml, partContext.context)) });
     parts.push({ name: `ppt/slideLayouts/_rels/slideLayout${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });
   }
-
-  const allChartParts: { id: number; xml: string }[] = [];
 
   for (let index = 0; index < layout.slides.length; index += 1) {
     const slide = layout.slides[index]!;
@@ -173,7 +171,11 @@ export async function buildPackage(
   }
 
   for (const chartPart of allChartParts) {
-    parts.push({ name: `ppt/charts/chart${chartPart.id}.xml`, data: encodeUtf8(chartPart.xml) });
+    parts.push({ name: `ppt/charts/chart${chartPart.id}.xml`, data: encodeUtf8(chartPartXml(chartPart.chart)) });
+    parts.push({ name: `ppt/charts/_rels/chart${chartPart.id}.xml.rels`, data: encodeUtf8(relationshipsXml([
+      { id: "rId1", type: REL.package, target: `../embeddings/Microsoft_Excel_Worksheet${chartPart.id}.xlsx` },
+    ])) });
+    parts.push({ name: `ppt/embeddings/Microsoft_Excel_Worksheet${chartPart.id}.xlsx`, data: chartWorkbook(chartPart.chart) });
   }
 
   const presentationRelationships: Relationship[] = [

@@ -130,7 +130,7 @@ export interface NormalizedSlide {
 }
 
 export interface NormalizedPresentation {
-  irVersion: 1;
+  irVersion: 2;
   id: string;
   metadata: NormalizedPresentationMetadata;
   size: PresentationSize;

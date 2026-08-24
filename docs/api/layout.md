@@ -49,7 +49,7 @@ declare function resolveNormalizedLayout(
 ): LayoutResult;
 ```
 
-Use this entry when a pipeline has already normalized the document. It avoids performing normalization twice. The function assumes the supplied IR satisfies the Core IR v1 contract.
+Use this entry when a pipeline has already normalized the document. It avoids performing normalization twice. The function assumes the supplied IR satisfies the Core IR v2 contract.
 
 ## `LayoutResult`
 
@@ -89,6 +89,17 @@ If source dimensions are unavailable, `contain` and `cover` remain unresolved ra
 
 Group children remain in their local coordinate system. Layout recursively resolves child connectors and images; the exporter applies the group box and `coordinateSize` transform.
 
+### Charts
+
+Chart layout is resolved once for preview and export. The resolved contract contains the
+plot box, value scale, category anchors, series geometry, and legend item boxes. A right
+legend resolves as one column and a bottom legend resolves as one row. Line charts use
+`categoryAxisPlacement: "onCategory"`, so category labels, points, and major tick marks
+share anchors. Bar charts use `"betweenCategories"` to keep the first and last bars fully
+inside the plot; their label anchors and boundary tick anchors are stored separately.
+Format-specific renderers map these semantics to native output without re-running chart
+layout.
+
 ## Current limits
 
-The current package does not perform environment-dependent text measurement, overflow management, constraints, automatic placement, table pagination, or cross-slide pagination. Core's deterministic fixed-width text height estimate is part of normalization, not a Layout measurement service.
+The current package does not perform environment-dependent text measurement, overflow management, constraints, automatic placement, table pagination, or cross-slide pagination. Core's deterministic fixed-width text height estimate is part of normalization, not a Layout measurement service. Native chart implementations may apply their own font metrics, but exporters must preserve the resolved legend flow and category-axis placement semantics.
