@@ -38,4 +38,4 @@ The documentation is organized by audience and task. Current behavior is written
 
 ## Future areas
 
-The [Roadmap](../ROADMAP.md) is the source of truth for planned capability areas. Parser preservation, higher-fidelity preview, plugins, and advanced Office features are not presented as current APIs.
+The [Roadmap](../ROADMAP.md) defines capability milestones. The [Implementation Backlog](planning/implementation-backlog.md) tracks concrete tasks, dependencies, ownership, and acceptance criteria for layout, authoring, import/round-trip, SmartArt, media, motion, tooling, and stable releases. Planned capabilities are not presented as current APIs.

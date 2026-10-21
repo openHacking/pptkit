@@ -1,88 +1,84 @@
 # PPTKit Roadmap
 
-PPTKit is building a format-independent presentation document engine with editable PPTX output. This roadmap separates implemented foundations from release gates and longer-term capability tracks; it is not a promise that every later item ships in one release.
+PPTKit is building a format-independent presentation document engine with editable PPTX output. This roadmap describes capability milestones, not a promise of complete Office parity or a single release containing every feature.
+
+The [Implementation Backlog](docs/planning/implementation-backlog.md) contains task IDs, dependencies, ownership, and acceptance criteria. This file owns milestone order; the backlog owns task status and delivery details. Update both when scope or milestone order changes.
 
 ## Status legend
 
-- **Implemented** — present in Core, Layout, Exporter, tests, and current documentation.
-- **Next** — required for the first public preview or the next fidelity milestone.
-- **Later** — intended direction after the relevant foundations are stable.
-- **Deferred** — explicitly outside the current roadmap sequence.
+- **Implemented** — present in the repository with implementation and verification evidence.
+- **Next** — near-term reliability and layout work.
+- **Planned** — scheduled behind explicit capability dependencies; not a current API.
+- **Research** — requires a feasibility or contract decision before implementation.
+
+No dates or effort estimates are committed. Independent tracks may progress concurrently after their dependencies are complete.
 
 ## Implemented foundation
 
-- **Core contract:** method-managed authoring state, readonly collections, document-wide IDs, complete diagnostics, and Canonical Presentation IR v1.
+- **Core contract:** method-managed authoring state, readonly collections, document-wide IDs, complete diagnostics, and Canonical Presentation IR v2.
 - **Editable content:** rich text, theme/direct colors, paints, strokes, actions, image fitting/crop, transforms, and accessibility metadata.
 - **Structured elements:** preset shapes, anchored connectors, nested groups, editable tables with spans, notes, hidden slides, sections, tags, and custom data.
-- **Charts:** native bar, line, and pie chart elements with category/series data, SVG rendering, and editable OOXML `c:chartSpace` export.
-- **Templates:** presentation themes, reusable slide layouts, typed placeholders, placeholder binding, and explicit inheritance.
-- **Layout:** detached resolution for connector anchors, connector bounds, image contain/cover, and nested group traversal.
-- **PPTX export:** browser-neutral bytes, Node file output, native themes/layouts/tables/notes/media relationships, validation failures, and recoverable asset warnings.
-- **Browser preview:** deterministic per-slide hybrid SVG from Layout state, all current element families, asset/fidelity warnings, workbench integration, and Chromium visual fixtures.
+- **Charts:** native bar, line, and pie charts with Layout geometry, SVG preview, editable OOXML export, and chart parity tests.
+- **Templates:** themes, reusable layouts, typed placeholders, binding, and explicit inheritance.
+- **Layout:** detached resolution for connector anchors/bounds, image contain/cover, nested groups, and chart geometry. Core also provides deterministic text-height estimation.
+- **PPTX export:** browser-neutral bytes, Node output, native themes/layouts/tables/notes/media relationships, validation failures, and recoverable asset warnings.
+- **Browser preview:** per-slide hybrid SVG, current element families, asset/fidelity warnings, workbench integration, and Chromium visual fixtures.
+- **Developer delivery:** package manifests/exports, a local npm release script with tests, API/getting-started documentation, typed examples, browser bundle checks, and CI. CLI commands remain a bootstrap shell.
 
-## Public preview gate — Next
+These foundations do not establish a formal cross-application compatibility matrix, complete layout fidelity, or blanket round-trip guarantees.
 
-The first public preview requires more than package publication:
+## M0 — Reliability and release baseline — Next
 
-- complete public API and architecture review across Core, Layout, Exporter, and CLI
-- user-facing API reference, tutorials, troubleshooting, and runnable examples
-- package manifests, exports, release automation, changelog policy, and preview versioning
-- deterministic package fixtures, key XML assertions, and rendered visual regression coverage
-- PowerPoint and LibreOffice open/save regression matrix across supported platforms
-- explicit compatibility policy beginning with the first published preview
-- performance and output-size baselines for representative decks
+Backlog: **REL-01–REL-06**.
 
-## Layout fidelity — Next
+Audit public contracts and capability status; establish PowerPoint/LibreOffice open-save fixtures, performance/output-size baselines, release/compatibility policy, consumer-package verification, and a traceable regression corpus. Extend existing documentation and automation rather than rebuilding them.
 
-- pluggable text measurement and font metrics
-- overflow and clipping diagnostics with actionable element paths
-- alignment, gaps, stacking, grids, and constraint-based composition
-- intrinsic sizing for text, images, groups, and tables
-- table row measurement, overflow behavior, and pagination
-- slide boundary checks and intentional cross-slide continuation
+## M1 — Measured layout and composition — Next
 
-Layout remains deterministic and independently testable; exporters do not become an implicit layout engine.
+Backlog: **LAY-01–LAY-08**.
 
-## Import and round-trip — Later
+Add pluggable text/font measurement, overflow and boundary diagnostics, alignment/stack/grid composition, intrinsic sizing, table measurement, explicit pagination/continuation, and preview/export layout consistency. Preserve deterministic defaults and isolate environment-backed measurement outside Core.
 
-- introduce `@pptkit/pptx-parser` and a format-aware package model
-- classify parsed structures as editable, preserved, fallback, or unsupported
-- preserve unknown/partially understood OOXML without leaking it into common authoring types
-- define degradation diagnostics and round-trip fixtures
-- establish scoped guarantees for open → inspect/edit → save workflows
-- keep parser and exporter implementations independent rather than assuming symmetry
+## M2 — Rich authoring and templates — Planned
 
-## Format and ecosystem — Later
+Backlog: **AUT-01–AUT-09**.
 
-- broader preset geometry plus custom paths
-- SVG parsing and rendering boundaries
-- higher-fidelity browser preview text measurement and cross-browser visual baselines
-- higher-level authoring/layout recipes without expanding Core into a catch-all API
-- practical CLI generation and inspection workflows
-- plugin extension points with explicit ownership and capability negotiation
-- example gallery, templates, framework integrations, and benchmark suites
+Expand text and international typography, geometry/paths, paints/effects, image assets, tables, chart families, masters/layout inheritance, and slide reuse. Features ship as complete vertical slices, each with explicit preview and export behavior.
 
-## v1.0 readiness — Later
+## M3 — PPTX import and scoped round-trip — Planned
 
-- stable and intentionally small public APIs
-- documented compatibility and IR-versioning rules
-- stable Core → Layout → Exporter dependency contracts
-- tested failure, fallback, and warning semantics
-- supported-runtime and cross-application compatibility matrix
-- performance budgets and regression baselines
-- complete user, API, architecture, migration, and maintainer documentation
+Backlog: **IMP-01–IMP-10**.
 
-## Deferred capabilities
+Introduce a parser, bounded package inspection, supported semantic import, master/theme inheritance resolution, and preservation-aware saves. Classify every encountered feature as editable, preserved, fallback, or unsupported. Define separate guarantees for no-op saves, supported edits, and destructive operations; do not promise arbitrary PPTX fidelity.
 
-These depend on stable identity, rich text, themes, groups, assets, layout, and preservation contracts. Each should ship as an independent vertical slice rather than a large flat options expansion.
+Import begins after the contract audit and fixture corpus. Initial preservation work can proceed before broader M2 authoring capabilities; unsupported features remain classified until their semantic slices exist.
 
-- SmartArt
-- audio and video
-- transitions and animation timelines
-- comments and collaborative review metadata
-- OLE, controls, and embedded fonts
-- presentation show, print, and advanced delivery settings
+## M4 — SmartArt, media, motion, and review — Planned / Research
+
+Backlog: **ADV-01–ADV-12**.
+
+- SmartArt: preserve existing diagrams first, then support an explicit editable subset, then author selected diagram families.
+- Media: audio/video assets, poster frames, playback semantics, and portable fallback behavior.
+- Motion: slide transitions, element timelines, triggers, sequencing, then interactive preview playback.
+- Review: comments, author/thread identity, accessibility coverage, and incremental change events for consumers. Real-time collaboration infrastructure belongs to applications.
+- Advanced Office objects: inspect/preserve OLE and controls without executing them; research embedded fonts and advanced presentation settings.
+
+Each feature declares native editability, preservation scope, preview limitations, and cross-application behavior. Unsupported advanced features remain visible in capability reports.
+
+## M5 — Formats, tooling, and ecosystem — Planned
+
+Backlog: **ECO-01–ECO-09**.
+
+Add practical CLI workflows, directional SVG parsing, portable/raster/PDF output adapters, preview/editor integration contracts, plugin capability negotiation, engine examples, interoperability reporting, and developer inspection tools. Guided authoring products stay in the separate PPTKit Presentation repository.
+
+## M6 — Stable v1.0 contracts — Planned
+
+Backlog: **STB-01–STB-04**.
+
+Stabilize deliberately selected public APIs and IR rules; publish tested runtime/application support, regression budgets, migration guidance, and maintainer procedures. v1.0 requires an explicit supported capability set, not completion of every advanced Office feature.
 
 ## Capability delivery rule
 
-A roadmap item is marked implemented only when its public semantics, Core validation/normalization, required Layout behavior, PPTX export or documented fallback, tests, examples, API reference, and architecture documentation are complete.
+A task is complete only when its public semantics, validation/normalization, required Layout behavior, PPTX export or documented fallback, tests, examples, API reference, and architecture documentation are complete where applicable. Documentation-only and research tasks use their own stated acceptance criteria.
+
+No feature is marked implemented solely because its type exists, an XML part is emitted, a preview looks correct, or an unknown part is copied. Compatibility claims require named fixtures and recorded application results.
