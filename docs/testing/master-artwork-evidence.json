@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T21:59:18.496Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL",
+  "sourceSha256": "7773cbaa76a74d1bea8d714dc60ece07a2423b94b01b72aee441e061d535940b",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/source.pptx",
+      "bytes": 31702,
+      "sha256": "7773cbaa76a74d1bea8d714dc60ece07a2423b94b01b72aee441e061d535940b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/normalized.json",
+      "bytes": 63140,
+      "sha256": "fdfbd940f4d136ba5336dd035bf9ee08caaed5f315dcdc991ab407c3914333ce"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/origins.json",
+      "bytes": 179326,
+      "sha256": "691c68cd9388c5ac0c04506c2f710817653e2365234c8ccd195cd6837ea4a3bf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/layout.json",
+      "bytes": 63139,
+      "sha256": "7be562de9e3dd227a07fc77da80275d7386fc961f029a00adc057898d7eab12e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/fixture.mjs",
+      "bytes": 2810,
+      "sha256": "0029fd3e3865bd3f680f233a2275bd7df68fcdd1fe4cfcb0aff33faf554439db"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-1.svg",
+      "bytes": 4145,
+      "sha256": "28028f4282929094cc41a34f8b586eb0e5b864686ad3913eadca7c8df5c3b338"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-2.svg",
+      "bytes": 1421,
+      "sha256": "eb010d3d3e9660413959579566f591f479a208c7cf68aadcb8667291ab7979ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-3.svg",
+      "bytes": 2579,
+      "sha256": "52944fa5644862dabeff81dbd463ca69dd7a606e5e1ef3d42f1c244d7ad24abd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-4.svg",
+      "bytes": 4167,
+      "sha256": "4912030d4b4f97894c3650c4dc416e92263c57246641fa7be809565a89e63f50"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-5.svg",
+      "bytes": 2581,
+      "sha256": "11ce550c6b66607e7e899110870476c649db79630eb8bc9237fe7a6e6f95cf52"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/page-6.svg",
+      "bytes": 4147,
+      "sha256": "55f02e37aac2f47a0a1e926bfcce6a6caa1c5121285dea5215843acb56aa7ad4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/legacy-native-source.pptx",
+      "bytes": 14490,
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/run-OvUBoK/browser-preview.png",
+      "bytes": 31713,
+      "sha256": "5ed6f8d52e1e3bef38bd1b54f2d3712a129782f44b95acbf906a525ebf96176f"
+    }
+  ],
+  "originRecords": 799,
+  "browserVersion": "149.0.7827.55",
+  "warnings": [],
+  "expectedPages": [
+    {
+      "master": "red",
+      "layout": "red-on",
+      "masterShapes": true,
+      "layoutShapes": true
+    },
+    {
+      "master": "red",
+      "layout": "red-on",
+      "masterShapes": false,
+      "layoutShapes": false
+    },
+    {
+      "master": "red",
+      "layout": "red-off",
+      "masterShapes": false,
+      "layoutShapes": true
+    },
+    {
+      "master": "blue",
+      "layout": "blue-on",
+      "masterShapes": true,
+      "layoutShapes": true
+    },
+    {
+      "master": "red",
+      "layout": "red-off",
+      "masterShapes": false,
+      "layoutShapes": true
+    },
+    {
+      "master": "red",
+      "layout": "red-on",
+      "masterShapes": true,
+      "layoutShapes": true
+    }
+  ],
+  "nativeApplication": "Actual PowerPoint 16.104 (25121423), six first-open and eighteen reopened pages over three save/close/exact-reopen rounds; see bound native evidence.",
+  "dependencies": [
+    {
+      "file": "packages/core/src/types/presentation.ts",
+      "sha256": "28e1ed0718ebd18c62cc53e8044bc49ac6fac2aae55fcaa32f0e6420ec3052cc"
+    },
+    {
+      "file": "packages/core/src/types/asset.ts",
+      "sha256": "9737099fab35de5bbed337e56250f5457bfa4f6dc2772fd105b515b969aa4619"
+    },
+    {
+      "file": "packages/core/src/types/diagnostic.ts",
+      "sha256": "750f76e8d7078e902d77e8469d7973fcbcd8e1e87a8582edef8843449627ac46"
+    },
+    {
+      "file": "packages/core/src/document/presentation-document.ts",
+      "sha256": "d2516a0e0205ccb593c7d932ca6a14866c66bb6d49ffa8b1d63746eccd331ce7"
+    },
+    {
+      "file": "packages/core/src/document/presentation-slide.ts",
+      "sha256": "01c2e103cc89f59f4a0dc0f7d31b1c6444db3735f7b9106287fcd94c35642502"
+    },
+    {
+      "file": "packages/core/src/document/asset-references.ts",
+      "sha256": "557f85cc8f1d888b31f5dbefd23b3dc1c3e0f5262d7794a5f2ad6e0acc149842"
+    },
+    {
+      "file": "packages/core/src/document/element-store.ts",
+      "sha256": "622bc40736fc716c930f6c6e84e5a0e7226815889853d99a702b9ef00c7538e0"
+    },
+    {
+      "file": "packages/core/src/document/definition-input.ts",
+      "sha256": "2fb115dc2c8189243c78754016bcdba3e6e7c08d4ac3a4b6c5bdd5d1b91f9ccb"
+    },
+    {
+      "file": "packages/core/src/validation/validate-presentation.ts",
+      "sha256": "b0a8b10b1fc154ef961f4418c7ddb79f1f79f8cf5026866554def3223076443a"
+    },
+    {
+      "file": "packages/core/src/normalization/presentation-normalizer.ts",
+      "sha256": "764dffc7d39c40bb734b1604f620114e273021a0c64fcc824e7aff3ef69df68c"
+    },
+    {
+      "file": "packages/layout/src/engine/resolve-normalized-layout.ts",
+      "sha256": "6d3545c0ee186e1e573fb831aab07e0bf4ee638cf3847a278e2eef74dcbafec4"
+    },
+    {
+      "file": "packages/layout/src/types/layout.ts",
+      "sha256": "14c8acf145bd1b51870b6683b6656241bff5063c598f577a7409532a72da0f1d"
+    },
+    {
+      "file": "packages/layout/src/types/analysis.ts",
+      "sha256": "ba8d0328793d6831e4b3a53d508ad5cfdca620221c9a033cb592810b89e076ea"
+    },
+    {
+      "file": "packages/layout/src/types/composition.ts",
+      "sha256": "88c02c02e5de48223d0e294d48627c9f2b80e8ea8e943d2c83c3cdac0c13dfb7"
+    },
+    {
+      "file": "packages/layout/src/analysis/owner-theme.ts",
+      "sha256": "3b3d0d4cb9bc1407df3eeffb1bd3a0c155d75e5168f694e7028d3a5a9af3f073"
+    },
+    {
+      "file": "packages/layout/src/analysis/analyze-layout.ts",
+      "sha256": "2ee0bbe8e0095f46c377e2a1d19b50d7f04369357e8e672b201b6fc4a58423ff"
+    },
+    {
+      "file": "packages/layout/src/analysis/measure-text.ts",
+      "sha256": "9e139659b2c21a261e0dc238b499e1ed211280a472f8fb2d710438a1e714e89c"
+    },
+    {
+      "file": "packages/layout/src/sizing/resolve-intrinsic.ts",
+      "sha256": "469e22c81ebc8d7838ee88681fbdce9aee76a6dc05b57d4971a6d2a05b6d3522"
+    },
+    {
+      "file": "packages/layout/src/table/size-tables.ts",
+      "sha256": "332d0e79c0bc405d70c4aea3aa2eedf907b06fa954b3fd4f79d492dc48ae5263"
+    },
+    {
+      "file": "packages/layout/src/table/paginate-tables.ts",
+      "sha256": "4fc5dc7f0d54ddfc928fa5f63458053c685964a92063ab4b1c23f4abc69919ee"
+    },
+    {
+      "file": "packages/layout/src/composition/compose.ts",
+      "sha256": "1fa11c942bab9f7b34d0087e663605a2cfa38ad3d1ede28eda0062136673839f"
+    },
+    {
+      "file": "packages/layout/src/index.ts",
+      "sha256": "7501ea52a577e9c648a1d9b07378750aca1600a18c5ebc90e59eadd776afd526"
+    },
+    {
+      "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+      "sha256": "d3fae14a3df7e7fc7182ee5cce56a3fcaf2387c3c5a5c338fe6564d330f8d8c5"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/package-parts.ts",
+      "sha256": "13c8b9d25849383d2487c4d28845f8061b81d5ad3509c2d9f4bb4b41d16f21f8"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+      "sha256": "6eadc0fd51d81d4b7e0abbe412c3adcd3fe732143ea1fa36be3ebce8fe127b1c"
+    },
+    {
+      "file": "packages/pptx-exporter/src/types/export.ts",
+      "sha256": "7430ade3ebd74891773671bfce739de69929abfee329ca23c8600a423498c1ed"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/render.ts",
+      "sha256": "5f0d1e889b36d0fed8a6d227e6dce8a06fa80cfb020a17fee0c2c2b45f193a96"
+    },
+    {
+      "file": "packages/svg-renderer/src/types/public.ts",
+      "sha256": "9b3fbf99ec592ec93d42b9841cb9f1f4618e1f290dd3db24be3bc8d40912b260"
+    },
+    {
+      "file": "tests/fixtures/master-artwork.mjs",
+      "sha256": "0029fd3e3865bd3f680f233a2275bd7df68fcdd1fe4cfcb0aff33faf554439db"
+    },
+    {
+      "file": "packages/core/test/master-artwork.test.mjs",
+      "sha256": "ea25978cb9a06227a1279407c55507b5010f57fbc36096abf8e73a07307fd612"
+    },
+    {
+      "file": "packages/layout/test/master-artwork.test.mjs",
+      "sha256": "06a66f37dcbcc71c9b7d05e0beaf3a3337123b7108c57c140c0eb64453bf5d91"
+    },
+    {
+      "file": "packages/pptx-exporter/test/master-artwork.test.mjs",
+      "sha256": "4aa20db96f3d6cb41d555a4c66d7e18478a638128a5d1a55135e4a3843295f3a"
+    },
+    {
+      "file": "scripts/master-artwork-parity.test.mjs",
+      "sha256": "32acd75e5c6198bf76e4467d212149c170065406c6b5b96250c136e457cab45f"
+    },
+    {
+      "file": "scripts/prepare-master-artwork.mjs",
+      "sha256": "fde387f21bc101f1987d84449a960c380754028cc7e4483e50582b62b7a95afa"
+    },
+    {
+      "file": "scripts/inspect-native-master-artwork.mjs",
+      "sha256": "4b8beb52513b38a9e2d431281cb3128d31188d09f7695e43a7413af762cf210e"
+    },
+    {
+      "file": "scripts/verify-master-artwork-evidence.mjs",
+      "sha256": "53fbbc4cae0d5560b64515115c12535603f339b2a104d1777419223e01e5fe7a"
+    },
+    {
+      "file": "tests/consumers/node.mjs",
+      "sha256": "8679c5985789278e17383fd92f9d6a1d929520f48222d45c07f5ad84eb194bca"
+    },
+    {
+      "file": "tests/consumers/types.ts",
+      "sha256": "1bb120380f3850ee21e48c35565c4dc5863b2adbbd565f2f0c405c4bca459900"
+    },
+    {
+      "file": "package.json",
+      "sha256": "d01fc83f2943124f6473ec03439cd8494eda65e7504b8cf202df21e9d8c1b945"
+    }
+  ],
+  "nativeEvidence": {
+    "file": "docs/testing/master-artwork-native-evidence.json",
+    "sha256": "74f0e7ce4b899bda4a2d6534084c307cd2bc0a8ded8305b2c336ab29f93f740c"
+  },
+  "parserEvidence": {
+    "file": "docs/testing/master-artwork-native-parser-evidence.json",
+    "sha256": "64cd26f49e82425d4407671725051bbed77beb62d5f1f6c1a06c3ac58d00a371"
+  },
+  "finalizedAt": "2026-10-27T05:18:21.634Z",
+  "currentProducer": {
+    "sourceSha256": "acbe40dc3140880d1da734d13af59405ad6b740c7585884dd7e89bbbc0b98770",
+    "historicalSourceSha256": "7773cbaa76a74d1bea8d714dc60ece07a2423b94b01b72aee441e061d535940b",
+    "changedParts": [
+      "docProps/app.xml"
+    ],
+    "delta": "Exact one-string PresentationFormat 16:9 to 4:3 replacement; 53 other payloads unchanged",
+    "nativeEvidence": {
+      "file": "docs/testing/presentation-format-native-evidence.json",
+      "sha256": "33e8e20e7607702ff89446dfdd4a8150a4411d967fbae491046e0f9c3ff08d7f"
+    },
+    "dependencies": [
+      {
+        "file": "packages/core/src/types/presentation.ts",
+        "sha256": "c646d5fd0349f7c03540d885cf75252853abe5baec5c3fd903bb5d99a99c0067"
+      },
+      {
+        "file": "packages/core/src/types/asset.ts",
+        "sha256": "9737099fab35de5bbed337e56250f5457bfa4f6dc2772fd105b515b969aa4619"
+      },
+      {
+        "file": "packages/core/src/types/diagnostic.ts",
+        "sha256": "750f76e8d7078e902d77e8469d7973fcbcd8e1e87a8582edef8843449627ac46"
+      },
+      {
+        "file": "packages/core/src/document/presentation-document.ts",
+        "sha256": "9f71b81809566c6edaeb3d55d4d2ea9808a64fcf0b7195700f253b41c77bd7b3"
+      },
+      {
+        "file": "packages/core/src/document/presentation-slide.ts",
+        "sha256": "57fbdaf1b57c234da278d0908e688af31c0def952917b9ba27aac35b3456de5b"
+      },
+      {
+        "file": "packages/core/src/document/asset-references.ts",
+        "sha256": "557f85cc8f1d888b31f5dbefd23b3dc1c3e0f5262d7794a5f2ad6e0acc149842"
+      },
+      {
+        "file": "packages/core/src/document/element-store.ts",
+        "sha256": "622bc40736fc716c930f6c6e84e5a0e7226815889853d99a702b9ef00c7538e0"
+      },
+      {
+        "file": "packages/core/src/document/definition-input.ts",
+        "sha256": "2fb115dc2c8189243c78754016bcdba3e6e7c08d4ac3a4b6c5bdd5d1b91f9ccb"
+      },
+      {
+        "file": "packages/core/src/validation/validate-presentation.ts",
+        "sha256": "705a54758f2db759d4cb4ab0279c0e77e8d6fd6130dc611c76926cdb6845e185"
+      },
+      {
+        "file": "packages/core/src/normalization/presentation-normalizer.ts",
+        "sha256": "1039e0e768c0b004279f426588ab7fae0da9d4c0b8f4fb52bd5e703c1523464b"
+      },
+      {
+        "file": "packages/layout/src/engine/resolve-normalized-layout.ts",
+        "sha256": "6d3545c0ee186e1e573fb831aab07e0bf4ee638cf3847a278e2eef74dcbafec4"
+      },
+      {
+        "file": "packages/layout/src/types/layout.ts",
+        "sha256": "14c8acf145bd1b51870b6683b6656241bff5063c598f577a7409532a72da0f1d"
+      },
+      {
+        "file": "packages/layout/src/types/analysis.ts",
+        "sha256": "ba8d0328793d6831e4b3a53d508ad5cfdca620221c9a033cb592810b89e076ea"
+      },
+      {
+        "file": "packages/layout/src/types/composition.ts",
+        "sha256": "88c02c02e5de48223d0e294d48627c9f2b80e8ea8e943d2c83c3cdac0c13dfb7"
+      },
+      {
+        "file": "packages/layout/src/analysis/owner-theme.ts",
+        "sha256": "3b3d0d4cb9bc1407df3eeffb1bd3a0c155d75e5168f694e7028d3a5a9af3f073"
+      },
+      {
+        "file": "packages/layout/src/analysis/analyze-layout.ts",
+        "sha256": "2ee0bbe8e0095f46c377e2a1d19b50d7f04369357e8e672b201b6fc4a58423ff"
+      },
+      {
+        "file": "packages/layout/src/analysis/measure-text.ts",
+        "sha256": "9e139659b2c21a261e0dc238b499e1ed211280a472f8fb2d710438a1e714e89c"
+      },
+      {
+        "file": "packages/layout/src/sizing/resolve-intrinsic.ts",
+        "sha256": "469e22c81ebc8d7838ee88681fbdce9aee76a6dc05b57d4971a6d2a05b6d3522"
+      },
+      {
+        "file": "packages/layout/src/table/size-tables.ts",
+        "sha256": "332d0e79c0bc405d70c4aea3aa2eedf907b06fa954b3fd4f79d492dc48ae5263"
+      },
+      {
+        "file": "packages/layout/src/table/paginate-tables.ts",
+        "sha256": "4fc5dc7f0d54ddfc928fa5f63458053c685964a92063ab4b1c23f4abc69919ee"
+      },
+      {
+        "file": "packages/layout/src/composition/compose.ts",
+        "sha256": "1fa11c942bab9f7b34d0087e663605a2cfa38ad3d1ede28eda0062136673839f"
+      },
+      {
+        "file": "packages/layout/src/index.ts",
+        "sha256": "7501ea52a577e9c648a1d9b07378750aca1600a18c5ebc90e59eadd776afd526"
+      },
+      {
+        "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+        "sha256": "85df97b6042f03abf59a627a7cb4831548c1eb0d1b5b301de1fa9f463b5f18c4"
+      },
+      {
+        "file": "packages/pptx-exporter/src/ooxml/package-parts.ts",
+        "sha256": "c32c4e5d5b632016a81e8ae52307963cf143543a86e4a5dfe87047c2d3a4bf91"
+      },
+      {
+        "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+        "sha256": "f1bf225cd1ebda04d203fe4ff10c9404f2275a3c334d5f79a887faed27f9ccf4"
+      },
+      {
+        "file": "packages/pptx-exporter/src/types/export.ts",
+        "sha256": "dfef42bcc683ded574d3e30c16a38421292b89c5147aa32abddd9f86a14ce1d0"
+      },
+      {
+        "file": "packages/svg-renderer/src/rendering/render.ts",
+        "sha256": "5f0d1e889b36d0fed8a6d227e6dce8a06fa80cfb020a17fee0c2c2b45f193a96"
+      },
+      {
+        "file": "packages/svg-renderer/src/types/public.ts",
+        "sha256": "9b3fbf99ec592ec93d42b9841cb9f1f4618e1f290dd3db24be3bc8d40912b260"
+      },
+      {
+        "file": "tests/fixtures/master-artwork.mjs",
+        "sha256": "0029fd3e3865bd3f680f233a2275bd7df68fcdd1fe4cfcb0aff33faf554439db"
+      },
+      {
+        "file": "packages/core/test/master-artwork.test.mjs",
+        "sha256": "ea25978cb9a06227a1279407c55507b5010f57fbc36096abf8e73a07307fd612"
+      },
+      {
+        "file": "packages/layout/test/master-artwork.test.mjs",
+        "sha256": "06a66f37dcbcc71c9b7d05e0beaf3a3337123b7108c57c140c0eb64453bf5d91"
+      },
+      {
+        "file": "packages/pptx-exporter/test/master-artwork.test.mjs",
+        "sha256": "4aa20db96f3d6cb41d555a4c66d7e18478a638128a5d1a55135e4a3843295f3a"
+      },
+      {
+        "file": "scripts/master-artwork-parity.test.mjs",
+        "sha256": "32acd75e5c6198bf76e4467d212149c170065406c6b5b96250c136e457cab45f"
+      },
+      {
+        "file": "scripts/prepare-master-artwork.mjs",
+        "sha256": "fde387f21bc101f1987d84449a960c380754028cc7e4483e50582b62b7a95afa"
+      },
+      {
+        "file": "scripts/inspect-native-master-artwork.mjs",
+        "sha256": "4b8beb52513b38a9e2d431281cb3128d31188d09f7695e43a7413af762cf210e"
+      },
+      {
+        "file": "scripts/verify-master-artwork-evidence.mjs",
+        "sha256": "fbb315f7c9dd6761fcb6d164c94ca2d32721410a2b3be22cf2314d1f63bf52a8"
+      },
+      {
+        "file": "tests/consumers/node.mjs",
+        "sha256": "761fab61d9000577da155e37cf119ffea91aeb5fca41d376a150e30f084db7bc"
+      },
+      {
+        "file": "tests/consumers/types.ts",
+        "sha256": "0c37c121381510c6e1f3b3d180171945f102d80dce7889f5d377dcdc6f0ab6ad"
+      },
+      {
+        "file": "package.json",
+        "sha256": "a369aa486a6270db3dd8106afef7b9ed4ae3662d7e32028b3e666865940864e4"
+      }
+    ]
+  }
+}

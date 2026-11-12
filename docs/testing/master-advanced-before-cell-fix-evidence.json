@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T23:02:14.823Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-UyNU16",
+  "sourceSha256": "80f396071c3c22f3f79e98dd909dd9e81c9b397faadf809cbe79882eb9619447",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/source.pptx",
+      "bytes": 42393,
+      "sha256": "80f396071c3c22f3f79e98dd909dd9e81c9b397faadf809cbe79882eb9619447"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/normalized.json",
+      "bytes": 65629,
+      "sha256": "3c02277bc121b0f528081551edc24923149f8d0dd561e52470a4fe73e4909095"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/layout.json",
+      "bytes": 87699,
+      "sha256": "c5d7a1c4c3c179188933d537c6a01d6c32b83dd5fe6818c0614e139714126dda"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/origins.json",
+      "bytes": 160994,
+      "sha256": "fb503ef90b25464e8651cba46bc6fb73c9dab30a66a85368cb805caef9e188b7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/warnings.json",
+      "bytes": 477,
+      "sha256": "38a3ac9e0ef1bc08b5e39c3e787ff195fa7f0f8d2b0dcaf6bd4e953c938bccd2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/page-0.svg",
+      "bytes": 18862,
+      "sha256": "242f781bbee9dbe709ea318fa4a11d6527b1a5ec7994654fabb5f686c05972bc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/page-1.svg",
+      "bytes": 813,
+      "sha256": "b10b230afb41cf2dea9041be56e33228164168088605f03287e5ca1aca85c7ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/page-2.svg",
+      "bytes": 18862,
+      "sha256": "53513b1036d285e25eff76390bd3500c251d2c329b9ad0cffd2f0b43fa3c3294"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-NPSqNa/page-3.svg",
+      "bytes": 17730,
+      "sha256": "d81b4eddab6c25cbc46664843300b3f30d8fdd0f158bd805c17883632bfc5b5a"
+    }
+  ],
+  "nativeApplication": "pending actual advanced-master opening and three save-close-reopen controls"
+}

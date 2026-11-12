@@ -1,0 +1,859 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T03:53:59.668Z",
+  "status": "observed",
+  "sourceEvidence": "docs/testing/real-font-shaping-evidence.json",
+  "sourceEvidenceSha256": "0c85e708562a10e4eb3dcda5fc2cf053d530af4aed632473c262e6a2e286e4cf",
+  "artifactsDirectory": ".tmp/real-font-svg/run-b7LS7g",
+  "chromium": "149.0.7827.55",
+  "platform": "darwin 25.5.0 arm64",
+  "fonts": [
+    {
+      "id": "sc",
+      "family": "Hiragino Sans GB",
+      "postscriptName": "HiraginoSansGB-W3",
+      "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+      "index": 0,
+      "version": "216268",
+      "sourceSha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0",
+      "extractedSha256": "689b1c71609efb5ff90be1054cd49321b3aaf6135e5d9b4a8f783ad62bc276d0",
+      "alias": "PPTKitSVG sc 689b1c71609e"
+    },
+    {
+      "id": "tc",
+      "family": "Songti TC",
+      "postscriptName": "STSongti-TC-Regular",
+      "file": "/System/Library/Fonts/Supplemental/Songti.ttc",
+      "index": 7,
+      "version": "65536",
+      "sourceSha256": "6873ac2ccab5c2e74d87d6b690f3773098dd6a6238805363a3b3567f2caf6f47",
+      "extractedSha256": "d3112419c9d8e08dee24d6623987bb8474facd82e39349b9431a7d53780dbe89",
+      "alias": "PPTKitSVG tc d3112419c9d8"
+    },
+    {
+      "id": "ja",
+      "family": "Hiragino Mincho ProN",
+      "postscriptName": "HiraMinProN-W3",
+      "file": "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc",
+      "index": 0,
+      "version": "541327",
+      "sourceSha256": "36adcf3dcbec5880364487b380178c6388fcf518cec729ba18a855e71b69495c",
+      "extractedSha256": "0f5e3de7e67b48af00fbdf909fc3aa7796f1e6376b64f969b4b2cd830cce3771",
+      "alias": "PPTKitSVG ja 0f5e3de7e67b"
+    },
+    {
+      "id": "ko",
+      "family": "Apple SD Gothic Neo",
+      "postscriptName": "AppleSDGothicNeo-Regular",
+      "file": "/System/Library/Fonts/AppleSDGothicNeo.ttc",
+      "index": 0,
+      "version": "65536",
+      "sourceSha256": "e33989af92c53dd2b80efd88f50c404094a046658d0e7a7692619587570e616c",
+      "extractedSha256": "46f1404bf5612c9a3fe6ee76f8f390db7f39e9b0e309b6a9a888d088cc7d2313",
+      "alias": "PPTKitSVG ko 46f1404bf561"
+    },
+    {
+      "id": "ar",
+      "family": "Geeza Pro",
+      "postscriptName": "GeezaPro",
+      "file": "/System/Library/Fonts/GeezaPro.ttc",
+      "index": 0,
+      "version": "65536",
+      "sourceSha256": "5b4309f8d596abee520c0826885a39483a16fb244489d2c313322575df4b04a2",
+      "extractedSha256": "3a6f84dca62796a71a61a5f7810b60be634b8fe7c0c862d5250eb18249206219",
+      "alias": "PPTKitSVG ar 3a6f84dca627"
+    },
+    {
+      "id": "he",
+      "family": "Arial Hebrew",
+      "postscriptName": "ArialHebrew",
+      "file": "/System/Library/Fonts/ArialHB.ttc",
+      "index": 0,
+      "version": "471859",
+      "sourceSha256": "45844259d86c0f2ea1b2446ecf34be47491b09d868f2f996672396ffe505f3f3",
+      "extractedSha256": "f1d750773c454c437bed6e4ea13fd4f7027f38ef9c9ba734398f442d26c456f1",
+      "alias": "PPTKitSVG he f1d750773c45"
+    },
+    {
+      "id": "latin",
+      "family": "Arial",
+      "postscriptName": "ArialMT",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "version": "328335",
+      "sourceSha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+      "extractedSha256": "f9b3593e5568adb3a9d6331bfa1dd5f3b09eb3275d241e44d0892d3ef15021c5",
+      "alias": "PPTKitSVG latin f9b3593e5568"
+    },
+    {
+      "id": "generic",
+      "family": "Arial Unicode MS",
+      "postscriptName": "ArialUnicodeMS",
+      "file": "/Library/Fonts/Arial Unicode.ttf",
+      "index": 0,
+      "version": "65536",
+      "sourceSha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec",
+      "extractedSha256": "26caf485e46cbd68beccd3c65d372a2a5cf7da8ad363877be9d18c55b764b661",
+      "alias": "PPTKitSVG generic 26caf485e46c"
+    }
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "sampleIndex": 0,
+      "fontId": "sc",
+      "registeredFamily": "PPTKitSVG sc 689b1c71609e",
+      "mode": "native",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Hiragino Sans GB",
+          "postScriptName": "HiraginoSansGB-W3",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "24f00ac6abf3376b7236c9353fbe02175a975b6a30db9188445f01c27abb99f5"
+    },
+    {
+      "index": 1,
+      "sampleIndex": 0,
+      "fontId": "sc",
+      "registeredFamily": "PPTKitSVG sc 689b1c71609e",
+      "mode": "mixed",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Hiragino Sans GB",
+          "postScriptName": "HiraginoSansGB-W3",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "f1f2c7d5230d05d455830235a5f03ba31ed239dd2bf9267676f887afa33eb6ff"
+    },
+    {
+      "index": 2,
+      "sampleIndex": 1,
+      "fontId": "tc",
+      "registeredFamily": "PPTKitSVG tc d3112419c9d8",
+      "mode": "native",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Songti TC",
+          "postScriptName": "STSongti-TC-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "fc0d2bad65726bcfae876b2bf75de21329fb4cc185148386cc4438010aef4785"
+    },
+    {
+      "index": 3,
+      "sampleIndex": 1,
+      "fontId": "tc",
+      "registeredFamily": "PPTKitSVG tc d3112419c9d8",
+      "mode": "mixed",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Songti TC",
+          "postScriptName": "STSongti-TC-Regular",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "a64561f4668d58064fb34ae64a67c700035f8186aca61cf2772e9be34d98b52c"
+    },
+    {
+      "index": 4,
+      "sampleIndex": 2,
+      "fontId": "ja",
+      "registeredFamily": "PPTKitSVG ja 0f5e3de7e67b",
+      "mode": "native",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Hiragino Mincho ProN",
+          "postScriptName": "HiraMinProN-W3",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "c0be984fd868fa5ae49a366c6957393e204813fa9145f004697d7ef4a0c368b3"
+    },
+    {
+      "index": 5,
+      "sampleIndex": 2,
+      "fontId": "ja",
+      "registeredFamily": "PPTKitSVG ja 0f5e3de7e67b",
+      "mode": "mixed",
+      "text": "骨直令返",
+      "expectedAdvance": 192,
+      "advance": 192,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Hiragino Mincho ProN",
+          "postScriptName": "HiraMinProN-W3",
+          "isCustomFont": true,
+          "glyphCount": 4
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "248b89b618d90a3449c336ea9adcbfa90c95121dc8dfb02f417b2adcd23d78bd"
+    },
+    {
+      "index": 6,
+      "sampleIndex": 3,
+      "fontId": "ko",
+      "registeredFamily": "PPTKitSVG ko 46f1404bf561",
+      "mode": "native",
+      "text": "한글",
+      "expectedAdvance": 83.04,
+      "advance": 83.046875,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Apple SD Gothic Neo",
+          "postScriptName": "AppleSDGothicNeo-Regular",
+          "isCustomFont": true,
+          "glyphCount": 2
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "8a81feb95bc6b308514abe68d81122bc0a0d9463bb21d63e58536717d8c1d6d9"
+    },
+    {
+      "index": 7,
+      "sampleIndex": 3,
+      "fontId": "ko",
+      "registeredFamily": "PPTKitSVG ko 46f1404bf561",
+      "mode": "mixed",
+      "text": "한글",
+      "expectedAdvance": 83.04,
+      "advance": 83.046875,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Apple SD Gothic Neo",
+          "postScriptName": "AppleSDGothicNeo-Regular",
+          "isCustomFont": true,
+          "glyphCount": 2
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "98031e1d0398fbbf6c7077b1d4443a552c191af8ea759dfcc2b77509809fd3f6"
+    },
+    {
+      "index": 8,
+      "sampleIndex": 4,
+      "fontId": "ar",
+      "registeredFamily": "PPTKitSVG ar 3a6f84dca627",
+      "mode": "native",
+      "text": "السَّلَامُ",
+      "expectedAdvance": 108.13,
+      "advance": 108.140625,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Geeza Pro",
+          "postScriptName": "GeezaPro",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "3e4c78db00402619e798c860f3e0d20391a2081114a784f7e61673424bac34da"
+    },
+    {
+      "index": 9,
+      "sampleIndex": 4,
+      "fontId": "ar",
+      "registeredFamily": "PPTKitSVG ar 3a6f84dca627",
+      "mode": "mixed",
+      "text": "السَّلَامُ",
+      "expectedAdvance": 108.13,
+      "advance": 108.140625,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Geeza Pro",
+          "postScriptName": "GeezaPro",
+          "isCustomFont": true,
+          "glyphCount": 8
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "ae8dadcf52c6f42c44eb4a74b07daa9a8115f09503fffe899a4b2a800554a07d"
+    },
+    {
+      "index": 10,
+      "sampleIndex": 5,
+      "fontId": "ar",
+      "registeredFamily": "PPTKitSVG ar 3a6f84dca627",
+      "mode": "native",
+      "text": "لا",
+      "expectedAdvance": 25.215,
+      "advance": 25.21875,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Geeza Pro",
+          "postScriptName": "GeezaPro",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "a29838aa7cc94e5cdacfacbbd40dbf22fcd155febcbba382502ba783ae091415"
+    },
+    {
+      "index": 11,
+      "sampleIndex": 5,
+      "fontId": "ar",
+      "registeredFamily": "PPTKitSVG ar 3a6f84dca627",
+      "mode": "mixed",
+      "text": "لا",
+      "expectedAdvance": 25.215,
+      "advance": 25.21875,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Geeza Pro",
+          "postScriptName": "GeezaPro",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "254884439b57c1bc11df2ca2be242b1bf44d29d8478b66b0ee51d1698f9dd293"
+    },
+    {
+      "index": 12,
+      "sampleIndex": 6,
+      "fontId": "he",
+      "registeredFamily": "PPTKitSVG he f1d750773c45",
+      "mode": "native",
+      "text": "שָׁלוֹם",
+      "expectedAdvance": 96.144,
+      "advance": 96.15625,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Arial Hebrew",
+          "postScriptName": "ArialHebrew",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "1fb5233a145e79df80de217fec811683cc2f3602d7b28448ffb383b48ec3e77b"
+    },
+    {
+      "index": 13,
+      "sampleIndex": 6,
+      "fontId": "he",
+      "registeredFamily": "PPTKitSVG he f1d750773c45",
+      "mode": "mixed",
+      "text": "שָׁלוֹם",
+      "expectedAdvance": 96.144,
+      "advance": 96.15625,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Arial Hebrew",
+          "postScriptName": "ArialHebrew",
+          "isCustomFont": true,
+          "glyphCount": 5
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "6463754f50f4fcc2393a2290f256c178d260a2857e29c9932d6b5c4a78d70428"
+    },
+    {
+      "index": 14,
+      "sampleIndex": 7,
+      "fontId": "latin",
+      "registeredFamily": "PPTKitSVG latin f9b3593e5568",
+      "mode": "native",
+      "text": "á",
+      "expectedAdvance": 26.695,
+      "advance": 26.703125,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "ArialMT",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "99ec21e5fd9f6e525d78c945696ccf0b33c6a6b5ff38afceb9d2082d030c4e71"
+    },
+    {
+      "index": 15,
+      "sampleIndex": 7,
+      "fontId": "latin",
+      "registeredFamily": "PPTKitSVG latin f9b3593e5568",
+      "mode": "mixed",
+      "text": "á",
+      "expectedAdvance": 26.695,
+      "advance": 26.703125,
+      "warnings": [],
+      "platformFonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "ArialMT",
+          "isCustomFont": true,
+          "glyphCount": 1
+        }
+      ],
+      "exactFace": true,
+      "svgSha256": "d1b89cb39b151c1d7a67b1b09944d2e94d43509ed2bb617067bbfefa77731285"
+    }
+  ],
+  "unembeddedControlCase": 14,
+  "noWrap": {
+    "nativeLineCount": 1,
+    "svg": "<svg id=\"pptkit-slide-slide-1-4sn75f\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" viewBox=\"0 0 960 540\" width=\"960\" height=\"540\" role=\"img\" aria-labelledby=\"pptkit-slide-slide-1-4sn75f-title\" data-pptkit-slide-id=\"slide-1\"><title id=\"pptkit-slide-slide-1-4sn75f-title\">PPTKit Presentation — slide 1</title><defs></defs><rect x=\"0\" y=\"0\" width=\"960\" height=\"540\" fill=\"#FFFFFF\" fill-opacity=\"1\"/><g opacity=\"1\" data-pptkit-element-id=\"nowrap\" role=\"img\" aria-label=\"nowrap\"><text x=\"0\" y=\"14.4\" text-anchor=\"start\" xml:space=\"preserve\" style=\"white-space:pre\" data-pptkit-text-line=\"0\"><tspan font-family=\"&quot;Aptos&quot;\" font-size=\"18\" font-weight=\"400\" font-style=\"normal\" text-decoration=\"none\" fill=\"#000000\" lang=\"en-US\">AAAA AAAA AAAA</tspan></text></g></svg>"
+  },
+  "networkRequests": [],
+  "raster": {
+    "pairs": [
+      {
+        "case": 0,
+        "inline": {
+          "pixels": 3089,
+          "bounds": [
+            23,
+            16,
+            211,
+            62
+          ]
+        },
+        "image": {
+          "pixels": 3089,
+          "bounds": [
+            23,
+            16,
+            211,
+            62
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "e9e5bc24f6161063c8f73609e9644d22aed1e05960ec0719099298f662a0f03d",
+        "imagePngSha256": "e9e5bc24f6161063c8f73609e9644d22aed1e05960ec0719099298f662a0f03d"
+      },
+      {
+        "case": 1,
+        "inline": {
+          "pixels": 3153,
+          "bounds": [
+            20,
+            32,
+            223,
+            78
+          ]
+        },
+        "image": {
+          "pixels": 3153,
+          "bounds": [
+            20,
+            32,
+            223,
+            78
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "aa9fce689c93e819d414f3add2304f41250bf870e1705cc8c466d6c3485ee4d3",
+        "imagePngSha256": "aa9fce689c93e819d414f3add2304f41250bf870e1705cc8c466d6c3485ee4d3"
+      },
+      {
+        "case": 2,
+        "inline": {
+          "pixels": 2808,
+          "bounds": [
+            22,
+            20,
+            212,
+            67
+          ]
+        },
+        "image": {
+          "pixels": 2808,
+          "bounds": [
+            22,
+            20,
+            212,
+            67
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "d6e059afdca1ab85b67fd1692d9610a0db7a49dc80c0243c6041c5a9a1e34d8d",
+        "imagePngSha256": "d6e059afdca1ab85b67fd1692d9610a0db7a49dc80c0243c6041c5a9a1e34d8d"
+      },
+      {
+        "case": 3,
+        "inline": {
+          "pixels": 2855,
+          "bounds": [
+            20,
+            35,
+            224,
+            82
+          ]
+        },
+        "image": {
+          "pixels": 2855,
+          "bounds": [
+            20,
+            35,
+            224,
+            82
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "2c9ae942544686444f5e8981d5c94aee3c4db2f153ef6407d64f9552b7db2243",
+        "imagePngSha256": "2c9ae942544686444f5e8981d5c94aee3c4db2f153ef6407d64f9552b7db2243"
+      },
+      {
+        "case": 4,
+        "inline": {
+          "pixels": 2766,
+          "bounds": [
+            22,
+            17,
+            211,
+            62
+          ]
+        },
+        "image": {
+          "pixels": 2766,
+          "bounds": [
+            22,
+            17,
+            211,
+            62
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "54cfa03f6f4573a400f41a4169e7d8f4c8ce4b1c7514e98142e77f9394a7dc4f",
+        "imagePngSha256": "54cfa03f6f4573a400f41a4169e7d8f4c8ce4b1c7514e98142e77f9394a7dc4f"
+      },
+      {
+        "case": 5,
+        "inline": {
+          "pixels": 2832,
+          "bounds": [
+            20,
+            33,
+            224,
+            78
+          ]
+        },
+        "image": {
+          "pixels": 2832,
+          "bounds": [
+            20,
+            33,
+            224,
+            78
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "a6c17282243cf9d11d5656f9cdb3a2b57e50688546fd72f9fb32f35792405878",
+        "imagePngSha256": "a6c17282243cf9d11d5656f9cdb3a2b57e50688546fd72f9fb32f35792405878"
+      },
+      {
+        "case": 6,
+        "inline": {
+          "pixels": 1397,
+          "bounds": [
+            21,
+            19,
+            102,
+            61
+          ]
+        },
+        "image": {
+          "pixels": 1397,
+          "bounds": [
+            21,
+            19,
+            102,
+            61
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "2576dcf423220377daa9e9a533503cec3e224dd713feccdbcb9c427b2d05827c",
+        "imagePngSha256": "2576dcf423220377daa9e9a533503cec3e224dd713feccdbcb9c427b2d05827c"
+      },
+      {
+        "case": 7,
+        "inline": {
+          "pixels": 1424,
+          "bounds": [
+            20,
+            31,
+            114,
+            73
+          ]
+        },
+        "image": {
+          "pixels": 1424,
+          "bounds": [
+            20,
+            31,
+            114,
+            73
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "4b7a9898823cdd77b122efd723eebb05087358a66b848b3c90f4c1d95932e773",
+        "imagePngSha256": "4b7a9898823cdd77b122efd723eebb05087358a66b848b3c90f4c1d95932e773"
+      },
+      {
+        "case": 8,
+        "inline": {
+          "pixels": 1371,
+          "bounds": [
+            20,
+            16,
+            126,
+            76
+          ]
+        },
+        "image": {
+          "pixels": 1371,
+          "bounds": [
+            20,
+            16,
+            126,
+            76
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "3c50ef506cacd7e7af34b1f3a6569deecaf49f0e01683bd346244bd6f9791583",
+        "imagePngSha256": "3c50ef506cacd7e7af34b1f3a6569deecaf49f0e01683bd346244bd6f9791583"
+      },
+      {
+        "case": 9,
+        "inline": {
+          "pixels": 1372,
+          "bounds": [
+            20,
+            27,
+            138,
+            88
+          ]
+        },
+        "image": {
+          "pixels": 1372,
+          "bounds": [
+            20,
+            27,
+            138,
+            88
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "dac0640724bced839673dd6cf11ddf01997bb03395ef99bd8427ed43b3d973bd",
+        "imagePngSha256": "dac0640724bced839673dd6cf11ddf01997bb03395ef99bd8427ed43b3d973bd"
+      },
+      {
+        "case": 10,
+        "inline": {
+          "pixels": 302,
+          "bounds": [
+            23,
+            23,
+            45,
+            57
+          ]
+        },
+        "image": {
+          "pixels": 302,
+          "bounds": [
+            23,
+            23,
+            45,
+            57
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "ee0b60b4d690f6c37798fa81d02f72dcc89b067b67857bad10ab61f8a649e6b7",
+        "imagePngSha256": "ee0b60b4d690f6c37798fa81d02f72dcc89b067b67857bad10ab61f8a649e6b7"
+      },
+      {
+        "case": 11,
+        "inline": {
+          "pixels": 339,
+          "bounds": [
+            20,
+            34,
+            57,
+            69
+          ]
+        },
+        "image": {
+          "pixels": 339,
+          "bounds": [
+            20,
+            34,
+            57,
+            69
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "3576897bb2582afab31983c49e7200e19d7e01034339bed13cb4044d57d1929e",
+        "imagePngSha256": "3576897bb2582afab31983c49e7200e19d7e01034339bed13cb4044d57d1929e"
+      },
+      {
+        "case": 12,
+        "inline": {
+          "pixels": 1340,
+          "bounds": [
+            23,
+            23,
+            114,
+            69
+          ]
+        },
+        "image": {
+          "pixels": 1340,
+          "bounds": [
+            23,
+            23,
+            114,
+            69
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "e0f16af961cf0d429edb5d836ac3256f640cf0bba1735a4f9fe0c2ebf3b912f7",
+        "imagePngSha256": "e0f16af961cf0d429edb5d836ac3256f640cf0bba1735a4f9fe0c2ebf3b912f7"
+      },
+      {
+        "case": 13,
+        "inline": {
+          "pixels": 1363,
+          "bounds": [
+            20,
+            30,
+            127,
+            76
+          ]
+        },
+        "image": {
+          "pixels": 1363,
+          "bounds": [
+            20,
+            30,
+            127,
+            76
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "b4a3229d01e95314737a7fc73f3baedf98b75ab315af6c683ae8cb5909a8f504",
+        "imagePngSha256": "b4a3229d01e95314737a7fc73f3baedf98b75ab315af6c683ae8cb5909a8f504"
+      },
+      {
+        "case": 14,
+        "inline": {
+          "pixels": 436,
+          "bounds": [
+            21,
+            23,
+            45,
+            59
+          ]
+        },
+        "image": {
+          "pixels": 436,
+          "bounds": [
+            21,
+            23,
+            45,
+            59
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "b49634a59eecc74c65f44c272910cb493875ffc4736fed64632fdb227655877e",
+        "imagePngSha256": "b49634a59eecc74c65f44c272910cb493875ffc4736fed64632fdb227655877e"
+      },
+      {
+        "case": 15,
+        "inline": {
+          "pixels": 477,
+          "bounds": [
+            20,
+            37,
+            58,
+            73
+          ]
+        },
+        "image": {
+          "pixels": 477,
+          "bounds": [
+            20,
+            37,
+            58,
+            73
+          ]
+        },
+        "exactRasterMatch": true,
+        "differentPixels": 0,
+        "inlinePngSha256": "4f0395c28339833e03faac058ec5b42403d703e814d021adcab8d5fe4f506229",
+        "imagePngSha256": "4f0395c28339833e03faac058ec5b42403d703e814d021adcab8d5fe4f506229"
+      }
+    ],
+    "isolatedFontControl": {
+      "case": 14,
+      "unembeddedImageDiffers": true
+    }
+  },
+  "limitations": [
+    "Named regular faces and isolated strings only",
+    "No mixed bidi, emoji or native Office layout admission",
+    "SVG image and foreignObject portability evaluated separately",
+    "Font embedding is experiment-owned, not a Renderer API",
+    "No font binaries redistributed"
+  ]
+}

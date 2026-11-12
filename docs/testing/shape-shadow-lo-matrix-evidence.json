@@ -1,0 +1,311 @@
+{
+  "scope": "LibreOfficeDev headless PDF export rasterized by pdftoppm at 72 dpi; no PowerPoint result",
+  "pptxSha256": "9388b4fc543537b10a996418ca88da6314961f460085c98afd46285255d238b4",
+  "pdfSha256": "6d0a824ef4d639f4549d8fd111c24e0b66b0b3bb1b559299ea8be4dc83b35863",
+  "samplePoint": [
+    180,
+    90
+  ],
+  "records": [
+    {
+      "slide": 1,
+      "shapeOpacity": 0,
+      "shadowOpacity": 0,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "28134c9da4e23ab0abdb8b5e1ecb607bb07477c14cdcc43dd6a1c7e744f394e1"
+    },
+    {
+      "slide": 2,
+      "shapeOpacity": 0,
+      "shadowOpacity": 0.25,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "28134c9da4e23ab0abdb8b5e1ecb607bb07477c14cdcc43dd6a1c7e744f394e1"
+    },
+    {
+      "slide": 3,
+      "shapeOpacity": 0,
+      "shadowOpacity": 0.5,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "28134c9da4e23ab0abdb8b5e1ecb607bb07477c14cdcc43dd6a1c7e744f394e1"
+    },
+    {
+      "slide": 4,
+      "shapeOpacity": 0,
+      "shadowOpacity": 0.75,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "28134c9da4e23ab0abdb8b5e1ecb607bb07477c14cdcc43dd6a1c7e744f394e1"
+    },
+    {
+      "slide": 5,
+      "shapeOpacity": 0,
+      "shadowOpacity": 1,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "28134c9da4e23ab0abdb8b5e1ecb607bb07477c14cdcc43dd6a1c7e744f394e1"
+    },
+    {
+      "slide": 6,
+      "shapeOpacity": 0.25,
+      "shadowOpacity": 0,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "18bed6032af06dc6edb0bb92fc8d927f26157d0710e983ef5a963c1842499110"
+    },
+    {
+      "slide": 7,
+      "shapeOpacity": 0.25,
+      "shadowOpacity": 0.25,
+      "pixel": [
+        191,
+        191,
+        191
+      ],
+      "analyticProductGray": 239,
+      "pngSha256": "80287f719c5f50a6b5e457cce3a91b12c032b957d37be0931c2f4eea1efca3d4"
+    },
+    {
+      "slide": 8,
+      "shapeOpacity": 0.25,
+      "shadowOpacity": 0.5,
+      "pixel": [
+        223,
+        223,
+        223
+      ],
+      "analyticProductGray": 223,
+      "pngSha256": "98d1f44386458058d2d53bc9dfabc52a33c1a9b70567808d152386e4c89cdf6e"
+    },
+    {
+      "slide": 9,
+      "shapeOpacity": 0.25,
+      "shadowOpacity": 0.75,
+      "pixel": [
+        207,
+        207,
+        207
+      ],
+      "analyticProductGray": 207,
+      "pngSha256": "67d478fc3fb401bf735fc748bacda7fe54772c60a88b8264e941fdaba6904f40"
+    },
+    {
+      "slide": 10,
+      "shapeOpacity": 0.25,
+      "shadowOpacity": 1,
+      "pixel": [
+        191,
+        191,
+        191
+      ],
+      "analyticProductGray": 191,
+      "pngSha256": "80287f719c5f50a6b5e457cce3a91b12c032b957d37be0931c2f4eea1efca3d4"
+    },
+    {
+      "slide": 11,
+      "shapeOpacity": 0.5,
+      "shadowOpacity": 0,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "99ab41517c6ec684616a71e4dc45d1387a47410ae5f0b988ff968c6702c4d71b"
+    },
+    {
+      "slide": 12,
+      "shapeOpacity": 0.5,
+      "shadowOpacity": 0.25,
+      "pixel": [
+        222,
+        222,
+        222
+      ],
+      "analyticProductGray": 223,
+      "pngSha256": "0c10c770576e9a3552069cced4be37c69108a1cba5ea0ea23bb9bde835dce5dd"
+    },
+    {
+      "slide": 13,
+      "shapeOpacity": 0.5,
+      "shadowOpacity": 0.5,
+      "pixel": [
+        127,
+        127,
+        127
+      ],
+      "analyticProductGray": 191,
+      "pngSha256": "49cbad77623db7a541d5772d2db5c3bab6415c8e599879cd23ea2c06844fb732"
+    },
+    {
+      "slide": 14,
+      "shapeOpacity": 0.5,
+      "shadowOpacity": 0.75,
+      "pixel": [
+        159,
+        159,
+        159
+      ],
+      "analyticProductGray": 159,
+      "pngSha256": "20213755fe23e0cab6d03e06bb830604e05fcb9d10e690698d1ce15ed8cfcc6c"
+    },
+    {
+      "slide": 15,
+      "shapeOpacity": 0.5,
+      "shadowOpacity": 1,
+      "pixel": [
+        127,
+        127,
+        127
+      ],
+      "analyticProductGray": 128,
+      "pngSha256": "49cbad77623db7a541d5772d2db5c3bab6415c8e599879cd23ea2c06844fb732"
+    },
+    {
+      "slide": 16,
+      "shapeOpacity": 0.75,
+      "shadowOpacity": 0,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "35bbc989bf47a50faf650a702caf52bbb168fa38a32d5dc1519be212efb0d889"
+    },
+    {
+      "slide": 17,
+      "shapeOpacity": 0.75,
+      "shadowOpacity": 0.25,
+      "pixel": [
+        206,
+        206,
+        206
+      ],
+      "analyticProductGray": 207,
+      "pngSha256": "76735f1858c6638e063884c162569d50d86eb9a3eb9728e70df17652cc4240df"
+    },
+    {
+      "slide": 18,
+      "shapeOpacity": 0.75,
+      "shadowOpacity": 0.5,
+      "pixel": [
+        159,
+        159,
+        159
+      ],
+      "analyticProductGray": 159,
+      "pngSha256": "cc3064852735f7a17d471bce8f998bafb80e82e37c29798cb64e8f0fee81ea6f"
+    },
+    {
+      "slide": 19,
+      "shapeOpacity": 0.75,
+      "shadowOpacity": 0.75,
+      "pixel": [
+        64,
+        64,
+        64
+      ],
+      "analyticProductGray": 112,
+      "pngSha256": "c64eed919dceea9f60513ecb9f21c468bf4e527d2886732b446b1a9a668a032e"
+    },
+    {
+      "slide": 20,
+      "shapeOpacity": 0.75,
+      "shadowOpacity": 1,
+      "pixel": [
+        64,
+        64,
+        64
+      ],
+      "analyticProductGray": 64,
+      "pngSha256": "c64eed919dceea9f60513ecb9f21c468bf4e527d2886732b446b1a9a668a032e"
+    },
+    {
+      "slide": 21,
+      "shapeOpacity": 1,
+      "shadowOpacity": 0,
+      "pixel": [
+        255,
+        255,
+        255
+      ],
+      "analyticProductGray": 255,
+      "pngSha256": "cf434e97849383ab96d21822309b1c5f059afccbd2d86fa663dff98ee26db800"
+    },
+    {
+      "slide": 22,
+      "shapeOpacity": 1,
+      "shadowOpacity": 0.25,
+      "pixel": [
+        189,
+        189,
+        189
+      ],
+      "analyticProductGray": 191,
+      "pngSha256": "15edb755fa2dbde1da229bbb9fe9bcc2648ded30ff429d031781054ebf79ea4a"
+    },
+    {
+      "slide": 23,
+      "shapeOpacity": 1,
+      "shadowOpacity": 0.5,
+      "pixel": [
+        127,
+        127,
+        127
+      ],
+      "analyticProductGray": 128,
+      "pngSha256": "e3970d93d2b844f3da4ce0821a7ac912efe8c21d84222d80b89c3de2f0963ee8"
+    },
+    {
+      "slide": 24,
+      "shapeOpacity": 1,
+      "shadowOpacity": 0.75,
+      "pixel": [
+        64,
+        64,
+        64
+      ],
+      "analyticProductGray": 64,
+      "pngSha256": "946a0588b9ceb2a117dfa4002c7232ca33a6514bfe7a68fbd0189e58b05d8755"
+    },
+    {
+      "slide": 25,
+      "shapeOpacity": 1,
+      "shadowOpacity": 1,
+      "pixel": [
+        0,
+        0,
+        0
+      ],
+      "analyticProductGray": 0,
+      "pngSha256": "181b02c55de19de767ce4ce2f04cd30bfd479f245f432eed864ccfb849f85332"
+    }
+  ]
+}

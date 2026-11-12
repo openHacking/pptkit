@@ -1,0 +1,29 @@
+{
+  "scope": "Newly generated corpus geometry sample; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. Selected outer group, nudged right six times and down four times, saved, closed and reopened once. No repair prompt observed. Screenshots and AX state are observational, not authenticated. This is not calibrated visual parity or evidence for native attachment movement.",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/geometry.pptx",
+    "sha256": "22ca387cab3ff26e5b922186a0357fa526f2c05abb3f0a403732a9df78575af2",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-geometry-powerpoint-interactive.pptx",
+    "sha256": "cd310ce80e1359a9fb044d0a568e9791037ec9a338077ae605e80b028f47c220"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-geometry",
+  "captures": {
+    "first.png": "550d9e9cf53d2c83fff01e649c03e4db5afdbadca9f05d87b9d7a88dc13d3b68",
+    "first.ax.txt": "857b081a070bb3bb29b7043a0b59e49915de56a01da44f573d45dd5e49748907",
+    "reopen.png": "bedfd8988ddcb56a0d0be67f5286b3045e4fb35f1b6a0ed50dfd639b2b464802",
+    "reopen.ax.txt": "857b081a070bb3bb29b7043a0b59e49915de56a01da44f573d45dd5e49748907"
+  },
+  "outerOffsetBeforeEMU": [
+    1270000,
+    3048000
+  ],
+  "outerOffsetAfterEMU": [
+    1359451,
+    3177208
+  ],
+  "observedConnector": "anchored is an ordinary custom-path p:sp, not a p:cxnSp with attached native endpoints",
+  "font": "Theme body font; actual substituted font not independently identified"
+}

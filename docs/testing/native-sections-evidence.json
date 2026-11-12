@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T17:54:33.058Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/native-sections/run-9lqc4F",
+  "scope": "Repository-generated text deck with independently injected MS-PPTX section extension; native headless save/reopen, Core member-label projection and exact no-op bytes, not native collection authoring, interactive editability or PowerPoint verification",
+  "input": {
+    "sha256": "acefa403b8f667b84def8e5b3378c715182f02bb3a58f7d93716d1ee20e85403",
+    "bytes": 11660,
+    "sections": [
+      {
+        "id": "{01F07B81-39E6-4BBB-9B89-66EA253FBD29}",
+        "name": "Introduction",
+        "slides": [
+          256
+        ]
+      },
+      {
+        "id": "{1FEF2C88-0CF2-4176-BA81-0DE6FD9D1274}",
+        "name": "Empty",
+        "slides": []
+      },
+      {
+        "id": "{CA1E145A-94F4-4C2D-9BC0-76C4A01D48ED}",
+        "name": "Conclusion",
+        "slides": [
+          257
+        ]
+      }
+    ]
+  },
+  "saved": {
+    "sha256": "3f5e9e01d8a9282e9800e0af9d612f6e7e252fd95361b1cb44d900ecdf75ecdf",
+    "bytes": 13022,
+    "sections": [
+      {
+        "id": "{01F07B81-39E6-4BBB-9B89-66EA253FBD29}",
+        "name": "Introduction",
+        "slides": [
+          256
+        ]
+      },
+      {
+        "id": "{1FEF2C88-0CF2-4176-BA81-0DE6FD9D1274}",
+        "name": "Empty",
+        "slides": []
+      },
+      {
+        "id": "{CA1E145A-94F4-4C2D-9BC0-76C4A01D48ED}",
+        "name": "Conclusion",
+        "slides": [
+          257
+        ]
+      }
+    ],
+    "findings": []
+  },
+  "reopenedPdf": {
+    "sha256": "dcffd4bb12deb5b4213e631974d08db60a8081edf0813a8ab7b0126fcfe884a9",
+    "bytes": 27724
+  },
+  "sectionEquivalence": "matched",
+  "independentXmlComparison": "passed for input and saved output",
+  "powerPoint": "untested",
+  "interactiveEditability": "untested",
+  "repairDialogs": "not observable in headless mode",
+  "visualFidelity": "unreviewed",
+  "labelProjection": {
+    "labels": [
+      {
+        "sourceSlideId": 256,
+        "coreSlideId": "source-slide-256",
+        "name": "Introduction"
+      },
+      {
+        "sourceSlideId": 257,
+        "coreSlideId": "source-slide-257",
+        "name": "Conclusion"
+      }
+    ],
+    "independentMembershipMatch": true,
+    "originalByteNoOp": true,
+    "emptySectionsRetainedInReport": 1,
+    "nativeCollectionMapping": "unsupported",
+    "freshExport": "PPTKit slide-label metadata only; native collection is not exported"
+  },
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-sections/run-9lqc4F/sections.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-sections/run-9lqc4F/saved/sections.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-sections/run-9lqc4F/saved/sections.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-sections/run-9lqc4F/reopened/sections.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

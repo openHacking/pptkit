@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {createPresentation,normalizePresentation,resolvePresentationInheritance} from '../packages/core/dist/index.js';
+import {resolveLayout} from '../packages/layout/dist/index.js';
+import {generatePptx} from '../packages/pptx-exporter/dist/index.js';
+import {renderLayoutToSvg} from '../packages/svg-renderer/dist/index.js';
+import {readGeneratedZip} from '../tests/support/read-generated-zip.mjs';
+import {masterArtworkDocument} from '../tests/fixtures/master-artwork.mjs';
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const file='docs/testing/master-artwork-evidence.json',evidence=JSON.parse(await readFile(file,'utf8'));
+const nativeFile='docs/testing/master-artwork-native-evidence.json',nativeBytes=await readFile(nativeFile),native=JSON.parse(nativeBytes);
+const parserFile='docs/testing/master-artwork-native-parser-evidence.json',parser=JSON.parse(await readFile(parserFile,'utf8'));
+const d=masterArtworkDocument(createPresentation),r=resolvePresentationInheritance(d),layout=resolveLayout(d),out=await generatePptx(d),svg=await renderLayoutToSvg(layout);
+assert.equal(evidence.sourceSha256,native.sourceSha256);
+const historicalBytes=await readFile(path.join(native.directory,'input.pptx'));assert.equal(sha(historicalBytes),evidence.sourceSha256);
+const before=readGeneratedZip(historicalBytes),after=readGeneratedZip(out.bytes);assert.deepEqual([...after.keys()].sort(),[...before.keys()].sort());
+for(const[name,body]of before)if(name!=='docProps/app.xml')assert.deepEqual(after.get(name),body,name);
+assert.equal(after.get('docProps/app.xml').toString(),before.get('docProps/app.xml').toString().replace('<PresentationFormat>On-screen Show (16:9)</PresentationFormat>','<PresentationFormat>On-screen Show (4:3)</PresentationFormat>'));
+const formatFile='docs/testing/presentation-format-native-evidence.json',formatBytes=await readFile(formatFile),format=JSON.parse(formatBytes);
+assert.equal(format.verified,true);assert.equal(format.sourceSha256,sha(out.bytes));assert.equal(format.historicalBaselineSha256,evidence.sourceSha256);assert.equal(format.rounds.length,3);
+assert.deepEqual(Buffer.from(out.bytes),await readFile(path.join(format.directory,'input.pptx')));assert.deepEqual(out.warnings,[]);
+for(const[name,value]of [['normalized.json',normalizePresentation(d)],['origins.json',r.origins],['layout.json',layout]])assert.deepEqual(JSON.parse(await readFile(path.join(evidence.directory,name),'utf8')),value);
+for(const[i,s]of svg.slides.entries())assert.equal(await readFile(path.join(evidence.directory,`page-${i+1}.svg`),'utf8'),s.svg);
+let artifacts=0;
+for(const a of [...evidence.artifacts,...native.artifacts]){const bytes=await readFile(a.file);assert.equal(sha(bytes),a.sha256,a.file);assert.equal(bytes.length,a.bytes,a.file);artifacts++;}
+for(const a of native.dependencies)assert.equal(sha(await readFile(a.file)),a.sha256,a.file);
+assert.equal(parser.nativeEvidenceSha256,sha(nativeBytes));assert.equal(parser.total.actualInputs,4);assert.equal(parser.total.consumerNoOps,12);
+for(const record of parser.records){assert.equal(sha(await readFile(record.file)),record.sha256);assert.equal(sha(await readFile(record.snapshotFile)),record.snapshotSha256);assert.equal(record.fullNodeEsmGlobalEqual,true);assert.equal(record.exactNoOp,true);}
+assert.equal(native.rounds.length,3);assert.equal(native.firstPages.length,6);assert.equal(native.rounds.reduce((n,r)=>n+r.pages.length,0),18);assert.equal(native.negatives.filter(n=>n.kind==='zip').length,15);assert.equal(native.negatives.filter(n=>n.kind==='pdf').length,4);
+const dependencies=['packages/core/src/types/presentation.ts','packages/core/src/types/asset.ts','packages/core/src/types/diagnostic.ts','packages/core/src/document/presentation-document.ts','packages/core/src/document/presentation-slide.ts','packages/core/src/document/asset-references.ts','packages/core/src/document/element-store.ts','packages/core/src/document/definition-input.ts','packages/core/src/validation/validate-presentation.ts','packages/core/src/normalization/presentation-normalizer.ts','packages/layout/src/engine/resolve-normalized-layout.ts','packages/layout/src/types/layout.ts','packages/layout/src/types/analysis.ts','packages/layout/src/types/composition.ts','packages/layout/src/analysis/owner-theme.ts','packages/layout/src/analysis/analyze-layout.ts','packages/layout/src/analysis/measure-text.ts','packages/layout/src/sizing/resolve-intrinsic.ts','packages/layout/src/table/size-tables.ts','packages/layout/src/table/paginate-tables.ts','packages/layout/src/composition/compose.ts','packages/layout/src/index.ts','packages/pptx-exporter/src/packaging/build-package.ts','packages/pptx-exporter/src/ooxml/package-parts.ts','packages/pptx-exporter/src/ooxml/elements.ts','packages/pptx-exporter/src/types/export.ts','packages/svg-renderer/src/rendering/render.ts','packages/svg-renderer/src/types/public.ts','tests/fixtures/master-artwork.mjs','packages/core/test/master-artwork.test.mjs','packages/layout/test/master-artwork.test.mjs','packages/pptx-exporter/test/master-artwork.test.mjs','scripts/master-artwork-parity.test.mjs','scripts/prepare-master-artwork.mjs','scripts/inspect-native-master-artwork.mjs','scripts/verify-master-artwork-evidence.mjs','tests/consumers/node.mjs','tests/consumers/types.ts','package.json'];
+const currentDependencies=await Promise.all(dependencies.map(async file=>({file,sha256:sha(await readFile(file))})));
+// Preserve historical producer bindings; the current producer has a separately proven metadata bridge.
+evidence.currentProducer={sourceSha256:sha(out.bytes),historicalSourceSha256:evidence.sourceSha256,changedParts:['docProps/app.xml'],delta:'Exact one-string PresentationFormat 16:9 to 4:3 replacement; 53 other payloads unchanged',nativeEvidence:{file:formatFile,sha256:sha(formatBytes)},dependencies:currentDependencies};
+evidence.nativeApplication='Actual PowerPoint 16.104 (25121423), six first-open and eighteen reopened pages over three save/close/exact-reopen rounds; see bound native evidence.';
+evidence.nativeEvidence={file:nativeFile,sha256:sha(nativeBytes)};evidence.parserEvidence={file:parserFile,sha256:sha(await readFile(parserFile))};evidence.finalizedAt=new Date().toISOString();
+await writeFile(file,JSON.stringify(evidence,null,2)+'\n');
+const result={artifactHashChecks:artifacts,nativeOracleDependencies:native.dependencies.length,implementationDependencies:currentDependencies.length,parserInputs:parser.records.length,exactConsumerNoOps:12,currentSource:sha(out.bytes),historicalSource:evidence.sourceSha256,metadataBridgeExact:true,currentIrLayoutOriginsSvgExact:true,nativeRounds:3,zipNegatives:15,pdfNegatives:4};
+await writeFile('.tmp/master-artwork-artifact-verification.log',JSON.stringify(result)+'\n');console.log(JSON.stringify(result));

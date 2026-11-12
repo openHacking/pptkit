@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint 16.104 for macOS",
+  "fixtures": [
+    "tests/fixtures/table-header-off-powerpoint.pptx",
+    "tests/fixtures/table-header-insert-powerpoint.pptx"
+  ],
+  "observed": [
+    "Table Design Header Row initially checked",
+    "Clear Header Row and save",
+    "Accessibility Insert Header Row inserts a blank row",
+    "Save and reopen: Header Row checked"
+  ],
+  "source": {
+    "sha256": "a4eb805c51587a24128b66c8cca107e35186da6ff4b9401878f44d50e1016b30",
+    "firstRow": "1",
+    "rows": [
+      [
+        "Region",
+        "Total"
+      ],
+      [
+        "North",
+        "25"
+      ]
+    ],
+    "tableExtensionChildren": []
+  },
+  "headerOff": {
+    "sha256": "f9e9778c9613066a6a05f9ebe80f8a4465baaf8ae89d3baef14a99821946617d",
+    "firstRow": null,
+    "rows": [
+      [
+        "Region",
+        "Total"
+      ],
+      [
+        "North",
+        "25"
+      ]
+    ],
+    "tableExtensionChildren": [
+      "{http://schemas.microsoft.com/office/drawing/2014/main}colId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}colId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}rowId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}rowId"
+    ]
+  },
+  "headerInserted": {
+    "sha256": "c5e91de072ea0b3143582db358b54b26fa701520ca69c5cecd2f55a33403ebac",
+    "firstRow": "1",
+    "rows": [
+      [
+        "",
+        ""
+      ],
+      [
+        "Region",
+        "Total"
+      ],
+      [
+        "North",
+        "25"
+      ]
+    ],
+    "tableExtensionChildren": [
+      "{http://schemas.microsoft.com/office/drawing/2014/main}colId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}colId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}rowId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}rowId",
+      "{http://schemas.microsoft.com/office/drawing/2014/main}rowId"
+    ]
+  },
+  "limitations": [
+    "One 2-column table",
+    "No VoiceOver or other screen reader used",
+    "No generic cell-level semantics inferred from the styling flag"
+  ]
+}

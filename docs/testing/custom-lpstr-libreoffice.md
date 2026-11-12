@@ -1,0 +1,7 @@
+# Custom `lpstr` strings: LibreOfficeDev headless observation
+
+A synthetic source was built from a hash-verified PPTKit-created package by replacing its custom-property part with four `lpstr` samples: Unicode text, an empty string, a literal escape-like sequence and emoji. The edited branch was made by direct synthetic XML replacement, and the unchanged branch is the control; these initial edits were **not** made by PPTKit. Independent ZIP and byte checks found that only the four intended value texts changed in the custom part, preserving source tags and IDs.
+
+LibreOfficeDev **26.8.0.0.alpha0**, on macOS 26.5 arm64, headlessly resaved each branch three times. The XML inventories retained the four respective text values in both branches, including the empty value and escaped literal forms. The application converted `lpstr` to `lpwstr`, reordered entries, reassigned IDs, and added `PresentationFormat` and `Slides`. Subsequent resaves retained that inventory. This observation concerns the XML values in these samples; it does not prove interactive display or complete type/identity preservation.
+
+The [record](custom-lpstr-libreoffice-evidence.json) contains hashes, exact inventories and process logs. Check retained files with `python3 scripts/research/verify-custom-lpstr-libreoffice.py` and reproduce in the recorded environment with `python3 scripts/research/custom-lpstr-libreoffice.py`. Artifacts under `.tmp` are local, not a portable fixture corpus. PowerPoint, interactive property editing, repair prompts and other strings remain untested.

@@ -1,0 +1,385 @@
+{
+  "scope": "Synthetic offset date/filetime source based on PPTKit-created package, four value edits and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "b11981d0ed3da54dd1ce10d2f70fb531d78b911ea019270e60f84a92f16efa7e",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/input/control.pptx",
+      "sha256": "c8a9219fb2893771ddaa08c3ecf7800d0115e4dd5f84fb8108336645ef5f5c38",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "date",
+          "value": "2020-01-01T00:30:00+08:00"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "date",
+          "value": "2020-02-29T23:30:00.123-05:30"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2021-01-01T00:30:00+08:00"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2021-02-28T23:30:00.123-05:30"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/input/edited.pptx",
+      "sha256": "0824e2a26caa62bc666934edec51b3322f16e8fce434122b2c65d76de361dc64",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "date",
+          "value": "2024-02-29T23:59:59.000Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "date",
+          "value": "2024-02-29T23:59:59.456Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00.000Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00.789Z"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/control.pptx",
+      "sha256": "9e3f837bef72c7ec9213615c804a972883d8d8d4f7de1210b0969875f5c43625",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/edited.pptx",
+      "sha256": "c913dd0ba9bcf3fed0b207fbfa8416a2f3e276b81680c146dbe67f1faea3efb5",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/control.pptx",
+      "sha256": "02974a131981e5329f7a596c7066945a42fe5297c84481a616b68b2e11f38a72",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/edited.pptx",
+      "sha256": "645bb3f78882a311bc6f252fed6d5e5c83c63e0d471c38fc5fe42ec6c5a41540",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-3/control.pptx",
+      "sha256": "193d4f86c7c6a2fd5d66a2e8c1baf7b6f3a507feb3d8c38c25929b71da586a4a",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-3/edited.pptx",
+      "sha256": "a90f47313df3ec16108e9ba1b3561acca470269019d09ebe6f7ead3ef912598f",
+      "properties": [
+        {
+          "name": "DateEast",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateWest",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileEast",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileWest",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-offset-libreoffice/run-hlwmca7c/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "scope": "One non-overlapping centered multiword sample: fitting PowerPoint wrapped frame versus no-wrap SVG text in Chromium. No native no-wrap, shape, edit/reopen, overlap or general typography claim.",
+  "source": "docs/testing/tab-phrases-powerpoint-evidence.json",
+  "sourceSha256": "3e9a906a74084e796882f6b893d1b08f58f88b3c16f5b52640e75c8b05874985",
+  "runnerSha256": "2efe9fc5e238e6625515570c3b7af1a9e1531a31921d1b72914fd6e45eb41304",
+  "browser": "149.0.7827.55",
+  "bundles": [
+    {
+      "name": "@pptkit/core",
+      "file": "packages/core/dist/browser/index.js",
+      "sha256": "b1cffe8969bcc46adc5272462ebfe402b0e27586a2f3a8a21d185826150a682e"
+    },
+    {
+      "name": "@pptkit/layout",
+      "file": "packages/layout/dist/browser/index.js",
+      "sha256": "ee1168de2b8e56ac9bc408a58e99a10d74693a4ac22b48290095d5537b425844"
+    },
+    {
+      "name": "@pptkit/svg-renderer",
+      "file": "packages/svg-renderer/dist/browser/index.js",
+      "sha256": "3ad9176180968c68bcfa07f7c2710b2976bf108c6eecd08a27ab9b051aca4060"
+    }
+  ],
+  "fonts": [
+    {
+      "weight": "Regular",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "weight": "Bold",
+      "file": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "selectedFont": [
+    {
+      "familyName": "Arial",
+      "postScriptName": "ArialMT",
+      "isCustomFont": true,
+      "glyphCount": 11
+    }
+  ],
+  "parts": [
+    "P\t",
+    "I WIDE WORD"
+  ],
+  "warnings": [
+    "text-tab-layout-unsupported"
+  ],
+  "chars": [
+    {
+      "char": "P",
+      "pdfX": 0,
+      "pdfRight": 18.535578947368432,
+      "svgX": 0,
+      "svgRight": 18.6875,
+      "xDifference": 0,
+      "rightDifference": 0.1519210526315682
+    },
+    {
+      "char": "I",
+      "pdfX": 27.56501052631579,
+      "pdfRight": 35.290484210526316,
+      "svgX": 27.453125,
+      "svgRight": 35.234375,
+      "xDifference": -0.1118855263157883,
+      "rightDifference": -0.05610921052631568
+    },
+    {
+      "char": "W",
+      "pdfX": 43.06597894736843,
+      "pdfRight": 69.29924210526315,
+      "svgX": 43,
+      "svgRight": 69.453125,
+      "xDifference": -0.06597894736842846,
+      "rightDifference": 0.1538828947368529
+    },
+    {
+      "char": "I",
+      "pdfX": 69.43541052631578,
+      "pdfRight": 77.16088421052632,
+      "svgX": 69.4375,
+      "svgRight": 77.21875,
+      "xDifference": 0.0020894736842222983,
+      "rightDifference": 0.05786578947368071
+    },
+    {
+      "char": "D",
+      "pdfX": 77.18589473684212,
+      "pdfRight": 97.2498947368421,
+      "svgX": 77.21875,
+      "svgRight": 97.453125,
+      "xDifference": 0.03285526315788445,
+      "rightDifference": 0.2032302631579057
+    },
+    {
+      "char": "E",
+      "pdfX": 97.44164210526317,
+      "pdfRight": 115.97722105263159,
+      "svgX": 97.4375,
+      "svgRight": 116.125,
+      "xDifference": -0.0041421052631704924,
+      "rightDifference": 0.14777894736840835
+    },
+    {
+      "char": "W",
+      "pdfX": 123.80829473684213,
+      "pdfRight": 150.04155789473685,
+      "svgX": 123.890625,
+      "svgRight": 150.328125,
+      "xDifference": 0.08233026315787129,
+      "rightDifference": 0.28656710526314555
+    },
+    {
+      "char": "O",
+      "pdfX": 150.1777263157895,
+      "pdfRight": 171.79793684210526,
+      "svgX": 150.3125,
+      "svgRight": 172.109375,
+      "xDifference": 0.13477368421050073,
+      "rightDifference": 0.3114381578947416
+    },
+    {
+      "char": "R",
+      "pdfX": 171.9341052631579,
+      "pdfRight": 191.99810526315792,
+      "svgX": 172.09375,
+      "svgRight": 192.328125,
+      "xDifference": 0.1596447368420968,
+      "rightDifference": 0.3300197368420754
+    },
+    {
+      "char": "D",
+      "pdfX": 192.18985263157893,
+      "pdfRight": 212.25385263157892,
+      "svgX": 192.3125,
+      "svgRight": 212.546875,
+      "xDifference": 0.12264736842107027,
+      "rightDifference": 0.2930223684210773
+    }
+  ]
+}

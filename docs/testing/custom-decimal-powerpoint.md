@@ -1,0 +1,5 @@
+# Custom decimal values: PowerPoint observation
+
+The edited and unchanged inputs from the [LibreOffice experiment](custom-decimal-libreoffice.md) were opened in PowerPoint 16.104 and saved separately once. The edited output was closed and reopened; the single slide text appeared in the accessibility tree. No repair dialog was observed during these operations.
+
+Independent ZIP inspection found that PowerPoint removed the entire custom-properties relationship and part from both saved outputs. Thus all four decimal values disappeared in both the edited and control samples, including the unchanged inexact `0.1`. The [retained evidence](custom-decimal-powerpoint-evidence.json) and `python3 scripts/research/verify-custom-decimal-powerpoint.py` verify source isolation, ZIP hashes, slide text and custom-property relationships. Hashes do not independently attest the interface observations. This single synthetic part contained only decimal values; the result does not establish behavior for mixed property types, other files, other PowerPoint versions or interactive property editing. Artifacts under `.tmp` are local.

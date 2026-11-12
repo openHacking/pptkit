@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T18:42:12.984Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-import-native/run-iVmBQQ",
+  "scope": "LibreOffice-produced table grid/merge/anchor-text/local-transform projection, independent Python ZIP/XML inventory, exact no-op bytes, fresh projection export and PDF reopen. Not native table style fidelity, frame/grid mismatch layout, interactive table editing, PowerPoint verification or preservation edit-save.",
+  "original": {
+    "sha256": "7f2b777548809415f3823c4571a742c877fe01cd37d383c86975954937ae4d81",
+    "inventory": [
+      {
+        "slide": 0,
+        "box": {
+          "x": 30,
+          "y": 40,
+          "width": 300,
+          "height": 100
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": true,
+          "flipV": false
+        },
+        "columns": [
+          90,
+          100,
+          110
+        ],
+        "heights": [
+          40,
+          30,
+          30
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "paragraphs": [
+              "Merged α😀 & <literal>",
+              "Next URL"
+            ]
+          },
+          {
+            "row": 0,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Top right"
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Bottom right"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "A"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "B"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              ""
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {
+              "rowSpan": "2",
+              "gridSpan": "2"
+            },
+            {
+              "hMerge": "1"
+            },
+            {}
+          ],
+          [
+            {
+              "vMerge": "1"
+            },
+            {
+              "hMerge": "1",
+              "vMerge": "1"
+            },
+            {}
+          ],
+          [
+            {},
+            {},
+            {}
+          ]
+        ]
+      },
+      {
+        "slide": 0,
+        "box": {
+          "x": 10,
+          "y": 10,
+          "width": 150,
+          "height": 80
+        },
+        "transform": {
+          "rotation": -20,
+          "flipH": false,
+          "flipV": true
+        },
+        "columns": [
+          75,
+          75
+        ],
+        "heights": [
+          40,
+          40
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "paragraphs": [
+              "All merged"
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {
+              "rowSpan": "2",
+              "gridSpan": "2"
+            },
+            {
+              "hMerge": "1"
+            }
+          ],
+          [
+            {
+              "vMerge": "1"
+            },
+            {
+              "hMerge": "1",
+              "vMerge": "1"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "nativeSource": {
+    "sha256": "16c4c11ac26998fd098ee9f8def4a496d6373ca95f0f6307a4a19b2d6915447e",
+    "inventory": [
+      {
+        "slide": 0,
+        "box": {
+          "x": 316.8566929133858,
+          "y": 117.24094488188976,
+          "width": 299.96220472440945,
+          "height": 122.4283464566929
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          90,
+          99.9779527559055,
+          109.98425196850394
+        ],
+        "heights": [
+          39.99685039370079,
+          29.99055118110236,
+          29.99055118110236
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "paragraphs": [
+              "Merged α😀 & <literal>",
+              "Next URL"
+            ]
+          },
+          {
+            "row": 0,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Top right"
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Bottom right"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "A"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "B"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              ""
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {
+              "rowSpan": "2",
+              "gridSpan": "2"
+            },
+            {
+              "rowSpan": "1",
+              "hMerge": "1"
+            },
+            {}
+          ],
+          [
+            {
+              "gridSpan": "1",
+              "vMerge": "1"
+            },
+            {
+              "hMerge": "1",
+              "vMerge": "1"
+            },
+            {}
+          ],
+          [
+            {},
+            {},
+            {}
+          ]
+        ]
+      },
+      {
+        "slide": 0,
+        "box": {
+          "x": -8.107086614173229,
+          "y": 12.38740157480315,
+          "width": 149.98110236220472,
+          "height": 79.99370078740158
+        },
+        "transform": {
+          "rotation": 10,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          149.95275590551182
+        ],
+        "heights": [
+          79.99370078740158
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "All merged"
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {}
+          ]
+        ]
+      }
+    ]
+  },
+  "projection": {
+    "inventory": [
+      {
+        "slide": 0,
+        "box": {
+          "x": 316.8566929133858,
+          "y": 117.24094488188976,
+          "width": 299.96220472440945,
+          "height": 122.4283464566929
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          90,
+          99.9779527559055,
+          109.98425196850394
+        ],
+        "heights": [
+          39.99685039370079,
+          29.99055118110236,
+          29.99055118110236
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "paragraphs": [
+              "Merged α😀 & <literal>",
+              "Next URL"
+            ]
+          },
+          {
+            "row": 0,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Top right"
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Bottom right"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "A"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "B"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              ""
+            ]
+          }
+        ]
+      },
+      {
+        "slide": 0,
+        "box": {
+          "x": -8.107086614173227,
+          "y": 12.387401574803164,
+          "width": 149.98110236220472,
+          "height": 79.99370078740158
+        },
+        "transform": {
+          "rotation": 10,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          149.95275590551182
+        ],
+        "heights": [
+          79.99370078740158
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "All merged"
+            ]
+          }
+        ]
+      }
+    ],
+    "importFindings": {
+      "drawing.click-action:editable": 3,
+      "drawing.table.mapped-fields:editable": 2,
+      "drawing.unmapped-property:unsupported": 107
+    }
+  },
+  "independentMappedInventoryVerified": true,
+  "noOpOriginalBytes": true,
+  "geometryComparison": "Integer EMU positions/sizes and 1/60000-degree rotation; point subtraction order may differ below 1 EMU.",
+  "producerChangedInventory": true,
+  "producerGridSummary": [
+    [
+      {
+        "columns": 3,
+        "rows": 3,
+        "anchors": 6,
+        "box": {
+          "x": 30,
+          "y": 40,
+          "width": 300,
+          "height": 100
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": true,
+          "flipV": false
+        }
+      },
+      {
+        "columns": 2,
+        "rows": 2,
+        "anchors": 1,
+        "box": {
+          "x": 10,
+          "y": 10,
+          "width": 150,
+          "height": 80
+        },
+        "transform": {
+          "rotation": -20,
+          "flipH": false,
+          "flipV": true
+        }
+      }
+    ],
+    [
+      {
+        "columns": 3,
+        "rows": 3,
+        "anchors": 6,
+        "box": {
+          "x": 316.8566929133858,
+          "y": 117.24094488188976,
+          "width": 299.96220472440945,
+          "height": 122.4283464566929
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": false,
+          "flipV": false
+        }
+      },
+      {
+        "columns": 1,
+        "rows": 1,
+        "anchors": 1,
+        "box": {
+          "x": -8.107086614173229,
+          "y": 12.38740157480315,
+          "width": 149.98110236220472,
+          "height": 79.99370078740158
+        },
+        "transform": {
+          "rotation": 10,
+          "flipH": false,
+          "flipV": false
+        }
+      }
+    ]
+  ],
+  "freshExport": {
+    "sha256": "362e4abbc42bd66353be2a444113ded0def92e5922431c85caa28e0690e4b6be",
+    "inventory": [
+      {
+        "slide": 0,
+        "box": {
+          "x": 316.8566929133858,
+          "y": 117.24094488188976,
+          "width": 299.96220472440945,
+          "height": 122.4283464566929
+        },
+        "transform": {
+          "rotation": 15,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          90,
+          99.9779527559055,
+          109.98425196850394
+        ],
+        "heights": [
+          39.99685039370079,
+          29.99055118110236,
+          29.99055118110236
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "paragraphs": [
+              "Merged α😀 & <literal>",
+              "Next URL"
+            ]
+          },
+          {
+            "row": 0,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Top right"
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "Bottom right"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "A"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "B"
+            ]
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              ""
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {
+              "rowSpan": "2",
+              "gridSpan": "2"
+            },
+            {
+              "hMerge": "1"
+            },
+            {}
+          ],
+          [
+            {
+              "vMerge": "1"
+            },
+            {
+              "hMerge": "1",
+              "vMerge": "1"
+            },
+            {}
+          ],
+          [
+            {},
+            {},
+            {}
+          ]
+        ]
+      },
+      {
+        "slide": 0,
+        "box": {
+          "x": -8.107086614173229,
+          "y": 12.38740157480315,
+          "width": 149.98110236220472,
+          "height": 79.99370078740158
+        },
+        "transform": {
+          "rotation": 10,
+          "flipH": false,
+          "flipV": false
+        },
+        "columns": [
+          149.95275590551182
+        ],
+        "heights": [
+          79.99370078740158
+        ],
+        "anchors": [
+          {
+            "row": 0,
+            "column": 0,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "paragraphs": [
+              "All merged"
+            ]
+          }
+        ],
+        "physical": [
+          [
+            {}
+          ]
+        ]
+      }
+    ],
+    "mappedGridMergeTextTransformRetained": true
+  },
+  "reopenedPdf": {
+    "sha256": "21b777908f2087a283270388474c76a5f34cd096839a52e613d341458d4413b8",
+    "byteLength": 38539
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-import-native/run-iVmBQQ/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-import-native/run-iVmBQQ/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-import-native/run-iVmBQQ/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-import-native/run-iVmBQQ/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

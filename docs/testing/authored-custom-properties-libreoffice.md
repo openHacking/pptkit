@@ -1,0 +1,7 @@
+# Authored custom properties: LibreOfficeDev headless observation
+
+PPTKit generated a new presentation with five authored custom properties: Unicode text, false boolean, int32 minimum, finite real and a millisecond UTC date. A Python ZIP/XML reader independently inspected the resulting package and each of three sequential LibreOfficeDev 26.8.0.0.alpha0 headless Impress resaves. The [manifest](authored-custom-properties-libreoffice-evidence.json) records application version, logs, hashes and each property inventory.
+
+The first resave retained the observed semantic values, while it reordered and renumbered properties, changed `i4` to `r8`, changed `false` to `0`, shortened the UTC date from `.000Z` to `Z`, and added `PresentationFormat` and `Slides`. The second and third resaves retained the same property list and did not accumulate further additions. This observation concerns one fixture and one application build; it does not prove general type, precision or timezone preservation, presentation fidelity, native UI behavior, or PowerPoint behavior.
+
+`python3 scripts/research/verify-authored-custom-properties-libreoffice.py` verifies runner and independent reader hashes, artifact hashes, round order and recomputed inventories on the machine retaining the `.tmp` files. `python3 scripts/research/authored-custom-properties-libreoffice.py` produces a new run using the currently built packages and replaces the manifest. The manifest does not pin all built package dependencies, so it identifies the retained result rather than a reproducible build identity.

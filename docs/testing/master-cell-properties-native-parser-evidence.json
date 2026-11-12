@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/master-cell-properties-native-evidence.json",
+  "nativeEvidenceSha256": "78bca4b12e89be00dcbbdb0af5b5cda847807364eb410a4b8887a2591b6085f1",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/input.pptx",
+      "sha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/parser-WCHIke/input.pptx.json",
+      "snapshotSha256": "1dcd1fc0bfc5242c9b61ce9cd8e28c80d42f97d8521ddb8bc9ca8159e76beaba",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round1.pptx",
+      "sha256": "35a5583e652380453d204e820461537413a94a5dbb42a44008b5858729399f63",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/parser-WCHIke/cell-fixed-round1.pptx.json",
+      "snapshotSha256": "bf55205910090fda36d2610f3214243751aca4fde3e2b74ad18bc50d5f66ef43",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round2.pptx",
+      "sha256": "a22f2d8deb1c76df0da15e239fd01ca726e6792933e13a817b349cb11976dfbf",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/parser-WCHIke/cell-fixed-round2.pptx.json",
+      "snapshotSha256": "28669e721ad9e66cea02f224ec789d72001764311f6aa441ea8582b0395b6d97",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round3.pptx",
+      "sha256": "0f06d3c164b9501a7a58795c94cae485f85a80890cd36ff472cd6e790d3ba58c",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/parser-WCHIke/cell-fixed-round3.pptx.json",
+      "snapshotSha256": "a383f11a89dda878fc9f2c19cb1939474751e93bce275a36d15afe143deb7b81",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 4,
+    "consumerNoOps": 12
+  },
+  "scope": "Four actual source/reopened master-cell-properties files, full structural inspections/reports in Node/ESM/global and 12 exact source-only no-ops. No complete master/artwork Core import, visibility projection or source style/structure write authority."
+}

@@ -1,0 +1,254 @@
+{
+  "scope": "PowerPoint 16.104 first-open slideshow; authored two-stop background at 0, 90, 45 scaled and unscaled, half-alpha and 270 degrees. Screenshots alone do not prove UI provenance. No native edit or save/reopen. SVG color differs; this is not general fidelity evidence.",
+  "nativePptxSha256": "cd6956243b6fc691a89471e940f4e331589c473432e3faee48990f1769e77271",
+  "producerSha256": "bb95410b62305978c158f7048d6b9bf7d64a57b35d26c0fda74b37c6591a9164",
+  "oracleSha256": "d402373eab225f5635f77c62f9ff50d04a61e96c403956b7df86302328fb890e",
+  "nativeScreenshots": [
+    "fe4b015de1157c0ce50439cc827025b2840963e032c6f8cde6de5d0a07ae4aa2",
+    "355e5dc2ccfc0f4ad21b10863537fe0f85ba64e9d343d3799319d0c661221f64",
+    "0ae2707cb30110a4c25582e1c7cd2615d98698be356cb1529d717730bca8c110",
+    "a71f0d73d37d673a7af0d169ecb29bcc1fb47ad3498ff4f8b27b7475afbad544",
+    "db5d38dc8d7ee23e2c775ad522eedf98708003c5a0c91ef57a2b693c2ac4d5c7",
+    "5eaa62a5bcf9e631248da68b26f47a53e8674cfd33f3d5d0b7f003ac1111dd9f"
+  ],
+  "svgScreenshots": [
+    "fabb7261b03935ee1a9c0c8ab35f8d07ab20cc5592ef64d88927b1bd652b80f8",
+    "07ccc5de1beb7c8eba640184453933010db3c7a03144c7212e14ad6c8f6a635e",
+    "6f74b7a4d489fe024774c4b63ea80fb0944343923e00e69e660d60b627f09ddf",
+    "60a1a418859503fdb561dc750325c1ac015c65d155d248fbd6da76fbb73abe64",
+    "a16a246494cb4b296d1d4875fdcd230764a348981a9f8880f8976fd014acf6d5",
+    "bc494e0cdf04efc99ea246c1e1c5ecf7b5414860a38ae1fdde7fa02308738984"
+  ],
+  "samplePoints": [
+    [
+      720,
+      135
+    ],
+    [
+      240,
+      405
+    ],
+    [
+      480,
+      270
+    ]
+  ],
+  "samples": {
+    "1": {
+      "native": [
+        [
+          95,
+          34,
+          226
+        ],
+        [
+          239,
+          2,
+          94
+        ],
+        [
+          181,
+          24,
+          173
+        ]
+      ],
+      "svg": [
+        [
+          64,
+          0,
+          192
+        ],
+        [
+          191,
+          0,
+          64
+        ],
+        [
+          127,
+          0,
+          127
+        ]
+      ]
+    },
+    "2": {
+      "native": [
+        [
+          240,
+          3,
+          95
+        ],
+        [
+          94,
+          34,
+          226
+        ],
+        [
+          181,
+          24,
+          173
+        ]
+      ],
+      "svg": [
+        [
+          191,
+          0,
+          64
+        ],
+        [
+          64,
+          0,
+          192
+        ],
+        [
+          127,
+          0,
+          127
+        ]
+      ]
+    },
+    "3": {
+      "native": [
+        [
+          158,
+          28,
+          190
+        ],
+        [
+          200,
+          20,
+          153
+        ],
+        [
+          180,
+          23,
+          172
+        ]
+      ],
+      "svg": [
+        [
+          110,
+          0,
+          146
+        ],
+        [
+          145,
+          0,
+          110
+        ],
+        [
+          127,
+          0,
+          127
+        ]
+      ]
+    },
+    "4": {
+      "native": [
+        [
+          178,
+          24,
+          172
+        ],
+        [
+          179,
+          25,
+          173
+        ],
+        [
+          181,
+          24,
+          173
+        ]
+      ],
+      "svg": [
+        [
+          127,
+          0,
+          128
+        ],
+        [
+          127,
+          0,
+          128
+        ],
+        [
+          127,
+          0,
+          127
+        ]
+      ]
+    },
+    "5": {
+      "native": [
+        [
+          113,
+          45,
+          230
+        ],
+        [
+          246,
+          86,
+          150
+        ],
+        [
+          199,
+          62,
+          191
+        ]
+      ],
+      "svg": [
+        [
+          88,
+          32,
+          199
+        ],
+        [
+          215,
+          96,
+          136
+        ],
+        [
+          159,
+          64,
+          159
+        ]
+      ]
+    },
+    "6": {
+      "native": [
+        [
+          95,
+          34,
+          226
+        ],
+        [
+          239,
+          2,
+          94
+        ],
+        [
+          181,
+          24,
+          173
+        ]
+      ],
+      "svg": [
+        [
+          64,
+          0,
+          191
+        ],
+        [
+          192,
+          0,
+          64
+        ],
+        [
+          127,
+          0,
+          127
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,894 @@
+{
+  "profile": "generated-smartart-native-edit-observations-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg",
+  "application": "Microsoft PowerPoint 16.104",
+  "build": "16.104.25121423",
+  "os": "macOS 26.5",
+  "observations": [
+    {
+      "family": "process",
+      "nativeRecognition": "重点流程",
+      "operations": [
+        "Opened fresh PPTKit-generated absent-cache candidate without observed repair prompt",
+        "Edited existing root text",
+        "Added one root using native Add Shape and typed its label",
+        "Moved added root before the existing roots",
+        "Changed SmartArt colors",
+        "Changed layout to Basic Process and back to Accent Process",
+        "Changed document theme from PPTKit to Office",
+        "Saved, closed and reopened; three cards and retained detail text visible"
+      ],
+      "nativeDelete": "untested",
+      "threeNativeCycles": "untested"
+    },
+    {
+      "family": "hierarchy",
+      "nativeRecognition": "组织结构图",
+      "operations": [
+        "Opened fresh PPTKit-generated absent-cache candidate without observed repair prompt",
+        "Edited manager/root text",
+        "Selected Worker, added one ordinary sibling and typed its label",
+        "Moved added child before Worker",
+        "Changed to Horizontal Organization Chart and back to Organization Chart",
+        "Changed document theme from PPTKit to Office",
+        "Saved, closed and reopened; assistant remains separately connected and two ordinary children remain"
+      ],
+      "nativeDelete": "untested",
+      "threeNativeCycles": "untested"
+    },
+    {
+      "family": "cycle",
+      "nativeRecognition": "基本循环",
+      "operations": [
+        "Opened fresh PPTKit-generated absent-cache candidate without observed repair prompt",
+        "Edited existing root text; insertion occurred inside original text rather than a clean suffix",
+        "Add Shape and clipboard paste produced two new content nodes, one blank; file/visual observations record five nodes rather than assuming four",
+        "Moved the labeled added node forward",
+        "Changed to Text Cycle and back to Basic Cycle",
+        "Changed document theme from PPTKit to Office",
+        "Saved, closed and reopened; five nodes and closing arrows remain visible",
+        "After explicit action-specific user confirmation, selected the added blank third entry in SmartArt text pane using keyboard and clicked its native Delete button once; saved, closed and reopened. Four labeled nodes and four closing arrows visible."
+      ],
+      "nativeDelete": "observed-added-blank-node-deleted-saved-closed-reopened",
+      "threeNativeCycles": "untested"
+    }
+  ],
+  "additionalSourceObservation": "Previously saved source Hierarchy file successfully reopened after user unlocked the Mac; edited Manager text, second paragraph, assistant and added child visible.",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "inputs": [
+    {
+      "family": "cycle",
+      "file": "pptkit-generated-cycle.pptx",
+      "input": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/cycle-standard-absent-presentation.pptx",
+      "sha256": "a6fd2e43e5fe0a8de79115164fafafd0582f18cdc51c815255830f77b03f0707"
+    },
+    {
+      "family": "process",
+      "file": "pptkit-generated-process.pptx",
+      "input": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/process-standard-absent-presentation.pptx",
+      "sha256": "20ac29da3569c09fa2ce36bdb4686276bf599b8334f63f7e96fac48bb19d910c"
+    },
+    {
+      "family": "hierarchy",
+      "file": "pptkit-generated-hierarchy.pptx",
+      "input": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/hierarchy-standard-absent-presentation.pptx",
+      "sha256": "5f6d75b5757e3eb33f5bb946bd3d7337d4a1a568fcd7faa6e32642fcf7b9f8d2"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "cycle-before-delete-selection.png",
+      "sha256": "bfb98769235c90f6cb41c79d3d469abebf25dc0974c94b35fbfce259a4a54615",
+      "bytes": 143878
+    },
+    {
+      "file": "cycle-generated-added.ax.txt",
+      "sha256": "87a0d36015197551fc3c33580005710eed56b757ddf65638bad3db1b7536c728",
+      "bytes": 7775
+    },
+    {
+      "file": "cycle-generated-added.png",
+      "sha256": "cc7ef7c3439383d2e22bcedf3924585257f7fd47b11549e48f0e9f893c6dbd42",
+      "bytes": 143790
+    },
+    {
+      "file": "cycle-generated-opened.png",
+      "sha256": "c443c4c944f5b47bd6ac469a060dd7f5650d268e48c8c8a0149d90eaf328d2f6",
+      "bytes": 122448
+    },
+    {
+      "file": "cycle-generated-reopened.ax.txt",
+      "sha256": "75f23b7391fdf0e0e20b290e9095d4c9115e379f67c2f7e0f578a2ed628eeb11",
+      "bytes": 5955
+    },
+    {
+      "file": "cycle-generated-reopened.png",
+      "sha256": "2333b40a8f033a6fcea4857129b702d51e9299ed474f3b81159aca589e7539c0",
+      "bytes": 123762
+    },
+    {
+      "file": "cycle-generated-theme.ax.txt",
+      "sha256": "51f28d323298df6135b18bc104e542abac6030f9d39d6064e41d6220f52cef88",
+      "bytes": 7631
+    },
+    {
+      "file": "cycle-generated-theme.png",
+      "sha256": "3c5b783ed0444942c2a1f5ec4924bc03ae96d22ea89d157dfb57e478581816e4",
+      "bytes": 144060
+    },
+    {
+      "file": "cycle-guid-edited.ax.txt",
+      "sha256": "1daf9e135e305ca9503569ac0537476197feac34723c258c7bc72821338cbf59",
+      "bytes": 5724
+    },
+    {
+      "file": "cycle-guid-edited.png",
+      "sha256": "817625c91aa311a465b4ec1c9a364e503592ec5d4971bdd59666c4e5c1aa25e0",
+      "bytes": 136157
+    },
+    {
+      "file": "cycle-guid-opened.png",
+      "sha256": "4705dee33a9867b056bc02248b62d64ed8d941ae3d9da73489fdd884ecf43e61",
+      "bytes": 122144
+    },
+    {
+      "file": "cycle-guid-round1-reopened.ax.txt",
+      "sha256": "c4b92b434a43bb5d078caf4976eeb5ad885e13d42c1a5dbcd8f38abf05a4c58d",
+      "bytes": 5935
+    },
+    {
+      "file": "cycle-guid-round1-reopened.png",
+      "sha256": "131cb0d6dda5a0b353fc3cad0dfe08cfc206f2bc1fcee38ab132cb9c7a8ecba3",
+      "bytes": 121528
+    },
+    {
+      "file": "cycle-guid-round2-reopened.ax.txt",
+      "sha256": "c4b92b434a43bb5d078caf4976eeb5ad885e13d42c1a5dbcd8f38abf05a4c58d",
+      "bytes": 5935
+    },
+    {
+      "file": "cycle-guid-round2-reopened.png",
+      "sha256": "423902ec9d9193ae641c62aa1378fabee0c8a6bd6875facb0d2e9fc0a7e8c7b2",
+      "bytes": 123499
+    },
+    {
+      "file": "cycle-guid-round3-reopened.ax.txt",
+      "sha256": "c4b92b434a43bb5d078caf4976eeb5ad885e13d42c1a5dbcd8f38abf05a4c58d",
+      "bytes": 5935
+    },
+    {
+      "file": "cycle-guid-round3-reopened.png",
+      "sha256": "13f3e48c35f129b7dd9c4f18ad38f3c733bc1c47ff0e24b748c88a3e86a4232a",
+      "bytes": 125786
+    },
+    {
+      "file": "hierarchy-generated-opened.png",
+      "sha256": "693553879b90a9a83666fad8f768da6b70fb31e198ec8e57d967e3f43412411c",
+      "bytes": 123531
+    },
+    {
+      "file": "hierarchy-generated-reopened.ax.txt",
+      "sha256": "a7f6e45c5263ad8700d84403e81a0e7b423af49ab9faaa18d16083a071bd89ca",
+      "bytes": 5971
+    },
+    {
+      "file": "hierarchy-generated-reopened.png",
+      "sha256": "88e5854dcb8e50d372f7abc0932a77c3093cf1aa7cb70a45913616bc9b327e3d",
+      "bytes": 123516
+    },
+    {
+      "file": "hierarchy-generated-round1.ax.txt",
+      "sha256": "711d24cee1225cf6959621f52a65071b6571eabeb76c29e4fe58c5c434480d3c",
+      "bytes": 7865
+    },
+    {
+      "file": "hierarchy-generated-round1.png",
+      "sha256": "def34fc8e4cf2ae90b5be26cec4eeda9fc14599ce6692b8c5454f4b307d91803",
+      "bytes": 146298
+    },
+    {
+      "file": "hierarchy-generated-theme.ax.txt",
+      "sha256": "f12e8aeb405e663226e8f1c7003c605a83cdfe2a1b04f8cdc0e79cc411f04f76",
+      "bytes": 7605
+    },
+    {
+      "file": "hierarchy-generated-theme.png",
+      "sha256": "fdc7ffe31915dd43a452f518298b503441244346f645ff5fd3dae5ee89423b34",
+      "bytes": 147925
+    },
+    {
+      "file": "hierarchy-source-reopened.ax.txt",
+      "sha256": "1659188898c3db5e383b937b631c005d76cc430c8974938ea15c5cf974187a9a",
+      "bytes": 6002
+    },
+    {
+      "file": "hierarchy-source-reopened.png",
+      "sha256": "e7792259f98b35a84f96db481521dc08c9b3232683da55ed85349a15ee86661c",
+      "bytes": 125462
+    },
+    {
+      "file": "process-generated-opened.png",
+      "sha256": "577d0ad9d185bd4dcd78b0655d8189f075552b3bb5c29776f04e2235a6898694",
+      "bytes": 124478
+    },
+    {
+      "file": "process-generated-relayout.png",
+      "sha256": "fb51e32c5a258e3e49a55b50cf6225d0704266e4e2bf6a6caa368e4e1e2782dd",
+      "bytes": 137112
+    },
+    {
+      "file": "process-generated-reopened.ax.txt",
+      "sha256": "0335dddf8f328a39d5bac3a6a5640fb983dcc28f5954ea8b8887bc6b9c607fb6",
+      "bytes": 5963
+    },
+    {
+      "file": "process-generated-reopened.png",
+      "sha256": "8e78b527261993c15c939dbfb2023994f27c596bc97f99ac50240d64690c5fd6",
+      "bytes": 112030
+    },
+    {
+      "file": "process-generated-round1.ax.txt",
+      "sha256": "adad2fb24beed72f03d4c58930dc1c23656131f0c4940e8915afd4d6733fe23f",
+      "bytes": 7868
+    },
+    {
+      "file": "process-generated-round1.png",
+      "sha256": "e4f485a7c84bfcae7fcca4613f10e7829c108f5a4d96e0a822e2134af6d9fd77",
+      "bytes": 140958
+    },
+    {
+      "file": "process-generated-theme.ax.txt",
+      "sha256": "bdd6c2e9f58c81ec12d8e2d82ea1fceca7d2b2819bec067cc93eb8e9adefad8f",
+      "bytes": 7639
+    },
+    {
+      "file": "process-generated-theme.png",
+      "sha256": "72d6911cc66c6215d251a300ac5133aad0db2fe44f431c44031b4a6af4e3433a",
+      "bytes": 138421
+    },
+    {
+      "file": "cycle-delete-confirmed-selection.png",
+      "sha256": "92b2ea498c0ef8edf9d7776679115d6d6d97613348f1f3a08ce802ec56283a20",
+      "bytes": 14122
+    },
+    {
+      "file": "cycle-after-delete-pane.png",
+      "sha256": "61932eb5dc2e99286d3423fa7c5108508f57af34299935e541dc7549f39401c9",
+      "bytes": 13995
+    },
+    {
+      "file": "cycle-after-delete.ax.txt",
+      "sha256": "6cc926345cb3d6fa4a6d137900882a053ebd30b954d21be4cb01c6aafb73a3eb",
+      "bytes": 278
+    },
+    {
+      "file": "cycle-after-delete.png",
+      "sha256": "74885903823d926bffd26cd884092de5a62bc41bb879206d999ede907e2b322c",
+      "bytes": 143856
+    },
+    {
+      "file": "cycle-delete-reopened.ax.txt",
+      "sha256": "b9faacdf3a8ee1dd07e01ebb5de8aa9d2c5f626ade12580763c6b0f51f4d52c3",
+      "bytes": 6068
+    },
+    {
+      "file": "cycle-delete-reopened.png",
+      "sha256": "2bade2f97ae5851cd76cccd6d0d05b302e979a9c86f57f2c2b2f3b1f844a5108",
+      "bytes": 121850
+    }
+  ],
+  "stages": [
+    {
+      "file": "process-round1.pptx",
+      "family": "process",
+      "sha256": "003e587d0d68a5905c52fd0b7fe41282050bea27d74ac79ff19edac16db415c9",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+      "nodes": 5,
+      "roots": 3,
+      "assistants": 0,
+      "paragraphs": [
+        "PPTKit Added Process",
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail"
+      ],
+      "cacheShapes": 8,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "process-round2-theme.pptx",
+      "family": "process",
+      "sha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+      "nodes": 5,
+      "roots": 3,
+      "assistants": 0,
+      "paragraphs": [
+        "PPTKit Added Process",
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail"
+      ],
+      "cacheShapes": 8,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "Office 主题​​",
+          "sha256": "1f98605413696c4fe4029a7b7df696261233d73d8fd06413d3990abfe51ae216"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "hierarchy-round1.pptx",
+      "family": "hierarchy",
+      "sha256": "480385466ba4768267be16aca0064fda6e8551aa284472385133052cdc0bdc39",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+      "nodes": 5,
+      "roots": 2,
+      "assistants": 1,
+      "paragraphs": [
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "cacheShapes": 8,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "hierarchy-round2-theme.pptx",
+      "family": "hierarchy",
+      "sha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+      "nodes": 5,
+      "roots": 2,
+      "assistants": 1,
+      "paragraphs": [
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "cacheShapes": 8,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "Office 主题​​",
+          "sha256": "1f98605413696c4fe4029a7b7df696261233d73d8fd06413d3990abfe51ae216"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-before-native-delete.pptx",
+      "family": "cycle",
+      "sha256": "2eed744af1eef4f53e7656e8f8b800a375894c06ee0a9774f268e01bd084a4fd",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 5,
+      "roots": 5,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle  PPTKit Cyclelead",
+        "PPTKit Added Cycle",
+        "",
+        "Cycle B",
+        "Cycle C"
+      ],
+      "cacheShapes": 10,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-round2-theme.pptx",
+      "family": "cycle",
+      "sha256": "68b1d2e58687850e75e4f86e589dc8492a476028e5a84f1fe2a14ae0f60f58eb",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 5,
+      "roots": 5,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle  PPTKit Cyclelead",
+        "PPTKit Added Cycle",
+        "",
+        "Cycle B",
+        "Cycle C"
+      ],
+      "cacheShapes": 10,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "Office 主题​​",
+          "sha256": "1f98605413696c4fe4029a7b7df696261233d73d8fd06413d3990abfe51ae216"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-guid-round1.pptx",
+      "family": "cycle",
+      "sha256": "ef60d80cb13c97963292986d6107b9cf9cc1a89f82c88a02001566adb3e37e31",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 3,
+      "roots": 3,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle lead GUID",
+        "Cycle B",
+        "Cycle C"
+      ],
+      "cacheShapes": 6,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-guid-round2.pptx",
+      "family": "cycle",
+      "sha256": "303096459e6fddf27369b3e3c917044f84ff0fa837f1b93fc322fedc12b64f96",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 3,
+      "roots": 3,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C"
+      ],
+      "cacheShapes": 6,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-guid-round3.pptx",
+      "family": "cycle",
+      "sha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 3,
+      "roots": 3,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "cacheShapes": 6,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    },
+    {
+      "file": "cycle-after-native-delete.pptx",
+      "family": "cycle",
+      "sha256": "c37c9f1cdf1c1732b4230b03ee275825c0739c8eff2c72d4c98a32a0bb7ee46f",
+      "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+      "nodes": 4,
+      "roots": 4,
+      "assistants": 0,
+      "paragraphs": [
+        "cycle  PPTKit Cyclelead",
+        "PPTKit Added Cycle",
+        "Cycle B",
+        "Cycle C"
+      ],
+      "cacheShapes": 8,
+      "themes": [
+        {
+          "part": "ppt/theme/theme2.xml",
+          "name": "PPTKit",
+          "sha256": "489c6d7860886c4d76b22067110fc8d1fb34dc6447b07e58f3556b42dfd0e000"
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "name": "Office 主题​​",
+          "sha256": "1f98605413696c4fe4029a7b7df696261233d73d8fd06413d3990abfe51ae216"
+        }
+      ],
+      "exactNoOp": true,
+      "preview": [
+        {
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/slides/slide1.xml",
+            "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+            "sourceObjectId": "3"
+          },
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "cachePart": "/ppt/diagrams/drawing1.xml"
+        }
+      ],
+      "independentTopologyTextRolesAndCache": true
+    }
+  ],
+  "unrelatedTextSaveRounds": [
+    {
+      "family": "process",
+      "round": 1,
+      "sha256": "54d03f2bb1a3a77cbfefba10bfc8a22d30a59b019b303bc1c27e22f7f84efe2b",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "process",
+      "round": 2,
+      "sha256": "ac4630b34a6e3bbad195ac787ebc5a62bf2394e203009f57464a9a341c69bb03",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "process",
+      "round": 3,
+      "sha256": "8069de37d54888d82087ff9b52974cae927f98f93f4b639d31f84572c556607a",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "hierarchy",
+      "round": 1,
+      "sha256": "280f7c2de52ce9dbd07f41c14c5abf129d583e88ad6c6c0ac25b9d9def8e590d",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "hierarchy",
+      "round": 2,
+      "sha256": "0822ee1eee0dee2b624947bcbf7371024ac860fad7c4f563af83f99dd232226f",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "hierarchy",
+      "round": 3,
+      "sha256": "569914e21487e0a9c7c46f444b481dc281738b4999e3a75bd223bd1c2f58d565",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "cycle",
+      "round": 1,
+      "sha256": "7be4e4d94a6bece31caca116de90e601fb530d5fbf1b38c33a04c043f00a0dcb",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "cycle",
+      "round": 2,
+      "sha256": "07195b7ae3189fb6ca6d55ff243f7ce8af790d2e7339c4ad174688526825c3ee",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    },
+    {
+      "family": "cycle",
+      "round": 3,
+      "sha256": "9ba857f1bfcad2a037e699c36348c8ab159813c19d2c3866b154cb15bfe2880b",
+      "changedParts": [
+        "/ppt/slides/slide1.xml"
+      ],
+      "unchangedDiagramPayloads": true,
+      "nativeReplay": "untested"
+    }
+  ],
+  "identityControl": {
+    "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-guid.pptx",
+    "sha256": "4596f5cf45574c5091bf6921268d28cf630df8db80aea68ef4a600596acd3a42",
+    "generatedGuidCorpusFile": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-bP8UXF/cycle-standard-absent-presentation-guid.pptx",
+    "stages": [
+      "cycle-guid-round1.pptx",
+      "cycle-guid-round2.pptx",
+      "cycle-guid-round3.pptx"
+    ],
+    "uiObservation": "Three actual edit/save/close/reopen cycles: root text gets GUID, then Cycle B gets Round2, then Cycle C gets Round3; all three labels and closing arrows visible after each reopen.",
+    "contentModelIds": [
+      "{00000000-0000-4000-8000-000000000001}",
+      "{00000000-0000-4000-8000-000000000002}",
+      "{00000000-0000-4000-8000-000000000003}"
+    ],
+    "sameDataAsCurrentGuidWriter": true,
+    "rounds": [
+      {
+        "file": "cycle-guid-round1.pptx",
+        "contentModelIds": [
+          "{00000000-0000-4000-8000-000000000001}",
+          "{00000000-0000-4000-8000-000000000002}",
+          "{00000000-0000-4000-8000-000000000003}"
+        ],
+        "contentIdentitySetRetained": true
+      },
+      {
+        "file": "cycle-guid-round2.pptx",
+        "contentModelIds": [
+          "{00000000-0000-4000-8000-000000000001}",
+          "{00000000-0000-4000-8000-000000000002}",
+          "{00000000-0000-4000-8000-000000000003}"
+        ],
+        "contentIdentitySetRetained": true
+      },
+      {
+        "file": "cycle-guid-round3.pptx",
+        "contentModelIds": [
+          "{00000000-0000-4000-8000-000000000001}",
+          "{00000000-0000-4000-8000-000000000002}",
+          "{00000000-0000-4000-8000-000000000003}"
+        ],
+        "contentIdentitySetRetained": true
+      }
+    ],
+    "managedAuthorIdentityAdmission": "not-established"
+  },
+  "deletionControl": {
+    "before": "cycle-round2-theme.pptx",
+    "after": "cycle-after-native-delete.pptx",
+    "scope": "one-added-blank-Cycle-node",
+    "userAuthorization": "Explicit reply: 允许本次删除",
+    "uiObservation": "Five nodes before; one selected blank text-pane entry deleted with native Delete button; four labeled nodes and four closing arrows visible after save/close/reopen.",
+    "deletedModelId": "{04610588-3BCD-A442-98E8-C7382BE245CC}",
+    "deletedParagraphs": [
+      ""
+    ],
+    "beforeNodes": 5,
+    "afterNodes": 4,
+    "retainedContentModelIds": [
+      "{22E229B4-8996-304D-B994-D579F61B879C}",
+      "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+      "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+      "{F387286A-1AE3-714E-81B0-64C48F9D2B99}"
+    ],
+    "retainedTextRolesAndOrder": true,
+    "nativeClosureEvidence": "manual-reopened-screenshot-only"
+  },
+  "limitations": [
+    "UI operations are manual observations retained with actual screenshots/AX; automated verification checks files, not replay of UI actions.",
+    "Only standard absent-cache generated inputs were exercised interactively.",
+    "No calibrated layout fidelity, complete rich text, full-family structural-edit three-cycle, public authoring or diagram source-preservation-edit admission. The separate three-node GUID Cycle control has three observed native text-edit/save/close/reopen cycles only.",
+    "Native deletion observed only for the added blank node in the standard integer-input Cycle; other families and broader structural deletion remain untested."
+  ]
+}

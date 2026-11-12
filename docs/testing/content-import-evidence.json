@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/content-import/run-YHUwqu",
+  "scope": "LibreOffice-produced source content projection, exact no-op bytes and fresh projection reopen; not preservation edit-save, visual parity, interactive editability or PowerPoint certification",
+  "original": {
+    "sha256": "4d3a3103d82225651ae2ff2c1c47df0a64de3680dd125e24fb6ef16f4d796882"
+  },
+  "nativeSource": {
+    "sha256": "46b6a22a34856e5d924ab6285e7c4aa769183c21a3b9535c38763c5633b09e36",
+    "textInventory": [
+      "Editable & exact <text>",
+      "Inside group"
+    ]
+  },
+  "projection": {
+    "coreTexts": [
+      "Editable & exact <text>",
+      "Inside group"
+    ],
+    "mappedElements": 3,
+    "importFeatures": {
+      "source-part-content:unsupported": 14,
+      "metadata.title:editable": 1,
+      "metadata.author:editable": 1,
+      "metadata.subject:editable": 1,
+      "metadata.description:editable": 1,
+      "metadata.language:editable": 1,
+      "presentation-dimensions:editable": 1,
+      "slide-order-and-visibility:editable": 1,
+      "drawing.shape.mapped-fields:editable": 2,
+      "drawing.inheritance-and-defaults:fallback": 3,
+      "drawing.group.mapped-fields:editable": 1,
+      "drawing.unmapped-property:unsupported": 32
+    }
+  },
+  "noOpOriginalBytes": true,
+  "nativeTextInventoryMapped": true,
+  "freshExport": {
+    "sha256": "671e27b6a77c6fe675e6753059848a273e543da5f317dab4a0e58494c23a940b",
+    "textInventory": [
+      "Editable & exact <text>",
+      "Inside group"
+    ],
+    "sourceTextInventoryRetained": true
+  },
+  "reopenedPdf": {
+    "sha256": "cc46471acb8e3ce4ef9eacfd5bef5f5d1848ef1c01177486b6cc6d793d2617e7",
+    "byteLength": 20904
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/content-import/run-YHUwqu/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/content-import/run-YHUwqu/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/content-import/run-YHUwqu/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/content-import/run-YHUwqu/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

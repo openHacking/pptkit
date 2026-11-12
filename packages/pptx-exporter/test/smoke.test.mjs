@@ -26,6 +26,21 @@ function readZipEntries(input) {
   return entries;
 }
 
+test("fresh export rejects XML-forbidden metadata and accepts valid Unicode boundaries", async () => {
+  for (const field of ["title", "author", "subject", "description", "language", "company"]) {
+    for (const invalid of ["\u0000", "\u000b", "\ud800", "\udfff", "\ufffe", "\uffff"]) {
+      const document = createPresentation({ metadata: { [field]: `bad${invalid}value` } });
+      await assert.rejects(generatePptx(document), { name: "RangeError", message: "Cannot serialize a character forbidden by XML 1.0." });
+    }
+  }
+  const invalidKeyword = createPresentation({ metadata: { keywords: ["bad\u0001"] } });
+  await assert.rejects(generatePptx(invalidKeyword), RangeError);
+  const valid = createPresentation({ metadata: { title: "中文 😀 & <ok>\t\n" } });
+  const output = await generatePptx(valid);
+  const core = readZipEntries(output.bytes).get("docProps/core.xml").toString();
+  assert.match(core, /中文 😀 &amp; &lt;ok&gt;\t\n/);
+});
+
 test("generatePptx exports the IR v2 feature surface", async () => {
   const presentation = createPresentation({
     metadata: { title: "Q1 & <ready>", author: "PPTKit", company: "Example", language: "zh-CN" },
@@ -117,7 +132,7 @@ test("generatePptx exports the IR v2 feature surface", async () => {
     assert.match(slide1, /pptkit:slideData/);
     assert.match(slideRels, /TargetMode="External"/);
     assert.match(slideRels, /relationships\/hyperlink/);
-    assert.match(slideRels, /Target="\.\.\/slides\/slide2.xml"/);
+    assert.match(slideRels, /Target="slide2.xml"/);
     assert.match(notes, /Speaker note/);
     assert.match(slide2, /show="0"/);
     assert.match(slide2, /<p:bg>/);
@@ -353,4 +368,26 @@ test("generatePptx exports native editable charts", async () => {
   assert.match(chart4, /<c:minorTickMark val="none"/);
   assert.match(chart1, /<c:majorUnit val="10"/);
   assert.match(chart1, /<a:srgbClr val="D9D9D9"/);
+});
+
+
+test('fresh export writes only explicitly supplied canonical UTC core dates',async()=>{
+ const document=createPresentation({metadata:{createdAt:'2020-02-29T12:34:56.123Z',modifiedAt:'2021-01-02T03:04:05.000Z'}});document.addSlide();
+ const entries=readZipEntries((await generatePptx(document)).bytes), xml=entries.get('docProps/core.xml').toString();
+ assert.match(xml,/<cpTerms:created xsi:type="cpTerms:W3CDTF">2020-02-29T12:34:56.123Z<\/cpTerms:created>/);assert.match(xml,/<cpTerms:modified xsi:type="cpTerms:W3CDTF">2021-01-02T03:04:05.000Z<\/cpTerms:modified>/);assert.match(xml,/xmlns:xsi="http:\/\/www.w3.org\/2001\/XMLSchema-instance"/);
+ const empty=readZipEntries((await generatePptx(createPresentation())).bytes).get('docProps/core.xml').toString();assert.doesNotMatch(empty,/cpTerms:(created|modified)|xmlns:xsi/);
+});
+
+test("fresh chart export rejects sparse values while preserving genuine zero in cache and workbook", async () => {
+  for (const chartType of ["bar", "line", "pie"]) {
+    const make = values => { const deck = createPresentation(); deck.addSlide().addElement({ type: "chart", chartType, box: { x: 0, y: 0, width: 300, height: 200 }, categories: ["A", "B", "C"], series: [{ name: "S", values }] }); return deck; };
+    await assert.rejects(generatePptx(make([1, , 3])), error => error.diagnostics?.some(d => d.code === "chart-values-finite" && d.path.endsWith(".series.0.values.1")));
+    const entries = readZipEntries((await generatePptx(make([1, 0, 3]))).bytes);
+    const chart = entries.get("ppt/charts/chart1.xml").toString(), sheet = readZipEntries(entries.get("ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx")).get("xl/worksheets/sheet1.xml").toString();
+    assert.match(chart, /<c:pt idx="1"><c:v>0<\/c:v><\/c:pt>/);
+    assert.match(sheet, /<c r="B3"><v>0<\/v><\/c>/);
+    const negativeZero = readZipEntries((await generatePptx(make([1, -0, 3]))).bytes);
+    assert.match(negativeZero.get("ppt/charts/chart1.xml").toString(), /<c:pt idx="1"><c:v>-0<\/c:v><\/c:pt>/);
+    assert.match(readZipEntries(negativeZero.get("ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx")).get("xl/worksheets/sheet1.xml").toString(), /<c r="B3"><v>-0<\/v><\/c>/);
+  }
 });

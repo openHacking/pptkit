@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T20:19:14.769Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/paragraph-target-native/run-ssAXN1",
+  "sourceSha256": "f8e7a833a4720cbb170df509c7a4da2d40e2d46765b295659525f9c6aeb30006",
+  "scope": "Explicit paragraph-stable-v1 scalar source saves; three source rounds with independent exact ZIP/XML checks, separate LibreOffice headless range/paragraph observations and saved-output PDF reopening. No GUI, playback, effect editing or producer-wide admission.",
+  "control": {
+    "sha256": "c2c5c5d25233e44b38dffa0c3761ad02297eab6e70aae1defd7ce51f7b7c8c10",
+    "log": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "sourceSha256": "f8e7a833a4720cbb170df509c7a4da2d40e2d46765b295659525f9c6aeb30006",
+      "candidateSha256": "7f3f35dddbea2d9806d75991fd5c1cf4e71d4bfc7419303ca02036c542e4d920",
+      "nativeSha256": "ceb7471366cf9427086ba87fffbf24e6045d6abe09b2c7b023d24630a5f8a74f",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; exact nonselected payloads, full XML fingerprint except two approved atoms, timing/target/paragraph identity",
+        "changedPayloads": [
+          "ppt/slides/slide1.xml"
+        ],
+        "mutatedRangeRejected": true,
+        "unapprovedAttributeRejected": true,
+        "native": {
+          "status": "partial",
+          "rangeAndParagraphsRetained": false,
+          "rows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Round 1 paragraph A retained tail",
+                "",
+                "Round 1 paragraph C"
+              ]
+            }
+          ],
+          "uneditedControlRows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Initial paragraph A retained tail",
+                "",
+                "Initial paragraph C"
+              ]
+            }
+          ],
+          "rangeRewriteAlsoPresentInUneditedControl": true
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/round-1.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/native/round-1.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "round": 2,
+      "sourceSha256": "7f3f35dddbea2d9806d75991fd5c1cf4e71d4bfc7419303ca02036c542e4d920",
+      "candidateSha256": "b9360c3d304ae998e2eb5fa199ffd20808a9a97c6f256582e9a28f341fb20445",
+      "nativeSha256": "adb2f14f3f316568432212709d7e75436f109fc5c5e7982953e94eff1e4cf7cc",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; exact nonselected payloads, full XML fingerprint except two approved atoms, timing/target/paragraph identity",
+        "changedPayloads": [
+          "ppt/slides/slide1.xml"
+        ],
+        "mutatedRangeRejected": true,
+        "unapprovedAttributeRejected": true,
+        "native": {
+          "status": "partial",
+          "rangeAndParagraphsRetained": false,
+          "rows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Round 2 paragraph A retained tail",
+                "",
+                "Round 2 paragraph C"
+              ]
+            }
+          ],
+          "uneditedControlRows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Initial paragraph A retained tail",
+                "",
+                "Initial paragraph C"
+              ]
+            }
+          ],
+          "rangeRewriteAlsoPresentInUneditedControl": true
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/round-2.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/native/round-2.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "round": 3,
+      "sourceSha256": "b9360c3d304ae998e2eb5fa199ffd20808a9a97c6f256582e9a28f341fb20445",
+      "candidateSha256": "37d866163efd7d098f3d10bd0ee1399b4e4724fa76f8373be748a075ace03d3d",
+      "nativeSha256": "e42f2c3a2db47c7d807d689e2d769d78a655cc3e78dbda05ee70be51403a80f7",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; exact nonselected payloads, full XML fingerprint except two approved atoms, timing/target/paragraph identity",
+        "changedPayloads": [
+          "ppt/slides/slide1.xml"
+        ],
+        "mutatedRangeRejected": true,
+        "unapprovedAttributeRejected": true,
+        "native": {
+          "status": "partial",
+          "rangeAndParagraphsRetained": false,
+          "rows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Round 3 paragraph A retained tail",
+                "",
+                "Round 3 paragraph C"
+              ]
+            }
+          ],
+          "uneditedControlRows": [
+            {
+              "part": "ppt/slides/slide1.xml",
+              "spid": "4",
+              "ranges": [
+                {
+                  "st": "0",
+                  "end": "0"
+                }
+              ],
+              "paragraphText": [
+                "Initial paragraph A retained tail",
+                "",
+                "Initial paragraph C"
+              ]
+            }
+          ],
+          "rangeRewriteAlsoPresentInUneditedControl": true
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/native/round-3.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    }
+  ],
+  "pdf": {
+    "sha256": "098630886473778390521de1aff35c12f526d941feed3e2a801077fd8ea28f5e",
+    "observation": {
+      "pages": 2,
+      "text": [
+        "Round 3 paragraph A retained tail\nRound 3 paragraph C\n",
+        "Unchanged paragraph control\n"
+      ]
+    },
+    "log": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/native/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/paragraph-target-native/run-ssAXN1/pdf/round-3.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "nativePlayback": "not-performed",
+  "interactiveEditing": "not-performed"
+}

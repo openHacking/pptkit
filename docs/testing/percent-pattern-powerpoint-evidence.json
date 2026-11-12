@@ -1,0 +1,27 @@
+{
+  "scope": "One authored slide, opaque black/white rectangular shapes; one PowerPoint save and reopen. UI captures and XML are retained; visual parity, color/alpha variations, interactive edits and other producers are not established.",
+  "presetValues": [
+    5,
+    10,
+    20,
+    25,
+    30,
+    40,
+    50,
+    60,
+    70,
+    75,
+    80,
+    90
+  ],
+  "reopenRounds": 1,
+  "artifactDirectory": ".tmp/native-percent-patterns",
+  "sha256": {
+    "percent-patterns.pptx": "ceec8e2fca61ae919e2f5f17f154c0b9dd7aa34a44b347650c63037e013beb47",
+    "native-round-1.pptx": "b8e4f4ce1a43632732bd2c6bbcc03d5404ecbe9fb20609b13339ddca03f6ee7f",
+    "first.ax.txt": "b04db889bda95e5e821ac78e1fda3bb1e0900bee4c9f914825adb18b017b421e",
+    "reopen.ax.txt": "b7ada3aac8513aedd8df92032954f6c78525a7d14b61ac020d13bb92dee36b49",
+    "first.jpg": "a477c7fc87c756359b743944aaf11a30f06430a58a84533e25ba4d77a009c718",
+    "reopen.jpg": "224e8ef5398c53b6494312277048330d1069c07429907891b1d1231e02076ce5"
+  }
+}

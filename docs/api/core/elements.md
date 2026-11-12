@@ -78,7 +78,7 @@ interface ImageElementInput extends ElementBaseInput {
 | --- | --- | --- |
 | `assetId` | required | Must reference a registered image asset. |
 | `fit` | `stretch` | `contain` and `cover` require source dimensions for geometric resolution. |
-| `crop` | all edges `0` | Edge fractions use normalized `0..1` coordinates. Used directly with `crop`; layout derives values for `cover`. |
+| `crop` | all edges `0` | Edge fractions use normalized `0..1` coordinates. Used directly with `fit: "crop"`; layout derives values for `cover`. `validatePresentation` reports `image-crop-ignored` when valid nonzero authored fractions accompany another fit, and rejects unknown fit values. Normalization ignores warnings; call validation explicitly to collect them. |
 
 ```ts
 slide.addElement({
@@ -92,11 +92,14 @@ slide.addElement({
 
 ## Shape
 
+`parallelogram` accepts optional `slant` from 0 to 1, defining the horizontal inset as a fraction of the shorter frame side; its default is 0.25. PPTX quantizes it to 1/100000 and reports `shape-slant-quantized` when this changes the value. Its editable PPTX uses the native preset; SVG uses the corresponding polygon. Connector anchors follow the existing bounding-frame rules, and native connector attachment to this preset falls back with a warning. SVG uses the preset text rectangle and emits `shape-text-frame-approximation` because typography and wrapping can differ from PowerPoint. Layout text measurements and overflow diagnostics use the same preset rectangle. Local and shared source shapes with a single supported literal adjustment are projected; formula and extra adjustments remain source-only; a matched placeholder can also project one inherited bounded literal. One [PowerPoint save/reopen observation](../../testing/parallelogram-powerpoint-evidence.json) samples wide, tall and rotated/flipped defaults against the polygon model, away from edges. A [second observation](../../testing/parallelogram-slant-powerpoint-evidence.json) samples explicit slants 0, 0.4 and 1, including rotation/flip, through one native save/reopen. A [third observation](../../testing/parallelogram-text-frame-powerpoint-evidence.json) samples text origins for three unrotated, zero-margin cases; text wrapping, interactive editing and general native parity are not established.
+
 ```ts
 interface ShapeElementInput extends ElementBaseInput {
   type: "shape";
   shape: "rect" | "roundRect" | "ellipse" | "triangle" |
-    "diamond" | "arrow" | "chevron";
+    "diamond" | "arrow" | "chevron" | "parallelogram";
+  slant?: number; // parallelogram only
   style?: ShapeStyleInput;
   text?: {
     content: string | TextParagraphInput[];
@@ -142,11 +145,14 @@ interface ConnectorElementInput extends ElementBaseInput {
   start: ConnectorEndpointInput;
   end: ConnectorEndpointInput;
   route?: Point[];
+  pathMode?: "open-round" | "closed-round";
   style?: StrokeStyleInput;
 }
 ```
 
 Connectors can use absolute points or stable element references. `route` contains intermediate polyline points. Layout resolves references to points and derives the final connector box. Referenced elements must be in the same slide/layout scope.
+
+Optional `pathMode` uses custom path geometry with round caps and joins. It requires free point endpoints and no arrowheads. `closed-round` additionally requires identical start and end points and at least two intermediate route points; SVG preview and PPTX output explicitly close the path. When native connector presets are requested, these paths fall back to editable custom geometry with a warning. Omitting `pathMode` retains existing connector behavior.
 
 ```ts
 slide.addElement({

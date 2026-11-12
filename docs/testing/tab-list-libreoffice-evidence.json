@@ -1,0 +1,1896 @@
+{
+  "scope": "36 generated PPTX list/tab controls, one LibreOfficeDev headless PDF conversion; no PowerPoint or editing claim.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "generatorSha256": "7248b04619fd3f6475fdbcfa38cc86849d711b25d934b2aaa1a0eb325cf694b8",
+  "runnerSha256": "a5bc564557e7d0282902fdfe87008b373b37bdea1297564a7f61a8f6169ea4af",
+  "source": ".tmp/native-tab-list/run-7HWN3O/list-tabs.pptx",
+  "sourceSha256": "bfe340e9f959ada4bc97cf7cab6ec5fa59b92a6ec99f8edbe7585874317967f8",
+  "pdf": ".tmp/native-tab-list/run-7HWN3O/list-tabs.pdf",
+  "pdfSha256": "aa8314ffc465a57b3e8e619a2f2b5c30c0217bd947443a6d1ade166f0d564627",
+  "observations": [
+    {
+      "index": 0,
+      "bullet": "symbol",
+      "indent": 36,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          95.981,
+          102.6386,
+          114.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            77.981,
+            102.0744,
+            87.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "bullet": "symbol",
+      "indent": 36,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          95.981,
+          102.6386,
+          114.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            77.981,
+            102.0744,
+            87.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "bullet": "symbol",
+      "indent": 36,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          95.981,
+          102.6386,
+          114.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            77.981,
+            102.0744,
+            87.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "bullet": "symbol",
+      "indent": 36,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          95.981,
+          102.6386,
+          114.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            77.981,
+            102.0744,
+            87.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "bullet": "symbol",
+      "indent": 27,
+      "hanging": 27,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            59.981,
+            102.0744,
+            69.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "bullet": "symbol",
+      "indent": 27,
+      "hanging": 27,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            59.981,
+            102.0744,
+            69.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "bullet": "symbol",
+      "indent": 27,
+      "hanging": 27,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            59.981,
+            102.0744,
+            69.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "bullet": "symbol",
+      "indent": 27,
+      "hanging": 27,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            59.981,
+            102.0744,
+            69.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "bullet": "symbol",
+      "indent": 54,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          113.981,
+          102.6386,
+          132.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            95.981,
+            102.0744,
+            105.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "bullet": "symbol",
+      "indent": 54,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          113.981,
+          102.6386,
+          132.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            95.981,
+            102.0744,
+            105.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "bullet": "symbol",
+      "indent": 54,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          113.981,
+          102.6386,
+          132.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            95.981,
+            102.0744,
+            105.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "bullet": "symbol",
+      "indent": 54,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          113.981,
+          102.6386,
+          132.633,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "•",
+          "font": "OpenSymbol",
+          "bbox": [
+            95.981,
+            102.0744,
+            105.9231,
+            130.0804
+          ]
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "bullet": "number3",
+      "indent": 36,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          101.282,
+          102.6386,
+          119.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            101.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "bullet": "number3",
+      "indent": 36,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          101.282,
+          102.6386,
+          119.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            101.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "bullet": "number3",
+      "indent": 36,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          101.282,
+          102.6386,
+          119.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            101.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "bullet": "number3",
+      "indent": 36,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          101.282,
+          102.6386,
+          119.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            101.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "bullet": "number3",
+      "indent": 27,
+      "hanging": 27,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            83.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "bullet": "number3",
+      "indent": 27,
+      "hanging": 27,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            83.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "bullet": "number3",
+      "indent": 27,
+      "hanging": 27,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            83.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "bullet": "number3",
+      "indent": 27,
+      "hanging": 27,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          86.995,
+          102.6386,
+          105.647,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            83.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "bullet": "number3",
+      "indent": 54,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          119.282,
+          102.6386,
+          137.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            119.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "bullet": "number3",
+      "indent": 54,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          119.282,
+          102.6386,
+          137.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            119.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "bullet": "number3",
+      "indent": 54,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          119.282,
+          102.6386,
+          137.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            119.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "bullet": "number3",
+      "indent": 54,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          119.282,
+          102.6386,
+          137.934,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            119.31,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "bullet": "number333",
+      "indent": 36,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          132.378,
+          102.6386,
+          151.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            109.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            109.1237,
+            102.6386,
+            124.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            124.695,
+            102.6386,
+            132.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "bullet": "number333",
+      "indent": 36,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          132.378,
+          102.6386,
+          151.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            109.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            109.1237,
+            102.6386,
+            124.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            124.695,
+            102.6386,
+            132.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "bullet": "number333",
+      "indent": 36,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          132.378,
+          102.6386,
+          151.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            109.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            109.1237,
+            102.6386,
+            124.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            124.695,
+            102.6386,
+            132.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "bullet": "number333",
+      "indent": 36,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          132.378,
+          102.6386,
+          151.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            77.981,
+            102.6386,
+            93.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            93.5523,
+            102.6386,
+            109.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            109.1237,
+            102.6386,
+            124.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            124.695,
+            102.6386,
+            132.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "bullet": "number333",
+      "indent": 27,
+      "hanging": 27,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          114.378,
+          102.6386,
+          133.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            91.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            91.1237,
+            102.6386,
+            106.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            106.695,
+            102.6386,
+            114.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "bullet": "number333",
+      "indent": 27,
+      "hanging": 27,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          114.378,
+          102.6386,
+          133.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            91.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            91.1237,
+            102.6386,
+            106.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            106.695,
+            102.6386,
+            114.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "bullet": "number333",
+      "indent": 27,
+      "hanging": 27,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          114.378,
+          102.6386,
+          133.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            91.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            91.1237,
+            102.6386,
+            106.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            106.695,
+            102.6386,
+            114.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "bullet": "number333",
+      "indent": 27,
+      "hanging": 27,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          114.378,
+          102.6386,
+          133.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            59.981,
+            102.6386,
+            75.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            75.5523,
+            102.6386,
+            91.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            91.1237,
+            102.6386,
+            106.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            106.695,
+            102.6386,
+            114.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "bullet": "number333",
+      "indent": 54,
+      "hanging": 18,
+      "align": "left",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          150.378,
+          102.6386,
+          169.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          339.987,
+          102.6386,
+          412.9706,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            127.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            127.1237,
+            102.6386,
+            142.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            142.695,
+            102.6386,
+            150.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "bullet": "number333",
+      "indent": 54,
+      "hanging": 18,
+      "align": "center",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          150.378,
+          102.6386,
+          169.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          303.506,
+          102.6386,
+          376.4897,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            127.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            127.1237,
+            102.6386,
+            142.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            142.695,
+            102.6386,
+            150.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "bullet": "number333",
+      "indent": 54,
+      "hanging": 18,
+      "align": "right",
+      "text": "WIDE",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          150.378,
+          102.6386,
+          169.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "WIDE",
+        "bbox": [
+          266.995,
+          102.6386,
+          339.9786,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            127.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            127.1237,
+            102.6386,
+            142.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            142.695,
+            102.6386,
+            150.4527,
+            133.8933
+          ]
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "bullet": "number333",
+      "indent": 54,
+      "hanging": 18,
+      "align": "decimal",
+      "text": "12.34",
+      "prefix": {
+        "text": "P",
+        "font": "LiberationSans",
+        "bbox": [
+          150.378,
+          102.6386,
+          169.03,
+          133.8933
+        ]
+      },
+      "sample": {
+        "text": "12.34",
+        "bbox": [
+          308.891,
+          102.6386,
+          378.878,
+          133.8933
+        ]
+      },
+      "marker": [
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            95.981,
+            102.6386,
+            111.5523,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            111.5523,
+            102.6386,
+            127.1237,
+            133.8933
+          ]
+        },
+        {
+          "text": "3",
+          "font": "LiberationSans",
+          "bbox": [
+            127.1237,
+            102.6386,
+            142.695,
+            133.8933
+          ]
+        },
+        {
+          "text": ".",
+          "font": "LiberationSans",
+          "bbox": [
+            142.695,
+            102.6386,
+            150.4527,
+            133.8933
+          ]
+        }
+      ]
+    }
+  ]
+}

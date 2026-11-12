@@ -4,6 +4,13 @@ import { inflateRawSync } from "node:zlib";
 
 import { createZip } from "../dist/archive/create-zip.js";
 import { corePropertiesXml } from "../dist/ooxml/package-parts.js";
+import { relationshipsXml } from "../dist/ooxml/relationships.js";
+
+test("relationship attributes escape query strings and XML delimiters", () => {
+  const xml = relationshipsXml([{ id: "rId1", type: "https://example.com/type", target: 'https://example.com/?a=1&b="<value>"&c=\'quoted\'', targetMode: "External" }]);
+  assert.ok(xml.includes('Target="https://example.com/?a=1&amp;b=&quot;&lt;value&gt;&quot;&amp;c=&apos;quoted&apos;"'));
+  assert.match(xml, /TargetMode="External"/);
+});
 
 test("OOXML helpers escape metadata independently of export orchestration", () => {
   assert.match(corePropertiesXml({

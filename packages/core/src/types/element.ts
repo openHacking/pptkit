@@ -1,4 +1,5 @@
 import type { Box, Insets, Point, Size } from "./geometry.js";
+import type { DynamicDateUpdateFormat } from "./field.js";
 import type {
   NormalizedPaint,
   NormalizedShapeStyle,
@@ -14,9 +15,11 @@ import type {
   ShapeStyleInput,
   StrokeStyleInput,
   TableCellStyleInput,
+  TableStyleInput,
   TextFrameStyleInput,
   TextParagraphStyleInput,
   TextRunStyleInput,
+  TextStylePresetResetProperty,
   TransformInput,
 } from "./style.js";
 
@@ -64,6 +67,8 @@ export interface NormalizedElementBase {
 
 export interface TextRunInput {
   text: string;
+  /** Optional dynamic field identity; text is its caller-supplied display cache. */
+  field?: { id: string; kind: "slide-number" } | { id: string; kind: "dynamic-date"; updateFormat: DynamicDateUpdateFormat };
   style?: TextRunStyleInput;
   action?: ElementAction;
 }
@@ -77,6 +82,7 @@ export type TextContentInput = string | TextParagraphInput[];
 
 export interface NormalizedTextRun {
   text: string;
+  field?: { id: string; kind: "slide-number" } | { id: string; kind: "dynamic-date"; updateFormat: DynamicDateUpdateFormat };
   style: NormalizedTextRunStyle;
   action?: ElementAction;
 }
@@ -92,6 +98,8 @@ export interface TextElementInput extends Omit<ElementBaseInput, "box"> {
   type: "text";
   content: TextContentInput;
   textStylePreset?: string;
+  /** Preset properties that inherit from the placeholder instead. */
+  textStylePresetReset?: readonly TextStylePresetResetProperty[];
   box?: TextBoxInput;
   frame?: TextFrameStyleInput;
 }
@@ -108,6 +116,8 @@ export interface NormalizedTextElement extends NormalizedElementBase {
 export interface ShapeTextInput {
   content: TextContentInput;
   textStylePreset?: string;
+  /** Preset properties that inherit from the placeholder instead. */
+  textStylePresetReset?: readonly TextStylePresetResetProperty[];
   frame?: TextFrameStyleInput;
 }
 
@@ -130,6 +140,7 @@ export interface ImageElementInput extends ElementBaseInput {
   type: "image";
   assetId: string;
   fit?: ImageFit;
+  /** Used with fit crop; other fit modes ignore or derive crop fractions. */
   crop?: Partial<ImageCrop>;
 }
 
@@ -142,11 +153,13 @@ export interface NormalizedImageElement extends NormalizedElementBase {
   crop: ImageCrop;
 }
 
-export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron";
+export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron" | "parallelogram";
 
 export interface ShapeElementInput extends ElementBaseInput {
   type: "shape";
   shape: ShapeKind;
+  /** Parallelogram horizontal slant as a fraction of the shorter frame side, from 0 to 1. */
+  slant?: number;
   style?: ShapeStyleInput;
   text?: ShapeTextInput;
 }
@@ -156,6 +169,8 @@ export interface ShapeElement extends ElementBase, Omit<ShapeElementInput, keyof
 export interface NormalizedShapeElement extends NormalizedElementBase {
   type: "shape";
   shape: ShapeKind;
+  /** Absent means the default parallelogram slant of 0.25. */
+  slant?: number;
   style: NormalizedShapeStyle;
   text?: NormalizedShapeText;
 }
@@ -168,6 +183,8 @@ export interface ConnectorElementInput extends ElementBaseInput {
   start: ConnectorEndpointInput;
   end: ConnectorEndpointInput;
   route?: Point[];
+  /** Custom path with round caps and joins; closed paths end at their start. */
+  pathMode?: "open-round" | "closed-round";
   style?: StrokeStyleInput;
 }
 
@@ -178,6 +195,7 @@ export interface NormalizedConnectorElement extends NormalizedElementBase {
   start: ConnectorEndpointInput;
   end: ConnectorEndpointInput;
   route: Point[];
+  pathMode?: "open-round" | "closed-round";
   style: NormalizedStrokeStyle;
 }
 
@@ -201,6 +219,8 @@ export interface NormalizedGroupElement extends NormalizedElementBase {
 
 export interface TableCellInput {
   content: TextContentInput;
+  /** Explicit accessibility role for a row or column header. */
+  headerScope?: "row" | "column";
   textStylePreset?: string;
   rowSpan?: number;
   colSpan?: number;
@@ -212,8 +232,25 @@ export interface TableRowInput {
   height?: number;
 }
 
+/** Named native table presets verified by the PPTX adapter. */
+export type NativeTableStylePreset = "medium-2-accent-1" | "medium-2-accent-2";
+
+/** Native table style region switches, separate from Core's effective cell formatting. */
+export interface NativeTableStyleFlags {
+  firstColumn?: boolean;
+  lastColumn?: boolean;
+  lastRow?: boolean;
+  bandedRows?: boolean;
+  bandedColumns?: boolean;
+}
+
 export interface TableElementInput extends ElementBaseInput {
   type: "table";
+  /** Native first-row table style toggle; independent of per-cell header scope. */
+  nativeFirstRowStyle?: boolean;
+  nativeTableStyleFlags?: NativeTableStyleFlags;
+  nativeTableStylePreset?: NativeTableStylePreset;
+  style?: TableStyleInput;
   columns: number[];
   rows: TableRowInput[];
 }
@@ -222,6 +259,7 @@ export interface TableElement extends ElementBase, Omit<TableElementInput, keyof
 
 export interface NormalizedTableCell {
   content: NormalizedTextParagraph[];
+  headerScope?: "row" | "column";
   rowSpan: number;
   colSpan: number;
   style: NormalizedTableCellStyle;
@@ -234,13 +272,21 @@ export interface NormalizedTableRow {
 
 export interface NormalizedTableElement extends NormalizedElementBase {
   type: "table";
+  nativeFirstRowStyle?: boolean;
+  nativeTableStyleFlags?: NativeTableStyleFlags;
+  nativeTableStylePreset?: NativeTableStylePreset;
+  /** Cells contain effective values; the authoring region rules are not native table styles. */
+  styleSource?: "materialized-regions";
   columns: number[];
   rows: NormalizedTableRow[];
 }
 
-export type ChartType = "bar" | "line" | "pie";
+export type ChartType = "bar" | "line" | "area" | "pie" | "doughnut" | "scatter" | "bubble" | "combo";
 export type ChartOrientation = "vertical" | "horizontal";
 export type ChartGrouping = "clustered" | "stacked" | "percentStacked";
+export type AreaChartGrouping = "standard" | "stacked" | "percentStacked";
+/** Blank display strategy; span is supported for standard line and scatter charts. */
+export type ChartBlankDisplay = "gap" | "zero" | "span";
 export type ChartLegendPosition = "right" | "bottom";
 export type ChartTickMark = "none" | "inside" | "outside" | "cross";
 export type ChartMarkerShape = "diamond" | "square" | "circle" | "triangle" | "star" | "x" | "plus" | "dash";
@@ -323,9 +369,12 @@ export interface NormalizedChartStyle {
   textStyle: NormalizedChartTextStyle;
 }
 
+export type ChartDataValue = number | null;
+
 export interface ChartSeriesBaseInput {
   name: string;
-  values: number[];
+  /** Explicit null is a blank point; sparse array holes remain invalid. */
+  values: ChartDataValue[];
   color?: ColorValue;
 }
 
@@ -340,6 +389,23 @@ export type ChartMarkerInput = "auto" | false | ChartMarkerStyleInput;
 
 export interface BarChartSeriesInput extends ChartSeriesBaseInput {}
 export interface LineChartSeriesInput extends ChartSeriesBaseInput { line?: StrokeStyleInput; marker?: ChartMarkerInput }
+export interface ScatterChartSeriesInput {
+  name: string;
+  xValues: ChartDataValue[];
+  yValues: ChartDataValue[];
+  color?: ColorValue;
+  line?: false | StrokeStyleInput;
+  marker?: ChartMarkerInput;
+}
+export interface BubbleChartSeriesInput {
+  name: string;
+  xValues: number[];
+  yValues: number[];
+  sizes: number[];
+  color?: ColorValue;
+}
+export interface NormalizedBubbleChartSeries extends Omit<BubbleChartSeriesInput, "color"> { color: string }
+
 export interface PieChartSeriesInput extends ChartSeriesBaseInput { pointColors?: ColorValue[] }
 
 export interface NormalizedChartMarkerStyle {
@@ -351,7 +417,7 @@ export interface NormalizedChartMarkerStyle {
 
 export interface NormalizedChartSeriesBase {
   name: string;
-  values: number[];
+  values: ChartDataValue[];
   color: string;
 }
 
@@ -362,12 +428,26 @@ export interface NormalizedLineChartSeries extends NormalizedChartSeriesBase {
   marker: false | NormalizedChartMarkerStyle;
 }
 
+export interface NormalizedScatterChartSeries {
+  name: string;
+  xValues: ChartDataValue[];
+  yValues: ChartDataValue[];
+  color: string;
+  line: false | NormalizedStrokeStyle;
+  marker: false | NormalizedChartMarkerStyle;
+}
+
+export interface ScatterChartAxesInput { x?: ValueAxisInput; y?: ValueAxisInput }
+export interface NormalizedScatterChartAxes { x: NormalizedValueAxis; y: NormalizedValueAxis }
+
 export interface NormalizedPieChartSeries extends NormalizedChartSeriesBase {
   pointColors: string[];
 }
 
 interface ChartElementInputBase extends ElementBaseInput {
   type: "chart";
+  /** Defaults to gap when values contain null, otherwise zero. */
+  blankDisplay?: ChartBlankDisplay;
   categories: string[];
   title?: string;
   titleStyle?: ChartTextStyleInput;
@@ -390,16 +470,54 @@ export interface LineChartElementInput extends ChartElementInputBase {
   series: LineChartSeriesInput[];
 }
 
+export interface AreaChartElementInput extends ChartElementInputBase {
+  chartType: "area";
+  series: ChartSeriesBaseInput[];
+  grouping?: AreaChartGrouping;
+}
+
+export interface ScatterChartElementInput extends Omit<ChartElementInputBase, "categories" | "axes"> {
+  chartType: "scatter";
+  series: ScatterChartSeriesInput[];
+  axes?: ScatterChartAxesInput;
+}
+
+export interface BubbleChartElementInput extends Omit<ChartElementInputBase, "categories" | "axes" | "blankDisplay"> {
+  chartType: "bubble";
+  series: BubbleChartSeriesInput[];
+  axes?: ScatterChartAxesInput;
+}
+
+/** Clustered columns on the primary axis, followed by lines on the secondary axis. */
+export type ComboChartSeriesInput = ({ kind: "bar" } & BarChartSeriesInput) | ({ kind: "line" } & LineChartSeriesInput);
+export interface ComboChartAxesInput extends ChartAxesInput { secondaryValue?: ValueAxisInput }
+export interface ComboChartElementInput extends Omit<ChartElementInputBase, "axes"> {
+  chartType: "combo";
+  series: ComboChartSeriesInput[];
+  axes?: ComboChartAxesInput;
+}
+
 export interface PieChartElementInput extends Omit<ChartElementInputBase, "axes"> {
   chartType: "pie";
   series: PieChartSeriesInput[];
   axes?: never;
 }
 
-export type ChartElementInput = BarChartElementInput | LineChartElementInput | PieChartElementInput;
+export interface DoughnutChartElementInput extends Omit<ChartElementInputBase, "axes"> {
+  chartType: "doughnut";
+  series: PieChartSeriesInput[];
+  axes?: never;
+  /** Integer percentage of the radius reserved for the central hole, from 1 to 90. */
+  holeSize?: number;
+  /** Clockwise angle in integer degrees from 12 o'clock, from 0 to 360. */
+  firstSliceAngle?: number;
+}
+
+export type ChartElementInput = BarChartElementInput | LineChartElementInput | AreaChartElementInput | PieChartElementInput | DoughnutChartElementInput | ScatterChartElementInput | BubbleChartElementInput | ComboChartElementInput;
 
 interface ChartElementBase extends ElementBase {
   type: "chart";
+  blankDisplay?: ChartBlankDisplay;
   categories: string[];
   title?: string;
   titleStyle?: ChartTextStyleInput;
@@ -414,13 +532,35 @@ export interface BarChartElement extends ChartElementBase, Omit<BarChartElementI
 export interface LineChartElement extends ChartElementBase, Omit<LineChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "axes" | "style"> {
   chartType: "line";
 }
+export interface AreaChartElement extends ChartElementBase, Omit<AreaChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "axes" | "style"> {
+  chartType: "area";
+}
+export interface ScatterChartElement extends Omit<ChartElementBase, "categories" | "axes">, Omit<ScatterChartElementInput, keyof ElementBaseInput | "type" | "title" | "titleStyle" | "legend" | "axes" | "style"> {
+  chartType: "scatter";
+  axes?: ScatterChartAxesInput;
+}
+export interface BubbleChartElement extends Omit<ChartElementBase, "categories" | "axes" | "blankDisplay"> {
+  chartType: "bubble";
+  series: BubbleChartSeriesInput[];
+  axes?: ScatterChartAxesInput;
+}
+export interface ComboChartElement extends Omit<ChartElementBase, "axes"> {
+  chartType: "combo";
+  series: ComboChartSeriesInput[];
+  axes?: ComboChartAxesInput;
+}
 export interface PieChartElement extends Omit<ChartElementBase, "axes">, Omit<PieChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "style"> {
   chartType: "pie";
 }
-export type ChartElement = BarChartElement | LineChartElement | PieChartElement;
+export interface DoughnutChartElement extends Omit<ChartElementBase, "axes">, Omit<DoughnutChartElementInput, keyof ElementBaseInput | "type" | "categories" | "title" | "titleStyle" | "legend" | "style"> {
+  chartType: "doughnut";
+}
+export type ChartElement = BarChartElement | LineChartElement | AreaChartElement | PieChartElement | DoughnutChartElement | ScatterChartElement | BubbleChartElement | ComboChartElement;
 
 interface NormalizedChartElementBase<TSeries extends NormalizedChartSeriesBase> extends NormalizedElementBase {
   type: "chart";
+  /** Normalization supplies this; absent legacy IR retains adaptive defaults. */
+  blankDisplay?: ChartBlankDisplay;
   categories: string[];
   series: TSeries[];
   title?: string;
@@ -443,11 +583,40 @@ export interface NormalizedLineChartElement extends NormalizedChartElementBase<N
   axes: NormalizedChartAxes;
 }
 
+export interface NormalizedAreaChartElement extends NormalizedChartElementBase<NormalizedChartSeriesBase> {
+  chartType: "area";
+  grouping: AreaChartGrouping;
+  axes: NormalizedChartAxes;
+}
+export interface NormalizedScatterChartElement extends Omit<NormalizedChartElementBase<NormalizedChartSeriesBase>, "categories" | "series"> {
+  chartType: "scatter";
+  series: NormalizedScatterChartSeries[];
+  axes: NormalizedScatterChartAxes;
+}
+
+export interface NormalizedBubbleChartElement extends Omit<NormalizedChartElementBase<NormalizedChartSeriesBase>, "categories" | "series" | "blankDisplay"> {
+  chartType: "bubble";
+  series: NormalizedBubbleChartSeries[];
+  axes: NormalizedScatterChartAxes;
+}
+
+export type NormalizedComboChartSeries = ({ kind: "bar" } & NormalizedBarChartSeries) | ({ kind: "line"; line: NormalizedStrokeStyle } & Omit<NormalizedLineChartSeries, "line">);
+export interface NormalizedComboChartElement extends NormalizedChartElementBase<NormalizedComboChartSeries> {
+  chartType: "combo";
+  axes: NormalizedChartAxes & { secondaryValue: NormalizedValueAxis };
+}
+
 export interface NormalizedPieChartElement extends NormalizedChartElementBase<NormalizedPieChartSeries> {
   chartType: "pie";
 }
 
-export type NormalizedChartElement = NormalizedBarChartElement | NormalizedLineChartElement | NormalizedPieChartElement;
+export interface NormalizedDoughnutChartElement extends NormalizedChartElementBase<NormalizedPieChartSeries> {
+  chartType: "doughnut";
+  holeSize: number;
+  firstSliceAngle: number;
+}
+
+export type NormalizedChartElement = NormalizedBarChartElement | NormalizedLineChartElement | NormalizedAreaChartElement | NormalizedPieChartElement | NormalizedDoughnutChartElement | NormalizedScatterChartElement | NormalizedBubbleChartElement | NormalizedComboChartElement;
 
 export type PlaceholderKind = "title" | "subtitle" | "body" | "image" | "table" | "footer" | "slideNumber";
 
@@ -460,6 +629,8 @@ export interface PlaceholderTextStyleInput {
 export interface PlaceholderDefinitionInput {
   key: string;
   kind: PlaceholderKind;
+  /** Explicit layout-local numeric identity (0…4294967295), never an array position. */
+  index?: number;
   box: Box;
   textStyle?: PlaceholderTextStyleInput;
   textStylePreset?: string;
@@ -468,6 +639,8 @@ export interface PlaceholderDefinitionInput {
 export interface NormalizedPlaceholderDefinition {
   key: string;
   kind: PlaceholderKind;
+  /** Only present when authored; serialization-generated ordinals are not identities. */
+  index?: number;
   box: Box;
   textStyle: {
     frame: NormalizedTextFrameStyle;

@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": 1,
+  "sourceEvidence": "docs/testing/corpus-headless-render-audit.json",
+  "sourceEvidenceSha256": "52949a2f57b9b41aa1c957a75d0e53d81deb72d329cdd740b0466a009d33f335",
+  "scriptSha256": "178040d1a01741428e6d28e273c742765e7b90e0c3f2dd212feae99414f1f139",
+  "pymupdfVersion": "1.28.0",
+  "scope": "Ordinal PDF structure comparison only; equal ordinals are not independently established object identities and extracted text is not proof of visual fidelity.",
+  "fixtures": [
+    {
+      "fixture": "text",
+      "sourcePdfSha256": "a7414f40bcd8c0b2f744a81694c1a1bbcefff60f014f129e73c7c00f38c24b31",
+      "savedPdfSha256": "585e4a3017f38ff2e7b152727bf5f96323cb41e68688b8bcb1546e597abf93d1",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 7,
+            "spanCountSaved": 7,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.0279998779296875
+              },
+              {
+                "index": 1,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0279998779296875,
+                "originMaxDelta": 0.0279998779296875
+              },
+              {
+                "index": 2,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0279998779296875,
+                "originMaxDelta": 0.0279998779296875
+              },
+              {
+                "index": 3,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02899932861328125,
+                "originMaxDelta": 0.02899932861328125
+              },
+              {
+                "index": 4,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 5,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02899932861328125,
+                "originMaxDelta": 0.02899932861328125
+              },
+              {
+                "index": 6,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 4,
+            "countSaved": 4,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": false,
+                "rectMaxDelta": 0.0279998779296875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 3,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              }
+            ]
+          },
+          "sourceImages": [],
+          "savedImages": []
+        }
+      ]
+    },
+    {
+      "fixture": "theme-layout",
+      "sourcePdfSha256": "2843b06e4cbebbdc9b681b35c59552003a7ad7472c5c2a8c4f4301cfaf80342b",
+      "savedPdfSha256": "568a77311d52b29db125163c03a08c9554602e5c432df13ac660eedf447dcd3a",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 1,
+            "spanCountSaved": 1,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 3,
+            "countSaved": 3,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              }
+            ]
+          },
+          "sourceImages": [],
+          "savedImages": []
+        }
+      ]
+    },
+    {
+      "fixture": "geometry",
+      "sourcePdfSha256": "7dc6e3314cf26f6b3d5d0f655b166c27c002b12b9dbc3395c07f16125aec2b21",
+      "savedPdfSha256": "54ad3e52e7a3fb8fe4dfc0a66e57e6e687a1aa8153566631917c5854c13faffa",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 2,
+            "spanCountSaved": 2,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02899932861328125,
+                "originMaxDelta": 0.02899932861328125
+              },
+              {
+                "index": 1,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.099273681640625,
+                "originMaxDelta": 0.02899169921875
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 7,
+            "countSaved": 7,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 3,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 4,
+                "equal": false,
+                "rectMaxDelta": 0.0279998779296875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 5,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 6,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              }
+            ]
+          },
+          "sourceImages": [],
+          "savedImages": []
+        }
+      ]
+    },
+    {
+      "fixture": "images",
+      "sourcePdfSha256": "b1196dc170db023bf78a1b107306baf1ea349d3c65c5e3099692dbdb99ec68b6",
+      "savedPdfSha256": "e7b347dd2f1ba049086fb45d2fe6f3962d3231f4648df78884cd71fe97e675c0",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 4,
+            "spanCountSaved": 4,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 1,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 2,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 3,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 6,
+            "countSaved": 6,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 3,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 4,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 5,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              }
+            ]
+          },
+          "sourceImages": [
+            {
+              "width": 8,
+              "height": 4,
+              "components": 3,
+              "pixelsSha256": "66e3dd2bcecd24f8eb0841fe076c49e3029ba74111fc5355d4c9be56d28e91ea",
+              "placements": [
+                [
+                  39.99700164794922,
+                  79.96601104736328,
+                  219.968994140625,
+                  189.95001220703125
+                ],
+                [
+                  259.9939880371094,
+                  89.97099304199219,
+                  439.96600341796875,
+                  179.9429931640625
+                ],
+                [
+                  460.34600830078125,
+                  79.96601104736328,
+                  679.6060180664062,
+                  189.95001220703125
+                ],
+                [
+                  674.6170043945312,
+                  59.27299499511719,
+                  930.698974609375,
+                  196.41299438476562
+                ]
+              ]
+            }
+          ],
+          "savedImages": [
+            {
+              "width": 8,
+              "height": 4,
+              "components": 3,
+              "pixelsSha256": "66e3dd2bcecd24f8eb0841fe076c49e3029ba74111fc5355d4c9be56d28e91ea",
+              "placements": [
+                [
+                  39.99700164794922,
+                  79.9649887084961,
+                  219.94000244140625,
+                  189.92098999023438
+                ],
+                [
+                  259.9939880371094,
+                  89.97200775146484,
+                  439.9369812011719,
+                  179.91500854492188
+                ],
+                [
+                  460.34600830078125,
+                  79.9649887084961,
+                  679.5770263671875,
+                  189.92098999023438
+                ],
+                [
+                  674.6170043945312,
+                  59.272003173828125,
+                  930.6419677734375,
+                  196.38400268554688
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "table",
+      "sourcePdfSha256": "994a1ffb9152c5cbd2f87646eb3af17f48a560fd815caff041c3c63d88356540",
+      "savedPdfSha256": "e17e88842c017f77f503972258d83963e6c9ffa16115eff8fde05536fa806257",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 6,
+            "spanCountSaved": 6,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 1,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 2,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 3,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 4,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 5,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 3,
+            "countSaved": 3,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              }
+            ]
+          },
+          "sourceImages": [],
+          "savedImages": []
+        }
+      ]
+    },
+    {
+      "fixture": "charts",
+      "sourcePdfSha256": "1df681ad3541b9fea88f180b7b9cc157440cf9d05c11a668c5a411f4e4c169d2",
+      "savedPdfSha256": "b7f27cd5e385a9147cc1ed8a8234d5d82294bc84892175138ffd5caa6ca1d901",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 26,
+            "spanCountSaved": 26,
+            "extractedTextEqual": true,
+            "ordinalSpans": [
+              {
+                "index": 0,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.055999755859375,
+                "originMaxDelta": 0.055999755859375
+              },
+              {
+                "index": 1,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.055999755859375,
+                "originMaxDelta": 0.055999755859375
+              },
+              {
+                "index": 2,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.055999755859375,
+                "originMaxDelta": 0.055999755859375
+              },
+              {
+                "index": 3,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0570068359375,
+                "originMaxDelta": 0.0570068359375
+              },
+              {
+                "index": 4,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 5,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 6,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 7,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.027984619140625,
+                "originMaxDelta": 0.027984619140625
+              },
+              {
+                "index": 8,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 9,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 10,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 11,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0570068359375,
+                "originMaxDelta": 0.0570068359375
+              },
+              {
+                "index": 12,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0570068359375,
+                "originMaxDelta": 0.0570068359375
+              },
+              {
+                "index": 13,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0570068359375,
+                "originMaxDelta": 0.0570068359375
+              },
+              {
+                "index": 14,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0570068359375,
+                "originMaxDelta": 0.0570068359375
+              },
+              {
+                "index": 15,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 16,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 17,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 18,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.027984619140625,
+                "originMaxDelta": 0.027984619140625
+              },
+              {
+                "index": 19,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.027984619140625,
+                "originMaxDelta": 0.027984619140625
+              },
+              {
+                "index": 20,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 21,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.02801513671875,
+                "originMaxDelta": 0.02801513671875
+              },
+              {
+                "index": 22,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0,
+                "originMaxDelta": 0.0
+              },
+              {
+                "index": 23,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0279541015625,
+                "originMaxDelta": 0.0279541015625
+              },
+              {
+                "index": 24,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0279541015625,
+                "originMaxDelta": 0.0279541015625
+              },
+              {
+                "index": 25,
+                "textEqual": true,
+                "fontEqual": true,
+                "sizeDelta": 0.0,
+                "bboxMaxDelta": 0.0279541015625,
+                "originMaxDelta": 0.0279541015625
+              }
+            ]
+          },
+          "drawings": {
+            "countSource": 53,
+            "countSaved": 53,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 2,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 3,
+                "equal": false,
+                "rectMaxDelta": 0.029022216796875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 4,
+                "equal": false,
+                "rectMaxDelta": 0.0279998779296875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 5,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 6,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 7,
+                "equal": false,
+                "rectMaxDelta": 0.0279998779296875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 8,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 9,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 10,
+                "equal": false,
+                "rectMaxDelta": 0.029022216796875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 11,
+                "equal": false,
+                "rectMaxDelta": 0.027984619140625,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 12,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 13,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 14,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 15,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 16,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 17,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 18,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 19,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 20,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 21,
+                "equal": false,
+                "rectMaxDelta": 0.029022216796875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 22,
+                "equal": false,
+                "rectMaxDelta": 0.027984619140625,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 23,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 24,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 25,
+                "equal": false,
+                "rectMaxDelta": 0.027984619140625,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 26,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 27,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 28,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 29,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 30,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 31,
+                "equal": false,
+                "rectMaxDelta": 0.029022216796875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 32,
+                "equal": false,
+                "rectMaxDelta": 0.027984619140625,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 33,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 34,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 35,
+                "equal": false,
+                "rectMaxDelta": 0.027984619140625,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 36,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 37,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 38,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 39,
+                "equal": false,
+                "rectMaxDelta": 0.0570068359375,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 40,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 41,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 42,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 43,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 44,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 45,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 46,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 47,
+                "equal": false,
+                "rectMaxDelta": 0.02899169921875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 48,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 49,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 50,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 51,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              },
+              {
+                "index": 52,
+                "equal": false,
+                "rectMaxDelta": 0.02801513671875,
+                "differentFields": [
+                  "items",
+                  "rect"
+                ]
+              }
+            ]
+          },
+          "sourceImages": [
+            {
+              "width": 8,
+              "height": 4,
+              "components": 3,
+              "pixelsSha256": "66e3dd2bcecd24f8eb0841fe076c49e3029ba74111fc5355d4c9be56d28e91ea",
+              "placements": [
+                [
+                  10.005999565124512,
+                  9.97799301147461,
+                  17.97100067138672,
+                  17.9429931640625
+                ]
+              ]
+            }
+          ],
+          "savedImages": [
+            {
+              "width": 8,
+              "height": 4,
+              "components": 3,
+              "pixelsSha256": "66e3dd2bcecd24f8eb0841fe076c49e3029ba74111fc5355d4c9be56d28e91ea",
+              "placements": [
+                [
+                  10.005999565124512,
+                  9.977977752685547,
+                  17.9429988861084,
+                  17.91497802734375
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "missing-asset",
+      "sourcePdfSha256": "decefe72b0e8273f51a08413db604b6a7563c547d0208a03ff0d6bd2709495a7",
+      "savedPdfSha256": "24a2bde0ff32b212de2058d3e93559af573ae6fc9190f2f25800236044bfe8af",
+      "sourcePageCount": 1,
+      "savedPageCount": 1,
+      "pages": [
+        {
+          "text": {
+            "spanCountSource": 0,
+            "spanCountSaved": 0,
+            "extractedTextEqual": true,
+            "ordinalSpans": []
+          },
+          "drawings": {
+            "countSource": 2,
+            "countSaved": 2,
+            "ordinalPaths": [
+              {
+                "index": 0,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              },
+              {
+                "index": 1,
+                "equal": true,
+                "rectMaxDelta": 0.0,
+                "differentFields": []
+              }
+            ]
+          },
+          "sourceImages": [],
+          "savedImages": []
+        }
+      ]
+    }
+  ]
+}

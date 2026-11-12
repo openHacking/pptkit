@@ -1,0 +1,25 @@
+{
+  "scope": "One appended X in one left-aligned shape-text sample, saved and reopened in PowerPoint. All 12 saved sample texts, fills and tab declarations checked; four printed pages compared, including unchanged text bounds and edited word start. Other edit operations, shape transforms and broader native parity remain unverified. Capture hashes do not independently establish provenance.",
+  "priorEvidenceSha256": "5a180a9f9f98cb51eb96fd03bd3f85c4eed6b58d4f05997ab229b6ef970a0f06",
+  "editedPptxSha256": "3cfc88926f77a96defd97a5927c4551f6053fdf478938615d584e98d09d4a374",
+  "editedPdfSha256": "1bbafc2408c9c99aed7e58fc7be6c50cfe9d968a53941ebbbd2af4e36e8abad8",
+  "reopenedAxSha256": "dbefa233555955c3df3d2692c75c0737433a16226cc411f7a9630652f178bf69",
+  "reopenedScreenshotSha256": "be5e7507a9519491630b7458e9347f8269c5b0a32bb423f0628595b14d6af08c",
+  "verifierSha256": "09b6f8f2e80a715c86dbd0ac8e915f679728480fcf68f5694281d1913b23e8f8",
+  "changedWord": {
+    "before": [
+      310.16668701171875,
+      247.86663818359375,
+      367.90130615234375,
+      272.4693908691406,
+      "WIDE"
+    ],
+    "after": [
+      310.16668701171875,
+      247.86663818359375,
+      382.63232421875,
+      272.4693908691406,
+      "WIDEX"
+    ]
+  }
+}

@@ -1,0 +1,601 @@
+{
+  "profile": "native-diagram-minimum-candidates-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-bP8UXF",
+  "sourceCommit": "0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2",
+  "componentSources": [
+    {
+      "family": "process",
+      "name": "smartart-accent-process.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-accent-process.pptx",
+      "sourceSha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+      "components": {
+        "layout": {
+          "part": "/ppt/diagrams/layout1.xml",
+          "sha256": "346995999f7e2e305c2acbe2dca0b01a6f9c618c728de4f038e0c6b07142ef95",
+          "bytes": 10083,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/layout/process3"
+        },
+        "colors": {
+          "part": "/ppt/diagrams/colors1.xml",
+          "sha256": "3133b8cde18a92dce566e096d63e6999273dc9c0be88ec3b620d8884518e8a6a",
+          "bytes": 16863,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/colors/accent1_2"
+        },
+        "style": {
+          "part": "/ppt/diagrams/quickStyle1.xml",
+          "sha256": "b1aa29dfd0c14ec21c67d467f1c485d358471aca663657b87cc81d7ee8116b6c",
+          "bytes": 20749,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/quickstyle/simple1"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "name": "smartart-org-chart.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-org-chart.pptx",
+      "sourceSha256": "7a457c32c73efed6244cf79e184994a2f2a0cb65901f6ce4f3dfcd22dbcf4ac1",
+      "components": {
+        "layout": {
+          "part": "/ppt/diagrams/layout1.xml",
+          "sha256": "fe556b0af59be1713615777f20758336bb9bc18488de6a39d57d7ad470af1341",
+          "bytes": 38647,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1"
+        },
+        "colors": {
+          "part": "/ppt/diagrams/colors1.xml",
+          "sha256": "3133b8cde18a92dce566e096d63e6999273dc9c0be88ec3b620d8884518e8a6a",
+          "bytes": 16863,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/colors/accent1_2"
+        },
+        "style": {
+          "part": "/ppt/diagrams/quickStyle1.xml",
+          "sha256": "b1aa29dfd0c14ec21c67d467f1c485d358471aca663657b87cc81d7ee8116b6c",
+          "bytes": 20749,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/quickstyle/simple1"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "name": "smartart-cycle.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-cycle.pptx",
+      "sourceSha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+      "components": {
+        "layout": {
+          "part": "/ppt/diagrams/layout1.xml",
+          "sha256": "09962e6471981db6343fcbb6d34ddca6ec006b5a25045516b855a3e225aa6f0a",
+          "bytes": 6370,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2"
+        },
+        "colors": {
+          "part": "/ppt/diagrams/colors1.xml",
+          "sha256": "3133b8cde18a92dce566e096d63e6999273dc9c0be88ec3b620d8884518e8a6a",
+          "bytes": 16863,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/colors/accent1_2"
+        },
+        "style": {
+          "part": "/ppt/diagrams/quickStyle1.xml",
+          "sha256": "b1aa29dfd0c14ec21c67d467f1c485d358471aca663657b87cc81d7ee8116b6c",
+          "bytes": 20749,
+          "uniqueId": "urn:microsoft.com/office/officeart/2005/8/quickstyle/simple1"
+        }
+      }
+    }
+  ],
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "cases": [
+    {
+      "file": "process-empty-absent-presentation-guid.pptx",
+      "family": "process",
+      "case": "empty",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "ed8df99727f27afc0501828ec2198ed4e0c0385735ad5445a2326e3592ce22fb",
+      "bytes": 13675,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-empty-empty-presentation-guid.pptx",
+      "family": "process",
+      "case": "empty",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "302d576a7a9ebca9076ea91ca5f6d798184f9a1fe1872af81f89eac53643e1b1",
+      "bytes": 14105,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-single-absent-presentation-guid.pptx",
+      "family": "process",
+      "case": "single",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 5,
+      "sha256": "afec5de3bf46713bf1df04eda775c4f8a1018cb377f34a85c87d0a7d37a3c691",
+      "bytes": 13888,
+      "nodes": 1,
+      "connections": 1,
+      "points": 9,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-single-empty-presentation-guid.pptx",
+      "family": "process",
+      "case": "single",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 5,
+      "sha256": "57024d15c2851dce544eb06e37c2347c5b4a1c10f03eac3413f6a74b7b1f91e1",
+      "bytes": 14320,
+      "nodes": 1,
+      "connections": 1,
+      "points": 9,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-standard-absent-presentation-guid.pptx",
+      "family": "process",
+      "case": "standard",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 11,
+      "sha256": "4729d77e554e1ddbfb090bf9a5d2b95a2b03952933c58fd505bd2b3e32e82475",
+      "bytes": 14198,
+      "nodes": 4,
+      "connections": 4,
+      "points": 24,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-standard-empty-presentation-guid.pptx",
+      "family": "process",
+      "case": "standard",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 11,
+      "sha256": "dbeac5e22e2f0db997f4903af6d1a569a08746116ba9059934c9ce1c410aced1",
+      "bytes": 14629,
+      "nodes": 4,
+      "connections": 4,
+      "points": 24,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-long-absent-presentation-guid.pptx",
+      "family": "process",
+      "case": "long",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 11,
+      "sha256": "854861197b39a079e6369dae0636b669bf47127fd59ba360109e105c1e03c816",
+      "bytes": 14315,
+      "nodes": 4,
+      "connections": 4,
+      "points": 24,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "process-long-empty-presentation-guid.pptx",
+      "family": "process",
+      "case": "long",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 11,
+      "sha256": "8f8c67ea5f0de65a67dcf39f753db95a6faaa1cc65c92cae32add9601fd2b39e",
+      "bytes": 14746,
+      "nodes": 4,
+      "connections": 4,
+      "points": 24,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-empty-absent-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "empty",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "c1421a2397faaedee866272a78351e10ad510d72839748a07b55706c729933ea",
+      "bytes": 14996,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-empty-empty-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "empty",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "84ee2d884a972a57ee0b6b281f6087a27bd7b9208a5b64334a0c7c2099d5de3e",
+      "bytes": 15427,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-single-absent-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "single",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 7,
+      "sha256": "f581f2d22151e26f3db1a3304590e0115663bb9494f909137262265986980af2",
+      "bytes": 15254,
+      "nodes": 1,
+      "connections": 1,
+      "points": 11,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-single-empty-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "single",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 7,
+      "sha256": "b73262658fc17036062998b323b59952ccd80188b3f3410a2d95c7872146b228",
+      "bytes": 15686,
+      "nodes": 1,
+      "connections": 1,
+      "points": 11,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-standard-absent-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "standard",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 27,
+      "sha256": "d8cc07c40b3d813c1d13a39e35812359a4d9b2ca021b19feef768179eca31c58",
+      "bytes": 15872,
+      "nodes": 4,
+      "connections": 4,
+      "points": 40,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-standard-empty-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "standard",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 27,
+      "sha256": "c1a55239d675b50929dc4b80ff376b82b251dd6405eff543a03c41b14757ab05",
+      "bytes": 16305,
+      "nodes": 4,
+      "connections": 4,
+      "points": 40,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-long-absent-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "long",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 27,
+      "sha256": "2223bfc00bfa74595fa6e958f8f9d0b206691659945685c740fb4ca9605c54a8",
+      "bytes": 15989,
+      "nodes": 4,
+      "connections": 4,
+      "points": 40,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "hierarchy-long-empty-presentation-guid.pptx",
+      "family": "hierarchy",
+      "case": "long",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 27,
+      "sha256": "f926686fd658b3fd3b5d485215fc08e40d83cab164bd6b25d3279aa9f19904af",
+      "bytes": 16422,
+      "nodes": 4,
+      "connections": 4,
+      "points": 40,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-empty-absent-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "empty",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "a2367e7f6a6d036dff424518ccf1da3a108badd92f333aa3790cd5039ffb8c9a",
+      "bytes": 13384,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-empty-empty-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "empty",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 1,
+      "sha256": "6803802a55ed7aa9b3fcce240950889e85181478f1aa48e3120c4b20d785d4d7",
+      "bytes": 13815,
+      "nodes": 0,
+      "connections": 0,
+      "points": 2,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-single-absent-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "single",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 4,
+      "sha256": "3aa5f9b45b290733c0e7ee7acf5952c7e630f9ba7e731e6d55b9d5ae738b5495",
+      "bytes": 13590,
+      "nodes": 1,
+      "connections": 1,
+      "points": 8,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-single-empty-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "single",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 4,
+      "sha256": "14b2ed08c00afd3239470170758dae15e109dd5048511fe95919332440db96a8",
+      "bytes": 14022,
+      "nodes": 1,
+      "connections": 1,
+      "points": 8,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-standard-absent-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "standard",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 10,
+      "sha256": "32618626bf50e8998f680765c71da8202f4ddb9a23c1af6dce9ec6d3ef9e239a",
+      "bytes": 13847,
+      "nodes": 3,
+      "connections": 3,
+      "points": 20,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-standard-empty-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "standard",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 10,
+      "sha256": "9f7c044dbe531bd3ab7b0ab2a809fb6f293df67a9b8b38b77fb5397fc0253f98",
+      "bytes": 14277,
+      "nodes": 3,
+      "connections": 3,
+      "points": 20,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-long-absent-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "long",
+      "cache": "absent",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 10,
+      "sha256": "e3c5db15882d0fac847d768aebd95d1f9d1409f899137cd8626af9c715b29464",
+      "bytes": 13964,
+      "nodes": 3,
+      "connections": 3,
+      "points": 20,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "No located cache: missing-reference."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    },
+    {
+      "file": "cycle-long-empty-presentation-guid.pptx",
+      "family": "cycle",
+      "case": "long",
+      "cache": "empty",
+      "presentation": "layout",
+      "modelIdPolicy": "guid",
+      "presentationPoints": 10,
+      "sha256": "ca67723d3bd13fb3b192af1e166a7504d2c47880c8c5b02d9a8a3c9040c2bdaf",
+      "bytes": 14395,
+      "nodes": 3,
+      "connections": 3,
+      "points": 20,
+      "exactNoOp": true,
+      "preview": {
+        "status": "placeholder",
+        "reason": "Cached drawing shape tree is empty."
+      },
+      "independentZipXmlTopology": true,
+      "nativeAdmission": "untested"
+    }
+  ],
+  "limitations": [
+    "Fresh research packages with new content/transition data, optional exact-layout presentation data, and explicitly supplied source layout/style/colors; not a public native exporter or preservation writer.",
+    "Cached shapes are never synthesized. Native opening/editing and actual family admission remain separate gates.",
+    "Independent structural/identity/text/package checks are not full OOXML schema or visual-fidelity certification.",
+    "Third-party component bytes and generated artifacts remain local pending fixture redistribution/licensing admission; portable tests use owned synthetic component roots."
+  ]
+}

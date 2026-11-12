@@ -1,5 +1,7 @@
 # Canonical Presentation IR v2
 
+An additive optional [script-font extension](../api/script-fonts.md) carries `eastAsianFontFamily` and `complexScriptFontFamily` on normalized runs. Missing slots use `fontFamily`; absent/cleared slots are omitted, preserving legacy IR shape. Authoring null resets do not appear in IR. Resolved preview/measurement fragments do not replace author run identities or text.
+
 Canonical Presentation IR is the stable, format-independent contract between Core and downstream layout, preview, parser, and exporter work. The implemented version is identified by `irVersion: 2`.
 
 ## Top-level shape
@@ -18,6 +20,10 @@ interface NormalizedPresentation {
 ```
 
 The IR contains data only. It has no authoring methods, filesystem handles, network clients, OOXML fragments, relationship IDs, or package paths.
+
+An authored numbered paragraph may declare `startAt: "continue"` under the constraints in [text and styles](../api/core/text-and-styles.md). Core resolves that dependency to a numeric start in the IR. The authoring declaration remains in the document; the IR and fresh PPTX do not encode the dependency, so it cannot be reconstructed by fresh import.
+
+Paragraph `tabStops`, when authored or inherited, are carried as an optional ordered array in IR; absence remains distinct from an explicit empty array. Fresh export emits these as DrawingML tab stops. Content import maps explicitly positioned and aligned ordered lists under the bounded profile documented in [text and styles](../api/core/text-and-styles.md). Browser measurement applies a restricted explicit-stop profile; current SVG preview does not apply them.
 
 ## Metadata, theme, and assets
 
@@ -42,7 +48,8 @@ interface NormalizedPresentationTheme {
 interface NormalizedAsset {
   id: string;
   kind: "image";
-  source: { type: "path" | "url"; value: string };
+  source: { type: "path" | "url"; value: string }
+    | { type: "bytes"; encoding: "base64"; value: string };
   mimeType?: string;
   width?: number;
   height?: number;
@@ -71,6 +78,7 @@ interface NormalizedSlide {
   backgroundSource: "slide" | "layout" | "theme";
   elements: NormalizedElement[];
   notes: NormalizedTextParagraph[];
+  eventTimeline?: NormalizedSlideEventTimeline;
   hidden: boolean;
   section?: string;
   tags: string[];
@@ -79,6 +87,7 @@ interface NormalizedSlide {
 
 interface NormalizedPlaceholderDefinition {
   key: string;
+  index?: number; // Explicit layout-local unsigned identity; omitted when unauthored.
   kind: "title" | "subtitle" | "body" | "image" |
     "table" | "footer" | "slideNumber";
   box: Box;
@@ -271,6 +280,8 @@ interface NormalizedTextRun {
     underline: boolean;
     strike: boolean;
     color: ColorValue;
+    // Optional additive IR v2 field; absent means fully opaque.
+    colorOpacity?: number;
     language: string;
   };
   action?: ElementAction;
@@ -296,7 +307,7 @@ Shape styles contain explicit `fill` and `stroke`. Table cell styles contain exp
 
 Normalized slides contain layout identity, effective background and source, slide-local elements, structured notes, hidden state, optional section, tags, and JSON-compatible custom data.
 
-Normalized layouts contain a stable ID/name, effective background, static elements, and typed placeholders. Placeholder definitions include explicit boxes and fully normalized frame, paragraph, and run defaults.
+Normalized layouts contain a stable ID/name, effective background, static elements, and typed placeholders. Placeholder definitions include explicit boxes and fully normalized frame, paragraph, and run defaults. The optional [explicit index](decisions/0059-explicit-placeholder-indices.md) is retained only when authored; generated export ordinals never become normalized identities. Unindexed IR remains unchanged.
 
 Layout elements are not copied into slide-local element arrays. Downstream consumers combine the referenced layout and slide while preserving their distinct semantics.
 
@@ -321,3 +332,20 @@ Core normalization is the sole owner of business defaults and semantic inheritan
 Incompatible changes require a new `irVersion`. The repository is pre-release and does not maintain a parallel compatibility layer for superseded unpublished IR shapes. Documentation, tests, Layout, and exporters move together when the version changes.
 
 See [Core Authoring Model](core-authoring-model.md) for the design rationale and [Core validation and IR API](../api/core/validation-and-ir.md) for callable behavior.
+
+## Optional page transition
+
+Slides may carry an optional `transition` record for the experimental [Fade profile](../api/slide-transitions.md). Absent transitions add no default field to existing IR. It contains semantic milliseconds/advance values, not OOXML, clocks or mutable playback state.
+
+## Optional foreground event plan
+
+`NormalizedSlide.eventTimeline?: NormalizedSlideEventTimeline` is an additive optional experimental IR v2 field with its own schema version. Core derives it from owned authored stages and actual IDs; absent input stays absent. Its `pptkit-slide-event-timeline-v1` wrapper retains the complete authored source tree and compiled plan, including group topology/IDs in source. It contains semantic page/object/trigger identities and finite schedules, no source timing/drawing IDs, XML or mutable clocks. Layout validates both representations by recompiling source and comparing the entire plan. JSON/Layout retain detached copies and validate actual owner/target presence. See [transport/output gates](../api/slide-event-timeline.md) and [ADR0037](decisions/0037-slide-event-target-transport.md). Native adapters remain unimplemented; new writers reject by default and only explicit omission permits static loss. Consumers of this extension must preserve or explicitly reject it instead of silently stripping unknown timing.
+
+Normalized tables may carry `styleSource: "materialized-regions"` to identify effective cells derived from [regional authoring](../api/table-style.md). All cell values are resolved; the authoring `style` definition is absent. Optional native table switches survive as `nativeFirstRowStyle` and `nativeTableStyleFlags`, independently of resolved cells and accessibility roles. Exporters report the loss of reusable native region rules independently of effective direct formatting.
+
+The additive [script font map extension](decisions/0048-script-font-maps-and-language-selection.md) stores optional normalized per-script family dictionaries. Null/reset and empty maps are authoring-only; absent maps preserve legacy IR shape. Map semantics and concrete native-output materialization have separate fidelity contracts.
+
+
+## Optional master artwork and inherited-shape visibility
+
+`masters[].elements?: NormalizedElement[]` stores a shared ordinary-artwork collection, absent for legacy master inputs. `layouts[].showMasterShapes?: boolean` and `slides[].showInheritedShapes?: boolean` preserve explicit false/true while omission selects the existing visible default. Background and local placeholder content are independent. The optional extension does not flatten shared elements into slides or introduce source-format identities; Layout resolves its own `LayoutSlideMaster` collection before consumers render. See [ownership and compatibility](../api/master-artwork.md).

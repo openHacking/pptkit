@@ -5,7 +5,9 @@ import type {
   NormalizedTextFrameStyle,
   NormalizedTextParagraph,
 } from "@pptkit/core";
-import { escapeXml, safeActionUrl } from "./escape.js";
+import { formatListMarker, resolveTextFontSegments } from "@pptkit/core";
+import { cssFontFamily, escapeXml, safeActionUrl } from "./escape.js";
+import { needsBidiParagraphLayout } from "./bidi-ranges.js";
 import { colorValue } from "./style.js";
 import type { SvgRenderWarning } from "../types/public.js";
 
@@ -14,17 +16,54 @@ interface TextContext {
   warnings: SvgRenderWarning[];
   slideId: string;
   elementId: string;
+  skipLinkTabStop?: boolean;
+  slideActionTargets?: ReadonlyMap<string, string>;
+  recordFont?: (family: string, bold: boolean, italic: boolean, text: string, fontSize: number, language?: string) => void;
 }
 
 type TextRun = NormalizedTextParagraph["runs"][number];
+
+function fontRuns(run: TextRun, theme: NormalizedPresentationTheme): TextRun[] {
+  return resolveTextFontSegments(run.text, run.style, theme).map(segment => ({ ...run, text: segment.text, style: { ...run.style, fontFamily: segment.family } }));
+}
 
 interface NativeTextSegment {
   run: TextRun;
   text: string;
 }
 
+interface NativeTextGrapheme {
+  text: string;
+  segments: NativeTextSegment[];
+}
+
+const graphemeSegmenter = typeof Intl !== "undefined" && typeof Intl.Segmenter === "function" ? new Intl.Segmenter("und", { granularity: "grapheme" }) : undefined;
+
+/** Segment joined text first so a selected-font boundary cannot split a cluster. */
+function* paragraphGraphemes(runs: TextRun[]): Generator<NativeTextGrapheme> {
+  const text = runs.map(run => run.text).join("");
+  let runIndex = 0;
+  let runStart = 0;
+  for (const item of graphemeSegmenter!.segment(text)) {
+    const end = item.index + item.segment.length;
+    const segments: NativeTextSegment[] = [];
+    let offset = item.index;
+    while (offset < end) {
+      const run = runs[runIndex]!;
+      const runEnd = runStart + run.text.length;
+      if (offset >= runEnd) { runIndex++; runStart = runEnd; continue; }
+      const through = Math.min(end, runEnd);
+      segments.push({ run, text: run.text.slice(offset - runStart, through - runStart) });
+      offset = through;
+    }
+    yield { text: item.segment, segments };
+  }
+}
+
 interface NativeTextLine {
   first: boolean;
+  hardBreak: string;
+  softBreakSpace: string;
   fontSize: number;
   lineHeight: number;
   paragraph: NormalizedTextParagraph;
@@ -69,6 +108,7 @@ function formatNumber(value: number): number {
 }
 
 function characterWidth(character: string, run: TextRun, scale: number): number {
+  if (/[\p{Mn}\p{Me}\u200c\u200d]/u.test(character)) return 0;
   const fontSize = scaledFontSize(run, scale);
   const base = /\s/u.test(character)
     ? SPACE_WIDTH
@@ -101,18 +141,26 @@ function appendSegment(segments: NativeTextSegment[], run: TextRun, text: string
   else segments.push({ run, text });
 }
 
-function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: number, scale: number): Omit<NativeTextLine, "y">[] {
-  const firstRun = paragraph.runs[0];
+function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: number, scale: number, wrap: boolean): Omit<NativeTextLine, "y">[] {
+  const firstRun = bulletRun(paragraph);
   if (firstRun === undefined) return [];
   const bullet = bulletText(paragraph);
-  const firstWidth = Math.max(1, availableWidth + paragraph.style.hanging);
+  const firstWidth = Math.max(1, availableWidth + Math.min(paragraph.style.hanging, paragraph.style.indent));
   const laterWidth = Math.max(1, availableWidth);
   const lines: Omit<NativeTextLine, "y">[] = [];
   let first = true;
   let segments: NativeTextSegment[] = [];
   let width = 0;
   let hasContent = false;
-  let pendingSpace: TextRun | undefined;
+  let pendingSpace: NativeTextGrapheme[] = [];
+  let endedWithBreak = false;
+
+  const unitWidth = (unit: NativeTextGrapheme) => unit.segments.reduce((sum, segment) => sum + textWidth(segment.text, segment.run, scale), 0);
+  const appendUnit = (unit: NativeTextGrapheme) => {
+    for (const segment of unit.segments) appendSegment(segments, segment.run, segment.text);
+    width += unitWidth(unit);
+  };
+  const flushSpace = () => { for (const unit of pendingSpace) appendUnit(unit); pendingSpace = []; };
 
   const startLine = (): void => {
     segments = [];
@@ -123,51 +171,81 @@ function paragraphLines(paragraph: NormalizedTextParagraph, availableWidth: numb
       width = textWidth(bullet, firstRun, scale);
     }
   };
-  const finishLine = (): void => {
+  const finishLine = (softBreakSpace = "", hardBreak = ""): void => {
     const lineFontSize = segments.reduce((largest, segment) => Math.max(largest, scaledFontSize(segment.run, scale)), scaledFontSize(firstRun, scale));
-    lines.push({ first, fontSize: lineFontSize, lineHeight: lineFontSize * paragraph.style.lineSpacing, paragraph, segments });
+    lines.push({ first, hardBreak, softBreakSpace, fontSize: lineFontSize, lineHeight: lineFontSize * paragraph.style.lineSpacing, paragraph, segments });
     first = false;
-    pendingSpace = undefined;
+    pendingSpace = [];
     startLine();
   };
-  const appendWord = (word: string, run: TextRun): void => {
-    const space = pendingSpace === undefined || segments.length === 0 ? "" : " ";
+  const appendWord = (word: NativeTextGrapheme[]): void => {
     const maximum = first ? firstWidth : laterWidth;
-    const candidateWidth = width + textWidth(space, pendingSpace ?? run, scale) + textWidth(word, run, scale);
-    if (hasContent && candidateWidth > maximum) finishLine();
-    if (pendingSpace !== undefined && segments.length > 0) {
-      appendSegment(segments, pendingSpace, " ");
-      width += textWidth(" ", pendingSpace, scale);
-    }
-    for (const character of word) {
-      const characterMeasure = characterWidth(character, run, scale);
+    const candidateWidth = width + pendingSpace.reduce((sum, unit) => sum + unitWidth(unit), 0) + word.reduce((sum, unit) => sum + unitWidth(unit), 0);
+    // Keep discarded soft-break whitespace available for semantic text output.
+    if (wrap && hasContent && candidateWidth > maximum) finishLine(pendingSpace.map(unit => unit.text).join(""));
+    flushSpace();
+    for (const unit of word) {
       const activeMaximum = first ? firstWidth : laterWidth;
-      if (hasContent && width + characterMeasure > activeMaximum) finishLine();
-      appendSegment(segments, run, character);
-      width += characterMeasure;
+      if (wrap && hasContent && width + unitWidth(unit) > activeMaximum) finishLine();
+      appendUnit(unit);
       hasContent = true;
     }
-    pendingSpace = undefined;
   };
 
   startLine();
-  for (const run of paragraph.runs) {
-    for (const token of run.text.split(/(\s+)/u)) {
-      if (token === "") continue;
-      if (/\s/u.test(token)) {
-        if (token.includes("\n")) finishLine();
-        else pendingSpace = run;
-      } else appendWord(token, run);
+  let word: NativeTextGrapheme[] = [];
+  const flushWord = () => { if (word.length) appendWord(word); word = []; };
+  for (const unit of paragraphGraphemes(paragraph.runs)) {
+    if (unit.text === "\r\n" || unit.text === "\r" || unit.text === "\n") {
+      flushWord(); flushSpace(); finishLine("", unit.text); endedWithBreak = true;
+    } else if (/^\s+$/u.test(unit.text)) {
+      flushWord(); pendingSpace.push(unit); endedWithBreak = false;
+    } else {
+      word.push(unit); endedWithBreak = false;
     }
   }
-  if (segments.length > 0 || lines.length === 0) finishLine();
+  flushWord(); flushSpace();
+  if (segments.length > 0 || lines.length === 0 || endedWithBreak) finishLine();
   return lines;
 }
 
-export function canRenderTextNatively(paragraphs: NormalizedTextParagraph[]): boolean {
-  // Mixed runs with independent actions stay on the XHTML path until Layout
-  // owns resolved cross-run line fragments as a stable contract.
-  return paragraphs.every((paragraph) => paragraph.runs.length === 1 && paragraph.runs[0]?.action === undefined);
+export function canRenderTextNatively(paragraphs: NormalizedTextParagraph[], frame: NormalizedTextFrameStyle): boolean {
+  // Only the bounded no-wrap tab profile can place mixed runs without a shared
+  // line-fragment contract; run actions remain on the XHTML path.
+  // Independently positioned SVG lines resolve bidi without paragraph context.
+  // Let the browser lay out the full paragraph when wrapping RTL scripts or
+  // explicit directional controls; the standalone SVG path stays unchanged.
+  const contextualBidi = frame.wrap && paragraphs.some(paragraph => needsBidiParagraphLayout(paragraph.runs.map(run => run.text).join("")));
+  return !contextualBidi && graphemeSegmenter !== undefined && paragraphs.every((paragraph) => paragraph.style.direction !== "rtl" && !paragraph.runs.some(run => run.style.rightToLeft === true) && ((paragraph.runs.length === 1 && paragraph.runs[0]?.action === undefined) || nativeTabProfile(paragraph, frame)));
+}
+
+/** A conservative opt-in: the native path does not implement run links or bidi layout. */
+export function canRenderMixedNoWrapNatively(paragraphs: NormalizedTextParagraph[], frame: NormalizedTextFrameStyle): boolean {
+  return !frame.wrap && graphemeSegmenter !== undefined && paragraphs.some(paragraph => paragraph.runs.length > 1) && paragraphs.every(paragraph =>
+    paragraph.style.direction !== "rtl" && !paragraph.runs.some(run => run.action !== undefined || run.style.rightToLeft === true || run.text.includes("\t")) &&
+    !needsBidiParagraphLayout(paragraph.runs.map(run => run.text).join("")));
+}
+
+/** Native opt-in text uses approximate line layout, without run actions or bidi. */
+export function canRenderNativeParagraphs(paragraphs: NormalizedTextParagraph[]): boolean {
+  return graphemeSegmenter !== undefined && paragraphs.every(paragraph =>
+    paragraph.style.direction !== "rtl" && !paragraph.runs.some(run => run.action !== undefined || run.style.rightToLeft === true || run.text.includes("\t")) &&
+    !needsBidiParagraphLayout(paragraph.runs.map(run => run.text).join("")));
+}
+
+/** Keep other shape-text layouts on their existing XHTML path. */
+export function canRenderShapeTabTextNatively(paragraphs: NormalizedTextParagraph[], frame: NormalizedTextFrameStyle): boolean {
+  if (graphemeSegmenter === undefined || frame.wrap) return false;
+  let hasTab = false;
+  const supported = paragraphs.every(paragraph => {
+    if (paragraph.style.direction === "rtl" || paragraph.runs.some(run => run.style.rightToLeft === true)) return false;
+    if (paragraph.runs.some(run => run.text.includes("\t"))) {
+      hasTab = true;
+      return nativeTabProfile(paragraph, frame);
+    }
+    return paragraph.runs.length === 1 && paragraph.runs[0]?.action === undefined;
+  });
+  return supported && hasTab;
 }
 
 function textAnchor(align: NormalizedTextParagraph["style"]["align"]): "start" | "middle" | "end" {
@@ -176,17 +254,50 @@ function textAnchor(align: NormalizedTextParagraph["style"]["align"]): "start" |
   return "start";
 }
 
-function nativeRunAttributes(run: TextRun, scale: number, theme: NormalizedPresentationTheme): string {
+function nativeRunAttributes(run: TextRun, scale: number, context: TextContext, text: string): string {
+  const theme = context.theme;
+  context.recordFont?.(fontFamily(run.style.fontFamily, theme), run.style.bold, run.style.italic, text, formatNumber(scaledFontSize(run, scale)), run.style.language);
   const decorations = [run.style.underline ? "underline" : "", run.style.strike ? "line-through" : ""].filter(Boolean).join(" ");
   return [
-    `font-family="${escapeXml(fontFamily(run.style.fontFamily, theme))}"`,
+    `font-family="${cssFontFamily(fontFamily(run.style.fontFamily, theme))}"`,
     `font-size="${formatNumber(scaledFontSize(run, scale))}"`,
     `font-weight="${run.style.bold ? 700 : 400}"`,
     `font-style="${run.style.italic ? "italic" : "normal"}"`,
     `text-decoration="${decorations || "none"}"`,
     `fill="${colorValue(run.style.color, theme)}"`,
+    ...(run.style.colorOpacity === undefined ? [] : [`fill-opacity="${run.style.colorOpacity}"`]),
     `lang="${escapeXml(run.style.language)}"`,
   ].join(" ");
+}
+
+/** Explicit no-wrap tab chunks can use SVG's native text anchors without guessing font widths. */
+function nativeTabProfile(paragraph: NormalizedTextParagraph, frame: NormalizedTextFrameStyle): boolean {
+  const { style, runs } = paragraph;
+  if (frame.wrap || runs.length === 0 || runs.some(run => run.action !== undefined) || style.align !== "left" || style.indent !== 0 || style.hanging !== 0 || style.bullet.type !== "none" || style.tabStops?.length !== 1) return false;
+  const text = runs.map(run => run.text).join("");
+  if (!text.includes("\t") || !/^[\x20-\x7e\t\r\n\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]*$/u.test(text)) return false;
+  const decimal = style.tabStops[0]!.align === "decimal";
+  const words = /^[A-Za-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+(?: [A-Za-z0-9\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]+)*$/u;
+  return text.split(/\r\n|\r|\n/u).every(line => {
+    if (!line.includes("\t")) return true;
+    const parts = line.split("\t");
+    return parts.length === 2 && words.test(parts[0]!) && (decimal ? /^[0-9]+\.[0-9]+$/u.test(parts[1]!) : words.test(parts[1]!));
+  });
+}
+
+function splitNativeSegments(segments: NativeTextSegment[], separator: string): [NativeTextSegment[], NativeTextSegment[]] | undefined {
+  const before: NativeTextSegment[] = [], after: NativeTextSegment[] = [];
+  let found = false;
+  for (const segment of segments) {
+    const index = found ? -1 : segment.text.indexOf(separator);
+    if (index < 0) (found ? after : before).push(segment);
+    else {
+      if (index > 0) before.push({ ...segment, text: segment.text.slice(0, index) });
+      after.push({ ...segment, text: segment.text.slice(index) });
+      found = true;
+    }
+  }
+  return found ? [before, after] : undefined;
 }
 
 export function textSvg(
@@ -195,6 +306,9 @@ export function textSvg(
   box: Box,
   context: TextContext,
 ): string {
+  warnAlphabeticNumbering(paragraphs, context);
+  warnTabLayout(paragraphs, context);
+  warnRunDirection(paragraphs, context);
   if (frame.autoFit.mode === "resize") {
     context.warnings.push({
       code: "text-autofit-resize-unsupported",
@@ -206,11 +320,14 @@ export function textSvg(
   const scale = frame.autoFit.mode === "shrink" ? frame.autoFit.fontScale : 1;
   const contentWidth = Math.max(1, box.width - frame.margin.left - frame.margin.right);
   const lines: NativeTextLine[] = [];
+  const nativeTabParagraphs = new WeakSet<NormalizedTextParagraph>();
   let cursor = 0;
   for (const paragraph of paragraphs) {
     cursor += paragraph.style.spaceBefore;
     const availableWidth = Math.max(1, contentWidth - paragraph.style.indent);
-    for (const line of paragraphLines(paragraph, availableWidth, scale)) {
+    const effective = { ...paragraph, runs: paragraph.runs.flatMap(run => fontRuns(run, context.theme)) };
+    if (nativeTabProfile(effective, frame)) nativeTabParagraphs.add(effective);
+    for (const line of paragraphLines(effective, availableWidth, scale, frame.wrap)) {
       lines.push({ ...line, y: cursor });
       cursor += line.lineHeight;
     }
@@ -225,22 +342,48 @@ export function textSvg(
 
   return lines.map((line, lineIndex) => {
     const style = line.paragraph.style;
-    const left = box.x + frame.margin.left + style.indent - (line.first ? style.hanging : 0);
+    const left = box.x + frame.margin.left + Math.max(0, style.indent - (line.first ? style.hanging : 0));
     const right = box.x + box.width - frame.margin.right;
     const anchor = textAnchor(style.align);
+    const direction = style.direction === "ltr" ? ' direction="ltr"' : "";
     const x = anchor === "middle" ? (left + right) / 2 : anchor === "end" ? right : left;
     const y = box.y + frame.margin.top + verticalOffset + line.y + line.fontSize * TEXT_BASELINE_RATIO;
-    const content = line.segments.map((segment) => `<tspan ${nativeRunAttributes(segment.run, scale, context.theme)}>${escapeXml(segment.text)}</tspan>`).join("");
-    return `<text x="${x}" y="${y}" text-anchor="${anchor}" data-pptkit-text-line="${lineIndex}">${content}</text>`;
+    if (nativeTabParagraphs.has(line.paragraph)) {
+      const chunks = splitNativeSegments(line.segments, "\t");
+      if (chunks) {
+        const [prefix, suffixWithTab] = chunks;
+        const suffix = suffixWithTab.map((segment, index) => index === 0 ? { ...segment, text: segment.text.slice(1) } : segment).filter(segment => segment.text !== "");
+        // Observed mixed-size and East Asian tab lines place the baseline near the largest em box.
+        // This remains an approximation for font-dependent ascent and descent.
+        const mixedSizes = new Set(line.segments.filter(segment => segment.text !== "\t").map(segment => segment.run.style.fontSize)).size > 1;
+        const eastAsian = line.segments.some(segment => /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(segment.text));
+        const tabY = mixedSizes || eastAsian ? y + line.fontSize * (1 - TEXT_BASELINE_RATIO) : y;
+        const stop = line.paragraph.style.tabStops![0]!;
+        const stopX = box.x + frame.margin.left + stop.position;
+        const textChunk = (segments: NativeTextSegment[], chunkX: number, chunkAnchor: "start" | "middle" | "end", part: string, last = false) => `<text x="${chunkX}" y="${tabY}" text-anchor="${chunkAnchor}"${direction} xml:space="preserve" style="white-space:pre" data-pptkit-text-line="${lineIndex}" data-pptkit-tab-part="${part}">${segments.map(segment => `<tspan ${nativeRunAttributes(segment.run, scale, context, segment.text)}>${escapeXml(segment.text)}</tspan>`).join("")}${part === "prefix" ? '<tspan aria-hidden="true" font-size="0">&#9;</tspan>' : ""}${last && line.hardBreak !== "" ? `<tspan style="display:none">${escapeXml(line.hardBreak)}</tspan>` : ""}</text>`;
+        const start = textChunk(prefix, left, "start", "prefix");
+        if (stop.align === "decimal") {
+          const decimal = splitNativeSegments(suffix, ".")!;
+          return start + textChunk(decimal[0], stopX, "end", "integer") + textChunk(decimal[1], stopX, "start", "decimal", true);
+        }
+        return start + textChunk(suffix, stopX, stop.align === "center" ? "middle" : stop.align === "right" ? "end" : "start", "suffix", true);
+      }
+    }
+    const content = line.segments.map((segment) => `<tspan ${nativeRunAttributes(segment.run, scale, context, segment.text)}>${escapeXml(segment.text)}</tspan>`).join("") +
+      (line.softBreakSpace === "" ? "" : `<tspan font-size="0">${escapeXml(line.softBreakSpace)}</tspan>`) +
+      (line.hardBreak === "" ? "" : `<tspan style="display:none">${escapeXml(line.hardBreak)}</tspan>`);
+    return `<text x="${x}" y="${y}" text-anchor="${anchor}"${direction} xml:space="preserve" style="white-space:pre" data-pptkit-text-line="${lineIndex}">${content}</text>`;
   }).join("");
 }
 
 function actionAttributes(action: ElementAction | undefined, context: TextContext): { open: string; close: string } {
   if (action === undefined) return { open: "", close: "" };
   if (action.type === "slide") {
+    const target = context.slideActionTargets?.get(action.slideId);
+    if (target !== undefined) return { open: `<a href="#${target}" data-pptkit-slide-target="${escapeXml(action.slideId)}"${context.skipLinkTabStop ? ' tabindex="-1"' : ""}${action.tooltip === undefined ? "" : ` title="${escapeXml(action.tooltip)}"`}>`, close: "</a>" };
     context.warnings.push({
       code: "slide-action-not-linked",
-      message: `Slide action targeting ${action.slideId} is metadata-only in standalone SVG output.`,
+      message: context.slideActionTargets ? `Slide action targeting ${action.slideId} has no selected document target.` : `Slide action targeting ${action.slideId} is metadata-only in standalone SVG output.`,
       slideId: context.slideId,
       elementId: context.elementId,
     });
@@ -257,7 +400,7 @@ function actionAttributes(action: ElementAction | undefined, context: TextContex
     return { open: "", close: "" };
   }
   return {
-    open: `<a href="${escapeXml(url)}" rel="noopener noreferrer"${action.tooltip === undefined ? "" : ` title="${escapeXml(action.tooltip)}"`}>`,
+    open: `<a href="${escapeXml(url)}" rel="noopener noreferrer"${context.skipLinkTabStop ? ' tabindex="-1"' : ""}${action.tooltip === undefined ? "" : ` title="${escapeXml(action.tooltip)}"`}>`,
     close: "</a>",
   };
 }
@@ -266,19 +409,49 @@ function fontFamily(value: NormalizedTextParagraph["runs"][number]["style"]["fon
   return typeof value === "string" ? value : theme.fonts[value.theme];
 }
 
-function cssFontFamily(value: string): string {
-  return `&quot;${escapeXml(value.replace(/\\/g, "\\\\").replace(/"/g, '\\"'))}&quot;`;
+function bulletText(paragraph: NormalizedTextParagraph): string { return formatListMarker(paragraph.style.bullet); }
+
+function warnAlphabeticNumbering(paragraphs: NormalizedTextParagraph[], context: TextContext): void {
+  if (paragraphs.some(p => p.style.bullet.type === "number" && (p.style.bullet.style === "alphaLowerPeriod" || p.style.bullet.style === "alphaUpperPeriod") && p.style.bullet.startAt > 27)) {
+    context.warnings.push({ code: "alphabetic-numbering-application-dependent", slideId: context.slideId, elementId: context.elementId, message: "Alphabetic numbering after 27 uses the preview's base-26 sequence; native application numbering may differ." });
+  }
 }
 
-function bulletText(paragraph: NormalizedTextParagraph): string {
-  const bullet = paragraph.style.bullet;
-  if (bullet.type === "none") return "";
-  if (bullet.type === "bullet") return `${bullet.character} `;
-  const value = bullet.startAt;
-  if (bullet.style === "arabicParen") return `${value}) `;
-  if (bullet.style === "alphaLowerPeriod") return `${String.fromCharCode(96 + Math.min(26, value))}. `;
-  if (bullet.style === "alphaUpperPeriod") return `${String.fromCharCode(64 + Math.min(26, value))}. `;
-  return `${value}. `;
+function warnTabLayout(paragraphs: NormalizedTextParagraph[], context: TextContext): void {
+  if (paragraphs.some(paragraph => paragraph.runs.some(run => run.text.includes("\t")))) {
+    context.warnings.push({ code: "text-tab-layout-unsupported", slideId: context.slideId, elementId: context.elementId, message: "Some no-wrap tabs use declared anchors; wrapping, overlap and other tab cases may differ from the exported presentation." });
+  }
+}
+
+function warnRunDirection(paragraphs: NormalizedTextParagraph[], context: TextContext): void {
+  if (paragraphs.some(paragraph => paragraph.runs.some(run => run.style.rightToLeft === true)) &&
+      !context.warnings.some(warning => warning.code === "text-run-rtl-approximation" && warning.slideId === context.slideId && warning.elementId === context.elementId)) {
+    context.warnings.push({ code: "text-run-rtl-approximation", slideId: context.slideId, elementId: context.elementId, message: "Preview does not implement DrawingML's selective run-level RTL character override; font selection may differ from native applications." });
+  }
+}
+
+function bulletRun(paragraph: NormalizedTextParagraph): TextRun | undefined {
+  // A zero-character insertion style must not hide or restyle a marker before
+  // real text. Wholly empty paragraphs use the final insertion style.
+  const run = paragraph.runs.find(run => run.text.length > 0) ?? paragraph.runs.at(-1);
+  // PowerPoint's generated marker follows the text font/strike but is not
+  // underlined with the text (observed independently in native list controls).
+  return run?.style.underline ? { ...run, style: { ...run.style, underline: false } } : run;
+}
+
+function htmlRunStyle(run: TextRun, scale: number, context: TextContext, text: string): string {
+  const theme = context.theme;
+  context.recordFont?.(fontFamily(run.style.fontFamily, theme), run.style.bold, run.style.italic, text, formatNumber(run.style.fontSize * scale), run.style.language);
+  const decorations = [run.style.underline ? "underline" : "", run.style.strike ? "line-through" : ""].filter(Boolean).join(" ");
+  return [
+    `font-family:${cssFontFamily(fontFamily(run.style.fontFamily, theme))}`,
+    `font-size:${formatNumber(run.style.fontSize * scale)}px`,
+    `font-weight:${run.style.bold ? 700 : 400}`,
+    `font-style:${run.style.italic ? "italic" : "normal"}`,
+    `text-decoration:${decorations || "none"}`,
+    `color:${colorValue(run.style.color, theme)}`,
+    ...(run.style.colorOpacity === undefined ? [] : [`opacity:${run.style.colorOpacity}`]),
+  ].join(";");
 }
 
 export function textHtml(
@@ -286,6 +459,9 @@ export function textHtml(
   frame: NormalizedTextFrameStyle,
   context: TextContext,
 ): string {
+  warnAlphabeticNumbering(paragraphs, context);
+  warnTabLayout(paragraphs, context);
+  warnRunDirection(paragraphs, context);
   if (frame.autoFit.mode === "resize") {
     context.warnings.push({
       code: "text-autofit-resize-unsupported",
@@ -294,6 +470,16 @@ export function textHtml(
       elementId: context.elementId,
     });
   }
+  const direction = frame.textDirection;
+  const eastAsian = direction === "eastAsianVertical";
+  const stacked = direction === "stackedVertical" || direction === "stackedVerticalRtl";
+  const vertical = eastAsian || stacked || direction === "mongolianVertical";
+  if (vertical && !eastAsian && !context.warnings.some(w => w.code === "vertical-text-preview-approximation" && w.slideId === context.slideId && w.elementId === context.elementId)) {
+    context.warnings.push({ code: "vertical-text-preview-approximation", message: "Preview approximates native column flow and glyph orientation with CSS; font shaping and wrapping may differ.", slideId: context.slideId, elementId: context.elementId });
+  }
+  if (eastAsian && !context.warnings.some(w => w.code === "east-asian-vertical-preview-approximation" && w.slideId === context.slideId && w.elementId === context.elementId)) {
+    context.warnings.push({ code: "east-asian-vertical-preview-approximation", message: "Preview uses CSS mixed vertical glyph orientation; native fonts, punctuation and wrapping may differ.", slideId: context.slideId, elementId: context.elementId });
+  }
   const scale = frame.autoFit.mode === "shrink" ? frame.autoFit.fontScale : 1;
   const justify = frame.verticalAlign === "middle" ? "center" : frame.verticalAlign === "bottom" ? "flex-end" : "flex-start";
   const rootStyle = [
@@ -301,6 +487,7 @@ export function textHtml(
     "height:100%",
     "box-sizing:border-box",
     "display:flex",
+    ...(vertical ? [`writing-mode:vertical-${eastAsian || direction === "stackedVerticalRtl" ? "rl" : "lr"}`, `text-orientation:${stacked ? "upright" : "mixed"}`] : []),
     "flex-direction:column",
     `justify-content:${justify}`,
     `padding:${frame.margin.top}px ${frame.margin.right}px ${frame.margin.bottom}px ${frame.margin.left}px`,
@@ -311,29 +498,32 @@ export function textHtml(
     const style = paragraph.style;
     const paragraphStyle = [
       "margin:0",
-      `padding-left:${style.indent}px`,
-      `text-indent:${-style.hanging}px`,
+      `padding-${vertical ? "inline-start" : "left"}:${style.indent}px`,
+      `text-indent:${-Math.min(style.hanging, style.indent)}px`,
       `line-height:${style.lineSpacing}`,
-      `padding-top:${style.spaceBefore}px`,
-      `padding-bottom:${style.spaceAfter}px`,
+      `padding-${vertical ? "block-start" : "top"}:${style.spaceBefore}px`,
+      `padding-${vertical ? "block-end" : "bottom"}:${style.spaceAfter}px`,
       `text-align:${style.align}`,
+      ...(style.direction === undefined ? [] : [`direction:${style.direction}`]),
       frame.wrap ? "white-space:pre-wrap" : "white-space:pre",
     ].join(";");
-    const runs = paragraph.runs.map((run) => {
-      const decorations = [run.style.underline ? "underline" : "", run.style.strike ? "line-through" : ""].filter(Boolean).join(" ");
-      const runStyle = [
-        `font-family:${cssFontFamily(fontFamily(run.style.fontFamily, context.theme))}`,
-        `font-size:${formatNumber(run.style.fontSize * scale)}px`,
-        `font-weight:${run.style.bold ? 700 : 400}`,
-        `font-style:${run.style.italic ? "italic" : "normal"}`,
-        `text-decoration:${decorations || "none"}`,
-        `color:${colorValue(run.style.color, context.theme)}`,
-      ].join(";");
-      const action = actionAttributes(run.action, context);
-      return `${action.open}<span lang="${escapeXml(run.style.language)}" style="${runStyle}">${escapeXml(run.text)}</span>${action.close}`;
+    let lastRun: TextRun | undefined;
+    const runs = paragraph.runs.map((sourceRun) => {
+      const content = fontRuns(sourceRun, context.theme).map(run => {
+        lastRun = run;
+        return `<span lang="${escapeXml(run.style.language)}" style="${htmlRunStyle(run, scale, context, run.text)}">${escapeXml(run.text)}</span>`;
+      }).join("");
+      const action = actionAttributes(sourceRun.action, context);
+      return `${action.open}${content}${action.close}`;
     }).join("");
     const bullet = bulletText(paragraph);
-    return `<div style="${paragraphStyle}">${bullet === "" ? "" : `<span aria-hidden="true">${escapeXml(bullet)}</span>`}${runs}</div>`;
+    const sourceBulletRun = bulletRun(paragraph);
+    const selectedBulletRun = sourceBulletRun === undefined ? undefined : fontRuns(sourceBulletRun, context.theme)[0];
+    const bulletPaint = bullet === "" || selectedBulletRun === undefined ? "" : ` style="display:inline-block;min-width:${style.hanging}px;white-space:normal;${htmlRunStyle(selectedBulletRun, scale, context, bullet)}"`;
+    const sourceText = paragraph.runs.map(run => run.text).join("");
+    // CSS otherwise collapses a wholly empty paragraph or its final empty line.
+    const emptyLine = lastRun && (sourceText === "" || /[\r\n]$/u.test(sourceText)) ? `<span aria-hidden="true" style="${htmlRunStyle(lastRun, scale, context, "")}">\u200b</span>` : "";
+    return `<div style="${paragraphStyle}">${bullet === "" ? "" : `<span aria-hidden="true"${bulletPaint}>${escapeXml(bullet)}</span>`}${runs}${emptyLine}</div>`;
   }).join("");
   return `<div xmlns="http://www.w3.org/1999/xhtml" style="${rootStyle}">${content}</div>`;
 }

@@ -3,12 +3,15 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
+import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import { rollup } from "rollup";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const packages = {
+  "@pptkit/pptx-parser": { directory: "pptx-parser", external: [] },
+  "@pptkit/svg-parser": { directory: "svg-parser", external: [] },
   "@pptkit/core": { directory: "core", external: [] },
   "@pptkit/layout": { directory: "layout", external: ["@pptkit/core"] },
   "@pptkit/pptx-exporter": {
@@ -58,6 +61,7 @@ async function build(packageName) {
         browser: true,
         exportConditions: ["browser", "import", "default"],
       }),
+      ...(["@pptkit/pptx-parser", "@pptkit/svg-parser"].includes(packageName) ? [commonjs()] : []),
     ],
     onwarn(warning, warn) {
       if (warning.code === "CIRCULAR_DEPENDENCY") {
@@ -67,16 +71,19 @@ async function build(packageName) {
     },
   });
 
+  const banner = ["@pptkit/pptx-parser", "@pptkit/svg-parser"].includes(packageName) ? `/*!\n${await readFile(path.join(packageRoot, "THIRD_PARTY_NOTICES.txt"), "utf8")}\n*/` : undefined;
   const esmFile = path.join(outputDirectory, "index.js");
   const globalFile = path.join(outputDirectory, "global.js");
   try {
     await bundle.write({
       file: esmFile,
+      banner,
       format: "es",
       plugins: [terser()],
     });
     await bundle.write({
       file: globalFile,
+      banner,
       format: "iife",
       name: "PPTKit",
       extend: true,
@@ -85,6 +92,21 @@ async function build(packageName) {
     });
   } finally {
     await bundle.close();
+  }
+
+  if (packageName === "@pptkit/layout" || packageName === "@pptkit/pptx-exporter") {
+    const adapter = await rollup({
+      input: path.join(packageRoot, "dist", "dom.js"),
+      plugins: [nodeResolve({ browser: true, exportConditions: ["browser", "import", "default"] })],
+    });
+    const adapterFile = path.join(outputDirectory, "dom.js");
+    try { await adapter.write({ file: adapterFile, format: "es", plugins: [terser()] }); }
+    finally { await adapter.close(); }
+    await assertBrowserSafe(adapterFile);
+    const adapterSource = await readFile(adapterFile, "utf8");
+    if (/(?:\bfrom\s*|\bimport\s*\(\s*|\bimport\s*)["']@pptkit\//.test(adapterSource)) {
+      throw new Error(`${path.relative(root, adapterFile)} contains an unresolved workspace import.`);
+    }
   }
 
   await Promise.all([assertBrowserSafe(esmFile), assertBrowserSafe(globalFile)]);

@@ -1,0 +1,27 @@
+{
+  "scope": "PowerPoint 16.104 empty paragraph default probe, initial open only",
+  "directory": "/Volumes/github/private/pptkit/.tmp/style-reset-native/run-uFixey",
+  "files": {
+    "input.pptx": "ef158ed7f03ca97547ae3361b827613803942452b6dd11c32ec71d269d4e02cb",
+    "input.pdf": "1a302ac37552433f0040d1ebcffc9506aa4d1877515cc2c05fb7048f75d8704e",
+    "empty-paragraph-default.pptx": "bb360952d3254bf77da4567ea2745aae09c80c86b366cf4de58d6a643d6fc83e",
+    "empty-paragraph-default.pdf": "c16605f1a295d341f367fae7b0fa16390127561a321fd3b690390c32b120913d",
+    "default-materialized.pdf": "71ccd761bcb462a09c6e9b014c808b0f024e082bdbef7fce75689c7d93524f60"
+  },
+  "sourceSha256": {
+    "/Volumes/github/private/pptkit/scripts/research/oracles/native-mixed-empty-paragraph-default.py": "f7ff79946f018592a399a73378558310fba5c4be778924499de936afa71ca0b6",
+    "scripts/research/prepare-mixed-empty-paragraph-default.py": "9101678b34b6ca730304f219223901bd4ada00a8aa75968f8841b098b62ca0d2"
+  },
+  "negativeNonemptyDefaultsRejected": {
+    "1": true,
+    "2": true
+  },
+  "matchesInput": true,
+  "bodyShiftAgainstMaterializedPoints": [
+    -0.96002197265625,
+    -0.9599609375,
+    0.0
+  ],
+  "nativeSaveReopenVerified": false,
+  "productionFixImplemented": false
+}

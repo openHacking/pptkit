@@ -1,0 +1,1557 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T18:34:25.089Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/chart-value-save-native/run-HhXG3b",
+  "scope": "PPTKit existing-values-v1 three-round source preservation; independent Python ZIP/XML numeric cache+XLSX checks, exact unrelated payloads, control chart/series; LibreOffice headless resave and PDF reopen. Native resaves are observations, not re-import write admission.",
+  "source": {
+    "sha256": "42a1e2cc81997738f97ad59ceb12c489aeb3815587633024f0c40724b5f4ba82"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "sourceSha256": "42a1e2cc81997738f97ad59ceb12c489aeb3815587633024f0c40724b5f4ba82",
+      "savedSha256": "1575eaa71b52999e93384c177b3d84f848d16f93942fe5b17ded4517075f229a",
+      "edits": [
+        {
+          "chartIndex": 0,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 12.5
+        },
+        {
+          "chartIndex": 1,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 13.5
+        },
+        {
+          "chartIndex": 2,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 14.5
+        }
+      ],
+      "independent": {
+        "verified": true,
+        "changedOuterParts": [
+          "ppt/charts/chart1.xml",
+          "ppt/charts/chart2.xml",
+          "ppt/charts/chart3.xml",
+          "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        ],
+        "unchangedOuterPayloads": 39,
+        "charts": [
+          {
+            "slideIndex": 0,
+            "part": "ppt/charts/chart1.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  12.5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+          },
+          {
+            "slideIndex": 1,
+            "part": "ppt/charts/chart2.xml",
+            "family": "line",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  13.5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+          },
+          {
+            "slideIndex": 2,
+            "part": "ppt/charts/chart3.xml",
+            "family": "pie",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  14.5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+          },
+          {
+            "slideIndex": 3,
+            "part": "ppt/charts/chart4.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+          }
+        ],
+        "partCount": 45
+      },
+      "native": {
+        "sha256": "fb49dd21113a790754de1ce021614ccee19e60020b2550e0a62c64becdb72863",
+        "inventory": {
+          "charts": [
+            {
+              "slideIndex": 0,
+              "part": "ppt/charts/chart1.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    12.5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 1,
+              "part": "ppt/charts/chart2.xml",
+              "family": "line",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    13.5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 2,
+              "part": "ppt/charts/chart3.xml",
+              "family": "pie",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    14.5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 3,
+              "part": "ppt/charts/chart4.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            }
+          ],
+          "partCount": 48
+        },
+        "bindingEligibility": [
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          }
+        ],
+        "noOpOriginalBytes": true,
+        "numericEditTrial": {
+          "status": "blocked",
+          "diagnostics": [
+            "save-edit-unsupported"
+          ]
+        },
+        "log": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/round-1.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/native/round-1.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      },
+      "saveChanges": [
+        {
+          "kind": "other",
+          "documentPath": "/slides/0/elements/1/series/0/values/1",
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/charts/chart1.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:barChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 57
+          },
+          "chartValue": {
+            "before": 5,
+            "after": 12.5,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/1/elements/1/series/0/values/1",
+          "slideId": "source-slide-257",
+          "elementId": "source-slide-257-object-3",
+          "source": {
+            "part": "/ppt/charts/chart2.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:lineChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 66
+          },
+          "chartValue": {
+            "before": 5,
+            "after": 13.5,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/2/elements/1/series/0/values/1",
+          "slideId": "source-slide-258",
+          "elementId": "source-slide-258-object-3",
+          "source": {
+            "part": "/ppt/charts/chart3.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:pieChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 71
+          },
+          "chartValue": {
+            "before": 5,
+            "after": 14.5,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "sourceSha256": "1575eaa71b52999e93384c177b3d84f848d16f93942fe5b17ded4517075f229a",
+      "savedSha256": "76a45b482483589b07a4dc8befc07b2016671484682f46ab9d1c1ca757ef586f",
+      "edits": [
+        {
+          "chartIndex": 0,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 0
+        },
+        {
+          "chartIndex": 1,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 0
+        },
+        {
+          "chartIndex": 2,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 0
+        }
+      ],
+      "independent": {
+        "verified": true,
+        "changedOuterParts": [
+          "ppt/charts/chart1.xml",
+          "ppt/charts/chart2.xml",
+          "ppt/charts/chart3.xml",
+          "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        ],
+        "unchangedOuterPayloads": 39,
+        "charts": [
+          {
+            "slideIndex": 0,
+            "part": "ppt/charts/chart1.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  0,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+          },
+          {
+            "slideIndex": 1,
+            "part": "ppt/charts/chart2.xml",
+            "family": "line",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  0,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+          },
+          {
+            "slideIndex": 2,
+            "part": "ppt/charts/chart3.xml",
+            "family": "pie",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  0,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+          },
+          {
+            "slideIndex": 3,
+            "part": "ppt/charts/chart4.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+          }
+        ],
+        "partCount": 45
+      },
+      "native": {
+        "sha256": "e0c0465d846a954a6f04fabac0ef8bd8604cff2c1861254a31fb76f04fd23e3f",
+        "inventory": {
+          "charts": [
+            {
+              "slideIndex": 0,
+              "part": "ppt/charts/chart1.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    0,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 1,
+              "part": "ppt/charts/chart2.xml",
+              "family": "line",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    0,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 2,
+              "part": "ppt/charts/chart3.xml",
+              "family": "pie",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    0,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 3,
+              "part": "ppt/charts/chart4.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            }
+          ],
+          "partCount": 48
+        },
+        "bindingEligibility": [
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          }
+        ],
+        "noOpOriginalBytes": true,
+        "numericEditTrial": {
+          "status": "blocked",
+          "diagnostics": [
+            "save-edit-unsupported"
+          ]
+        },
+        "log": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/round-2.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/native/round-2.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      },
+      "saveChanges": [
+        {
+          "kind": "other",
+          "documentPath": "/slides/0/elements/1/series/0/values/1",
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/charts/chart1.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:barChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 57
+          },
+          "chartValue": {
+            "before": 12.5,
+            "after": 0,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/1/elements/1/series/0/values/1",
+          "slideId": "source-slide-257",
+          "elementId": "source-slide-257-object-3",
+          "source": {
+            "part": "/ppt/charts/chart2.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:lineChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 66
+          },
+          "chartValue": {
+            "before": 13.5,
+            "after": 0,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/2/elements/1/series/0/values/1",
+          "slideId": "source-slide-258",
+          "elementId": "source-slide-258-object-3",
+          "source": {
+            "part": "/ppt/charts/chart3.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:pieChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 71
+          },
+          "chartValue": {
+            "before": 14.5,
+            "after": 0,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "sourceSha256": "76a45b482483589b07a4dc8befc07b2016671484682f46ab9d1c1ca757ef586f",
+      "savedSha256": "9a6c3b719a88ba54754d1518f92046a48bc503ee10aa834440b0c1d5b0a81d51",
+      "edits": [
+        {
+          "chartIndex": 0,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 37.25
+        },
+        {
+          "chartIndex": 1,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 38.25
+        },
+        {
+          "chartIndex": 2,
+          "seriesIndex": 0,
+          "pointIndex": 1,
+          "value": 39.25
+        }
+      ],
+      "independent": {
+        "verified": true,
+        "changedOuterParts": [
+          "ppt/charts/chart1.xml",
+          "ppt/charts/chart2.xml",
+          "ppt/charts/chart3.xml",
+          "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        ],
+        "unchangedOuterPayloads": 39,
+        "charts": [
+          {
+            "slideIndex": 0,
+            "part": "ppt/charts/chart1.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  37.25,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+          },
+          {
+            "slideIndex": 1,
+            "part": "ppt/charts/chart2.xml",
+            "family": "line",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  38.25,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+          },
+          {
+            "slideIndex": 2,
+            "part": "ppt/charts/chart3.xml",
+            "family": "pie",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  39.25,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+          },
+          {
+            "slideIndex": 3,
+            "part": "ppt/charts/chart4.xml",
+            "family": "bar",
+            "series": [
+              {
+                "sourceId": 0,
+                "order": 0,
+                "values": [
+                  2,
+                  5,
+                  8
+                ],
+                "formula": "Sheet1!$B$2:$B$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "B4"
+                  }
+                ]
+              },
+              {
+                "sourceId": 1,
+                "order": 1,
+                "values": [
+                  3,
+                  4,
+                  6
+                ],
+                "formula": "Sheet1!$C$2:$C$4",
+                "cells": [
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C2"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C3"
+                  },
+                  {
+                    "worksheetPart": "xl/worksheets/sheet1.xml",
+                    "reference": "C4"
+                  }
+                ]
+              }
+            ],
+            "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+          }
+        ],
+        "partCount": 45
+      },
+      "native": {
+        "sha256": "3119feae4fd1ac7a6f03d657c5b4759b97254ff9daef19945cb76d349da60b13",
+        "inventory": {
+          "charts": [
+            {
+              "slideIndex": 0,
+              "part": "ppt/charts/chart1.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    37.25,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 1,
+              "part": "ppt/charts/chart2.xml",
+              "family": "line",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    38.25,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 2,
+              "part": "ppt/charts/chart3.xml",
+              "family": "pie",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    39.25,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                }
+              ]
+            },
+            {
+              "slideIndex": 3,
+              "part": "ppt/charts/chart4.xml",
+              "family": "bar",
+              "series": [
+                {
+                  "sourceId": 0,
+                  "order": 0,
+                  "values": [
+                    2,
+                    5,
+                    8
+                  ],
+                  "formula": "0",
+                  "cells": []
+                },
+                {
+                  "sourceId": 1,
+                  "order": 1,
+                  "values": [
+                    3,
+                    4,
+                    6
+                  ],
+                  "formula": "1",
+                  "cells": []
+                }
+              ]
+            }
+          ],
+          "partCount": 48
+        },
+        "bindingEligibility": [
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          },
+          {
+            "status": "unmapped",
+            "reason": "An unshared internal XLSX workbook is required."
+          }
+        ],
+        "noOpOriginalBytes": true,
+        "numericEditTrial": {
+          "status": "blocked",
+          "diagnostics": [
+            "save-edit-unsupported"
+          ]
+        },
+        "log": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/native/round-3.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      },
+      "saveChanges": [
+        {
+          "kind": "other",
+          "documentPath": "/slides/0/elements/1/series/0/values/1",
+          "slideId": "source-slide-256",
+          "elementId": "source-slide-256-object-3",
+          "source": {
+            "part": "/ppt/charts/chart1.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:barChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 57
+          },
+          "chartValue": {
+            "before": 0,
+            "after": 37.25,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/1/elements/1/series/0/values/1",
+          "slideId": "source-slide-257",
+          "elementId": "source-slide-257-object-3",
+          "source": {
+            "part": "/ppt/charts/chart2.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:lineChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 66
+          },
+          "chartValue": {
+            "before": 0,
+            "after": 38.25,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        },
+        {
+          "kind": "other",
+          "documentPath": "/slides/2/elements/1/series/0/values/1",
+          "slideId": "source-slide-258",
+          "elementId": "source-slide-258-object-3",
+          "source": {
+            "part": "/ppt/charts/chart3.xml",
+            "path": "/c:chartSpace[1]/c:chart[1]/c:plotArea[1]/c:pieChart[1]/c:ser[1]/c:val[1]",
+            "sourceObjectId": "3",
+            "elementIndex": 71
+          },
+          "chartValue": {
+            "before": 0,
+            "after": 39.25,
+            "seriesIndex": 0,
+            "pointIndex": 1
+          }
+        }
+      ]
+    }
+  ],
+  "pdf": {
+    "sha256": "4a5b63ecdbd85902ecb3ea21dcaaa0384367b0e6c8ba1cdc92ea5840df19329e",
+    "byteLength": 35360,
+    "observation": {
+      "pages": 4,
+      "titles": [
+        "Bar values\nFirst\nSecond\nThi rd\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\nPrimary\nControl series\n",
+        "Line values\nFirst\nSecond\nThi rd\n2\n3\n4\n5\n6\n7\n8\n9\nPrimary\nControl series\n",
+        "Pie values\nFirst\nSecond\nThi rd\n",
+        "Unchanged control\nFirst\nSecond\nThi rd\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\nPrimary\nControl series\n"
+      ]
+    },
+    "log": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-value-save-native/run-HhXG3b/pdf/round-3.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "interactiveEditData": {
+    "powerpoint": "untested",
+    "libreOffice": "untested"
+  },
+  "limitations": [
+    "Headless conversion does not prove interactive Edit Data, repair-dialog absence or visual fidelity.",
+    "LibreOffice may remove XLSX bindings; eligibility is recorded rather than inferred from retained cache data.",
+    "No structural/category/name/format/shared edits are admitted by this experiment."
+  ]
+}

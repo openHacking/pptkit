@@ -10,6 +10,12 @@ export class IdAllocator {
 
   constructor(private readonly prefix: string) {}
 
+  fork(): IdAllocator {
+    const allocator = new IdAllocator(this.prefix);
+    allocator.counter = this.counter;
+    return allocator;
+  }
+
   next(isUsed: (id: string) => boolean): string {
     let id: string;
     do {

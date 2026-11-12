@@ -1,0 +1,7 @@
+# Core date edit and insertion: LibreOfficeDev headless observation
+
+A synthetic control based on a hash-checked PPTKit presentation has an existing created date `2020-01-02T11:04:05.1200+08:00` and no modified date. The edited branch changes created to `2022-03-04T05:06:07.123Z` and inserts modified as `2023-04-05T06:07:08.456Z` using `core-date-insert-v7`. Independent byte comparison verifies only the existing date text and the new typed date element changed inside `docProps/core.xml`; all other part payloads match.
+
+LibreOfficeDev 26.8.0.0.alpha0 headlessly resaved each branch three times. On its first resave the control's created date became `2020-01-02T03:04:05Z`, losing its fractional seconds; its modified date stayed absent. Both edited dates also lost fractional seconds, becoming `2022-03-04T05:06:07Z` and `2023-04-05T06:07:08Z`. These values persisted through rounds two and three. Keywords changed from `alpha, beta` to `alpha beta` in both branches. This does not establish general date or metadata fidelity.
+
+The [evidence](core-date-libreoffice-evidence.json) records hashes, inventories and process logs. `python3 scripts/research/verify-core-date-libreoffice.py` checks the retained files independently; `python3 scripts/research/core-date-libreoffice.py` reproduces the experiment in the recorded environment using the hash-checked seed. Local artifacts are under `.tmp`. PowerPoint, interactive edits, repair prompts, other date values and other source shapes are not covered.

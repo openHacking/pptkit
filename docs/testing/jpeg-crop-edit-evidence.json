@@ -1,0 +1,26 @@
+{
+  "scope": "PowerPoint 16.104 manual left crop-handle drag, save, close, reopen and slideshow; Chromium SVG preview sampled on one orientation-6 image",
+  "directory": ".tmp/jpeg-orientation-native-01",
+  "files": {
+    "crop-native-edit.pptx": "cddfc4fb08cb31cc0020bc0c6f4bd1e6b181454567a80886343f3c8951717369",
+    "crop-native-edit.png": "4b09ad511c8404e1bf7620b649f44f2ed7e1ed5224649eb3743575c4593f7fbe",
+    "crop-native-edit-preview.png": "64753898611eff41250ed7487fcf00b9b527a0fd9aa68dfa301ef0c71bc08dec",
+    "browser-normalized.png": "c0bd9436846959f4b6fc52968e971ddbb4c3510991ce7b3bdb88f9b6fe40d5cb",
+    "crop-control.png": "198ba807136b3c169e469dba1f7a251f8085a931b46f5ef43f2ad3fa8ae2bb4a"
+  },
+  "priorEvidenceSha256": "24c94cd4ecffc9e8963644ba1cc65ded523504fcaabe6295495847de802853fc",
+  "reportSha256": "23aa8b1f44ac15a4d96a0eb4c525ed410d739dd55d760c48ecd9867eba9a2cec",
+  "scriptSha256": "0bcdfd05ad49ec7bf2b4d542dd433e032e3889fe53723b813d57929ba202941b",
+  "oracleSha256": "490df59bcc58018e20093143e98d4a145a0df11458bad9600231c5c2821ce900",
+  "imageHorizontalSpans": [
+    [
+      363,
+      719
+    ],
+    [
+      362,
+      719
+    ]
+  ],
+  "negativeCasesRejected": 3
+}

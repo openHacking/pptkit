@@ -1,0 +1,116 @@
+{
+  "scope": "Two PowerPoint paths, one open and one closed, first open and one interactive move/save/close/reopen. Fixed screen pixels sample one cap, one closed corner and the empty interior; package checks bind round caps, round joins, closure commands and moved geometry. UI captures do not authenticate provenance or establish full pixel parity, other path styles or native point editing.",
+  "applicationVersion": "16.104",
+  "directory": ".tmp/native-svg-path-fixed",
+  "generatorSha256": "cb6523659c720b943f891407b1d20d0eb31b9f41a81ea9d1aac846b34891e02f",
+  "verifierSha256": "f4d826a3c000ea39faf617a4ced15b71d5d7349550143bb9c750357ff6aa0032",
+  "sha256": {
+    "source.svg": "ae20a380e9f87b9860ebceaea9470c2f6ceebce695713e7f008e191d7c3b2fc3",
+    "original.pptx": "83c9dbb346880607a4ba4c17794cb8d6b230c7f903022794248da0d3867ee609",
+    "source.pptx": "79bfd85ac8fdd857f387a5ca67eea805ef4f32e46eb62a0a25071fdb3550a616",
+    "first.png": "52a6dc89f85b5a36ca28e6286b86c0167bfd816d08c8755b833addab1fb44d5f",
+    "reopen.png": "9f640332abca8b32592e84297e567ff479f66b49d9b09b00e8e1631f768c87cd",
+    "first.ax.txt": "b7792c1cb93ffb306e209290277575f8b915be11ab45be4fe203e394ddb6b56c",
+    "reopen.ax.txt": "b3430a70534427b59d2bd7f2e34a19fc2bae503f6eaa7eabc61e30c17538bf03"
+  },
+  "before": [
+    {
+      "offset": [
+        952500,
+        1143000
+      ],
+      "cap": "rnd",
+      "width": 228600,
+      "roundJoin": true,
+      "commands": [
+        "moveTo",
+        "lnTo",
+        "lnTo"
+      ]
+    },
+    {
+      "offset": [
+        4762500,
+        1238250
+      ],
+      "cap": "rnd",
+      "width": 228600,
+      "roundJoin": true,
+      "commands": [
+        "moveTo",
+        "lnTo",
+        "lnTo",
+        "lnTo",
+        "close"
+      ]
+    }
+  ],
+  "after": [
+    {
+      "offset": [
+        959934,
+        1143000
+      ],
+      "cap": "rnd",
+      "width": 228600,
+      "roundJoin": true,
+      "commands": [
+        "moveTo",
+        "lnTo",
+        "lnTo"
+      ]
+    },
+    {
+      "offset": [
+        4762500,
+        1238250
+      ],
+      "cap": "rnd",
+      "width": 228600,
+      "roundJoin": true,
+      "commands": [
+        "moveTo",
+        "lnTo",
+        "lnTo",
+        "lnTo",
+        "close"
+      ]
+    }
+  ],
+  "samples": {
+    "first": {
+      "roundEnd": [
+        254,
+        0,
+        11
+      ],
+      "closedCorner": [
+        0,
+        34,
+        252
+      ],
+      "interior": [
+        255,
+        255,
+        255
+      ]
+    },
+    "reopen": {
+      "roundEnd": [
+        254,
+        1,
+        6
+      ],
+      "closedCorner": [
+        0,
+        34,
+        252
+      ],
+      "interior": [
+        255,
+        255,
+        255
+      ]
+    }
+  }
+}

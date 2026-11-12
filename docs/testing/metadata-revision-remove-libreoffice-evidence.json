@@ -1,0 +1,155 @@
+{
+  "scope": "One source revision removal and unchanged control, three LibreOfficeDev headless resaves per branch; no interactive UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "a3f5de23a37dd3a9fd5b1f157307719c5aaf554861ff2a325ca266342222baf4",
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "seed": {
+    "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/generated.pptx",
+    "sha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6"
+  },
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/input/control.pptx",
+      "sha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/input/edited.pptx",
+      "sha256": "753f55f6dd832e4c7e1992a6032f50f6454fb711842bc06bc3dedf4cb97e3762",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": null,
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/control.pptx",
+      "sha256": "c9d015161f0e416556fc930877b2bb0f8b4c460e29f158c19b6fe08656624985",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/edited.pptx",
+      "sha256": "b922a69b48540cad9dc045e01f949d97a51ce691d096e01019fafb8ef23962ae",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "0",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/control.pptx",
+      "sha256": "bfb6effa816a15522f553ad6d8af1fbf96d7a54529d7f6b8f14d43a4fcb7727e",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/edited.pptx",
+      "sha256": "f4ba39b421ea56c71d47f938af880ad2ece3e3f112cc07915f83700051f3bd45",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "0",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-3/control.pptx",
+      "sha256": "2d603d5650e1101f4e841da1358ee1924735218fb452a0834f3998d845afc9a2",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-3/edited.pptx",
+      "sha256": "aa9247513808b13d133fa12c89d789c4ee927ea3936ae3698cf24bbf47a4e560",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "0",
+        "keywords": "alpha beta"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-revision-remove-libreoffice/run-2nipbz58/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

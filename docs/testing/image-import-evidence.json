@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T16:44:02.749Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/image-import-native/run-mvu4AL",
+  "scope": "LibreOffice-produced embedded raster projection: independent image relationship/byte digest/local frame/crop checks, original-byte no-op and fresh projection PDF reopen. Not native visual parity, interactive editing, general image decoding or preservation edit-save.",
+  "original": {
+    "sha256": "ec98ea53921b0de2a6668c1852d4dd67a68767ca2f6c0ff16f48c0dc8928f5c2"
+  },
+  "nativeSource": {
+    "sha256": "1d31f182984823fd311ce0f997cb858f16dd76a0d1249f0c88892daf50718dfc",
+    "pictures": [
+      {
+        "name": "Crop",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 20.040944881889764,
+          "y": 20.01259842519685,
+          "width": 119.96220472440945,
+          "height": 79.96535433070866
+        },
+        "crop": {
+          "left": 0.12736,
+          "top": 0.25472,
+          "right": 0.25,
+          "bottom": 0
+        }
+      },
+      {
+        "name": "Nested",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 8.277165354330691,
+          "y": 14.14488188976378,
+          "width": 119.96220472440945,
+          "height": 79.96535433070866
+        },
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      {
+        "name": "Shared",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 399.9685039370079,
+          "height": 239.98110236220472
+        },
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      }
+    ]
+  },
+  "projection": {
+    "assetCount": 1,
+    "pictures": [
+      {
+        "name": "Crop",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 20.040944881889764,
+          "y": 20.01259842519685,
+          "width": 119.96220472440945,
+          "height": 79.96535433070866
+        },
+        "crop": {
+          "left": 0.12736,
+          "top": 0.25472,
+          "right": 0.25,
+          "bottom": 0
+        }
+      },
+      {
+        "name": "Nested",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 8.277165354330691,
+          "y": 14.14488188976378,
+          "width": 119.96220472440945,
+          "height": 79.96535433070866
+        },
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      },
+      {
+        "name": "Shared",
+        "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 399.9685039370079,
+          "height": 239.98110236220472
+        },
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0
+        }
+      }
+    ],
+    "importFeatures": {
+      "source-part-content:unsupported": 17,
+      "metadata.title:editable": 1,
+      "metadata.author:editable": 1,
+      "metadata.subject:editable": 1,
+      "metadata.description:editable": 1,
+      "metadata.language:editable": 1,
+      "presentation-dimensions:editable": 1,
+      "slide-order-and-visibility:editable": 2,
+      "drawing.image.mapped-fields:editable": 3,
+      "drawing.inheritance-and-defaults:fallback": 4,
+      "drawing.group.mapped-fields:editable": 1,
+      "drawing.unmapped-property:unsupported": 13
+    }
+  },
+  "noOpOriginalBytes": true,
+  "independentSourceInventoryMapped": true,
+  "frameComparison": "Rounded integer EMUs (12700 per point); image digests and crop fractions compare exactly.",
+  "freshExport": {
+    "sha256": "5e91982f2fa8416b292b70cec1a6e4cee15eb2b116474630f8e3451b3b1b274b",
+    "sourcePictureInventoryRetained": true
+  },
+  "reopenedPdf": {
+    "sha256": "13d803558435dcd5c3187b219c870ee00f2e7eb37515616464fc549d31d05d73",
+    "byteLength": 49315
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/image-import-native/run-mvu4AL/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/image-import-native/run-mvu4AL/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/image-import-native/run-mvu4AL/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/image-import-native/run-mvu4AL/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Custom `date` and `filetime`: LibreOfficeDev headless observation
+
+A synthetic source was built from a hash-verified PPTKit-created package with four custom properties: `date` and `filetime` values each represented once at second precision and once with milliseconds. PPTKit explicitly edited all four; an unchanged branch is the control. Independent ZIP and byte checks found only the four approved value texts changed in the custom part, preserving source tags and IDs.
+
+LibreOfficeDev **26.8.0.0.alpha0**, on macOS 26.5 arm64, headlessly resaved each branch three times. It converted the two `date` entries to `filetime`, reordered properties, reassigned IDs and added `PresentationFormat` and `Slides`. In both branches it removed the fractional seconds from both the `date` and `filetime` millisecond samples on the first save; second-level values remained represented. The next two resaves retained that inventory. This sample therefore does **not** establish type, identity or millisecond preservation across applications.
+
+The [record](custom-date-variants-libreoffice-evidence.json) contains hashes, exact inventories and process logs. Check retained files with `python3 scripts/research/verify-custom-date-variants-libreoffice.py` and reproduce in the recorded environment with `python3 scripts/research/custom-date-variants-libreoffice.py`. Artifacts under `.tmp` are local, not a portable fixture corpus. PowerPoint, interactive property editing, repair prompts, offsets and other date values remain untested.

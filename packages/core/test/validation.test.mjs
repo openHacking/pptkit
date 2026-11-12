@@ -8,6 +8,21 @@ import {
   validatePresentation,
 } from "../dist/index.js";
 
+test("connector targets resolve only in their immediate coordinate scope", () => {
+  const p = createPresentation(), box = { x: 0, y: 0, width: 100, height: 100 };
+  p.addSlide({ elements: [
+    { id: 'outer-edge', type: 'connector', start: { elementId: 'inner' }, end: { x: 10, y: 10 } },
+    { id: 'outer', type: 'group', box, coordinateSize: { width: 100, height: 100 }, children: [
+      { id: 'inner', type: 'shape', shape: 'rect', box },
+      { id: 'valid-edge', type: 'connector', start: { elementId: 'inner' }, end: { x: 5, y: 5 } },
+      { id: 'nested', type: 'group', box, coordinateSize: { width: 100, height: 100 }, children: [{ id: 'deep', type: 'shape', shape: 'rect', box }] },
+      { id: 'invalid-edge', type: 'connector', start: { elementId: 'deep' }, end: { x: 5, y: 5 } },
+    ] },
+  ] });
+  const errors = validatePresentation(p).filter(item => item.code === 'missing-connector-target');
+  assert.deepEqual(errors.map(item => item.path), ['slides.0.elements.0.start', 'slides.0.elements.1.children.3.start']);
+});
+
 test("validation collects independent reference and geometry errors", () => {
   const presentation = createPresentation();
   presentation.addSlide({
@@ -214,7 +229,7 @@ test("validation reports invalid chart type", () => {
   presentation.addSlide({
     elements: [{
       type: "chart",
-      chartType: "scatter",
+      chartType: "surface",
       categories: ["Q1", "Q2"],
       series: [{ name: "Sales", values: [10, 20] }],
       box: { x: 0, y: 0, width: 400, height: 300 },
@@ -346,4 +361,74 @@ test("validation reports invalid chart axes, legend, scale, and marker config", 
   assert.ok(diagnostics.some((item) => item.code === "invalid-chart-gap"));
   assert.ok(diagnostics.some((item) => item.code === "invalid-chart-marker"));
   assert.ok(diagnostics.some((item) => item.code === "pie-negative-value"));
+});
+
+test("chart validation rejects sparse categories, series, values and pie colors without treating holes as zero", () => {
+  const chart = (chartType, categories, series) => {
+    const deck = createPresentation();
+    deck.addSlide().addElement({ type: "chart", chartType, box: { x: 0, y: 0, width: 300, height: 200 }, categories, series });
+    return deck;
+  };
+  for (const chartType of ["bar", "line", "pie"]) {
+    for (const values of [[1, , 3], [1, undefined, 3], [1, Infinity, 3], [1, NaN, 3]]) {
+      const sparse = chart(chartType, ["A", "B", "C"], [{ name: "S", values }]);
+      const diagnostics = validatePresentation(sparse);
+      assert.ok(diagnostics.some(item => item.code === "chart-values-finite" && item.path.endsWith(".series.0.values.1")), chartType);
+      assert.throws(() => normalizePresentation(sparse), PresentationValidationError);
+    }
+    const blank = chart(chartType, ["A", "B", "C"], [{ name: "S", values: [1, null, 3] }]);
+    assert.deepEqual(validatePresentation(blank), []); assert.equal(normalizePresentation(blank).slides[0].elements[0].series[0].values[1], null);
+    const zero = chart(chartType, ["A", "B", "C"], [{ name: "S", values: [1, 0, 3] }]);
+    assert.deepEqual(validatePresentation(zero), []); assert.equal(normalizePresentation(zero).slides[0].elements[0].series[0].values[1], 0);
+  }
+  const missingCategory = chart("bar", ["A", , "C"], [{ name: "S", values: [1, 2, 3] }]);
+  assert.ok(validatePresentation(missingCategory).some(item => item.code === "empty-chart-categories"));
+  const missingSeries = chart("bar", ["A"], [, { name: "S", values: [1] }]);
+  assert.ok(validatePresentation(missingSeries).some(item => item.code === "invalid-chart-series" && item.path.endsWith(".series.0")));
+  const missingColor = chart("pie", ["A", "B", "C"], [{ name: "S", values: [1, 2, 3], pointColors: ["FF0000", , "0000FF"] }]);
+  assert.ok(validatePresentation(missingColor).some(item => item.code === "invalid-chart-color" && item.path.endsWith(".pointColors.1")));
+});
+
+test('image fit validation locates ignored crops and rejects unknown modes without changing valid output', () => {
+  const p = createPresentation();
+  p.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/image.png' } });
+  const box = { x: 0, y: 0, width: 20, height: 20 };
+  p.addSlide({ id: 's', elements: [
+    { id: 'default', type: 'image', assetId: 'img', box, crop: { left: .1 } },
+    { id: 'stretch', type: 'image', assetId: 'img', box, fit: 'stretch', crop: { right: .2 } },
+    { id: 'contain', type: 'image', assetId: 'img', box, fit: 'contain', crop: { top: .1 } },
+    { id: 'cover', type: 'image', assetId: 'img', box, fit: 'cover', crop: { bottom: .1 } },
+    { id: 'crop', type: 'image', assetId: 'img', box, fit: 'crop', crop: { left: .1 } },
+    { id: 'zero', type: 'image', assetId: 'img', box, crop: { left: 0 } },
+    { id: 'bad-crop', type: 'image', assetId: 'img', box, crop: { left: -1 } },
+    { id: 'bad-fit', type: 'image', assetId: 'img', box, fit: 'invalid', crop: { left: .1 } },
+  ] });
+  const findings = validatePresentation(p);
+  assert.deepEqual(findings.filter(d => d.code === 'image-crop-ignored').map(d => [d.elementId, d.path, d.severity]), [
+    ['default', 'slides.0.elements.0.crop', 'warning'], ['stretch', 'slides.0.elements.1.crop', 'warning'],
+    ['contain', 'slides.0.elements.2.crop', 'warning'], ['cover', 'slides.0.elements.3.crop', 'warning'],
+  ]);
+  assert.ok(findings.some(d => d.code === 'invalid-image-crop' && d.elementId === 'bad-crop'));
+  assert.ok(findings.some(d => d.code === 'invalid-image-fit' && d.path === 'slides.0.elements.7.fit' && d.severity === 'error'));
+  assert.throws(() => normalizePresentation(p), PresentationValidationError);
+  const clean = createPresentation(); clean.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/image.png' } });
+  clean.addSlide({ elements: [{ id: 'warning', type: 'image', assetId: 'img', box, crop: { left: .1 } }] });
+  assert.equal(validatePresentation(clean).filter(d => d.code === 'image-crop-ignored').length, 1);
+  assert.equal(normalizePresentation(clean).slides[0].elements[0].fit, 'stretch');
+});
+
+test('ignored crop warnings identify nested and shared image owners', () => {
+  const p = createPresentation();
+  p.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/image.png' } });
+  const image = id => ({ id, type: 'image', assetId: 'img', fit: 'cover', crop: { left: .25 }, box: { x: 0, y: 0, width: 10, height: 10 } });
+  const group = id => ({ id, type: 'group', box: { x: 0, y: 0, width: 20, height: 20 }, coordinateSize: { width: 20, height: 20 }, children: [image(`${id}-image`)] });
+  p.defineSlideMaster({ id: 'm', name: 'Master', elements: [group('master-group')] });
+  p.defineSlideLayout({ id: 'l', name: 'Layout', masterId: 'm', elements: [group('layout-group')] });
+  p.addSlide({ id: 's', layoutId: 'l', elements: [group('slide-group')] });
+  const warnings = validatePresentation(p).filter(d => d.code === 'image-crop-ignored');
+  assert.deepEqual(warnings.map(d => [d.elementId, d.path, d.slideId, d.layoutId, d.masterId]), [
+    ['layout-group-image', 'layouts.0.elements.0.children.0.crop', undefined, 'l', undefined],
+    ['master-group-image', 'masters.0.elements.0.children.0.crop', undefined, undefined, 'm'],
+    ['slide-group-image', 'slides.0.elements.0.children.0.crop', 's', undefined, undefined],
+  ]);
 });

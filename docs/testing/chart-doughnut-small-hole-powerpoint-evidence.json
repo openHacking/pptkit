@@ -1,0 +1,153 @@
+{
+  "scope": "Four generated 1%, 5%, 9% and 10% charts observed on first open and one save/close/reopen in PowerPoint 16.104. The first-open PDF vector paths establish the four hole/outer radius ratios. Source and saved packages retain cache points and workbook values. Screenshots and AX hashes do not independently establish provenance; reopened PDF, native data editing, other applications and versions are not established.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "76f9450d42f56909c3262472bc5ae1d785a0aa5db833cfac77094faa170a02d6",
+  "verifierSha256": "bfbcc277d13891dac0ef6ccdd736ececaad419fabbf97813f5fd4e153ca896e2",
+  "packages": [
+    {
+      "phase": "source",
+      "sha256": "896034772576651ac9e20fad4e598d9839f124f4b3ab5a37b2263fcebede5108",
+      "charts": [
+        {
+          "holeSize": 1,
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        },
+        {
+          "holeSize": 5,
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+        },
+        {
+          "holeSize": 9,
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        },
+        {
+          "holeSize": 10,
+          "chartPart": "ppt/charts/chart4.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved",
+      "sha256": "2c6dff0182f98506e3159dcf3e4bd47cec1fd6b7cd4d6022637da75e0a0b5936",
+      "charts": [
+        {
+          "holeSize": 1,
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "holeSize": 5,
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "holeSize": 9,
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "holeSize": 10,
+          "chartPart": "ppt/charts/chart4.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    }
+  ],
+  "firstPdfSha256": "360194c02a4c0becfa0b2a9e96382c7c749a2cf9fbcc950a145891da954e6ec5",
+  "measurements": [
+    {
+      "holeSize": 1,
+      "nativeInnerOuterRadiusRatio": 0.009999660711841805,
+      "outerRect": [
+        381.4169006347656,
+        144.82229614257812,
+        541.3336181640625,
+        304.9259948730469
+      ]
+    },
+    {
+      "holeSize": 5,
+      "nativeInnerOuterRadiusRatio": 0.049999447227157996,
+      "outerRect": [
+        381.4169006347656,
+        144.82229614257812,
+        541.3336181640625,
+        304.9259948730469
+      ]
+    },
+    {
+      "holeSize": 9,
+      "nativeInnerOuterRadiusRatio": 0.08999980557644867,
+      "outerRect": [
+        381.4169006347656,
+        144.82229614257812,
+        541.3336181640625,
+        304.9259948730469
+      ]
+    },
+    {
+      "holeSize": 10,
+      "nativeInnerOuterRadiusRatio": 0.09999946628829048,
+      "outerRect": [
+        381.4169006347656,
+        144.82229614257812,
+        541.3336181640625,
+        304.9259948730469
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "c9d04fc32fe0b44c9fce224e6f5d5a9bfaba909b3936c7401325a62560b7963a",
+      "screenshotSha256": "2d78fca62f43dfbbec531b35afe774969f19dc688bd30ffdff4115eb15483b2d"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "239ab8ac645cb800623652091b531da646b45e47c53e4f3c3d53a65f28795ec9",
+      "screenshotSha256": "f9f96790263933147c519cd7aa6f408977e0123c7c9dfd00ccdc35e8757cde28"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "f5d76fc2004f3e156e241581832a9871f0765afd083e108dfb406c93b8586831",
+      "screenshotSha256": "a7530b646ca31db9339d588d73432fd7b9fee95d4f917986e33bcaae4a010412"
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "axSha256": "3bf71f42552843e7d0a28b9c6abc9a24beb376238d2f3b72a5bb53f7c6434329",
+      "screenshotSha256": "81bc2107af56f14e88ba0a57be9cde89092902dda51bdddfb5cc3d12b9484224"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "a79f545db4f5a1b1afffa0962e5781ce1b318eff0f5af3c2d1d856173462e610",
+      "screenshotSha256": "43d06e7e9a48991191930c59598914e6c59f0fba59c0796fb9fe4a6dafae8e98"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "dac6855415e2fe823465386b87a54190ce5940c839658bface1ab310115c4176",
+      "screenshotSha256": "0078d354e5f061ce682c5f5c5f8088b59d1a818645ed47667716d5b14569de13"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "f9e7104c89d46773d42a5c46899d71442dc779d085d0b9ef2daec42221a776cc",
+      "screenshotSha256": "21997a84d370451d052e358255bc82a7f57537401f9ae31bdc28917cf443e9aa"
+    },
+    {
+      "phase": "reopen",
+      "slide": 4,
+      "axSha256": "9dfdb265c6238d19a6321de1cc46ad8f734392e769bb2e2c52f597114c7e6112",
+      "screenshotSha256": "d3848818a7d79fbb5ce8e326ee7b34cf821a72baefb3d4bd91f6725af79d2cdf"
+    }
+  ]
+}

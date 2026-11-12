@@ -1,0 +1,45 @@
+{
+  "sourceSha256": "0155c9a232242e581db8bada53f1f82f486bbd3f7c0a9318e2ca09f2f32a7e6c",
+  "masterId": "source-master-2147483652",
+  "slideSize": [
+    960,
+    540
+  ],
+  "coordinates": [
+    [
+      125,
+      220
+    ],
+    [
+      180,
+      220
+    ],
+    [
+      260,
+      220
+    ]
+  ],
+  "colors": [
+    [
+      "blue",
+      "red",
+      "blue"
+    ],
+    [
+      "blue",
+      "red",
+      "blue"
+    ],
+    [
+      "white",
+      "white",
+      "white"
+    ],
+    [
+      "green",
+      "green",
+      "green"
+    ]
+  ],
+  "warnings": 0
+}

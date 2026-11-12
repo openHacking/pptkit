@@ -98,7 +98,9 @@ from the [Developer Workflow](docs/guides/developer-workflow.md).
 | `@pptkit/layout` | Detached connector and image geometry resolution. |
 | `@pptkit/pptx-exporter` | Browser-neutral editable PPTX generation and Node.js file output. |
 | `@pptkit/svg-renderer` | Browser-oriented SVG preview generation from resolved presentation state. |
-| `@pptkit/cli` | Thin command workflow shell; its authoring command surface is not stable yet. |
+| `@pptkit/pdf-renderer` | PDF output from resolved layouts using a caller-owned Chromium browser. |
+| `@pptkit/media-inspection` | Bounded, environment-neutral media structure checks. |
+| `@pptkit/cli` | Read-only local inspect/compare commands; presentation-authoring commands remain unimplemented. |
 
 Parser packages remain roadmap work. See the [package overview](docs/api/package-overview.md).
 

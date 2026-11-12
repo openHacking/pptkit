@@ -1,0 +1,80 @@
+{
+  "scope": "Three Transitional source samples replace existing first-slice angle and/or hole-size values with empty elements. PowerPoint 16.104 opened them; first-print vector geometry matches the explicit zero-angle control on slide 1, while the red paths on slides 2 and 3 reach the center. One Save As wrote explicit zero for missing attribute values; all three slides were captured after closing and reopening the saved file, but the saved file was not reprinted; screenshot and AX hashes do not independently establish provenance. Other producers, versions, Strict files and native data editing are not established.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "af229e895b16e4f9673d8b4355fd013f4c7cb663d08ca6f3f1d2b27d6c2c5c1d",
+  "verifierSha256": "7aa1e6b2b55e1f5b574293ff10f80d461dd5bc2c528100fe8cbbc48db6e7c0c3",
+  "controlSha256": "5daf36e0765de0fb63f5ec4ce9a75ed2def7c0eb98d0c9f98c32663e60086831",
+  "sourceSha256": "4262a7f8d4e5114b5b79450dea4935abcaa7c6994b6d3d2f47d230753d587029",
+  "savedSha256": "f3db037c9d1d30054cb3e1a99b5d08783acaba4417e4fd3c158591a1cd8efbbb",
+  "pdfSha256": "773097d927294584152cd56a265610d09a128fa1f5bbc2ea076b123a1f7e8f57",
+  "savedGeometry": [
+    {
+      "firstSliceAngle": 0,
+      "holeSize": 50
+    },
+    {
+      "firstSliceAngle": 90,
+      "holeSize": 0
+    },
+    {
+      "firstSliceAngle": 0,
+      "holeSize": 0
+    }
+  ],
+  "centerHits": [
+    {
+      "slide": 2,
+      "center": [
+        381.41690826416016,
+        304.9259948730469
+      ],
+      "distance": 7.62939453125e-06
+    },
+    {
+      "slide": 3,
+      "center": [
+        381.41690826416016,
+        304.9259948730469
+      ],
+      "distance": 7.62939453125e-06
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "9426c216f64fd833967887d4a0ead238412e3c3ef5c02062e59291e795a0a130",
+      "screenshotSha256": "89d0f6e4a1a51e6d9dfb8a6471b434ba9cda2c7693769de8928957cf5ef6b90e"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "88bb579e3614b8e077a1950d41ba64c20a32bae1e20a33d063f57c314f03a662",
+      "screenshotSha256": "ef610b68cc6e0cc883d26e8ceabe0bf0085aff4a3d086fd6f5a3df0aca7340be"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "5833dc661c3700ce741e6b5fb9e7a5bebc96e96051fe85b44b031ad7a97e8ef3",
+      "screenshotSha256": "c3a7380db3a6ce6c2519ca7eacba488c8b229dfb960535fca504a57ea35f877b"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "a97e38dd2d2587e33c808999343f1fb83f1ef7f0bfaf8f0df83394df23267b0e",
+      "screenshotSha256": "84e25d0a8accb76e5d4a4e367f534966707665472836b7b93f1e3b8477841181"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "73c48600ef23431e73adc3d7bd7612dab952700766229e6483f29ffec8c3b819",
+      "screenshotSha256": "bf77f5543f46e0221cef046649ce5fc0446fd6955c1160782af944d570752a48"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "710f71263d606e4b3f05c81323f4d0eed57cb033a90a97ae439976c81da6a647",
+      "screenshotSha256": "090aa5e8d03461f5107172dfcfc24118cf99eaf07ddb5f6b46a5e5861af13fe4"
+    }
+  ]
+}

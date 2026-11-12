@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T14:54:01.639472+00:00",
+  "total": {
+    "capturedNegativeFilesRejected": 143
+  },
+  "records": [
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "append-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/append-text.pptx",
+      "sha256": "77a507e125034eb8615eda0ba693143a12a83d324069d8634e6dc120a31326d4",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "append-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/append-language.pptx",
+      "sha256": "2339a0a7cb09e7b8fdca7e9a54ee3a75092228b680b3386a710767da4c371625",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "append-bold",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/append-bold.pptx",
+      "sha256": "031802bfb13d342825d45db00044bdf4a2e4f3efa9613d3ca81c0095190af6be",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "original-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/original-language.pptx",
+      "sha256": "f71dab4036599db32bcd117358489cab1dbf337fbbb2b409708d093f51a1423a",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/local-slot.pptx",
+      "sha256": "7d3ec598e4a9680772c2d3e67998c6c0130f655779aed96628776afb197bfb78",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "notes-master",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/notes-master.pptx",
+      "sha256": "c9a4ecfeeb2a627c18b78b71ad17a05214a6a8f744b09055bb35c86f9036e3cb",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/notesMasters/notesMaster1.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/notes-theme.pptx",
+      "sha256": "0ecb42059b8b06ed29563c77cdb58dd607a55455065c16a0afa3b3f34e605b60",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/theme/theme2.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "slide-neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/slide-neighbor.pptx",
+      "sha256": "bef2a8cc58d85b95e83ced22ee7397719d0dd1dfc3b30dc2ca4d4c4ee1dda897",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/slides/slide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "notes-relation",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/notes-relation.pptx",
+      "sha256": "2853308eb6b42a501add6c9701a422e18e6b4d047497f8d0f758b847adc056fd",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/notesSlides/_rels/notesSlide3.xml.rels"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "control-note",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/control-note.pptx",
+      "sha256": "d02bd27c54c9ceed62d0f75b2c3cd12bb18b92c7cd8f5a972cf5f8c7b915ac34",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "white-append",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/white-append.pdf",
+      "sha256": "3dcdc20126842ef88348eb5bc27088da8843510be9bceeeb26a1fb43600c6280",
+      "rejectedBy": "AssertionError",
+      "reason": "extractable but invisible append"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/white-original.pdf",
+      "sha256": "93ac066e9f5d7f27f1349eef28571a0b9efc426909713538bd3ef8ca02f26ebd",
+      "rejectedBy": "AssertionError",
+      "reason": "raster changed outside appended glyph"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/swap-pages.pdf",
+      "sha256": "20a8da90e331582422bc67599a7928043ea30e1316cbbb41191858038fbf551c",
+      "rejectedBy": "AssertionError",
+      "reason": "original glyph/face/position or neighbor changed"
+    },
+    {
+      "stage": "append",
+      "group": "A",
+      "name": "later-round",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-negative-controls/later-round.pdf",
+      "sha256": "833e5c24f3640b9abb6e0648d286f597757cea67a083827418409cff35b5780c",
+      "rejectedBy": "AssertionError",
+      "reason": "raster changed outside appended glyph"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "append-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/append-text.pptx",
+      "sha256": "3405d9f4577f5f2fe578044122a4fe483ee468c21583b0a1f6c1059db29ac0be",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "append-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/append-language.pptx",
+      "sha256": "054f0e5966d5e06816fd250d5d9c3855ded15e7e5ed1e6f549e1c979368ee524",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "append-bold",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/append-bold.pptx",
+      "sha256": "d5dd7021b985416874d8c967858a90a411c60f739cdc0686849d698116a3e000",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "original-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/original-language.pptx",
+      "sha256": "2caa89d611ecc95812801bfe54426fd5dae249d036504d63216335a88501d9a4",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/local-slot.pptx",
+      "sha256": "c0ea8a71a6ca54a8c3ef08f4b6e89922d135bcfb79bd3d1aeeaf087485f5f6fc",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "notes-master",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/notes-master.pptx",
+      "sha256": "cc2c5e957dae54942f5b13fd5d88f6d82b646d98972980bc4d426b499eb72430",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/notesMasters/notesMaster1.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/notes-theme.pptx",
+      "sha256": "a1fa20f21982a4b1b96d3b3d41b4430f68416858023c0d9b02797edb8d1f8465",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/theme/theme2.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "slide-neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/slide-neighbor.pptx",
+      "sha256": "66ab28f2de05dc31c573f39c321170df3f9aae9ef8c46b558eef586ad6a78686",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/slides/slide3.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "notes-relation",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/notes-relation.pptx",
+      "sha256": "0d3e524b72f909be9db18832525756d243d04da533d28ee7a868d980f3d4fa5b",
+      "rejectedBy": "AssertionError",
+      "reason": "non-notes payload changed: ppt/notesSlides/_rels/notesSlide3.xml.rels"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "control-note",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/control-note.pptx",
+      "sha256": "531a742cc9f9a4c5a0a45406897612fc4dd3cecd18b77041dcce875ab3f36171",
+      "rejectedBy": "AssertionError",
+      "reason": "unexpected notes change: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "white-append",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/white-append.pdf",
+      "sha256": "f5126d1d8d4a4d25fd12e19b302de1ac7b5f03d775a87bd8bd8fa4e7085ee967",
+      "rejectedBy": "AssertionError",
+      "reason": "extractable but invisible append"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/white-original.pdf",
+      "sha256": "e04c3369e6fcf1ddda1db692fa710a9b2490b1c227721c914d3dabd6aabe37d5",
+      "rejectedBy": "AssertionError",
+      "reason": "raster changed outside appended glyph"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/swap-pages.pdf",
+      "sha256": "4210fa000b132bb64eb5002c00cd3a93f591ee3b8443744110099792505b595e",
+      "rejectedBy": "AssertionError",
+      "reason": "original glyph/face/position or neighbor changed"
+    },
+    {
+      "stage": "append",
+      "group": "B",
+      "name": "later-round",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-negative-controls/later-round.pdf",
+      "sha256": "4e768f01793c3c1b303e29e7c9550afecdacdddf5e38783022f2836ce184d52b",
+      "rejectedBy": "AssertionError",
+      "reason": "raster changed outside appended glyph"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-omega-flag.pptx",
+      "sha256": "2ea13f11b20fef40678392b002aaf980666ad9aa6cbd1188c4cff227b04b2ba2",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-original-flag.pptx",
+      "sha256": "22fb2266d532ab3bcded1f9e773b73074043c2869a08759aad903a7ec7a07fc8",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-language.pptx",
+      "sha256": "6f57e42706bdfd2a1c37deb90e336a7d870c0aa5a5cddbaa6c1876c4b6f3d1ce",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-local-slot.pptx",
+      "sha256": "a7b37a785d92806aed92e5f5df49f4fb385868cbac0851a18723c31f061c1945",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-neighbor.pptx",
+      "sha256": "a842a83e299f6189e5c00696a404e9c4f0447753662c3b9354aa652d68e6c7da",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-white-omega.pdf",
+      "sha256": "61b687313f0856214a6fd47825c3cb580c58ff604f557cad16680c59c1f75cee",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-white-original.pdf",
+      "sha256": "c8373eff1a3533c55a5b1e0d5e472cfe54342318b8cf241c883feeb021d2639e",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-swap-pages.pdf",
+      "sha256": "e89716b6e9c03f04aa0182e23a9afe3f0d6b3fb3baf619e1000f6b29c857861a",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-shear-matrix.pdf",
+      "sha256": "fe169804f0ff375dd7ae7b97ab3d3b6e86effbb75951eb874cb757d718b0f609",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/bold-later-ink.pdf",
+      "sha256": "2e1ab8fbfdfe5b40230ddc41c82237ef2449c955a9d7a8c9bc9b2e36c28fc391",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-omega-flag.pptx",
+      "sha256": "105548e502252fb594727e08350016a00fca6ab3893f7073417bee41eed6ca53",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-original-flag.pptx",
+      "sha256": "ecd1c5b815ef26c1475a2ae604b1cda0ee00114204accf8b5ddd06c4de929fe3",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-language.pptx",
+      "sha256": "36f9d9d388a9d819050efe2394d1dcb24c55a799d5687b855f95333567ed1aa2",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-local-slot.pptx",
+      "sha256": "5416005e077fc8aaf949370bcf43ffc0a4764002cdf6632a4938efda76218829",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-neighbor.pptx",
+      "sha256": "89f22cdbf489830a5afa767e5d019441563fa372235f33f095ed6f96536572e0",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-white-omega.pdf",
+      "sha256": "18bf5a5dfe97e4131577ebe94857721f9d48cf9c90d8c8c64ed234be96089c4b",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-white-original.pdf",
+      "sha256": "bb8fd1e347e542982082e9b9b717f21d8af791a3fc04ac2ccbd6905306767c05",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-swap-pages.pdf",
+      "sha256": "7546df7147d97cb459f815d564ccb5ccf65c783bf9db7aeeba8fd9aee04ce52e",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-shear-matrix.pdf",
+      "sha256": "9122d2bdfc24a74e34a5216b17e190ed5a859aecd03d4e73d4cb64c30d77c3a7",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/italic-later-ink.pdf",
+      "sha256": "3361dca42fac341b93a3e781de3351f00da4f2627956ef5a76ed433c5770e247",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-omega-flag.pptx",
+      "sha256": "d4e04b05c9eaa9ae2649b3223b97b7bd014726b21b6af85bccd06458469217d5",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-original-flag.pptx",
+      "sha256": "c8e1396e49881d47f2ca4417a6065871a145097d9283675b204a7dd182404a68",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-language.pptx",
+      "sha256": "e0bf0846850707cb22efb3a0ab54afcb9eb97198032b1b7e05344336bc043195",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-local-slot.pptx",
+      "sha256": "a07aa07898a877cba614db82e1ef5d6e5480f138a44f714ca634587eb2e8e569",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-neighbor.pptx",
+      "sha256": "3f47a809eb58246751c9c53dbcfe3da1790787846ea91757d004561d609bb610",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-white-omega.pdf",
+      "sha256": "39be2b46559bc79f609825cc044740be6288b60f1dfcf9e0de9c78b52a3a083b",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-white-original.pdf",
+      "sha256": "e6534195ecea0d0e381cdd85bb19a0438f84f6a0337085e764caf0848d7f82aa",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-swap-pages.pdf",
+      "sha256": "8f7d69e145f83b1b11056ddd9a4b1c464285aa72814ed8c13fbbbf4b2b1de5da",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-shear-matrix.pdf",
+      "sha256": "7e1cb4d8ee6a51461ae023031a2945800e6ab3cd94066d05889e707889c09977",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "A",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/style-negative-controls/regular-later-ink.pdf",
+      "sha256": "398d2cda93e1ce4cef64bfc92098f42dd358ed567cdf28600534dd560080feb3",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-omega-flag.pptx",
+      "sha256": "f8b6ef4b583c5188cb22b9cdc013694e2c91c8c80f1598920c3fec2b0d25f2ff",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-original-flag.pptx",
+      "sha256": "2e5a7c8f544764fdf69cbea2c92069a40794576e286d1cd6bf757e3d1913665e",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-language.pptx",
+      "sha256": "f126d942a0939a852ab918d2dc4b27173cb8c64f0ecca904bdbec6bf591ff3ac",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-local-slot.pptx",
+      "sha256": "cca488a265b9a3b1198428ccc5f6f7b5bb2fd743d534d132c8677e4390c5b230",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-neighbor.pptx",
+      "sha256": "0ec0bdc8101695ce1f9da5b9145cbf039602abc681355a50cb8e15003e9e0cf8",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-white-omega.pdf",
+      "sha256": "86a0fa978e60bfca93cc143c33231dcc6e101bb7091104bf000df005695a7069",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-white-original.pdf",
+      "sha256": "141f6ba5f255e0b9d379d1a5a84d7693b5a9a4067c0ed4dc73b1c5e16a432a2d",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-swap-pages.pdf",
+      "sha256": "c5209c38336487e55b00ac31688768f3be6d2928170a2b5f6cd8edeff491dfeb",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-shear-matrix.pdf",
+      "sha256": "17922d0921856c3a10ff52e152f4fab088a8ef1dd8c66978cf0df01b3010e2be",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/bold-later-ink.pdf",
+      "sha256": "d7a06750502e3826805c980b85235874a900e0b52d54a23d7638ac5c93cd7dae",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-omega-flag.pptx",
+      "sha256": "c63d0ee9459e4eede6edf3005f33ba52471cfa6033f12ff115eab52b8162e7ec",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-original-flag.pptx",
+      "sha256": "fb9783f862d7e9819e623b84f5c0ead0dc318c6318a3a1da93fee64d3d6c9fc7",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-language.pptx",
+      "sha256": "90d2e4f3eb908db2b8fdd31c715ee3ea600185f59aa39df770811b3d5d7d6ea5",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-local-slot.pptx",
+      "sha256": "49571c51c0349a389a7dea51506b0e722d0ea0a92d125abe1287ad82d1b0dbf0",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-neighbor.pptx",
+      "sha256": "3e8c47c72c970a048b7a01d2bc1018d7383f4d9819617c5c87631b4c4d155cc1",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-white-omega.pdf",
+      "sha256": "d156bf8b44ee71f26b89d69197f7438f3f7828ab9788876aba7e25a2ae832970",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-white-original.pdf",
+      "sha256": "0863ed8d9737d6f88a59d6bb98bdf6a575e86aec4d9c8b9f3a62f0bc5d35eea3",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-swap-pages.pdf",
+      "sha256": "523056c50abd0dcba69ca3b1d9bc01a32fd9b4a7183a874660f340285da96cd1",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-shear-matrix.pdf",
+      "sha256": "c0a4bf9954dbdb91f32deea26b57805b3a520e2f486503e8fb7fe1fa725c62d3",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/italic-later-ink.pdf",
+      "sha256": "b0133f9bda21a3cf0d7310fb81eccf466b45debe33dcd0175684b4206afcebc8",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "omega-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-omega-flag.pptx",
+      "sha256": "eeeea1678e5210544ebe705091b1660613690d35d017b80a71b96a85249b74d8",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "original-flag",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-original-flag.pptx",
+      "sha256": "242766252fae7db67b1825c6002339be01343aaf057315853644b0bf052d9c4e",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-language.pptx",
+      "sha256": "4631d53fd85e79aa4fb399498b890a500a70d4e55dccba49e6ba692616289980",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide3.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-local-slot.pptx",
+      "sha256": "14f51f2a072a1f270cb526c478e34e1f537c5699d75c4009dd5ec0a0e2771944",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-neighbor.pptx",
+      "sha256": "391063f73e4acb4bcfefb773957a32eb1219290023a310e04d0fc65772e78ded",
+      "rejectedBy": "AssertionError",
+      "reason": "style tree changed outside named Ω/ending flags: ppt/notesSlides/notesSlide2.xml"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-omega",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-white-omega.pdf",
+      "sha256": "ec70c0d57e15550fdaa975b26b7b8531d88042f5beb0858662843c7eefe6232a",
+      "rejectedBy": "AssertionError",
+      "reason": "style extractable but invisible"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "white-original",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-white-original.pdf",
+      "sha256": "b02bca60be68955175511e840bb5d71a623b461b2499f3dadbdcc645cc1a93bf",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-swap-pages.pdf",
+      "sha256": "c7e2917164667c0f7769e05b05f3b6b5c3fd12de732018a87221c62247f0aa70",
+      "rejectedBy": "AssertionError",
+      "reason": "original or neighbor trace changed"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "shear-matrix",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-shear-matrix.pdf",
+      "sha256": "04688cc5ab1d69e72c66067feaf02c83ff6d1fb2f701132a3c1896a27e371bf9",
+      "rejectedBy": "AssertionError",
+      "reason": "synthesized shear/scale"
+    },
+    {
+      "stage": "styles",
+      "group": "B",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/style-negative-controls/regular-later-ink.pdf",
+      "sha256": "ef838c82526c77fb2fa18c9bef4ade0df7731ad25dc57453ead99aa60465db1a",
+      "rejectedBy": "AssertionError",
+      "reason": "outside-Ω style raster changed"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "notes-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/notes-text.pptx",
+      "sha256": "49c8481fd0e047bb4bb90bef0440d0e021f73beb0bc163c852bef88c9767f6d2",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "notes-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/notes-language.pptx",
+      "sha256": "0d3d62d43b0ab46eea20aac863f684d517cfe33e2a55bf3bec298ab87fb4c401",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "notes-style",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/notes-style.pptx",
+      "sha256": "8f3dfcfc92993196efbe7161ad614a487c2ff1e3bd80a8d2296b5572728302a9",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/local-slot.pptx",
+      "sha256": "af19863b707db47d564d3fbb5c3d99e9a6edaaa313578e5c924d9c6d64b2c273",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/notes-theme.pptx",
+      "sha256": "2e574d010d4e0241ace8161f82d3b41b63aed40a5f484f7db07532f32e6fd786",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/theme/theme2.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "master-type",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/master-type.pptx",
+      "sha256": "50115c5500e6214fe54a4241e7ebda08762c419d939122d7848358e16aefdcdc",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "master-size",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/master-size.pptx",
+      "sha256": "ddf7e2fb2f7c29ad118f86f918bbcd62358fa87494c48cd52347bcb729df2b9a",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesMasters/notesMaster1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "notes-borrow-slide-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/notes-borrow-slide-theme.pptx",
+      "sha256": "587bbb39540c07fd3b2b63ac6df0f869e7ac92544574bc968fa493ba8dbd0ed5",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "slide-neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/slide-neighbor.pptx",
+      "sha256": "d7bd400fd3b113c4a39e52c6aa4fdbc759b56360673aaabc5de2d707dfc920ee",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/slides/slide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "wrong-slide-layout",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/wrong-slide-layout.pptx",
+      "sha256": "08f5fa40431c30d038120d19ee004d9503d94a999cecc0d22194c6728aaf1588",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "office-font-scheme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/office-font-scheme.pptx",
+      "sha256": "c917d53ab5e578f219daa0978c123611f18abde6c912d856d96e80b9ac51c7c7",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "presentation-default-kern",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/presentation-default-kern.pptx",
+      "sha256": "465eac3eb388e629ff1947f0450326a6fe7a8dac56ba25df5767676a54410d11",
+      "rejectedBy": "AssertionError",
+      "reason": "presentation changed beyond master ID/Office default text styles"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "presentation-page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/presentation-page-order.pptx",
+      "sha256": "da97117884a6d7155611ce5d95fdca87003e00a71ef812f4888e9ef4c9b7f94a",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "white-body",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/white-body.pdf",
+      "sha256": "557d0dc0d77a110271aba33a2d8233670b17c280419143ae5aa1ebc0ce2ed540",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "font-resource",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/font-resource.pdf",
+      "sha256": "ce65fb162ac7150b51bac263c3eb23b20178614c8473761f135ea4bbce2a57bd",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/swap-pages.pdf",
+      "sha256": "95feda85fe9ffb9ca89d24b8a994674d88bcc28809a25ca8d40e953d83b04b06",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/later-ink.pdf",
+      "sha256": "9ea4f8e76fe8784550b65a84713c34366ae22f0c72dae714fa21e24d6e58ade4",
+      "rejectedBy": "AssertionError",
+      "reason": "notes raster changed outside named final-header glyph"
+    },
+    {
+      "stage": "themes",
+      "group": "A",
+      "name": "white-shifted-header-A",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/theme-negative-controls/white-shifted-header-A.pdf",
+      "sha256": "36a44596e9c00e9dc9471d251639288182141287945e3c105e793816bd5349ec",
+      "rejectedBy": "AssertionError",
+      "reason": "extractable but invisible shifted header A"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "notes-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/notes-text.pptx",
+      "sha256": "248a4fd0e4c3c6ec0d84954b832a20057cff715fab2deae4d9fed3d4cdfff737",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "notes-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/notes-language.pptx",
+      "sha256": "31ad4aa225c6b41ab829eed7888dfc4e5ed6c318bbc8f7b506aaf82463b0bf8a",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "notes-style",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/notes-style.pptx",
+      "sha256": "f3bd9eaed33d0aef9f018cd5bf90aab6d3edba076402dfd727642c4717aa2be9",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/local-slot.pptx",
+      "sha256": "370634edb8d01298fd82be888ac4220a1c3f6f8d22dd6c1b3f804dcba07b0c2c",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide10.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/notes-theme.pptx",
+      "sha256": "8e24b9973302aad4c12da1f9ed372a96917e390078908ab14e036bd8b6351ba8",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/theme/theme2.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "master-type",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/master-type.pptx",
+      "sha256": "e95095e67ca0e6c8fd82e3793e019ab4323418691328ad101903d873299d3f95",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "master-size",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/master-size.pptx",
+      "sha256": "cf12427e56f5bb7beadfec41a2efb5ecb036fa71bb3b7de972f7181f30657b3b",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesMasters/notesMaster1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "notes-borrow-slide-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/notes-borrow-slide-theme.pptx",
+      "sha256": "d3399ebc3a659a91cdf8947f11229f8477e3807018e61b1b5f46567cfbd2d959",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "slide-neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/slide-neighbor.pptx",
+      "sha256": "44b047684527fff36c553b45b10086d2a2be59d45f83e8eb9b3a6b015b04ed3d",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/slides/slide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "wrong-slide-layout",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/wrong-slide-layout.pptx",
+      "sha256": "d988df3f5d0cb797af35a22b4d9a61352b45cece4282c1161b9d6ebae971be86",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "office-font-scheme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/office-font-scheme.pptx",
+      "sha256": "4bb60198a0ed09e2e5071e60608cbd09436ae86fafa0c3846a4aad7a23231831",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "presentation-default-kern",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/presentation-default-kern.pptx",
+      "sha256": "80d0aea48ca1856123009b70606c31d50ef538e158dada3e56d0ca481d7422ce",
+      "rejectedBy": "AssertionError",
+      "reason": "presentation changed beyond master ID/Office default text styles"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "presentation-page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/presentation-page-order.pptx",
+      "sha256": "6ef55acd02f171d397b9a2a8f336e0d65307a53e0a0b23f2c7ee3ef53c1f3395",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "white-body",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/white-body.pdf",
+      "sha256": "f103eaa426e69825fe0061712a169b7902b57d914b98d3f71a0a1f8590707cd5",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "font-resource",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/font-resource.pdf",
+      "sha256": "5e82e528d82818005a438013131aed3ae04a959a8adde8e4bf798dc583d432da",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/swap-pages.pdf",
+      "sha256": "ad3b13221b447f7d183f852581a97fd7a4113639d079d93b3f39061ef631217e",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "B",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/theme-negative-controls/later-ink.pdf",
+      "sha256": "6efb7adec396a1869863f502b10c6a3a5e25e375ef27da740c837583cf18009a",
+      "rejectedBy": "AssertionError",
+      "reason": "notes raster changed outside named final-header glyph"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "notes-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/notes-text.pptx",
+      "sha256": "da0ab0ef5aef6ffc728ec2f63f506a4a1308c7c6524e5f186cf2d66dbbdc76e4",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "notes-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/notes-language.pptx",
+      "sha256": "c2301d2257199e073b2808605e337a0059eb8de10d2a856be68523f308d556b7",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "notes-style",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/notes-style.pptx",
+      "sha256": "412f8a2b0b7d19ad3039a5dcdeff3bbf9cbf30017dfb1b98dd2a8b2382dcf90a",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "local-slot",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/local-slot.pptx",
+      "sha256": "538209f654c079f60aaea1e7655728fa42fc15d36c317269f518d5963a1b2210",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesSlides/notesSlide19.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/notes-theme.pptx",
+      "sha256": "027606a2a6bcd16688f3f5751c0aa147d035348dc3a8c4f6225717d3c3692141",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/theme/theme2.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "master-type",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/master-type.pptx",
+      "sha256": "b4dc460c7db0d07fec9eab7115b8059f85299a9e02be4ce8f02d6e889c3090eb",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "master-size",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/master-size.pptx",
+      "sha256": "a1a197f47dbc3c0b0663fbe4847c8470f135451bdbdba9bc8dc6e67b9c094f87",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/notesMasters/notesMaster1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "notes-borrow-slide-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/notes-borrow-slide-theme.pptx",
+      "sha256": "09e5f408f0f749728abe2bd71b63cb1f5fe8955ebab518fde19d13d8a3d8301c",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "slide-neighbor",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/slide-neighbor.pptx",
+      "sha256": "38d9286c1b7d237f7e446fb35298386dcfd96057654ff5c6fd9f4660a033b0e9",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/slides/slide1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "wrong-slide-layout",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/wrong-slide-layout.pptx",
+      "sha256": "301474fcf5311763e36e9fbcdfb709240ebedc1de1e1fbff1206cf30b52857dc",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "office-font-scheme",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/office-font-scheme.pptx",
+      "sha256": "f22a052c0a9c04f738f23b6d6695b416782f5047295c8ea67707071286275e93",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "presentation-default-kern",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/presentation-default-kern.pptx",
+      "sha256": "d915d2baa0acb7a73d74396b52379d2649d62ba794e65dd0c7d8c7995df86b4f",
+      "rejectedBy": "AssertionError",
+      "reason": "presentation changed beyond master ID/Office default text styles"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "presentation-page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/presentation-page-order.pptx",
+      "sha256": "a839951b0fc63bf29af81831ba5d944ca768e4b1467165934d8b9e553f666fb8",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "override-font",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/override-font.pptx",
+      "sha256": "5038a14890130a2b7b189ee01d8b3bfb685961fd5334085a6a2f669894d52cae",
+      "rejectedBy": "AssertionError",
+      "reason": "unrelated theme payload changed: ppt/theme/themeOverride1.xml"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "override-borrows-A",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/override-borrows-A.pptx",
+      "sha256": "5b95514ccc80e84bad7a1f2ac10bcadbade018ca557c73e53e35a598600ee418",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "white-body",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/white-body.pdf",
+      "sha256": "a6bb479e5a080b6f386293d8bc9a3495858af7a419627a3f9b9b1ab003e50217",
+      "rejectedBy": "AssertionError",
+      "reason": ""
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "font-resource",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/font-resource.pdf",
+      "sha256": "1dc8fcda950d5671095040c5cd673445993f2d1769f8de4c68a36719ca927080",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "swap-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/swap-pages.pdf",
+      "sha256": "edc0f81301afb15def818bd3106b6e05d10f8a1bdea5b9ed539f8e475218f915",
+      "rejectedBy": "AssertionError",
+      "reason": "notes glyph/font/geometry changed outside named final-header-A kerning"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "later-ink",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/later-ink.pdf",
+      "sha256": "dbff8587aab2821a4327cfed9d9d8e47cbac457fc10a2376e2acf6f4bbbe4186",
+      "rejectedBy": "AssertionError",
+      "reason": "notes raster changed outside named final-header glyph"
+    },
+    {
+      "stage": "themes",
+      "group": "override",
+      "name": "white-shifted-header-A",
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/theme-negative-controls/white-shifted-header-A.pdf",
+      "sha256": "f981d67435b2780f7246f93a9afb18eb1035417383447d8d20a33d29ac1040ae",
+      "rejectedBy": "AssertionError",
+      "reason": "extractable but invisible shifted header A"
+    }
+  ],
+  "scope": "Actual retained ZIP/PDF bytes hash-checked and rejected by current independent oracles; positive stage controls checked first. No native actions or regenerated counterexamples."
+}

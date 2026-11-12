@@ -1,0 +1,26 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { createHash } from "node:crypto";
+import { createPresentation } from "../packages/core/dist/index.js";
+import { generatePptx, inspectGif } from "../packages/pptx-exporter/dist/index.js";
+import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js";
+
+const directory = process.argv[2];
+if (!directory || process.argv.length !== 3) throw new Error("Usage: node scripts/prepare-gif-native-playback.mjs <directory-containing-motion.gif>");
+const gif = await readFile(join(directory, "motion.gif"));
+const info = inspectGif(gif);
+if (info.frames.length !== 2 || info.frames.some(frame => frame.delayCentiseconds !== 150) || info.loopCount !== 0) throw new Error("Expected named two-frame, 1.5-second, infinite-loop GIF.");
+const deck = createPresentation({ size: { width: 960, height: 540 } });
+deck.registerAsset({ id: "motion", kind: "image", source: { type: "bytes", value: gif }, width: 40, height: 40 });
+const slide = deck.addSlide({ id: "gif-playback" });
+slide.addElement({ type: "text", id: "title", content: "Animated GIF — native playback", box: { x: 50, y: 30, width: 800, height: 60 } });
+slide.addElement({ type: "image", id: "gif-left", assetId: "motion", fit: "stretch", box: { x: 90, y: 150, width: 240, height: 240 } });
+slide.addElement({ type: "image", id: "gif-right", assetId: "motion", fit: "stretch", box: { x: 520, y: 150, width: 240, height: 240 } });
+const result = await generatePptx(deck, { gifDiagnostics: "warn" });
+if (result.warnings.length !== 1 || result.warnings[0].code !== "gif-animation-playback-unverified") throw new Error("Unexpected export diagnostic.");
+const hash = input => createHash("sha256").update(input).digest("hex");
+await writeFile(join(directory, "candidate.pptx"), result.bytes);
+const preview = await renderPresentationToSvg(deck);
+await writeFile(join(directory, "preview.svg"), preview.slides[0].svg);
+await writeFile(join(directory, "producer.json"), JSON.stringify({ gifSha256: hash(gif), pptxSha256: hash(result.bytes), info, warnings: result.warnings }, null, 2) + "\n");
+console.log(JSON.stringify({ directory, gifSha256: hash(gif), pptxSha256: hash(result.bytes) }));

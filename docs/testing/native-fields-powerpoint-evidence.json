@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104",
+    "build": "16.104.25121423"
+  },
+  "observedDate": "2026-10-28",
+  "records": [
+    {
+      "file": ".tmp/native-field-powerpoint-01/source.pptx",
+      "sha256": "b0046827861ec92a49cb595fd2e2972a3b7100c85d2a0e5b1014788f9769ed9d",
+      "slides": [
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000001}",
+            "type": "slidenum",
+            "cache": "STALE-NUMBER"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+            "type": "datetime3",
+            "cache": "STALE-DATE"
+          }
+        ],
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000002}",
+            "type": "slidenum",
+            "cache": "STALE-NUMBER"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+            "type": "datetime3",
+            "cache": "STALE-DATE"
+          }
+        ]
+      ]
+    },
+    {
+      "file": ".tmp/native-field-powerpoint-01/round1.pptx",
+      "sha256": "fc503cc1bc200be51805b6cfeb94f0599b7b83dc22f8c14a70e490abdf69252c",
+      "slides": [
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000001}",
+            "type": "slidenum",
+            "cache": "1"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ],
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000002}",
+            "type": "slidenum",
+            "cache": "2"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ]
+      ]
+    },
+    {
+      "file": ".tmp/native-field-powerpoint-01/round2.pptx",
+      "sha256": "5efc55affae01a6d7a645e19117133644b4314f9b667120525a3efc23a78df6a",
+      "slides": [
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000001}",
+            "type": "slidenum",
+            "cache": "1"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ],
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000002}",
+            "type": "slidenum",
+            "cache": "2"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ]
+      ]
+    },
+    {
+      "file": ".tmp/native-field-powerpoint-01/round3.pptx",
+      "sha256": "8290f479dd81489b92022c7377b49166b96a380017fa43f4ee1dfac14d2ce41c",
+      "slides": [
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000001}",
+            "type": "slidenum",
+            "cache": "1"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ],
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000002}",
+            "type": "slidenum",
+            "cache": "2"
+          },
+          {
+            "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+            "type": "datetime3",
+            "cache": "28 October 2026"
+          }
+        ]
+      ]
+    }
+  ],
+  "uiObservation": "Opened the fresh two-slide source, visually observed Page 1: 1 / Date: 28 October 2026 and Page 2: 2 / Date: 28 October 2026. Saved as round1, closed and reopened round1, saved as round2, closed and reopened round2, saved as round3, closed and reopened round3, visually observed page 2. Screenshot capture was displayed in the session but not retained as a local artifact.",
+  "scope": "One two-slide authored sample, slidenum and datetime3 in ordinary slide text, no text edits, no layout/master/notes fields, no locale or date-change matrix. The read-only inspector checks ZIP/XML and does not replay the GUI or independently prove visual observations."
+}

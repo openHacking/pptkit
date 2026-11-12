@@ -1,0 +1,34 @@
+{
+  "scope": "One newly generated text corpus sample; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. Rich text and numbered paragraph edited, saved and reopened once. No repair prompt observed. Link targets and notes checked in saved XML; link activation, notes UI, calibrated layout, other versions, and authentic provenance are not established.",
+  "font": "PowerPoint reported PPTKit Fixture theme body; actual substitution not independently identified",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/text.pptx",
+    "sha256": "3497fc8d803406fd1899facf38b57bb90491b2486974ed59e4d987bce603cb43",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-text-powerpoint-interactive.pptx",
+    "sha256": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-text",
+  "captures": {
+    "fresh-first.png": "fe51abfd6d2c900e2c436923822b69c14183551ab60cacb90703d4f719ad8336",
+    "fresh-first.ax.txt": "5805e9c04160d4379f36f3939739d23246465f7d63edcb86bc7f34a4859167d8",
+    "fresh-reopen.png": "3b38edb1caf8ad011b22605c49ae3e88185cdd106ac0811a9e07e01f06f68dd7",
+    "fresh-reopen.ax.txt": "db0fb9480a865c75853605cde824edd1a1bfe7a6ebc0f68f3b45d6ca94003c50"
+  },
+  "operations": [
+    "Rich -> Edited",
+    "Numbered -> Revised",
+    "save",
+    "close",
+    "reopen"
+  ],
+  "oldControl": {
+    "source": ".tmp/fixtures/text.pptx",
+    "sourceSha256": "5430ce4c5e7c1bf81363da056f83bed7c8c0e460dbbdda9321155e7343dad8ee",
+    "saved": ".tmp/corpus-powerpoint-text/text-interactive.pptx",
+    "savedSha256": "e6d132be12cd10b886382ba0202bbf2e689987b8ec3017eb079edeedc000655d",
+    "observation": "Old local input omitted ppaction://hlinksldjump and its saved file lost the slide relationship; fresh input and save retain action and target. This is a stale-artifact comparison, not a controlled isolated experiment."
+  }
+}

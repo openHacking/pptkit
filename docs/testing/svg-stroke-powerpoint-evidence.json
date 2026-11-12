@@ -1,0 +1,134 @@
+{
+  "scope": "PowerPoint first open, one interactive right-arrow move of the first circle, save, close and exact reopen; original-copy AX was captured on a later reopen. Three shape XML geometries, stroke widths and colors are checked before and after; fixed UI pixels check stroke colors and empty centers. UI captures do not authenticate provenance or prove complete visual parity. Other shapes, fonts, joins, applications and additional reopen rounds remain unverified.",
+  "applicationVersion": "16.104",
+  "directory": ".tmp/native-svg-stroke",
+  "generatorSha256": "ad318a8cdcafadd52129fb6096d64e59da3612e3bbeb7e5ef1eeaf22d257f38e",
+  "verifierSha256": "563c0a5253e3227a7155455360e2a815673dd255dfe2c621c447bfa46a5656b5",
+  "sha256": {
+    "source.svg": "841c9e236f3e3516118ae120e34875a7a61adb4b52bc11d3373e05a680c5fabc",
+    "original.pptx": "2be059799c43045576a34ba6c31d956312c32b0f9f6cffe30d8c5f5e599b384e",
+    "source.pptx": "0b18057f67ba7f59fb700235f4e19afc6fce57eb93776a49e036b50c0e322b84",
+    "first.png": "0d62440bb2eda817021fd4ba066dff1f0d5ce5822b8777b11522cfffa4dfbd14",
+    "reopen.png": "539f9c7a162def780d8dccf476c5cca6291786daa0704f4b0c7d153777a63127",
+    "original-reopened.ax.txt": "55c95091a27bb93ef6bb4a850e1bbf013c0e64ffd7c98f257417533a00b217d8",
+    "reopen.ax.txt": "45c327104e980422b3a1c27fa764112cbef57dd096a8fd24d13faf736b86d7ac"
+  },
+  "before": [
+    {
+      "offset": [
+        762000,
+        952500
+      ],
+      "extent": [
+        1905000,
+        1905000
+      ],
+      "width": 152400,
+      "color": "FF0000",
+      "geometry": "ellipse"
+    },
+    {
+      "offset": [
+        3238500,
+        1143000
+      ],
+      "extent": [
+        2286000,
+        1524000
+      ],
+      "width": 114300,
+      "color": "0000FF",
+      "geometry": "ellipse"
+    },
+    {
+      "offset": [
+        6286500,
+        571500
+      ],
+      "extent": [
+        1905000,
+        2667000
+      ],
+      "width": 76200,
+      "color": "00AA00",
+      "geometry": "ellipse"
+    }
+  ],
+  "after": [
+    {
+      "offset": [
+        769434,
+        952500
+      ],
+      "extent": [
+        1905000,
+        1905000
+      ],
+      "width": 152400,
+      "color": "FF0000",
+      "geometry": "ellipse"
+    },
+    {
+      "offset": [
+        3238500,
+        1143000
+      ],
+      "extent": [
+        2286000,
+        1524000
+      ],
+      "width": 114300,
+      "color": "0000FF",
+      "geometry": "ellipse"
+    },
+    {
+      "offset": [
+        6286500,
+        571500
+      ],
+      "extent": [
+        1905000,
+        2667000
+      ],
+      "width": 76200,
+      "color": "00AA00",
+      "geometry": "ellipse"
+    }
+  ],
+  "sampledPixels": {
+    "first": [
+      [
+        254,
+        0,
+        10
+      ],
+      [
+        0,
+        37,
+        250
+      ],
+      [
+        0,
+        159,
+        33
+      ]
+    ],
+    "reopen": [
+      [
+        255,
+        0,
+        10
+      ],
+      [
+        0,
+        37,
+        250
+      ],
+      [
+        0,
+        159,
+        33
+      ]
+    ]
+  }
+}

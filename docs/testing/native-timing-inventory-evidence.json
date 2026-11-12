@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T20:01:18.848Z",
+  "artifactsDirectory": ".tmp/native-timing-inventory/run-rWJxQH",
+  "scope": "Public source timing inventory independently checked against raw package XML. Input provenance/application playback must be supplied separately; this tool runs no native application.",
+  "artifacts": [
+    {
+      "input": ".tmp/animation-native/run-UKB5dV/source.pptx",
+      "sha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
+      "byteLength": 16294,
+      "dialect": "transitional",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; raw indices/expanded paths/attributes/text/ancestry/candidate identities",
+        "timingNodes": 129
+      },
+      "workUnits": 1545,
+      "recordCount": 398,
+      "textCharacters": 118981,
+      "slides": [
+        {
+          "slideId": 256,
+          "part": "/ppt/slides/slide1.xml",
+          "timingNodeCount": 31,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide1.xml",
+                "elementIndex": 71,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]"
+              },
+              "local": "animEffect",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "transition",
+                  "value": "in"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "filter",
+                  "value": "fade"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide1.xml",
+                "elementIndex": 75,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "2",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide1.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 257,
+          "part": "/ppt/slides/slide2.xml",
+          "timingNodeCount": 33,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide2.xml",
+                "elementIndex": 71,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animRot[1]"
+              },
+              "local": "animRot",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "by",
+                  "value": "21600000"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide2.xml",
+                "elementIndex": 75,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animRot[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "2",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide2.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 258,
+          "part": "/ppt/slides/slide3.xml",
+          "timingNodeCount": 31,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide3.xml",
+                "elementIndex": 71,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]"
+              },
+              "local": "animEffect",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "transition",
+                  "value": "out"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "filter",
+                  "value": "fade"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide3.xml",
+                "elementIndex": 75,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "2",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide3.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 259,
+          "part": "/ppt/slides/slide4.xml",
+          "timingNodeCount": 34,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide4.xml",
+                "elementIndex": 71,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animMotion[1]"
+              },
+              "local": "animMotion",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "origin",
+                  "value": "layout"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "path",
+                  "value": "M 0 0 L 0.25 0 E"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "pathEditMode",
+                  "value": "relative"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide4.xml",
+                "elementIndex": 75,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animMotion[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "2",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide4.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "findings": [],
+      "nativePlayback": "not-performed",
+      "authoredMapping": "not-performed"
+    },
+    {
+      "input": ".tmp/animation-native/run-UKB5dV/native/source.pptx",
+      "sha256": "b0e3eefa2d4b843b8ada6e0005b85d9d925f465f121e5981035272085a3df1a3",
+      "byteLength": 12957,
+      "dialect": "transitional",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; raw indices/expanded paths/attributes/text/ancestry/candidate identities",
+        "timingNodes": 129
+      },
+      "workUnits": 1657,
+      "recordCount": 383,
+      "textCharacters": 118875,
+      "slides": [
+        {
+          "slideId": 256,
+          "part": "/ppt/slides/slide1.xml",
+          "timingNodeCount": 31,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide1.xml",
+                "elementIndex": 80,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]"
+              },
+              "local": "animEffect",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "transition",
+                  "value": "in"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "filter",
+                  "value": "fade"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide1.xml",
+                "elementIndex": 84,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "4",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide1.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 257,
+          "part": "/ppt/slides/slide2.xml",
+          "timingNodeCount": 33,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide2.xml",
+                "elementIndex": 80,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animRot[1]"
+              },
+              "local": "animRot",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "by",
+                  "value": "21600000"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide2.xml",
+                "elementIndex": 84,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animRot[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "5",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide2.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 258,
+          "part": "/ppt/slides/slide3.xml",
+          "timingNodeCount": 31,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide3.xml",
+                "elementIndex": 80,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]"
+              },
+              "local": "animEffect",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "transition",
+                  "value": "out"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "filter",
+                  "value": "fade"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide3.xml",
+                "elementIndex": 84,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animEffect[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "6",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide3.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "slideId": 259,
+          "part": "/ppt/slides/slide4.xml",
+          "timingNodeCount": 34,
+          "drawings": 2,
+          "behaviors": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide4.xml",
+                "elementIndex": 80,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animMotion[1]"
+              },
+              "local": "animMotion",
+              "attributes": [
+                {
+                  "namespaceUri": "",
+                  "local": "origin",
+                  "value": "layout"
+                },
+                {
+                  "namespaceUri": "",
+                  "local": "path",
+                  "value": "M 0 0 L 0.25 0 E"
+                }
+              ]
+            }
+          ],
+          "drawingTargets": [
+            {
+              "source": {
+                "part": "/ppt/slides/slide4.xml",
+                "elementIndex": 84,
+                "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}timing[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}seq[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}par[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cTn[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}childTnLst[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}animMotion[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cBhvr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}tgtEl[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTgt[1]"
+              },
+              "kind": "whole-object",
+              "reference": {
+                "rawId": "7",
+                "status": "located",
+                "candidates": [
+                  {
+                    "source": {
+                      "part": "/ppt/slides/slide4.xml",
+                      "elementIndex": 16,
+                      "path": "/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cSld[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}spTree[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}sp[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}nvSpPr[1]/Q{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr[1]"
+                    },
+                    "match": "exact"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "findings": [],
+      "nativePlayback": "not-performed",
+      "authoredMapping": "not-performed"
+    }
+  ]
+}

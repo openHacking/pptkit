@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T21:50:07.590Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/theme-text-native/run-N8kDF7",
+  "scope": "Repository-authored partial layout font override plus slide color override, Latin-only projection, exact no-op, LibreOfficeDev PDF text/color/font inspection and native producer save. Not interactive editing, whole-slide visual parity, arbitrary script fonts, PowerPoint or preservation edit-save.",
+  "source": {
+    "sha256": "9960fcfc1c363589ea5f3c2e4c6f2c85cd5a621526dd5157366d67e45d4156dc",
+    "expected": [
+      {
+        "text": "Theme first page",
+        "color": "A13B57",
+        "fontFamily": "Liberation Serif",
+        "fontSize": 24
+      },
+      {
+        "text": "Theme second page",
+        "color": "13579B",
+        "fontFamily": "Liberation Serif",
+        "fontSize": 24
+      }
+    ]
+  },
+  "projection": [
+    {
+      "text": "Theme first page",
+      "color": "A13B57",
+      "fontFamily": "Liberation Serif",
+      "fontSize": 24
+    },
+    {
+      "text": "Theme second page",
+      "color": "13579B",
+      "fontFamily": "Liberation Serif",
+      "fontSize": 24
+    }
+  ],
+  "noOpOriginalBytes": true,
+  "freshExport": {
+    "sha256": "b9f7f2cff5a833ee187e2327d8732247c1220585a7dc7b249a885403a6bbf130"
+  },
+  "nativeSource": {
+    "sha256": "4a7dcfcbba7cf9ed9541a7bbbcace9e121fae3de73a213474898cdae058c6cb7",
+    "projection": [
+      {
+        "text": "Theme first page",
+        "color": "13579B",
+        "fontFamily": "Arial",
+        "fontSize": 24
+      },
+      {
+        "text": "Theme second page",
+        "color": "13579B",
+        "fontFamily": "Arial",
+        "fontSize": 24
+      }
+    ],
+    "sameSelectedStyles": false
+  },
+  "pdf": {
+    "base": [
+      [
+        {
+          "text": "Theme first page",
+          "font": "LiberationSans",
+          "color": "13579B",
+          "size": 24.009000778198242
+        }
+      ],
+      [
+        {
+          "text": "Theme second page",
+          "font": "LiberationSans",
+          "color": "13579B",
+          "size": 24.009000778198242
+        }
+      ]
+    ],
+    "source": [
+      [
+        {
+          "text": "Theme first page",
+          "font": "LiberationSans",
+          "color": "13579B",
+          "size": 24.009000778198242
+        }
+      ],
+      [
+        {
+          "text": "Theme second page",
+          "font": "LiberationSans",
+          "color": "13579B",
+          "size": 24.009000778198242
+        }
+      ]
+    ],
+    "freshExport": [
+      [
+        {
+          "text": "Theme first page",
+          "font": "LiberationSerif",
+          "color": "A13B57",
+          "size": 24.009000778198242
+        }
+      ],
+      [
+        {
+          "text": "Theme second page",
+          "font": "LiberationSerif",
+          "color": "13579B",
+          "size": 24.009000778198242
+        }
+      ]
+    ],
+    "sameSelectedStyles": false,
+    "observedFontChange": false,
+    "sourceColorsMatchProjection": false,
+    "artifacts": [
+      {
+        "name": "base.pdf",
+        "sha256": "b7fd1af1d02e59461aed81a12e483406d6b92d7aec8b0e2ff30f663134f8b92e",
+        "byteLength": 15118
+      },
+      {
+        "name": "source.pdf",
+        "sha256": "8fe6de5ece1fe7c8c401c7f89e7d95caadabe916d5579afc93caf67f3059d4bd",
+        "byteLength": 15118
+      },
+      {
+        "name": "projection.pdf",
+        "sha256": "3f6be6866e64da18b0ae788b79d36287c7c37b6c5e32a8a666df7ab294642a24",
+        "byteLength": 15558
+      }
+    ]
+  },
+  "logs": {
+    "base": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/base.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/pdf/base.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "source": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "projection": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/pdf/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "nativeSave": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/theme-text-native/run-N8kDF7/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

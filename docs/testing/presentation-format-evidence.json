@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T22:51:02.610Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4",
+  "sourceSha256": "acbe40dc3140880d1da734d13af59405ad6b740c7585884dd7e89bbbc0b98770",
+  "oldSourceFile": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/input.pptx",
+  "oldSourceSha256": "7773cbaa76a74d1bea8d714dc60ece07a2423b94b01b72aee441e061d535940b",
+  "changedParts": [
+    "docProps/app.xml"
+  ],
+  "delta": "Only PresentationFormat 16:9→4:3 in docProps/app.xml; all other named ZIP payloads are exact.",
+  "scenes": [
+    {
+      "id": "wide",
+      "expected": "On-screen Show (16:9)",
+      "cx": 12192000,
+      "cy": 6858000,
+      "sha256": "79f31479f01a84aa7a5de498709840633bde835bf4ee4f298a431b2d3f7ffb3d"
+    },
+    {
+      "id": "standard",
+      "expected": "On-screen Show (4:3)",
+      "cx": 9144000,
+      "cy": 6858000,
+      "sha256": "b5190a89e605f2d4f8dd7ac954ce83025dc7db1f6eb8fb14e3d49fd0b619ee57"
+    },
+    {
+      "id": "wide-ten",
+      "expected": "On-screen Show (16:10)",
+      "cx": 12192000,
+      "cy": 7620000,
+      "sha256": "f7f0488c487b78bdbe823b197a0099bde72835776f33646803bc0cffe2b8d27a"
+    },
+    {
+      "id": "portrait",
+      "expected": "Custom",
+      "cx": 6858000,
+      "cy": 12192000,
+      "sha256": "d2f716ffaa795a11d3fe93ef76ec8a5a6ccfacb09fea42494610897f6038f9c0"
+    },
+    {
+      "id": "square",
+      "expected": "Custom",
+      "cx": 6350000,
+      "cy": 6350000,
+      "sha256": "cf0d5464345acf040746350cb1fb9218b068f557edb6a2be48b1daec236d810a"
+    },
+    {
+      "id": "paper",
+      "expected": "Custom",
+      "cx": 10693400,
+      "cy": 7556500,
+      "sha256": "dd7c383782fad5598739161a947cf757a788db56a9ef358e0e958e4fd1c9f1d4"
+    },
+    {
+      "id": "rounded-wide",
+      "expected": "On-screen Show (16:9)",
+      "cx": 12192000,
+      "cy": 6858000,
+      "sha256": "da93df8bea7842ce835b160ac483ef64583e8b7f2f2e7a81b8a7371b9bf46a4f"
+    },
+    {
+      "id": "near-wide",
+      "expected": "Custom",
+      "cx": 12192001,
+      "cy": 6858000,
+      "sha256": "3d12f267f9a8c204ee1ebd615fed5252e0270260bc48faa18861470b75f1f305"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/source.pptx",
+      "bytes": 31701,
+      "sha256": "acbe40dc3140880d1da734d13af59405ad6b740c7585884dd7e89bbbc0b98770"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/normalized.json",
+      "bytes": 63140,
+      "sha256": "fdfbd940f4d136ba5336dd035bf9ee08caaed5f315dcdc991ab407c3914333ce"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/wide.pptx",
+      "bytes": 9912,
+      "sha256": "79f31479f01a84aa7a5de498709840633bde835bf4ee4f298a431b2d3f7ffb3d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/standard.pptx",
+      "bytes": 9918,
+      "sha256": "b5190a89e605f2d4f8dd7ac954ce83025dc7db1f6eb8fb14e3d49fd0b619ee57"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/wide-ten.pptx",
+      "bytes": 9925,
+      "sha256": "f7f0488c487b78bdbe823b197a0099bde72835776f33646803bc0cffe2b8d27a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/portrait.pptx",
+      "bytes": 9907,
+      "sha256": "d2f716ffaa795a11d3fe93ef76ec8a5a6ccfacb09fea42494610897f6038f9c0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/square.pptx",
+      "bytes": 9895,
+      "sha256": "cf0d5464345acf040746350cb1fb9218b068f557edb6a2be48b1daec236d810a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/paper.pptx",
+      "bytes": 9911,
+      "sha256": "dd7c383782fad5598739161a947cf757a788db56a9ef358e0e958e4fd1c9f1d4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/rounded-wide.pptx",
+      "bytes": 9922,
+      "sha256": "da93df8bea7842ce835b160ac483ef64583e8b7f2f2e7a81b8a7371b9bf46a4f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/run-pTh2Vg/near-wide.pptx",
+      "bytes": 9906,
+      "sha256": "3d12f267f9a8c204ee1ebd615fed5252e0270260bc48faa18861470b75f1f305"
+    }
+  ],
+  "nativeApplication": "Actual PowerPoint 16.104 (25121423); metadata-corrected 4:3 source, six first-open and eighteen reopened pages",
+  "dependencies": [
+    {
+      "file": "packages/pptx-exporter/src/ooxml/package-parts.ts",
+      "sha256": "c32c4e5d5b632016a81e8ae52307963cf143543a86e4a5dfe87047c2d3a4bf91"
+    },
+    {
+      "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+      "sha256": "85df97b6042f03abf59a627a7cb4831548c1eb0d1b5b301de1fa9f463b5f18c4"
+    },
+    {
+      "file": "packages/pptx-exporter/test/presentation-format.test.mjs",
+      "sha256": "128c65614d1e20e31fb804ee6c4c590721957e884b01aa369485157e4b329cb0"
+    },
+    {
+      "file": "tests/fixtures/presentation-format.mjs",
+      "sha256": "923d4657ba18bfcf455bb5b495b479b82cfeccb2b369e8cb8890f1b31ce9cb38"
+    },
+    {
+      "file": "tests/fixtures/master-artwork-format-baseline.json",
+      "sha256": "b762e847407a2b1454db7d35b233f511bfb900f2d53d8b273d3d1797042a7867"
+    },
+    {
+      "file": "tests/fixtures/master-artwork.mjs",
+      "sha256": "0029fd3e3865bd3f680f233a2275bd7df68fcdd1fe4cfcb0aff33faf554439db"
+    },
+    {
+      "file": "scripts/presentation-format-parity.test.mjs",
+      "sha256": "7f25db034b0e4420d214393a4b7c823a51f5b72f66cb67683e06914210da0df7"
+    },
+    {
+      "file": "scripts/prepare-presentation-format.mjs",
+      "sha256": "22b644b48c50719c0b35d8d0cdf53dbead609d822993d6d37e0fa0c8f042dfdd"
+    },
+    {
+      "file": "scripts/inspect-native-presentation-format.mjs",
+      "sha256": "ea09db95b8bd2fffc98474f0d95b631cfe8f1a4d617dc0958e58125572101219"
+    },
+    {
+      "file": "scripts/verify-presentation-format-evidence.mjs",
+      "sha256": "3336675a8b2200c5c4ad5f0ba1c7b31045baecc9f67cb9bfa007f6278d94d8e6"
+    },
+    {
+      "file": "package.json",
+      "sha256": "a369aa486a6270db3dd8106afef7b9ed4ae3662d7e32028b3e666865940864e4"
+    }
+  ],
+  "nativeEvidence": {
+    "file": "docs/testing/presentation-format-native-evidence.json",
+    "sha256": "33e8e20e7607702ff89446dfdd4a8150a4411d967fbae491046e0f9c3ff08d7f"
+  },
+  "parserEvidence": {
+    "file": "docs/testing/presentation-format-native-parser-evidence.json",
+    "sha256": "069624371e4cca18d9e55bb3342a65f2d0f0a0a44e9e77f624f6d4decf551e4b"
+  },
+  "finalizedAt": "2026-10-27T05:18:20.949Z"
+}

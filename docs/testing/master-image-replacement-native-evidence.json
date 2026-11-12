@@ -1,0 +1,47 @@
+{
+  "scope": "PowerPoint 16.104 manual first-open slideshow on four named pages; sampled colors and title distinction, not an independent UI witness or native edit/save",
+  "directory": ".tmp/master-image-replacement-native-01",
+  "pptxSha256": "9f4243570d3549bcbb53926cfec52de146a60e40ecbd8f67bd5bba84031ee10b",
+  "screenshotSha256": [
+    "d31261b16ad9bd8478f451df022277c7ac972dfe0ebd8e01566088e9d3f1ac04",
+    "ca616cda2b2172ae31077bb718c9c214907f0c10bcaa9522ca1a5269115a654e",
+    "255b96e60a56a4c699ef363d168b73e11f9ba9e3aaf63eeffb976d565554fd0a",
+    "33c8d0d2178c3a0f6b95b790ae1951ba0f635858c5fa246a15de29bb3b43a0bd"
+  ],
+  "producerSha256": "b70fdc153f69c3f82ff011734ec46db0485188a980afefc8912eb7639545ca2a",
+  "transparentFixtureSha256": "6627f2ea583058eb08d52d63287278afd7416429211e6b27a781699202cdd1c1",
+  "scripts": {
+    "scripts/prepare-master-image-replacement-native.mjs": "1febef1b6d7a0e6db16454320ea147ea76cbc8f6bb38ee4c3e63292b9a37b987",
+    "packages/layout/src/image/plan-shared-visible-replacement.ts": "836d45134cafe6111bc4b54be76773e4432ab809a557c30b719b3ad728bfb66e"
+  },
+  "oracleSha256": "2bdb8672ab68b046f78fb6ee9058b1d6a6ca66f1766b62b022a1ddd1405cf636",
+  "observation": {
+    "masters": [
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster3.xml"
+    ],
+    "media": "ppt/media/next.png",
+    "sampledColors": [
+      [
+        "red",
+        "blue"
+      ],
+      [
+        "red",
+        "blue"
+      ],
+      [
+        "white",
+        "white"
+      ],
+      [
+        "green",
+        "green"
+      ]
+    ],
+    "distinctTitleCrops": 4
+  },
+  "negativeCasesRejected": 3
+}

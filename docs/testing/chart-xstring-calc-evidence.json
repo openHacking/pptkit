@@ -1,0 +1,177 @@
+{
+  "scope": "One authored chart workbook, three LibreOfficeDev Calc headless XLSX resaves; raw XML values only, no PowerPoint, GUI or chart cache.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "6ddcfc42f4bf1573adb6c1f8b887ce0be0d52a296641650415a1935ce8903240",
+  "generatorSha256": "f6b3f969d71dc6713395b273842fa8a31a1f3bd324eef03494181a7c123a58b0",
+  "records": [
+    {
+      "round": 0,
+      "path": ".tmp/chart-xstring-calc/run-6krrizz8/source.xlsx",
+      "sha256": "28c52eab0253a77615e8f99778f11ba68a7eb6c2741390679b2de14918015108",
+      "cells": {
+        "B1": {
+          "type": "inlineStr",
+          "raw": "name _x005F_x000D_",
+          "decodedOnce": "name _x000D_"
+        },
+        "A2": {
+          "type": "inlineStr",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A3": {
+          "type": "inlineStr",
+          "raw": "line_x000D_break",
+          "decodedOnce": "line\rbreak"
+        },
+        "A4": {
+          "type": "inlineStr",
+          "raw": "_x005F_x005F_x005F_x0041_",
+          "decodedOnce": "_x005F_x0041_"
+        },
+        "A5": {
+          "type": "inlineStr",
+          "raw": "plain & 中文",
+          "decodedOnce": "plain & 中文"
+        },
+        "A6": {
+          "type": "inlineStr",
+          "raw": "_x005F_x0041__x005F_x0042_",
+          "decodedOnce": "_x0041__x0042_"
+        }
+      }
+    },
+    {
+      "round": 1,
+      "path": ".tmp/chart-xstring-calc/run-6krrizz8/round-1/source.xlsx",
+      "sha256": "3ec955f9253ffef7f96ceff4dbecdc76ec31b02b868997fcb0bdd316a996f4bc",
+      "cells": {
+        "B1": {
+          "type": "s",
+          "raw": "name _x005F_x000D_",
+          "decodedOnce": "name _x000D_"
+        },
+        "A2": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A3": {
+          "type": "s",
+          "raw": "line\rbreak",
+          "decodedOnce": "line\rbreak"
+        },
+        "A4": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A5": {
+          "type": "s",
+          "raw": "plain & 中文",
+          "decodedOnce": "plain & 中文"
+        },
+        "A6": {
+          "type": "s",
+          "raw": "_x005F_x0041__x005F_x0042_",
+          "decodedOnce": "_x0041__x0042_"
+        }
+      }
+    },
+    {
+      "round": 2,
+      "path": ".tmp/chart-xstring-calc/run-6krrizz8/round-2/source.xlsx",
+      "sha256": "48fae4ac93c7313e7495472e9e5be5fcf0c1e3c1fa0312a213087a4545a95089",
+      "cells": {
+        "B1": {
+          "type": "s",
+          "raw": "name _x005F_x000D_",
+          "decodedOnce": "name _x000D_"
+        },
+        "A2": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A3": {
+          "type": "s",
+          "raw": "line\rbreak",
+          "decodedOnce": "line\rbreak"
+        },
+        "A4": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A5": {
+          "type": "s",
+          "raw": "plain & 中文",
+          "decodedOnce": "plain & 中文"
+        },
+        "A6": {
+          "type": "s",
+          "raw": "_x005F_x0041__x005F_x0042_",
+          "decodedOnce": "_x0041__x0042_"
+        }
+      }
+    },
+    {
+      "round": 3,
+      "path": ".tmp/chart-xstring-calc/run-6krrizz8/round-3/source.xlsx",
+      "sha256": "c1034cb5eb45c17665fd7d57b29a2a5eacd96fb711cad5cb526833d33f67302a",
+      "cells": {
+        "B1": {
+          "type": "s",
+          "raw": "name _x005F_x000D_",
+          "decodedOnce": "name _x000D_"
+        },
+        "A2": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A3": {
+          "type": "s",
+          "raw": "line\rbreak",
+          "decodedOnce": "line\rbreak"
+        },
+        "A4": {
+          "type": "s",
+          "raw": "_x005F_x0041_",
+          "decodedOnce": "_x0041_"
+        },
+        "A5": {
+          "type": "s",
+          "raw": "plain & 中文",
+          "decodedOnce": "plain & 中文"
+        },
+        "A6": {
+          "type": "s",
+          "raw": "_x005F_x0041__x005F_x0042_",
+          "decodedOnce": "_x0041__x0042_"
+        }
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/source.xlsx as a Calc document -> /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/round-1/source.xlsx using filter : Calc MS Excel 2007 XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/round-1/source.xlsx as a Calc document -> /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/round-2/source.xlsx using filter : Calc MS Excel 2007 XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/round-2/source.xlsx as a Calc document -> /Volumes/github/private/pptkit/.tmp/chart-xstring-calc/run-6krrizz8/round-3/source.xlsx using filter : Calc MS Excel 2007 XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

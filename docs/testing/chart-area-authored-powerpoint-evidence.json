@@ -1,0 +1,371 @@
+{
+  "scope": "Four PPTKit-authored area charts with fixed axes and mixed signed values were opened in PowerPoint 16.104 and saved and reopened three times. First-open and third-reopen PDF paths were compared vertex-by-vertex with Layout for standard gap/zero and signed stacked/percent-stacked zero, and with each other; percentage labels were checked. Source and all saved caches and workbooks were checked. Captures do not independently prove provenance; native data editing, other producers and general style parity remain unverified.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "828e9d5b5fec0c7ad2e536a7a3c34832bccf5aebeb86af1cac2ead581f90b04c",
+  "layoutInspectorSha256": "b48d1d153ad6b31f9aa5f230608f93c24588705814d334d53d9fc05d29211236",
+  "verifierSha256": "5536d46841813f1092b8f0cedcdb66b58b00d1bfb05c54e7ebb1d0c208d7f5f4",
+  "layoutSha256": "217c9b8358d0afeb3330d8f4c98e425c878b7c89c552b952b3cd50ed84ec12a0",
+  "firstPdfSha256": "36057613199f38703b81f16d641f6fc71111fda48f2450f9089ed8f50fb4a081",
+  "reopen3PdfSha256": "92dfb027bd4ceee5997391323a6c95b34c21fc27ea447fc981d87f5b90952d87",
+  "maxReopenVertexDifference": 0.0,
+  "packages": [
+    {
+      "phase": "source",
+      "sha256": "99f8fd0a00fd25f1645bb393496799a6abd272baeed6ff8b416a24d5a25ec5e7",
+      "charts": [
+        {
+          "grouping": "standard",
+          "blankDisplay": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        },
+        {
+          "grouping": "standard",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+        },
+        {
+          "grouping": "stacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        },
+        {
+          "grouping": "percentStacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved-1",
+      "sha256": "50f8d632109c31a818fe8c79abe9f7bda06cebd5ca532440c4ca2a7c09c22854",
+      "charts": [
+        {
+          "grouping": "standard",
+          "blankDisplay": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "grouping": "standard",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "grouping": "stacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "grouping": "percentStacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved-2",
+      "sha256": "bbc4eb91294067c8234b5c02734baebc67181847f992af0201b605de1cb82fa1",
+      "charts": [
+        {
+          "grouping": "standard",
+          "blankDisplay": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "grouping": "standard",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "grouping": "stacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "grouping": "percentStacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved-3",
+      "sha256": "ae7a28163f47415e617555f2713a5991164d24f190a91792278b70f38bf4df5b",
+      "charts": [
+        {
+          "grouping": "standard",
+          "blankDisplay": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "grouping": "standard",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "grouping": "stacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "grouping": "percentStacked",
+          "blankDisplay": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "grouping": "standard",
+      "blankDisplay": "gap",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 4,
+          "maxSlidePointDifference": 0.48452470970997386
+        },
+        {
+          "series": 0,
+          "vertices": 4,
+          "maxSlidePointDifference": 0.3829647568608731
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "grouping": "standard",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "grouping": "stacked",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "grouping": "percentStacked",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "reopen3",
+      "slide": 1,
+      "grouping": "standard",
+      "blankDisplay": "gap",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 4,
+          "maxSlidePointDifference": 0.48452470970997386
+        },
+        {
+          "series": 0,
+          "vertices": 4,
+          "maxSlidePointDifference": 0.3829647568608731
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "reopen3",
+      "slide": 2,
+      "grouping": "standard",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "reopen3",
+      "slide": 3,
+      "grouping": "stacked",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    },
+    {
+      "phase": "reopen3",
+      "slide": 4,
+      "grouping": "percentStacked",
+      "blankDisplay": "zero",
+      "polygons": [
+        {
+          "series": 0,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        },
+        {
+          "series": 1,
+          "vertices": 10,
+          "maxSlidePointDifference": 0.5523993295246393
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "9ed1c0abb5d325d0b82f0943038dcb95b404f33cd34daa5626fadbdf5e89d9cd",
+      "screenshotSha256": "b13030e725334dfee09d22b5b62679717abfbbc645e638864d6752b74e5daef4"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "609ffeba924a8cf47cda555ef48d4b19095f3da3bf2dde28696f4644f418bccf",
+      "screenshotSha256": "ddddb1876c68a3b9df4f7bf377a9b0098bcdd0edae56d326edfe62f67ac1ba51"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "78ea8a4a37bb59260b4dce201fcb797e0255471ed1d6ade3cedee39eb3354c7c",
+      "screenshotSha256": "ef5ef1420829d9d67b8f0af670f9d09285853000bf28da3f74771b116f53bee7"
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "axSha256": "a5fff54d013aa0e7a4b22837f3d9502b04837fc58cc486ac6f23baa582133e10",
+      "screenshotSha256": "4f22778d55db2ca976e28c4df5b4a17e2f8bf185a82e2beef94f46d3fa60c5c1"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "8900483a20a9adf90001bee2bda8f8a5af7f22a10e2dc3ac1d27e3b2a5105909",
+      "screenshotSha256": "e1470ad4f9380fe8c5106a1939fceb0cf8ad9b887781d762cf6702c4486a67e7"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "63b4c25221c7ffaf2cbed7340c4ef8c8b574d4a3b86577f46784b9fc9eb66adc",
+      "screenshotSha256": "f9a4cd6e61516a4fb2e42346233cab4893cb9fd799ecbf94ac2ed4fc1a32847a"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "11b4ddbb5b99406e974641672f62d2b9802fd4f514f74b2e46a71e2364d28a5b",
+      "screenshotSha256": "a730772e220eec6e62078e57707f6574d88428661f29893fb1321632d99d9218"
+    },
+    {
+      "phase": "reopen",
+      "slide": 4,
+      "axSha256": "ff0229517144729264baed5d56d73b36616c4e9659be93a171cc090cb397766b",
+      "screenshotSha256": "a0e53e05394f45cb6c64699817c530869a5b642152065adf3d0764c334fc823b"
+    },
+    {
+      "phase": "reopen2",
+      "slide": 1,
+      "axSha256": "cf4b7700f288238a75f0b0aa759abe33502727986e68262994665f6fc878b0bb",
+      "screenshotSha256": "aacad15cef679078d876cb4cf5cdc1a9223b9591ebd29510bbfafb533265748c"
+    },
+    {
+      "phase": "reopen2",
+      "slide": 2,
+      "axSha256": "1870fd851879b1b4196ffe1af46758dd88cd4836fafdbd8d6963a21cf1306afd",
+      "screenshotSha256": "22afd0df37bfed85c6fa1d616d37f65b48582b00d95804f690f05e4b3ee8d5ed"
+    },
+    {
+      "phase": "reopen2",
+      "slide": 3,
+      "axSha256": "c3864dbe70dbc7f33d37682f491fdb5d922da3645a9388a76277f57b4bdf3e12",
+      "screenshotSha256": "ad7ae593b7e6809c4390aaf49f67007f5d3bcc01e2829f4bf2e43cc8b973741d"
+    },
+    {
+      "phase": "reopen2",
+      "slide": 4,
+      "axSha256": "c3a104e2c3aae97d26a3a50979537c161fea27a8ab891d814d28e3c89a54a31c",
+      "screenshotSha256": "5177de7961ab78b77fc74bbcf762bfb7728faa6bbef584f59ec81d42c89a1339"
+    },
+    {
+      "phase": "reopen3",
+      "slide": 1,
+      "axSha256": "2dfe32b5413ffd315ff7dbda2ae17d2bff45e9dd838b7b168afad4e32e8ca600",
+      "screenshotSha256": "bdd651a3ff4746bf4a77e6493b4379bf76fb82cdbc21f692a4c0647d0f4002d3"
+    },
+    {
+      "phase": "reopen3",
+      "slide": 2,
+      "axSha256": "760319fd5c0d65269c3837a58920564dfaa33b08a4bb613bcf421b189b54a16c",
+      "screenshotSha256": "62b67ed7ad512fc1ec101c3163e66f54859baf8cd01f28a44b077670c3589080"
+    },
+    {
+      "phase": "reopen3",
+      "slide": 3,
+      "axSha256": "8a99eecc67c9042f9e538245224cb21e9791f90d1bf62036c5b037812ae36199",
+      "screenshotSha256": "df3487e14de36a2dee4bac713b8dbaea79532c51b8229b7804734635636cf967"
+    },
+    {
+      "phase": "reopen3",
+      "slide": 4,
+      "axSha256": "843f812afb1a5caf2516d2e15dc7028aca6194edfe716c4c9aea17bf8848bf1e",
+      "screenshotSha256": "7300207e85379a6b700d02392965e6d299b3a25daa3a170609d096b732bf6291"
+    }
+  ]
+}

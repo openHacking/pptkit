@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP",
+  "files": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/source.pptx",
+      "sha256": "8fe2c9abdd6525aef6db62afaa4d2e7738cd529aff20a59589fd52f7db229e96"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-1/source.pptx",
+      "sha256": "f5cfd7dc446862e5185ee11b2fa7883fa945833b089597ffaf522803e5cae767"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-2/source.pptx",
+      "sha256": "a7875eaac0f881f6cf42992589172dbe09de2af669b2be400f95dbafefb2ca2f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-3/source.pptx",
+      "sha256": "e22164edfb1b72aac83443b1f7c76753c9c4e2cc374351c6ac500895fc4a6bbd"
+    }
+  ],
+  "records": [
+    {
+      "fields": [
+        {
+          "id": "{38D9DC4A-2E99-E34A-A7A3-8E01BBC23A4A}",
+          "type": "slidenum",
+          "cache": "42"
+        }
+      ],
+      "pdfText": "Page 1"
+    },
+    {
+      "fields": [
+        {
+          "id": "{91518A60-9E0D-4C8B-BAC9-5F238DCFA98D}",
+          "type": "slidenum",
+          "cache": "1"
+        }
+      ],
+      "pdfText": "Page 1"
+    },
+    {
+      "fields": [
+        {
+          "id": "{ED99C855-7C68-4F5B-803E-48F66BCF15CD}",
+          "type": "slidenum",
+          "cache": "1"
+        }
+      ],
+      "pdfText": "Page 1"
+    },
+    {
+      "fields": [
+        {
+          "id": "{986BA6DB-037F-4AD1-A943-B1B03276AC5D}",
+          "type": "slidenum",
+          "cache": "1"
+        }
+      ],
+      "pdfText": "Page 1"
+    }
+  ],
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-1/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-1/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-2/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-2/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-3/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/pdf-0/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-1/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/pdf-1/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-2/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/pdf-2/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/round-3/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-field-libreoffice/run-hqt3MP/pdf-3/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "scope": "One slide, intentionally stale caller cache 42. Headless LibreOffice conversions only; no interactive edit, repair-dialog observation or PowerPoint claim."
+}

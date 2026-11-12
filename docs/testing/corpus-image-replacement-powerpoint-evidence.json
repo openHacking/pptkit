@@ -1,0 +1,20 @@
+{
+  "scope": "One generated image corpus slide: PowerPoint for Mac replaced image-stretch from a local PNG, saved, closed and reopened. No repair prompt observed. Screenshot/AX provenance is observational, not authenticated; no calibrated visual fidelity claim.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "system": "macOS 26.5 (25F71)",
+  "operation": "Replace image-stretch using Change Picture > From File; save and reopen once.",
+  "artifacts": {
+    "source": { "path": "tests/fixtures/corpus-image-replacement-source.pptx", "sha256": "13f81c7d9c65ca846503cc1ce4a344eaed1eb73a24d42fad1b78fcd7dcd996f8" },
+    "output": { "path": "tests/fixtures/corpus-image-replacement-powerpoint.pptx", "sha256": "79f5ff1d2acd45c63d47024cd00d7ced1f393fb623fa9a05d572d0cdebbe48f5" },
+    "replacement": { "path": "tests/fixtures/corpus-image-replacement-marker.png", "sha256": "48fad789087aadf665bf579d4edad830d60d347983fd15339ed6c96e71c9d4e6" }
+  },
+  "artifactDirectory": ".tmp/corpus-theme-change-20261031",
+  "captures": {
+    "images-replacement-first.png": "6e99db063d5261a3b04063435eb15ed7df6df7f274daf61639ec81ebf0e09f4c",
+    "images-replacement-first.ax.txt": "06b107df44d65a19c36061de9b64718a4c2fdb85c9b23b96a60069a53c921b15",
+    "images-replacement-reopen.png": "461757bd3022b2b59bcea8a7707f60419bb1bb424458174da27cbb2c31b905d9",
+    "images-replacement-reopen.ax.txt": "d2da5188798d5bac3e0eeb7e01ba5cc5bb1ea3a721dce38c2f6274c89f40145d"
+  },
+  "observation": "The replacement and three original control images were visible after reopening. Source and saved target frames were [508000, 1016000, 2286000, 1397000] and [533400, 1016000, 2235200, 1397000] EMU respectively. The saved replacement bytes equal the chosen PNG; the three controls retain original bytes, crop and frame. PowerPoint renamed the media parts.",
+  "limitations": "One PNG, one image and one save/reopen; does not prove behavior for other image types, crop/replacement combinations, versions, source-preserving PPTKit edits or other applications."
+}

@@ -1,0 +1,706 @@
+{
+  "schemaVersion": 1,
+  "scope": "Parser content projection and no-op save of the two-page actual producer fixtures; findings describe the named files only, not arbitrary native placeholders or edit-aware saves.",
+  "inputs": {
+    "libreoffice": "copy-placeholder-index-libreoffice-evidence.json",
+    "powerpoint": "copy-placeholder-index-powerpoint-evidence.json"
+  },
+  "results": [
+    {
+      "producer": "LibreOfficeDev",
+      "round": 0,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/input.pptx",
+      "sha256": "f0c5ef4971eb485bac1c937d5508619e2b80faca16c2c6d139a726744e777b36",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "LibreOfficeDev",
+      "round": 1,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-1/input.pptx",
+      "sha256": "a3d74eee3b835aeccb95a6ee89cb7bdf73be57a32ba43387704d6681fbce4146",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "LibreOfficeDev",
+      "round": 2,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-2/input.pptx",
+      "sha256": "2acf3f8c1d220bc2b040f37bb314e073120f7cc69cd02ca35190b50146411ce4",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "LibreOfficeDev",
+      "round": 3,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-3/input.pptx",
+      "sha256": "fcd4d70a13a78df953508b2394449dd05d43f29ffbb858b6eef6fb5798a6f3c6",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "obj",
+          "index": 0,
+          "explicitType": false,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "ambiguous",
+            "candidates": 2
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "fallback",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: ambiguous; 2 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "PowerPoint",
+      "round": 0,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/input.pptx",
+      "sha256": "f0c5ef4971eb485bac1c937d5508619e2b80faca16c2c6d139a726744e777b36",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "PowerPoint",
+      "round": 1,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round1.pptx",
+      "sha256": "369965a638c2aa6c5b080c26149f92e3a81230ffeb457e2bc688e3184858b17d",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "PowerPoint",
+      "round": 2,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round2.pptx",
+      "sha256": "115d61197d6fddca70009c25d874432cd1ba5e1f470a0b1be1c57d2dcb3b4192",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    },
+    {
+      "producer": "PowerPoint",
+      "round": 3,
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round3.pptx",
+      "sha256": "8f106e14f901c5fa4bdf8ef72a7131effc3eae70c70c2000473c900439b24daa",
+      "noOpExact": true,
+      "declarations": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "title",
+          "index": 0,
+          "explicitType": true,
+          "explicitIndex": false,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "type": "body",
+          "index": 4294967295,
+          "explicitType": true,
+          "explicitIndex": true,
+          "parent": {
+            "rule": "index",
+            "status": "matched",
+            "candidates": 1
+          },
+          "geometryStatus": "resolved"
+        }
+      ],
+      "findings": [
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide1.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 0: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        },
+        {
+          "tier": "editable",
+          "part": "/ppt/slides/slide2.xml",
+          "reason": "Placeholder index 4294967295: matched; 1 candidates. Matching identifies source ancestry only; styles and template rebinding remain pending."
+        }
+      ],
+      "diagnostics": [
+        "core-projection-defaults",
+        "content-projection-partial"
+      ]
+    }
+  ]
+}

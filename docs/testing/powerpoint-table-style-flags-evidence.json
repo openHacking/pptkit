@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint 16.104 for macOS",
+  "source": "tests/fixtures/table-header-off-powerpoint.pptx",
+  "sourceSha256": "f9e9778c9613066a6a05f9ebe80f8a4465baaf8ae89d3baef14a99821946617d",
+  "fixture": "tests/fixtures/table-style-flags-powerpoint.pptx",
+  "savedSha256": "cf553e50c4e6976404afa73f72309783ac6334afb03e83bea858229d6660f537",
+  "nativeCheckedOnReopen": {
+    "firstRow": false,
+    "lastRow": true,
+    "firstCol": true,
+    "lastCol": true,
+    "bandRow": false,
+    "bandCol": true
+  },
+  "savedTableProperties": {
+    "firstCol": "1",
+    "lastRow": "1",
+    "lastCol": "1",
+    "bandCol": "1"
+  },
+  "rows": [
+    [
+      "Region",
+      "Total"
+    ],
+    [
+      "North",
+      "25"
+    ]
+  ],
+  "scope": "One native Save and reopen; checkbox and OOXML preservation, not an appearance or assistive technology test.",
+  "freshExportObservation": {
+    "sha256": "b5af358732508e2d3bdd687d862b443f7959f4fb070384ac6d5f1bd0fe3a0b47",
+    "application": "Microsoft PowerPoint 16.104 for macOS",
+    "checked": {
+      "firstRow": false,
+      "lastRow": true,
+      "firstCol": true,
+      "lastCol": true,
+      "bandRow": false,
+      "bandCol": true
+    },
+    "scope": "One fresh export opened, saved and reopened in PowerPoint; six checkbox states and saved XML checked. No pixel comparison.",
+    "nativeResaveSha256": "2496ad454a04b1b4d263226a343ecca5c98c8e4b5830a0a0674ec4bd3cd56731",
+    "nativeResaveTableProperties": {
+      "firstCol": "1",
+      "lastRow": "1",
+      "lastCol": "1",
+      "bandCol": "1"
+    }
+  }
+}

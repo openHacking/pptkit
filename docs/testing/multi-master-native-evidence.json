@@ -1,0 +1,751 @@
+{
+  "differentialControls": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/input.pptx",
+      "sha256": "d485509b4ec12b15f81a5605df6d95ca648b2fd1669224c496be25e3671834f7",
+      "repairPrompt": true,
+      "repairAccepted": false,
+      "ax": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/first-open-warning.ax.txt",
+      "axSha256": "0dce24d8afae891d8dc7c632929ef04b06a010930870d4503dbdaa0b15e957f6",
+      "screenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/first-open-warning.png",
+      "screenshotSha256": "2e086aad43225e25d844954d83b28d666d0d45c874ab32dd5d8c90e6fad1dad1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/no-unused.pptx",
+      "sha256": "a371ead9a568f650e3e7a7105ba5d8d8f2c053a74aa46b66ebad867e40e19ded",
+      "repairPrompt": true,
+      "repairAccepted": false,
+      "ax": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/no-unused-first-open.ax.txt",
+      "axSha256": "7fd3e8487c95fc7bc8a3a09536b81eada8bcf09f419ce308f4ca4bd76b19465d",
+      "screenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/no-unused-first-open.png",
+      "screenshotSha256": "dfc1c26f95c0e0ede003cce0f6b74b881d0805d18f6bdf90df99dcf277edbe0b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids.pptx",
+      "sha256": "835083c4fc95536b1376ba1d9d119e2f59c1d0626436d70b2166d24a5334ae8e",
+      "repairPrompt": false,
+      "repairAccepted": false,
+      "ax": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids-first-open.ax.txt",
+      "axSha256": "9b2c7d4ccee19515d31caa09ce74a857598f51d83cc7b396d497530d5353a8da",
+      "screenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids-first-open.png",
+      "screenshotSha256": "f5e734acbe86619c0789b63dac85b816674cd5065fcaab52f9f1837f62b374c7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids-no-unused.pptx",
+      "sha256": "141e407d237afad0e3faac0428b74f0f6e28de3e1721d5c8e406f978e5d8dfe3",
+      "repairPrompt": false,
+      "repairAccepted": false,
+      "ax": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids-no-unused-first-open.ax.txt",
+      "axSha256": "83dc686d2a3d02ab081bbb5e58dda85e610bef40562f72f98cc94a36d5a218c8",
+      "screenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/high-ids-no-unused-first-open.png",
+      "screenshotSha256": "4826a2b01caf9eb0d5210c7ce5afe6137447200d14c581ce1955cb13528bd195"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/fixed.pptx",
+      "sha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89",
+      "repairPrompt": false,
+      "repairAccepted": false,
+      "ax": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/fixed-first-open.ax.txt",
+      "axSha256": "97f385c42ef305a51d362a939ef96f6b78848c1db0c98acd9868a1b99a97d2de",
+      "screenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/fixed-first-open.png",
+      "screenshotSha256": "6d32680521b785ec3ebca5d5bf07c0268d8b6baa56052578599c4de15e37076a"
+    }
+  ],
+  "nativeContact": {
+    "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/native-contact.png",
+    "sha256": "16cf40becb8025ac51e5741f09e88ca06260999d5cbe5edc63150a492c7fcef9"
+  },
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T17:58:40.623059+00:00",
+  "directory": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0",
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104"
+  },
+  "sourceSha256": "d485509b4ec12b15f81a5605df6d95ca648b2fd1669224c496be25e3671834f7",
+  "fixedSha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89",
+  "sourceDomains": [
+    {
+      "page": 1,
+      "id": "256",
+      "slide": "ppt/slides/slide1.xml",
+      "layout": "ppt/slideLayouts/slideLayout2.xml",
+      "master": "ppt/slideMasters/slideMaster2.xml",
+      "theme": "ppt/theme/theme3.xml",
+      "notes": "ppt/notesSlides/notesSlide1.xml",
+      "layoutId": "2147483650",
+      "masterId": "2147483654"
+    },
+    {
+      "page": 2,
+      "id": "257",
+      "slide": "ppt/slides/slide2.xml",
+      "layout": "ppt/slideLayouts/slideLayout3.xml",
+      "master": "ppt/slideMasters/slideMaster3.xml",
+      "theme": "ppt/theme/theme4.xml",
+      "notes": "ppt/notesSlides/notesSlide2.xml",
+      "layoutId": "2147483651",
+      "masterId": "2147483655"
+    },
+    {
+      "page": 3,
+      "id": "258",
+      "slide": "ppt/slides/slide3.xml",
+      "layout": "ppt/slideLayouts/slideLayout4.xml",
+      "master": "ppt/slideMasters/slideMaster2.xml",
+      "theme": "ppt/theme/theme3.xml",
+      "notes": "ppt/notesSlides/notesSlide3.xml",
+      "layoutId": "2147483652",
+      "masterId": "2147483654"
+    },
+    {
+      "page": 4,
+      "id": "259",
+      "slide": "ppt/slides/slide4.xml",
+      "layout": "ppt/slideLayouts/slideLayout5.xml",
+      "master": "ppt/slideMasters/slideMaster1.xml",
+      "theme": "ppt/theme/theme1.xml",
+      "notes": "ppt/notesSlides/notesSlide4.xml",
+      "layoutId": "2147483653",
+      "masterId": "2147483648"
+    }
+  ],
+  "firstOpenPdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/first-open.pdf",
+    "sha256": "578c09f03a7fbf686249eeb2294d43beb8b7c584073c13c027fab2b6db9ee0bf"
+  },
+  "firstOpenPages": [
+    {
+      "page": 1,
+      "text": "Owned 0",
+      "font": "Georgia",
+      "color": "CC2200",
+      "actualPdfColor": [
+        0.800000011920929,
+        0.13331808149814606,
+        0.0
+      ],
+      "rasterInkRgb": [
+        204,
+        33,
+        0
+      ],
+      "fontPrograms": [
+        [
+          "Georgia",
+          "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+        ]
+      ],
+      "rasterSha256": "4b5e30a6f209694cf114c1af8fb5d9ee2a6b09f0231c6fe5db5bbed5dd5e9a3d"
+    },
+    {
+      "page": 2,
+      "text": "Owned 1",
+      "font": "TimesNewRomanPSMT",
+      "color": "0044CC",
+      "actualPdfColor": [
+        0.0,
+        0.2666666805744171,
+        0.800000011920929
+      ],
+      "rasterInkRgb": [
+        0,
+        68,
+        204
+      ],
+      "fontPrograms": [
+        [
+          "TimesNewRomanPSMT",
+          "4ecfca9bd93e8c478aaa6c356069ba0620198d71e71977718729f6c35043a1de"
+        ]
+      ],
+      "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6"
+    },
+    {
+      "page": 3,
+      "text": "Owned 2",
+      "font": "Georgia",
+      "color": "CC2200",
+      "actualPdfColor": [
+        0.800000011920929,
+        0.13331808149814606,
+        0.0
+      ],
+      "rasterInkRgb": [
+        204,
+        33,
+        0
+      ],
+      "fontPrograms": [
+        [
+          "Georgia",
+          "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+        ]
+      ],
+      "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa"
+    },
+    {
+      "page": 4,
+      "text": "Owned 3",
+      "font": "ArialMT",
+      "color": "112233",
+      "actualPdfColor": [
+        0.06666667014360428,
+        0.13331808149814606,
+        0.20000000298023224
+      ],
+      "rasterInkRgb": [
+        17,
+        33,
+        51
+      ],
+      "fontPrograms": [
+        [
+          "ArialMT",
+          "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+        ]
+      ],
+      "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec"
+    }
+  ],
+  "rounds": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round1.pptx",
+      "sha256": "a16569f376a0411acab8dfdd54f03bdc1d1126dff745d0a2cae41099f0fbc492",
+      "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round1.pdf",
+      "pdfSha256": "176c0cf3d8fc796f390240811f41756a8a7df4c328349729b59e639545413e80",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "layoutId": "2147483650",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout5.xml",
+          "master": "ppt/slideMasters/slideMaster3.xml",
+          "theme": "ppt/theme/theme3.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "layoutId": "2147483651",
+          "masterId": "2147483655"
+        },
+        {
+          "page": 3,
+          "id": "258",
+          "slide": "ppt/slides/slide3.xml",
+          "layout": "ppt/slideLayouts/slideLayout4.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "layoutId": "2147483652",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 4,
+          "id": "259",
+          "slide": "ppt/slides/slide4.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "layoutId": "2147483653",
+          "masterId": "2147483648"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text": "Owned 0",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "4b5e30a6f209694cf114c1af8fb5d9ee2a6b09f0231c6fe5db5bbed5dd5e9a3d"
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "font": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "actualPdfColor": [
+            0.0,
+            0.2666666805744171,
+            0.800000011920929
+          ],
+          "rasterInkRgb": [
+            0,
+            68,
+            204
+          ],
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "4ecfca9bd93e8c478aaa6c356069ba0620198d71e71977718729f6c35043a1de"
+            ]
+          ],
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "font": "ArialMT",
+          "color": "112233",
+          "actualPdfColor": [
+            0.06666667014360428,
+            0.13331808149814606,
+            0.20000000298023224
+          ],
+          "rasterInkRgb": [
+            17,
+            33,
+            51
+          ],
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+            ]
+          ],
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec"
+        }
+      ]
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round2.pptx",
+      "sha256": "8c8c12e8807c465377953529887ece5a68b16d514c8d82556182b4674aa5b3ef",
+      "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round2.pdf",
+      "pdfSha256": "4d6f551401c17a97b7ff8fc4ee6d781e9428a5f27df2661d54d2871330f3134d",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "layoutId": "2147483650",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout5.xml",
+          "master": "ppt/slideMasters/slideMaster3.xml",
+          "theme": "ppt/theme/theme3.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "layoutId": "2147483651",
+          "masterId": "2147483655"
+        },
+        {
+          "page": 3,
+          "id": "258",
+          "slide": "ppt/slides/slide3.xml",
+          "layout": "ppt/slideLayouts/slideLayout4.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "layoutId": "2147483652",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 4,
+          "id": "259",
+          "slide": "ppt/slides/slide4.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "layoutId": "2147483653",
+          "masterId": "2147483648"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text": "Owned 0",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "4b5e30a6f209694cf114c1af8fb5d9ee2a6b09f0231c6fe5db5bbed5dd5e9a3d"
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "font": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "actualPdfColor": [
+            0.0,
+            0.2666666805744171,
+            0.800000011920929
+          ],
+          "rasterInkRgb": [
+            0,
+            68,
+            204
+          ],
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "4ecfca9bd93e8c478aaa6c356069ba0620198d71e71977718729f6c35043a1de"
+            ]
+          ],
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "font": "ArialMT",
+          "color": "112233",
+          "actualPdfColor": [
+            0.06666667014360428,
+            0.13331808149814606,
+            0.20000000298023224
+          ],
+          "rasterInkRgb": [
+            17,
+            33,
+            51
+          ],
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+            ]
+          ],
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec"
+        }
+      ]
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round3.pptx",
+      "sha256": "d10d1f5c803ffba1a75e59de035d11d6888e231e90d868513998fb04e51b1056",
+      "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round3.pdf",
+      "pdfSha256": "d26318219746094b9dc74bcf690e8ebae204423f8dfed45822be81fdcd46fe50",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "layoutId": "2147483650",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout5.xml",
+          "master": "ppt/slideMasters/slideMaster3.xml",
+          "theme": "ppt/theme/theme3.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "layoutId": "2147483651",
+          "masterId": "2147483655"
+        },
+        {
+          "page": 3,
+          "id": "258",
+          "slide": "ppt/slides/slide3.xml",
+          "layout": "ppt/slideLayouts/slideLayout4.xml",
+          "master": "ppt/slideMasters/slideMaster2.xml",
+          "theme": "ppt/theme/theme2.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "layoutId": "2147483652",
+          "masterId": "2147483654"
+        },
+        {
+          "page": 4,
+          "id": "259",
+          "slide": "ppt/slides/slide4.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "layoutId": "2147483653",
+          "masterId": "2147483648"
+        }
+      ],
+      "pages": [
+        {
+          "page": 1,
+          "text": "Owned 0",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "4b5e30a6f209694cf114c1af8fb5d9ee2a6b09f0231c6fe5db5bbed5dd5e9a3d"
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "font": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "actualPdfColor": [
+            0.0,
+            0.2666666805744171,
+            0.800000011920929
+          ],
+          "rasterInkRgb": [
+            0,
+            68,
+            204
+          ],
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "4ecfca9bd93e8c478aaa6c356069ba0620198d71e71977718729f6c35043a1de"
+            ]
+          ],
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "font": "Georgia",
+          "color": "CC2200",
+          "actualPdfColor": [
+            0.800000011920929,
+            0.13331808149814606,
+            0.0
+          ],
+          "rasterInkRgb": [
+            204,
+            33,
+            0
+          ],
+          "fontPrograms": [
+            [
+              "Georgia",
+              "8f0ff468916daff45547436ff5e6aeb1c3d31c1e7ef6fa8271304064e3d5520d"
+            ]
+          ],
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "font": "ArialMT",
+          "color": "112233",
+          "actualPdfColor": [
+            0.06666667014360428,
+            0.13331808149814606,
+            0.20000000298023224
+          ],
+          "rasterInkRgb": [
+            17,
+            33,
+            51
+          ],
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+            ]
+          ],
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec"
+        }
+      ]
+    }
+  ],
+  "noncontentNativeChanges": {
+    "ppt/presProps.xml": {
+      "sourceXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><p:presentationPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"/>",
+      "nativeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<p:presentationPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:extLst><p:ext uri=\"{E76CE94A-603C-4142-B9EB-6D1370010A27}\"><p14:discardImageEditData xmlns:p14=\"http://schemas.microsoft.com/office/powerpoint/2010/main\" val=\"0\"/></p:ext><p:ext uri=\"{D31A062A-798A-4329-ABDD-BBA856620510}\"><p14:defaultImageDpi xmlns:p14=\"http://schemas.microsoft.com/office/powerpoint/2010/main\" val=\"220\"/></p:ext><p:ext uri=\"{FD5EFAAD-0ECE-453E-9831-46B23BE46B34}\"><p15:chartTrackingRefBased xmlns:p15=\"http://schemas.microsoft.com/office/powerpoint/2012/main\" val=\"0\"/></p:ext></p:extLst></p:presentationPr>"
+    },
+    "ppt/viewProps.xml": {
+      "sourceXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><p:viewPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:normalViewPr horzBarState=\"maximized\"><p:restoredLeft sz=\"15611\"/><p:restoredTop sz=\"94610\"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr snapToGrid=\"0\" snapToObjects=\"1\"><p:cViewPr varScale=\"1\"><p:scale><a:sx n=\"136\" d=\"100\"/><a:sy n=\"136\" d=\"100\"/></p:scale><p:origin x=\"216\" y=\"312\"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr><p:notesTextViewPr><p:cViewPr><p:scale><a:sx n=\"1\" d=\"1\"/><a:sy n=\"1\" d=\"1\"/></p:scale><p:origin x=\"0\" y=\"0\"/></p:cViewPr></p:notesTextViewPr><p:gridSpacing cx=\"76200\" cy=\"76200\"/></p:viewPr>",
+      "nativeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<p:viewPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:normalViewPr horzBarState=\"maximized\"><p:restoredLeft sz=\"15611\"/><p:restoredTop sz=\"94610\"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr snapToGrid=\"0\" snapToObjects=\"1\"><p:cViewPr varScale=\"1\"><p:scale><a:sx n=\"128\" d=\"100\"/><a:sy n=\"128\" d=\"100\"/></p:scale><p:origin x=\"480\" y=\"176\"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr><p:notesTextViewPr><p:cViewPr><p:scale><a:sx n=\"1\" d=\"1\"/><a:sy n=\"1\" d=\"1\"/></p:scale><p:origin x=\"0\" y=\"0\"/></p:cViewPr></p:notesTextViewPr><p:gridSpacing cx=\"76200\" cy=\"76200\"/></p:viewPr>"
+    },
+    "docProps/core.xml": {
+      "sourceXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cpTerms=\"http://purl.org/dc/terms/\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:revision>1</cp:revision><dc:language>en-US</dc:language></cp:coreProperties>",
+      "nativeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>1</cp:revision><cp:lastPrinted>2026-10-26T17:10:10Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:10:36Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>"
+    },
+    "docProps/app.xml": {
+      "sourceXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\"><Application>PPTKit</Application><Slides>4</Slides><PresentationFormat>On-screen Show (16:9)</PresentationFormat></Properties>",
+      "nativeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>0</TotalTime><Words>16</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+    }
+  },
+  "negatives": [
+    {
+      "name": "id-collision",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/id-collision.pptx",
+      "sha256": "211dc1500c2595f1d075396430bf500127d4548a0d0901aeeaab72a48ce1df72",
+      "reason": "PowerPoint master/layout numeric IDs collide"
+    },
+    {
+      "name": "wrong-layout-owner",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-layout-owner.pptx",
+      "sha256": "da705a4dd6937c380034cb5e8b8077899491a1f862aa2014858a391a5d42df43",
+      "reason": "Layout backlink crossed master domain"
+    },
+    {
+      "name": "wrong-master-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-master-theme.pptx",
+      "sha256": "4f5a9c003fb5cf3186bf8ca4ab1467741399db891b6ed4d3afad5ed8ae943109",
+      "reason": ""
+    },
+    {
+      "name": "wrong-color",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-color.pptx",
+      "sha256": "9c2548f9ef5095e8cd819dfb405d7324f98cfc9d299a5232d362a9578bf43896",
+      "reason": "('Semantic native content changed', ['theme/master/2147483654'])"
+    },
+    {
+      "name": "wrong-font",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-font.pptx",
+      "sha256": "019c157c19d39f079e8ab406a337bab44970ec97223bca36d3d3ce7bd3a72333",
+      "reason": "('Semantic native content changed', ['theme/master/2147483654'])"
+    },
+    {
+      "name": "wrong-background",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-background.pptx",
+      "sha256": "3c59dc2134e6a3ae8b7e53c8c1c78040d2806b1f11dd14466bb097dfc35f0c02",
+      "reason": "('Semantic native content changed', ['master/2147483654'])"
+    },
+    {
+      "name": "wrong-slide-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-slide-text.pptx",
+      "sha256": "f0742d296bdd3c57bfc47c23afa846b951ce732a13f56c7fe9ee0e757fc09453",
+      "reason": "('Semantic native content changed', ['slide/256'])"
+    },
+    {
+      "name": "wrong-notes",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-notes.pptx",
+      "sha256": "c981e4fd55581accd4b0e9f4a39e3e14bf44432e9a93ff99142439bc8829dfe8",
+      "reason": "('Semantic native content changed', ['notes/256'])"
+    },
+    {
+      "name": "lost-unused-master",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/lost-unused-master.pptx",
+      "sha256": "ced942a9544ea69f295395eec80d4a9e9306ea9b2c705565e8f463ccfab5b302",
+      "reason": "Lost/unexpected explicit/default/unused owner"
+    },
+    {
+      "name": "wrong-content-type",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-content-type.pptx",
+      "sha256": "02d045887837f24c42483fb9b0395e76b331cca447513f2a6c55b68d17f79c36",
+      "reason": "('Semantic native content changed', ['content-types'])"
+    },
+    {
+      "name": "hidden-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/hidden-text.pdf",
+      "sha256": "d8c4403f8c58596913648760caf133c09586bb1cee12583fad8a29e152c26c8f",
+      "reason": "Missing actual text ink"
+    },
+    {
+      "name": "wrong-page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/negative-controls/wrong-page-order.pdf",
+      "sha256": "f90a2dd3ab52552b3139debf3e6b7275ec4470ff9966c9bb1246ea81d08be09b",
+      "reason": "Wrong page/text"
+    }
+  ],
+  "total": {
+    "firstOpenPages": 4,
+    "nativeReopenPages": 12,
+    "saveCloseReopenRounds": 3,
+    "actualZipNegatives": 10,
+    "actualPdfNegatives": 2
+  },
+  "scope": "Native no-edit admission for the fixed public authoring source. Full semantic master/layout/theme/slide/notes content is compared with explicit shape noGrp, image noGrp/noRot/noChangeAspect, -0 and empty-guides normalization; relationships are resolved by native identity, not filenames. Metadata/presentation-view properties are separately recorded. Native layout/theme edits and complete artwork/template capability remain separate."
+}

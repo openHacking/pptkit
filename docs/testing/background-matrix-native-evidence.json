@@ -1,0 +1,153 @@
+{
+  "scope": "PowerPoint 16.104 slideshow of authored bgRef source and partial projection, then Save As/close/reopen of projection; screenshot samples do not independently establish UI provenance; no native object edit or preservation save",
+  "directory": ".tmp/background-matrix-native-01",
+  "files": {
+    "source": "b195e850e20cd966d74f783fadeb31216f2ec410b79ce0f95880a009c778d455",
+    "projected": "b946ad50f067a75539b1d31431f4b7564d212c7f657149efae1e131b37c06517",
+    "reopen": "1ca3a5e1ff08f72cc457b3a2aae86e89b2bcfa1656f172e66eeffcacb4f15e85"
+  },
+  "screenshots": {
+    "source": [
+      "8dbb721881975481381d558a745bdb477df7d6b21c2391215b22f17620dd1c30",
+      "4c064e54268daaf00ab3ba36d3a04c4bcd437cc3bc3c67bbf391c7cc878d9464",
+      "bc83799b9db655e43911b199d01ca0ad7d518a0f5c30171eb781ace7fd919993"
+    ],
+    "projected": [
+      "b3d09a2a9b0ddfdcfa1762d5e22660c4405831a02baeccbac9a90c8cfa5152e3",
+      "f5e671a38b518df2fba75f95ab3754b03ed7f5c986df95ba35d28a9aed47a239",
+      "13bcb6fa0d0a332bf7a61b1bb5eebb8b5bbb7bb1b231affd75a08893a1b28f52"
+    ],
+    "reopen": [
+      "e0693390be10d6d6b9ed1a13dbe8657fb8abfaa6df375580e74ad67bc72c4cf9",
+      "58fb4a5060db1384f42c8c440a03dfbcb5424b092749b4e90653683965050af7",
+      "35f69dd45127dcd719cfbfb0d8a8cf2cfc5562f0bec46f71738c1858eb2f7d8f"
+    ]
+  },
+  "producerSha256": "b758849640343440ea1fcb3fe64790cec6de7a55a458cd8f1d3001e732beba0c",
+  "oracleSha256": "a9a295d9f1509a004e6e0810f472bd2a590e47935f4640dd62ebadc7e9025326",
+  "owners": {
+    "source": [
+      {
+        "slide": "ppt/slides/slide1.xml",
+        "layout": "ppt/slideLayouts/slideLayout2.xml",
+        "master": "ppt/slideMasters/slideMaster2.xml",
+        "owner": "ppt/slideMasters/slideMaster2.xml",
+        "color": "A00000"
+      },
+      {
+        "slide": "ppt/slides/slide2.xml",
+        "layout": "ppt/slideLayouts/slideLayout3.xml",
+        "master": "ppt/slideMasters/slideMaster2.xml",
+        "owner": "ppt/slideLayouts/slideLayout3.xml",
+        "color": "008000"
+      },
+      {
+        "slide": "ppt/slides/slide3.xml",
+        "layout": "ppt/slideLayouts/slideLayout3.xml",
+        "master": "ppt/slideMasters/slideMaster2.xml",
+        "owner": "ppt/slides/slide3.xml",
+        "color": "0000C0"
+      }
+    ],
+    "projected": [
+      {
+        "slide": "ppt/slides/slide1.xml",
+        "layout": "ppt/slideLayouts/slideLayout3.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slideMasters/slideMaster3.xml",
+        "color": "A00000"
+      },
+      {
+        "slide": "ppt/slides/slide2.xml",
+        "layout": "ppt/slideLayouts/slideLayout4.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slideLayouts/slideLayout4.xml",
+        "color": "008000"
+      },
+      {
+        "slide": "ppt/slides/slide3.xml",
+        "layout": "ppt/slideLayouts/slideLayout4.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slides/slide3.xml",
+        "color": "0000C0"
+      }
+    ],
+    "reopen": [
+      {
+        "slide": "ppt/slides/slide1.xml",
+        "layout": "ppt/slideLayouts/slideLayout3.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slideMasters/slideMaster3.xml",
+        "color": "A00000"
+      },
+      {
+        "slide": "ppt/slides/slide2.xml",
+        "layout": "ppt/slideLayouts/slideLayout4.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slideLayouts/slideLayout4.xml",
+        "color": "008000"
+      },
+      {
+        "slide": "ppt/slides/slide3.xml",
+        "layout": "ppt/slideLayouts/slideLayout4.xml",
+        "master": "ppt/slideMasters/slideMaster3.xml",
+        "owner": "ppt/slides/slide3.xml",
+        "color": "0000C0"
+      }
+    ]
+  },
+  "sampledRgb": {
+    "source": [
+      [
+        153,
+        0,
+        3
+      ],
+      [
+        0,
+        115,
+        24
+      ],
+      [
+        0,
+        27,
+        180
+      ]
+    ],
+    "projected": [
+      [
+        153,
+        0,
+        3
+      ],
+      [
+        0,
+        115,
+        24
+      ],
+      [
+        0,
+        27,
+        180
+      ]
+    ],
+    "reopen": [
+      [
+        153,
+        0,
+        3
+      ],
+      [
+        0,
+        115,
+        24
+      ],
+      [
+        0,
+        27,
+        180
+      ]
+    ]
+  },
+  "negativeCasesRejected": 3
+}

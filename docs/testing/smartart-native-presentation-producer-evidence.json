@@ -1,0 +1,616 @@
+{
+  "profile": "native-diagram-headless-producer-v1",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn",
+  "sourceDirectory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "cases": [
+    {
+      "file": "process-standard-absent-presentation.pptx",
+      "family": "process",
+      "cache": "absent",
+      "inputSha256": "20ac29da3569c09fa2ce36bdb4686276bf599b8334f63f7e96fac48bb19d910c",
+      "nativeSha256": "ea629501fb02b80ba1ee9e7fe061a5e4fbd7527feda482cc5d5d92426de566ae",
+      "pdfSha256": "22486a17e565abf60d007a633f821bf4854a98d136ab860f2781c59cf654ce88",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "1": "process lead",
+              "2": "Research detail",
+              "3": "Ship",
+              "4": "Release detail"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "1": "process lead",
+              "2": "Research detail",
+              "3": "Ship",
+              "4": "Release detail"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 24,
+            "connections": 23
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\nprocess lead\n•\nResearch detail\nShip\n•\nRelease detail\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    },
+    {
+      "file": "process-standard-empty-presentation.pptx",
+      "family": "process",
+      "cache": "empty",
+      "inputSha256": "06f77b2ec8b4e3b3f59bf6c989aeebe201b459b76e54819b05389afd46fd07d6",
+      "nativeSha256": "9c389fdf498460f00d819f1938b0d009358dc01d4b5ce328c64842af1ee6225c",
+      "pdfSha256": "972ec55c0685f3670326fed047e83478853385e472c5c1d8b6f9cf3ff4c185a4",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/drawing1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "1": "process lead",
+              "2": "Research detail",
+              "3": "Ship",
+              "4": "Release detail"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "1": "process lead",
+              "2": "Research detail",
+              "3": "Ship",
+              "4": "Release detail"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 24,
+            "connections": 23
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\nprocess lead\n•\nResearch detail\nShip\n•\nRelease detail\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    },
+    {
+      "file": "hierarchy-standard-absent-presentation.pptx",
+      "family": "hierarchy",
+      "cache": "absent",
+      "inputSha256": "5f6d75b5757e3eb33f5bb946bd3d7337d4a1a568fcd7faa6e32642fcf7b9f8d2",
+      "nativeSha256": "77efc3f3935f53e5ac32ed9138e94514e56c48abe4689fd1efbc6b8b412eaa50",
+      "pdfSha256": "75652441b82eb46326395ef8d1c455e8cda150e3407c2bea238ad8b40a495243",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 40,
+            "connections": 41,
+            "texts": {
+              "1": "hierarchy lead",
+              "2": "Worker",
+              "3": "Assistant",
+              "4": "Peer root"
+            },
+            "assistantIds": [
+              "3"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 40,
+            "connections": 41,
+            "texts": {
+              "1": "hierarchy lead",
+              "2": "Worker",
+              "3": "Assistant",
+              "4": "Peer root"
+            },
+            "assistantIds": [
+              "3"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 40,
+            "connections": 41
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\nhierarchy lead\nAssistant\nWorker\nPeer root\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    },
+    {
+      "file": "hierarchy-standard-empty-presentation.pptx",
+      "family": "hierarchy",
+      "cache": "empty",
+      "inputSha256": "f0fce1162291a4a00aa2d64550453f4aab148510104129e4917f72b0c1405f73",
+      "nativeSha256": "58a769f7f1affe4d791eb80c7b22d44ba72fe09f24d267ed89db3d13a58a76df",
+      "pdfSha256": "24230cda39b946ff7fd131cdb2ae2440bbce36f94886fddf1bf3cdd06641866c",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/drawing1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 40,
+            "connections": 41,
+            "texts": {
+              "1": "hierarchy lead",
+              "2": "Worker",
+              "3": "Assistant",
+              "4": "Peer root"
+            },
+            "assistantIds": [
+              "3"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 40,
+            "connections": 41,
+            "texts": {
+              "1": "hierarchy lead",
+              "2": "Worker",
+              "3": "Assistant",
+              "4": "Peer root"
+            },
+            "assistantIds": [
+              "3"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 40,
+            "connections": 41
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\nhierarchy lead\nAssistant\nWorker\nPeer root\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    },
+    {
+      "file": "cycle-standard-absent-presentation.pptx",
+      "family": "cycle",
+      "cache": "absent",
+      "inputSha256": "a6fd2e43e5fe0a8de79115164fafafd0582f18cdc51c815255830f77b03f0707",
+      "nativeSha256": "eb2bb3a500e88c4d2104e63b8ba72e858847fa02ddf0ddfa2567d27bdfb94950",
+      "pdfSha256": "a21d2dceed75b8d223862fef3edd3e4b51b42a5a04ee660f16bb8ada1c7210be",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 20,
+            "connections": 22,
+            "texts": {
+              "1": "cycle lead",
+              "2": "Cycle B",
+              "3": "Cycle C"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 20,
+            "connections": 22,
+            "texts": {
+              "1": "cycle lead",
+              "2": "Cycle B",
+              "3": "Cycle C"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 20,
+            "connections": 22
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle B\nCycle C\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    },
+    {
+      "file": "cycle-standard-empty-presentation.pptx",
+      "family": "cycle",
+      "cache": "empty",
+      "inputSha256": "465f396a4a03a8d13d22daacd3b65a08b2dfd879f9bc19f41e854bbc41abd6db",
+      "nativeSha256": "f2571cf61781c074217471688a5681c81d840fc2c75d909c282565e677a34f02",
+      "pdfSha256": "d0161379f8d859769a1dfb6181a6b5106a796f5e0b8f73173d70af0ff7f271e2",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/drawing1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/style1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 20,
+            "connections": 22,
+            "texts": {
+              "1": "cycle lead",
+              "2": "Cycle B",
+              "3": "Cycle C"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 20,
+            "connections": 22,
+            "texts": {
+              "1": "cycle lead",
+              "2": "Cycle B",
+              "3": "Cycle C"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 1
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 20,
+            "connections": 22
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle B\nCycle C\n",
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": true,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true,
+      "missingWhitespaceInsensitiveMarkers": [],
+      "allWhitespaceInsensitiveMarkersInPdf": true,
+      "textMatchStatus": "word-spacing-match"
+    }
+  ],
+  "logs": [
+    {
+      "file": "process-standard-absent-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/process-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/process-standard-absent-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/process-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/process-standard-absent-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "process-standard-empty-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/process-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/process-standard-empty-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/process-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/process-standard-empty-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "hierarchy-standard-absent-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/hierarchy-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/hierarchy-standard-absent-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/hierarchy-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/hierarchy-standard-absent-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "hierarchy-standard-empty-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/hierarchy-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/hierarchy-standard-empty-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/hierarchy-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/hierarchy-standard-empty-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "cycle-standard-absent-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/cycle-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/cycle-standard-absent-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/cycle-standard-absent-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/cycle-standard-absent-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "cycle-standard-empty-presentation.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/cycle-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/cycle-standard-empty-presentation.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/native/cycle-standard-empty-presentation.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/native-run-OltDgn/pdf/cycle-standard-empty-presentation.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    }
+  ],
+  "limitations": [
+    "Headless application save/PDF reopening only; no interactive editability, repair-dialog, playback or calibrated visual-fidelity claim.",
+    "A word-spacing marker mismatch is not proof of absent node text: extraction can split words over lines. Whitespace-insensitive matches are separate lexical evidence, not legibility or geometry validation; repeated/overlapping markers do not prove distinct visible occurrences.",
+    "Native source/model losses and unmatched PDF text are observations, not silently accepted compatibility passes.",
+    "The development LibreOffice runtime does not establish stable LibreOffice or PowerPoint support.",
+    "Third-party component payloads and resulting artifacts remain local; native family admission remains incomplete."
+  ]
+}

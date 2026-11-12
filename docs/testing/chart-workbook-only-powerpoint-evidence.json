@@ -1,0 +1,25 @@
+{
+  "scope": "First-open PowerPoint observation of three charts with numeric caches removed and otherwise unchanged embedded workbooks. All three AX trees expose chart objects but no plot area or data points; the first-page screenshot was visually inspected and shows no chart. Excel was not installed. No editing, refresh, print, save/reopen or other-environment claim; capture hashes do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "originalSha256": "4943e32e045c6b487f0a52d228e785aa5c25c8b2ddb0a9204a128eb4972af605",
+  "fixtureSha256": "2e3863ff95af541357b43e3a51506e4cadf97f7a98424f495e95b281863477ba",
+  "generatorSha256": "b1157eaa200b72b89df95f62bfdbc91f73d30cfb20d87fcecdb67ffbac300594",
+  "verifierSha256": "4aa560dfa7773cfc27df20126d395a1793f34fdc5168da14fe5b6eb02ebc4b91",
+  "captures": [
+    {
+      "kind": "bar",
+      "axSha256": "c6889487215647065a38480e8878117d5041bd5e72e9ad89f303d54956b6129c",
+      "screenshotSha256": "fe2046a9e733f98bc7446f1c3371488229789874026069dffac82e43debda495"
+    },
+    {
+      "kind": "line",
+      "axSha256": "0c2c080877c0651bb0e14bb4d5d5959bfac10d21c6cbc8f8f5353712ae9a6891",
+      "screenshotSha256": "b3ced93106aa1780b771b7b7c4fcf2ec3736620e448afa7d81fbc456ea946161"
+    },
+    {
+      "kind": "pie",
+      "axSha256": "0b1e28332149c4fff934bc8498c8f56a9938426f33f6bf5f3e6fb18c34e99559",
+      "screenshotSha256": "760a830cd16edab1c53733ebbb83b0e45e93261ce3aa4dbd8ea78844e41ddeb6"
+    }
+  ]
+}

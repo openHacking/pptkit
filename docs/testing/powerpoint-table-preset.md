@@ -1,0 +1,5 @@
+# PowerPoint named table preset references
+
+Starting with the [native style-switch fixture](../../tests/fixtures/table-style-flags-powerpoint.pptx), select Table Design → Medium Style 2 – Accent 2 and save a copy. PowerPoint 16.104 for macOS retained the selected gallery preset on reopen. Its slide references the selected ID and its registry contains a matching style definition. In a separate copy, remove only the style definition from `ppt/tableStyles.xml`, leaving its default and the slide reference intact. PowerPoint opened that copy without an observed repair prompt, displayed the orange table and selected Accent 2 in the gallery.
+
+[The evidence record](powerpoint-table-preset-evidence.json) includes both file hashes, the referenced ID, registry definitions and cell text. Tests keep a definition-bearing file distinct from a bare reference, and exercise three fresh PPTKit rounds of the bare reference. The native observation is of the reference-only control; it does not establish visual parity for freshly materialized Core cells, producer portability, or behavior for arbitrary style IDs and definitions.

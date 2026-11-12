@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T20:07:07.054Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/chart-import-native/run-Mb95yo",
+  "scope": "LibreOffice-produced bar/line/pie data import, independent Python ZIP/XML cache inventory, byte-exact no-op, fresh export and PDF reopen. Does not verify interactive Edit Data, PowerPoint, visual fidelity, formula evaluation or preservation edits.",
+  "original": {
+    "sha256": "a8fb8a3da75d769bd0bc50f1257a67c2c2b94568378b47a10d68fa23d4397724",
+    "inventory": [
+      {
+        "chartType": "bar",
+        "series": [
+          {
+            "name": "Keep & <literal>",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              0,
+              -2.5,
+              8
+            ]
+          },
+          {
+            "name": "DELETE-ME",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              99,
+              98,
+              97
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "line",
+        "series": [
+          {
+            "name": "Line",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              5,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "pie",
+        "series": [
+          {
+            "name": "Pie",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              0,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nativeSource": {
+    "sha256": "db9ffacdc1c9adfb7b55706092a464ce6702e4823595a567e897757cf920e6b8",
+    "inventory": [
+      {
+        "chartType": "bar",
+        "series": [
+          {
+            "name": "Keep & <literal>",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              0,
+              -2.5,
+              8
+            ]
+          },
+          {
+            "name": "DELETE-ME",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              99,
+              98,
+              97
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "line",
+        "series": [
+          {
+            "name": "Line",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              5,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "pie",
+        "series": [
+          {
+            "name": "Pie",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              0,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "projection": {
+    "inventory": [
+      {
+        "chartType": "bar",
+        "series": [
+          {
+            "name": "Keep & <literal>",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              0,
+              -2.5,
+              8
+            ]
+          },
+          {
+            "name": "DELETE-ME",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              99,
+              98,
+              97
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "line",
+        "series": [
+          {
+            "name": "Line",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              5,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "pie",
+        "series": [
+          {
+            "name": "Pie",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              0,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "independentMappedInventoryVerified": true,
+  "noOpOriginalBytes": true,
+  "producerChangedData": false,
+  "freshExport": {
+    "sha256": "0aa7b7440fb8c2385f4c50862c49707efa62c85d1ea613cdb532c6033860e0cf",
+    "inventory": [
+      {
+        "chartType": "bar",
+        "series": [
+          {
+            "name": "Keep & <literal>",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              0,
+              -2.5,
+              8
+            ]
+          },
+          {
+            "name": "DELETE-ME",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              99,
+              98,
+              97
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "line",
+        "series": [
+          {
+            "name": "Line",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              5,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "chartType": "pie",
+        "series": [
+          {
+            "name": "Pie",
+            "categories": [
+              "α & <Q1>",
+              "Q2",
+              "Q3"
+            ],
+            "values": [
+              1,
+              0,
+              4
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reopenedPdf": {
+    "sha256": "179491cc0514d355d0a5c4f8d5db4ee6fc6b79c4c304977c810d31893e142da7",
+    "byteLength": 30711
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-import-native/run-Mb95yo/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-import-native/run-Mb95yo/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/chart-import-native/run-Mb95yo/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/chart-import-native/run-Mb95yo/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

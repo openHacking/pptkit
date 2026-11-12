@@ -1,0 +1,95 @@
+{
+  "scope": "PowerPoint 16.104 opens a fresh partial-projection export, displays four pages, Save As, closes and reopens the saved copy; screenshot/title samples are not independent UI witnesses; no native edit or source-preserving save",
+  "directory": ".tmp/master-artwork-projection-native-01",
+  "sourceSha256": "0155c9a232242e581db8bada53f1f82f486bbd3f7c0a9318e2ca09f2f32a7e6c",
+  "projectedSha256": "feec24ee5cfe03b31f6fc7f5fab6149b5dd5a95b0540e40b24560eaa1a21b571",
+  "powerpointSavedSha256": "c919137ce6f16f97fcbdf46779382c10cc500d751c75e959b1f6ed0579842d13",
+  "screenshots": {
+    "first": [
+      "5db783d75671b24dfdac5a9f1d6d16e5ee85f3414de512c622d97375956406a7",
+      "753814277b1e91e59e0444321456b261bf2ad958cade4af7bfbc4d2d804c5ada",
+      "74e21b0458206f68db7ac5377b24942d72072688b3d16502089b5bbdb56c5410",
+      "647a604e3b4d3155779edd09b7e70ce86429e3a2cd08dcd68e182fcb5a20b515"
+    ],
+    "reopen": [
+      "58663898cbadcf6e27b811cd07e896c41ce1b1e406d66383946d55f9b4ce2768",
+      "75cf2c6b1e1d907da0cdf5d619663532208a2e8cb4d13df1601b5cafeebce208",
+      "39db7f25b5ded0fb4b6b8eea50a7c6f772c8fe8838b5524e82b867ae83855f1e",
+      "f03fac04081f659a457becf1e480026f7b17d1d933616f03e6c209b80e80e4cd"
+    ]
+  },
+  "producerSha256": "2a183295805beb8622bd373dde2a50e42083615b618131579e813cf18575ab71",
+  "priorOracleSha256": "73324e468fe1f5aeaa9147fd28d0277cda869e65374ec161150ea3a76a59f927",
+  "oracleSha256": "b56ace1c49f6b2e513336280a4f7caa44e59495393ebf30aed08eb2f6659bb2d",
+  "observation": {
+    "first": {
+      "masters": [
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster4.xml"
+      ],
+      "media": "ppt/media/source-image-1.png",
+      "crop": {
+        "left": 20870
+      },
+      "sampledColors": [
+        [
+          "blue",
+          "red",
+          "blue"
+        ],
+        [
+          "blue",
+          "red",
+          "blue"
+        ],
+        [
+          "white",
+          "white",
+          "white"
+        ],
+        [
+          "green",
+          "green",
+          "green"
+        ]
+      ]
+    },
+    "reopen": {
+      "masters": [
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster3.xml",
+        "ppt/slideMasters/slideMaster4.xml"
+      ],
+      "media": "ppt/media/image1.png",
+      "crop": {
+        "left": 20870
+      },
+      "sampledColors": [
+        [
+          "blue",
+          "red",
+          "blue"
+        ],
+        [
+          "blue",
+          "red",
+          "blue"
+        ],
+        [
+          "white",
+          "white",
+          "white"
+        ],
+        [
+          "green",
+          "green",
+          "green"
+        ]
+      ]
+    }
+  },
+  "negativeCasesRejected": 3
+}

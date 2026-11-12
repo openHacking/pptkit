@@ -1,0 +1,203 @@
+{
+  "scope": "Three generated charts observed on first open and one save/close/reopen in PowerPoint. First-open PDF checks colored ring order, quarter orientation and blank plot. Package inspection checks geometry and cached values; screenshots/AX hashes alone do not prove provenance. No native data edits, reopened print, alternate producers or general layout parity are established.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "2feb2b2573ac0feae7bfcd5c9e17cf3162ea77111530962433c209480ed01432",
+  "verifierSha256": "1f57c135c25383927123dc38a965adfbf5ec389a6162591a2a30d29992cfb30b",
+  "packages": [
+    {
+      "sha256": "5daf36e0765de0fb63f5ec4ce9a75ed2def7c0eb98d0c9f98c32663e60086831",
+      "charts": [
+        {
+          "holeSize": 50,
+          "firstSliceAngle": 0,
+          "seriesValues": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "holeSize": 30,
+          "firstSliceAngle": 90,
+          "seriesValues": [
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "holeSize": 70,
+          "firstSliceAngle": 0,
+          "seriesValues": [
+            [
+              2,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sha256": "5ab33148bb90f5a38c62c4a40fb85369bc04ffa8958cd41a9ed8831c87d0a53d",
+      "charts": [
+        {
+          "holeSize": 50,
+          "firstSliceAngle": 0,
+          "seriesValues": [
+            [
+              1,
+              3
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "holeSize": 30,
+          "firstSliceAngle": 90,
+          "seriesValues": [
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "holeSize": 70,
+          "firstSliceAngle": 0,
+          "seriesValues": [
+            [
+              2,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "firstPrintSha256": "cb8398ba0b55bc3a272d2208fafd4159a23a71bff78a84d16a2da8f241baa064",
+  "measurements": {
+    "outerBox": [
+      221.5001983642578,
+      144.82229614257812,
+      541.3336181640625,
+      465.0296936035156
+    ],
+    "innerBox": [
+      261.4794006347656,
+      184.84829711914062,
+      501.3544006347656,
+      425.0037841796875
+    ],
+    "innerToOuterRadius": 0.7499997972386577,
+    "rotatedRedBox": [
+      381.4169006347656,
+      304.9259948730469,
+      541.3336181640625,
+      465.0296936035156
+    ],
+    "blankColors": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "nativeVsPreview": [
+      {
+        "nativeCenter": [
+          430.09083541706514,
+          280.0000869893582
+        ],
+        "nativeRadius": [
+          202.04258275157662,
+          201.99999372535777
+        ],
+        "previewCenter": [
+          430,
+          280
+        ],
+        "previewRadius": 202,
+        "holeSize": 50
+      },
+      {
+        "nativeCenter": [
+          430.09083541706514,
+          280.0000869893582
+        ],
+        "nativeRadius": [
+          202.04258275157662,
+          201.99999372535777
+        ],
+        "previewCenter": [
+          430,
+          280
+        ],
+        "previewRadius": 202,
+        "holeSize": 30
+      },
+      {
+        "nativeCenter": [
+          430.09083541706514,
+          280.0000869893582
+        ],
+        "nativeRadius": [
+          202.04258275157662,
+          201.99999372535777
+        ],
+        "previewCenter": [
+          430,
+          280
+        ],
+        "previewRadius": 202,
+        "holeSize": 70
+      }
+    ]
+  },
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "87a44df8848a78c4b6f63ba2198ef0f798e615e9fc18f11bf2345868cd150b77",
+      "screenshotSha256": "91dfcfcb504155fcd842a991a29ca3edb7c9318f1fc99b77f83449df6490de50"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "c283077ae3b6757a33a40daa9905a49af82e89372cc244d4c4d6aec46786fc70",
+      "screenshotSha256": "07a88f40ead5f2bd1b981933c7d177b553062e35d4b26a00b29878d98e54a427"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "0dc8d4c50a7f272ab120e82c50e45d83488d3026fb4060b28a6226992d50ccce",
+      "screenshotSha256": "b03d2b06f4607265378ee2a60ab330dfcb14d6bba5c8c516c566ed4a246bf684"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "3a2e9c4d7b60b705515acc6b67a15af5545f1c8a3aac12f60abc716053a0d005",
+      "screenshotSha256": "c1a0bb16f4e339ba56e155fc4f67338c87be96c16085f3091d5ebdde7bc3ebf5"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "70e809a30b9cb3195a2c2dcb0b34d50a5e3d715aefa723e981d50fbf072bd7bf",
+      "screenshotSha256": "e15aea771cfdb8c184bbc72748142eaac614d8319696c3d798bfb86c58cfad2b"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "a2025534c6fa656a939745805961461c00b18ab991fca965a80754ee452b2b27",
+      "screenshotSha256": "84eaa2b8d7dbda479032ba4caa9aeedfcac8df98bf8b225b8cf96a497017fe09"
+    }
+  ]
+}

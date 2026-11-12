@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/master-shared-native-evidence.json",
+  "nativeEvidenceSha256": "2802e37cc1bd854847dab663e1fe4c558c918eee5be9c22e356075ba336a8396",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/input.pptx",
+      "sha256": "0f06d3c164b9501a7a58795c94cae485f85a80890cd36ff472cd6e790d3ba58c",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/parser-5SYBLT/input.pptx.json",
+      "snapshotSha256": "a383f11a89dda878fc9f2c19cb1939474751e93bce275a36d15afe143deb7b81",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/shared-round1.pptx",
+      "sha256": "53d47372082af50c50ca4b1afdf4e0de031a38551ac291ff69d2642324adc879",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/parser-5SYBLT/shared-round1.pptx.json",
+      "snapshotSha256": "318b04a412cba19df0f4a1db9d98d23158ad4e1d32d47b1ddf47e01fcefdf930",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/shared-round2.pptx",
+      "sha256": "8e4cc72d3d868bd69248d79bb3c0fb17a76b38e08ce4e3e04677901ce70129b3",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/parser-5SYBLT/shared-round2.pptx.json",
+      "snapshotSha256": "3b2a7afee62e9f45e0e1cf39e84061b40434f8c6fe3f1de819e5c022a34f7a8d",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/shared-round3.pptx",
+      "sha256": "507fe6faad688c55adf6d12ab79f21f39fddd5763cac470f31c8a14eba2abb3b",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/parser-5SYBLT/shared-round3.pptx.json",
+      "snapshotSha256": "678984e424d212ff96f349047cf380f7ba57c3f0fcc3053414a114e426818757",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/fresh-core-edit.pptx",
+      "sha256": "b4fb8dd173f387a6237b69098316584be8df45f52da987d05aeaacbdd00f94b3",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/parser-5SYBLT/fresh-core-edit.pptx.json",
+      "snapshotSha256": "af85ae5ad0eb9c912f3786857e39711e97e5b9487b39a65730c964310a38396c",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 5,
+    "consumerNoOps": 15
+  },
+  "scope": "Five actual source/reopened/fresh-Core master-heading files, full structural inspections/reports in Node/ESM/global and 15 exact source-only no-ops. No complete master/artwork Core import, visibility projection or source style/structure write authority."
+}

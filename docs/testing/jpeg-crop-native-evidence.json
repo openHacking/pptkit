@@ -1,0 +1,33 @@
+{
+  "scope": "PowerPoint 16.104 manual slideshow; one EXIF 6 crop and four sampled cells per image; no save/reopen claim",
+  "directory": ".tmp/jpeg-orientation-native-01",
+  "files": {
+    "orientation6.jpg": "f88b5aded39e8cc6687a60602b329d3d26b02e4614c33ca496cc9ae1772a573e",
+    "browser-normalized.png": "c0bd9436846959f4b6fc52968e971ddbb4c3510991ce7b3bdb88f9b6fe40d5cb",
+    "crop-control.png": "198ba807136b3c169e469dba1f7a251f8085a931b46f5ef43f2ad3fa8ae2bb4a",
+    "crop-candidate.pptx": "5dda97bba1457d4a7dcc67de815085e020c3307555e41b49276f02fd62a37bcf",
+    "crop-powerpoint.png": "97647c639bdfb4d2615e90dc0dca1dc18687ae4a6915d1ee486d3601c0dc19f7"
+  },
+  "producerSha256": "ea465bc5904387f41100767cfbd38c72ef1c77fa536ec6080f130d58a168c4ce",
+  "oracleSha256": "6ca617bec0a6b49177482734ca64f3b5bbedee43488a3124f5034a3220a07804",
+  "scripts": {
+    "scripts/prepare-jpeg-crop-control.py": "f404adf27d0e203e924e74513c59b5fc0db238074e89696774c63228bc070e7e",
+    "scripts/prepare-jpeg-crop-native.mjs": "1a6ee63bbf36e8428fd6f2da9d194e246f1e70eaeae9c578de74b79209939fc8",
+    "packages/pptx-exporter/src/assets/orient-jpeg-crop.ts": "2c08211822fb0a8d4d55292a7e14e027286a466ec46ef2a68a6f6e22238a68f9"
+  },
+  "observed": [
+    [
+      "yellow",
+      "red",
+      "magenta",
+      "green"
+    ],
+    [
+      "yellow",
+      "red",
+      "magenta",
+      "green"
+    ]
+  ],
+  "negativeCasesRejected": 4
+}

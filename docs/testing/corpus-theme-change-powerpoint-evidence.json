@@ -1,0 +1,56 @@
+{
+  "sourceSha256": "66ee758482b05422fbae5a4329da4485dbbf1638b0b71be63452d7099c981dfd",
+  "savedSha256": "583219fa03b44eb627947735032d6320c05c1d4ffd7f8ee184039557a3b71e36",
+  "source": [
+    {
+      "slide": "ppt/slides/slide1.xml",
+      "layout": "ppt/slideLayouts/slideLayout2.xml",
+      "master": "ppt/slideMasters/slideMaster1.xml",
+      "theme": "ppt/theme/theme1.xml",
+      "themeName": "PPTKit",
+      "visible": true,
+      "texts": [
+        "Inherited title"
+      ]
+    },
+    {
+      "slide": "ppt/slides/slide2.xml",
+      "layout": "ppt/slideLayouts/slideLayout2.xml",
+      "master": "ppt/slideMasters/slideMaster1.xml",
+      "theme": "ppt/theme/theme1.xml",
+      "themeName": "PPTKit",
+      "visible": false,
+      "texts": []
+    }
+  ],
+  "saved": [
+    {
+      "slide": "ppt/slides/slide1.xml",
+      "layout": "ppt/slideLayouts/slideLayout28.xml",
+      "master": "ppt/slideMasters/slideMaster1.xml",
+      "theme": "ppt/theme/theme1.xml",
+      "themeName": "Archway",
+      "visible": true,
+      "texts": [
+        "Inherited title"
+      ]
+    },
+    {
+      "slide": "ppt/slides/slide2.xml",
+      "layout": "ppt/slideLayouts/slideLayout28.xml",
+      "master": "ppt/slideMasters/slideMaster1.xml",
+      "theme": "ppt/theme/theme1.xml",
+      "themeName": "Archway",
+      "visible": false,
+      "texts": []
+    }
+  ],
+  "captureSha256": {
+    "after-theme.ax.txt": "f325ecc40d5aaf17a22afbbb87ae7ddda4a43beb935eaf97f0b8097afba46c55",
+    "after-theme.png": "3339f160fa885227264003abb0b8e9c70daddba19ef21be24ac8cc6f86881d10",
+    "reopen.ax.txt": "a4241dcd34ee06f3468cc9a92966fcca77aa702b95665ffb5f942cf99adc27ec",
+    "reopen.png": "a965a1d52d5552f3a93d40ba02cd5cc035754a2aac867f831eb13e6917aa2e50",
+    "hidden-reopen.ax.txt": "bb55a58069686b7e5f13b166829b8f31e50631b191aa95b5c04b360387cd8878",
+    "hidden-reopen.png": "d8a2f33d32e234df9cc63c56eae3def8e81421f82a81262fbe2ee2687d398ad2"
+  }
+}

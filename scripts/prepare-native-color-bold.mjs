@@ -1,0 +1,7 @@
+import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';import path from 'node:path';
+import {createPresentation,prepareLayoutRebind} from '../packages/core/dist/index.js';import {generatePptx} from '../packages/pptx-exporter/dist/index.js';import {layoutRebindDocument} from '../tests/fixtures/layout-rebind.mjs';
+await mkdir('.tmp/native-color-bold',{recursive:true});const directory=path.resolve(await mkdtemp('.tmp/native-color-bold/run-'));
+const d=layoutRebindDocument(init=>createPresentation({...init,textStylePresets:{local:{run:{fontFamily:'Georgia',fontSize:24,color:'CC2200',bold:false},paragraph:{align:'right'},frame:{wrap:false}}}}));
+for(let i=0;i<3;i++){const s=d.slides[i],e=s.elements[1];s.replaceElement(e.id,{...e,textStylePreset:'local',frame:{wrap:false},content:[{style:{align:'right'},runs:[{text:`Native reset page ${i}`,style:{fontFamily:'Arial',color:'CC2200',bold:false}}]}]});}
+for(const [slideId,options] of [['page-0',{localAppearance:'adopt',reset:['text.color','text.bold']}],['page-1',{localAppearance:'adopt'}]])d.applyLayoutRebind(prepareLayoutRebind(d,[{slideId,layoutId:'target'}],options));
+for(const mode of ['materialize','inherit']){const out=await generatePptx(d,{nativePlaceholderText:mode});await writeFile(path.join(directory,`${mode}.pptx`),out.bytes);await writeFile(path.join(directory,`${mode}-warnings.json`),JSON.stringify(out.warnings,null,2)+'\n');}console.log(directory);

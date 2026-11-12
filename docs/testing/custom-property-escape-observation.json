@@ -1,0 +1,27 @@
+{
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "files": [
+    {
+      "path": ".tmp/custom-special-character-probe/input.pptx",
+      "sha256": "140ec3fc568f926de2b815db64500c8c373b566d046daf123197fdcb16f74c75"
+    },
+    {
+      "path": ".tmp/custom-special-character-probe/out/input.pptx",
+      "sha256": "1ae36d4de00285e013346bf0e90580c82accc50b0ad14d66b8afaef9cfbbaa20"
+    },
+    {
+      "path": ".tmp/custom-special-character-probe2/input.pptx",
+      "sha256": "edc9ae915eda79f5bcf7ebfacdcc1cdf94ef9f0c9d406add538227ab67e181fb"
+    },
+    {
+      "path": ".tmp/custom-special-character-probe2/out/input.pptx",
+      "sha256": "c503dcb0e863f55e4997d354d5e11441cf49f630c4d581aa4f666a49da2de1af"
+    }
+  ],
+  "observed": [
+    "Value _x0041_ was resaved as A.",
+    "Name _x0041_ was serialized as _x005F_x0041_.",
+    "Tab in name and carriage return in value survived this conversion."
+  ],
+  "scope": "Two PPTKit-generated samples, one LibreOfficeDev headless resave each; not UI or PowerPoint validation."
+}

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T23:33:39.240Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr",
+  "sourceSha256": "0f06d3c164b9501a7a58795c94cae485f85a80890cd36ff472cd6e790d3ba58c",
+  "freshBeforeSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+  "freshEditedSha256": "b4fb8dd173f387a6237b69098316584be8df45f52da987d05aeaacbdd00f94b3",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/before.pptx",
+      "bytes": 42399,
+      "sha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/before-normalized.json",
+      "bytes": 65629,
+      "sha256": "3c02277bc121b0f528081551edc24923149f8d0dd561e52470a4fe73e4909095"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/after.pptx",
+      "bytes": 42399,
+      "sha256": "b4fb8dd173f387a6237b69098316584be8df45f52da987d05aeaacbdd00f94b3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/after-normalized.json",
+      "bytes": 65633,
+      "sha256": "7ed6724fcec0aa46df291409c401d4be5abc76e4060a94b7e7bebccd6474d74d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/after-origins.json",
+      "bytes": 160994,
+      "sha256": "fb503ef90b25464e8651cba46bc6fb73c9dab30a66a85368cb805caef9e188b7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/after-layout.json",
+      "bytes": 87703,
+      "sha256": "86ea04fe36dcd929d0040395abe59cf1830c60dd6a6876e169c1eb66c8cfa2ad"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/warnings.json",
+      "bytes": 477,
+      "sha256": "38a3ac9e0ef1bc08b5e39c3e787ff195fa7f0f8d2b0dcaf6bd4e953c938bccd2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/page-0.svg",
+      "bytes": 18864,
+      "sha256": "cee649b030b1274af021a90658519dbfc06eec5ae331b7cd17a3cf4dc16fe5dd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/page-1.svg",
+      "bytes": 813,
+      "sha256": "b10b230afb41cf2dea9041be56e33228164168088605f03287e5ca1aca85c7ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/page-2.svg",
+      "bytes": 18864,
+      "sha256": "6ac9ffbe39cc3b3bc4d1eda0d93159e77d6b6562d92d31445c8f813ac592183b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/page-3.svg",
+      "bytes": 17730,
+      "sha256": "d81b4eddab6c25cbc46664843300b3f30d8fdd0f158bd805c17883632bfc5b5a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-run-8eOxvg/native-contact.png",
+      "bytes": 32674,
+      "sha256": "31fbb09822226c25ec7e8bcf393e5d23f85deea073788475e7e6352111e79141"
+    }
+  ],
+  "scope": "Public Core red-master heading replacement and independent actual native master-heading editing; broader object edits remain open.",
+  "dependencies": [
+    {
+      "file": "tests/fixtures/master-advanced.mjs",
+      "sha256": "f23a7f8be2e3cf41aa33e4ce09da1e5fd0b70539c1096edeb045222c7757022b"
+    },
+    {
+      "file": "scripts/master-advanced-parity.test.mjs",
+      "sha256": "520883d9589679786fb4722287184fc03950a8bd8fda8374d7e9f89dfc984ad1"
+    },
+    {
+      "file": "scripts/prepare-master-shared.mjs",
+      "sha256": "0dce01f993d7b8012af9d26e50afebaeda7e58c7ef1936f342778cea2456888e"
+    },
+    {
+      "file": "scripts/inspect-native-master-shared.mjs",
+      "sha256": "fbe0d1fd142e7cb15b249246ad845efa459444103e3a7a1948316beb22332837"
+    },
+    {
+      "file": "scripts/verify-master-shared-evidence.mjs",
+      "sha256": "a21407bd552198f01cfac5de8cc8fd8e71708907bf1e92da7b7d6da8a2b6ebc5"
+    },
+    {
+      "file": "packages/core/src/document/presentation-document.ts",
+      "sha256": "d2516a0e0205ccb593c7d932ca6a14866c66bb6d49ffa8b1d63746eccd331ce7"
+    },
+    {
+      "file": "packages/core/src/document/element-store.ts",
+      "sha256": "622bc40736fc716c930f6c6e84e5a0e7226815889853d99a702b9ef00c7538e0"
+    },
+    {
+      "file": "packages/core/src/normalization/presentation-normalizer.ts",
+      "sha256": "764dffc7d39c40bb734b1604f620114e273021a0c64fcc824e7aff3ef69df68c"
+    },
+    {
+      "file": "packages/layout/src/engine/resolve-normalized-layout.ts",
+      "sha256": "6d3545c0ee186e1e573fb831aab07e0bf4ee638cf3847a278e2eef74dcbafec4"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+      "sha256": "f2b15f7a672e65ad3662536b6b6c354136e86653526bc8e3442fd07ef29f7de1"
+    },
+    {
+      "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+      "sha256": "62c0f592a2b91dae7502ea0450250a8e6790281e1d4b883fcc27125f28b7ae81"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/render.ts",
+      "sha256": "5f0d1e889b36d0fed8a6d227e6dce8a06fa80cfb020a17fee0c2c2b45f193a96"
+    },
+    {
+      "file": "package.json",
+      "sha256": "adef1c0d52d42e2ea2b09e49388088476120a6e27615e13aa4c77078d32887c1"
+    }
+  ],
+  "nativeEvidence": {
+    "file": "docs/testing/master-shared-native-evidence.json",
+    "sha256": "2802e37cc1bd854847dab663e1fe4c558c918eee5be9c22e356075ba336a8396"
+  },
+  "parserEvidence": {
+    "file": "docs/testing/master-shared-native-parser-evidence.json",
+    "sha256": "55302a78941c581407ffee3b6fedd63ee1883378b48f26f35411853b51a3cd60"
+  },
+  "chartFirstSaveEvidence": {
+    "file": "docs/testing/master-chart-first-save-evidence.json",
+    "sha256": "bceba4079ca12564df18c592881311d2232e76613e020606b07c61a9ab2071b2"
+  },
+  "finalizedAt": "2026-10-27T05:18:22.070Z",
+  "currentProducer": {
+    "freshBeforeSha256": "0ecf999b736656fe2c4ccaa28bad8f3ca93e97ac20a6681b311101bfc667824f",
+    "freshEditedSha256": "8cd5b9e17e91418a0c0922956227652e6cc2dc6efe098b03c7802a3af4e35a73",
+    "historicalFreshBeforeSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+    "historicalFreshEditedSha256": "b4fb8dd173f387a6237b69098316584be8df45f52da987d05aeaacbdd00f94b3",
+    "bridgeEvidence": {
+      "file": "docs/testing/master-paragraph-font-bridge-evidence.json",
+      "sha256": "3afdf05aa09ca255c290ae6e4f5f73eb46bb826ff73d8d2cd63916b8dd26c209"
+    },
+    "dependencies": [
+      {
+        "file": "tests/fixtures/master-advanced.mjs",
+        "sha256": "f23a7f8be2e3cf41aa33e4ce09da1e5fd0b70539c1096edeb045222c7757022b"
+      },
+      {
+        "file": "scripts/master-advanced-parity.test.mjs",
+        "sha256": "520883d9589679786fb4722287184fc03950a8bd8fda8374d7e9f89dfc984ad1"
+      },
+      {
+        "file": "scripts/prepare-master-shared.mjs",
+        "sha256": "0dce01f993d7b8012af9d26e50afebaeda7e58c7ef1936f342778cea2456888e"
+      },
+      {
+        "file": "scripts/inspect-native-master-shared.mjs",
+        "sha256": "fbe0d1fd142e7cb15b249246ad845efa459444103e3a7a1948316beb22332837"
+      },
+      {
+        "file": "scripts/verify-master-shared-evidence.mjs",
+        "sha256": "bcacce01b6fb6874455c7818adbcf1ae4c5b2d845595d3bc70df68d8dceeffaf"
+      },
+      {
+        "file": "packages/core/src/document/presentation-document.ts",
+        "sha256": "9f71b81809566c6edaeb3d55d4d2ea9808a64fcf0b7195700f253b41c77bd7b3"
+      },
+      {
+        "file": "packages/core/src/document/element-store.ts",
+        "sha256": "622bc40736fc716c930f6c6e84e5a0e7226815889853d99a702b9ef00c7538e0"
+      },
+      {
+        "file": "packages/core/src/normalization/presentation-normalizer.ts",
+        "sha256": "1039e0e768c0b004279f426588ab7fae0da9d4c0b8f4fb52bd5e703c1523464b"
+      },
+      {
+        "file": "packages/layout/src/engine/resolve-normalized-layout.ts",
+        "sha256": "6d3545c0ee186e1e573fb831aab07e0bf4ee638cf3847a278e2eef74dcbafec4"
+      },
+      {
+        "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+        "sha256": "f1bf225cd1ebda04d203fe4ff10c9404f2275a3c334d5f79a887faed27f9ccf4"
+      },
+      {
+        "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+        "sha256": "85df97b6042f03abf59a627a7cb4831548c1eb0d1b5b301de1fa9f463b5f18c4"
+      },
+      {
+        "file": "packages/svg-renderer/src/rendering/render.ts",
+        "sha256": "5f0d1e889b36d0fed8a6d227e6dce8a06fa80cfb020a17fee0c2c2b45f193a96"
+      },
+      {
+        "file": "package.json",
+        "sha256": "a369aa486a6270db3dd8106afef7b9ed4ae3662d7e32028b3e666865940864e4"
+      },
+      {
+        "file": "scripts/research/advanced-table-font-bridge.mjs",
+        "sha256": "f3ed66598e453f7b1fac8e01e4fa95c4e5efe703761c82cf217b160858d8165c"
+      }
+    ]
+  }
+}

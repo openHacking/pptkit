@@ -1,0 +1,221 @@
+{
+  "scope": "An independently generated fixed-axis XY chart shell was retained byte-for-byte except for series XML and embedded workbooks replaced by PPTKit internal builders. Four samples with missing X and unsorted data opened in PowerPoint 16.104, printed, then saved and reopened once. Source and saved caches, formulas and workbook cells were checked, and first-open marker boxes and line endpoints were compared with the independent native control. Captures do not independently prove provenance. This is a hybrid research artifact, not public PPTKit scatter export; native interactive editing, other producers, automatic axes and reopened PDF remain unverified.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "14105c28df44a371f6b559677513efd1f6478f6cc30ed0608009769f63c432d3",
+  "verifierSha256": "7436da821b1d3825fd765b907491b978c1d701c115f920bf49a04dbc9bbf6af5",
+  "seriesBuilderSha256": "ac9889d80ec112aef7cb6a100c3f68bee1efc2d091a57efab2123c313eccb9f2",
+  "workbookBuilderSha256": "a6bf8f3e556f4afcc18494e133dd701c384e5f7473a913a6b5ca0b6836f5dafb",
+  "referenceBuilderSha256": "4ffcaaa1ca92fa022ece57a7660e979d3bc783211c49ffac2f32afc836919d4a",
+  "worksheetPackagingSha256": "f69f7159fce11760cf03b6a401a7a7d936918fc6f49501e25311adfa7ea55cd8",
+  "chartStringSha256": "f73febc1c6a8c044880ab826e20d609d78c08cd4bdd53991477d720bf5dcae2b",
+  "xmlWriterSha256": "98a903e912a21344e3bd2f20d998b648e7ad516dfe4d2d42546520a1dae26e6b",
+  "templateSha256": "7857ecd1d98febb33f3ec1784188814a871351353fa952d313003ff0ebcdbf52",
+  "pdfSha256": "d8f067fe11cb5814feff7cae5abd12a2c4239ab7b81f8f9b05cecca12bf55d9f",
+  "controlPdfSha256": "718f7322bd1632309649195ee604794b9ebb7e085d891f48d67b954b9a434447",
+  "packages": [
+    {
+      "phase": "source",
+      "sha256": "21f48117dd94dca23f136fb3507e09c40d5b3b76cbd3370adfd62176cb640339",
+      "charts": [
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx"
+        },
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet2.xlsx"
+        },
+        {
+          "mode": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet3.xlsx"
+        },
+        {
+          "mode": "span",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet4.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved",
+      "sha256": "c873b97500322a07937352c16d7399307431bac4a137d71b9670b60b12dbdfaa",
+      "charts": [
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "mode": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "mode": "span",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "slide": 1,
+      "series": [
+        {
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "markers": 3,
+          "segments": 0,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0
+        },
+        {
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "markers": 4,
+          "segments": 0,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0
+        }
+      ]
+    },
+    {
+      "slide": 2,
+      "series": [
+        {
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "markers": 3,
+          "segments": 1,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        },
+        {
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "markers": 4,
+          "segments": 3,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        }
+      ]
+    },
+    {
+      "slide": 3,
+      "series": [
+        {
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "markers": 4,
+          "segments": 3,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        },
+        {
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "markers": 4,
+          "segments": 3,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        }
+      ]
+    },
+    {
+      "slide": 4,
+      "series": [
+        {
+          "color": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "markers": 3,
+          "segments": 2,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        },
+        {
+          "color": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "markers": 4,
+          "segments": 3,
+          "maxMarkerBoxDifference": 0.0,
+          "maxLineEndpointDifference": 0.0
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "109c90b00e2806bb79a2f0f200d03aa3db05b8ea2b22062e1aeddea077437f8a",
+      "screenshotSha256": "865159b7bb04a15a6bbc4ad56ce5df102a5b02c03c3b3da4cfd8c2810f119745"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "e9692d32f6f6bad8b372e4df1363b12724f02c8e5a81f111ddf94195c54fdecf",
+      "screenshotSha256": "8b2f447829cac3cb12ec2a4d74dd576a34e57a7f067fa30a24ae06958a6fdd8d"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "9b3e433672dd642b3319f80af54cde9ac2863992929de6307cf9cf8e25126e1d",
+      "screenshotSha256": "a143824d52504e775af01b991988da933a8cdb6eac7cb7c8d0ba9301d9246c8b"
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "axSha256": "65b6970f0ccd54b6d359be6d83b559bcf2b27091acf639a68988a3c4502525e8",
+      "screenshotSha256": "2c95dc3230061bb39df5984f94aad7e98cf42e4355e316d13bcd10b00debfa30"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "47c0bc0356ef27fe25cbfa204e47b896b1a927698c123a49e94b280199e2be27",
+      "screenshotSha256": "17912cfc0060a122ef87bed1a3dee3272f70e8c2d9ff8cfd80c509006696846e"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "e86ef0677b398ac94bd4609f64a05b638617de0bb2316b3b1a1fbe7b7223ba8e",
+      "screenshotSha256": "378cd9bb67765225b964be5fe97b407f71c5bc36283a34910ba21bef5baa524a"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "c5c234f8e5e80686787828e0fef482180891d2464e477f138661b4493e483675",
+      "screenshotSha256": "b7069b5e81c73b6ffd245e6a4f94bc4549b517c5f642d468323ac17d392d4e85"
+    },
+    {
+      "phase": "reopen",
+      "slide": 4,
+      "axSha256": "4e415092315c0c2103221cf6f6fc500be68052012c8b2938ad90244ba9f570f3",
+      "screenshotSha256": "4d546e93ad48d2c9261ca4aa4ceb2efd893a320960ed75db2a3bc8ff4dcd5648"
+    }
+  ]
+}

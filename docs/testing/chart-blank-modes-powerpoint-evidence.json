@@ -1,0 +1,412 @@
+{
+  "scope": "PowerPoint first-open and one save/close/reopen for line gap/zero/span and bar/pie zero. Verifies all source/saved caches, workbooks and AX states, and independently measures the three line policies in both A4 PDFs. No interactive data edit, other datasets or general application parity claim. Capture hashes do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "528bb444f388c72d4cb34a5655f7f251701849a40d226481871586157d77ea34",
+  "verifierSha256": "5159ddbbd9f9d8f7bd36706b3ca3838b70ffddd0c2ea073a02423c31670df491",
+  "packages": [
+    {
+      "sha256": "2eae9a8a7172e6a4686b71722367503e6c7102f58a61a3e7c8883cd4b0b62921",
+      "charts": [
+        {
+          "family": "line",
+          "mode": "gap",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        },
+        {
+          "family": "line",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+        },
+        {
+          "family": "line",
+          "mode": "span",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        },
+        {
+          "family": "bar",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart4.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx"
+        },
+        {
+          "family": "pie",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart5.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet5.xlsx"
+        }
+      ]
+    },
+    {
+      "sha256": "e6d58f784f7a82c58ba01a0916360f3b433f0f74e7b4ce6053204479c788de92",
+      "charts": [
+        {
+          "family": "line",
+          "mode": "gap",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "family": "line",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "family": "line",
+          "mode": "span",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "family": "bar",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart4.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        },
+        {
+          "family": "pie",
+          "mode": "zero",
+          "chartPart": "ppt/charts/chart5.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____4.xlsx"
+        }
+      ]
+    }
+  ],
+  "pdfs": [
+    {
+      "phase": "first",
+      "pdfSha256": "b7ce0a430d9b454bbdbcb6fc2dfa039bdc12d8170a85232cd0a9cd0bf419dd5a",
+      "linePages": [
+        {
+          "mode": "gap",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": []
+        },
+        {
+          "mode": "zero",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              244.7433,
+              439.5498
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              500.5833,
+              439.5498
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": [
+            [
+              [
+                117.0,
+                210.1319
+              ],
+              [
+                244.7544,
+                439.6667
+              ]
+            ],
+            [
+              [
+                244.7544,
+                439.6667
+              ],
+              [
+                372.6709,
+                382.3816
+              ]
+            ],
+            [
+              [
+                372.6709,
+                382.3816
+              ],
+              [
+                500.5874,
+                439.6667
+              ]
+            ],
+            [
+              [
+                500.5874,
+                439.6667
+              ],
+              [
+                628.4166,
+                267.5306
+              ]
+            ]
+          ]
+        },
+        {
+          "mode": "span",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": [
+            [
+              [
+                117.0,
+                210.1319
+              ],
+              [
+                372.6709,
+                382.283
+              ]
+            ],
+            [
+              [
+                372.6709,
+                382.283
+              ],
+              [
+                628.4166,
+                267.5306
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "reopen",
+      "pdfSha256": "a90b77fc5b2f29c5a6764a47029def3f22d223dc8175d0027c935faf5cbbbc31",
+      "linePages": [
+        {
+          "mode": "gap",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": []
+        },
+        {
+          "mode": "zero",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              244.7433,
+              439.5498
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              500.5833,
+              439.5498
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": [
+            [
+              [
+                117.0,
+                210.1319
+              ],
+              [
+                244.7544,
+                439.6667
+              ]
+            ],
+            [
+              [
+                244.7544,
+                439.6667
+              ],
+              [
+                372.6709,
+                382.3816
+              ]
+            ],
+            [
+              [
+                372.6709,
+                382.3816
+              ],
+              [
+                500.5874,
+                439.6667
+              ]
+            ],
+            [
+              [
+                500.5874,
+                439.6667
+              ],
+              [
+                628.4166,
+                267.5306
+              ]
+            ]
+          ]
+        },
+        {
+          "mode": "span",
+          "markers": [
+            [
+              117.0633,
+              210.0817
+            ],
+            [
+              372.6633,
+              382.363
+            ],
+            [
+              628.5033,
+              267.5088
+            ]
+          ],
+          "segments": [
+            [
+              [
+                117.0,
+                210.1319
+              ],
+              [
+                372.6709,
+                382.283
+              ]
+            ],
+            [
+              [
+                372.6709,
+                382.283
+              ],
+              [
+                628.4166,
+                267.5306
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "family": "line",
+      "mode": "gap",
+      "axSha256": "88a54241a8d109e168188db45ec561366f0a32a6610fbd9f19f2db5260db5690",
+      "screenshotSha256": "0acc8f6add55275961602b19485cae692f1a1e38ec54db215d1fe569bc4061f9"
+    },
+    {
+      "phase": "first",
+      "family": "line",
+      "mode": "zero",
+      "axSha256": "68ec0bd3d2c4b5c5ea1abcdc1f637ab4d0e98e9fb7c5d733c537b0dec96e5932",
+      "screenshotSha256": "ba23df2d1afd43aed1c2a811fd15b9d913ac0e06303ff3255347df7cef8452bf"
+    },
+    {
+      "phase": "first",
+      "family": "line",
+      "mode": "span",
+      "axSha256": "1a155f4826583c32c1531d9487d6c1dc9a961cc7e1f6ad940aebdb25fc9b2694",
+      "screenshotSha256": "1100a2086b927a9e0445aedf6bf613f1d483174c97c3e8a96e81cffb650cc93f"
+    },
+    {
+      "phase": "first",
+      "family": "bar",
+      "mode": "zero",
+      "axSha256": "1da6de4f73750b76f8b3692f50b5633d6444ae241f92a528fe2658a6f8914ee1",
+      "screenshotSha256": "a2e3043d8507e28107731a8296ca688b9b645069d1da7c648a84603039577321"
+    },
+    {
+      "phase": "first",
+      "family": "pie",
+      "mode": "zero",
+      "axSha256": "7e1d6be91ac8e16b853fc9941a3f0e4bcc6252b3eee8d196ebcb7c8cf71a931f",
+      "screenshotSha256": "5c55d5f7bd7a9157c71680848f5222868484037512d39a7379b70a927e8ca038"
+    },
+    {
+      "phase": "reopen",
+      "family": "line",
+      "mode": "gap",
+      "axSha256": "667fffe583357cb40f065ec7d6e962290d80d267436731398575f2d5daa93556",
+      "screenshotSha256": "ef0b09afb3efac68ca5c573eeb730d7bb7aa055809406269818bd89127bd09df"
+    },
+    {
+      "phase": "reopen",
+      "family": "line",
+      "mode": "zero",
+      "axSha256": "5e21918f8156136ba45db4b7c4d1c21ac135a949b384321f634ea306abd2eb3e",
+      "screenshotSha256": "30aeb88f7eb718d87977c0c268dce2451417f2294cc8102354c71da1a929bb62"
+    },
+    {
+      "phase": "reopen",
+      "family": "line",
+      "mode": "span",
+      "axSha256": "a7e02788680c95738d17afae5c91e38be524b97cf91ee329dfb1d177c6ba3da1",
+      "screenshotSha256": "7265975bc3950cd52404ec1eb6cd9dcdde72b37e4d46712492f627c0efca4076"
+    },
+    {
+      "phase": "reopen",
+      "family": "bar",
+      "mode": "zero",
+      "axSha256": "41a750295988533d1e8af040a58c7d10206187b7bf36762ce0a0dfc426f9c762",
+      "screenshotSha256": "a1d43b41c63e40bfa0258272c51f5167dd3975ac3addbd026212a88181ddc703"
+    },
+    {
+      "phase": "reopen",
+      "family": "pie",
+      "mode": "zero",
+      "axSha256": "5a74fde339c7c0d3f0ff4893640989dacccf649324a4689155bd9a899bfe1fb5",
+      "screenshotSha256": "d836c926a0a68933b4da18a3e8da73ecce3f97da86e49c0fbc41cddf41a40481"
+    }
+  ]
+}

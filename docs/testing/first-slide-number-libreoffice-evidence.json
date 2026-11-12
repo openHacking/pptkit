@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/first-slide-number-libreoffice/run-tJ8vaZ",
+  "files": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/first-slide-number-libreoffice/run-tJ8vaZ/source.pptx",
+      "sha256": "794245506ffa87dc7a7d3b6a8c1e181e415c4e1a20d6597a2e54deb95abbbd4d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/first-slide-number-libreoffice/run-tJ8vaZ/round/source.pptx",
+      "sha256": "2eaaa2c48b60bf4ae701b1b8a42b4037a48e4e57581f7335865f69bd864a60d0"
+    }
+  ],
+  "records": [
+    {
+      "firstSlideNum": "17",
+      "fields": [
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000001}",
+            "type": "slidenum",
+            "cache": "CACHE"
+          }
+        ],
+        [
+          {
+            "id": "{11111111-2222-3333-4444-000000000002}",
+            "type": "slidenum",
+            "cache": "CACHE"
+          }
+        ]
+      ],
+      "pdfText": [
+        "Page 1: 1",
+        "Page 2: 2"
+      ]
+    },
+    {
+      "firstSlideNum": null,
+      "fields": [
+        [
+          {
+            "id": "{4681B429-A6C1-4414-B687-F76731063009}",
+            "type": "slidenum",
+            "cache": "1"
+          }
+        ],
+        [
+          {
+            "id": "{27632D8F-1886-4E07-85D4-F08778A7C0D9}",
+            "type": "slidenum",
+            "cache": "<number>"
+          }
+        ]
+      ],
+      "pdfText": [
+        "Page 1: 1",
+        "Page 2: 2"
+      ]
+    }
+  ],
+  "scope": "Two visible slides, firstSlideNum 17 and stale CACHE fields; one LibreOffice headless conversion and PDF render per file. No PowerPoint or interactive claim."
+}

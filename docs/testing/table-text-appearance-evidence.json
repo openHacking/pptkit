@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T23:18:45.859Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-text-native/run-wmF1hx",
+  "hashes": [
+    {
+      "name": "reference",
+      "sourceSha256": "f9ec732fc49cc36ece5b779758bfd2a3cdf58b429912fa32ccf344fccaab1b47",
+      "savedSha256": "d87fadccdcecc35e4e9ee306205b8d292d89f75c80bb7ac6462315185ec6d56e"
+    },
+    {
+      "name": "explicit",
+      "sourceSha256": "31ae16759ee6382cc6f42f41f5833699de1fb9ea618995670a841a77e5139475",
+      "savedSha256": "faf03f5f0b1afa78bf6459d97075276852ef621695dea8e0c9156ee7d35cfa38"
+    },
+    {
+      "name": "local",
+      "sourceSha256": "b603c5e8a6682ddcd38671a84e979ddd31e4ea702183eb66846e4e3ec095704c",
+      "savedSha256": "6799103639a2e9f7ca0d0ea2b7563e4547a6dae88114b9183fd65ab7d021bae1"
+    },
+    {
+      "name": "collection",
+      "sourceSha256": "b920ae75d2f8907d76e997b1efe5edeb1aff7b27d23b1721331d898a4c3a7f82",
+      "savedSha256": "622524b55697842c773f41b211e3d7588e2b13250f32117aef4ca03a13b0f19a"
+    }
+  ],
+  "failures": [],
+  "logs": [
+    {
+      "name": "reference",
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/reference.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/reference.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "reference",
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/reference.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/source-pdf/reference.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "reference",
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/reference.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/saved-pdf/reference.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "explicit",
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/explicit.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/explicit.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "explicit",
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/explicit.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/source-pdf/explicit.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "explicit",
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/explicit.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/saved-pdf/explicit.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "local",
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/local.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "local",
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/source-pdf/local.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "local",
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/saved-pdf/local.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "collection",
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/collection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/collection.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "collection",
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/collection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/source-pdf/collection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "name": "collection",
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/native/collection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-text-native/run-wmF1hx/saved-pdf/collection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "independent": {
+    "verified": true,
+    "oracle": "Python ZIP/ElementTree source color/typeface dependencies, selected color mutation, independent PDF spans",
+    "scenes": [
+      {
+        "name": "reference",
+        "independentSourceProperties": 8,
+        "selectedColorMutationRejected": true,
+        "pdf": [
+          {
+            "kind": "source-pdf",
+            "status": "partial",
+            "differences": [
+              {
+                "label": "R0C0",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "FFFFFF"
+              },
+              {
+                "label": "R0C1",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "FFFFFF"
+              },
+              {
+                "label": "R1C0",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "FFFFFF"
+              },
+              {
+                "label": "R1C1",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "FFFFFF"
+              }
+            ],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "FFFFFF",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "FFFFFF",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "FFFFFF",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "FFFFFF",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "reference-source-pdf.png"
+          },
+          {
+            "kind": "saved-pdf",
+            "status": "partial",
+            "differences": [
+              {
+                "label": "R0C0",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "000000"
+              },
+              {
+                "label": "R0C1",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "000000"
+              },
+              {
+                "label": "R1C0",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "000000"
+              },
+              {
+                "label": "R1C1",
+                "property": "color",
+                "expected": "CA6420",
+                "actual": "000000"
+              }
+            ],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "000000",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "000000",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "000000",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "000000",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "reference-saved-pdf.png"
+          }
+        ]
+      },
+      {
+        "name": "explicit",
+        "independentSourceProperties": 8,
+        "selectedColorMutationRejected": true,
+        "pdf": [
+          {
+            "kind": "source-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "explicit-source-pdf.png"
+          },
+          {
+            "kind": "saved-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "102030",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "explicit-saved-pdf.png"
+          }
+        ]
+      },
+      {
+        "name": "local",
+        "independentSourceProperties": 8,
+        "selectedColorMutationRejected": true,
+        "pdf": [
+          {
+            "kind": "source-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "local-source-pdf.png"
+          },
+          {
+            "kind": "saved-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "445566",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "local-saved-pdf.png"
+          }
+        ]
+      },
+      {
+        "name": "collection",
+        "independentSourceProperties": 8,
+        "selectedColorMutationRejected": true,
+        "pdf": [
+          {
+            "kind": "source-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "collection-source-pdf.png"
+          },
+          {
+            "kind": "saved-pdf",
+            "status": "pass",
+            "differences": [],
+            "observed": [
+              {
+                "label": "R0C0",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R0C1",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C0",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              },
+              {
+                "label": "R1C1",
+                "color": "CA6420",
+                "font": "LiberationSans",
+                "size": 15.987000465393066
+              }
+            ],
+            "png": "collection-saved-pdf.png"
+          }
+        ]
+      }
+    ]
+  },
+  "scope": "Independent selected source text color/font dependencies and source-control/resaved PDF labels, colors and actual font observations. Full text defaults/script shaping, native interactive editing and source-style writes remain gated.",
+  "interactiveEditing": "untested",
+  "sourceStyleWrites": "blocked"
+}

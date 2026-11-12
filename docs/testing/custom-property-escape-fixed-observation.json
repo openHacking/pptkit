@@ -1,0 +1,16 @@
+{
+  "scope": "One headless LibreOfficeDev resave of a PPTKit sample; no native UI or PowerPoint claim.",
+  "files": [
+    {
+      "path": ".tmp/custom-escape-fixed-probe/input.pptx",
+      "sha256": "1448dc10476704187b75cc0a155b48e56ffb01cca8ca8c1d10312daec191ac56"
+    },
+    {
+      "path": ".tmp/custom-escape-fixed-probe/out/input.pptx",
+      "sha256": "39fc635651eb81f042bc46d61af5b948e85110b27aaaf746e3d859f85b89b951"
+    }
+  ],
+  "sourceValue": "_x005F_x0041_ & _x005F_x005F_x0041_",
+  "outputValue": "_x005F_x0041_ & _x005FA",
+  "observation": "Isolated literal survives in XML; overlapping encoded literal changes after resave."
+}

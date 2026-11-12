@@ -1,0 +1,2422 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T14:57:48.033188+00:00",
+  "directory": "/Volumes/github/private/pptkit/.tmp/authored-notes-pages/run-rM4cWd",
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104"
+  },
+  "groups": [
+    {
+      "name": "wide",
+      "sourceSha256": "b90e22f0f1560dce223a99c658e1f864fa6654f731db92367b815dc9250c79ef",
+      "expectedSha256": "db34a3ad512473514280d947441c40f99528d97be1503c2cd7592d3f4d4b0503",
+      "baselinePdfSha256": "9ee6e7767928ad5576a1ca0b5769b13635d77442ab23a76da050d51a7f68a8d6",
+      "source": {
+        "geometry": {
+          "sldImg": {
+            "x": 457200,
+            "y": 1212850,
+            "cx": 5943600,
+            "cy": 2146300
+          },
+          "body": {
+            "x": 457200,
+            "y": 4572000,
+            "cx": 5943600,
+            "cy": 4114800
+          }
+        },
+        "master": "ppt/notesMasters/notesMaster1.xml",
+        "theme": "ppt/theme/theme2.xml",
+        "rows": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Fresh notes wide ONE",
+            "label": "Fresh wide ONE",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Fresh notes wide COPY",
+            "label": "Fresh wide COPY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide3.xml",
+            "notes": "ppt/notesSlides/notesSlide3.xml",
+            "text": null,
+            "label": "Fresh wide EMPTY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide4.xml",
+            "notes": "ppt/notesSlides/notesSlide4.xml",
+            "text": "",
+            "label": "Fresh wide STYLED",
+            "emptyStyledRunRetained": true
+          }
+        ]
+      },
+      "firstOpenPages": [
+        {
+          "label": "Fresh wide ONE",
+          "rasterSha256": "ea9359c5577f53158b461215d9b050f01c8b76d9e123f2e5950f468ba578a6b6",
+          "visibleInkPixels": {
+            "image": 552,
+            "body": 1013
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                250.39613342285156,
+                445.9462890625
+              ],
+              "text": "Fresh notes wide ONE"
+            },
+            {
+              "font": "ArialMT",
+              "size": 16.0,
+              "bbox": [
+                109.091796875,
+                187.93655395507812,
+                227.4420928955078,
+                203.93655395507812
+              ],
+              "text": "Fresh wide ONE"
+            }
+          ]
+        },
+        {
+          "label": "Fresh wide COPY",
+          "rasterSha256": "21d4f6396db5be2cb19e1d7e33ba065a9876dcf3ac0a4c42356f5db1f005582a",
+          "visibleInkPixels": {
+            "image": 572,
+            "body": 1027
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                262.808837890625,
+                445.9462890625
+              ],
+              "text": "Fresh notes wide COPY"
+            },
+            {
+              "font": "ArialMT",
+              "size": 16.0,
+              "bbox": [
+                109.091796875,
+                187.93655395507812,
+                238.19888305664062,
+                203.93655395507812
+              ],
+              "text": "Fresh wide COPY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh wide EMPTY",
+          "rasterSha256": "83c4409b78a3708630600dc63ca36435dba2062e6f1db1283e3c8ebf0d9f1063",
+          "visibleInkPixels": {
+            "image": 659,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 16.0,
+              "bbox": [
+                109.091796875,
+                187.93655395507812,
+                248.02769470214844,
+                203.93655395507812
+              ],
+              "text": "Fresh wide EMPTY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh wide STYLED",
+          "rasterSha256": "c0d230af65dca51012cf6299b5aed006e404fff04c8fd40c7a3eb5f3435ee5e4",
+          "visibleInkPixels": {
+            "image": 666,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 16.0,
+              "bbox": [
+                109.091796875,
+                187.93655395507812,
+                255.2193145751953,
+                203.93655395507812
+              ],
+              "text": "Fresh wide STYLED"
+            }
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "file": "wide-round1.pptx",
+          "sha256": "76b008bb16ed1f489782e430b3e1313aadd10b96b6c2f7524f5021a7a62fd947",
+          "pdfSha256": "c3f8e1aa306c52ca1b50e8903c7d75626f3a24937c7abd4694b9fbabb4011b44",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 457200,
+                "y": 1212850,
+                "cx": 5943600,
+                "cy": 2146300
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes wide ONE",
+                "label": "Fresh wide ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes wide COPY",
+                "label": "Fresh wide COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh wide EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh wide STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh wide ONE",
+              "rasterSha256": "ea9359c5577f53158b461215d9b050f01c8b76d9e123f2e5950f468ba578a6b6",
+              "visibleInkPixels": {
+                "image": 552,
+                "body": 1013
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    250.39613342285156,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    227.4420928955078,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide COPY",
+              "rasterSha256": "21d4f6396db5be2cb19e1d7e33ba065a9876dcf3ac0a4c42356f5db1f005582a",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 1027
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    262.808837890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    238.19888305664062,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide EMPTY",
+              "rasterSha256": "83c4409b78a3708630600dc63ca36435dba2062e6f1db1283e3c8ebf0d9f1063",
+              "visibleInkPixels": {
+                "image": 659,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    248.02769470214844,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide STYLED",
+              "rasterSha256": "c0d230af65dca51012cf6299b5aed006e404fff04c8fd40c7a3eb5f3435ee5e4",
+              "visibleInkPixels": {
+                "image": 666,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    255.2193145751953,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "wide-round2.pptx",
+          "sha256": "e16ea0eb8ce166e3d66f94e2889ec27db7faa451fd640608cfaa1d8c342ba82c",
+          "pdfSha256": "ecac18a414387207fbd5ae8374313085f19c21137a164e8b62db9d982aa578f4",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 457200,
+                "y": 1212850,
+                "cx": 5943600,
+                "cy": 2146300
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes wide ONE",
+                "label": "Fresh wide ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes wide COPY",
+                "label": "Fresh wide COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh wide EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh wide STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh wide ONE",
+              "rasterSha256": "ea9359c5577f53158b461215d9b050f01c8b76d9e123f2e5950f468ba578a6b6",
+              "visibleInkPixels": {
+                "image": 552,
+                "body": 1013
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    250.39613342285156,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    227.4420928955078,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide COPY",
+              "rasterSha256": "21d4f6396db5be2cb19e1d7e33ba065a9876dcf3ac0a4c42356f5db1f005582a",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 1027
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    262.808837890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    238.19888305664062,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide EMPTY",
+              "rasterSha256": "83c4409b78a3708630600dc63ca36435dba2062e6f1db1283e3c8ebf0d9f1063",
+              "visibleInkPixels": {
+                "image": 659,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    248.02769470214844,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide STYLED",
+              "rasterSha256": "c0d230af65dca51012cf6299b5aed006e404fff04c8fd40c7a3eb5f3435ee5e4",
+              "visibleInkPixels": {
+                "image": 666,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    255.2193145751953,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "wide-round3.pptx",
+          "sha256": "3c2f6b34b5746eb166b60cf2e6324b2ac8cd64b690f327a675a226171b87e29f",
+          "pdfSha256": "738f9563dc1d9d966a4ff5c777f1294ddf8311d757a9f2554895c30b13273809",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 457200,
+                "y": 1212850,
+                "cx": 5943600,
+                "cy": 2146300
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes wide ONE",
+                "label": "Fresh wide ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes wide COPY",
+                "label": "Fresh wide COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh wide EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh wide STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh wide ONE",
+              "rasterSha256": "ea9359c5577f53158b461215d9b050f01c8b76d9e123f2e5950f468ba578a6b6",
+              "visibleInkPixels": {
+                "image": 552,
+                "body": 1013
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    250.39613342285156,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    227.4420928955078,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide COPY",
+              "rasterSha256": "21d4f6396db5be2cb19e1d7e33ba065a9876dcf3ac0a4c42356f5db1f005582a",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 1027
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "f519cb2186c930531359e98d13d32695b5a226eeae4add799789b37fc9c08b71"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    262.808837890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes wide COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    238.19888305664062,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide EMPTY",
+              "rasterSha256": "83c4409b78a3708630600dc63ca36435dba2062e6f1db1283e3c8ebf0d9f1063",
+              "visibleInkPixels": {
+                "image": 659,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    248.02769470214844,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh wide STYLED",
+              "rasterSha256": "c0d230af65dca51012cf6299b5aed006e404fff04c8fd40c7a3eb5f3435ee5e4",
+              "visibleInkPixels": {
+                "image": 666,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "4ea71150668dcd0c3d7bf60ae009e39105e36fef4993863b1b1e03f6c99651e1"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 16.0,
+                  "bbox": [
+                    109.091796875,
+                    187.93655395507812,
+                    255.2193145751953,
+                    203.93655395507812
+                  ],
+                  "text": "Fresh wide STYLED"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "portrait",
+      "sourceSha256": "5b931b81d7c5d70d6e3e28539bc544b3804995d37bca11813a0cf5c84a7a6ce9",
+      "expectedSha256": "89b151a634dd6d4f2bc83793fef21bb03641fa674a39fa07786fd7e4d56933bb",
+      "baselinePdfSha256": "a6ec7be3ad286287ecdca4a57beab1e4baf16a306f3390c08455ffc5b3d1cc31",
+      "source": {
+        "geometry": {
+          "sldImg": {
+            "x": 2514600,
+            "y": 457200,
+            "cx": 1828800,
+            "cy": 3657600
+          },
+          "body": {
+            "x": 457200,
+            "y": 4572000,
+            "cx": 5943600,
+            "cy": 4114800
+          }
+        },
+        "master": "ppt/notesMasters/notesMaster1.xml",
+        "theme": "ppt/theme/theme2.xml",
+        "rows": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Fresh notes portrait ONE",
+            "label": "Fresh portrait ONE",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Fresh notes portrait COPY",
+            "label": "Fresh portrait COPY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide3.xml",
+            "notes": "ppt/notesSlides/notesSlide3.xml",
+            "text": null,
+            "label": "Fresh portrait EMPTY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide4.xml",
+            "notes": "ppt/notesSlides/notesSlide4.xml",
+            "text": "",
+            "label": "Fresh portrait STYLED",
+            "emptyStyledRunRetained": true
+          }
+        ]
+      },
+      "firstOpenPages": [
+        {
+          "label": "Fresh portrait ONE",
+          "rasterSha256": "c0db5977f20670b5ea87e0fc282f6591c4f06d94c03a9ba44da1b2e5214ed3b2",
+          "visibleInkPixels": {
+            "image": 294,
+            "body": 1109
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                270.0838928222656,
+                445.9462890625
+              ],
+              "text": "Fresh notes portrait ONE"
+            },
+            {
+              "font": "ArialMT",
+              "size": 9.999998092651367,
+              "bbox": [
+                240.7971954345703,
+                148.39794921875,
+                324.1881103515625,
+                158.39793395996094
+              ],
+              "text": "Fresh portrait ONE"
+            }
+          ]
+        },
+        {
+          "label": "Fresh portrait COPY",
+          "rasterSha256": "d1cf8925792576c81ee81901af72400c3f9efaa7e3dd19230c810df2a45b8baf",
+          "visibleInkPixels": {
+            "image": 298,
+            "body": 1136
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                282.49658203125,
+                445.9462890625
+              ],
+              "text": "Fresh notes portrait COPY"
+            },
+            {
+              "font": "ArialMT",
+              "size": 9.999998092651367,
+              "bbox": [
+                240.7971954345703,
+                148.39794921875,
+                330.81109619140625,
+                158.39793395996094
+              ],
+              "text": "Fresh portrait COPY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh portrait EMPTY",
+          "rasterSha256": "2ee13d62c9b14f6861fd7b0e48ca2148063cf6ffe18f84dfdff23c7e84e436c5",
+          "visibleInkPixels": {
+            "image": 318,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 9.999998092651367,
+              "bbox": [
+                240.7971954345703,
+                148.39794921875,
+                336.8641052246094,
+                158.39793395996094
+              ],
+              "text": "Fresh portrait EMPTY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh portrait STYLED",
+          "rasterSha256": "3296f6d70b644c0f10199d47a998f0426c186d3e1321b3eb5ff567a61c3b880d",
+          "visibleInkPixels": {
+            "image": 342,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 9.999998092651367,
+              "bbox": [
+                240.7971954345703,
+                148.39794921875,
+                341.28887939453125,
+                158.39793395996094
+              ],
+              "text": "Fresh portrait STYLED"
+            }
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "file": "portrait-round1.pptx",
+          "sha256": "cf6d4320166e0670629221d6963f977731e8daa33e0ada055799bd5723ea8f91",
+          "pdfSha256": "11a3f765c5e9015f8fc95bf57af78c76e4d1e52239933ff83bd91d304a4b6f7f",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 2514600,
+                "y": 457200,
+                "cx": 1828800,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes portrait ONE",
+                "label": "Fresh portrait ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes portrait COPY",
+                "label": "Fresh portrait COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh portrait EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh portrait STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh portrait ONE",
+              "rasterSha256": "c0db5977f20670b5ea87e0fc282f6591c4f06d94c03a9ba44da1b2e5214ed3b2",
+              "visibleInkPixels": {
+                "image": 294,
+                "body": 1109
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    270.0838928222656,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    324.1881103515625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait COPY",
+              "rasterSha256": "d1cf8925792576c81ee81901af72400c3f9efaa7e3dd19230c810df2a45b8baf",
+              "visibleInkPixels": {
+                "image": 298,
+                "body": 1136
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    282.49658203125,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    330.81109619140625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait EMPTY",
+              "rasterSha256": "2ee13d62c9b14f6861fd7b0e48ca2148063cf6ffe18f84dfdff23c7e84e436c5",
+              "visibleInkPixels": {
+                "image": 318,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    336.8641052246094,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait STYLED",
+              "rasterSha256": "3296f6d70b644c0f10199d47a998f0426c186d3e1321b3eb5ff567a61c3b880d",
+              "visibleInkPixels": {
+                "image": 342,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    341.28887939453125,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "portrait-round2.pptx",
+          "sha256": "d38a84574e7eff15ec122d328af10f05dcae34e8f19da62fc805f35a0dc932cc",
+          "pdfSha256": "a096e16fad281d5e90fe6b7720f874a603dbcc0e65980896272c53fa3bc73b81",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 2514600,
+                "y": 457200,
+                "cx": 1828800,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes portrait ONE",
+                "label": "Fresh portrait ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes portrait COPY",
+                "label": "Fresh portrait COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh portrait EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh portrait STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh portrait ONE",
+              "rasterSha256": "c0db5977f20670b5ea87e0fc282f6591c4f06d94c03a9ba44da1b2e5214ed3b2",
+              "visibleInkPixels": {
+                "image": 294,
+                "body": 1109
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    270.0838928222656,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    324.1881103515625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait COPY",
+              "rasterSha256": "d1cf8925792576c81ee81901af72400c3f9efaa7e3dd19230c810df2a45b8baf",
+              "visibleInkPixels": {
+                "image": 298,
+                "body": 1136
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    282.49658203125,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    330.81109619140625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait EMPTY",
+              "rasterSha256": "2ee13d62c9b14f6861fd7b0e48ca2148063cf6ffe18f84dfdff23c7e84e436c5",
+              "visibleInkPixels": {
+                "image": 318,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    336.8641052246094,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait STYLED",
+              "rasterSha256": "3296f6d70b644c0f10199d47a998f0426c186d3e1321b3eb5ff567a61c3b880d",
+              "visibleInkPixels": {
+                "image": 342,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    341.28887939453125,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "portrait-round3.pptx",
+          "sha256": "ff7b212b5292bcd73ef578a114744f7fced78c308e80449c53b078afd68bb13b",
+          "pdfSha256": "91286cfd50d9ac437793491bce05c722077c82642dc6379881349acd75f6dfff",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 2514600,
+                "y": 457200,
+                "cx": 1828800,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes portrait ONE",
+                "label": "Fresh portrait ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes portrait COPY",
+                "label": "Fresh portrait COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh portrait EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh portrait STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh portrait ONE",
+              "rasterSha256": "c0db5977f20670b5ea87e0fc282f6591c4f06d94c03a9ba44da1b2e5214ed3b2",
+              "visibleInkPixels": {
+                "image": 294,
+                "body": 1109
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    270.0838928222656,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    324.1881103515625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait COPY",
+              "rasterSha256": "d1cf8925792576c81ee81901af72400c3f9efaa7e3dd19230c810df2a45b8baf",
+              "visibleInkPixels": {
+                "image": 298,
+                "body": 1136
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "c9751a6635ee7a5bf71b583c92f9eba7ef611ee51dde42e17d176eed756a74c8"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    282.49658203125,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes portrait COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    330.81109619140625,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait EMPTY",
+              "rasterSha256": "2ee13d62c9b14f6861fd7b0e48ca2148063cf6ffe18f84dfdff23c7e84e436c5",
+              "visibleInkPixels": {
+                "image": 318,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    336.8641052246094,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh portrait STYLED",
+              "rasterSha256": "3296f6d70b644c0f10199d47a998f0426c186d3e1321b3eb5ff567a61c3b880d",
+              "visibleInkPixels": {
+                "image": 342,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "429005e11e91f0f537a9f2686b421768c1205f2ae76c87bc05a965ec46fa0e94"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 9.999998092651367,
+                  "bbox": [
+                    240.7971954345703,
+                    148.39794921875,
+                    341.28887939453125,
+                    158.39793395996094
+                  ],
+                  "text": "Fresh portrait STYLED"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "square",
+      "sourceSha256": "a5ab32ce92b30e768c7c7c469167c7cb851dc324891e887e3e618592b4759ec8",
+      "expectedSha256": "11c4bfa6491c86439a58f09f88edc81505da4a9b6ef085d6a7b7b7d81b8b38c5",
+      "baselinePdfSha256": "1973f823c5b7de36b6a2c96097174871b7c24d326661a43b405a907efee711ed",
+      "source": {
+        "geometry": {
+          "sldImg": {
+            "x": 1600200,
+            "y": 457200,
+            "cx": 3657600,
+            "cy": 3657600
+          },
+          "body": {
+            "x": 457200,
+            "y": 4572000,
+            "cx": 5943600,
+            "cy": 4114800
+          }
+        },
+        "master": "ppt/notesMasters/notesMaster1.xml",
+        "theme": "ppt/theme/theme2.xml",
+        "rows": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Fresh notes square ONE",
+            "label": "Fresh square ONE",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Fresh notes square COPY",
+            "label": "Fresh square COPY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide3.xml",
+            "notes": "ppt/notesSlides/notesSlide3.xml",
+            "text": null,
+            "label": "Fresh square EMPTY",
+            "emptyStyledRunRetained": null
+          },
+          {
+            "slide": "ppt/slides/slide4.xml",
+            "notes": "ppt/notesSlides/notesSlide4.xml",
+            "text": "",
+            "label": "Fresh square STYLED",
+            "emptyStyledRunRetained": true
+          }
+        ]
+      },
+      "firstOpenPages": [
+        {
+          "label": "Fresh square ONE",
+          "rasterSha256": "862f13cc9d9bcc31df2625d12763cf2a5ec46ec1dc482cd28543f46b89d8ad1d",
+          "visibleInkPixels": {
+            "image": 483,
+            "body": 1093
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                269.0465087890625,
+                445.9462890625
+              ],
+              "text": "Fresh notes square ONE"
+            },
+            {
+              "font": "ArialMT",
+              "size": 13.999998092651367,
+              "bbox": [
+                182.9720001220703,
+                149.7171173095703,
+                302.0418701171875,
+                163.7171173095703
+              ],
+              "text": "Fresh square ONE"
+            }
+          ]
+        },
+        {
+          "label": "Fresh square COPY",
+          "rasterSha256": "add81805d8ed2cdc5c45953bf7c9564f0aa03e04c812c23a8984a68b7dafe735",
+          "visibleInkPixels": {
+            "image": 504,
+            "body": 1119
+          },
+          "fontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 18.999996185302734,
+              "bbox": [
+                62.720001220703125,
+                426.9462890625,
+                281.4591979980469,
+                445.9462890625
+              ],
+              "text": "Fresh notes square COPY"
+            },
+            {
+              "font": "ArialMT",
+              "size": 13.999998092651367,
+              "bbox": [
+                182.9720001220703,
+                149.7171173095703,
+                311.58428955078125,
+                163.7171173095703
+              ],
+              "text": "Fresh square COPY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh square EMPTY",
+          "rasterSha256": "88b3f0633f50d4d519ca6ebf17183876e1eaeb3ef5a188a89f511f7a4ad1a1f0",
+          "visibleInkPixels": {
+            "image": 540,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 13.999998092651367,
+              "bbox": [
+                182.9720001220703,
+                149.7171173095703,
+                320.3146667480469,
+                163.7171173095703
+              ],
+              "text": "Fresh square EMPTY"
+            }
+          ]
+        },
+        {
+          "label": "Fresh square STYLED",
+          "rasterSha256": "d46a42f6eab2d2a120bfecf49d0cbc150fad220135bad5155d305326b4cfcd35",
+          "visibleInkPixels": {
+            "image": 572,
+            "body": 0
+          },
+          "fontPrograms": [
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+            ]
+          ],
+          "traces": [
+            {
+              "font": "ArialMT",
+              "size": 13.999998092651367,
+              "bbox": [
+                182.9720001220703,
+                149.7171173095703,
+                326.6815185546875,
+                163.7171173095703
+              ],
+              "text": "Fresh square STYLED"
+            }
+          ]
+        }
+      ],
+      "rounds": [
+        {
+          "file": "square-round1.pptx",
+          "sha256": "1af7f350569088a072bfc04cc25f245418b8f698946a4b65b265578980610aa0",
+          "pdfSha256": "0b9451d1757708f0c969b754ca833cf6fa8732c4cfc9447fa20fd0f630877edc",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 1600200,
+                "y": 457200,
+                "cx": 3657600,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes square ONE",
+                "label": "Fresh square ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes square COPY",
+                "label": "Fresh square COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh square EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh square STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh square ONE",
+              "rasterSha256": "862f13cc9d9bcc31df2625d12763cf2a5ec46ec1dc482cd28543f46b89d8ad1d",
+              "visibleInkPixels": {
+                "image": 483,
+                "body": 1093
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    269.0465087890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    302.0418701171875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square COPY",
+              "rasterSha256": "add81805d8ed2cdc5c45953bf7c9564f0aa03e04c812c23a8984a68b7dafe735",
+              "visibleInkPixels": {
+                "image": 504,
+                "body": 1119
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    281.4591979980469,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    311.58428955078125,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square EMPTY",
+              "rasterSha256": "88b3f0633f50d4d519ca6ebf17183876e1eaeb3ef5a188a89f511f7a4ad1a1f0",
+              "visibleInkPixels": {
+                "image": 540,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    320.3146667480469,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square STYLED",
+              "rasterSha256": "d46a42f6eab2d2a120bfecf49d0cbc150fad220135bad5155d305326b4cfcd35",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    326.6815185546875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "square-round2.pptx",
+          "sha256": "b68b3532ac63dca3966785899b4eff50ae872826000c6873a804b826f57f2549",
+          "pdfSha256": "0278aef5f43e30c0a17da12ee732b59714828f377b5ecf5af646538613e44a4d",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 1600200,
+                "y": 457200,
+                "cx": 3657600,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes square ONE",
+                "label": "Fresh square ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes square COPY",
+                "label": "Fresh square COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh square EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh square STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh square ONE",
+              "rasterSha256": "862f13cc9d9bcc31df2625d12763cf2a5ec46ec1dc482cd28543f46b89d8ad1d",
+              "visibleInkPixels": {
+                "image": 483,
+                "body": 1093
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    269.0465087890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    302.0418701171875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square COPY",
+              "rasterSha256": "add81805d8ed2cdc5c45953bf7c9564f0aa03e04c812c23a8984a68b7dafe735",
+              "visibleInkPixels": {
+                "image": 504,
+                "body": 1119
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    281.4591979980469,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    311.58428955078125,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square EMPTY",
+              "rasterSha256": "88b3f0633f50d4d519ca6ebf17183876e1eaeb3ef5a188a89f511f7a4ad1a1f0",
+              "visibleInkPixels": {
+                "image": 540,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    320.3146667480469,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square STYLED",
+              "rasterSha256": "d46a42f6eab2d2a120bfecf49d0cbc150fad220135bad5155d305326b4cfcd35",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    326.6815185546875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square STYLED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "file": "square-round3.pptx",
+          "sha256": "1d3726b881da170f201dd69002aed9a64e3e1ab3b16a4e1f7f8230d19cf10874",
+          "pdfSha256": "4060767fddf993406d4c6ab08f021bc5c03a0a4a01773911db55616d30530ec5",
+          "package": {
+            "geometry": {
+              "sldImg": {
+                "x": 1600200,
+                "y": 457200,
+                "cx": 3657600,
+                "cy": 3657600
+              },
+              "body": {
+                "x": 457200,
+                "y": 4572000,
+                "cx": 5943600,
+                "cy": 4114800
+              }
+            },
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "theme": "ppt/theme/theme2.xml",
+            "rows": [
+              {
+                "slide": "ppt/slides/slide1.xml",
+                "notes": "ppt/notesSlides/notesSlide1.xml",
+                "text": "Fresh notes square ONE",
+                "label": "Fresh square ONE",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide2.xml",
+                "notes": "ppt/notesSlides/notesSlide2.xml",
+                "text": "Fresh notes square COPY",
+                "label": "Fresh square COPY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide3.xml",
+                "notes": "ppt/notesSlides/notesSlide3.xml",
+                "text": null,
+                "label": "Fresh square EMPTY",
+                "emptyStyledRunRetained": null
+              },
+              {
+                "slide": "ppt/slides/slide4.xml",
+                "notes": "ppt/notesSlides/notesSlide4.xml",
+                "text": "",
+                "label": "Fresh square STYLED",
+                "emptyStyledRunRetained": false
+              }
+            ]
+          },
+          "pages": [
+            {
+              "label": "Fresh square ONE",
+              "rasterSha256": "862f13cc9d9bcc31df2625d12763cf2a5ec46ec1dc482cd28543f46b89d8ad1d",
+              "visibleInkPixels": {
+                "image": 483,
+                "body": 1093
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    269.0465087890625,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square ONE"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    302.0418701171875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square ONE"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square COPY",
+              "rasterSha256": "add81805d8ed2cdc5c45953bf7c9564f0aa03e04c812c23a8984a68b7dafe735",
+              "visibleInkPixels": {
+                "image": 504,
+                "body": 1119
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "03c74cad53bdb4b7c7b09538f3a2d65991c167c4ae10978947ae3a29454a0713"
+                ],
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    281.4591979980469,
+                    445.9462890625
+                  ],
+                  "text": "Fresh notes square COPY"
+                },
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    311.58428955078125,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square COPY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square EMPTY",
+              "rasterSha256": "88b3f0633f50d4d519ca6ebf17183876e1eaeb3ef5a188a89f511f7a4ad1a1f0",
+              "visibleInkPixels": {
+                "image": 540,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    320.3146667480469,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square EMPTY"
+                }
+              ]
+            },
+            {
+              "label": "Fresh square STYLED",
+              "rasterSha256": "d46a42f6eab2d2a120bfecf49d0cbc150fad220135bad5155d305326b4cfcd35",
+              "visibleInkPixels": {
+                "image": 572,
+                "body": 0
+              },
+              "fontPrograms": [
+                [
+                  "AAAAAE+ArialMT",
+                  "TrueType",
+                  "0edba2c958a5a675837ce8e1d38050cd660d57b4bdb69556b63aa2231ef7a6a2"
+                ]
+              ],
+              "traces": [
+                {
+                  "font": "ArialMT",
+                  "size": 13.999998092651367,
+                  "bbox": [
+                    182.9720001220703,
+                    149.7171173095703,
+                    326.6815185546875,
+                    163.7171173095703
+                  ],
+                  "text": "Fresh square STYLED"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rejectedControls": [
+    "wide: swapped-copy-target",
+    "portrait: swapped-copy-target",
+    "square: swapped-copy-target"
+  ],
+  "total": {
+    "publicAuthorInputs": 3,
+    "firstOpenPages": 12,
+    "nativeReopenPages": 36,
+    "nativeSaveCloseReopenRounds": 9,
+    "wrongCopyControlsRejected": 3
+  },
+  "knownFailure": "PowerPoint drops the authored empty 12pt bold run at first save; per-page emptyStyledRunRetained records this failure explicitly. Geometry/raster evidence does not certify insertion styling.",
+  "scope": "Public fresh-author fixed notes layout only. Empty insertion-style native retention is failing. Imported artwork/fields, custom notes layouts, overflow pagination, native edit operations and cross-platform notes are not certified."
+}

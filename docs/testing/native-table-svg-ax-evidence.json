@@ -1,0 +1,54 @@
+{
+  "pymupdf": "1.28.0",
+  "mupdf": "1.29.0",
+  "observed": {
+    "browser": {
+      "text": "",
+      "samples": [
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ],
+        [
+          255,
+          255,
+          255
+        ]
+      ]
+    },
+    "native": {
+      "text": "Header\nLeft\nRight\n",
+      "samples": [
+        [
+          255,
+          255,
+          0
+        ],
+        [
+          0,
+          255,
+          255
+        ],
+        [
+          255,
+          176,
+          176
+        ]
+      ]
+    }
+  },
+  "sha256": {
+    "browser.svg": "7616c947d7a19f900d79c2debee4d931b647f4a3b632cd060e585e19eae1bde4",
+    "browser-warnings.json": "879518c98445450fbbff276f091bf4872b73bf2729f1ecc85a39ae9c4ae074de",
+    "browser-mupdf.png": "ba8aeabe1ccdc8a2bea2871efa456343acd434db7fa84c6c5b825e7c0d57e66a",
+    "native.svg": "0f875b5645c18f684c40f914218a26934e8944e18b31639ff6bac582bd18453c",
+    "native-warnings.json": "013559c6a8dbbf7b76a2443b9a67a5a0f6d39b1e0af17beafb6cd16598fb2a8e",
+    "native-mupdf.png": "a4267c8f95dafee2132afd63746613cbbbb5c8e7daa05ff4022d8541ec590175"
+  }
+}

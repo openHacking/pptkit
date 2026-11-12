@@ -1,0 +1,204 @@
+{
+  "scope": "PowerPoint 16.104: edit slide 4 angle and first stop transparency, save as, close and reopen once. Other slide gradient data compared semantically; screenshots and AX text alone do not independently establish provenance. No multiple reopen cycles or general gradient support established.",
+  "sourceSha256": "cd6956243b6fc691a89471e940f4e331589c473432e3faee48990f1769e77271",
+  "editedSha256": "5ff9dfd145ffad27d28aeda9f3fece4fff8aa52a17a145377662a8cad2d61b51",
+  "reopenScreenshotSha256": "efe56e65db61278ab9aa9ecb69fca8d270ac92fa9158f0de81b537d5cce81e98",
+  "reopenAxSha256": "a39a26e7d8adf8ea2c687d7d956cac93ee7146277fb8346b8555fc9f79094824",
+  "oracleSha256": "4d6e1a8b03147bc12b3156bfd8d42f348f9a624b209e42a77337c3dc7fa004ef",
+  "before": [
+    {
+      "angle": "0",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "5400000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "2700000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "0",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "50000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "16200000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    }
+  ],
+  "after": [
+    {
+      "angle": "0",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "5400000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "2700000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "7200000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "70000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "0",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "50000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    },
+    {
+      "angle": "16200000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "100000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ]
+    }
+  ]
+}

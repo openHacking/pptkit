@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 1,
+  "scope": "One PPTKit core string edit and unchanged control, each resaved three times by LibreOfficeDev headlessly. XML inventories do not establish native metadata UI or interactive behavior.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "python": "Python 3.14.3"
+  },
+  "runnerSha256": "b524579d8cb2cccffdc822ef8746e98c6c40fd70ea812c2f7e5bd589805e4765",
+  "oracleSha256": "0d25b657d3c0a8ffa95d00097c4d94a3ed549b2d66b3a603072c0bc2733f95cd",
+  "generated": {
+    "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/generated.pptx",
+    "sha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6"
+  },
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-1/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-1/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-2/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-2/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-3/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-metadata-libreoffice/run-DQ1cui/round-3/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    }
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/input/control.pptx",
+      "sha256": "8d7c742da33fcc98fe40c0f3729de18b3f6bfbedbeccd045da52b63786a49c94",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Original title",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Original subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Original description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha, beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "en-US",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "cpTerms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "cpTerms:W3CDTF"
+            }
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/input/edited.pptx",
+      "sha256": "a3d6d66afcd31fe5bb5b3d78846657d661109fa4458d4a651c78d9d3de8538dd",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Edited title 中文",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Edited subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Edited & description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha, beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "fr-FR",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "cpTerms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "cpTerms:W3CDTF"
+            }
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-1/control.pptx",
+      "sha256": "99d852ad28aba5d115ca5bd84cfa842153e13279db72889c9454b85227913fd3",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Original description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "en-US",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Original subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Original title",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-1/edited.pptx",
+      "sha256": "c34af1d0d8b804d058ae81c78e90f79d44ef0728d58b785e6ed6bad464922110",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Edited & description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "fr-FR",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Edited subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Edited title 中文",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-2/control.pptx",
+      "sha256": "c5a8ed4b64c27e4b4e54d86874689be2d551cc5a71180fc5227d6d41109f15da",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Original description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "en-US",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Original subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Original title",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-2/edited.pptx",
+      "sha256": "01631d0adef6c4dc26b077ae15b502ce8cb252739200f92e6072b5185f5fe7a8",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Edited & description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "fr-FR",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Edited subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Edited title 中文",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-3/control.pptx",
+      "sha256": "10ec25d2098b23cd58b533a0b29b73eae2538a2e0ecc824eb3eb3a20abaa9943",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Original description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "en-US",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Original subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Original title",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/round-3/edited.pptx",
+      "sha256": "0a413377b0fd3d41653f2359ca03a73ce9c0a6b1d00435c31808f68c738f5b48",
+      "inventory": {
+        "part": "docProps/core.xml",
+        "properties": [
+          {
+            "expandedName": "{http://purl.org/dc/terms/}created",
+            "value": "2020-01-02T03:04:05Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}creator",
+            "value": "Sentinel Author",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}description",
+            "value": "Edited & description",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}keywords",
+            "value": "alpha beta",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}language",
+            "value": "fr-FR",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}lastModifiedBy",
+            "value": "Sentinel Maintainer",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/terms/}modified",
+            "value": "2021-02-03T04:05:06Z",
+            "attributes": {
+              "{http://www.w3.org/2001/XMLSchema-instance}type": "dcterms:W3CDTF"
+            }
+          },
+          {
+            "expandedName": "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}revision",
+            "value": "7",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}subject",
+            "value": "Edited subject",
+            "attributes": {}
+          },
+          {
+            "expandedName": "{http://purl.org/dc/elements/1.1/}title",
+            "value": "Edited title 中文",
+            "attributes": {}
+          }
+        ],
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Metadata control slide"
+          }
+        ]
+      }
+    }
+  ]
+}

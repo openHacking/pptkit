@@ -1,0 +1,324 @@
+{
+  "scope": "First-open PowerPoint A4 PDF for 12 Chinese-prefix shape-tab samples, with Chinese or decimal suffix. Checks source declarations, selected PDF fonts and suffix characters. Only first page window captured; edit, save/reopen, Japanese/Korean and other fonts are not covered. Capture hashes do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "sourceSha256": "fd38cdf9599a95ec37daf75b1ffe22bbcb747c32ec2d6c49485e2098ff0e1f34",
+  "pdfSha256": "3fb48a08be93bb45fcfae4922f210741e632323e22fb7460f9b6179824f56854",
+  "axSha256": "e09c10287fc913ad0e3efc777448fd4ffcdce10cc4dcd6cbf7fbb0a17d62d3f5",
+  "screenshotSha256": "c250564a92fd03ae06faa096a3a1948c740c2eb398e0198c08fb725b8363a4ec",
+  "generatorSha256": "921a1fa1ad9bc27d5c5e2f5f2d97816ff052e369e2c4ccaa74717eac8d7237d2",
+  "verifierSha256": "e38abbb11adaea67a68f2edd7c141da9bcbb85af1480f393a88fb9f72a43639b",
+  "pages": [
+    {
+      "kind": "left",
+      "guide": 310.1666564941406,
+      "rows": [
+        {
+          "word": "一",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.16668701171875,
+          "characters": [
+            {
+              "char": "一",
+              "left": 280.0000462582271,
+              "right": 307.78952198290074,
+              "baseline": 28.070941819426853
+            }
+          ]
+        },
+        {
+          "word": "销售",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.16668701171875,
+          "characters": [
+            {
+              "char": "销",
+              "left": 280.0000462582271,
+              "right": 307.78952198290074,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "售",
+              "left": 308.00072933804694,
+              "right": 335.79020506272064,
+              "baseline": 28.158768314340243
+            }
+          ]
+        },
+        {
+          "word": "总收入",
+          "bold": true,
+          "font": "HiraginoSansGB-W6",
+          "anchor": 310.16668701171875,
+          "characters": [
+            {
+              "char": "总",
+              "left": 280.0000462582271,
+              "right": 307.78952198290074,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "收",
+              "left": 308.00072933804694,
+              "right": 335.79020506272064,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "入",
+              "left": 336.00137386934426,
+              "right": 363.79084959401797,
+              "baseline": 28.246578077065013
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "center",
+      "guide": 310.1666564941406,
+      "rows": [
+        {
+          "word": "一",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.08331298828125,
+          "characters": [
+            {
+              "char": "一",
+              "left": 265.9999938322364,
+              "right": 293.78946955691003,
+              "baseline": 28.070941819426853
+            }
+          ]
+        },
+        {
+          "word": "销售",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.08360290527344,
+          "characters": [
+            {
+              "char": "销",
+              "left": 252.00001850329082,
+              "right": 279.7894942279645,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "售",
+              "left": 280.0007015831107,
+              "right": 307.7901773077844,
+              "baseline": 28.158768314340243
+            }
+          ]
+        },
+        {
+          "word": "总收入",
+          "bold": true,
+          "font": "HiraginoSansGB-W6",
+          "anchor": 310.08387756347656,
+          "characters": [
+            {
+              "char": "总",
+              "left": 238.00004317434528,
+              "right": 265.78951889901896,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "收",
+              "left": 266.00072625416516,
+              "right": 293.7902019788388,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "入",
+              "left": 294.0013707854625,
+              "right": 321.79084651013613,
+              "baseline": 28.246578077065013
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "guide": 310.1666564941406,
+      "rows": [
+        {
+          "word": "一",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.0,
+          "characters": [
+            {
+              "char": "一",
+              "left": 252.00001850329082,
+              "right": 279.7894942279645,
+              "baseline": 28.070941819426853
+            }
+          ]
+        },
+        {
+          "word": "销售",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.0005187988281,
+          "characters": [
+            {
+              "char": "销",
+              "left": 223.99999074835458,
+              "right": 251.78946647302826,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "售",
+              "left": 252.00067382817446,
+              "right": 279.79014955284816,
+              "baseline": 28.158768314340243
+            }
+          ]
+        },
+        {
+          "word": "总收入",
+          "bold": true,
+          "font": "HiraginoSansGB-W6",
+          "anchor": 310.0010986328125,
+          "characters": [
+            {
+              "char": "总",
+              "left": 196.00005936472473,
+              "right": 223.78951581513715,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "收",
+              "left": 224.00072317028335,
+              "right": 251.79019889495703,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "入",
+              "left": 252.00140625010326,
+              "right": 279.79088197477694,
+              "baseline": 28.246578077065013
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "decimal",
+      "guide": 310.1666564941406,
+      "rows": [
+        {
+          "word": "1.2",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.16619873046875,
+          "characters": [
+            {
+              "char": "1",
+              "left": 261.62504490902876,
+              "right": 279.8827431040548,
+              "baseline": 28.070941819426853
+            },
+            {
+              "char": ".",
+              "left": 279.999429481866,
+              "right": 286.6689021138468,
+              "baseline": 28.070941819426853
+            },
+            {
+              "char": "2",
+              "left": 286.75783355540955,
+              "right": 305.0155317504355,
+              "baseline": 28.070941819426853
+            }
+          ]
+        },
+        {
+          "word": "123.45",
+          "bold": false,
+          "font": "HiraginoSansGB-W3",
+          "anchor": 310.1651916503906,
+          "characters": [
+            {
+              "char": "1",
+              "left": 224.87496511358708,
+              "right": 243.13266330861308,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "2",
+              "left": 243.24934968642427,
+              "right": 261.50704788145026,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "3",
+              "left": 261.62377280778406,
+              "right": 279.8814710028101,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": ".",
+              "left": 279.99815738062125,
+              "right": 286.66763001260205,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "4",
+              "left": 286.7565614541648,
+              "right": 305.12539503975233,
+              "baseline": 28.158768314340243
+            },
+            {
+              "char": "5",
+              "left": 305.26991345085713,
+              "right": 323.5276116458831,
+              "baseline": 28.158768314340243
+            }
+          ]
+        },
+        {
+          "word": "0.678",
+          "bold": true,
+          "font": "HiraginoSansGB-W6",
+          "anchor": 310.1667175292969,
+          "characters": [
+            {
+              "char": "0",
+              "left": 260.12504479889014,
+              "right": 279.91115336518686,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": ".",
+              "left": 280.0000848067496,
+              "right": 287.50324633629333,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "6",
+              "left": 287.50879732354304,
+              "right": 307.29490588983975,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "7",
+              "left": 307.3838373314025,
+              "right": 327.1699458976993,
+              "baseline": 28.246578077065013
+            },
+            {
+              "char": "8",
+              "left": 327.25883879073945,
+              "right": 347.04494735703616,
+              "baseline": 28.246578077065013
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

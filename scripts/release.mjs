@@ -4,6 +4,9 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { createInterface } from "node:readline/promises";
+import { assertReleaseNotes, bumpVersion, compareVersions, releaseTag, validateVersion } from "./release-policy.mjs";
+
+export { bumpVersion, validateVersion } from "./release-policy.mjs";
 
 export const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const packagesDir = path.join(repoRoot, "packages");
@@ -39,21 +42,6 @@ export function getPublishablePackages(packagesRoot = packagesDir) {
     .sort((left, right) => left.name.localeCompare(right.name));
 }
 
-export function bumpVersion(version, releaseType) {
-  const match = /^(\d+)\.(\d+)\.(\d+)$/.exec(version);
-  if (!match) throw new Error(`Unsupported version format: ${version}`);
-
-  const [major, minor, patch] = match.slice(1).map(Number);
-  if (releaseType === "patch") return `${major}.${minor}.${patch + 1}`;
-  if (releaseType === "minor") return `${major}.${minor + 1}.0`;
-  if (releaseType === "major") return `${major + 1}.0.0`;
-  throw new Error(`Unsupported release type: ${releaseType}`);
-}
-
-export function validateVersion(version) {
-  return /^\d+\.\d+\.\d+$/.test(version);
-}
-
 function run(command, args, options = {}) {
   execFileSync(command, args, {
     cwd: repoRoot,
@@ -70,9 +58,9 @@ function assertVersionsMatch(packages) {
   return versions[0];
 }
 
-function assertTargetVersionsAvailable(packages, version) {
+export function assertTargetVersionsAvailable(packages, version, spawn = spawnSync) {
   for (const pkg of packages) {
-    const result = spawnSync(
+    const result = spawn(
       "npm",
       [
         "view",
@@ -84,22 +72,16 @@ function assertTargetVersionsAvailable(packages, version) {
       ],
       { cwd: repoRoot, encoding: "utf8", timeout: 15000 },
     );
-    const output = `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
-
     if (result.status === 0) {
       throw new Error(`Version already exists on npm: ${pkg.name}@${version}`);
     }
-    if (result.error || result.signal || !/E404|notarget|404 Not Found/i.test(output)) {
+    let code;
+    try { code = JSON.parse(result.stdout)?.error?.code; } catch { /* Unstructured failures are not proof of absence. */ }
+    if (result.error || result.signal || code !== "E404") {
       throw new Error(
         `Could not verify ${pkg.name}@${version} on npm. Check npm login, registry connectivity, and try again.`,
       );
     }
-  }
-}
-
-function validatePackageContents(packages) {
-  for (const pkg of packages) {
-    run("npm", ["pack", "--dry-run", "--json"], { cwd: pkg.dir });
   }
 }
 
@@ -109,10 +91,23 @@ function updatePackageVersions(packages, nextVersion) {
   }
 }
 
-function parseArgs(args) {
-  if (args.length === 0) return { dryRun: false };
-  if (args.length === 1 && args[0] === "--dry-run") return { dryRun: true };
-  throw new Error("Usage: pnpm release:npm [--dry-run]");
+export function parseArgs(args) {
+  const options = { dryRun: false };
+  const seen = new Set();
+  for (let index = 0; index < args.length; index++) {
+    const arg = args[index];
+    if (seen.has(arg)) throw new Error(`Duplicate option: ${arg}`);
+    seen.add(arg);
+    if (arg === "--dry-run") options.dryRun = true;
+    else if (arg === "--version" || arg === "--tag") {
+      const value = args[++index];
+      if (!value || value.startsWith("--")) throw new Error(`Missing value for ${arg}`);
+      options[arg.slice(2)] = value;
+    } else throw new Error("Usage: pnpm release:npm [--dry-run] [--version x.y.z[-preview.N]] [--tag next|latest]");
+  }
+  if (options.version !== undefined && !validateVersion(options.version)) throw new Error(`Invalid version: ${options.version}`);
+  if (options.tag !== undefined && !["next", "latest"].includes(options.tag)) throw new Error("Release tag must be next or latest");
+  return options;
 }
 
 async function chooseVersion(currentVersion, rl) {
@@ -122,21 +117,51 @@ async function chooseVersion(currentVersion, rl) {
   console.log("2. minor");
   console.log("3. major");
   console.log("4. custom");
+  console.log("5. preview");
 
-  const choice = (await rl.question("Enter choice [1-4]: ")).trim();
+  const choice = (await rl.question("Enter choice [1-5]: ")).trim();
   if (choice === "1") return bumpVersion(currentVersion, "patch");
   if (choice === "2") return bumpVersion(currentVersion, "minor");
   if (choice === "3") return bumpVersion(currentVersion, "major");
   if (choice === "4") {
-    const customVersion = (await rl.question("Enter custom version (x.y.z): ")).trim();
+    const customVersion = (await rl.question("Enter custom version (x.y.z or x.y.z-preview.N): ")).trim();
     if (!validateVersion(customVersion)) throw new Error(`Invalid custom version: ${customVersion}`);
     return customVersion;
   }
+  if (choice === "5") return bumpVersion(currentVersion, "preview");
   throw new Error(`Invalid choice: ${choice}`);
 }
 
+// Explicit process dependencies let tests exercise failure ordering with actual
+// temporary manifests, without publishing or requiring registry credentials.
+export async function performRelease({ packages, nextVersion, tag, dryRun = false, changelog }, commands) {
+  if (packages.length === 0) throw new Error("No publishable packages found in ./packages");
+  const currentVersion = assertVersionsMatch(packages);
+  if (compareVersions(nextVersion, currentVersion) <= 0) throw new Error("Target version must be newer than the current workspace version");
+  const selectedTag = releaseTag(nextVersion, tag);
+  assertReleaseNotes(changelog, nextVersion, dryRun);
+  commands.log(`Packages to ${dryRun ? "inspect" : "publish"} at ${nextVersion} (tag: ${selectedTag}):`);
+  for (const pkg of packages) commands.log(`- ${pkg.name}: ${pkg.version} -> ${nextVersion}`);
+  commands.checkRegistry(packages, nextVersion);
+  // Build first: declaration and documentation checks need built package exports
+  // on a clean checkout. The test suite includes actual installed tarball tests.
+  for (const check of ["build", "typecheck", "lint", "test"]) commands.run("pnpm", [check]);
+  if (dryRun) {
+    commands.log("Dry run complete. Current-version tarballs passed consumer tests; no versions or registry tags were changed.");
+    return { status: "dry-run", version: nextVersion, tag: selectedTag };
+  }
+  if (!await commands.confirm(`Publish ${packages.length} packages at ${nextVersion} with tag ${selectedTag}?`)) return { status: "cancelled", version: nextVersion, tag: selectedTag };
+  updatePackageVersions(packages, nextVersion);
+  try {
+    commands.run("pnpm", ["-r", "--filter", "./packages/*", "publish", "--access", "public", "--tag", selectedTag, "--no-git-checks"]);
+  } catch (error) {
+    throw new Error(`npm publish failed after version files were updated to ${nextVersion}. Keep these versions, inspect registry state for every package, and follow docs/migration/release-strategy.md partial-publication recovery. No external publication was rolled back. ${error.message}`);
+  }
+  return { status: "published", version: nextVersion, tag: selectedTag };
+}
+
 async function main(args = process.argv.slice(2)) {
-  const { dryRun } = parseArgs(args);
+  const options = parseArgs(args);
   const packages = getPublishablePackages();
   if (packages.length === 0) throw new Error("No publishable packages found in ./packages");
 
@@ -144,41 +169,12 @@ async function main(args = process.argv.slice(2)) {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
 
   try {
-    const nextVersion = await chooseVersion(currentVersion, rl);
-    console.log(`\nPackages to ${dryRun ? "inspect" : "publish"} (${packages.length}):`);
-    for (const pkg of packages) console.log(`- ${pkg.name}: ${pkg.version} -> ${nextVersion}`);
-
-    assertTargetVersionsAvailable(packages, nextVersion);
-    console.log("\nRunning validation...");
-    run("pnpm", ["lint"]);
-    run("pnpm", ["typecheck"]);
-    run("pnpm", ["test"]);
-    run("pnpm", ["build"]);
-    validatePackageContents(packages);
-
-    if (dryRun) {
-      console.log("\nDry run complete. No package versions were changed and nothing was published.");
-      return;
-    }
-
-    const shouldContinue = (await rl.question("\nContinue with version update and publish? [y/N]: "))
-      .trim()
-      .toLowerCase();
-    if (shouldContinue !== "y" && shouldContinue !== "yes") {
-      console.log("Cancelled.");
-      return;
-    }
-
-    updatePackageVersions(packages, nextVersion);
-    console.log("\nPublishing packages to npm...");
-    try {
-      run("pnpm", ["-r", "--filter", "./packages/*", "publish", "--access", "public", "--no-git-checks"]);
-    } catch (error) {
-      throw new Error(
-        `npm publish failed after version files were updated. Review the published packages and git diff before retrying. ${error.message}`,
-      );
-    }
-    console.log(`\nPublished ${packages.length} packages at version ${nextVersion}.`);
+    const nextVersion = options.version ?? await chooseVersion(currentVersion, rl);
+    const result = await performRelease({ packages, nextVersion, tag: options.tag, dryRun: options.dryRun, changelog: readFileSync(path.join(repoRoot, "CHANGELOG.md"), "utf8") }, {
+      run, checkRegistry: assertTargetVersionsAvailable, log: console.log,
+      confirm: async (question) => ["y", "yes"].includes((await rl.question(`\n${question} [y/N]: `)).trim().toLowerCase()),
+    });
+    console.log(`Release ${result.status}: ${result.version} (${result.tag}).`);
   } finally {
     rl.close();
   }

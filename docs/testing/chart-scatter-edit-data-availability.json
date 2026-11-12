@@ -1,0 +1,21 @@
+{
+  "scope": "The PowerPoint Chart Design ribbon showed Edit Data in Excel disabled for both a PPTKit-preservation sample and an independently generated PowerPoint-saved control. Microsoft Excel was not found in /Applications or the Spotlight bundle-ID query at the time. These observations do not establish why the controls were disabled or prove that the files are or are not editable in another environment. No interactive workbook edit was performed. Accessibility and screenshot captures are retained observations, not independently authenticated provenance.",
+  "applicationVersion": "16.104",
+  "verifierSha256": "76dbf018337e279ff8e64469aa79830f9087f56ad51adfbfc03edb8429d6c0a9",
+  "captures": [
+    {
+      "sample": "pptkit-saved",
+      "file": ".tmp/native-scatter-coordinate-save/powerpoint-bI3pt5/interactive-edit.pptx",
+      "fileSha256": "977f8f3601f412bae5b637d461c91224b3564c7e56506da40a650ebba9993db7",
+      "axSha256": "87cd19403b17efa2a79c50cce2fb92b454e0c282da1ac8e1a988bd60126bae73",
+      "screenshotSha256": "0b5a46c44d5f146c5d7d612be28952e87f17c179b59e9294077880cf9934cdb6"
+    },
+    {
+      "sample": "independent-control",
+      "file": ".tmp/native-scatter-research/powerpoint-grywvvg1/scatter-research-round-1.pptx",
+      "fileSha256": "f19858944525e005cd4be5ce3f49d8054284298d42b67f357ec711f13c8b946d",
+      "axSha256": "980e216f4644e634aa5d85fa810ba0c110ba93edfeb235d8c3dd9eda5d42188a",
+      "screenshotSha256": "9b535c02bf2615a0ba1839c1efd052c595243fcbc4e2af44336479e7cf678d41"
+    }
+  ]
+}

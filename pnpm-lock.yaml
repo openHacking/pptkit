@@ -11,6 +11,9 @@ importers:
       '@playwright/test':
         specifier: 1.61.1
         version: 1.61.1
+      '@rollup/plugin-commonjs':
+        specifier: 29.0.3
+        version: 29.0.3(rollup@4.62.2)
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.3
         version: 16.0.3(rollup@4.62.2)
@@ -109,12 +112,86 @@ importers:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@24.13.3)(jsdom@29.1.1)(vite@8.1.4(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.0))
 
-  packages/cli: {}
+  examples/react-preview:
+    dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@pptkit/layout':
+        specifier: workspace:*
+        version: link:../../packages/layout
+      '@pptkit/pptx-exporter':
+        specifier: workspace:*
+        version: link:../../packages/pptx-exporter
+      '@pptkit/svg-renderer':
+        specifier: workspace:*
+        version: link:../../packages/svg-renderer
+      react:
+        specifier: ^19.2.7
+        version: 19.2.7
+      react-dom:
+        specifier: ^19.2.7
+        version: 19.2.7(react@19.2.7)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.17
+        version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.17)
+      vite:
+        specifier: ^8.1.4
+        version: 8.1.4(@types/node@24.13.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.0)
+
+  examples/report-dashboard:
+    dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@pptkit/pptx-exporter':
+        specifier: workspace:*
+        version: link:../../packages/pptx-exporter
+      '@pptkit/svg-renderer':
+        specifier: workspace:*
+        version: link:../../packages/svg-renderer
+
+  packages/cli:
+    dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../core
+      '@pptkit/pptx-exporter':
+        specifier: workspace:*
+        version: link:../pptx-exporter
+      '@pptkit/pptx-parser':
+        specifier: workspace:*
+        version: link:../pptx-parser
+      '@pptkit/svg-renderer':
+        specifier: workspace:*
+        version: link:../svg-renderer
 
   packages/core: {}
 
   packages/layout:
     dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../core
+
+  packages/media-inspection: {}
+
+  packages/pdf-renderer:
+    dependencies:
+      '@pptkit/layout':
+        specifier: workspace:*
+        version: link:../layout
+      '@pptkit/media-inspection':
+        specifier: workspace:*
+        version: link:../media-inspection
+      '@pptkit/svg-renderer':
+        specifier: workspace:*
+        version: link:../svg-renderer
+    devDependencies:
       '@pptkit/core':
         specifier: workspace:*
         version: link:../core
@@ -127,9 +204,33 @@ importers:
       '@pptkit/layout':
         specifier: workspace:*
         version: link:../layout
+      '@pptkit/media-inspection':
+        specifier: workspace:*
+        version: link:../media-inspection
       fflate:
         specifier: ^0.8.3
         version: 0.8.3
+
+  packages/pptx-parser:
+    dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../core
+      fflate:
+        specifier: ^0.8.3
+        version: 0.8.3
+      saxes:
+        specifier: 6.0.0
+        version: 6.0.0
+
+  packages/svg-parser:
+    dependencies:
+      '@pptkit/core':
+        specifier: workspace:*
+        version: link:../core
+      saxes:
+        specifier: 6.0.0
+        version: 6.0.0
 
   packages/svg-renderer:
     dependencies:
@@ -695,6 +796,15 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
+  '@rollup/plugin-commonjs@29.0.3':
+    resolution: {integrity: sha512-ZaOxZceP7SOUW7Lqw5IRVweSQYWaeIPnXIGLiB690EBA3FGJTO40EEr2L5yZplJWsgTCogILRSpcAe7+U0Otdg==}
+    engines: {node: '>=16.0.0 || 14 >= 14.17'}
+    peerDependencies:
+      rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
   '@rollup/plugin-node-resolve@16.0.3':
     resolution: {integrity: sha512-lUYM3UBGuM93CnMPG1YocWu7X802BrNF3jW2zny5gQyLQgRFJhV1Sq0Zi74+dh/6NBx1DxFC4b4GXg9wUCG5Qg==}
     engines: {node: '>=14.0.0'}
@@ -1076,6 +1186,9 @@ packages:
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
+  commondir@1.0.1:
+    resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
+
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
@@ -1188,6 +1301,9 @@ packages:
 
   is-potential-custom-element-name@1.0.1:
     resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==}
+
+  is-reference@1.2.1:
+    resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
 
   jiti@2.7.0:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
@@ -1995,6 +2111,18 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
+  '@rollup/plugin-commonjs@29.0.3(rollup@4.62.2)':
+    dependencies:
+      '@rollup/pluginutils': 5.4.0(rollup@4.62.2)
+      commondir: 1.0.1
+      estree-walker: 2.0.2
+      fdir: 6.5.0(picomatch@4.0.5)
+      is-reference: 1.2.1
+      magic-string: 0.30.21
+      picomatch: 4.0.5
+    optionalDependencies:
+      rollup: 4.62.2
+
   '@rollup/plugin-node-resolve@16.0.3(rollup@4.62.2)':
     dependencies:
       '@rollup/pluginutils': 5.4.0(rollup@4.62.2)
@@ -2295,6 +2423,8 @@ snapshots:
 
   commander@2.20.3: {}
 
+  commondir@1.0.1: {}
+
   convert-source-map@2.0.0: {}
 
   css-tree@3.2.1:
@@ -2404,6 +2534,10 @@ snapshots:
   is-module@1.0.0: {}
 
   is-potential-custom-element-name@1.0.1: {}
+
+  is-reference@1.2.1:
+    dependencies:
+      '@types/estree': 1.0.9
 
   jiti@2.7.0: {}
 

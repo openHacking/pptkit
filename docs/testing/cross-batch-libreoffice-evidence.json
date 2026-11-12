@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 1,
+  "scope": "One control and two mutually linked copied pages with linked notes and a shared picture; LibreOfficeDev headless three saves and final PDF reopen. This is not interactive editability, link activation, repair-dialog, PowerPoint or full visual fidelity.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ",
+  "fileHashes": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/input.pptx",
+      "sha256": "dca1cd8454a8b9fdccc602f2b1551e1eb6cdb5989e13cd42fe11a4f604b147d4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-1/input.pptx",
+      "sha256": "15d90c36dfd8c2eb7db7eec317a97ede81c79b3834243b9e98dfd26270fe2f84"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-2/input.pptx",
+      "sha256": "c921db5254b153cbacb832488e3dafd62c0b7d35006dd9ca03e84ba35973b9cf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-3/input.pptx",
+      "sha256": "942aaf48839688a6a516602c47fc2564a7b6ed6878412a49d99d6b92c506cb5e"
+    }
+  ],
+  "pdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/pdf/input.pdf",
+    "sha256": "bcf7e53cb5e35b9becda16acd86dadc20523be8d4c83aa8780d50f6dfb7a7fb6"
+  },
+  "independent": {
+    "oracle": "Python zipfile, ElementTree and PyMuPDF",
+    "rounds": [
+      {
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Control page",
+            "clicks": []
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "text": "Page B",
+            "clicks": [
+              {
+                "id": "rId3",
+                "rawTarget": "slide3.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide3.xml",
+                "type": "slide"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide3.xml",
+            "text": "Page A",
+            "clicks": [
+              {
+                "id": "rId3",
+                "rawTarget": "slide2.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide2.xml",
+                "type": "slide"
+              }
+            ]
+          }
+        ],
+        "notes": [
+          {
+            "part": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Control notes",
+            "clicks": []
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Notes B",
+            "clicks": [
+              {
+                "id": "rId3",
+                "rawTarget": "../slides/slide3.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide3.xml",
+                "type": "slide"
+              }
+            ]
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide3.xml",
+            "text": "Notes A",
+            "clicks": [
+              {
+                "id": "rId3",
+                "rawTarget": "../slides/slide2.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide2.xml",
+                "type": "slide"
+              }
+            ]
+          }
+        ],
+        "media": [
+          {
+            "part": "ppt/media/asset-1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Control page",
+            "clicks": []
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "text": "Page B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide3.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide3.xml",
+                "type": "slide"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide3.xml",
+            "text": "Page A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide2.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide2.xml",
+                "type": "slide"
+              }
+            ]
+          }
+        ],
+        "notes": [
+          {
+            "part": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Control notes",
+            "clicks": []
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Notes B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "../slides/slide3.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide3.xml",
+            "text": "Notes A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "../slides/slide2.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          }
+        ],
+        "media": [
+          {
+            "part": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Control page",
+            "clicks": []
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "text": "Page B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide3.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide3.xml",
+                "type": "slide"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide3.xml",
+            "text": "Page A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide2.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide2.xml",
+                "type": "slide"
+              }
+            ]
+          }
+        ],
+        "notes": [
+          {
+            "part": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Control notes",
+            "clicks": []
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Notes B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "file:///Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/slides/slide3.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide3.xml",
+            "text": "Notes A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "file:///Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/slides/slide2.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          }
+        ],
+        "media": [
+          {
+            "part": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "text": "Control page",
+            "clicks": []
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "text": "Page B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide3.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide3.xml",
+                "type": "slide"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide3.xml",
+            "text": "Page A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "slide2.xml",
+                "targetMode": "Internal",
+                "resolvedPart": "ppt/slides/slide2.xml",
+                "type": "slide"
+              }
+            ]
+          }
+        ],
+        "notes": [
+          {
+            "part": "ppt/notesSlides/notesSlide1.xml",
+            "text": "Control notes",
+            "clicks": []
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide2.xml",
+            "text": "Notes B",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "file:///Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/slides/slide3.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          },
+          {
+            "part": "ppt/notesSlides/notesSlide3.xml",
+            "text": "Notes A",
+            "clicks": [
+              {
+                "id": "rId1",
+                "rawTarget": "file:///Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/slides/slide2.xml",
+                "targetMode": "External",
+                "resolvedPart": null,
+                "type": "hyperlink"
+              }
+            ]
+          }
+        ],
+        "media": [
+          {
+            "part": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      }
+    ],
+    "comparisons": [
+      {
+        "pageTextRetained": true,
+        "notesTextRetained": true,
+        "slideLinksRetained": true,
+        "notesLinksRetained": true,
+        "oneIdenticalImage": true
+      },
+      {
+        "pageTextRetained": true,
+        "notesTextRetained": true,
+        "slideLinksRetained": true,
+        "notesLinksRetained": false,
+        "oneIdenticalImage": true
+      },
+      {
+        "pageTextRetained": true,
+        "notesTextRetained": true,
+        "slideLinksRetained": true,
+        "notesLinksRetained": false,
+        "oneIdenticalImage": true
+      },
+      {
+        "pageTextRetained": true,
+        "notesTextRetained": true,
+        "slideLinksRetained": true,
+        "notesLinksRetained": false,
+        "oneIdenticalImage": true
+      }
+    ],
+    "reopenedPdfPageText": [
+      "Control page\n",
+      "Page B\n",
+      "Page A\n"
+    ]
+  },
+  "parser": [
+    {
+      "slideIds": [
+        "source-slide-256",
+        "source-slide-257",
+        "source-slide-258"
+      ],
+      "noteActions": [
+        [],
+        [
+          {
+            "type": "slide",
+            "slideId": "source-slide-258"
+          }
+        ],
+        [
+          {
+            "type": "slide",
+            "slideId": "source-slide-257"
+          }
+        ]
+      ],
+      "diagnostics": [],
+      "noOpExact": true
+    },
+    {
+      "slideIds": [
+        "source-slide-256",
+        "source-slide-257",
+        "source-slide-258"
+      ],
+      "noteActions": [
+        [],
+        [],
+        []
+      ],
+      "diagnostics": [
+        {
+          "slideId": "source-slide-257",
+          "message": "Relative or malformed hyperlink target has no current Core action mapping."
+        },
+        {
+          "slideId": "source-slide-258",
+          "message": "Relative or malformed hyperlink target has no current Core action mapping."
+        }
+      ],
+      "noOpExact": true
+    },
+    {
+      "slideIds": [
+        "source-slide-256",
+        "source-slide-257",
+        "source-slide-258"
+      ],
+      "noteActions": [
+        [],
+        [],
+        []
+      ],
+      "diagnostics": [
+        {
+          "slideId": "source-slide-257",
+          "message": "Hyperlink scheme is outside the HTTP/HTTPS/mailto subset and is not projected as a live action."
+        },
+        {
+          "slideId": "source-slide-258",
+          "message": "Hyperlink scheme is outside the HTTP/HTTPS/mailto subset and is not projected as a live action."
+        }
+      ],
+      "noOpExact": true
+    },
+    {
+      "slideIds": [
+        "source-slide-256",
+        "source-slide-257",
+        "source-slide-258"
+      ],
+      "noteActions": [
+        [],
+        [],
+        []
+      ],
+      "diagnostics": [
+        {
+          "slideId": "source-slide-257",
+          "message": "Hyperlink scheme is outside the HTTP/HTTPS/mailto subset and is not projected as a live action."
+        },
+        {
+          "slideId": "source-slide-258",
+          "message": "Hyperlink scheme is outside the HTTP/HTTPS/mailto subset and is not projected as a live action."
+        }
+      ],
+      "noOpExact": true
+    }
+  ],
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/round-3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-batch-libreoffice/run-yzIqWZ/pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  }
+}

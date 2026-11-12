@@ -1,0 +1,33 @@
+# ADR 0027: Scoped source-to-managed SmartArt binding research
+
+Status: private executable research, 2026-10-25. Advances ADV-02.2.1.2.1 and ADV-02.1.2.4. Does not admit a public diagram import/edit API or source-preservation writes.
+
+## Problem and decision
+
+The ordered content projection uses traversal-local IDs. Refeeding those IDs to the [stateful writer](0026-smartart-identity-state-research.md) can associate an existing native identity with the wrong node after source order changes. Introduce a separate pure [source-binding adapter](../../../scripts/research/diagram-source-bindings.mjs). It reconciles canonical source point identities into a caller-owned managed domain, then remaps the content forest and keeps source provenance outside the candidate.
+
+The caller explicitly supplies a logical document/diagram scope and, on first binding, a distinct managed UUID prefix. The state captures version, scope, exact source part/layout, canonical virtual-root identity, active content source identities and a detached reservation ledger. Later reinspection requires the same context/root. Text, XML indices, point storage order, sibling order and plain formatting are not identity keys. Context, part, layout or root changes reject; no heuristic rebinding by text, position or shape name occurs.
+
+Canonicalization matches the existing Parser profile: whitespace-trimmed signed int32 spellings compare by numeric value; braced uppercase GUIDs compare exactly after outer XML whitespace. Original spelling and current raw element index remain in each binding. Missing/unrecognized identities, content/document canonical collisions and any source graph findings reject. The adapter also inherits the existing bounded ordered-forest/assistant/field rejection rules. Managed IDs and emitted fresh-writer IDs are separate domains. This adapter does **not** adopt arbitrary source GUIDs into the native writer, authorize source XML changes, or make an editable Core object from cached shapes.
+
+## Retirement and source lineage
+
+Source points no longer present remain reserved but leave the active set. If a reserved source identity reappears later, the caller must list it explicitly in restore. Only actually returning retired content points qualify; unknown/active/root/duplicate restore entries reject. A newly seen source identity receives a fresh managed ID. Explicit restoration reuses the original managed ID. This prevents an observed delete/reuse from silently identifying a new point as an old one.
+
+A producer can delete and reuse an active ID between unobserved snapshots. This cannot be detected from these records alone. Scope/root identity is not authentication or proof of source lineage; callers must own baseline integrity and serialize state commits. Concurrent forks, shared-data instance ownership, part/layout rebinds, producer-wide renumbering and cross-document copies need separate explicit reconciliation policies. Source-binding and native-writer snapshots must be committed with the actual result by the owning transaction, not merely assigned during preparation. No global allocator or filesystem side effect is hidden in the adapter.
+
+## Boundaries and budgets
+
+The original projectDiagramContent result remains unchanged. A separate private budgeted entry point returns the projection with its work count; the new adapter consumes the remaining shared maxWork instead of resetting it. Default bounds are 10,000 nodes including the virtual root, 20,000 parent edges, depth 256, 600,000 total work checkpoints, 200,000 reserved identities and 8,000,000 cumulative identity/context UTF-8 bytes. State reservations, old active identities, restore inputs and current source identities consume budgets, as does reconciliation. Individual raw model identities are capped at 1,024 code units, scope at 256 and exact part at 2,048. Source XML/text budgets remain Parser-owned. Oversized lexical identities reject rather than being truncated.
+
+Returned candidates, bindings and state are detached from inputs. Failures do not publish a partial state. These are trusted JavaScript research records, not an authenticated ledger or hostile-accessor sandbox. Rich styles, fields, layout parameters, opaque source extensions, theme/cache consistency and actual source-edit authority remain outside the plain paragraph candidate.
+
+## Evidence
+
+Seven pure source-binding groups cover independent source indices/order/text, int32/GUID spellings, canonical collisions, context/root mismatch, retirement/explicit restore, malformed state, exact shared budgets, failures/retry, hierarchy assistants and Cycle closure. A hundred seeded reinspection rounds use identical labels and an independent never-reuse allocation oracle, proving labels do not select identity. The existing seven content-model groups continue unchanged.
+
+One new native-research integration group uses three families, two caches and int32/GUID source IDs. Browser DOM deliberately reorders source points, changes raw indices/identity spelling and reverses root orders; actual Parser output feeds the binding adapter, then two fresh stateful generations verify stable managed-to-native mappings. The control re-escapes CR characters after DOM serialization to avoid accidentally changing paragraph text through XML newline normalization. These owned synthetic packages test file/API boundaries, not native application behavior.
+
+The optional [source protocol](../../testing/smartart-source-bindings.md) and [independent evidence](../../testing/smartart-source-bindings-evidence.json) check five real-file groups and eleven versions: three original sources; Process/Hierarchy native additions/edits; a GUID Cycle input and three native text rounds; and native Cycle blank deletion. Independent Python ZIP/XML reconstructs source topology/text/roles and allocation order, then verifies every current binding/index and every reservation. Process retains four IDs and adds one; Hierarchy retains five and adds one; GUID Cycle retains three each round; native deletion retains four and removes one. A separate integer-input/native-save pair independently proves root identity renumbering and the adapter's expected refusal to connect the snapshots.
+
+These are new offline binding checks over already observed native artifacts. No new UI operation is replayed or certified, and stateful fresh output still needs native admission. Full source identity adoption, public contracts, formatting/layout/cache handling, lifecycle/concurrency, structural multi-round native output and licensing remain open. No parent task is closed.

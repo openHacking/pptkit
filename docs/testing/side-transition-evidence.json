@@ -1,0 +1,872 @@
+{
+  "schemaVersion": 1,
+  "scope": "11 named transition records, headless native save and reopening of saved output to PDF. Not interactive settings/editability, actual slideshow playback, repair-dialog absence, PowerPoint or visual fidelity.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/transition-native/run-tMylUo",
+  "sourceSha256": "8d9a633cb8ad41de533be68801085dcfae1469d22fbb20cf3041d5ab535d8504",
+  "nativeSha256": "d4d80799e8f25f5a5d5a69afcde9c545017f25bef97e1b7b4ef3ed4ab9e1a868",
+  "reopenedPdfSha256": "634388eb999c53084d6f016e7dcbc17b1e1201ac8cd02813ce21a3f5ebd8ee10",
+  "transitions": [
+    {
+      "type": "fade",
+      "durationMs": 1234,
+      "onClick": true,
+      "afterMs": 3456
+    },
+    {
+      "type": "fade",
+      "durationMs": 0,
+      "onClick": false,
+      "afterMs": 0
+    },
+    {
+      "type": "fade",
+      "durationMs": 2000,
+      "onClick": false
+    },
+    {
+      "type": "push",
+      "direction": "left",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "push",
+      "direction": "right",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "push",
+      "direction": "up",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "push",
+      "direction": "down",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "wipe",
+      "direction": "left",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "wipe",
+      "direction": "right",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "wipe",
+      "direction": "up",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    },
+    {
+      "type": "wipe",
+      "direction": "down",
+      "durationMs": 765,
+      "onClick": false,
+      "afterMs": 2345
+    }
+  ],
+  "independent": {
+    "oracle": "Python zipfile + ElementTree",
+    "source": [
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1234",
+            "spd": "med",
+            "advTm": "3456"
+          },
+          "durationMs": "1234",
+          "onClick": "1",
+          "afterMs": "3456",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "0",
+            "spd": "fast",
+            "advClick": "0",
+            "advTm": "0"
+          },
+          "durationMs": "0",
+          "onClick": "0",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "2000",
+            "spd": "slow",
+            "advClick": "0"
+          },
+          "durationMs": "2000",
+          "onClick": "0",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "l"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "r"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "u"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "d"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "l"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "r"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "u"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765",
+            "spd": "med",
+            "advClick": "0",
+            "advTm": "2345"
+          },
+          "durationMs": "765",
+          "onClick": "0",
+          "afterMs": "2345",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "d"
+          ]
+        }
+      ]
+    ],
+    "native": [
+      [
+        {
+          "attributes": {
+            "spd": "slow",
+            "advTm": "3000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1234"
+          },
+          "durationMs": "1234",
+          "onClick": "1",
+          "afterMs": "3000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "slow",
+            "advTm": "3000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "3000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "advTm": "0",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "10"
+          },
+          "durationMs": "10",
+          "onClick": "1",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        },
+        {
+          "attributes": {
+            "advTm": "0"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "slow",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "2000"
+          },
+          "durationMs": "2000",
+          "onClick": "1",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "slow"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ],
+          "directions": [
+            null
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "r"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "r"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "l"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "l"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "u"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "u"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "d"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}push"
+          ],
+          "directions": [
+            "d"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "l"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "l"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "r"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "r"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "u"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "u"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "765"
+          },
+          "durationMs": "765",
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "d"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "med",
+            "advTm": "2000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "2000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}wipe"
+          ],
+          "directions": [
+            "d"
+          ]
+        }
+      ]
+    ],
+    "rawTransitionRecordsEqual": false,
+    "reopenedPdfPages": 11
+  },
+  "timingComparisons": [
+    {
+      "slide": 1,
+      "type": "fade",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "1234",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": true,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 2,
+      "type": "fade",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "10",
+      "exactDurationRetained": false,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": true
+    },
+    {
+      "slide": 3,
+      "type": "fade",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "2000",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": true
+    },
+    {
+      "slide": 4,
+      "type": "push",
+      "direction": "left",
+      "effectAndDirectionRetained": false,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 5,
+      "type": "push",
+      "direction": "right",
+      "effectAndDirectionRetained": false,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 6,
+      "type": "push",
+      "direction": "up",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 7,
+      "type": "push",
+      "direction": "down",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 8,
+      "type": "wipe",
+      "direction": "left",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 9,
+      "type": "wipe",
+      "direction": "right",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 10,
+      "type": "wipe",
+      "direction": "up",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 11,
+      "type": "wipe",
+      "direction": "down",
+      "effectAndDirectionRetained": true,
+      "nativeDurationMs": "765",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": false
+    }
+  ],
+  "parserNativeTransitions": [
+    {
+      "status": "source-only",
+      "speed": "slow",
+      "onClick": true,
+      "afterMs": 3000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "fast",
+      "onClick": true,
+      "afterMs": 0,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "slow",
+      "onClick": true,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "med",
+      "onClick": true,
+      "afterMs": 2000,
+      "reason": "Mapping requires a plain fade/push/wipe with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    }
+  ],
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/transition-native/run-tMylUo/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/transition-native/run-tMylUo/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/transition-native/run-tMylUo/native/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/transition-native/run-tMylUo/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

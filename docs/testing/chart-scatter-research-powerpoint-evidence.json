@@ -1,0 +1,325 @@
+{
+  "scope": "Independent python-pptx XY chart/workbook source with explicit gap, zero or span scalar. Four fixed-axis samples opened in PowerPoint 16.104, printed once, then saved and reopened once. Marker centers were fitted to the input X/Y values, and native line endpoints and missing-Y behavior were checked. Source and saved caches and workbooks were checked. This is not PPTKit scatter output; captures do not independently prove provenance. Other producers, missing X, interactive edits, automatic axes and reopened PDF remain unverified.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "d266a947d1dc7b9b41ce613f6101161ed26b20df27cc44d6342e7a44cf31abed",
+  "verifierSha256": "32cd1b589927a06a070c9c6086b418a44d1ec85a1ab665b8078981055e3a6f7b",
+  "pdfSha256": "1868011ac83ccee6f37cf44f84499704d09e7e6e3ea04b65a905f379a931bbcd",
+  "packages": [
+    {
+      "phase": "source",
+      "sha256": "35ed7bb9e6959afa22a523a84e3d27fe911b0fa9c9a19c2720b00d47f5e88537",
+      "charts": [
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx"
+        },
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet2.xlsx"
+        },
+        {
+          "mode": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet3.xlsx"
+        },
+        {
+          "mode": "span",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Sheet4.xlsx"
+        }
+      ]
+    },
+    {
+      "phase": "saved",
+      "sha256": "f19858944525e005cd4be5ce3f49d8054284298d42b67f357ec711f13c8b946d",
+      "charts": [
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "mode": "gap",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "mode": "zero",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        },
+        {
+          "mode": "span",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____3.xlsx"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "slide": 1,
+      "mode": "gap",
+      "markerCounts": [
+        3,
+        4
+      ],
+      "markers": [
+        [
+          [
+            169.64005279541016,
+            225.1560516357422
+          ],
+          [
+            437.71995544433594,
+            340.4907684326172
+          ],
+          [
+            598.5199890136719,
+            196.32229614257812
+          ]
+        ],
+        [
+          [
+            196.52005004882812,
+            311.6571044921875
+          ],
+          [
+            357.32005310058594,
+            225.1560516357422
+          ],
+          [
+            464.6000518798828,
+            253.9897003173828
+          ],
+          [
+            571.6400451660156,
+            369.32440185546875
+          ]
+        ]
+      ],
+      "lineCounts": [
+        0,
+        0
+      ],
+      "fit": {
+        "xIntercept": 384.10772206233094,
+        "xPerUnit": 26.8015357531034,
+        "yIntercept": 282.82339130748403,
+        "yPerUnit": -14.416841160167346
+      },
+      "maxMarkerResidual": 0.08772255867011779,
+      "maxEndpointDifference": 0
+    },
+    {
+      "slide": 2,
+      "mode": "gap",
+      "markerCounts": [
+        3,
+        4
+      ],
+      "markers": [
+        [
+          [
+            169.64005279541016,
+            225.1560516357422
+          ],
+          [
+            437.71995544433594,
+            340.4907684326172
+          ],
+          [
+            598.5199890136719,
+            196.32229614257812
+          ]
+        ],
+        [
+          [
+            196.52005004882812,
+            311.6571044921875
+          ],
+          [
+            357.32005310058594,
+            225.1560516357422
+          ],
+          [
+            464.6000518798828,
+            253.9897003173828
+          ],
+          [
+            571.6400451660156,
+            369.32440185546875
+          ]
+        ]
+      ],
+      "lineCounts": [
+        1,
+        3
+      ],
+      "fit": {
+        "xIntercept": 384.10772206233094,
+        "xPerUnit": 26.8015357531034,
+        "yIntercept": 282.82339130748403,
+        "yPerUnit": -14.416841160167346
+      },
+      "maxMarkerResidual": 0.08772255867011779,
+      "maxEndpointDifference": 0.15701883228984495
+    },
+    {
+      "slide": 3,
+      "mode": "zero",
+      "markerCounts": [
+        4,
+        4
+      ],
+      "markers": [
+        [
+          [
+            169.64005279541016,
+            225.1560516357422
+          ],
+          [
+            303.800048828125,
+            282.8233947753906
+          ],
+          [
+            437.71995544433594,
+            340.4907684326172
+          ],
+          [
+            598.5199890136719,
+            196.32229614257812
+          ]
+        ],
+        [
+          [
+            196.52005004882812,
+            311.6571044921875
+          ],
+          [
+            357.32005310058594,
+            225.1560516357422
+          ],
+          [
+            464.6000518798828,
+            253.9897003173828
+          ],
+          [
+            571.6400451660156,
+            369.32440185546875
+          ]
+        ]
+      ],
+      "lineCounts": [
+        3,
+        3
+      ],
+      "fit": {
+        "xIntercept": 384.1199909595315,
+        "xPerUnit": 26.80031860060335,
+        "yIntercept": 282.8233917478531,
+        "yPerUnit": -14.416841173928882
+      },
+      "maxMarkerResidual": 0.0821760060402134,
+      "maxEndpointDifference": 0.16868282834618048
+    },
+    {
+      "slide": 4,
+      "mode": "span",
+      "markerCounts": [
+        3,
+        4
+      ],
+      "markers": [
+        [
+          [
+            169.64005279541016,
+            225.1560516357422
+          ],
+          [
+            437.71995544433594,
+            340.4907684326172
+          ],
+          [
+            598.5199890136719,
+            196.32229614257812
+          ]
+        ],
+        [
+          [
+            196.52005004882812,
+            311.6571044921875
+          ],
+          [
+            357.32005310058594,
+            225.1560516357422
+          ],
+          [
+            464.6000518798828,
+            253.9897003173828
+          ],
+          [
+            571.6400451660156,
+            369.32440185546875
+          ]
+        ]
+      ],
+      "lineCounts": [
+        2,
+        3
+      ],
+      "fit": {
+        "xIntercept": 384.10772206233094,
+        "xPerUnit": 26.8015357531034,
+        "yIntercept": 282.82339130748403,
+        "yPerUnit": -14.416841160167346
+      },
+      "maxMarkerResidual": 0.08772255867011779,
+      "maxEndpointDifference": 0.16868282834618048
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "2e590e8812bd31dd704f076343b0bc6746e0c1b6ffba8f01cfbbf3d8905526d0",
+      "screenshotSha256": "26368a73c7b39e0cdb23c177e08e5e24ede996f3ae8b35a2d09842224a4c9441"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "1f080894575a135ae728100b514f84af583e9ea134d3772dd211b597958d97c5",
+      "screenshotSha256": "297155a2b119841cb2cd63cced2d682475a5e7279bf7813057b7031503ddcaf4"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "34e2e184e2354e3545a76044f61ee7a169d1549e2fadfef81082cf5b2a99dade",
+      "screenshotSha256": "ed1411f53522cc51ba17d3bde542641ad059d107990d00d7a48713361f05d959"
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "axSha256": "5c1cf22c4db7692b00d95ddf26830b8032f5131f248d936ef6efcf383f0e349e",
+      "screenshotSha256": "204954f7e5c271f61fac50a3c74a646f38ceff59b4ace8c09b322eb3520f1b2c"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "b6bab4f787f633e0faf80c164b8ae872faffd9e23da34e0ef4c69eca566b57c9",
+      "screenshotSha256": "fb9200d10a8787466135d7bb1ecbec0388ed56664fde8a5bd10402da716a4034"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "3fdd7f91685529dea681c12d3b6b00d0e9d27ffb3a9869e24f2caad72909e6ae",
+      "screenshotSha256": "2f717d823e1d72caa9ab29ae281728386d8c4d3415700b1e284dd373f48b66d8"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "4dbcc9ee3a47afd6c3bf9cdd936d4f0ddcb09a90e3e6bb1032fa5d1d8f75b0b0",
+      "screenshotSha256": "e32491352b52d2a7684527c27011a8189850a1666c05b8403f8b9f9d3db32eae"
+    },
+    {
+      "phase": "reopen",
+      "slide": 4,
+      "axSha256": "c6dc5208f7061c52a43b4a58a92d42327998452ca62beda2cd8113532fb3ff90",
+      "screenshotSha256": "f88854ceb5218b23c601717ba08c73e0dce5c74163c109b5b05fb814042a8739"
+    }
+  ]
+}

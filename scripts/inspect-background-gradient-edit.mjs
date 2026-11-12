@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { importPptx } from '../packages/pptx-parser/dist/index.js';
+import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
+const path=process.argv[2];if(!path)throw Error('Expected native edited PPTX path');
+const bytes=await readFile(path),session=await importPptx(bytes,{projection:'content',masterArtwork:'artwork-v7'});
+const actual=session.document.slides[3].background;
+assert.deepEqual(actual,{type:'linearGradient',angle:120,scaled:false,stops:[{position:0,color:'FF0000',opacity:.7},{position:1,color:'0000FF',opacity:1}]});
+const ready=await session.prepareSave({mode:'no-op'});assert.equal(ready.status,'ready');assert.deepEqual((await session.save(ready.plan)).bytes,new Uint8Array(bytes));
+const fresh=(await generatePptx(session.document)).bytes,roundtrip=await importPptx(fresh,{projection:'content',masterArtwork:'artwork-v7'});assert.deepEqual(roundtrip.document.slides[3].background,actual);
+assert.equal((await session.prepareSave({mode:'edit'})).status,'blocked');roundtrip.dispose();session.dispose();console.log('Native edited gradient import, no-op, fresh export/reimport and edit boundary passed.');

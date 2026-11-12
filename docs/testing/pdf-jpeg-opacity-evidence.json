@@ -1,0 +1,181 @@
+{
+  "producerSha256": "3d44c9d310640ce1df4885e2618c97a5a85fbc6363c2909b12c8e22d9a87506e",
+  "adapterSourceSha256": "beb18c08455c78802e04d319e81516667a4bdf9c100074d8aab35691d8e0c013",
+  "jpegProbeSha256": "fa8118ae21cf193fdea2c54282ca3827725d7f77c6a9905e3a4117e6aaaeeafa",
+  "imageDataSha256": "0cd82e9bb32b8085a433c058b7160397b602dcd09bbd3bbc1e48d92b1a431ee4",
+  "structureSourceSha256": "3afa4c216f8c72e0a45ece963a3ec4f1861bfe3c9f9d1678cffdbd7edb86501a",
+  "browser": "149.0.7827.55",
+  "fixtures": {
+    "exif-orientation6.jpg": "ffae1ea68f8c3cac10a69b3b9aadea0a23ddba1487cc17c6ce8ccf26e78441f1",
+    "jpeg-12bit-sequential.jpg": "4cbd30ea571652ace5a2450d0234dadf7067c3d91da59e750f7e1933a2115117",
+    "jpeg-12bit-progressive.jpg": "5b096a41566f899b48aa258689379198dc208fe7128df75655f7e8b5908b9966"
+  },
+  "results": [
+    {
+      "name": "exif-orientation6.jpg",
+      "policy": "browser",
+      "status": "rendered",
+      "file": "exif-orientation6.jpg-browser.pdf",
+      "sha256": "cf9f0391c67ce18b9b85d21e9ef3f18568d2189c352f00e1af52b138e49b0091",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "exif-orientation6.jpg",
+      "policy": "require-opaque",
+      "status": "rendered",
+      "file": "exif-orientation6.jpg-require-opaque.pdf",
+      "sha256": "cf9f0391c67ce18b9b85d21e9ef3f18568d2189c352f00e1af52b138e49b0091",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "exif-orientation6.jpg",
+      "policy": "require-8-bit",
+      "status": "rendered",
+      "file": "exif-orientation6.jpg-require-8-bit.pdf",
+      "sha256": "cf9f0391c67ce18b9b85d21e9ef3f18568d2189c352f00e1af52b138e49b0091",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "exif-orientation6.jpg",
+      "policy": "require-valid-8-bit",
+      "status": "rendered",
+      "file": "exif-orientation6.jpg-require-valid-8-bit.pdf",
+      "sha256": "cf9f0391c67ce18b9b85d21e9ef3f18568d2189c352f00e1af52b138e49b0091",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "jpeg-12bit-sequential.jpg",
+      "policy": "browser",
+      "status": "rendered",
+      "file": "jpeg-12bit-sequential.jpg-browser.pdf",
+      "sha256": "b7940f4ca759c1bc59f5e899e41b22f936c815c49d84ac2754932ec12b53938f",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "jpeg-12bit-sequential.jpg",
+      "policy": "require-opaque",
+      "status": "rejected",
+      "code": "pdf-resource-unavailable"
+    },
+    {
+      "name": "jpeg-12bit-sequential.jpg",
+      "policy": "require-8-bit",
+      "status": "rejected",
+      "code": "pdf-jpeg-unsupported-precision"
+    },
+    {
+      "name": "jpeg-12bit-sequential.jpg",
+      "policy": "require-valid-8-bit",
+      "status": "rejected",
+      "code": "pdf-jpeg-unsupported-precision"
+    },
+    {
+      "name": "jpeg-12bit-progressive.jpg",
+      "policy": "browser",
+      "status": "rendered",
+      "file": "jpeg-12bit-progressive.jpg-browser.pdf",
+      "sha256": "1c352c50efa484461a3f46c25506ee3ea6f69bcb2dc2e66234c0675aa2327829",
+      "warnings": [
+        {
+          "code": "pdf-image-frame-unverified",
+          "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "jpeg-12bit-progressive.jpg",
+      "policy": "require-opaque",
+      "status": "rejected",
+      "code": "pdf-resource-unavailable"
+    },
+    {
+      "name": "jpeg-12bit-progressive.jpg",
+      "policy": "require-8-bit",
+      "status": "rejected",
+      "code": "pdf-jpeg-unsupported-precision"
+    },
+    {
+      "name": "jpeg-12bit-progressive.jpg",
+      "policy": "require-valid-8-bit",
+      "status": "rejected",
+      "code": "pdf-jpeg-unsupported-precision"
+    }
+  ],
+  "duplicate": {
+    "sha256": "b858fa036c74189d5249df466bc541cecc2906387e4a7b21cde5779b6f3bfc58",
+    "result": "pdf-jpeg-structure-unavailable"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "scope": "source inventory cross-check on one PowerPoint 16.104 native-edited file; no semantic projection, rendering or source-edit permission",
+  "directory": ".tmp/master-image-replacement-native-01",
+  "nativeEvidenceSha256": "59bc11ca741933f6ec6ae5528beb176fbedc1df21f888a98a97b7894981d0ec6",
+  "inventoryReportSha256": "1b5e19f6897c8c91d5212b7d2dfc92321a6b139c499f9b3e6bf4b1e5324c5ffe",
+  "inputSha256": "0155c9a232242e581db8bada53f1f82f486bbd3f7c0a9318e2ca09f2f32a7e6c",
+  "oracleSha256": "c99aa78f8b8404264bc4e80eeaaab8cb521470bb7d21df1ee519cdf9748e9db6",
+  "scripts": {
+    "packages/pptx-parser/src/master-pictures/inventory.ts": "cca213199d2fc9e79d5c439d159d96905bc4969c7323911e62b185c787284c2b",
+    "packages/pptx-parser/src/types/master-pictures.ts": "1e1c70ab023ec916fab111f1ec1e5536ab797d8dca6e84361aa0f003c951016e",
+    "packages/pptx-parser/src/index.ts": "22788d4aedf0f4d57ab3739a8f589cdbd0bb899b59322a4471e12522b757377e",
+    "scripts/inspect-master-pictures-native.mjs": "97e383d0ca93555da201f18ac5de111a2720011ba90ac64d8ebd1e189545a879"
+  },
+  "observation": {
+    "part": "/ppt/slideMasters/slideMaster2.xml",
+    "rawElementIndex": 33,
+    "crop": {
+      "left": "20870"
+    },
+    "target": "/ppt/media/image1.png",
+    "slideIds": [
+      256,
+      257,
+      258
+    ]
+  },
+  "negativeCasesRejected": 3
+}

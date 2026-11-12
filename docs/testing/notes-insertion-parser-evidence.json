@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "directory": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ",
+  "options": {
+    "projection": "content",
+    "editSaveProfile": "text-runs-v3",
+    "textFontProfile": "script-families-v3",
+    "notesTextProfile": "master-style-v1"
+  },
+  "records": [
+    {
+      "name": "source",
+      "sha256": "b327a21e1b28e105614128f3cef026822811c8beafb7c0478c402d8bf5d8e802",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/source.json",
+      "snapshotSha256": "1aa799dbbb4a8bfa1333cecb05907da731ffec70898ff9b3143a03f7993670cd",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "ready",
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/source-candidate.pptx",
+        "sha256": "e500da57129cd50055b51f29545866609d7508cafccbebec37e6a1bf5db2b4bd",
+        "nativeReopen": "not tested"
+      }
+    },
+    {
+      "name": "empty-round1",
+      "sha256": "e40ac8e2827468bc1bfc818d0a89d08dfd477fd02e27cc13a940c79966119bc1",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/empty-round1.json",
+      "snapshotSha256": "412416a908fd726b05f008a5245baa265f3e2e8e2eba8b62254a4cce01f72bc4",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "blocked",
+        "reason": "Native empty paragraphs contain only insertion properties; no bound a:t scalar owner exists."
+      }
+    },
+    {
+      "name": "empty-round2",
+      "sha256": "02d86c3c06000d6400c615271e8e5c204785453a00b6cb85442733d9120bca45",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/empty-round2.json",
+      "snapshotSha256": "002bb38a30a05f3e4c113b8849fd5d4bdb82996b1dfeece6e17a558b7c2af231",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "blocked",
+        "reason": "Native empty paragraphs contain only insertion properties; no bound a:t scalar owner exists."
+      }
+    },
+    {
+      "name": "empty-round3",
+      "sha256": "c79dea9020f1f836afa023510544ad35bb52c405809c0d9e1eb865e034e52bcb",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/empty-round3.json",
+      "snapshotSha256": "8fbafcd064b199a30724732771d907d83e401824daa292beb82718477ef6f961",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "blocked",
+        "reason": "Native empty paragraphs contain only insertion properties; no bound a:t scalar owner exists."
+      }
+    },
+    {
+      "name": "typed-round1",
+      "sha256": "7b91367305f2b0fde647349d12d42df856a849371f1ada8f79419ccdc6f809c7",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round1.json",
+      "snapshotSha256": "cfdd9b30b45f2e3d61fe39f98385f203aab21e89f9731f24617abf44d9965e60",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "ready",
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round1-candidate.pptx",
+        "sha256": "25d24b31cd3f11a87eca1ac145ead306b416606645927b1f81511feb8d5944c4",
+        "nativeReopen": "not tested"
+      }
+    },
+    {
+      "name": "typed-round2",
+      "sha256": "f8e81541190198bb8cec39171c5ab7591d53578ad9e5db83002375d1c0cfff01",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round2.json",
+      "snapshotSha256": "e0f61326d16c2717c814e98acceb14405d200368a0ce30dda389522de0429798",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "ready",
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round2-candidate.pptx",
+        "sha256": "91d73072ebadc3908298006ee751188c287e9d20c360955c324a3c383731cd4f",
+        "nativeReopen": "not tested"
+      }
+    },
+    {
+      "name": "typed-round3",
+      "sha256": "7647d46d378019d18f3840415d52ee1ef31a7eba6111f69ff354369c759d2f44",
+      "snapshot": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round3.json",
+      "snapshotSha256": "d7988aa9ba8881113840cdd7b76085a0ea083a5471003f51fdfe0da70fb3a031",
+      "exactNoOpAndRestore": true,
+      "mixedStyleRejected": true,
+      "character": {
+        "status": "ready",
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/parser-inspections/typed-round3-candidate.pptx",
+        "sha256": "1fc6f690d4fcf736f16c6dae01994ee690f7608ed08ec963b9f2ea1250576062",
+        "nativeReopen": "not tested"
+      }
+    }
+  ],
+  "total": {
+    "actualInputs": 7,
+    "exactNoOps": 7,
+    "mixedStyleRejectionsAndRestores": 7,
+    "insertionOnlyCharacterRejections": 3,
+    "materializedHeadlessCharacterCandidates": 4
+  },
+  "scope": "Parser verification of captured native files; no native reopening of generated character candidates and no source style permission."
+}

@@ -1,0 +1,149 @@
+{
+  "scope": "One authored slide, six alpha-lower starts, one LibreOfficeDev headless PDF export. Extracted words and one page raster; no native editing, PowerPoint or three-round claim.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "source": ".tmp/alphabetic-numbering-libreoffice/run-31hthkbh/numbering.pptx",
+  "sourceSha256": "8c2980e0ef84e953f8001dfc7dac2b7c2c1bbc9c1ccdb5b36e2c041bbc421f0d",
+  "pdf": ".tmp/alphabetic-numbering-libreoffice/run-31hthkbh/numbering.pdf",
+  "pdfSha256": "3a3243096d210ea106a3bc9b038151ada46af5b600411790eba9c5fab16ef11d",
+  "generatorSha256": "7610cb67f6a9039589f5859a9a3857009c5136c47d18d653d5d7b1f33d824f04",
+  "runnerSha256": "9125aa23f12ff98b6052363a2bfac5d2e768e76fe79d5882da688750baee9fbc",
+  "sourceBullets": [
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 26
+    },
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 27
+    },
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 28
+    },
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 52
+    },
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 53
+    },
+    {
+      "type": "alphaLcPeriod",
+      "startAt": 54
+    }
+  ],
+  "words": [
+    {
+      "text": "z.",
+      "bbox": [
+        57.005001068115234,
+        25.379009246826172,
+        68.56100463867188,
+        45.899009704589844
+      ]
+    },
+    {
+      "text": "VALUE26",
+      "bbox": [
+        84.01899719238281,
+        25.379009246826172,
+        154.5430145263672,
+        45.899009704589844
+      ]
+    },
+    {
+      "text": "aa.",
+      "bbox": [
+        57.005001068115234,
+        85.36000061035156,
+        77.36299896240234,
+        105.87999725341797
+      ]
+    },
+    {
+      "text": "VALUE27",
+      "bbox": [
+        84.01899719238281,
+        85.36000061035156,
+        154.5430145263672,
+        105.87999725341797
+      ]
+    },
+    {
+      "text": "ab.",
+      "bbox": [
+        57.005001068115234,
+        145.36900329589844,
+        77.6510009765625,
+        165.8889923095703
+      ]
+    },
+    {
+      "text": "VALUE28",
+      "bbox": [
+        84.01899719238281,
+        145.36900329589844,
+        154.5430145263672,
+        165.8889923095703
+      ]
+    },
+    {
+      "text": "az.",
+      "bbox": [
+        57.005001068115234,
+        205.37901306152344,
+        76.76899719238281,
+        225.8990020751953
+      ]
+    },
+    {
+      "text": "VALUE52",
+      "bbox": [
+        84.01899719238281,
+        205.37901306152344,
+        154.5430145263672,
+        225.8990020751953
+      ]
+    },
+    {
+      "text": "ba.",
+      "bbox": [
+        57.005001068115234,
+        265.3599853515625,
+        78.01100158691406,
+        285.8800048828125
+      ]
+    },
+    {
+      "text": "VALUE53",
+      "bbox": [
+        84.01899719238281,
+        265.3599853515625,
+        154.5430145263672,
+        285.8800048828125
+      ]
+    },
+    {
+      "text": "bb.",
+      "bbox": [
+        57.005001068115234,
+        325.3689880371094,
+        78.29900360107422,
+        345.8890075683594
+      ]
+    },
+    {
+      "text": "VALUE54",
+      "bbox": [
+        84.01899719238281,
+        325.3689880371094,
+        154.5430145263672,
+        345.8890075683594
+      ]
+    }
+  ],
+  "rasterSha256": "9a2c2989528cbcc9837f38edbf5ea11c9306dbf7614f4edb7cce4006ee935d2a",
+  "commandExit": 0
+}

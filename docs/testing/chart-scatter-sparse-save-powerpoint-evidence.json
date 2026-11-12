@@ -1,0 +1,89 @@
+{
+  "scope": "Four fixed-axis sparse scatter charts from an independently generated, PowerPoint-saved source received existing-point X/Y edits through Parser v2. PowerPoint opened the edited file, saved a copy, closed and reopened it once. All caches, worksheet coordinates and blank positions were checked; eight retained UI captures show source point labels. Screenshots were not quantitatively measured, and the captures do not independently prove provenance. Blank insertion/removal, native interactive workbook editing, other producers and further reopen rounds remain unverified.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "84c092e7c36155b2a40268b9b113d1bf5efdcbc08781926e8f6bd402028cdf7d",
+  "verifierSha256": "e20f6eef05ab04ef48821d8de11c4c54e09326a9c75a07661c60a863ac812ab7",
+  "manifestSha256": "9ec43bcf1567675a44d23299169fa135b00469d9140fd29d8dca6e23bb0f0e78",
+  "packages": [
+    {
+      "phase": "source.pptx",
+      "sha256": "f19858944525e005cd4be5ce3f49d8054284298d42b67f357ec711f13c8b946d",
+      "workbookParts": [
+        "ppt/embeddings/Microsoft_Excel____.xlsx",
+        "ppt/embeddings/Microsoft_Excel____1.xlsx",
+        "ppt/embeddings/Microsoft_Excel____2.xlsx",
+        "ppt/embeddings/Microsoft_Excel____3.xlsx"
+      ]
+    },
+    {
+      "phase": "edited.pptx",
+      "sha256": "083e93bcb42435c778e028c96322e6c1b76f035c2e0d21272de47c69e425f791",
+      "workbookParts": [
+        "ppt/embeddings/Microsoft_Excel____.xlsx",
+        "ppt/embeddings/Microsoft_Excel____1.xlsx",
+        "ppt/embeddings/Microsoft_Excel____2.xlsx",
+        "ppt/embeddings/Microsoft_Excel____3.xlsx"
+      ]
+    },
+    {
+      "phase": "native-round-1.pptx",
+      "sha256": "ed46c9c63d4216058eabea3e2d5eea71e871a2f182f80b5e36c9cc431bbb52bc",
+      "workbookParts": [
+        "ppt/embeddings/Microsoft_Excel____.xlsx",
+        "ppt/embeddings/Microsoft_Excel____1.xlsx",
+        "ppt/embeddings/Microsoft_Excel____2.xlsx",
+        "ppt/embeddings/Microsoft_Excel____3.xlsx"
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "e58c5dfaeb96130422879c8f54ba5e790029ac87614aeeb5a1db19afd33f36f1",
+      "screenshotSha256": "8ad211fda2d9eba35250cdb614c6ac0155c04225e29c58715915ea6ecbceaf2f"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "b10e425ac11ade8290dd77d6e08caee38cdab18997c4f3a4786e55ad9ff4adaf",
+      "screenshotSha256": "1c9eabcdd73d553267a4b09b0253a554794d85d72e9025f4ce28e818d0be402f"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "da8f87317a61c7f62ddc9ff70fd3cbf27b4a1909be486390cbf1f0656d4ab7e8",
+      "screenshotSha256": "c8e19e38b71ab67dc838eae9de18ee69bacc7595dacdf415109ea98f460ee283"
+    },
+    {
+      "phase": "first",
+      "slide": 4,
+      "axSha256": "07d78e1b3b8f6eb8fbb4e44a87bd5ac1fb659bcdb6c9a118dca96d0c2db33f30",
+      "screenshotSha256": "c3b91a50ee162abc1a893cf0d0405624e5765587f4a3bcb86540a90eca844233"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "d05b11d5884a5caed26ffa1c0a658b18286071f953589de8368770e969dd38ac",
+      "screenshotSha256": "efad277ab16533b46fde8fef9bd641b0479f98b767be38296995b86530ce624d"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "90c38bb49c2a0212614bc7bc9dfe57acf1e8a8e192fdb383987dc90b215b76e9",
+      "screenshotSha256": "ffed15ee03e272b7f3e24361fc10a74f543371aa3db0f248e3f2979f2dc93148"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "964909d39dc8b7af241edb8758841cd8b35129adcfbd5b5c6668540b5c8dc7fe",
+      "screenshotSha256": "80d3f38d90dc0c0e3655eaab22da860fa57530d1237e0d2505b5441da27fbad3"
+    },
+    {
+      "phase": "reopen",
+      "slide": 4,
+      "axSha256": "e62e538410962b02e30475fa8bc34057874108e555996dbf0c541474f91dcc1a",
+      "screenshotSha256": "cbf8e43d8460acdfc56f19cbd7fe069551028bc591a9a7c80c88190a241438d2"
+    }
+  ]
+}

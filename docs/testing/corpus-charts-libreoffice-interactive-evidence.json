@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOffice 26.8.2.2 9dea406ab7695df6325b11b0e19fdca8db4b7276",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "macOSBuild": "25F71",
+  "input": {
+    "path": ".tmp/fixtures/charts.pptx",
+    "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-charts-libreoffice-interactive.pptx",
+    "sha256": "ccc7436c4c1c311121b8a68726e6acfdecd30cc090cbbc46752395ee45d9d5df"
+  },
+  "observations": {
+    "operation": "Select the column chart, open Data Table, set category A to 1.5, save as PPTX, close and reopen read-only.",
+    "originalDataPoints": [
+      "A 2",
+      "B 4",
+      "C 3"
+    ],
+    "editedDataPoints": [
+      "A 1.5",
+      "B 4",
+      "C 3"
+    ],
+    "formatNotice": "LibreOffice showed its ordinary PowerPoint 2007–365 format notice; retained PPTX format.",
+    "reopened": "Opened read-only due to own document lock; chart rendered with first bar between ticks 1 and 2. Line and pie controls remained visible.",
+    "limits": "UI observations are manual. No Excel or PowerPoint edit, ODF comparison, calibrated visual review, or editable reopen is claimed."
+  },
+  "packageChecks": {
+    "bar": [
+      "1.5",
+      "4",
+      "3"
+    ],
+    "line": [
+      "2",
+      "4",
+      "3"
+    ],
+    "pie": [
+      "2",
+      "4",
+      "3"
+    ],
+    "xlsxBefore": 3,
+    "xlsxAfter": 0,
+    "externalDataBefore": 3,
+    "externalDataAfter": 0
+  }
+}

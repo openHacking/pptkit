@@ -1,0 +1,73 @@
+{
+  "scope": "One synthetic decimal sample and unchanged control, each saved once in PowerPoint. Edited save reopened with slide text visible; UI observations are not independently attested by ZIP hashes.",
+  "application": "PowerPoint 16.104 (25121423)",
+  "verifierSha256": "541805e8492f73735b0caa235daf7f5a9097fa2d2aad694c67b2bda045312fa4",
+  "records": [
+    {
+      "file": ".tmp/custom-decimal-powerpoint/control.pptx",
+      "sha256": "e6cb03ae8c0f970e39332d8c219f90873d0c7633df9813d85ffc8dde9a759930",
+      "customRelationshipCount": 1,
+      "properties": [
+        [
+          "Normal",
+          "2",
+          "1.25"
+        ],
+        [
+          "Fraction",
+          "3",
+          "0.125"
+        ],
+        [
+          "Inexact",
+          "4",
+          "0.1"
+        ],
+        [
+          "Large",
+          "5",
+          "9007199254740992"
+        ]
+      ]
+    },
+    {
+      "file": ".tmp/custom-decimal-powerpoint/input.pptx",
+      "sha256": "d380544ae3dc695a29326b99b2b07f1d9ef7aaf781b27c6de5e63d710a51746a",
+      "customRelationshipCount": 1,
+      "properties": [
+        [
+          "Normal",
+          "2",
+          "2.5"
+        ],
+        [
+          "Fraction",
+          "3",
+          "0.5"
+        ],
+        [
+          "Inexact",
+          "4",
+          "0.1"
+        ],
+        [
+          "Large",
+          "5",
+          "4503599627370496"
+        ]
+      ]
+    },
+    {
+      "file": ".tmp/custom-decimal-powerpoint/control-saved.pptx",
+      "sha256": "5c8347f466d39eb609154204b4ce3ef3dfe9596bd89330c94d9af60f02d021a9",
+      "customRelationshipCount": 0,
+      "properties": []
+    },
+    {
+      "file": ".tmp/custom-decimal-powerpoint/saved1.pptx",
+      "sha256": "72c043b3a6857c090456358a94528f51fa74ba10ceecb7bccf0b9f9b425f26de",
+      "customRelationshipCount": 0,
+      "properties": []
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T02:45:42.695Z",
+  "artifactsDirectory": ".tmp/declared-slot-font-import/run-LawUAt",
+  "profile": {
+    "projection": "content",
+    "textFontProfile": "script-families-v3",
+    "notesTextProfile": "master-style-v1",
+    "editSaveProfile": "text-runs-v3"
+  },
+  "hashes": [
+    {
+      "file": "round-0.pptx",
+      "sha256": "5c9639c7dd5c5dc8170afdddd6a1c8ede8b9d3d7dd6ab2479b99a13d68c9fa4e"
+    },
+    {
+      "file": "round-1.pptx",
+      "sha256": "47a8c6dadc2ffab5eb67d8a145e466a04ae44585dec077fad53f42c359b6438f"
+    },
+    {
+      "file": "round-2.pptx",
+      "sha256": "1b32f971a1f777a6dc1e1277a681db212f427753ec4dfe749a90b49f71dc6fa7"
+    },
+    {
+      "file": "round-3.pptx",
+      "sha256": "6a24ac03d8d3ec4035c755b3050c965a6abf144b71c6163e13c450c264735221"
+    }
+  ],
+  "independent": {
+    "sourceVerified": true,
+    "oracle": "Python stdlib actual ZIP/XML, missing native scopes, actual target theme chains, source values/provenance, scalar text, exact non-character bytes and four actual ZIP negative controls",
+    "rounds": [
+      {
+        "round": 0,
+        "mapped": 6,
+        "blocked": 36,
+        "scalarTextsChecked": 6,
+        "changedParts": [],
+        "negativeControlsRejectedByBothChecks": [
+          "mapped-value",
+          "blocked-value",
+          "missing-slot",
+          "theme-chain"
+        ]
+      },
+      {
+        "round": 1,
+        "mapped": 6,
+        "blocked": 36,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "negativeControlsRejectedByBothChecks": [
+          "mapped-value",
+          "blocked-value",
+          "missing-slot",
+          "theme-chain"
+        ]
+      },
+      {
+        "round": 2,
+        "mapped": 6,
+        "blocked": 36,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "negativeControlsRejectedByBothChecks": [
+          "mapped-value",
+          "blocked-value",
+          "missing-slot",
+          "theme-chain"
+        ]
+      },
+      {
+        "round": 3,
+        "mapped": 6,
+        "blocked": 36,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "negativeControlsRejectedByBothChecks": [
+          "mapped-value",
+          "blocked-value",
+          "missing-slot",
+          "theme-chain"
+        ]
+      }
+    ]
+  },
+  "native": "untested",
+  "fontCoverageAndShaping": "untested",
+  "sourceFontWrites": "blocked",
+  "scope": "Named generated mixed-owner source: declared-slot mapped/blocked provenance, actual scalar text and exact non-character bytes across three source saves. No native typography claim."
+}

@@ -1,0 +1,104 @@
+{
+  "scope": "manually constructed native paragraph mark probes, not production fix",
+  "files": {
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/run-IRiqlb/round3.pdf": "2ff7f5fcff6ec93bd9b1fbb507977f092bad80aefb65591e47c268e3eb16c10b",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-font.pptx": "469b3e579a735ceba896dcaa1e451ea515b1aae71b37cc071065468c0a4f0aa5",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-font.pdf": "d357ec77f2487fcc37197875469f70e25704530c2dd719a4df1e2e79dcab2fbd",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-color.pptx": "362e0277f6d616585c32fed511dab542a42e9a40519cb0e18432a24271bdb7af",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-color.pdf": "bcfbf64c7f74f8bbf1a44660501225520217c9ce7efccff467c0ceb9fa0af6af",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-bold.pptx": "fd92dea764c7d2c3eb1b249c468e8808dd661963d16d51040ec582f612c9e7a7",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/only-bold.pdf": "9b1cec97a356809545bb79d6df1c31a7da0542c8548ae31f933ca66c1202c455",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/end-arial.pptx": "fef98c701f1743783e766236a7e1ee96b2416a754622d4100e1bbee07870d626",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/end-arial.pdf": "8e5170ce28a646cc7f2dd436c101a73b93170d7014b67dab03ba02ef6cb4729e",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/end-theme.pptx": "175f71976307cf43dcb51c96ffb2dc783bab9b02acc74a1f4b2dd6017ba760ce",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/end-theme.pdf": "026cf38183cee798ec506d1c635754c47d9ca93012ff64b16c8e9743ae65a637",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/paragraph-default-size.pptx": "0fd211bd54ff951752a82cee761d0e1b8770686b4dcdecb51d7beb0585ae3fea",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/paragraph-default-size.pdf": "328e9cc7c42b9c0e4a1dad7e303763e7599d1833e7b1ecbc63d124a5b4a7442e",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/paragraph-default-style.pptx": "f893c3f43b280bc0d7ce6d852732ca0d59205de1255adefa4789acd2d5279b21",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/paragraph-default-style.pdf": "5b87531b1ae202473214ab260138af652e94ceb5e82654ad417c0c0659b3c8ac",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/minimal-list.pptx": "4a673ab127c9df2b3c7cd6d774088d2b9a95bd4efb23c1688910e613e2799ab1",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/minimal-list.pdf": "d07666ffb046e423e0f971f16ce1c0eea9342b5d8a51fda2737d4ef63cf80d0c",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/layout-size-2800.pptx": "c4f373580df469214573f4169f2d93cf2703b28222af620d27712795abfeb89c",
+    "/Volumes/github/private/pptkit/.tmp/style-reset-native/metrics-wjgdb3j4/layout-size-2800.pdf": "0d78b53792d83931df77fe519f775847df38ff4a34dd687bbbdeb786644e5ca4",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Georgia-materialize.pptx": "fdbb150c700bc8a90f005e8f9514cff823d4b5a5a3c0c413efc4af5f38c2c316",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Georgia-materialize.pdf": "646002f4651591bc633fb98fcefdc406c2b7aff2817bea198a13bd0c100b8e2c",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Georgia-fixed.pptx": "5b091cef18c9f0841e4b5a134673f3828ef8a837ce4348e7602a9fdb4c8757ce",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Georgia-fixed.pdf": "a79befc67c01ddb47d12f9bf2aaf738888580f6ff239ff8d932826ac09b9c230",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Times-New-Roman-materialize.pptx": "58b434bd68981d949f85251840bbacae56ac601abc7043d55720232abda66238",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Times-New-Roman-materialize.pdf": "e674b0eafe3b0270be32d5666e31a99750698606840a4aded20b490addd3311e",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Times-New-Roman-fixed.pptx": "801f87f492d78f76a86d5bac33994bfba1a35ba0548adc50f8f681649fe4f975",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-2cSM4l/Times-New-Roman-fixed.pdf": "9e1cc16e7665e42b772170251e8abb5c9278c2cdea8c67aa42cffb801de1c662",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-aXEv2b/Courier-New-materialize.pptx": "4cbbfcfbf46ae5a653ae8b49fc980a8a36c858bffdf67415300981cc780f5955",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-aXEv2b/Courier-New-materialize.pdf": "cae630091ba1e0e718b205a2a23eab04056f04ccbd893e1659d64c119f65f8f1",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-aXEv2b/Courier-New-fixed.pptx": "7f930721eb1b951e892f224db2e32a624d93a6d2020e093279207bec94609ce1",
+    "/Volumes/github/private/pptkit/.tmp/placeholder-metrics/run-aXEv2b/Courier-New-fixed.pdf": "dbde44775961151099e8784880cace89e2160a283671b28199e23ed68f21b9ad"
+  },
+  "pixelEqualityByCase": {
+    "only-font": [
+      false,
+      false,
+      true
+    ],
+    "only-color": [
+      false,
+      true,
+      true
+    ],
+    "only-bold": [
+      false,
+      true,
+      true
+    ],
+    "end-arial": [
+      true,
+      true,
+      true
+    ],
+    "end-theme": [
+      false,
+      false,
+      true
+    ],
+    "paragraph-default-size": [
+      false,
+      false,
+      true
+    ],
+    "paragraph-default-style": [
+      false,
+      false,
+      true
+    ],
+    "minimal-list": [
+      false,
+      false,
+      true
+    ],
+    "layout-size-2800": [
+      false,
+      false,
+      true
+    ],
+    "Georgia": [
+      true,
+      true,
+      true
+    ],
+    "Times-New-Roman": [
+      true,
+      true,
+      true
+    ],
+    "Courier-New": [
+      false,
+      false,
+      true
+    ]
+  },
+  "rootThemeFontGeneralFixDisproved": true,
+  "userProfile": {
+    "app": "Microsoft PowerPoint 16.104 (25121423)",
+    "hiddenSlideIncluded": true
+  },
+  "productionFontMetricsResolved": false
+}

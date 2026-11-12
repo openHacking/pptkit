@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T22:11:25.227Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-style-native/run-FmQoMU",
+  "scope": "Materialized table region styles: independent source effective formatting and native saved fill/text observations. Does not establish reusable native table-style rules, source-style writes, full width/alpha/transform parity or interactive editing.",
+  "hashes": [
+    {
+      "name": "rgb",
+      "sourceSha256": "ad8a2e3f01a7b6a87ae16bd100e67f8b3d8e1e44980ce8e4023081cda501b78e",
+      "nativeSha256": "4c18f2fd3482397380481a57f24e60888dfc26f7b376b47848c0b2aa9ea0345b",
+      "pdfSha256": "f24f9e077903af68bba5632216ec25d31b746e6576de07733c59b513c210f666"
+    },
+    {
+      "name": "theme",
+      "sourceSha256": "f98c1cb1e9d93153a344dbc67bfa670f3a6af571db77a210e5acaa5c482d93ff",
+      "nativeSha256": "162644071e00086e578f80cde3059e49f6335602c71650d1e50e71385e3397fe",
+      "pdfSha256": "7ecaf4cbb34d29ae8619368c5fb3b45543a372570f70ab2711c5cb7219e0c6f3"
+    },
+    {
+      "name": "edited",
+      "sourceSha256": "db83730f17c4b20e01d612b6ecd3debd2bcc35999a68d2765c533e6814d9ebe3",
+      "nativeSha256": "d36fe6a670c300145ed994ed953a886ace8656418fc57af64a6cb4f2951b446e",
+      "pdfSha256": "2f9daafefee17d7b0782b114ff3ec936dc6d52d75496a3a86769e0e15346367a"
+    }
+  ],
+  "independent": {
+    "verified": true,
+    "oracle": "Python ZIP/ElementTree source effective fill/text/style/margin + native fill/text observations + saved PDF text/PNG",
+    "scenes": [
+      {
+        "name": "rgb",
+        "source": {
+          "status": "pass",
+          "checkedAnchors": 17,
+          "differences": []
+        },
+        "deliberateFillMutationRejected": true,
+        "nativeFillAndText": {
+          "status": "pass",
+          "checkedAnchors": 17,
+          "differences": []
+        },
+        "savedPdfText": {
+          "status": "pass",
+          "required": [
+            "R0C0",
+            "Merged body",
+            "Upper",
+            "Lower",
+            "Local",
+            "R4C0"
+          ]
+        },
+        "png": "rgb-native.png"
+      },
+      {
+        "name": "theme",
+        "source": {
+          "status": "pass",
+          "checkedAnchors": 17,
+          "differences": []
+        },
+        "deliberateFillMutationRejected": true,
+        "nativeFillAndText": {
+          "status": "pass",
+          "checkedAnchors": 17,
+          "differences": []
+        },
+        "savedPdfText": {
+          "status": "pass",
+          "required": [
+            "R0C0",
+            "Merged body",
+            "Upper",
+            "Lower",
+            "Local",
+            "R4C0"
+          ]
+        },
+        "png": "theme-native.png"
+      },
+      {
+        "name": "edited",
+        "source": {
+          "status": "pass",
+          "checkedAnchors": 21,
+          "differences": []
+        },
+        "deliberateFillMutationRejected": true,
+        "nativeFillAndText": {
+          "status": "pass",
+          "checkedAnchors": 21,
+          "differences": []
+        },
+        "savedPdfText": {
+          "status": "pass",
+          "required": [
+            "R0C0",
+            "Merged body",
+            "Upper",
+            "Lower",
+            "Local",
+            "R4C0"
+          ]
+        },
+        "png": "edited-native.png"
+      }
+    ]
+  },
+  "logs": [
+    "convert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/rgb.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/rgb.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/theme.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/theme.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/edited.pptx using filter : Impress Office Open XML\n",
+    "convert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/rgb.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/pdf/rgb.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/theme.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/pdf/theme.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/native/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-native/run-FmQoMU/pdf/edited.pdf using filter : impress_pdf_Export\n"
+  ],
+  "interactiveEditing": "untested",
+  "nativeReusableRules": "unsupported",
+  "sourceStyleWrites": "blocked"
+}

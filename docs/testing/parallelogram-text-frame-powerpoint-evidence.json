@@ -1,0 +1,51 @@
+{
+  "scope": "One PowerPoint 16.104 editor screenshot of a generated 600 by 360 point slide with Arial 24 pt text, zero margins, no wrapping and top alignment. Three unrotated shapes sample slants 0 and 0.4 at wide and tall aspect ratios. Native provenance is observed, not authenticated. This checks glyph starts only, not text rectangle extents, wrapping, other fonts, transforms, editing, saving, reopening or other versions.",
+  "artifactDirectory": ".tmp/native-parallelogram-text",
+  "slidePixels": {
+    "left": 350,
+    "top": 158,
+    "scale": 1.92
+  },
+  "samples": [
+    {
+      "shape": "zero",
+      "predictedTextOriginPt": [
+        50,
+        36.6666666667
+      ],
+      "observedFirstDarkPixel": [
+        450,
+        241
+      ]
+    },
+    {
+      "shape": "mid",
+      "predictedTextOriginPt": [
+        63.3333333333,
+        151.1111111111
+      ],
+      "observedFirstDarkPixel": [
+        476,
+        461
+      ]
+    },
+    {
+      "shape": "tall",
+      "predictedTextOriginPt": [
+        357.5,
+        90
+      ],
+      "observedFirstDarkPixel": [
+        1040,
+        344
+      ]
+    }
+  ],
+  "observation": "First dark glyph pixels are approximately 4 px right and 13 px below the predicted frame origins in all three cases; the common offset is consistent with font bearing and line metrics. Pixels were counted in isolated screenshot regions; the observation does not establish precise font metrics or clipping bounds.",
+  "sha256": {
+    "source.pptx": "ab32defe183ca242978d3a13161d5e837d87ce3a7036589282777a0f8deb7d26",
+    "source.svg": "1b1a3bbdf8c38052c3ba6365d7e995c041d3b642f67dcfd6a4fe59ef1341ab41",
+    "powerpoint.png": "c897e1f5777f7b33a6cd9f6b85589238335177aae967023ad00511ba1e59756b",
+    "powerpoint.ax.txt": "1d3b608cf9b742d3abc2545abfcc2a2b94d0a6fe16a1459965d9bdff02b17e7c"
+  }
+}

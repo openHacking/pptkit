@@ -1,0 +1,3071 @@
+{
+  "scope": "36 center, right and decimal position samples, PowerPoint PDF versus live Chromium using named Arial font candidates; CSS line spacing 1.2 is calibrated to the observed PDF, not a general native spacing claim.",
+  "source": "docs/testing/tab-position-powerpoint-evidence.json",
+  "sourceSha256": "30c6e39361a2b7bb43eeed40063a0bf4c92b61bf7d0b5cfdb5fa50e2980a6326",
+  "runnerSha256": "2958276ee6b610b01460a6629c0d1f61eefc36eae6e5c50cef2705fc56d6ee76",
+  "browser": "149.0.7827.55",
+  "fonts": [
+    {
+      "weight": "Regular",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "weight": "Bold",
+      "file": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "selectedFonts": [
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "ArialMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ],
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "Arial-BoldMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ]
+  ],
+  "items": [
+    {
+      "width": 150,
+      "position": 90,
+      "align": "center",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 141.8864842105263,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 37.939957894736835,
+          "pdfLine": 0,
+          "browserX": 37.890625,
+          "browserLine": 0,
+          "xDifference": -0.04933289473683544
+        },
+        {
+          "char": "W",
+          "pdfX": 53.440926315789476,
+          "pdfLine": 0,
+          "browserX": 53.4375,
+          "browserLine": 0,
+          "xDifference": -0.003426315789475609
+        },
+        {
+          "char": "O",
+          "pdfX": 79.81035789473684,
+          "pdfLine": 0,
+          "browserX": 79.875,
+          "browserLine": 0,
+          "xDifference": 0.06464210526316094
+        },
+        {
+          "char": "R",
+          "pdfX": 101.56673684210529,
+          "pdfLine": 0,
+          "browserX": 101.65625,
+          "browserLine": 0,
+          "xDifference": 0.08951315789471437
+        },
+        {
+          "char": "D",
+          "pdfX": 121.82248421052633,
+          "pdfLine": 0,
+          "browserX": 121.875,
+          "browserLine": 0,
+          "xDifference": 0.052515789473673635
+        }
+      ],
+      "browserRight": 142.109375,
+      "browserLines": 1,
+      "rightDifference": 0.2228907894736949
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "center",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 126.42795789473683,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 53.50004210526315,
+          "pdfLine": 0,
+          "browserX": 53.4375,
+          "browserLine": 0,
+          "xDifference": -0.06254210526314807
+        },
+        {
+          "char": "I",
+          "pdfX": 79.87503157894736,
+          "pdfLine": 0,
+          "browserX": 79.859375,
+          "browserLine": 0,
+          "xDifference": -0.015656578947357502
+        },
+        {
+          "char": "D",
+          "pdfX": 87.63107368421052,
+          "pdfLine": 0,
+          "browserX": 87.640625,
+          "browserLine": 0,
+          "xDifference": 0.009551315789479986
+        },
+        {
+          "char": "E",
+          "pdfX": 107.89237894736844,
+          "pdfLine": 0,
+          "browserX": 107.859375,
+          "browserLine": 0,
+          "xDifference": -0.033003947368442255
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 126.546875,
+      "browserLines": 2,
+      "rightDifference": 0.11891710526316501
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "center",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 134.1272842105263,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 45.69006315789474,
+          "pdfLine": 0,
+          "browserX": 45.65625,
+          "browserLine": 0,
+          "xDifference": -0.03381315789474115
+        },
+        {
+          "char": "I",
+          "pdfX": 69.06378947368421,
+          "pdfLine": 0,
+          "browserX": 68.96875,
+          "browserLine": 0,
+          "xDifference": -0.09503947368420995
+        },
+        {
+          "char": "X",
+          "pdfX": 76.81983157894736,
+          "pdfLine": 0,
+          "browserX": 76.75,
+          "browserLine": 0,
+          "xDifference": -0.06983157894735825
+        },
+        {
+          "char": "E",
+          "pdfX": 95.44155789473683,
+          "pdfLine": 0,
+          "browserX": 95.421875,
+          "browserLine": 0,
+          "xDifference": -0.019682894736831713
+        },
+        {
+          "char": "D",
+          "pdfX": 114.0632842105263,
+          "pdfLine": 0,
+          "browserX": 114.109375,
+          "browserLine": 0,
+          "xDifference": 0.046090789473694826
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 134.34375,
+      "browserLines": 2,
+      "rightDifference": 0.21646578947368766
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "right",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 122.57153684210526,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 18.625010526315787,
+          "pdfLine": 0,
+          "browserX": 18.6875,
+          "browserLine": 0,
+          "xDifference": 0.06248947368421298
+        },
+        {
+          "char": "W",
+          "pdfX": 34.12597894736843,
+          "pdfLine": 0,
+          "browserX": 34.234375,
+          "browserLine": 0,
+          "xDifference": 0.10839605263156926
+        },
+        {
+          "char": "O",
+          "pdfX": 60.495410526315794,
+          "pdfLine": 0,
+          "browserX": 60.671875,
+          "browserLine": 0,
+          "xDifference": 0.1764644736842058
+        },
+        {
+          "char": "R",
+          "pdfX": 82.25178947368423,
+          "pdfLine": 0,
+          "browserX": 82.453125,
+          "browserLine": 0,
+          "xDifference": 0.20133552631577345
+        },
+        {
+          "char": "D",
+          "pdfX": 102.50753684210528,
+          "pdfLine": 0,
+          "browserX": 102.671875,
+          "browserLine": 0,
+          "xDifference": 0.1643381578947185
+        }
+      ],
+      "browserRight": 122.90625,
+      "browserLines": 1,
+      "rightDifference": 0.33471315789473977
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "right",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 91.55292631578948,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 18.625010526315787,
+          "pdfLine": 0,
+          "browserX": 18.6875,
+          "browserLine": 0,
+          "xDifference": 0.06248947368421298
+        },
+        {
+          "char": "I",
+          "pdfX": 45,
+          "pdfLine": 0,
+          "browserX": 45.109375,
+          "browserLine": 0,
+          "xDifference": 0.109375
+        },
+        {
+          "char": "D",
+          "pdfX": 52.75604210526315,
+          "pdfLine": 0,
+          "browserX": 52.890625,
+          "browserLine": 0,
+          "xDifference": 0.1345828947368517
+        },
+        {
+          "char": "E",
+          "pdfX": 73.01734736842104,
+          "pdfLine": 0,
+          "browserX": 73.109375,
+          "browserLine": 0,
+          "xDifference": 0.09202763157895788
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 91.796875,
+      "browserLines": 2,
+      "rightDifference": 0.24394868421052252
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "right",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 107.06223157894738,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 18.625010526315787,
+          "pdfLine": 0,
+          "browserX": 18.6875,
+          "browserLine": 0,
+          "xDifference": 0.06248947368421298
+        },
+        {
+          "char": "I",
+          "pdfX": 41.99873684210526,
+          "pdfLine": 0,
+          "browserX": 42,
+          "browserLine": 0,
+          "xDifference": 0.0012631578947406297
+        },
+        {
+          "char": "X",
+          "pdfX": 49.75477894736843,
+          "pdfLine": 0,
+          "browserX": 49.78125,
+          "browserLine": 0,
+          "xDifference": 0.026471052631571013
+        },
+        {
+          "char": "E",
+          "pdfX": 68.37650526315791,
+          "pdfLine": 0,
+          "browserX": 68.453125,
+          "browserLine": 0,
+          "xDifference": 0.07661973684209045
+        },
+        {
+          "char": "D",
+          "pdfX": 86.99823157894738,
+          "pdfLine": 0,
+          "browserX": 87.140625,
+          "browserLine": 0,
+          "xDifference": 0.142393421052617
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 107.375,
+      "browserLines": 2,
+      "rightDifference": 0.31276842105262403
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "decimal",
+      "text": "1.2 WORD",
+      "bold": false,
+      "pdfRight": 113.21355789473684,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 74.37498947368422,
+          "pdfLine": 0,
+          "browserX": 74.421875,
+          "browserLine": 0,
+          "xDifference": 0.04688552631577636
+        },
+        {
+          "char": ".",
+          "pdfX": 90.0010105263158,
+          "pdfLine": 0,
+          "browserX": 89.984375,
+          "browserLine": 0,
+          "xDifference": -0.016635526315795346
+        },
+        {
+          "char": "2",
+          "pdfX": 97.76261052631578,
+          "pdfLine": 0,
+          "browserX": 97.765625,
+          "browserLine": 0,
+          "xDifference": 0.003014473684217478
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 113.359375,
+      "browserLines": 2,
+      "rightDifference": 0.14581710526316272
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "decimal",
+      "text": "123.45 WORD",
+      "bold": false,
+      "pdfRight": 128.8416,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 43.12496842105264,
+          "pdfLine": 0,
+          "browserX": 43.28125,
+          "browserLine": 0,
+          "xDifference": 0.1562815789473575
+        },
+        {
+          "char": "2",
+          "pdfX": 58.750989473684214,
+          "pdfLine": 0,
+          "browserX": 58.84375,
+          "browserLine": 0,
+          "xDifference": 0.0927605263157858
+        },
+        {
+          "char": "3",
+          "pdfX": 74.37701052631579,
+          "pdfLine": 0,
+          "browserX": 74.421875,
+          "browserLine": 0,
+          "xDifference": 0.04486447368421409
+        },
+        {
+          "char": ".",
+          "pdfX": 90.00303157894737,
+          "pdfLine": 0,
+          "browserX": 89.984375,
+          "browserLine": 0,
+          "xDifference": -0.018656578947371827
+        },
+        {
+          "char": "4",
+          "pdfX": 97.76463157894736,
+          "pdfLine": 0,
+          "browserX": 97.765625,
+          "browserLine": 0,
+          "xDifference": 0.000993421052640997
+        },
+        {
+          "char": "5",
+          "pdfX": 113.39065263157893,
+          "pdfLine": 0,
+          "browserX": 113.34375,
+          "browserLine": 0,
+          "xDifference": -0.04690263157893071
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 128.921875,
+      "browserLines": 2,
+      "rightDifference": 0.08027500000000032
+    },
+    {
+      "width": 150,
+      "position": 90,
+      "align": "decimal",
+      "text": "0.678 WORD",
+      "bold": true,
+      "pdfRight": 144.4656,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "0",
+          "pdfX": 74.37498947368422,
+          "pdfLine": 0,
+          "browserX": 74.421875,
+          "browserLine": 0,
+          "xDifference": 0.04688552631577636
+        },
+        {
+          "char": ".",
+          "pdfX": 90.0010105263158,
+          "pdfLine": 0,
+          "browserX": 89.984375,
+          "browserLine": 0,
+          "xDifference": -0.016635526315795346
+        },
+        {
+          "char": "6",
+          "pdfX": 97.76261052631578,
+          "pdfLine": 0,
+          "browserX": 97.765625,
+          "browserLine": 0,
+          "xDifference": 0.003014473684217478
+        },
+        {
+          "char": "7",
+          "pdfX": 113.38863157894737,
+          "pdfLine": 0,
+          "browserX": 113.34375,
+          "browserLine": 0,
+          "xDifference": -0.04488157894736844
+        },
+        {
+          "char": "8",
+          "pdfX": 129.01465263157894,
+          "pdfLine": 0,
+          "browserX": 128.90625,
+          "browserLine": 0,
+          "xDifference": -0.10840263157894015
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 144.5,
+      "browserLines": 2,
+      "rightDifference": 0.03440000000000509
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "center",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 149.8215157894737,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 45.87498947368422,
+          "pdfLine": 0,
+          "browserX": 45.78125,
+          "browserLine": 0,
+          "xDifference": -0.09373947368421653
+        },
+        {
+          "char": "W",
+          "pdfX": 61.37595789473686,
+          "pdfLine": 0,
+          "browserX": 61.328125,
+          "browserLine": 0,
+          "xDifference": -0.0478328947368567
+        },
+        {
+          "char": "O",
+          "pdfX": 87.74538947368423,
+          "pdfLine": 0,
+          "browserX": 87.765625,
+          "browserLine": 0,
+          "xDifference": 0.020235526315772745
+        },
+        {
+          "char": "R",
+          "pdfX": 109.50176842105262,
+          "pdfLine": 0,
+          "browserX": 109.546875,
+          "browserLine": 0,
+          "xDifference": 0.045106578947383014
+        },
+        {
+          "char": "D",
+          "pdfX": 129.7575157894737,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.008109210526299648
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 1,
+      "rightDifference": 0.1784842105263067
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "center",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 149.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 76.99995789473685,
+          "pdfLine": 0,
+          "browserX": 76.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473685193
+        },
+        {
+          "char": "I",
+          "pdfX": 103.37494736842108,
+          "pdfLine": 0,
+          "browserX": 103.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 111.13098947368422,
+          "pdfLine": 0,
+          "browserX": 111.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 131.3922947368421,
+          "pdfLine": 0,
+          "browserX": 131.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684210348
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "center",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 149.81216842105266,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 61.37494736842107,
+          "pdfLine": 0,
+          "browserX": 61.3125,
+          "browserLine": 0,
+          "xDifference": -0.06244736842106846
+        },
+        {
+          "char": "I",
+          "pdfX": 84.74867368421054,
+          "pdfLine": 0,
+          "browserX": 84.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421054437
+        },
+        {
+          "char": "X",
+          "pdfX": 92.50471578947369,
+          "pdfLine": 0,
+          "browserX": 92.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947369267
+        },
+        {
+          "char": "E",
+          "pdfX": 111.12644210526317,
+          "pdfLine": 0,
+          "browserX": 111.078125,
+          "browserLine": 0,
+          "xDifference": -0.04831710526316613
+        },
+        {
+          "char": "D",
+          "pdfX": 129.74816842105264,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947360413
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894733904
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "right",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 122.57153684210526,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 18.625010526315787,
+          "pdfLine": 0,
+          "browserX": 18.6875,
+          "browserLine": 0,
+          "xDifference": 0.06248947368421298
+        },
+        {
+          "char": "W",
+          "pdfX": 34.12597894736843,
+          "pdfLine": 0,
+          "browserX": 34.234375,
+          "browserLine": 0,
+          "xDifference": 0.10839605263156926
+        },
+        {
+          "char": "O",
+          "pdfX": 60.495410526315794,
+          "pdfLine": 0,
+          "browserX": 60.671875,
+          "browserLine": 0,
+          "xDifference": 0.1764644736842058
+        },
+        {
+          "char": "R",
+          "pdfX": 82.25178947368423,
+          "pdfLine": 0,
+          "browserX": 82.453125,
+          "browserLine": 0,
+          "xDifference": 0.20133552631577345
+        },
+        {
+          "char": "D",
+          "pdfX": 102.50753684210528,
+          "pdfLine": 0,
+          "browserX": 102.671875,
+          "browserLine": 0,
+          "xDifference": 0.1643381578947185
+        }
+      ],
+      "browserRight": 122.90625,
+      "browserLines": 1,
+      "rightDifference": 0.33471315789473977
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "right",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 119.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 46.99995789473684,
+          "pdfLine": 0,
+          "browserX": 46.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473683772
+        },
+        {
+          "char": "I",
+          "pdfX": 73.37494736842108,
+          "pdfLine": 0,
+          "browserX": 73.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 81.13098947368422,
+          "pdfLine": 0,
+          "browserX": 81.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 101.39229473684212,
+          "pdfLine": 0,
+          "browserX": 101.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684211769
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 120,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "right",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 119.81216842105265,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 31.37494736842105,
+          "pdfLine": 0,
+          "browserX": 31.3125,
+          "browserLine": 0,
+          "xDifference": -0.0624473684210507
+        },
+        {
+          "char": "I",
+          "pdfX": 54.74867368421054,
+          "pdfLine": 0,
+          "browserX": 54.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421053726
+        },
+        {
+          "char": "X",
+          "pdfX": 62.504715789473686,
+          "pdfLine": 0,
+          "browserX": 62.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947368556
+        },
+        {
+          "char": "E",
+          "pdfX": 81.12644210526315,
+          "pdfLine": 0,
+          "browserX": 81.078125,
+          "browserLine": 0,
+          "xDifference": -0.048317105263151916
+        },
+        {
+          "char": "D",
+          "pdfX": 99.74816842105263,
+          "pdfLine": 0,
+          "browserX": 99.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947374624
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 120,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894735325
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "decimal",
+      "text": "1.2 WORD",
+      "bold": false,
+      "pdfRight": 143.21355789473685,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 104.37498947368422,
+          "pdfLine": 0,
+          "browserX": 104.421875,
+          "browserLine": 0,
+          "xDifference": 0.04688552631577636
+        },
+        {
+          "char": ".",
+          "pdfX": 120.0010105263158,
+          "pdfLine": 0,
+          "browserX": 119.984375,
+          "browserLine": 0,
+          "xDifference": -0.016635526315795346
+        },
+        {
+          "char": "2",
+          "pdfX": 127.76261052631578,
+          "pdfLine": 0,
+          "browserX": 127.765625,
+          "browserLine": 0,
+          "xDifference": 0.003014473684217478
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 143.359375,
+      "browserLines": 2,
+      "rightDifference": 0.1458171052631485
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "decimal",
+      "text": "123.45 WORD",
+      "bold": false,
+      "pdfRight": 149.8416,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 64.12496842105264,
+          "pdfLine": 0,
+          "browserX": 64.359375,
+          "browserLine": 0,
+          "xDifference": 0.2344065789473575
+        },
+        {
+          "char": "2",
+          "pdfX": 79.75098947368421,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.1708855263157858
+        },
+        {
+          "char": "3",
+          "pdfX": 95.37701052631579,
+          "pdfLine": 0,
+          "browserX": 95.5,
+          "browserLine": 0,
+          "xDifference": 0.12298947368421409
+        },
+        {
+          "char": ".",
+          "pdfX": 111.00303157894737,
+          "pdfLine": 0,
+          "browserX": 111.0625,
+          "browserLine": 0,
+          "xDifference": 0.05946842105262817
+        },
+        {
+          "char": "4",
+          "pdfX": 118.76463157894736,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.079118421052641
+        },
+        {
+          "char": "5",
+          "pdfX": 134.39065263157894,
+          "pdfLine": 0,
+          "browserX": 134.421875,
+          "browserLine": 0,
+          "xDifference": 0.03122236842105508
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15840000000000032
+    },
+    {
+      "width": 150,
+      "position": 120,
+      "align": "decimal",
+      "text": "0.678 WORD",
+      "bold": true,
+      "pdfRight": 149.8405894736842,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "0",
+          "pdfX": 79.74997894736843,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.17189605263156693
+        },
+        {
+          "char": ".",
+          "pdfX": 95.376,
+          "pdfLine": 0,
+          "browserX": 95.484375,
+          "browserLine": 0,
+          "xDifference": 0.10837499999999523
+        },
+        {
+          "char": "6",
+          "pdfX": 103.1376,
+          "pdfLine": 0,
+          "browserX": 103.265625,
+          "browserLine": 0,
+          "xDifference": 0.12802499999999384
+        },
+        {
+          "char": "7",
+          "pdfX": 118.76362105263158,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.08012894736842213
+        },
+        {
+          "char": "8",
+          "pdfX": 134.38964210526316,
+          "pdfLine": 0,
+          "browserX": 134.40625,
+          "browserLine": 0,
+          "xDifference": 0.016607894736836215
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15941052631580988
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "center",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 149.8215157894737,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 45.87498947368422,
+          "pdfLine": 0,
+          "browserX": 45.78125,
+          "browserLine": 0,
+          "xDifference": -0.09373947368421653
+        },
+        {
+          "char": "W",
+          "pdfX": 61.37595789473686,
+          "pdfLine": 0,
+          "browserX": 61.328125,
+          "browserLine": 0,
+          "xDifference": -0.0478328947368567
+        },
+        {
+          "char": "O",
+          "pdfX": 87.74538947368423,
+          "pdfLine": 0,
+          "browserX": 87.765625,
+          "browserLine": 0,
+          "xDifference": 0.020235526315772745
+        },
+        {
+          "char": "R",
+          "pdfX": 109.50176842105262,
+          "pdfLine": 0,
+          "browserX": 109.546875,
+          "browserLine": 0,
+          "xDifference": 0.045106578947383014
+        },
+        {
+          "char": "D",
+          "pdfX": 129.7575157894737,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.008109210526299648
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 1,
+      "rightDifference": 0.1784842105263067
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "center",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 149.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 76.99995789473685,
+          "pdfLine": 0,
+          "browserX": 76.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473685193
+        },
+        {
+          "char": "I",
+          "pdfX": 103.37494736842108,
+          "pdfLine": 0,
+          "browserX": 103.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 111.13098947368422,
+          "pdfLine": 0,
+          "browserX": 111.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 131.3922947368421,
+          "pdfLine": 0,
+          "browserX": 131.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684210348
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "center",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 149.81216842105266,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 61.37494736842107,
+          "pdfLine": 0,
+          "browserX": 61.3125,
+          "browserLine": 0,
+          "xDifference": -0.06244736842106846
+        },
+        {
+          "char": "I",
+          "pdfX": 84.74867368421054,
+          "pdfLine": 0,
+          "browserX": 84.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421054437
+        },
+        {
+          "char": "X",
+          "pdfX": 92.50471578947369,
+          "pdfLine": 0,
+          "browserX": 92.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947369267
+        },
+        {
+          "char": "E",
+          "pdfX": 111.12644210526317,
+          "pdfLine": 0,
+          "browserX": 111.078125,
+          "browserLine": 0,
+          "xDifference": -0.04831710526316613
+        },
+        {
+          "char": "D",
+          "pdfX": 129.74816842105264,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947360413
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894733904
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "right",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 149.8215157894737,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 45.87498947368422,
+          "pdfLine": 0,
+          "browserX": 45.78125,
+          "browserLine": 0,
+          "xDifference": -0.09373947368421653
+        },
+        {
+          "char": "W",
+          "pdfX": 61.37595789473686,
+          "pdfLine": 0,
+          "browserX": 61.328125,
+          "browserLine": 0,
+          "xDifference": -0.0478328947368567
+        },
+        {
+          "char": "O",
+          "pdfX": 87.74538947368423,
+          "pdfLine": 0,
+          "browserX": 87.765625,
+          "browserLine": 0,
+          "xDifference": 0.020235526315772745
+        },
+        {
+          "char": "R",
+          "pdfX": 109.50176842105262,
+          "pdfLine": 0,
+          "browserX": 109.546875,
+          "browserLine": 0,
+          "xDifference": 0.045106578947383014
+        },
+        {
+          "char": "D",
+          "pdfX": 129.7575157894737,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.008109210526299648
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 1,
+      "rightDifference": 0.1784842105263067
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "right",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 149.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 76.99995789473685,
+          "pdfLine": 0,
+          "browserX": 76.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473685193
+        },
+        {
+          "char": "I",
+          "pdfX": 103.37494736842108,
+          "pdfLine": 0,
+          "browserX": 103.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 111.13098947368422,
+          "pdfLine": 0,
+          "browserX": 111.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 131.3922947368421,
+          "pdfLine": 0,
+          "browserX": 131.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684210348
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "right",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 149.81216842105266,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 61.37494736842107,
+          "pdfLine": 0,
+          "browserX": 61.3125,
+          "browserLine": 0,
+          "xDifference": -0.06244736842106846
+        },
+        {
+          "char": "I",
+          "pdfX": 84.74867368421054,
+          "pdfLine": 0,
+          "browserX": 84.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421054437
+        },
+        {
+          "char": "X",
+          "pdfX": 92.50471578947369,
+          "pdfLine": 0,
+          "browserX": 92.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947369267
+        },
+        {
+          "char": "E",
+          "pdfX": 111.12644210526317,
+          "pdfLine": 0,
+          "browserX": 111.078125,
+          "browserLine": 0,
+          "xDifference": -0.04831710526316613
+        },
+        {
+          "char": "D",
+          "pdfX": 129.74816842105264,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947360413
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894733904
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "decimal",
+      "text": "1.2 WORD",
+      "bold": false,
+      "pdfRight": 149.83856842105263,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 111,
+          "pdfLine": 0,
+          "browserX": 111.0625,
+          "browserLine": 0,
+          "xDifference": 0.0625
+        },
+        {
+          "char": ".",
+          "pdfX": 126.62602105263159,
+          "pdfLine": 0,
+          "browserX": 126.625,
+          "browserLine": 0,
+          "xDifference": -0.001021052631585917
+        },
+        {
+          "char": "2",
+          "pdfX": 134.38762105263157,
+          "pdfLine": 0,
+          "browserX": 134.40625,
+          "browserLine": 0,
+          "xDifference": 0.018628947368426907
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.16143157894737215
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "decimal",
+      "text": "123.45 WORD",
+      "bold": false,
+      "pdfRight": 149.8416,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 64.12496842105264,
+          "pdfLine": 0,
+          "browserX": 64.359375,
+          "browserLine": 0,
+          "xDifference": 0.2344065789473575
+        },
+        {
+          "char": "2",
+          "pdfX": 79.75098947368421,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.1708855263157858
+        },
+        {
+          "char": "3",
+          "pdfX": 95.37701052631579,
+          "pdfLine": 0,
+          "browserX": 95.5,
+          "browserLine": 0,
+          "xDifference": 0.12298947368421409
+        },
+        {
+          "char": ".",
+          "pdfX": 111.00303157894737,
+          "pdfLine": 0,
+          "browserX": 111.0625,
+          "browserLine": 0,
+          "xDifference": 0.05946842105262817
+        },
+        {
+          "char": "4",
+          "pdfX": 118.76463157894736,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.079118421052641
+        },
+        {
+          "char": "5",
+          "pdfX": 134.39065263157894,
+          "pdfLine": 0,
+          "browserX": 134.421875,
+          "browserLine": 0,
+          "xDifference": 0.03122236842105508
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15840000000000032
+    },
+    {
+      "width": 150,
+      "position": 180,
+      "align": "decimal",
+      "text": "0.678 WORD",
+      "bold": true,
+      "pdfRight": 149.8405894736842,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "0",
+          "pdfX": 79.74997894736843,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.17189605263156693
+        },
+        {
+          "char": ".",
+          "pdfX": 95.376,
+          "pdfLine": 0,
+          "browserX": 95.484375,
+          "browserLine": 0,
+          "xDifference": 0.10837499999999523
+        },
+        {
+          "char": "6",
+          "pdfX": 103.1376,
+          "pdfLine": 0,
+          "browserX": 103.265625,
+          "browserLine": 0,
+          "xDifference": 0.12802499999999384
+        },
+        {
+          "char": "7",
+          "pdfX": 118.76362105263158,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.08012894736842213
+        },
+        {
+          "char": "8",
+          "pdfX": 134.38964210526316,
+          "pdfLine": 0,
+          "browserX": 134.40625,
+          "browserLine": 0,
+          "xDifference": 0.016607894736836215
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15941052631580988
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "center",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 149.8215157894737,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 45.87498947368422,
+          "pdfLine": 0,
+          "browserX": 45.78125,
+          "browserLine": 0,
+          "xDifference": -0.09373947368421653
+        },
+        {
+          "char": "W",
+          "pdfX": 61.37595789473686,
+          "pdfLine": 0,
+          "browserX": 61.328125,
+          "browserLine": 0,
+          "xDifference": -0.0478328947368567
+        },
+        {
+          "char": "O",
+          "pdfX": 87.74538947368423,
+          "pdfLine": 0,
+          "browserX": 87.765625,
+          "browserLine": 0,
+          "xDifference": 0.020235526315772745
+        },
+        {
+          "char": "R",
+          "pdfX": 109.50176842105262,
+          "pdfLine": 0,
+          "browserX": 109.546875,
+          "browserLine": 0,
+          "xDifference": 0.045106578947383014
+        },
+        {
+          "char": "D",
+          "pdfX": 129.7575157894737,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.008109210526299648
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 1,
+      "rightDifference": 0.1784842105263067
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "center",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 149.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 76.99995789473685,
+          "pdfLine": 0,
+          "browserX": 76.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473685193
+        },
+        {
+          "char": "I",
+          "pdfX": 103.37494736842108,
+          "pdfLine": 0,
+          "browserX": 103.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 111.13098947368422,
+          "pdfLine": 0,
+          "browserX": 111.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 131.3922947368421,
+          "pdfLine": 0,
+          "browserX": 131.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684210348
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "center",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 149.81216842105266,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 61.37494736842107,
+          "pdfLine": 0,
+          "browserX": 61.3125,
+          "browserLine": 0,
+          "xDifference": -0.06244736842106846
+        },
+        {
+          "char": "I",
+          "pdfX": 84.74867368421054,
+          "pdfLine": 0,
+          "browserX": 84.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421054437
+        },
+        {
+          "char": "X",
+          "pdfX": 92.50471578947369,
+          "pdfLine": 0,
+          "browserX": 92.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947369267
+        },
+        {
+          "char": "E",
+          "pdfX": 111.12644210526317,
+          "pdfLine": 0,
+          "browserX": 111.078125,
+          "browserLine": 0,
+          "xDifference": -0.04831710526316613
+        },
+        {
+          "char": "D",
+          "pdfX": 129.74816842105264,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947360413
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894733904
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "right",
+      "text": "I WORD",
+      "bold": false,
+      "pdfRight": 149.8215157894737,
+      "pdfLines": 1,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "I",
+          "pdfX": 45.87498947368422,
+          "pdfLine": 0,
+          "browserX": 45.78125,
+          "browserLine": 0,
+          "xDifference": -0.09373947368421653
+        },
+        {
+          "char": "W",
+          "pdfX": 61.37595789473686,
+          "pdfLine": 0,
+          "browserX": 61.328125,
+          "browserLine": 0,
+          "xDifference": -0.0478328947368567
+        },
+        {
+          "char": "O",
+          "pdfX": 87.74538947368423,
+          "pdfLine": 0,
+          "browserX": 87.765625,
+          "browserLine": 0,
+          "xDifference": 0.020235526315772745
+        },
+        {
+          "char": "R",
+          "pdfX": 109.50176842105262,
+          "pdfLine": 0,
+          "browserX": 109.546875,
+          "browserLine": 0,
+          "xDifference": 0.045106578947383014
+        },
+        {
+          "char": "D",
+          "pdfX": 129.7575157894737,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.008109210526299648
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 1,
+      "rightDifference": 0.1784842105263067
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "right",
+      "text": "WIDE WORD",
+      "bold": false,
+      "pdfRight": 149.92787368421054,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "W",
+          "pdfX": 76.99995789473685,
+          "pdfLine": 0,
+          "browserX": 76.890625,
+          "browserLine": 0,
+          "xDifference": -0.10933289473685193
+        },
+        {
+          "char": "I",
+          "pdfX": 103.37494736842108,
+          "pdfLine": 0,
+          "browserX": 103.3125,
+          "browserLine": 0,
+          "xDifference": -0.062447368421075566
+        },
+        {
+          "char": "D",
+          "pdfX": 111.13098947368422,
+          "pdfLine": 0,
+          "browserX": 111.09375,
+          "browserLine": 0,
+          "xDifference": -0.03723947368422387
+        },
+        {
+          "char": "E",
+          "pdfX": 131.3922947368421,
+          "pdfLine": 0,
+          "browserX": 131.3125,
+          "browserLine": 0,
+          "xDifference": -0.07979473684210348
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.07212631578946116
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "right",
+      "text": "MIXED WORD",
+      "bold": true,
+      "pdfRight": 149.81216842105266,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "M",
+          "pdfX": 61.37494736842107,
+          "pdfLine": 0,
+          "browserX": 61.3125,
+          "browserLine": 0,
+          "xDifference": -0.06244736842106846
+        },
+        {
+          "char": "I",
+          "pdfX": 84.74867368421054,
+          "pdfLine": 0,
+          "browserX": 84.625,
+          "browserLine": 0,
+          "xDifference": -0.12367368421054437
+        },
+        {
+          "char": "X",
+          "pdfX": 92.50471578947369,
+          "pdfLine": 0,
+          "browserX": 92.40625,
+          "browserLine": 0,
+          "xDifference": -0.09846578947369267
+        },
+        {
+          "char": "E",
+          "pdfX": 111.12644210526317,
+          "pdfLine": 0,
+          "browserX": 111.078125,
+          "browserLine": 0,
+          "xDifference": -0.04831710526316613
+        },
+        {
+          "char": "D",
+          "pdfX": 129.74816842105264,
+          "pdfLine": 0,
+          "browserX": 129.765625,
+          "browserLine": 0,
+          "xDifference": 0.017456578947360413
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.18783157894733904
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "decimal",
+      "text": "1.2 WORD",
+      "bold": false,
+      "pdfRight": 149.83856842105263,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 111,
+          "pdfLine": 0,
+          "browserX": 111.0625,
+          "browserLine": 0,
+          "xDifference": 0.0625
+        },
+        {
+          "char": ".",
+          "pdfX": 126.62602105263159,
+          "pdfLine": 0,
+          "browserX": 126.625,
+          "browserLine": 0,
+          "xDifference": -0.001021052631585917
+        },
+        {
+          "char": "2",
+          "pdfX": 134.38762105263157,
+          "pdfLine": 0,
+          "browserX": 134.40625,
+          "browserLine": 0,
+          "xDifference": 0.018628947368426907
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.16143157894737215
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "decimal",
+      "text": "123.45 WORD",
+      "bold": false,
+      "pdfRight": 149.8416,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "1",
+          "pdfX": 64.12496842105264,
+          "pdfLine": 0,
+          "browserX": 64.359375,
+          "browserLine": 0,
+          "xDifference": 0.2344065789473575
+        },
+        {
+          "char": "2",
+          "pdfX": 79.75098947368421,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.1708855263157858
+        },
+        {
+          "char": "3",
+          "pdfX": 95.37701052631579,
+          "pdfLine": 0,
+          "browserX": 95.5,
+          "browserLine": 0,
+          "xDifference": 0.12298947368421409
+        },
+        {
+          "char": ".",
+          "pdfX": 111.00303157894737,
+          "pdfLine": 0,
+          "browserX": 111.0625,
+          "browserLine": 0,
+          "xDifference": 0.05946842105262817
+        },
+        {
+          "char": "4",
+          "pdfX": 118.76463157894736,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.079118421052641
+        },
+        {
+          "char": "5",
+          "pdfX": 134.39065263157894,
+          "pdfLine": 0,
+          "browserX": 134.421875,
+          "browserLine": 0,
+          "xDifference": 0.03122236842105508
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15840000000000032
+    },
+    {
+      "width": 150,
+      "position": 240,
+      "align": "decimal",
+      "text": "0.678 WORD",
+      "bold": true,
+      "pdfRight": 149.8405894736842,
+      "pdfLines": 2,
+      "chars": [
+        {
+          "char": "P",
+          "pdfX": 0,
+          "pdfLine": 0,
+          "browserX": 0,
+          "browserLine": 0,
+          "xDifference": 0
+        },
+        {
+          "char": "0",
+          "pdfX": 79.74997894736843,
+          "pdfLine": 0,
+          "browserX": 79.921875,
+          "browserLine": 0,
+          "xDifference": 0.17189605263156693
+        },
+        {
+          "char": ".",
+          "pdfX": 95.376,
+          "pdfLine": 0,
+          "browserX": 95.484375,
+          "browserLine": 0,
+          "xDifference": 0.10837499999999523
+        },
+        {
+          "char": "6",
+          "pdfX": 103.1376,
+          "pdfLine": 0,
+          "browserX": 103.265625,
+          "browserLine": 0,
+          "xDifference": 0.12802499999999384
+        },
+        {
+          "char": "7",
+          "pdfX": 118.76362105263158,
+          "pdfLine": 0,
+          "browserX": 118.84375,
+          "browserLine": 0,
+          "xDifference": 0.08012894736842213
+        },
+        {
+          "char": "8",
+          "pdfX": 134.38964210526316,
+          "pdfLine": 0,
+          "browserX": 134.40625,
+          "browserLine": 0,
+          "xDifference": 0.016607894736836215
+        },
+        {
+          "char": "W",
+          "pdfX": 0,
+          "pdfLine": 1,
+          "browserX": 0,
+          "browserLine": 1,
+          "xDifference": 0
+        },
+        {
+          "char": "O",
+          "pdfX": 26.374989473684213,
+          "pdfLine": 1,
+          "browserX": 26.421875,
+          "browserLine": 1,
+          "xDifference": 0.04688552631578702
+        },
+        {
+          "char": "R",
+          "pdfX": 48.13692631578948,
+          "pdfLine": 1,
+          "browserX": 48.203125,
+          "browserLine": 1,
+          "xDifference": 0.06619868421051933
+        },
+        {
+          "char": "D",
+          "pdfX": 68.39823157894736,
+          "pdfLine": 1,
+          "browserX": 68.421875,
+          "browserLine": 1,
+          "xDifference": 0.023643421052639724
+        }
+      ],
+      "browserRight": 150,
+      "browserLines": 2,
+      "rightDifference": 0.15941052631580988
+    }
+  ]
+}

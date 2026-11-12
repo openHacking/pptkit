@@ -1,0 +1,836 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T20:43:19.049Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-edits-native/run-stLU15",
+  "scope": "Three atomic Core edit batches followed by fresh native-table PPTX export, independent physical-grid ZIP/XML verification, separate LibreOffice headless resaves and saved-output PDF reopening. Not source structural preservation, interactive table editing or full style fidelity.",
+  "rounds": [
+    {
+      "round": 1,
+      "operations": [
+        {
+          "type": "insert-row",
+          "index": 1,
+          "height": 25,
+          "cell": {
+            "content": [
+              {
+                "runs": [
+                  {
+                    "text": "Inserted row",
+                    "style": {
+                      "fontFamily": "Arial",
+                      "fontSize": 9
+                    }
+                  }
+                ]
+              }
+            ],
+            "style": {
+              "margin": 0
+            }
+          }
+        },
+        {
+          "type": "insert-column",
+          "index": 1,
+          "width": 30,
+          "cell": {
+            "content": [
+              {
+                "runs": [
+                  {
+                    "text": "Inserted column",
+                    "style": {
+                      "fontFamily": "Arial",
+                      "fontSize": 9
+                    }
+                  }
+                ]
+              }
+            ],
+            "style": {
+              "margin": 0
+            }
+          }
+        }
+      ],
+      "cellMapping": [
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 3
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 1,
+            "cellIndex": 0,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 3
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 3,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 1,
+            "columnIndex": 1
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 3,
+            "cellIndex": 2,
+            "columnIndex": 2
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 2,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 3,
+            "cellIndex": 3,
+            "columnIndex": 3
+          }
+        }
+      ],
+      "sourceSha256": "cd192e9d05c616ac088ba1f9c77bdee6d9a6620e6897482efbc0a0c3ddc2d64f",
+      "nativeSha256": "1393910403bbae4657c7b2986d7416a3bf1b9ef642e9767d8c258e951b2c58b0",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; physical grid, all merge continuations, dimensions and paragraph content",
+        "mutatedContinuationRejected": true,
+        "sourceModel": {
+          "columns": [
+            100,
+            30,
+            100,
+            100
+          ],
+          "rows": [
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 3,
+                  "colSpan": 3,
+                  "text": "Anchor A"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Delete B"
+                }
+              ]
+            },
+            {
+              "height": 25,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted row"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control C"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Delete D"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted column"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control E"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control F"
+                }
+              ]
+            }
+          ]
+        },
+        "native": {
+          "status": "pass",
+          "sameGridAndParagraphContent": true,
+          "maxColumnPointError": 0.022047244094494545,
+          "maxRowPointError": 0.026771653543306684,
+          "model": {
+            "columns": [
+              99.9779527559055,
+              29.99055118110236,
+              99.9779527559055,
+              99.9779527559055
+            ],
+            "rows": [
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 3,
+                    "colSpan": 3,
+                    "text": "Anchor A"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Delete B"
+                  }
+                ]
+              },
+              {
+                "height": 24.973228346456693,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted row"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control C"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Delete D"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted column"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control E"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control F"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/round-1.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/native/round-1.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "round": 2,
+      "operations": [
+        {
+          "type": "delete-row",
+          "index": 0
+        },
+        {
+          "type": "delete-column",
+          "index": 0
+        }
+      ],
+      "cellMapping": [
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 3
+          },
+          "status": "deleted"
+        },
+        {
+          "source": {
+            "rowIndex": 1,
+            "cellIndex": 0,
+            "columnIndex": 3
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 2
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 3
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 1,
+            "cellIndex": 0,
+            "columnIndex": 2
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 3,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "deleted"
+        },
+        {
+          "source": {
+            "rowIndex": 3,
+            "cellIndex": 1,
+            "columnIndex": 1
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 3,
+            "cellIndex": 2,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 1,
+            "columnIndex": 1
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 3,
+            "cellIndex": 3,
+            "columnIndex": 3
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 2,
+            "columnIndex": 2
+          }
+        }
+      ],
+      "sourceSha256": "b63e462b97069eb34476d3f3361a624a14e2009099cd4015df4fc3748ba35fc6",
+      "nativeSha256": "bb1efa14609ec1167a30fbc2c58016e73eb5609969ad0c0dd8315ad8d5776915",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; physical grid, all merge continuations, dimensions and paragraph content",
+        "mutatedContinuationRejected": true,
+        "sourceModel": {
+          "columns": [
+            30,
+            100,
+            100
+          ],
+          "rows": [
+            {
+              "height": 25,
+              "cells": [
+                {
+                  "rowSpan": 2,
+                  "colSpan": 2,
+                  "text": "Anchor A"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted row"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control C"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted column"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control E"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control F"
+                }
+              ]
+            }
+          ]
+        },
+        "native": {
+          "status": "pass",
+          "sameGridAndParagraphContent": true,
+          "maxColumnPointError": 0.022047244094494545,
+          "maxRowPointError": 0.026771653543306684,
+          "model": {
+            "columns": [
+              29.99055118110236,
+              99.9779527559055,
+              99.9779527559055
+            ],
+            "rows": [
+              {
+                "height": 24.973228346456693,
+                "cells": [
+                  {
+                    "rowSpan": 2,
+                    "colSpan": 2,
+                    "text": "Anchor A"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted row"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control C"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted column"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control E"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control F"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/round-2.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/native/round-2.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "round": 3,
+      "operations": [
+        {
+          "type": "split",
+          "rowIndex": 1,
+          "columnIndex": 1
+        },
+        {
+          "type": "merge",
+          "region": {
+            "rowIndex": 0,
+            "columnIndex": 0,
+            "rowCount": 2,
+            "columnCount": 2
+          },
+          "content": "append-paragraphs"
+        },
+        {
+          "type": "insert-row",
+          "index": 3,
+          "height": 35,
+          "cell": {
+            "content": [
+              {
+                "runs": [
+                  {
+                    "text": "Tail",
+                    "style": {
+                      "fontFamily": "Arial",
+                      "fontSize": 9
+                    }
+                  }
+                ]
+              }
+            ],
+            "style": {
+              "margin": 0
+            }
+          }
+        }
+      ],
+      "cellMapping": [
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 0,
+            "cellIndex": 1,
+            "columnIndex": 2
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 1,
+            "cellIndex": 0,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 1,
+            "cellIndex": 0,
+            "columnIndex": 2
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 0
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 0,
+            "columnIndex": 0
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 1,
+            "columnIndex": 1
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 1,
+            "columnIndex": 1
+          }
+        },
+        {
+          "source": {
+            "rowIndex": 2,
+            "cellIndex": 2,
+            "columnIndex": 2
+          },
+          "status": "retained",
+          "target": {
+            "rowIndex": 2,
+            "cellIndex": 2,
+            "columnIndex": 2
+          }
+        }
+      ],
+      "sourceSha256": "0954aa52b115379370dddcf47802655a4759a1111a7654801c3eb160a50d5b05",
+      "nativeSha256": "33c07ff5f4e735b7a631d7592b9edc688663a12ee180315972da0d5a458fbf37",
+      "independent": {
+        "verified": true,
+        "oracle": "Python zipfile + ElementTree; physical grid, all merge continuations, dimensions and paragraph content",
+        "mutatedContinuationRejected": true,
+        "sourceModel": {
+          "columns": [
+            30,
+            100,
+            100
+          ],
+          "rows": [
+            {
+              "height": 25,
+              "cells": [
+                {
+                  "rowSpan": 2,
+                  "colSpan": 2,
+                  "text": "Anchor A\n\n\n"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted row"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control C"
+                }
+              ]
+            },
+            {
+              "height": 40,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Inserted column"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control E"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Control F"
+                }
+              ]
+            },
+            {
+              "height": 35,
+              "cells": [
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Tail"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Tail"
+                },
+                {
+                  "rowSpan": 1,
+                  "colSpan": 1,
+                  "text": "Tail"
+                }
+              ]
+            }
+          ]
+        },
+        "native": {
+          "status": "pass",
+          "sameGridAndParagraphContent": true,
+          "maxColumnPointError": 0.022047244094494545,
+          "maxRowPointError": 0.026771653543306684,
+          "model": {
+            "columns": [
+              29.99055118110236,
+              99.9779527559055,
+              99.9779527559055
+            ],
+            "rows": [
+              {
+                "height": 24.973228346456693,
+                "cells": [
+                  {
+                    "rowSpan": 2,
+                    "colSpan": 2,
+                    "text": "Anchor A\n\n\n"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted row"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control C"
+                  }
+                ]
+              },
+              {
+                "height": 39.99685039370079,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Inserted column"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control E"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Control F"
+                  }
+                ]
+              },
+              {
+                "height": 34.97952755905512,
+                "cells": [
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Tail"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Tail"
+                  },
+                  {
+                    "rowSpan": 1,
+                    "colSpan": 1,
+                    "text": "Tail"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "nativeLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/native/round-3.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    }
+  ],
+  "pdf": {
+    "sha256": "0337a2e9b302eee1d1b0e43786fbed584c42533c6b133165338a02a0573397d5",
+    "observation": {
+      "pages": 2,
+      "text": [
+        "Anchor A\nInserted row\nControl C\nIns\nerte\nd \ncol\num\nn\nControl E\nControl F\nTail\nTail\nTail\n",
+        "Unchanged table control\n"
+      ]
+    },
+    "log": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/native/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-edits-native/run-stLU15/pdf/round-3.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "interactiveEditing": "not-performed",
+  "sourceStructuralSave": "not-performed"
+}

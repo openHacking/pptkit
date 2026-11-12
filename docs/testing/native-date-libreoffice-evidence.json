@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "recordedAt": "2026-10-28T12:17:36.725Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS",
+  "files": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/source.pptx",
+      "sha256": "1330e6f2aa04350ce7f6f0700776f35717cff3186f20aedab8f0b2a55c4596cc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-1/source.pptx",
+      "sha256": "94eb819c99689acf092b6fa4727215e21469d24b124e70e1c6de9561735cf9b2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-2/source.pptx",
+      "sha256": "6e7fff6c80f7d733b791d00dc7987922ae666f1cb6da183cb51c91141571e788"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-3/source.pptx",
+      "sha256": "c670cf048716281eb06dcd2848a0e4190b3fd75024836cccb5c5af27c1f6131a"
+    }
+  ],
+  "records": [
+    {
+      "fields": [
+        {
+          "id": "{38D9DC4A-2E99-E34A-A7A3-8E01BBC23A4A}",
+          "type": "datetime3",
+          "cache": "CACHE-1970"
+        }
+      ],
+      "pdfText": "Date: October 28, 2026"
+    },
+    {
+      "fields": [
+        {
+          "id": "{3E979390-00F2-4F1E-A42A-89412533AED5}",
+          "type": "datetime3",
+          "cache": "October 28, 2026"
+        }
+      ],
+      "pdfText": "Date: October 28, 2026"
+    },
+    {
+      "fields": [
+        {
+          "id": "{576562A8-2CB5-4439-9EDC-E5BE2E476399}",
+          "type": "datetime3",
+          "cache": "October 28, 2026"
+        }
+      ],
+      "pdfText": "Date: October 28, 2026"
+    },
+    {
+      "fields": [
+        {
+          "id": "{E19428D0-CD55-45F9-A41E-C84415F6920C}",
+          "type": "datetime3",
+          "cache": "October 28, 2026"
+        }
+      ],
+      "pdfText": "Date: October 28, 2026"
+    }
+  ],
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-1/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-1/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-2/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-2/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-3/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/pdf-0/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-1/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/pdf-1/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-2/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/pdf-2/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/round-3/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-date-libreoffice/run-8HmkOS/pdf-3/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "scope": "One dynamic date field with deliberately stale cache. Headless LibreOffice only; rendered date depends on its runtime clock/locale. No PowerPoint or interactive claim."
+}

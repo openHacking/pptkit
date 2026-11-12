@@ -1,0 +1,2822 @@
+{
+  "profile": "smartart-stale-cache-controls-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon",
+  "nativeEnabled": true,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "originApplication": "Microsoft PowerPoint 16.104",
+  "originBuild": "16.104.25121423",
+  "manifestSha256": "0488b3d0064b365448689a5e98454c675e6518388512330f5758a2bff98c0550",
+  "cases": [
+    {
+      "family": "process",
+      "kind": "baseline",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-baseline.pptx",
+      "marker": "PPTKitprocessbaselineControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/process-round2-theme.pptx",
+      "sourceSha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 122,
+        "sourceModelId": "{0E55BD53-A7AC-0244-9A69-5F075A0C8677}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "PPTKit Added Process"
+        ]
+      },
+      "sha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "changedParts": [],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 169,
+            "sourcePointElementIndex": 122,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKit Added Process"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 66,
+            "presentationElementIndex": 172,
+            "sourcePointElementIndex": 122,
+            "status": "unavailable",
+            "reason": "Expected exactly one direct text body; absent/ambiguous bodies are not inferred as empty text."
+          },
+          {
+            "cacheElementIndex": 102,
+            "presentationElementIndex": 177,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 149,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "cacheParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 214,
+            "presentationElementIndex": 196,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 269,
+            "presentationElementIndex": 201,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 316,
+            "presentationElementIndex": 217,
+            "sourcePointElementIndex": 40,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Ship"
+            ],
+            "cacheParagraphs": [
+              "Ship"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 371,
+            "presentationElementIndex": 220,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 169,
+          "sourcePointElementIndex": 122,
+          "status": "equal",
+          "sourceParagraphs": [
+            "PPTKit Added Process"
+          ],
+          "cacheParagraphs": [
+            "PPTKit Added Process"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKit Added Process",
+          "",
+          "process lead PPTKit Process",
+          "Research detail",
+          "",
+          "Ship",
+          "Release detail"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "process",
+      "kind": "data-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-data-only.pptx",
+      "marker": "PPTKitprocessdataonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/process-round2-theme.pptx",
+      "sourceSha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 122,
+        "sourceModelId": "{0E55BD53-A7AC-0244-9A69-5F075A0C8677}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "PPTKit Added Process"
+        ]
+      },
+      "sha256": "805199ce255be2236fa97ba38bc4a7ce55797bf73a8a50990dc13a0da8eedb6f",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 169,
+            "sourcePointElementIndex": 122,
+            "status": "different",
+            "sourceParagraphs": [
+              "PPTKitprocessdataonlyControl"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 66,
+            "presentationElementIndex": 172,
+            "sourcePointElementIndex": 122,
+            "status": "unavailable",
+            "reason": "Expected exactly one direct text body; absent/ambiguous bodies are not inferred as empty text."
+          },
+          {
+            "cacheElementIndex": 102,
+            "presentationElementIndex": 177,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 149,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "cacheParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 214,
+            "presentationElementIndex": 196,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 269,
+            "presentationElementIndex": 201,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 316,
+            "presentationElementIndex": 217,
+            "sourcePointElementIndex": 40,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Ship"
+            ],
+            "cacheParagraphs": [
+              "Ship"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 371,
+            "presentationElementIndex": 220,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 169,
+          "sourcePointElementIndex": 122,
+          "status": "different",
+          "sourceParagraphs": [
+            "PPTKitprocessdataonlyControl"
+          ],
+          "cacheParagraphs": [
+            "PPTKit Added Process"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKit Added Process",
+          "",
+          "process lead PPTKit Process",
+          "Research detail",
+          "",
+          "Ship",
+          "Release detail"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "process",
+      "kind": "cache-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-cache-only.pptx",
+      "marker": "PPTKitprocesscacheonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/process-round2-theme.pptx",
+      "sourceSha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 122,
+        "sourceModelId": "{0E55BD53-A7AC-0244-9A69-5F075A0C8677}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "PPTKit Added Process"
+        ]
+      },
+      "sha256": "edcad14cd7c56167bbd303746eac59b55fb9b4984df47a9b4011b655c7451e66",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 169,
+            "sourcePointElementIndex": 122,
+            "status": "different",
+            "sourceParagraphs": [
+              "PPTKit Added Process"
+            ],
+            "cacheParagraphs": [
+              "PPTKitprocesscacheonlyControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 66,
+            "presentationElementIndex": 172,
+            "sourcePointElementIndex": 122,
+            "status": "unavailable",
+            "reason": "Expected exactly one direct text body; absent/ambiguous bodies are not inferred as empty text."
+          },
+          {
+            "cacheElementIndex": 102,
+            "presentationElementIndex": 177,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 149,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "cacheParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 214,
+            "presentationElementIndex": 196,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 269,
+            "presentationElementIndex": 201,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 316,
+            "presentationElementIndex": 217,
+            "sourcePointElementIndex": 40,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Ship"
+            ],
+            "cacheParagraphs": [
+              "Ship"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 371,
+            "presentationElementIndex": 220,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 169,
+          "sourcePointElementIndex": 122,
+          "status": "different",
+          "sourceParagraphs": [
+            "PPTKit Added Process"
+          ],
+          "cacheParagraphs": [
+            "PPTKitprocesscacheonlyControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKitprocesscacheonlyControl",
+          "",
+          "process lead PPTKit Process",
+          "Research detail",
+          "",
+          "Ship",
+          "Release detail"
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "process",
+      "kind": "both",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-both.pptx",
+      "marker": "PPTKitprocessbothControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/process-round2-theme.pptx",
+      "sourceSha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 122,
+        "sourceModelId": "{0E55BD53-A7AC-0244-9A69-5F075A0C8677}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "PPTKit Added Process"
+        ]
+      },
+      "sha256": "9798f01198d92909b04357e12a992962e0e718f16a811fb57d255af7974a7e30",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml",
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 169,
+            "sourcePointElementIndex": 122,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKitprocessbothControl"
+            ],
+            "cacheParagraphs": [
+              "PPTKitprocessbothControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 66,
+            "presentationElementIndex": 172,
+            "sourcePointElementIndex": 122,
+            "status": "unavailable",
+            "reason": "Expected exactly one direct text body; absent/ambiguous bodies are not inferred as empty text."
+          },
+          {
+            "cacheElementIndex": 102,
+            "presentationElementIndex": 177,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 149,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "cacheParagraphs": [
+              "process lead PPTKit Process"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 214,
+            "presentationElementIndex": 196,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 269,
+            "presentationElementIndex": 201,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 316,
+            "presentationElementIndex": 217,
+            "sourcePointElementIndex": 40,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Ship"
+            ],
+            "cacheParagraphs": [
+              "Ship"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 371,
+            "presentationElementIndex": 220,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 169,
+          "sourcePointElementIndex": 122,
+          "status": "equal",
+          "sourceParagraphs": [
+            "PPTKitprocessbothControl"
+          ],
+          "cacheParagraphs": [
+            "PPTKitprocessbothControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKitprocessbothControl",
+          "",
+          "process lead PPTKit Process",
+          "Research detail",
+          "",
+          "Ship",
+          "Release detail"
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "process",
+      "kind": "empty",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-empty.pptx",
+      "marker": "PPTKitprocessemptyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/process-round2-theme.pptx",
+      "sourceSha256": "f1855ce7982bde95a3bd3896b042cd8a119a2795fdac3cd6901ca626ed90c030",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 122,
+        "sourceModelId": "{0E55BD53-A7AC-0244-9A69-5F075A0C8677}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "PPTKit Added Process"
+        ]
+      },
+      "sha256": "ead44df4897cd3aac90daa71195c9b081db2df3f49281f9266f2b0208a4906eb",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": []
+      },
+      "selected": [],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "placeholder",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml",
+            "reason": "Cached drawing shape tree is empty."
+          }
+        ],
+        "cachedText": [
+          "SmartArt"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "hierarchy",
+      "kind": "baseline",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-baseline.pptx",
+      "marker": "PPTKithierarchybaselineControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/hierarchy-round2-theme.pptx",
+      "sourceSha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{31BD1ECF-A45A-D14D-9CF2-F9FE514C3AED}",
+        "cacheIndices": [
+          137
+        ],
+        "originalParagraphs": [
+          "hierarchy lead PPTKit Hierarchy"
+        ]
+      },
+      "sha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "changedParts": [],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 235,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 49,
+            "presentationElementIndex": 207,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 93,
+            "presentationElementIndex": 182,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 137,
+            "presentationElementIndex": 171,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "hierarchy lead PPTKit Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "hierarchy lead PPTKit Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 201,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 123,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 259,
+            "presentationElementIndex": 218,
+            "sourcePointElementIndex": 31,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Worker"
+            ],
+            "cacheParagraphs": [
+              "Worker"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 313,
+            "presentationElementIndex": 246,
+            "sourcePointElementIndex": 41,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Assistant"
+            ],
+            "cacheParagraphs": [
+              "Assistant"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 367,
+            "presentationElementIndex": 268,
+            "sourcePointElementIndex": 50,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Peer root"
+            ],
+            "cacheParagraphs": [
+              "Peer root"
+            ],
+            "nonemptyText": true
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 137,
+          "presentationElementIndex": 171,
+          "sourcePointElementIndex": 11,
+          "status": "equal",
+          "sourceParagraphs": [
+            "hierarchy lead PPTKit Hierarchy"
+          ],
+          "cacheParagraphs": [
+            "hierarchy lead PPTKit Hierarchy"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "SmartArt",
+          "SmartArt",
+          "SmartArt",
+          "hierarchy lead PPTKit Hierarchy",
+          "PPTKit Added Hierarchy",
+          "Worker",
+          "Assistant",
+          "Peer root"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "hierarchy",
+      "kind": "data-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-data-only.pptx",
+      "marker": "PPTKithierarchydataonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/hierarchy-round2-theme.pptx",
+      "sourceSha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{31BD1ECF-A45A-D14D-9CF2-F9FE514C3AED}",
+        "cacheIndices": [
+          137
+        ],
+        "originalParagraphs": [
+          "hierarchy lead PPTKit Hierarchy"
+        ]
+      },
+      "sha256": "fdd17c60169a83670aa1ef18f1d67a95404d7a769595008a3381294d5bdbd869",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 235,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 49,
+            "presentationElementIndex": 207,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 93,
+            "presentationElementIndex": 182,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 137,
+            "presentationElementIndex": 171,
+            "sourcePointElementIndex": 11,
+            "status": "different",
+            "sourceParagraphs": [
+              "PPTKithierarchydataonlyControl"
+            ],
+            "cacheParagraphs": [
+              "hierarchy lead PPTKit Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 201,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 123,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 259,
+            "presentationElementIndex": 218,
+            "sourcePointElementIndex": 31,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Worker"
+            ],
+            "cacheParagraphs": [
+              "Worker"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 313,
+            "presentationElementIndex": 246,
+            "sourcePointElementIndex": 41,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Assistant"
+            ],
+            "cacheParagraphs": [
+              "Assistant"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 367,
+            "presentationElementIndex": 268,
+            "sourcePointElementIndex": 50,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Peer root"
+            ],
+            "cacheParagraphs": [
+              "Peer root"
+            ],
+            "nonemptyText": true
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 137,
+          "presentationElementIndex": 171,
+          "sourcePointElementIndex": 11,
+          "status": "different",
+          "sourceParagraphs": [
+            "PPTKithierarchydataonlyControl"
+          ],
+          "cacheParagraphs": [
+            "hierarchy lead PPTKit Hierarchy"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "SmartArt",
+          "SmartArt",
+          "SmartArt",
+          "hierarchy lead PPTKit Hierarchy",
+          "PPTKit Added Hierarchy",
+          "Worker",
+          "Assistant",
+          "Peer root"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "hierarchy",
+      "kind": "cache-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-cache-only.pptx",
+      "marker": "PPTKithierarchycacheonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/hierarchy-round2-theme.pptx",
+      "sourceSha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{31BD1ECF-A45A-D14D-9CF2-F9FE514C3AED}",
+        "cacheIndices": [
+          137
+        ],
+        "originalParagraphs": [
+          "hierarchy lead PPTKit Hierarchy"
+        ]
+      },
+      "sha256": "f00816d17c899dc11891292fe6b2392b843522a812dcec28ced6e6db1c4e6d4e",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 235,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 49,
+            "presentationElementIndex": 207,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 93,
+            "presentationElementIndex": 182,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 137,
+            "presentationElementIndex": 171,
+            "sourcePointElementIndex": 11,
+            "status": "different",
+            "sourceParagraphs": [
+              "hierarchy lead PPTKit Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "PPTKithierarchycacheonlyControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 201,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 123,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 259,
+            "presentationElementIndex": 218,
+            "sourcePointElementIndex": 31,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Worker"
+            ],
+            "cacheParagraphs": [
+              "Worker"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 313,
+            "presentationElementIndex": 246,
+            "sourcePointElementIndex": 41,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Assistant"
+            ],
+            "cacheParagraphs": [
+              "Assistant"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 367,
+            "presentationElementIndex": 268,
+            "sourcePointElementIndex": 50,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Peer root"
+            ],
+            "cacheParagraphs": [
+              "Peer root"
+            ],
+            "nonemptyText": true
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 137,
+          "presentationElementIndex": 171,
+          "sourcePointElementIndex": 11,
+          "status": "different",
+          "sourceParagraphs": [
+            "hierarchy lead PPTKit Hierarchy"
+          ],
+          "cacheParagraphs": [
+            "PPTKithierarchycacheonlyControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "SmartArt",
+          "SmartArt",
+          "SmartArt",
+          "PPTKithierarchycacheonlyControl",
+          "PPTKit Added Hierarchy",
+          "Worker",
+          "Assistant",
+          "Peer root"
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "hierarchy",
+      "kind": "both",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-both.pptx",
+      "marker": "PPTKithierarchybothControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/hierarchy-round2-theme.pptx",
+      "sourceSha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{31BD1ECF-A45A-D14D-9CF2-F9FE514C3AED}",
+        "cacheIndices": [
+          137
+        ],
+        "originalParagraphs": [
+          "hierarchy lead PPTKit Hierarchy"
+        ]
+      },
+      "sha256": "dc8032a938b3ba20da653a31b96fafbe7caa34912f81f523c3483f4b80758eab",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml",
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 235,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 49,
+            "presentationElementIndex": 207,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 93,
+            "presentationElementIndex": 182,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 137,
+            "presentationElementIndex": 171,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKithierarchybothControl"
+            ],
+            "cacheParagraphs": [
+              "PPTKithierarchybothControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 201,
+            "presentationElementIndex": 193,
+            "sourcePointElementIndex": 123,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "cacheParagraphs": [
+              "PPTKit Added Hierarchy"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 259,
+            "presentationElementIndex": 218,
+            "sourcePointElementIndex": 31,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Worker"
+            ],
+            "cacheParagraphs": [
+              "Worker"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 313,
+            "presentationElementIndex": 246,
+            "sourcePointElementIndex": 41,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Assistant"
+            ],
+            "cacheParagraphs": [
+              "Assistant"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 367,
+            "presentationElementIndex": 268,
+            "sourcePointElementIndex": 50,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Peer root"
+            ],
+            "cacheParagraphs": [
+              "Peer root"
+            ],
+            "nonemptyText": true
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 137,
+          "presentationElementIndex": 171,
+          "sourcePointElementIndex": 11,
+          "status": "equal",
+          "sourceParagraphs": [
+            "PPTKithierarchybothControl"
+          ],
+          "cacheParagraphs": [
+            "PPTKithierarchybothControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "SmartArt",
+          "SmartArt",
+          "SmartArt",
+          "PPTKithierarchybothControl",
+          "PPTKit Added Hierarchy",
+          "Worker",
+          "Assistant",
+          "Peer root"
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "hierarchy",
+      "kind": "empty",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-empty.pptx",
+      "marker": "PPTKithierarchyemptyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/hierarchy-round2-theme.pptx",
+      "sourceSha256": "09a3c18eef7b441a4451a6559395a8e9c6e2d681e8d791f784186dbfa013bf62",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{31BD1ECF-A45A-D14D-9CF2-F9FE514C3AED}",
+        "cacheIndices": [
+          137
+        ],
+        "originalParagraphs": [
+          "hierarchy lead PPTKit Hierarchy"
+        ]
+      },
+      "sha256": "613062772dde7ed18097e47ef56124cb97635c85775c83f634c6c48603f29fdb",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": []
+      },
+      "selected": [],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "placeholder",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml",
+            "reason": "Cached drawing shape tree is empty."
+          }
+        ],
+        "cachedText": [
+          "SmartArt"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "cycle",
+      "kind": "baseline",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-baseline.pptx",
+      "marker": "PPTKitcyclebaselineControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+      "sourceSha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "cycle lead GUID"
+        ]
+      },
+      "sha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "changedParts": [],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 104,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "cycle lead GUID"
+            ],
+            "cacheParagraphs": [
+              "cycle lead GUID"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 64,
+            "presentationElementIndex": 109,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 112,
+            "presentationElementIndex": 115,
+            "sourcePointElementIndex": 24,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle B Round2"
+            ],
+            "cacheParagraphs": [
+              "Cycle B Round2"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 169,
+            "presentationElementIndex": 120,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 217,
+            "presentationElementIndex": 126,
+            "sourcePointElementIndex": 37,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle C Round3"
+            ],
+            "cacheParagraphs": [
+              "Cycle C Round3"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 274,
+            "presentationElementIndex": 131,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 104,
+          "sourcePointElementIndex": 11,
+          "status": "equal",
+          "sourceParagraphs": [
+            "cycle lead GUID"
+          ],
+          "cacheParagraphs": [
+            "cycle lead GUID"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "cycle lead GUID",
+          "",
+          "Cycle B Round2",
+          "",
+          "Cycle C Round3",
+          ""
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "cycle",
+      "kind": "data-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-data-only.pptx",
+      "marker": "PPTKitcycledataonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+      "sourceSha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "cycle lead GUID"
+        ]
+      },
+      "sha256": "fda8b7f04622af4bef3cf2fd9ab4ff4aa469411d05044e573b1bca054def0d4e",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 104,
+            "sourcePointElementIndex": 11,
+            "status": "different",
+            "sourceParagraphs": [
+              "PPTKitcycledataonlyControl"
+            ],
+            "cacheParagraphs": [
+              "cycle lead GUID"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 64,
+            "presentationElementIndex": 109,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 112,
+            "presentationElementIndex": 115,
+            "sourcePointElementIndex": 24,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle B Round2"
+            ],
+            "cacheParagraphs": [
+              "Cycle B Round2"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 169,
+            "presentationElementIndex": 120,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 217,
+            "presentationElementIndex": 126,
+            "sourcePointElementIndex": 37,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle C Round3"
+            ],
+            "cacheParagraphs": [
+              "Cycle C Round3"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 274,
+            "presentationElementIndex": 131,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 104,
+          "sourcePointElementIndex": 11,
+          "status": "different",
+          "sourceParagraphs": [
+            "PPTKitcycledataonlyControl"
+          ],
+          "cacheParagraphs": [
+            "cycle lead GUID"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "cycle lead GUID",
+          "",
+          "Cycle B Round2",
+          "",
+          "Cycle C Round3",
+          ""
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "cycle",
+      "kind": "cache-only",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-cache-only.pptx",
+      "marker": "PPTKitcyclecacheonlyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+      "sourceSha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "cycle lead GUID"
+        ]
+      },
+      "sha256": "5d6022c06f4eaf63d2b1948b2ea1338d75a40a099527a669b654b769523a096d",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 104,
+            "sourcePointElementIndex": 11,
+            "status": "different",
+            "sourceParagraphs": [
+              "cycle lead GUID"
+            ],
+            "cacheParagraphs": [
+              "PPTKitcyclecacheonlyControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 64,
+            "presentationElementIndex": 109,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 112,
+            "presentationElementIndex": 115,
+            "sourcePointElementIndex": 24,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle B Round2"
+            ],
+            "cacheParagraphs": [
+              "Cycle B Round2"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 169,
+            "presentationElementIndex": 120,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 217,
+            "presentationElementIndex": 126,
+            "sourcePointElementIndex": 37,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle C Round3"
+            ],
+            "cacheParagraphs": [
+              "Cycle C Round3"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 274,
+            "presentationElementIndex": 131,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 104,
+          "sourcePointElementIndex": 11,
+          "status": "different",
+          "sourceParagraphs": [
+            "cycle lead GUID"
+          ],
+          "cacheParagraphs": [
+            "PPTKitcyclecacheonlyControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKitcyclecacheonlyControl",
+          "",
+          "Cycle B Round2",
+          "",
+          "Cycle C Round3",
+          ""
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "cycle",
+      "kind": "both",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-both.pptx",
+      "marker": "PPTKitcyclebothControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+      "sourceSha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "cycle lead GUID"
+        ]
+      },
+      "sha256": "8fa3afcd95c5b08116ab4448edf0b3abf36feb2192b232eddff51db96e78ceac",
+      "changedParts": [
+        "/ppt/diagrams/data1.xml",
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": [
+          {
+            "cacheElementIndex": 7,
+            "presentationElementIndex": 104,
+            "sourcePointElementIndex": 11,
+            "status": "equal",
+            "sourceParagraphs": [
+              "PPTKitcyclebothControl"
+            ],
+            "cacheParagraphs": [
+              "PPTKitcyclebothControl"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 64,
+            "presentationElementIndex": 109,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 112,
+            "presentationElementIndex": 115,
+            "sourcePointElementIndex": 24,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle B Round2"
+            ],
+            "cacheParagraphs": [
+              "Cycle B Round2"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 169,
+            "presentationElementIndex": 120,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          },
+          {
+            "cacheElementIndex": 217,
+            "presentationElementIndex": 126,
+            "sourcePointElementIndex": 37,
+            "status": "equal",
+            "sourceParagraphs": [
+              "Cycle C Round3"
+            ],
+            "cacheParagraphs": [
+              "Cycle C Round3"
+            ],
+            "nonemptyText": true
+          },
+          {
+            "cacheElementIndex": 274,
+            "presentationElementIndex": 131,
+            "status": "unavailable",
+            "reason": "Cache reference does not name content/assistant directly or through agreeing explicit presentation evidence."
+          }
+        ]
+      },
+      "selected": [
+        {
+          "cacheElementIndex": 7,
+          "presentationElementIndex": 104,
+          "sourcePointElementIndex": 11,
+          "status": "equal",
+          "sourceParagraphs": [
+            "PPTKitcyclebothControl"
+          ],
+          "cacheParagraphs": [
+            "PPTKitcyclebothControl"
+          ],
+          "nonemptyText": true
+        }
+      ],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "partial-cache",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml"
+          }
+        ],
+        "cachedText": [
+          "PPTKitcyclebothControl",
+          "",
+          "Cycle B Round2",
+          "",
+          "Cycle C Round3",
+          ""
+        ],
+        "markerPresent": true
+      },
+      "exactNoOp": true
+    },
+    {
+      "family": "cycle",
+      "kind": "empty",
+      "file": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-empty.pptx",
+      "marker": "PPTKitcycleemptyControl",
+      "source": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+      "sourceSha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "selection": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "pointIndex": 11,
+        "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+        "cacheIndices": [
+          7
+        ],
+        "originalParagraphs": [
+          "cycle lead GUID"
+        ]
+      },
+      "sha256": "a0b06979f9192a89bcaa59c780b83d07d5ffe607a9a9b0f9b1c71484820c37ce",
+      "changedParts": [
+        "/ppt/diagrams/drawing1.xml"
+      ],
+      "unmodifiedPayloadsExact": true,
+      "comparison": {
+        "dataPart": "/ppt/diagrams/data1.xml",
+        "cachePart": "/ppt/diagrams/drawing1.xml",
+        "coverage": "direct-paragraph-vectors",
+        "freshness": "unknown",
+        "status": "observed",
+        "shapes": []
+      },
+      "selected": [],
+      "preview": {
+        "report": [
+          {
+            "slideId": "source-slide-256",
+            "elementId": "source-slide-256-object-3",
+            "source": {
+              "part": "/ppt/slides/slide1.xml",
+              "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[1]",
+              "sourceObjectId": "3"
+            },
+            "status": "placeholder",
+            "freshness": "unknown",
+            "cachePart": "/ppt/diagrams/drawing1.xml",
+            "reason": "Cached drawing shape tree is empty."
+          }
+        ],
+        "cachedText": [
+          "SmartArt"
+        ],
+        "markerPresent": false
+      },
+      "exactNoOp": true
+    }
+  ],
+  "native": [
+    {
+      "family": "process",
+      "kind": "baseline",
+      "status": "saved-and-reopened",
+      "nativeSha256": "529af866c495d8c8fa6c8e0a439eac1b27e6ee835111f41051e0364ea08571e2",
+      "directPdfSha256": "78ad1ad1eaa1aa11fc59add11a9244161fc624a911e7629fac090c3d61e8a77c",
+      "reopenedPdfSha256": "3534c506cb5def8414b5bdbd515103d11246f5d925685950be62f6554257e6dd",
+      "directText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "sourceCacheText": [
+        "PPTKit Added Process",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "nativeText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "nativeCacheText": [
+        "PPTKit Added Process",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "process",
+        "kind": "baseline",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/process-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-baseline.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/process-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "process",
+      "kind": "data-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "cec635b2a83d5f728abcd67f043e074cd5b29853f0c51657ee1a49641892c663",
+      "directPdfSha256": "7fbcd6dc0e94f642983b8d25dc6101271a246c43e55a7983307fd72d2f6e3680",
+      "reopenedPdfSha256": "727a18257d0a802de87172c1aa00c6bbe699fd0c4fbed71dca44478e7a0661f9",
+      "directText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKitprocessdataonlyControl"
+      ],
+      "sourceCacheText": [
+        "PPTKit Added Process",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "nativeText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKitprocessdataonlyControl"
+      ],
+      "nativeCacheText": [
+        "PPTKit Added Process",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "process",
+        "kind": "data-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/process-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-data-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/process-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "process",
+      "kind": "cache-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "e123d592406e713cac8be09668a5c5e9ad674e4949ccb043633b10e62ad920ef",
+      "directPdfSha256": "6ad1db9195d465ae32a195e209e45e82becdcd33175ddf225cb2f343ccb5fdb0",
+      "reopenedPdfSha256": "670e89727ff53e90c03d6467573191cc995cf814cb9a7dd52816da6a1bc47b32",
+      "directText": "PPTKit native diagram control\nPPTKitprocessca\ncheonlyControl\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKitprocessca\ncheonlyControl\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "sourceCacheText": [
+        "PPTKitprocesscacheonlyControl",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "nativeText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "nativeCacheText": [
+        "PPTKitprocesscacheonlyControl",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "process",
+        "kind": "cache-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/process-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-cache-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/process-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "process",
+      "kind": "both",
+      "status": "saved-and-reopened",
+      "nativeSha256": "147bd5588f95394299590f7e31119e982dcb2479c4e248bd958e51bdc8863370",
+      "directPdfSha256": "58dd171ad9ef415c829e8b1e2cca06996bcc8f81eadb85d398f7987389c31632",
+      "reopenedPdfSha256": "f289d0762e631bbf7cb98dd55a7ea81cd7c110d1df53a818606aade5742a254a",
+      "directText": "PPTKit native diagram control\nPPTKitprocessbo\nthControl\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKitprocessbo\nthControl\nprocess lead \nPPTKit Process\n• Research detail\nShip\n• Release detail\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKitprocessbothControl"
+      ],
+      "sourceCacheText": [
+        "PPTKitprocessbothControl",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "nativeText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKitprocessbothControl"
+      ],
+      "nativeCacheText": [
+        "PPTKitprocessbothControl",
+        "",
+        "",
+        "process lead PPTKit Process",
+        "Research detail",
+        "",
+        "Ship",
+        "Release detail"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "process",
+        "kind": "both",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/process-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-both.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/process-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "process",
+      "kind": "empty",
+      "status": "saved-and-reopened",
+      "nativeSha256": "9da3cacdc91062e333177c499ac604dd12a25ab9a1667c7f0464e33368222d40",
+      "directPdfSha256": "8c2114fc2c6a09ebbb6226572705ea53b2831cd44ea9464b28e4b0106b2a16b3",
+      "reopenedPdfSha256": "82e92350b61b99f08ff9f08ad18d6a82e31cd7571a4289333d19752babca4c1c",
+      "directText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n•\nResearch \ndetail\nShip\n•\nRelease \ndetail\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKit Added \nProcess\nprocess lead \nPPTKit Process\n•\nResearch \ndetail\nShip\n•\nRelease \ndetail\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "sourceCacheText": [],
+      "nativeText": [
+        "process lead PPTKit Process",
+        "Research detail",
+        "Ship",
+        "Release detail",
+        "PPTKit Added Process"
+      ],
+      "nativeCacheText": [],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "process",
+        "kind": "empty",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/process-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/process-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-empty.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/process-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/process-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "kind": "baseline",
+      "status": "saved-and-reopened",
+      "nativeSha256": "fe5c16e759c3051f7bad3488ccc7f22287284d27b8cc01e2cd66b5b43a4269fb",
+      "directPdfSha256": "fecff8d04c7576b508f5d82036156ab16c2f8fd22bfb09e89785d10314ca75ec",
+      "reopenedPdfSha256": "e955b08adc9af06cb4b2234dd233900c3c9e3ca156adc40b9435d021d72d35c8",
+      "directText": "PPTKit native diagram control\nhierarchy lead \nPPTKit Hierarchy\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "reopenedText": "PPTKit native diagram control\nhierarchy lead \nPPTKit Hierarchy\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "sourceCacheText": [
+        "",
+        "",
+        "",
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "nativeText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "nativeCacheText": [
+        "",
+        "",
+        "",
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "hierarchy",
+        "kind": "baseline",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/hierarchy-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-baseline.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/hierarchy-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "kind": "data-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "c3bc144986d188a822d3362d26c1a9ce9a346da9f88c66ab2a354fad2e781980",
+      "directPdfSha256": "fbd9c87580b7f1fe0fc0c140841420d3501b11ad2c2e8ab4333c6607804bc220",
+      "reopenedPdfSha256": "4799a42e5493400ad5da578c8d32cffe12ee24dd913adff492ffd6730cbdc9d8",
+      "directText": "PPTKit native diagram control\nhierarchy lead \nPPTKit Hierarchy\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "reopenedText": "PPTKit native diagram control\nhierarchy lead \nPPTKit Hierarchy\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "PPTKithierarchydataonlyControl",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "sourceCacheText": [
+        "",
+        "",
+        "",
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "nativeText": [
+        "PPTKithierarchydataonlyControl",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "nativeCacheText": [
+        "",
+        "",
+        "",
+        "hierarchy lead PPTKit Hierarchy",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "hierarchy",
+        "kind": "data-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/hierarchy-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-data-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/hierarchy-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "kind": "cache-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "f02dbb5738800a776127c9cf4916ecf0c404ad7c7f258b8ca99a5ffda437ef5a",
+      "directPdfSha256": "f822f1b61ae3e419255413a7a775524e0187cc8c3c2b340261eb269fb2999e06",
+      "reopenedPdfSha256": "d75518b1dc8b3ea505cdc76b9a5f2852b49521d2f9b50033006807f49d7c22df",
+      "directText": "PPTKit native diagram control\nPPTKithierarchyc\nacheonlyControl\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKithierarchyc\nacheonlyControl\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "sourceCacheText": [
+        "",
+        "",
+        "",
+        "PPTKithierarchycacheonlyControl",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "nativeText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "nativeCacheText": [
+        "",
+        "",
+        "",
+        "PPTKithierarchycacheonlyControl",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "hierarchy",
+        "kind": "cache-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/hierarchy-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-cache-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/hierarchy-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "kind": "both",
+      "status": "saved-and-reopened",
+      "nativeSha256": "2ad3bce32b28c5aa947e41dd69401a7450ff6c7db25dfbdc3c9f9a90a34fd603",
+      "directPdfSha256": "f37a37ac4c0f53afc507e69052107345186d2480984330b1911919494bec303d",
+      "reopenedPdfSha256": "e2a9555699686cab4a5191a72cf43a9a9e0496836dc38411d74170983814e4ad",
+      "directText": "PPTKit native diagram control\nPPTKithierarchy\nbothControl\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKithierarchy\nbothControl\nPPTKit Added \nHierarchy\nWorker\nAssistant\nPeer root\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "PPTKithierarchybothControl",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "sourceCacheText": [
+        "",
+        "",
+        "",
+        "PPTKithierarchybothControl",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "nativeText": [
+        "PPTKithierarchybothControl",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "nativeCacheText": [
+        "",
+        "",
+        "",
+        "PPTKithierarchybothControl",
+        "PPTKit Added Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root"
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "hierarchy",
+        "kind": "both",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/hierarchy-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-both.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/hierarchy-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "hierarchy",
+      "kind": "empty",
+      "status": "saved-and-reopened",
+      "nativeSha256": "b1bc57fd3159a88fc6bece14d8068d5196378f3bba08c87aedbe95cc775032f5",
+      "directPdfSha256": "328abd3b634e972e02486ff634d0984d5756ddfab36c3ee7677ee96aa986d9b8",
+      "reopenedPdfSha256": "40a603da6a35beb5553a9e47c4eb19213396359d9349049177a4093c016954a9",
+      "directText": "PPTKit native diagram control\nhierarchy lead PPTKit Hierarchy\nAssistant\nPPTKit Added \nHierarchy\nWorker\nPeer root\n",
+      "reopenedText": "PPTKit native diagram control\nhierarchy lead PPTKit Hierarchy\nAssistant\nPPTKit Added \nHierarchy\nWorker\nPeer root\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "sourceCacheText": [],
+      "nativeText": [
+        "hierarchy lead PPTKit Hierarchy",
+        "Worker",
+        "Assistant",
+        "Peer root",
+        "PPTKit Added Hierarchy"
+      ],
+      "nativeCacheText": [],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "hierarchy",
+        "kind": "empty",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/hierarchy-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/hierarchy-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-empty.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/hierarchy-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/hierarchy-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "kind": "baseline",
+      "status": "saved-and-reopened",
+      "nativeSha256": "5c6b539dde99df947e11103d751812c9e68ba4111cbfcafd351a9ccfbcffdcf1",
+      "directPdfSha256": "ee757f9d7dab67cc35353084cf31eec3f64227b31fcdd28e51ab8476ca8817c9",
+      "reopenedPdfSha256": "4e3d9a46e9dbac8bacd2342685a6c1498eb0e14dff085e7257d5328e2d69b72d",
+      "directText": "PPTKit native diagram control\ncycle \nlead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "reopenedText": "PPTKit native diagram control\ncycle \nlead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "sourceCacheText": [
+        "cycle lead GUID",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "nativeText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "nativeCacheText": [
+        "cycle lead GUID",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "cycle",
+        "kind": "baseline",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/cycle-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-baseline.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/cycle-baseline.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "kind": "data-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "4c7530a9e9baa56df8f2a6b2455ccbeccce87a7f2f08a3a53719558a50a54245",
+      "directPdfSha256": "15f3ca41675362eb4ab653e87acb531a0d101ea784ad60991333c0afa2745925",
+      "reopenedPdfSha256": "dcec3edff5cbc82d29689433f3454afdc39a70bac850bf6fd65ca6c9cba270a0",
+      "directText": "PPTKit native diagram control\ncycle \nlead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "reopenedText": "PPTKit native diagram control\ncycle \nlead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "PPTKitcycledataonlyControl",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "sourceCacheText": [
+        "cycle lead GUID",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "nativeText": [
+        "PPTKitcycledataonlyControl",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "nativeCacheText": [
+        "cycle lead GUID",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "cycle",
+        "kind": "data-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/cycle-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-data-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-data-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/cycle-data-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "kind": "cache-only",
+      "status": "saved-and-reopened",
+      "nativeSha256": "bee286d86020212df811547f1a8f3f88ee37a8e8b3ede1ad53c32614fe25d898",
+      "directPdfSha256": "e3196e4e84a5daa607f12ac7b3ab0e7780cd65498f7f7085ce821add421deda8",
+      "reopenedPdfSha256": "cf00c9c9678215eb4ea998b5a06a7d7cc41f704810d6051bf2cfe68271131831",
+      "directText": "PPTKit native diagram control\nPPTKitc\nyclecac\nheonlyC\nontrol\nCycle B \nRound2\nCycle C \nRound3\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKitc\nyclecac\nheonlyC\nontrol\nCycle B \nRound2\nCycle C \nRound3\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "sourceCacheText": [
+        "PPTKitcyclecacheonlyControl",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "nativeText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "nativeCacheText": [
+        "PPTKitcyclecacheonlyControl",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "cycle",
+        "kind": "cache-only",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/cycle-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-cache-only.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-cache-only.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/cycle-cache-only.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "kind": "both",
+      "status": "saved-and-reopened",
+      "nativeSha256": "66204f8b5957d2b38bf2315864abe0ea175343cbacc19c286fbd995feb9fdaf9",
+      "directPdfSha256": "ec597ce7802df52ec8291d97897960c0ef677ae0d1c14a1386cba4809eeadedc",
+      "reopenedPdfSha256": "d31eb43162d421a8f469aa36dade2d44f051fde714f426fa3ab16c4fbf30c9a9",
+      "directText": "PPTKit native diagram control\nPPTKitc\nyclebot\nhContro\nl\nCycle B \nRound2\nCycle C \nRound3\n",
+      "reopenedText": "PPTKit native diagram control\nPPTKitc\nyclebot\nhContro\nl\nCycle B \nRound2\nCycle C \nRound3\n",
+      "directMarkerPresent": true,
+      "reopenedMarkerPresent": true,
+      "directOriginalLabelPresent": false,
+      "reopenedOriginalLabelPresent": false,
+      "sourceText": [
+        "PPTKitcyclebothControl",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "sourceCacheText": [
+        "PPTKitcyclebothControl",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "nativeText": [
+        "PPTKitcyclebothControl",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "nativeCacheText": [
+        "PPTKitcyclebothControl",
+        "",
+        "Cycle B Round2",
+        "",
+        "Cycle C Round3",
+        ""
+      ],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "cycle",
+        "kind": "both",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/cycle-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-both.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-both.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/cycle-both.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    },
+    {
+      "family": "cycle",
+      "kind": "empty",
+      "status": "saved-and-reopened",
+      "nativeSha256": "c192c7b9f5a56e3777bfe4148647dadf96bd136fbaf0e9e34effd2b01301bb71",
+      "directPdfSha256": "2ac872c944a8c686dd95b95630e712b2383b9932c037c67dacb49e2549b19edb",
+      "reopenedPdfSha256": "226fca7270aafeba078d32052ae056682aa3aad199d287807e5edf32d91b9056",
+      "directText": "PPTKit native diagram control\ncycle lead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "reopenedText": "PPTKit native diagram control\ncycle lead \nGUID\nCycle B \nRound2\nCycle C \nRound3\n",
+      "directMarkerPresent": false,
+      "reopenedMarkerPresent": false,
+      "directOriginalLabelPresent": true,
+      "reopenedOriginalLabelPresent": true,
+      "sourceText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "sourceCacheText": [],
+      "nativeText": [
+        "cycle lead GUID",
+        "Cycle B Round2",
+        "Cycle C Round3"
+      ],
+      "nativeCacheText": [],
+      "independentZipXmlPdf": true,
+      "log": {
+        "family": "cycle",
+        "kind": "empty",
+        "direct": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/direct/cycle-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "save": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/cycle-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-empty.pptx using filter : Impress Office Open XML\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        },
+        "reopen": {
+          "stdout": "convert /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/saved/cycle-empty.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/smartart-stale-cache/run-NHvPon/reopened/cycle-empty.pdf using filter : impress_pdf_Export\n",
+          "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Controlled test-part transformations only; not a source-preservation write API.",
+    "Different direct paragraph vectors do not establish cache staleness or text ownership for every native layout; equal vectors do not establish freshness.",
+    "Cached preview deliberately follows stored cache characters and keeps unknown freshness.",
+    "Native observations, when enabled, are named headless open/save/PDF reopen only; PowerPoint stale-cache UI behavior and arbitrary compatibility remain untested.",
+    "Source/native/transformed third-party artifacts remain local pending fixture redistribution admission."
+  ]
+}

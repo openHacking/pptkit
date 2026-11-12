@@ -1,0 +1,22 @@
+{
+  "scope": "manual six-attribute frame probe; three PowerPoint 16.104 first-open PDFs; combined effects only",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-frame-probe/run-tz0or6_i",
+  "files": {
+    "baseline.pptx": "e1a6eae80a7cea840278819da00aff560d3032bc724facfa313305d0c932a6ac",
+    "baseline.pdf": "ffdb0dd2157347c11ab016fee781ad74062bd2f51a105339772c97a05028d4fd",
+    "inherit.pptx": "eb74bf0a0f83d5686d12dc6afe222ddf078ea1304e320bebd2e04d3ea22f215e",
+    "inherit.pdf": "761efe39c3e5b10cb6eee8bfb891e7e348deaae47aac1cce684ec7c3b4bbcd5d",
+    "edit.pptx": "fbee8dfa056121542abd402aadd27bb2a957e8af6e5f570affaca369979ad50f",
+    "edit.pdf": "e61680698f3b336c9ca67c4e004475e05472cc6c06fc8e02d6c0a5aa891943ca"
+  },
+  "producer": {
+    "path": "scripts/research/prepare-native-frame-probe.py",
+    "sha256": "7d3f1e7bad3c2e6137e1555ad69bc145be76d4b5245a1409c0398064aba383c9"
+  },
+  "baselineEqualsInheritedPixelsTextDrawingsImages": true,
+  "layoutOnlyChangeAffectsSelectedPage": true,
+  "individualPropertiesProven": false,
+  "productionOutputProven": false,
+  "saveReopenProven": false,
+  "interactiveLayoutEditProven": false
+}

@@ -1,6 +1,6 @@
 {
   "name": "@pptkit/cli",
-  "version": "0.1.10",
+  "version": "0.2.0-preview.0",
   "private": false,
   "type": "module",
   "description": "Command-line entry points for PPTKit.",
@@ -24,5 +24,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "pnpm run build && node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/pptx-exporter": "workspace:*",
+    "@pptkit/svg-renderer": "workspace:*",
+    "@pptkit/pptx-parser": "workspace:*"
   }
 }

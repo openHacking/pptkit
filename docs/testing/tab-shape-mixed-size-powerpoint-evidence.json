@@ -1,0 +1,421 @@
+{
+  "scope": "First-open PowerPoint A4 print of 12 mixed-size shape text samples. Measures guide alignment and compares PDF baseline against the SVG renderer formula, not a full browser or visual-equivalence test. Only the first page window was captured; editing, reopening, other fonts and transforms remain unverified. Capture hashes do not establish provenance independently.",
+  "applicationVersion": "16.104",
+  "sourceSha256": "c63d5d1ee20677aa8d974661b5ce63414e7cf1659bb3fd2e922e5f0d9c2280f3",
+  "pdfSha256": "92512ecb281cc6c8cf5d7125ac4b8fac69f8258a9fc1f362ca0aab757e55e156",
+  "axSha256": "5f353486f822629e25c317baaabe6b0fce1cc6c705d8926afd947858ce175f00",
+  "screenshotSha256": "a475d0d9d36a2c433ea7344dea2ccad9b76588ca82305251d7e1802d5eb74a0b",
+  "generatorSha256": "85d50a111f9d667f74146d0460cb715a218d6cda5c3658836214e3aa815ff3f6",
+  "svgSourceSha256": "316705860ed61380745c33819f4402b9fd2f14e0caf16f0689738bf58e10bf05",
+  "verifierSha256": "64021cdb76bc864d06f8a046cd60a2edeea1dc6772720dfb9c5c036b26a1a54b",
+  "pages": [
+    {
+      "kind": "left",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "characters": [
+            {
+              "char": "I",
+              "left": 280.0000462582271,
+              "right": 287.72551711741636,
+              "baseline": 28.070941819426853
+            }
+          ],
+          "word": "I",
+          "suffixSize": 28,
+          "anchor": 310.1667,
+          "powerpointBaselineFromTopPt": 28.0709,
+          "svgEstimatedBaselineFromTopPt": 28,
+          "baselineDifferencePt": 0.0709
+        },
+        {
+          "characters": [
+            {
+              "char": "W",
+              "left": 280.0000462582271,
+              "right": 314.58026826687825,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "I",
+              "left": 314.0014622005303,
+              "right": 324.18505669826834,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "D",
+              "left": 324.00919833831637,
+              "right": 350.4571854776481,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "E",
+              "left": 350.0249794426236,
+              "right": 374.4582280499756,
+              "baseline": 35.72886542610348
+            }
+          ],
+          "word": "WIDE",
+          "suffixSize": 36,
+          "anchor": 310.1667,
+          "powerpointBaselineFromTopPt": 35.7289,
+          "svgEstimatedBaselineFromTopPt": 36,
+          "baselineDifferencePt": -0.2711
+        },
+        {
+          "characters": [
+            {
+              "char": "M",
+              "left": 280.0000462582271,
+              "right": 293.67879674861933,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "I",
+              "left": 293.37499584226646,
+              "right": 297.940066078776,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "X",
+              "left": 297.88259023162817,
+              "right": 308.83542049719665,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "E",
+              "left": 308.4987762496164,
+              "right": 319.4516065151849,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "D",
+              "left": 319.1150008161273,
+              "right": 330.9709844169249,
+              "baseline": 19.162451522635013
+            }
+          ],
+          "word": "MIXED",
+          "suffixSize": 16,
+          "anchor": 310.1667,
+          "powerpointBaselineFromTopPt": 19.1625,
+          "svgEstimatedBaselineFromTopPt": 20,
+          "baselineDifferencePt": -0.8375
+        }
+      ]
+    },
+    {
+      "kind": "center",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "characters": [
+            {
+              "char": "I",
+              "left": 276.1249560271496,
+              "right": 283.8504268863389,
+              "baseline": 28.070941819426853
+            }
+          ],
+          "word": "I",
+          "suffixSize": 28,
+          "anchor": 310.1569,
+          "powerpointBaselineFromTopPt": 28.0709,
+          "svgEstimatedBaselineFromTopPt": 28,
+          "baselineDifferencePt": 0.0709
+        },
+        {
+          "characters": [
+            {
+              "char": "W",
+              "left": 232.99999140918638,
+              "right": 267.58021341783757,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "I",
+              "left": 267.0014073514896,
+              "right": 277.18500184922766,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "D",
+              "left": 277.0091434892757,
+              "right": 303.45713062860744,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "E",
+              "left": 303.0249245935829,
+              "right": 327.45817320093494,
+              "baseline": 35.72886542610348
+            }
+          ],
+          "word": "WIDE",
+          "suffixSize": 36,
+          "anchor": 310.348,
+          "powerpointBaselineFromTopPt": 35.7289,
+          "svgEstimatedBaselineFromTopPt": 36,
+          "baselineDifferencePt": -0.2711
+        },
+        {
+          "characters": [
+            {
+              "char": "M",
+              "left": 254.69005005360447,
+              "right": 268.3688005439967,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "I",
+              "left": 268.0649996376439,
+              "right": 272.6300698741534,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "X",
+              "left": 272.57259402700555,
+              "right": 283.52542429257403,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "E",
+              "left": 283.18878004499385,
+              "right": 294.1416103105623,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "D",
+              "left": 293.80500461150467,
+              "right": 305.66098821230236,
+              "baseline": 19.162451522635013
+            }
+          ],
+          "word": "MIXED",
+          "suffixSize": 16,
+          "anchor": 310.3056,
+          "powerpointBaselineFromTopPt": 19.1625,
+          "svgEstimatedBaselineFromTopPt": 20,
+          "baselineDifferencePt": -0.8375
+        }
+      ]
+    },
+    {
+      "kind": "right",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "characters": [
+            {
+              "char": "I",
+              "left": 272.2499428931173,
+              "right": 279.97541375230657,
+              "baseline": 28.070941819426853
+            }
+          ],
+          "word": "I",
+          "suffixSize": 28,
+          "anchor": 310.1472,
+          "powerpointBaselineFromTopPt": 28.0709,
+          "svgEstimatedBaselineFromTopPt": 28,
+          "baselineDifferencePt": 0.0709
+        },
+        {
+          "characters": [
+            {
+              "char": "W",
+              "left": 186.00001365719083,
+              "right": 220.58023566584203,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "I",
+              "left": 220.00142959949406,
+              "right": 230.18502409723214,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "D",
+              "left": 230.00916573728014,
+              "right": 256.4571528766119,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "E",
+              "left": 256.0249468415874,
+              "right": 280.45819544893936,
+              "baseline": 35.72886542610348
+            }
+          ],
+          "word": "WIDE",
+          "suffixSize": 36,
+          "anchor": 310.5294,
+          "powerpointBaselineFromTopPt": 35.7289,
+          "svgEstimatedBaselineFromTopPt": 36,
+          "baselineDifferencePt": -0.2711
+        },
+        {
+          "characters": [
+            {
+              "char": "M",
+              "left": 229.37496544400298,
+              "right": 243.05371593439526,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "I",
+              "left": 242.74991502804238,
+              "right": 247.3149852645519,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "X",
+              "left": 247.25750941740407,
+              "right": 258.2103396829725,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "E",
+              "left": 257.87369543539234,
+              "right": 268.8265257009608,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "D",
+              "left": 268.48992000190316,
+              "right": 280.34590360270084,
+              "baseline": 19.162451522635013
+            }
+          ],
+          "word": "MIXED",
+          "suffixSize": 16,
+          "anchor": 310.4405,
+          "powerpointBaselineFromTopPt": 19.1625,
+          "svgEstimatedBaselineFromTopPt": 20,
+          "baselineDifferencePt": -0.8375
+        }
+      ]
+    },
+    {
+      "kind": "decimal",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "characters": [
+            {
+              "char": "1",
+              "left": 264.3750579604571,
+              "right": 279.82599967883573,
+              "baseline": 28.070941819426853
+            },
+            {
+              "char": ".",
+              "left": 280.0010870683364,
+              "right": 287.7265579275257,
+              "baseline": 28.070941819426853
+            },
+            {
+              "char": "2",
+              "left": 287.76267789317126,
+              "right": 303.2136196115498,
+              "baseline": 28.070941819426853
+            }
+          ],
+          "word": "1.2",
+          "suffixSize": 28,
+          "anchor": 310.1675,
+          "powerpointBaselineFromTopPt": 28.0709,
+          "svgEstimatedBaselineFromTopPt": 28,
+          "baselineDifferencePt": 0.0709
+        },
+        {
+          "characters": [
+            {
+              "char": "1",
+              "left": 220.00004185268165,
+              "right": 240.36719229963524,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "2",
+              "left": 240.00086568967822,
+              "right": 260.3680161366318,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "3",
+              "left": 260.0017280751974,
+              "right": 280.36887852215096,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": ".",
+              "left": 280.00255191219395,
+              "right": 290.186146409932,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "4",
+              "left": 290.0030023792148,
+              "right": 310.3701528261684,
+              "baseline": 35.72886542610348
+            },
+            {
+              "char": "5",
+              "left": 310.0038262162114,
+              "right": 330.370976663165,
+              "baseline": 35.72886542610348
+            }
+          ],
+          "word": "123.45",
+          "suffixSize": 36,
+          "anchor": 310.1687,
+          "powerpointBaselineFromTopPt": 35.7289,
+          "svgEstimatedBaselineFromTopPt": 36,
+          "baselineDifferencePt": -0.2711
+        },
+        {
+          "characters": [
+            {
+              "char": "0",
+              "left": 271.12498135903587,
+              "right": 280.2550832835323,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": ".",
+              "left": 280.0005473890204,
+              "right": 284.56561762552997,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "6",
+              "left": 284.5081417783821,
+              "right": 293.6382437028785,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "7",
+              "left": 293.3837078083667,
+              "right": 302.51380973286314,
+              "baseline": 19.162451522635013
+            },
+            {
+              "char": "8",
+              "left": 302.25931238687383,
+              "right": 311.3894143113703,
+              "baseline": 19.162451522635013
+            }
+          ],
+          "word": "0.678",
+          "suffixSize": 16,
+          "anchor": 310.1671,
+          "powerpointBaselineFromTopPt": 19.1625,
+          "svgEstimatedBaselineFromTopPt": 20,
+          "baselineDifferencePt": -0.8375
+        }
+      ]
+    }
+  ]
+}

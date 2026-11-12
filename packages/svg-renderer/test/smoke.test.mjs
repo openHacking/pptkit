@@ -3,7 +3,27 @@ import assert from "node:assert/strict";
 
 import { createPresentation, normalizePresentation } from "@pptkit/core";
 import { resolveNormalizedLayout } from "@pptkit/layout";
-import { renderLayoutToSvg, renderPresentationToSvg } from "../dist/index.js";
+import { renderLayoutToSvg, renderPresentationToSvg, SvgRenderLimitError, SvgRenderAbortError } from "../dist/index.js";
+
+test('mixed-run list markers ignore leading zero-character styles and retain the chosen full font/paint', async () => {
+  const d = createPresentation();
+  d.addSlide({ elements: [{ type: 'text', box: { x: 20, y: 20, width: 400, height: 200 }, content: [
+    { style: { bullet: { type: 'number' } }, runs: [{ text: '', style: { colorOpacity: 0, fontSize: 12 } }, { text: 'Visible', style: { bold: true, underline: true, strike: true, fontFamily: 'Arial', fontSize: 24, color: '123456' } }] },
+    { style: { bullet: { type: 'bullet' } }, runs: [{ text: '', style: { colorOpacity: 0, fontSize: 12 } }, { text: '', style: { bold: true, fontFamily: 'Georgia', fontSize: 18 } }] },
+  ] }] });
+  const xml = (await renderPresentationToSvg(d)).slides[0].svg;
+  const numbered = xml.match(/<span aria-hidden="true" style="([^"]*)">1\. <\/span>/)[1];
+  assert.match(numbered, /font-size:24px/); assert.match(numbered, /font-weight:700/); assert.match(numbered, /123456/); assert.match(numbered, /Arial/); assert.doesNotMatch(numbered, /opacity:0/);
+  assert.match(numbered, /text-decoration:line-through/); assert.doesNotMatch(numbered, /underline/);
+  const empty = xml.match(/<span aria-hidden="true" style="([^"]*)">• <\/span>/)[1];
+  assert.match(empty, /font-size:18px/); assert.match(empty, /Georgia/); assert.doesNotMatch(empty, /opacity:0/);
+  const single = createPresentation(); single.addSlide({ elements: [{ type: 'text', box: { x: 20, y: 20, width: 300, height: 100 }, content: [{ style: { bullet: { type: 'number' } }, runs: [{ text: 'Visible', style: { underline: true, strike: true } }] }] }] });
+  const native = (await renderPresentationToSvg(single)).slides[0].svg;
+  assert.match(native, /text-decoration="line-through"[^>]*>1\. <\/tspan>/);
+  assert.match(native, /text-decoration="underline line-through"[^>]*>Visible<\/tspan>/);
+  const clamped = createPresentation(); clamped.addSlide({ elements: [{ type: 'text', box: { x: 20, y: 20, width: 300, height: 100 }, frame: { margin: 0 }, content: [{ style: { indent: 0, hanging: 27 }, runs: [{ text: 'Plain' }] }] }] });
+  assert.match((await renderPresentationToSvg(clamped)).slides[0].svg, /<text x="20"/);
+});
 
 function createFixture({ pathAsset = false } = {}) {
   const presentation = createPresentation({
@@ -242,13 +262,13 @@ test("uses native SVG baselines and PowerPoint-oriented wrapping for simple text
   const result = await renderPresentationToSvg(presentation);
   for (const [index, item] of cases.entries()) {
     const svg = result.slides[index].svg;
-    const lines = Array.from(svg.matchAll(/data-pptkit-text-line="\d+"><tspan [^>]+>([^<]+)<\/tspan><\/text>/g), (match) => match[1]);
+    const lines = Array.from(svg.matchAll(/data-pptkit-text-line="\d+"><tspan [^>]+>([^<]+)<\/tspan>/g), (match) => match[1]);
     assert.deepEqual(lines, item.expected, item.id);
     assert.ok(!svg.includes("<foreignObject"));
   }
   const founderVisibility = result.slides.find((slide) => slide.slideId === "founder-visibility");
   assert.ok(founderVisibility);
-  assert.match(founderVisibility.svg, /<text x="62\.5" y="181\.249682" text-anchor="start" data-pptkit-text-line="0">/);
+  assert.match(founderVisibility.svg, /<text x="62\.5" y="181\.249682" text-anchor="start" xml:space="preserve" style="white-space:pre" data-pptkit-text-line="0">/);
 });
 
 test("wraps long single-run bullet paragraphs instead of overflowing the frame", async () => {
@@ -271,6 +291,26 @@ test("wraps long single-run bullet paragraphs instead of overflowing the frame",
   assert.match(svg, /data-pptkit-text-line="1"/);
   assert.match(svg, /<text x="555"[^>]+data-pptkit-text-line="1"/);
   assert.doesNotMatch(svg, />• Long-term visibility through listings and Coming Soon pages</);
+});
+
+test("explicit SVG namespaces are deterministic, isolated and validated", async () => {
+  const presentation = createFixture();
+  const layout = resolveNormalizedLayout(normalizePresentation(presentation));
+  const baseline = await renderPresentationToSvg(presentation);
+  assert.deepEqual(await renderPresentationToSvg(presentation, { idNamespace: undefined }), baseline);
+  const key = `copy / <&"😀`;
+  const first = await renderPresentationToSvg(presentation, { idNamespace: key });
+  const again = await renderPresentationToSvg(presentation, { idNamespace: key });
+  assert.deepEqual(first, again);
+  assert.deepEqual(await renderLayoutToSvg(layout, { idNamespace: key }), first);
+  const other = await renderPresentationToSvg(presentation, { idNamespace: `${key}2` });
+  const ids = result => [...result.slides[0].svg.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+  assert.ok(ids(first).length > 2);
+  assert.ok(ids(first).every(id => !ids(other).includes(id) && !ids(baseline).includes(id)));
+  for (const invalid of ["", null, 3, {}]) {
+    await assert.rejects(renderPresentationToSvg(presentation, { idNamespace: invalid }), /idNamespace must be a nonempty string/);
+    await assert.rejects(renderLayoutToSvg(layout, { idNamespace: invalid }), /idNamespace must be a nonempty string/);
+  }
 });
 
 test("renderLayoutToSvg matches the authoring convenience API", async () => {
@@ -598,6 +638,37 @@ test("chart legend placement follows structured legend config with escaped label
   assert.doesNotMatch(noneFragment, />Profit</);
 });
 
+test("line series and legend independently honor line and marker visibility", async () => {
+  const presentation = createPresentation();
+  const slide = presentation.addSlide({ id: "line-visibility-slide" });
+  for (const [id, marker] of [["both", "auto"], ["line-only", false], ["marker-only", "auto"], ["neither", false]]) {
+    slide.addElement({ type: "chart", id, chartType: "line", categories: ["A", "B"],
+      series: [{ name: id, values: [2, 5], marker }], legend: { visible: true },
+      box: { x: 0, y: 0, width: 250, height: 160 } });
+  }
+  const layout = resolveNormalizedLayout(normalizePresentation(presentation));
+  for (const element of layout.slides[0].elements) {
+    if (element.id === "marker-only" || element.id === "neither") element.series[0].line = false;
+  }
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const ids = ["both", "line-only", "marker-only", "neither"];
+  for (const [index, id] of ids.entries()) {
+    const start = svg.indexOf(`data-pptkit-element-id="${id}"`);
+    const end = index + 1 === ids.length ? svg.length : svg.indexOf(`data-pptkit-element-id="${ids[index + 1]}"`);
+    assert.ok(start >= 0 && end > start);
+    const fragment = svg.slice(start, end);
+    const hasLine = id === "both" || id === "line-only";
+    const hasMarker = id === "both" || id === "marker-only";
+    const count = role => [...fragment.matchAll(new RegExp(`data-chart-role="${role}"`, "g"))].length;
+    assert.equal(count("line"), Number(hasLine), `${id}: series line`);
+    assert.equal(count("series-marker"), hasMarker ? 2 : 0, `${id}: data markers`);
+    assert.equal(count("legend-line"), Number(hasLine), `${id}: legend line`);
+    assert.equal(count("legend-marker"), Number(hasMarker), `${id}: legend marker`);
+    assert.equal(count("legend-swatch"), 0, `${id}: no bar-style swatch`);
+    assert.match(fragment, new RegExp(`>${id}</text>`), `${id}: legend label`);
+  }
+});
+
 test("chart axis labels and y-axis ticks follow show flags, and category labels are XML-escaped", async () => {
   const presentation = createPresentation({
     metadata: { title: "Axis and escape" },
@@ -715,4 +786,94 @@ test("line chart legend uses a line swatch while bar and pie use filled squares"
   assert.match(pieFragment, /<text[^>]*>Y<\/text>/);
   assert.match(pieFragment, /<text[^>]*>Z<\/text>/);
   assert.doesNotMatch(pieFragment, /<text[^>]*>Share<\/text>/);
+});
+
+test('slide selection renders only requested pages, preserves source indices and scopes warnings', async () => {
+  const d = createPresentation({ id: 'selection', metadata: { title: 'Selected' } });
+  for (const id of ['one', 'two', 'three']) {
+    d.registerAsset({ id: `asset-${id}`, kind: 'image', source: { type: 'url', value: `https://example.invalid/${id}.png` }, mimeType: 'image/png', width: 10, height: 10 });
+    d.addSlide({ id, hidden: id === 'two', elements: [{ id: `image-${id}`, type: 'image', assetId: `asset-${id}`, box: { x: 10, y: 10, width: 10, height: 10 } }] });
+  }
+  const calls = [], options = { resolveAsset: async asset => { calls.push(asset.id); return `data:image/png;base64,AA==`; } };
+  const full = await renderPresentationToSvg(d, options); assert.deepEqual(calls, ['asset-one', 'asset-two', 'asset-three']); calls.length = 0;
+  const selected = await renderPresentationToSvg(d, { ...options, slideIndices: [2, 0] });
+  assert.deepEqual(calls, ['asset-three', 'asset-one']); assert.deepEqual(selected.slides.map(s => s.index), [2, 0]);
+  assert.equal(selected.slides[0].svg, full.slides[2].svg); assert.equal(selected.slides[1].svg, full.slides[0].svg);
+  assert.deepEqual(await renderPresentationToSvg(d, { ...options, slideIndices: [] }), { width: full.width, height: full.height, slides: [], warnings: [], status: 'rendered' });
+  const layout = resolveNormalizedLayout(normalizePresentation(d));
+  layout.analysis = { diagnostics: [
+    { severity: 'warning', code: 'one', message: 'one', path: 'a', slideId: 'one' },
+    { severity: 'warning', code: 'two', message: 'two', path: 'b', slideId: 'two' },
+    { severity: 'warning', code: 'global', message: 'global', path: 'c' },
+  ] };
+  const scoped = await renderLayoutToSvg(layout, { ...options, slideIndices: [1] });
+  assert.deepEqual(scoped.warnings.map(w => w.code), ['two', 'global']); assert.equal(scoped.slides[0].hidden, true);
+  for (const invalid of [[-1], [3], [0, 0], [1.2], [NaN], [undefined], Array(1)]) await assert.rejects(renderLayoutToSvg(layout, { ...options, slideIndices: invalid }), RangeError);
+  await assert.rejects(renderLayoutToSvg(layout, { slideIndices: '1' }), TypeError);
+});
+
+test('slide selection is captured before awaiting an asset resolver', async () => {
+  const d = createPresentation();
+  d.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/a' }, mimeType: 'image/png', width: 1, height: 1 });
+  d.addSlide({ id: 'a', elements: [{ type: 'image', assetId: 'img', box: { x: 0, y: 0, width: 10, height: 10 } }] }); d.addSlide({ id: 'b' });
+  let release; const gate = new Promise(resolve => { release = resolve; });
+  const indices = [0, 1], pending = renderPresentationToSvg(d, { slideIndices: indices, resolveAsset: async () => { await gate; return 'data:image/png;base64,AA=='; } });
+  indices.splice(0, 2, 1); release(); const result = await pending; assert.deepEqual(result.slides.map(s => s.slideId), ['a', 'b']);
+});
+
+test('SVG byte budget counts UTF-8 exactly across slides and stops before later assets', async () => {
+  const d = createPresentation({ id: 'bytes', metadata: { title: '中文 😀' } });
+  for (const id of ['one', 'two', 'three']) {
+    d.registerAsset({ id, kind: 'image', source: { type: 'url', value: `https://example.invalid/${id}` }, mimeType: 'image/png', width: 2, height: 2 });
+    d.addSlide({ id, elements: [{ id: `text-${id}`, type: 'text', box: { x: 0, y: 0, width: 150, height: 30 }, content: 'é 中 😀 \ud800' }, { id: `image-${id}`, type: 'image', assetId: id, box: { x: 200, y: 0, width: 20, height: 20 } }] });
+  }
+  const calls = [], resolveAsset = async asset => { calls.push(asset.id); return 'data:image/png;base64,AA=='; };
+  const all = await renderPresentationToSvg(d, { resolveAsset });
+  const sizes = all.slides.map(slide => Buffer.byteLength(slide.svg, 'utf8')), total = sizes.reduce((a, b) => a + b, 0);
+  const exact = await renderPresentationToSvg(d, { resolveAsset, maxSvgBytes: total }); assert.deepEqual(exact, all);
+  const layout = resolveNormalizedLayout(normalizePresentation(d));
+  assert.deepEqual(await renderLayoutToSvg(layout, { resolveAsset, maxSvgBytes: total }), all);
+  await assert.rejects(renderLayoutToSvg(layout, { resolveAsset, maxSvgBytes: total - 1 }), SvgRenderLimitError);
+  calls.length = 0;
+  await assert.rejects(renderPresentationToSvg(d, { resolveAsset, maxSvgBytes: sizes[0] + sizes[1] - 1 }), error => error instanceof SvgRenderLimitError && error.code === 'svg-limit-exceeded' && error.slideIndex === 1 && error.limit === sizes[0] + sizes[1] - 1);
+  assert.deepEqual(calls, ['one', 'two']);
+  const selected = await renderPresentationToSvg(d, { resolveAsset, slideIndices: [2], maxSvgBytes: sizes[2] }); assert.equal(selected.slides[0].svg, all.slides[2].svg);
+  await assert.rejects(renderPresentationToSvg(d, { slideIndices: [2], resolveAsset, maxSvgBytes: sizes[2] - 1 }), SvgRenderLimitError);
+  const empty = await renderPresentationToSvg(d, { slideIndices: [], maxSvgBytes: 0 }); assert.deepEqual(empty.slides, []);
+  for (const invalid of [-1, 1.1, NaN, Infinity, 9007199254740992, '5']) await assert.rejects(renderPresentationToSvg(d, { maxSvgBytes: invalid }), RangeError);
+});
+
+test('abort interrupts a pending resolver, removes listeners and permits a later retry', async () => {
+  const d = createPresentation(); d.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/a' }, mimeType: 'image/png', width: 1, height: 1 });
+  d.addSlide({ id: 'a', elements: [{ type: 'image', assetId: 'img', box: { x: 0, y: 0, width: 10, height: 10 } }] });
+  const controller = new AbortController(), signal = controller.signal; let added = 0, removed = 0;
+  const add = signal.addEventListener.bind(signal), remove = signal.removeEventListener.bind(signal);
+  signal.addEventListener = (...args) => { if (args[0] === 'abort') added++; return add(...args); };
+  signal.removeEventListener = (...args) => { if (args[0] === 'abort') removed++; return remove(...args); };
+  let started; const ready = new Promise(resolve => { started = resolve; }); let rejectLate;
+  const options = { signal, resolveAsset: (_asset, context) => { assert.equal(context.signal, signal); started(); return new Promise((_resolve, reject) => { rejectLate = reject; }); } };
+  const pending = renderPresentationToSvg(d, options);
+  await ready; options.signal = new AbortController().signal; controller.abort(); await assert.rejects(pending, error => error instanceof SvgRenderAbortError && error.code === 'operation-aborted');
+  assert.equal(added, removed); rejectLate(new Error('late resolver rejection')); await new Promise(resolve => setImmediate(resolve));
+  const retried = await renderPresentationToSvg(d, { resolveAsset: async () => 'data:image/png;base64,AA==' }); assert.equal(retried.slides.length, 1); assert.ok(!retried.warnings.some(w => w.code === 'asset-resolver-failed'));
+  const success = new AbortController(); let successAdded = 0, successRemoved = 0;
+  const on = success.signal.addEventListener.bind(success.signal), off = success.signal.removeEventListener.bind(success.signal);
+  success.signal.addEventListener = (...args) => { if (args[0] === 'abort') successAdded++; return on(...args); };
+  success.signal.removeEventListener = (...args) => { if (args[0] === 'abort') successRemoved++; return off(...args); };
+  const complete = await renderPresentationToSvg(d, { signal: success.signal, resolveAsset: async () => 'data:image/png;base64,AA==' });
+  assert.equal(successAdded, 1); assert.equal(successRemoved, 1); success.abort(); assert.equal(complete.slides.length, 1);
+});
+
+test('abort is distinct from ordinary resolver failures at invocation and completion boundaries', async () => {
+  const d = createPresentation(); d.registerAsset({ id: 'img', kind: 'image', source: { type: 'url', value: 'https://example.invalid/a' }, mimeType: 'image/png', width: 1, height: 1 });
+  d.addSlide({ elements: [{ type: 'image', assetId: 'img', box: { x: 0, y: 0, width: 10, height: 10 } }] });
+  const pre = new AbortController(); pre.abort(); let called = false;
+  await assert.rejects(renderPresentationToSvg(d, { signal: pre.signal, resolveAsset: () => { called = true; return undefined; } }), SvgRenderAbortError); assert.equal(called, false);
+  const layout = resolveNormalizedLayout(normalizePresentation(d)); await assert.rejects(renderLayoutToSvg(layout, { signal: pre.signal }), SvgRenderAbortError);
+  await assert.rejects(renderPresentationToSvg(d, { signal: {} }), TypeError);
+  const sync = new AbortController();
+  await assert.rejects(renderPresentationToSvg(d, { signal: sync.signal, resolveAsset: () => { sync.abort(); return Promise.reject(new Error('simultaneous')); } }), SvgRenderAbortError);
+  await new Promise(resolve => setImmediate(resolve));
+  const normal = await renderPresentationToSvg(d, { resolveAsset: async () => { throw new Error('network'); } });
+  assert.ok(normal.warnings.some(w => w.code === 'asset-resolver-failed')); assert.equal(normal.status, 'rendered-with-warnings');
 });

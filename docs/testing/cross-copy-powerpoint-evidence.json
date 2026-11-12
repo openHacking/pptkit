@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two-page copied-slide fixture; PowerPoint three successive Save As and reopen observations. Package inventory is independent. No claim of link activation, editable connectors, or full visual fidelity.",
+  "environment": {
+    "application": "Microsoft PowerPoint 16.104",
+    "system": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64"
+  },
+  "observations": "Original and each saved file were opened in PowerPoint; each page and its notes were inspected visually. No repair prompt was observed. Screenshots are local temporary artifacts.",
+  "independent": {
+    "oracle": "Python zipfile and ElementTree",
+    "rounds": [
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/input.pptx",
+        "sha256": "c2219a3293e1bfac70f81a900e542ed25806928f52fe16701a151ae54419ecbb",
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "pageNotesPairs": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Control page notes"
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Copied page notes"
+          }
+        ],
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1016000",
+              "y": "571500"
+            },
+            "extent": {
+              "cx": "5080000",
+              "cy": "825500"
+            },
+            "customGeometry": false,
+            "clickId": "rId3"
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270000",
+              "y": "1905000"
+            },
+            "extent": {
+              "cx": "3556000",
+              "cy": "1778000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6731000",
+              "y": "2159000"
+            },
+            "extent": {
+              "cx": "2032000",
+              "cy": "1270000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826000",
+              "y": "2794000"
+            },
+            "extent": {
+              "cx": "1905000",
+              "cy": "13"
+            },
+            "customGeometry": true,
+            "clickId": null
+          }
+        ],
+        "selfLink": {
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "mode": "Internal"
+        },
+        "media": [
+          {
+            "name": "ppt/media/asset-1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/powerpoint-round1.pptx",
+        "sha256": "ada6d173bbcadae8722bd3a32d6dec903e5cba9105356bb87ab607af77953126",
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "pageNotesPairs": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Control page notes"
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Copied page notes"
+          }
+        ],
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1016000",
+              "y": "571500"
+            },
+            "extent": {
+              "cx": "5080000",
+              "cy": "825500"
+            },
+            "customGeometry": false,
+            "clickId": "rId3"
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270000",
+              "y": "1905000"
+            },
+            "extent": {
+              "cx": "3556000",
+              "cy": "1778000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6731000",
+              "y": "2159000"
+            },
+            "extent": {
+              "cx": "2032000",
+              "cy": "1270000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826000",
+              "y": "2794000"
+            },
+            "extent": {
+              "cx": "1905000",
+              "cy": "13"
+            },
+            "customGeometry": true,
+            "clickId": null
+          }
+        ],
+        "selfLink": {
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "mode": "Internal"
+        },
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/powerpoint-round2.pptx",
+        "sha256": "a2165fd45496bc6db76bc59a7b2e54f1c0d7d0e6dadcb3283783822fb7dc8444",
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "pageNotesPairs": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Control page notes"
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Copied page notes"
+          }
+        ],
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1016000",
+              "y": "571500"
+            },
+            "extent": {
+              "cx": "5080000",
+              "cy": "825500"
+            },
+            "customGeometry": false,
+            "clickId": "rId3"
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270000",
+              "y": "1905000"
+            },
+            "extent": {
+              "cx": "3556000",
+              "cy": "1778000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6731000",
+              "y": "2159000"
+            },
+            "extent": {
+              "cx": "2032000",
+              "cy": "1270000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826000",
+              "y": "2794000"
+            },
+            "extent": {
+              "cx": "1905000",
+              "cy": "13"
+            },
+            "customGeometry": true,
+            "clickId": null
+          }
+        ],
+        "selfLink": {
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "mode": "Internal"
+        },
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/powerpoint-round3.pptx",
+        "sha256": "2993fc2cd20cd47968a77aea60570d3ca82c1d1dbea6e9144b3bd89479278501",
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "pageNotesPairs": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Control page notes"
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Copied page notes"
+          }
+        ],
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1016000",
+              "y": "571500"
+            },
+            "extent": {
+              "cx": "5080000",
+              "cy": "825500"
+            },
+            "customGeometry": false,
+            "clickId": "rId3"
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270000",
+              "y": "1905000"
+            },
+            "extent": {
+              "cx": "3556000",
+              "cy": "1778000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6731000",
+              "y": "2159000"
+            },
+            "extent": {
+              "cx": "2032000",
+              "cy": "1270000"
+            },
+            "customGeometry": false,
+            "clickId": null
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826000",
+              "y": "2794000"
+            },
+            "extent": {
+              "cx": "1905000",
+              "cy": "13"
+            },
+            "customGeometry": true,
+            "clickId": null
+          }
+        ],
+        "selfLink": {
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "mode": "Internal"
+        },
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      }
+    ],
+    "finalGeometryDeltasEmu": {
+      "element-1": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "extent": {
+          "cx": 0,
+          "cy": 0
+        }
+      },
+      "element-2": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "extent": {
+          "cx": 0,
+          "cy": 0
+        }
+      },
+      "element-3": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "extent": {
+          "cx": 0,
+          "cy": 0
+        }
+      },
+      "element-4": {
+        "offset": {
+          "x": 0,
+          "y": 0
+        },
+        "extent": {
+          "cx": 0,
+          "cy": 0
+        }
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/first-slide1-notes.png",
+      "sha256": "f0b74324ee0bac97d87c1b8cc5e2c33345c81153fadac5c40b8a6dca8d84bf27"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/first-slide2-notes.png",
+      "sha256": "d41cd66ab37ca467f87a88bc3796e8061d4d66719fb735ebd8e334d8ef156c4d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round1-slide1.png",
+      "sha256": "9d532945a589cc55c36290f76ef3f1b33d227fc5bc057b1599df2e5edf478d14"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round1-slide2.png",
+      "sha256": "e987bd8d058abb9b6bf2b3d5376ec44920972322eae8cf170924ab60bf1b090c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round2-slide1.png",
+      "sha256": "737e009c272cb4f94f3a344ceda588acf0474c4fe124981cdf8c65eb7323812b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round2-slide2.png",
+      "sha256": "c336bdc10b71697b2506da624d041a8bfa683f7fb7f0769dbd5625e91088a80c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round3-slide1.png",
+      "sha256": "10cfee8d8301271f09e8236fdff5e27ae727020a269e9eefd6aaa505fd9b6a61"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-document-copy-native/round3-slide2.png",
+      "sha256": "621e00bfa235da25b6fe39301e604267f09fa3c249f47e8c2498751b829c6dde"
+    }
+  ]
+}

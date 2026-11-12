@@ -1,0 +1,10 @@
+{
+  "scope": "One controlled generated PowerPoint file differs from a previously opened control only in a doughnut hole size lexical value, 50 versus 050%. PowerPoint 16.104 displayed a repair warning; repair was cancelled. Capture hashes do not independently establish provenance. Other lexical forms, OOXML dialects, versions and post-repair behavior were not tested.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "9d4a3a296dd93624ae06f47994e7447f14f3cbe7e88fbf3dd9c46fe7b2b82cd1",
+  "verifierSha256": "44e3e88959f595d1c27f1130dd10a27171a7c413a97c5b75ea97ae87f348510d",
+  "sourceSha256": "5daf36e0765de0fb63f5ec4ce9a75ed2def7c0eb98d0c9f98c32663e60086831",
+  "candidateSha256": "10f7367f581f91833f49c0e6cc132d432d42fcc69832c98fd2899f4071a4e15c",
+  "axSha256": "c736df56d6e3eaf4e3202e5b1d22a5a989aeaa7350ccb8fd5968874faedaf33a",
+  "screenshotSha256": "c333b247f6d312b19e15a0b8d0b789d3cc062c2f7b396070645d3da09bbbe00e"
+}

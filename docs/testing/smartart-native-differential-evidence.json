@@ -1,0 +1,281 @@
+{
+  "profile": "native-diagram-cycle-differential-v1",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc",
+  "manifest": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/manifest.json",
+  "controls": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/manifest.json",
+  "sourceSha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+  "candidateSha256": "a6fd2e43e5fe0a8de79115164fafafd0582f18cdc51c815255830f77b03f0707",
+  "cases": [
+    {
+      "variant": "fresh-unlocked",
+      "inputSha256": "e66cf45d2777f9edea88b63351c79dd6ddd5261d9e43354c21a3ee2d090efc38",
+      "markers": [
+        "Cycle C",
+        "cycle lead",
+        "Cycle B"
+      ],
+      "operations": [
+        {
+          "stage": "direct",
+          "pptxSha256": "e66cf45d2777f9edea88b63351c79dd6ddd5261d9e43354c21a3ee2d090efc38",
+          "pdfSha256": "cadbd1e2c82198965df9ba4ca9eb6b8ec09caa2b075c57aaea88d842770d5cd9",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-unlocked.png",
+          "pictureSha256": "8d45e721f3c1c09c7f95a4031786653d61d7d891114c1cb834b89005b0fe7733",
+          "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle \nB\nCycle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-unlocked.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-unlocked.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        },
+        {
+          "stage": "reopened",
+          "pptxSha256": "a6e3852d2a08b2704cc47f0ce6a87342aac3c28346dad1416c0376f899e9a2eb",
+          "pdfSha256": "cfc8b1daf7eb109e8d9195548542c122816f4276bb1612a37bb64b65c84e1561",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-unlocked.png",
+          "pictureSha256": "83ea1a4106d933ec307328b2b002cbe0ce7a02ac84bde6af9e210cef1d8dd93a",
+          "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle B\nCycle C\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-unlocked.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-unlocked.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        }
+      ],
+      "saveLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-unlocked.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-unlocked.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "variant": "fresh-custom-text",
+      "inputSha256": "0068e0df4c26ba3163d4d627825f919bc2f88f062b34a9a42f2258b79d6ae6b0",
+      "markers": [
+        "Cycle C",
+        "cycle lead",
+        "Cycle B"
+      ],
+      "operations": [
+        {
+          "stage": "direct",
+          "pptxSha256": "0068e0df4c26ba3163d4d627825f919bc2f88f062b34a9a42f2258b79d6ae6b0",
+          "pdfSha256": "dc670aad1d648ebcfbc80756b039664b1a802fa9e00ffe0a3a810dcfdbb7c2bc",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-custom-text.png",
+          "pictureSha256": "cb09760b070fcca273b8ab1ea186c38fffb9e46675abeb320941f73aacc44308",
+          "pdfExtractedText": "PPTKit native diagram control\ncyc\nle \nlea\nd\nCy\ncle \nB\nCy\ncle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-custom-text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-custom-text.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [
+            "Cycle C",
+            "cycle lead",
+            "Cycle B"
+          ],
+          "allTextMarkersInPdf": false,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "whitespace-fragmented-match"
+        },
+        {
+          "stage": "reopened",
+          "pptxSha256": "99a7ad593c97ba654ba690d4b5d97c46a396cabbbdae41931b01777b481b82f5",
+          "pdfSha256": "2688ff15eac9750c37482a4d20279f3c87e8159d574c588f62f5646813b2b123",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-custom-text.png",
+          "pictureSha256": "d5d1069140ff4b9d51617c3405c7d0bc70389e5e3b5fb391288a48be1e4bf1dc",
+          "pdfExtractedText": "PPTKit native diagram control\ncyc\nle \nlea\nd\nCy\ncle \nB\nCy\ncle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-custom-text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-custom-text.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [
+            "Cycle C",
+            "cycle lead",
+            "Cycle B"
+          ],
+          "allTextMarkersInPdf": false,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "whitespace-fragmented-match"
+        }
+      ],
+      "saveLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-custom-text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-custom-text.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "variant": "fresh-guid",
+      "inputSha256": "4596f5cf45574c5091bf6921268d28cf630df8db80aea68ef4a600596acd3a42",
+      "markers": [
+        "Cycle C",
+        "cycle lead",
+        "Cycle B"
+      ],
+      "operations": [
+        {
+          "stage": "direct",
+          "pptxSha256": "4596f5cf45574c5091bf6921268d28cf630df8db80aea68ef4a600596acd3a42",
+          "pdfSha256": "5e9337ccd3cb14f36b3e55f6b09f8cd705ba087d5f8477929c1c9c9d11b8ba6b",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-guid.png",
+          "pictureSha256": "8d45e721f3c1c09c7f95a4031786653d61d7d891114c1cb834b89005b0fe7733",
+          "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle \nB\nCycle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-guid.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-guid.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        },
+        {
+          "stage": "reopened",
+          "pptxSha256": "350ab354e0a71847a6f82a9decb8809c46c8ac646e9568b970d5f0c879f15f8f",
+          "pdfSha256": "6ef2e6ea0da90a4ba91be0dc75eac2b47bcbce22ef4b2fc0f22398705cf93dfb",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-guid.png",
+          "pictureSha256": "83ea1a4106d933ec307328b2b002cbe0ce7a02ac84bde6af9e210cef1d8dd93a",
+          "pdfExtractedText": "PPTKit native diagram control\ncycle \nlead\nCycle B\nCycle C\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-guid.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-guid.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        }
+      ],
+      "saveLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-guid.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-guid.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "variant": "source-shell-generated-data",
+      "inputSha256": "47c99a70671cbfcbe2d561812a52fedab2a29934fc67eec84058790e7d12d7d7",
+      "markers": [
+        "Cycle C",
+        "cycle lead",
+        "Cycle B"
+      ],
+      "operations": [
+        {
+          "stage": "direct",
+          "pptxSha256": "47c99a70671cbfcbe2d561812a52fedab2a29934fc67eec84058790e7d12d7d7",
+          "pdfSha256": "c67da1876fad4920ccf829f75640752e867e6360766c5320ca49176d65db7929",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/source-shell-generated-data.png",
+          "pictureSha256": "eacd86473888c9768f8f63addedfddff3abe9c73cfb8e8f7753611e55f2cae1e",
+          "pdfExtractedText": "cycle \nlead\nCycle \nB\nCycle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/source-shell-generated-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/source-shell-generated-data.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        },
+        {
+          "stage": "reopened",
+          "pptxSha256": "1a89969558336a50acbffac823ee2f6ab2fc3f1c00d886054dcb1d2bfaa2b5eb",
+          "pdfSha256": "573df4ee5dbe57c5cc6ad9f7b1c478ad694bb7ccb5140eb0273beb7e5981bb02",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/source-shell-generated-data.png",
+          "pictureSha256": "dff7b7673f8c65fb6c3ac7b435af916ff03d1a17207685286bd405d2ebe71da9",
+          "pdfExtractedText": "cycle \nlead\nCycle \nB\nCycle \nC\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/source-shell-generated-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/source-shell-generated-data.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        }
+      ],
+      "saveLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/source-shell-generated-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/source-shell-generated-data.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "variant": "fresh-shell-source-data",
+      "inputSha256": "8035242b564087ce892e00a975cb025577195be3f2694fa2cc780e29db494655",
+      "markers": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "operations": [
+        {
+          "stage": "direct",
+          "pptxSha256": "8035242b564087ce892e00a975cb025577195be3f2694fa2cc780e29db494655",
+          "pdfSha256": "b0198dd4fd9bcc31ada7d508721128aad7fe7618861775ac935ecf16b639a163",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-shell-source-data.png",
+          "pictureSha256": "95e21dc408b169a6c00f04fdb2d1cbd37c31c61a71d7d313ba5533e528e202b6",
+          "pdfExtractedText": "PPTKit native diagram control\na\nb\nc\nd\ne\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-shell-source-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/direct/fresh-shell-source-data.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        },
+        {
+          "stage": "reopened",
+          "pptxSha256": "b833275d9385752fd7fec26e8699c714e2b7aa889d71296b33525a9dcf435da4",
+          "pdfSha256": "846b4982009183a834bca090466e35deeac857ea30738989d8bdeb8e10bc74f9",
+          "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-shell-source-data.png",
+          "pictureSha256": "4bb0121c765d86fef9c61d35c307310537e7b03c9e695666189dcd2d7e893b6e",
+          "pdfExtractedText": "PPTKit native diagram control\na\nb\nc\nd\ne\n",
+          "pages": 1,
+          "log": {
+            "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-shell-source-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/reopened/fresh-shell-source-data.pdf using filter : impress_pdf_Export\n",
+            "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+          },
+          "missingTextMarkers": [],
+          "allTextMarkersInPdf": true,
+          "missingWhitespaceInsensitiveMarkers": [],
+          "allWhitespaceInsensitiveMarkersInPdf": true,
+          "textMatchStatus": "word-spacing-match"
+        }
+      ],
+      "saveLog": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-shell-source-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/saved/fresh-shell-source-data.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    }
+  ],
+  "limitations": [
+    "One Cycle layout only; producer observations do not establish PowerPoint behavior or native editability.",
+    "PDF lexical matches do not certify distinct occurrences, legibility, layout fidelity or cache freshness.",
+    "Only component/data substitution and the documented attribute/identity interventions are tested; borrowed resources stay local."
+  ]
+}

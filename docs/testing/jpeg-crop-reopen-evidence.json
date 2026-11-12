@@ -1,0 +1,26 @@
+{
+  "scope": "PowerPoint 16.104 manual title edit, save, close, reopen and slideshow for one EXIF 6 crop; screenshot sampled, not independent UI witness",
+  "directory": ".tmp/jpeg-orientation-native-01",
+  "sourceEvidenceSha256": "526834eec46b1865dce94466ae23fe4e4b8617021dce4552d16ffd0a7a8d9b0f",
+  "round1PptxSha256": "f1c65029185b53ccc033f74a1ba7261c7fdc07b8d38404b22d6c9617ae91e164",
+  "round1ScreenshotSha256": "dc035704bc4da78537aae67f4bfa11d6a2faa31651931bdabc1c87bef14eeda4",
+  "referenceOracleSha256": "6ca617bec0a6b49177482734ca64f3b5bbedee43488a3124f5034a3220a07804",
+  "oracleSha256": "5c6487a227694172ba3f6bf926e63bade0f854d6a06bdb04a5f7370d8e649970",
+  "parserReportSha256": "bda410cb9e534a951cbbee50810611e27f9ee0e6edffe85d1692656cb848b45a",
+  "parserScriptSha256": "2d888f92886b99463d6023d0e65473320d60d7e4a834ed3ba736e437aec23fc4",
+  "observed": [
+    [
+      "yellow",
+      "red",
+      "magenta",
+      "green"
+    ],
+    [
+      "yellow",
+      "red",
+      "magenta",
+      "green"
+    ]
+  ],
+  "negativeCasesRejected": 3
+}

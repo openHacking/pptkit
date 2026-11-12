@@ -1,0 +1,3336 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T21:48:20.710Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-borders-native/run-TUgimL",
+  "scope": "Direct per-edge table authoring and deterministic shared physical border grids. Independent source XML, native direct-property observations and saved-output PDF line/PNG observations; not full style inheritance, interactive editability, schema certification or source style preservation writes.",
+  "sourceSha256": "b75aefb7ccce25ff1aee01bc11e874d310bda17c3d92e0856df7f8f76ce314fa",
+  "nativeSha256": "b863165478415518fa5c13ddc37b8d8a9737e9e5aba35f9a18e602b54c9e6239",
+  "pdfSha256": "51a21e8c1f23372b62c7565a261c90a679c26636315cd1e2bdd1e8b0110ab7af",
+  "sourceControlPdfSha256": "46dd3b0a02dae7c27f56973e8f83633071967d6b00fe420cdfb845fe17037bfb",
+  "independent": {
+    "verified": true,
+    "oracle": "Python zipfile + ElementTree physical edges/Office merge spans + PyMuPDF straight-line coverage and PNG",
+    "sourceTables": [
+      {
+        "source": {
+          "checkedPhysicalEdges": 16,
+          "status": "pass",
+          "differences": []
+        },
+        "unapprovedWidthMutationRejected": true,
+        "nativeDirectProperties": {
+          "checkedPhysicalEdges": 16,
+          "status": "pass",
+          "differences": []
+        }
+      },
+      {
+        "source": {
+          "checkedPhysicalEdges": 36,
+          "status": "pass",
+          "differences": []
+        },
+        "unapprovedWidthMutationRejected": true,
+        "nativeDirectProperties": {
+          "checkedPhysicalEdges": 36,
+          "status": "partial",
+          "differences": [
+            {
+              "row": 0,
+              "column": 0,
+              "side": "lnR",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnL",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnR",
+              "expected": {
+                "width": 4,
+                "dash": "solid",
+                "color": "00AA00",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnT",
+              "expected": {
+                "width": 2,
+                "dash": "solid",
+                "color": "FF0000",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnB",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 0,
+              "side": "lnL",
+              "expected": {
+                "width": 2,
+                "dash": "solid",
+                "color": "AA00AA",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 0,
+              "side": "lnR",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 0,
+              "side": "lnT",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 0,
+              "side": "lnB",
+              "expected": {
+                "width": 2,
+                "dash": "solid",
+                "color": "AAAA00",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 1,
+              "side": "lnL",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 1,
+              "side": "lnR",
+              "expected": {
+                "width": 5,
+                "dash": "solid",
+                "color": "0000FF",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 1,
+              "side": "lnT",
+              "expected": {
+                "width": 0,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            },
+            {
+              "row": 1,
+              "column": 1,
+              "side": "lnB",
+              "expected": {
+                "width": 2,
+                "dash": "solid",
+                "color": "AAAA00",
+                "alpha": 1
+              },
+              "actual": {
+                "width": 1,
+                "dash": "solid",
+                "color": null,
+                "alpha": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "source": {
+          "checkedPhysicalEdges": 36,
+          "status": "pass",
+          "differences": []
+        },
+        "unapprovedWidthMutationRejected": true,
+        "nativeDirectProperties": {
+          "checkedPhysicalEdges": 0,
+          "status": "partial",
+          "reason": "native-grid-rewritten",
+          "expectedGrid": [
+            3,
+            3
+          ],
+          "nativeGrid": [
+            1,
+            1
+          ],
+          "differences": []
+        }
+      },
+      {
+        "source": {
+          "checkedPhysicalEdges": 8,
+          "status": "pass",
+          "differences": []
+        },
+        "unapprovedWidthMutationRejected": true,
+        "nativeDirectProperties": {
+          "checkedPhysicalEdges": 8,
+          "status": "partial",
+          "differences": [
+            {
+              "row": 0,
+              "column": 0,
+              "side": "lnL",
+              "expected": {
+                "width": 3,
+                "dash": "dot",
+                "color": "3579BD",
+                "alpha": 0.4
+              },
+              "actual": {
+                "width": 3.004724409448819,
+                "dash": "dot",
+                "color": "3579BD",
+                "alpha": 0.00102
+              }
+            },
+            {
+              "row": 0,
+              "column": 0,
+              "side": "lnR",
+              "expected": {
+                "width": 2,
+                "dash": "dashDot",
+                "color": "AA00AA",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 1.984251968503937,
+                "dash": "dashDot",
+                "color": "AA00AA",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 0,
+              "side": "lnT",
+              "expected": {
+                "width": 2,
+                "dash": "dash",
+                "color": "FF0000",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 1.984251968503937,
+                "dash": "dash",
+                "color": "FF0000",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 0,
+              "side": "lnB",
+              "expected": {
+                "width": 1,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 0.9637795275590552,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnL",
+              "expected": {
+                "width": 2,
+                "dash": "dashDot",
+                "color": "AA00AA",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 1.984251968503937,
+                "dash": "dashDot",
+                "color": "AA00AA",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnR",
+              "expected": {
+                "width": 1,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 0.9637795275590552,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnT",
+              "expected": {
+                "width": 1,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.8
+              },
+              "actual": {
+                "width": 0.9637795275590552,
+                "dash": "solid",
+                "color": "666666",
+                "alpha": 0.00204
+              }
+            },
+            {
+              "row": 0,
+              "column": 1,
+              "side": "lnB",
+              "expected": {
+                "width": 3,
+                "dash": "dot",
+                "color": "00AA00",
+                "alpha": 0.48
+              },
+              "actual": {
+                "width": 3.004724409448819,
+                "dash": "dot",
+                "color": "00AA00",
+                "alpha": 0.00123
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "pdf": {
+      "tolerancePoints": 0.25,
+      "widthTolerancePoints": 0.1,
+      "opacityTolerance": 0.01,
+      "dashPixelPatternVerified": false,
+      "pages": [
+        {
+          "page": 1,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 12,
+          "observedStraightSegments": 12,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                140,
+                60
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                60
+              ],
+              "end": [
+                240,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AAAA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                110
+              ],
+              "end": [
+                140,
+                110
+              ],
+              "width": 5,
+              "dash": "solid",
+              "color": "777777",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                110
+              ],
+              "end": [
+                240,
+                110
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                160
+              ],
+              "end": [
+                140,
+                160
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF8800",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                160
+              ],
+              "end": [
+                240,
+                160
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                110
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                60
+              ],
+              "end": [
+                140,
+                110
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                240,
+                60
+              ],
+              "end": [
+                240,
+                110
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "333333",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                110
+              ],
+              "end": [
+                40,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                110
+              ],
+              "end": [
+                140,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                240,
+                110
+              ],
+              "end": [
+                240,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                38.665000915527344,
+                60.00953674316406
+              ],
+              "end": [
+                140.85400390625,
+                60.00953674316406
+              ],
+              "width": 3.499880075454712,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                58.252532958984375
+              ],
+              "end": [
+                39.99700164794922,
+                112.19554138183594
+              ],
+              "width": 2.6500699520111084,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.0959930419922,
+                60.00953674316406
+              ],
+              "end": [
+                240.83099365234375,
+                60.00953674316406
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AAAA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.97500610351562,
+                59.13154602050781
+              ],
+              "end": [
+                139.97500610351562,
+                110.4095458984375
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                239.9530029296875,
+                59.13154602050781
+              ],
+              "end": [
+                239.9530029296875,
+                110.4095458984375
+              ],
+              "width": 1.7500799894332886,
+              "color": "333333",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                109.98454284667969
+              ],
+              "end": [
+                140.39999389648438,
+                109.98454284667969
+              ],
+              "width": 4.399869918823242,
+              "color": "777777",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                159.95953369140625
+              ],
+              "end": [
+                140.39999389648438,
+                159.95953369140625
+              ],
+              "width": 2.6500699520111084,
+              "color": "FF8800",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                107.77354431152344
+              ],
+              "end": [
+                39.99700164794922,
+                161.29153442382812
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.5500030517578,
+                109.98454284667969
+              ],
+              "end": [
+                240.3780059814453,
+                109.98454284667969
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.5500030517578,
+                159.95953369140625
+              ],
+              "end": [
+                240.3780059814453,
+                159.95953369140625
+              ],
+              "width": 1.7500799894332886,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.97500610351562,
+                109.55953979492188
+              ],
+              "end": [
+                139.97500610351562,
+                160.8385467529297
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                239.9530029296875,
+                109.55953979492188
+              ],
+              "end": [
+                239.9530029296875,
+                160.8385467529297
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Direct A\nDirect B\nDirect C\nDirect D\n",
+          "nativePng": "native-page-1.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 2,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 20,
+          "observedStraightSegments": 13,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                100,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                60
+              ],
+              "end": [
+                160,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                260,
+                60
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                100
+              ],
+              "end": [
+                260,
+                100
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                140
+              ],
+              "end": [
+                100,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AAAA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                140
+              ],
+              "end": [
+                160,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AAAA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                140
+              ],
+              "end": [
+                260,
+                140
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                180
+              ],
+              "end": [
+                100,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                180
+              ],
+              "end": [
+                160,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                180
+              ],
+              "end": [
+                260,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                100
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                160,
+                100
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                60
+              ],
+              "end": [
+                260,
+                100
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                100
+              ],
+              "end": [
+                40,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                100
+              ],
+              "end": [
+                160,
+                140
+              ],
+              "width": 5,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                100
+              ],
+              "end": [
+                260,
+                140
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                140
+              ],
+              "end": [
+                40,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                140
+              ],
+              "end": [
+                100,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                140
+              ],
+              "end": [
+                160,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                140
+              ],
+              "end": [
+                260,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                39.11800003051758,
+                60.00953674316406
+              ],
+              "end": [
+                161.7169952392578,
+                60.00953674316406
+              ],
+              "width": 1.7500799894332886,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                59.13154602050781
+              ],
+              "end": [
+                39.99700164794922,
+                140.88253784179688
+              ],
+              "width": 1.7500799894332886,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                158.20199584960938,
+                60.00953674316406
+              ],
+              "end": [
+                260.36199951171875,
+                60.00953674316406
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                59.58453369140625
+              ],
+              "end": [
+                159.95899963378906,
+                100.43153381347656
+              ],
+              "width": 3.499880075454712,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                259.93701171875,
+                59.58453369140625
+              ],
+              "end": [
+                259.93701171875,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                158.20199584960938,
+                100.00654602050781
+              ],
+              "end": [
+                260.36199951171875,
+                100.00654602050781
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                99.58154296875
+              ],
+              "end": [
+                159.95899963378906,
+                140.4285430908203
+              ],
+              "width": 4.399869918823242,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                140.0035400390625
+              ],
+              "end": [
+                160.38400268554688,
+                140.0035400390625
+              ],
+              "width": 1.7500799894332886,
+              "color": "AAAA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                180.00054931640625
+              ],
+              "end": [
+                260.36199951171875,
+                180.00054931640625
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                139.12454223632812
+              ],
+              "end": [
+                39.99700164794922,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                99.97799682617188,
+                139.12454223632812
+              ],
+              "end": [
+                99.97799682617188,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.53399658203125,
+                140.0035400390625
+              ],
+              "end": [
+                260.36199951171875,
+                140.0035400390625
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                139.5785369873047
+              ],
+              "end": [
+                159.95899963378906,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Merged anchor\nUpper neighbor\nLower neighbor\nBottom A\nBottom B\nBottom C\n",
+          "nativePng": "native-page-2.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 3,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 12,
+          "observedStraightSegments": 4,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                100,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                60
+              ],
+              "end": [
+                160,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                220,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                150
+              ],
+              "end": [
+                100,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                150
+              ],
+              "end": [
+                160,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                150
+              ],
+              "end": [
+                220,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                90
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                60
+              ],
+              "end": [
+                220,
+                90
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                90
+              ],
+              "end": [
+                40,
+                120
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                90
+              ],
+              "end": [
+                220,
+                120
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                120
+              ],
+              "end": [
+                40,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                120
+              ],
+              "end": [
+                220,
+                150
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                39.11800003051758,
+                60.00953674316406
+              ],
+              "end": [
+                221.697998046875,
+                60.00953674316406
+              ],
+              "width": 2.6500699520111084,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.11800003051758,
+                149.98153686523438
+              ],
+              "end": [
+                221.697998046875,
+                149.98153686523438
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                58.67753601074219
+              ],
+              "end": [
+                39.99700164794922,
+                150.86053466796875
+              ],
+              "width": 1.7500799894332886,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                219.94000244140625,
+                58.67753601074219
+              ],
+              "end": [
+                219.94000244140625,
+                150.86053466796875
+              ],
+              "width": 3.499880075454712,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Wide merged control\n",
+          "nativePng": "native-page-3.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 4,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 7,
+          "observedStraightSegments": 7,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "geometryColorCoveredIndices": [
+            4
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                243.69022063122873,
+                77.8205851763268
+              ],
+              "end": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "width": 2,
+              "dash": "dash",
+              "color": "FF0000",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "end": [
+                46.72867002878711,
+                43.09094964294072
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                233.27132997121288,
+                136.90905035705927
+              ],
+              "end": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "end": [
+                36.30977936877129,
+                102.1794148236732
+              ],
+              "width": 3,
+              "dash": "dot",
+              "color": "00AA00",
+              "alpha": 0.48
+            },
+            {
+              "start": [
+                243.69022063122873,
+                77.8205851763268
+              ],
+              "end": [
+                233.27132997121288,
+                136.90905035705927
+              ],
+              "width": 3,
+              "dash": "dot",
+              "color": "3579BD",
+              "alpha": 0.4
+            },
+            {
+              "start": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "end": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "width": 2,
+              "dash": "dashDot",
+              "color": "AA00AA",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                46.72867002878711,
+                43.09094964294072
+              ],
+              "end": [
+                36.30977936877129,
+                102.1794148236732
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                242.36199951171875,
+                77.58453369140625
+              ],
+              "end": [
+                342.99200439453125,
+                95.32954406738281
+              ],
+              "width": 1.757449984550476,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[ 7.99987 2.49996 ] 0"
+            },
+            {
+              "start": [
+                231.95899963378906,
+                136.65853881835938
+              ],
+              "end": [
+                332.5610046386719,
+                154.40353393554688
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                243.80799865722656,
+                76.96153259277344
+              ],
+              "end": [
+                233.17799377441406,
+                137.310546875
+              ],
+              "width": 2.6361799240112305,
+              "color": "3579BD",
+              "alpha": 1,
+              "dashPattern": "[ .49999 .99998 ] 0"
+            },
+            {
+              "start": [
+                341.26300048828125,
+                95.01753234863281
+              ],
+              "end": [
+                441.0140075683594,
+                112.62054443359375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                330.8599853515625,
+                154.09153747558594
+              ],
+              "end": [
+                430.5830078125,
+                171.66653442382812
+              ],
+              "width": 2.6361799240112305,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[ .49999 .99998 ] 0"
+            },
+            {
+              "start": [
+                342.197998046875,
+                94.76254272460938
+              ],
+              "end": [
+                331.625,
+                154.65853881835938
+              ],
+              "width": 1.757449984550476,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[ 7.99987 2.49996 2.49996 2.49996 ] 0"
+            },
+            {
+              "start": [
+                440.64599609375,
+                112.11053466796875
+              ],
+              "end": [
+                429.9309997558594,
+                172.91354370117188
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Theme alpha\nTheme neighbor\n",
+          "nativePng": "native-page-4.png",
+          "dashPatterns": [
+            "[ .49999 .99998 ] 0",
+            "[ 7.99987 2.49996 2.49996 2.49996 ] 0",
+            "[ 7.99987 2.49996 ] 0",
+            "[] 0"
+          ]
+        }
+      ],
+      "sourceControlPages": [
+        {
+          "page": 1,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 12,
+          "observedStraightSegments": 12,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                140,
+                60
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                60
+              ],
+              "end": [
+                240,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AAAA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                110
+              ],
+              "end": [
+                140,
+                110
+              ],
+              "width": 5,
+              "dash": "solid",
+              "color": "777777",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                110
+              ],
+              "end": [
+                240,
+                110
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                160
+              ],
+              "end": [
+                140,
+                160
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF8800",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                160
+              ],
+              "end": [
+                240,
+                160
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                110
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                60
+              ],
+              "end": [
+                140,
+                110
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                240,
+                60
+              ],
+              "end": [
+                240,
+                110
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "333333",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                110
+              ],
+              "end": [
+                40,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                140,
+                110
+              ],
+              "end": [
+                140,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                240,
+                110
+              ],
+              "end": [
+                240,
+                160
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                38.665000915527344,
+                60.00953674316406
+              ],
+              "end": [
+                140.85400390625,
+                60.00953674316406
+              ],
+              "width": 3.499880075454712,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                58.252532958984375
+              ],
+              "end": [
+                39.99700164794922,
+                112.19554138183594
+              ],
+              "width": 2.6500699520111084,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.0959930419922,
+                60.00953674316406
+              ],
+              "end": [
+                240.83099365234375,
+                60.00953674316406
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AAAA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.97500610351562,
+                59.13154602050781
+              ],
+              "end": [
+                139.97500610351562,
+                110.4095458984375
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                239.9530029296875,
+                59.13154602050781
+              ],
+              "end": [
+                239.9530029296875,
+                110.4095458984375
+              ],
+              "width": 1.7500799894332886,
+              "color": "333333",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                109.98454284667969
+              ],
+              "end": [
+                140.39999389648438,
+                109.98454284667969
+              ],
+              "width": 4.399869918823242,
+              "color": "777777",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                159.95953369140625
+              ],
+              "end": [
+                140.39999389648438,
+                159.95953369140625
+              ],
+              "width": 2.6500699520111084,
+              "color": "FF8800",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                107.77354431152344
+              ],
+              "end": [
+                39.99700164794922,
+                161.29153442382812
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.5500030517578,
+                109.98454284667969
+              ],
+              "end": [
+                240.3780059814453,
+                109.98454284667969
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.5500030517578,
+                159.95953369140625
+              ],
+              "end": [
+                240.3780059814453,
+                159.95953369140625
+              ],
+              "width": 1.7500799894332886,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                139.97500610351562,
+                109.55953979492188
+              ],
+              "end": [
+                139.97500610351562,
+                160.8385467529297
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                239.9530029296875,
+                109.55953979492188
+              ],
+              "end": [
+                239.9530029296875,
+                160.8385467529297
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Direct A\nDirect B\nDirect C\nDirect D\n",
+          "nativePng": "source-control-page-1.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 2,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 20,
+          "observedStraightSegments": 13,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                100,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                60
+              ],
+              "end": [
+                160,
+                60
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                260,
+                60
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                100
+              ],
+              "end": [
+                260,
+                100
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                140
+              ],
+              "end": [
+                100,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AAAA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                140
+              ],
+              "end": [
+                160,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AAAA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                140
+              ],
+              "end": [
+                260,
+                140
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                180
+              ],
+              "end": [
+                100,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                180
+              ],
+              "end": [
+                160,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                180
+              ],
+              "end": [
+                260,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                100
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                160,
+                100
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                60
+              ],
+              "end": [
+                260,
+                100
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                100
+              ],
+              "end": [
+                40,
+                140
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                100
+              ],
+              "end": [
+                160,
+                140
+              ],
+              "width": 5,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                100
+              ],
+              "end": [
+                260,
+                140
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                140
+              ],
+              "end": [
+                40,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                140
+              ],
+              "end": [
+                100,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                140
+              ],
+              "end": [
+                160,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            },
+            {
+              "start": [
+                260,
+                140
+              ],
+              "end": [
+                260,
+                180
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                39.11800003051758,
+                60.00953674316406
+              ],
+              "end": [
+                161.7169952392578,
+                60.00953674316406
+              ],
+              "width": 1.7500799894332886,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                59.13154602050781
+              ],
+              "end": [
+                39.99700164794922,
+                140.88253784179688
+              ],
+              "width": 1.7500799894332886,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                158.20199584960938,
+                60.00953674316406
+              ],
+              "end": [
+                260.36199951171875,
+                60.00953674316406
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                59.58453369140625
+              ],
+              "end": [
+                159.95899963378906,
+                100.43153381347656
+              ],
+              "width": 3.499880075454712,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                259.93701171875,
+                59.58453369140625
+              ],
+              "end": [
+                259.93701171875,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                158.20199584960938,
+                100.00654602050781
+              ],
+              "end": [
+                260.36199951171875,
+                100.00654602050781
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                99.58154296875
+              ],
+              "end": [
+                159.95899963378906,
+                140.4285430908203
+              ],
+              "width": 4.399869918823242,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                140.0035400390625
+              ],
+              "end": [
+                160.38400268554688,
+                140.0035400390625
+              ],
+              "width": 1.7500799894332886,
+              "color": "AAAA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.571998596191406,
+                180.00054931640625
+              ],
+              "end": [
+                260.36199951171875,
+                180.00054931640625
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                139.12454223632812
+              ],
+              "end": [
+                39.99700164794922,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                99.97799682617188,
+                139.12454223632812
+              ],
+              "end": [
+                99.97799682617188,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.53399658203125,
+                140.0035400390625
+              ],
+              "end": [
+                260.36199951171875,
+                140.0035400390625
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                159.95899963378906,
+                139.5785369873047
+              ],
+              "end": [
+                159.95899963378906,
+                180.425537109375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Merged anchor\nUpper neighbor\nLower neighbor\nBottom A\nBottom B\nBottom C\n",
+          "nativePng": "source-control-page-2.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 3,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 12,
+          "observedStraightSegments": 4,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "geometryColorCoveredIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                100,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                60
+              ],
+              "end": [
+                160,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                60
+              ],
+              "end": [
+                220,
+                60
+              ],
+              "width": 3,
+              "dash": "solid",
+              "color": "FF0000",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                150
+              ],
+              "end": [
+                100,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                100,
+                150
+              ],
+              "end": [
+                160,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                160,
+                150
+              ],
+              "end": [
+                220,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "00AA00",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                60
+              ],
+              "end": [
+                40,
+                90
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                60
+              ],
+              "end": [
+                220,
+                90
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                90
+              ],
+              "end": [
+                40,
+                120
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                90
+              ],
+              "end": [
+                220,
+                120
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            },
+            {
+              "start": [
+                40,
+                120
+              ],
+              "end": [
+                40,
+                150
+              ],
+              "width": 2,
+              "dash": "solid",
+              "color": "AA00AA",
+              "alpha": 1
+            },
+            {
+              "start": [
+                220,
+                120
+              ],
+              "end": [
+                220,
+                150
+              ],
+              "width": 4,
+              "dash": "solid",
+              "color": "0000FF",
+              "alpha": 1
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                39.11800003051758,
+                60.00953674316406
+              ],
+              "end": [
+                221.697998046875,
+                60.00953674316406
+              ],
+              "width": 2.6500699520111084,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.11800003051758,
+                149.98153686523438
+              ],
+              "end": [
+                221.697998046875,
+                149.98153686523438
+              ],
+              "width": 1.7500799894332886,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                39.99700164794922,
+                58.67753601074219
+              ],
+              "end": [
+                39.99700164794922,
+                150.86053466796875
+              ],
+              "width": 1.7500799894332886,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                219.94000244140625,
+                58.67753601074219
+              ],
+              "end": [
+                219.94000244140625,
+                150.86053466796875
+              ],
+              "width": 3.499880075454712,
+              "color": "0000FF",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Wide merged control\n",
+          "nativePng": "source-control-page-3.png",
+          "dashPatterns": [
+            "[] 0"
+          ]
+        },
+        {
+          "page": 4,
+          "status": "partial",
+          "expectedVisibleUnitEdges": 7,
+          "observedStraightSegments": 7,
+          "unmatchedExpectedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "unmatchedObservedIndices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "geometryColorCoveredIndices": [
+            4
+          ],
+          "expectedLines": [
+            {
+              "start": [
+                243.69022063122873,
+                77.8205851763268
+              ],
+              "end": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "width": 2,
+              "dash": "dash",
+              "color": "FF0000",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "end": [
+                46.72867002878711,
+                43.09094964294072
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                233.27132997121288,
+                136.90905035705927
+              ],
+              "end": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "end": [
+                36.30977936877129,
+                102.1794148236732
+              ],
+              "width": 3,
+              "dash": "dot",
+              "color": "00AA00",
+              "alpha": 0.48
+            },
+            {
+              "start": [
+                243.69022063122873,
+                77.8205851763268
+              ],
+              "end": [
+                233.27132997121288,
+                136.90905035705927
+              ],
+              "width": 3,
+              "dash": "dot",
+              "color": "3579BD",
+              "alpha": 0.4
+            },
+            {
+              "start": [
+                145.2094453300079,
+                60.45576740963376
+              ],
+              "end": [
+                134.7905546699921,
+                119.54423259036625
+              ],
+              "width": 2,
+              "dash": "dashDot",
+              "color": "AA00AA",
+              "alpha": 0.8
+            },
+            {
+              "start": [
+                46.72867002878711,
+                43.09094964294072
+              ],
+              "end": [
+                36.30977936877129,
+                102.1794148236732
+              ],
+              "width": 1,
+              "dash": "solid",
+              "color": "666666",
+              "alpha": 0.8
+            }
+          ],
+          "observedSegments": [
+            {
+              "start": [
+                242.39100646972656,
+                77.58453369140625
+              ],
+              "end": [
+                343.0199890136719,
+                95.32954406738281
+              ],
+              "width": 1.757449984550476,
+              "color": "FF0000",
+              "alpha": 1,
+              "dashPattern": "[ 7.99987 2.49996 ] 0"
+            },
+            {
+              "start": [
+                231.98699951171875,
+                136.65853881835938
+              ],
+              "end": [
+                332.5889892578125,
+                154.40353393554688
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                243.83599853515625,
+                76.96153259277344
+              ],
+              "end": [
+                233.20599365234375,
+                137.310546875
+              ],
+              "width": 2.6361799240112305,
+              "color": "3579BD",
+              "alpha": 1,
+              "dashPattern": "[ .49999 .99998 ] 0"
+            },
+            {
+              "start": [
+                341.2909851074219,
+                95.01753234863281
+              ],
+              "end": [
+                441.0429992675781,
+                112.62054443359375
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            },
+            {
+              "start": [
+                330.88800048828125,
+                154.09153747558594
+              ],
+              "end": [
+                430.6109924316406,
+                171.66653442382812
+              ],
+              "width": 2.6361799240112305,
+              "color": "00AA00",
+              "alpha": 1,
+              "dashPattern": "[ .49999 .99998 ] 0"
+            },
+            {
+              "start": [
+                342.22698974609375,
+                94.76254272460938
+              ],
+              "end": [
+                331.65399169921875,
+                154.65853881835938
+              ],
+              "width": 1.757449984550476,
+              "color": "AA00AA",
+              "alpha": 1,
+              "dashPattern": "[ 7.99987 2.49996 2.49996 2.49996 ] 0"
+            },
+            {
+              "start": [
+                440.67401123046875,
+                112.11053466796875
+              ],
+              "end": [
+                429.9590148925781,
+                172.91354370117188
+              ],
+              "width": 0.8500999808311462,
+              "color": "666666",
+              "alpha": 1,
+              "dashPattern": "[] 0"
+            }
+          ],
+          "text": "Theme alpha\nTheme neighbor\n",
+          "nativePng": "source-control-page-4.png",
+          "dashPatterns": [
+            "[ .49999 .99998 ] 0",
+            "[ 7.99987 2.49996 2.49996 2.49996 ] 0",
+            "[ 7.99987 2.49996 ] 0",
+            "[] 0"
+          ]
+        }
+      ]
+    }
+  },
+  "nativeLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/native/source.pptx using filter : Impress Office Open XML\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  },
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/native/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/pdf/source.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  },
+  "controlLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-borders-native/run-TUgimL/source-pdf/source.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  },
+  "interactiveEditing": "not-performed",
+  "sourceStyleSave": "not-performed"
+}

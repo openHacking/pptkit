@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T17:08:14.416Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/reference-import-native/run-3kFzpE",
+  "scope": "LibreOffice-produced native straight connector/explicit click projection: independent drawing-name/site and hyperlink/slide/tooltip inventories, exact no-op bytes and fresh native projection PDF reopen. Not interactive attachment edits, actual click navigation, native visual parity or preservation edit-save.",
+  "original": {
+    "sha256": "105a73eef60a1effa8920a18cc665260d2fce94a7deecd86e920ea3c18eed1ec",
+    "inventory": {
+      "connections": [
+        {
+          "name": "Edge",
+          "side": "end",
+          "target": "Right",
+          "site": 2
+        },
+        {
+          "name": "Edge",
+          "side": "start",
+          "target": "Left",
+          "site": 3
+        },
+        {
+          "name": "Group edge",
+          "side": "start",
+          "target": "Group target",
+          "site": 0
+        }
+      ],
+      "actions": [
+        {
+          "location": "Edge/object",
+          "type": "slide",
+          "target": "ppt/slides/slide1.xml",
+          "tooltip": "Self"
+        },
+        {
+          "location": "Group target/object",
+          "type": "slide",
+          "target": "ppt/slides/slide1.xml"
+        },
+        {
+          "location": "Group/object",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml"
+        },
+        {
+          "location": "Left/object",
+          "type": "url",
+          "target": "https://example.invalid/a?x=1&y=%E4%B8%AD",
+          "tooltip": "Open <&>"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-0",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "tooltip": "Next slide"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-1",
+          "type": "url",
+          "target": "mailto:user@example.invalid?subject=Hello%20world"
+        }
+      ]
+    }
+  },
+  "nativeSource": {
+    "sha256": "9574a864eb767c49ccd0c9039a3cb78568b66ca16a429f1e6ffb255af1c24802",
+    "inventory": {
+      "connections": [
+        {
+          "name": "Edge",
+          "side": "end",
+          "target": "Right",
+          "site": 2
+        },
+        {
+          "name": "Edge",
+          "side": "start",
+          "target": "Left",
+          "site": 3
+        },
+        {
+          "name": "Group edge",
+          "side": "start",
+          "target": "Group target",
+          "site": 0
+        }
+      ],
+      "actions": [
+        {
+          "location": "Group target/object",
+          "type": "slide",
+          "target": "ppt/slides/slide1.xml"
+        },
+        {
+          "location": "Left/object",
+          "type": "url",
+          "target": "https://example.invalid/a?x=1&y=中"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-0",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-1",
+          "type": "url",
+          "target": "mailto:user@example.invalid?subject=Hello%20world"
+        }
+      ]
+    }
+  },
+  "projection": {
+    "inventory": {
+      "connections": [
+        {
+          "name": "Edge",
+          "side": "end",
+          "target": "Right",
+          "site": 2
+        },
+        {
+          "name": "Edge",
+          "side": "start",
+          "target": "Left",
+          "site": 3
+        },
+        {
+          "name": "Group edge",
+          "side": "start",
+          "target": "Group target",
+          "site": 0
+        }
+      ],
+      "actions": [
+        {
+          "location": "Group target/object",
+          "type": "slide",
+          "target": "ppt/slides/slide1.xml"
+        },
+        {
+          "location": "Left/object",
+          "type": "url",
+          "target": "https://example.invalid/a?x=1&y=中"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-0",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml"
+        },
+        {
+          "location": "Linked text/paragraph-0/run-1",
+          "type": "url",
+          "target": "mailto:user@example.invalid?subject=Hello%20world"
+        }
+      ]
+    },
+    "importFeatures": {
+      "source-part-content:unsupported": 16,
+      "metadata.title:editable": 1,
+      "metadata.author:editable": 1,
+      "metadata.subject:editable": 1,
+      "metadata.description:editable": 1,
+      "metadata.language:editable": 1,
+      "presentation-dimensions:editable": 1,
+      "slide-order-and-visibility:editable": 2,
+      "drawing.connector.mapped-fields:editable": 2,
+      "drawing.inheritance-and-defaults:fallback": 7,
+      "drawing.click-action:editable": 4,
+      "drawing.shape.mapped-fields:editable": 4,
+      "drawing.group.mapped-fields:editable": 1,
+      "drawing.connector.attachment:editable": 3,
+      "drawing.unmapped-property:unsupported": 34
+    }
+  },
+  "producerDifferences": {
+    "omittedOriginalActionLocations": [
+      "Edge/object",
+      "Group/object"
+    ],
+    "changedOriginalActions": [
+      {
+        "location": "Left/object",
+        "original": {
+          "location": "Left/object",
+          "type": "url",
+          "target": "https://example.invalid/a?x=1&y=%E4%B8%AD",
+          "tooltip": "Open <&>"
+        },
+        "native": {
+          "location": "Left/object",
+          "type": "url",
+          "target": "https://example.invalid/a?x=1&y=中"
+        }
+      },
+      {
+        "location": "Linked text/paragraph-0/run-0",
+        "original": {
+          "location": "Linked text/paragraph-0/run-0",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml",
+          "tooltip": "Next slide"
+        },
+        "native": {
+          "location": "Linked text/paragraph-0/run-0",
+          "type": "slide",
+          "target": "ppt/slides/slide2.xml"
+        }
+      }
+    ],
+    "retainedNativeActions": 4,
+    "note": "The native conversion dropped connector/group object actions and removed tooltips from surviving actions; URL escaping was normalized. This evidence does not attribute those producer changes to PPTKit."
+  },
+  "noOpOriginalBytes": true,
+  "independentSourceInventoryMapped": true,
+  "freshExport": {
+    "sha256": "33a549722e78275860124671ec183c71b2af0ca75bc4d2f3f9cff6badb2a78d4",
+    "sourceReferenceInventoryRetained": true
+  },
+  "reopenedPdf": {
+    "sha256": "5622d0bbc2769629b6f4ee3f7fa89645f4ce3651d29af11151fec4ae8590beac",
+    "byteLength": 15512
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reference-import-native/run-3kFzpE/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reference-import-native/run-3kFzpE/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reference-import-native/run-3kFzpE/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reference-import-native/run-3kFzpE/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

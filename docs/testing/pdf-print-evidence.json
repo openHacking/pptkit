@@ -1,0 +1,99 @@
+{
+  "producerSha256": "145925fdec0fc98ffaac9ad2b8b0a493efade751d1dfd089d459f0b2a3f69252",
+  "adapterSourceSha256": "beb18c08455c78802e04d319e81516667a4bdf9c100074d8aab35691d8e0c013",
+  "browser": "149.0.7827.55",
+  "pdfSha256": "9091f09ea87776aa08d876c4a3b05d1fffe32ed863d3fb279deef2c6d100c549",
+  "linkedPdfSha256": "5c9423d01fc29a5e4f5887562d2a93fca4ed95be02809e09a473991893d01b38",
+  "adapterPdfSha256": "5c9423d01fc29a5e4f5887562d2a93fca4ed95be02809e09a473991893d01b38",
+  "adapterPages": [
+    {
+      "slideId": "mixed",
+      "index": 1,
+      "hidden": false
+    },
+    {
+      "slideId": "simple",
+      "index": 0,
+      "hidden": false
+    }
+  ],
+  "adapterWarnings": [
+    {
+      "code": "svg-foreign-object-dependency",
+      "message": "This object uses XHTML foreignObject, which may be omitted by standalone SVG viewers.",
+      "slideId": "mixed",
+      "elementId": "element-2"
+    },
+    {
+      "code": "svg-system-font-dependency",
+      "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+      "slideId": "mixed",
+      "elementId": "element-2",
+      "fontDependencies": [
+        {
+          "family": "Aptos",
+          "bold": true,
+          "italic": false
+        },
+        {
+          "family": "Aptos",
+          "bold": false,
+          "italic": true
+        },
+        {
+          "family": "Aptos",
+          "bold": false,
+          "italic": false
+        }
+      ]
+    },
+    {
+      "code": "svg-system-font-dependency",
+      "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+      "slideId": "simple",
+      "elementId": "element-1",
+      "fontDependencies": [
+        {
+          "family": "Aptos",
+          "bold": false,
+          "italic": false
+        }
+      ]
+    },
+    {
+      "code": "pdf-font-selection-unverified",
+      "message": "Browser font selection, glyph coverage and fallback are not verified."
+    },
+    {
+      "code": "pdf-page-size-rounding",
+      "message": "Chromium may round requested page dimensions."
+    }
+  ],
+  "linkedTargetId": "pptkit-link-slide-0",
+  "htmlSha256": "8b730246270bcb9035b26e6e4b737829ff0bc463f775bdca8b1a3d087e80427e",
+  "linkedHtmlSha256": "0f9a00bb9dc080782d06a783876fcb85335cf4300557d586a308f0b948e97111",
+  "linkedWarnings": [],
+  "slideIds": [
+    "mixed",
+    "simple"
+  ],
+  "foreignObject": [
+    true,
+    false
+  ],
+  "warnings": [
+    {
+      "code": "slide-action-not-linked",
+      "message": "Slide action targeting simple is metadata-only in standalone SVG output.",
+      "slideId": "mixed",
+      "elementId": "element-2"
+    },
+    {
+      "code": "slide-action-not-linked",
+      "message": "Slide action targeting simple is metadata-only in standalone SVG output.",
+      "slideId": "mixed",
+      "elementId": "element-3"
+    }
+  ],
+  "networkRequests": []
+}

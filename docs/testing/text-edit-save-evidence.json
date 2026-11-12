@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "scope": "One named direct text-run preservation edit, independent payload/XML checks, LibreOffice headless producer resave and PDF text inspection. Not interactive editing, repair-dialog verification, PowerPoint, complete appearance/native fidelity or full IMP-09 completion.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/text-edit-native/run-OywVcp",
+  "sourceSha256": "1e6b6c3326c1e6bf3df06cb248258225267b5c55354c7589168413bbc7d7f754",
+  "editedSha256": "59549481df72cb849d8b1d54e248f9fe807ba03b1ac3a5acbffb1d3c464a6589",
+  "nativeSha256": "8fd1480cf04d0c64cab73f2a4337188a2f7c4f1d03b31b2bf1837cbde31639ea",
+  "saveReport": {
+    "mode": "edit",
+    "assurance": "scoped-preservation",
+    "losses": [],
+    "changes": [
+      {
+        "kind": "text",
+        "documentPath": "/slides/0/elements/0/content/0/runs/0/text",
+        "slideId": "source-slide-256",
+        "elementId": "source-slide-256-object-2",
+        "source": {
+          "part": "/ppt/slides/slide1.xml",
+          "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:sp[1]",
+          "sourceObjectId": "2",
+          "elementIndex": 46
+        },
+        "text": {
+          "before": "Source text before",
+          "after": "Edited preserved text 123 <&>"
+        }
+      }
+    ],
+    "diagnostics": []
+  },
+  "independent": {
+    "oracle": "Python zipfile + ElementTree + PyMuPDF",
+    "onlySelectedPayloadChanged": true,
+    "changedPayloads": [
+      "ppt/slides/slide1.xml"
+    ],
+    "sourcePartSetRetained": true,
+    "unknownExtensionRetainedByPptkit": true,
+    "orphanRetainedByPptkit": true,
+    "candidateText": [
+      "Edited preserved text 123 <&>",
+      "Unchanged control text"
+    ],
+    "nativeProducerText": [
+      "Edited preserved text 123 <&>",
+      "Unchanged control text"
+    ],
+    "pdfPages": 1,
+    "pdfText": "Edited preserved text 123 <&>\nUnchanged control text\n",
+    "nativeUnknownExtensionRetained": false,
+    "nativeOrphanRetained": false,
+    "nativeAddedParts": [
+      "docProps/custom.xml"
+    ],
+    "nativeRemovedParts": [
+      "orphan.bin",
+      "ppt/tableStyles.xml",
+      "ppt/viewProps.xml"
+    ]
+  },
+  "nativeComparison": {
+    "equal": false,
+    "differenceCount": 37,
+    "differences": [
+      {
+        "code": "payload-changed",
+        "part": "/[Content_Types].xml",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/_rels/.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/docProps/app.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/docProps/core.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-added",
+        "part": "/docProps/custom.xml"
+      },
+      {
+        "code": "part-removed",
+        "part": "/orphan.bin"
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesMasters/notesMaster1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/notesSlide1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/presProps.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/presentation.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideLayouts/slideLayout1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideMasters/slideMaster1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/slide1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/tableStyles.xml"
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/theme/theme1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/theme/theme2.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/viewProps.xml"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId3"
+      },
+      {
+        "code": "relationship-added",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId4"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId4"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId5"
+      },
+      {
+        "code": "relationship-removed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId6"
+      },
+      {
+        "code": "relationship-removed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId7"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "relationshipId": "rId2"
+      }
+    ]
+  },
+  "logs": {
+    "nativeSave": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/text-edit-native/run-OywVcp/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/text-edit-native/run-OywVcp/native/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "pdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/text-edit-native/run-OywVcp/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/text-edit-native/run-OywVcp/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

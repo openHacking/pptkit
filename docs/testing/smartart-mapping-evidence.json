@@ -1,0 +1,196 @@
+{
+  "profile": "smartart-source-inventory-v1",
+  "repositoryCommit": "0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2",
+  "retainedDirectory": "/Volumes/github/private/pptkit/.tmp/smartart-source-corpus/0ea8f79d15a6",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "command": "node scripts/inspect-smartart-inventory.mjs /Volumes/github/private/pptkit/.tmp/smartart-source-corpus/0ea8f79d15a6 --output /Volumes/github/private/pptkit/docs/testing/smartart-mapping-evidence.json",
+  "previewEnabled": false,
+  "cases": [
+    {
+      "name": "smartart-accent-process.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-accent-process.pptx",
+      "gitBlob": "8710e7f170a947cf0642ede181a5c9c1243428cb",
+      "sha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+      "bytes": 46326,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/process3"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 5,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 24,
+          "connections": 23,
+          "paragraphs": 13,
+          "textRuns": 5,
+          "references": {
+            "resolved": 73
+          },
+          "findings": 0,
+          "presentationMappings": 11,
+          "presentationAgreement": {
+            "same-target": 9,
+            "different-targets": 2
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 0,
+          "references": {},
+          "independentPairAndShapeMapping": true
+        }
+      ]
+    },
+    {
+      "name": "smartart-org-chart.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-org-chart.pptx",
+      "gitBlob": "08c9a4fc916db8c121612dcdd770c0d96665ab7f",
+      "sha256": "7a457c32c73efed6244cf79e184994a2f2a0cb65901f6ce4f3dfcd22dbcf4ac1",
+      "bytes": 57764,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 5,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 50,
+          "connections": 52,
+          "paragraphs": 29,
+          "textRuns": 6,
+          "references": {
+            "resolved": 158
+          },
+          "findings": 0,
+          "presentationMappings": 34,
+          "presentationAgreement": {
+            "same-target": 34
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 0,
+          "references": {},
+          "independentPairAndShapeMapping": true
+        }
+      ]
+    },
+    {
+      "name": "smartart-cycle.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-cycle.pptx",
+      "gitBlob": "bea0524d39dfec82efddb4a649de248219d62be2",
+      "sha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+      "bytes": 35322,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/cycle2"
+      ],
+      "cacheStatuses": [
+        "missing-reference"
+      ],
+      "resourceParts": 4,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 32,
+          "connections": 36,
+          "paragraphs": 32,
+          "textRuns": 5,
+          "references": {
+            "resolved": 108
+          },
+          "findings": 0,
+          "presentationMappings": 16,
+          "presentationAgreement": {
+            "same-target": 16
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": []
+    },
+    {
+      "name": "smartart-picture-strip.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-picture-strip.pptx",
+      "gitBlob": "bfb8d4f2c1bd76842f05e14f2b970878d5d5dcab",
+      "sha256": "6424c0c3dd8a19884365cf9d7c8bf2e24963fc9233afb4846345ea52cb9978d0",
+      "bytes": 52395,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2008/layout/PictureStrips"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 8,
+      "imageParts": 3,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 22,
+          "connections": 18,
+          "paragraphs": 17,
+          "textRuns": 3,
+          "references": {
+            "resolved": 60
+          },
+          "findings": 0,
+          "presentationMappings": 12,
+          "presentationAgreement": {
+            "same-target": 12
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 0,
+          "references": {},
+          "independentPairAndShapeMapping": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Source inspection, exact no-op and optional bounded preview probes only; no native application opening/editing/playback or visual-fidelity certification.",
+    "Third-party source files remain local experiment inputs; redistribution/fixture licensing admission is pending.",
+    "These pinned Transitional source cases do not establish complete producer/dialect/family support or cache freshness."
+  ]
+}

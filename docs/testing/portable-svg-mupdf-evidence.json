@@ -1,0 +1,28 @@
+{
+  "chromium": "149.0.7827.55",
+  "pymupdf": "1.28.0",
+  "mupdf": "1.29.0",
+  "darkPixels": {
+    "native": [
+      441,
+      394
+    ],
+    "rich": [
+      408,
+      0
+    ],
+    "table": [
+      415,
+      0
+    ]
+  },
+  "negativeControlsRejected": 5,
+  "sha256": {
+    "specimen.svg": "6764d2e33e536246fa0ddf55f36587d719de249bbd9f1119cc0ed2a3cb5b00cf",
+    "warnings.json": "f02e79ae74833db2fe854464da45ea3743a6f5efacc3461315bcbefafce012af",
+    "chromium.png": "69117c7f959c5c9fe56d52ad996c732d435a5b8505d759fde1e0baee1e954da0",
+    "mupdf.png": "6e93dfe89af307e89912092f7cec2f2db07dc6047e4963ae9c820d7db5340cbd",
+    "requests.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "browser-version.txt": "e4f05506edb8447ddd8da8e7ec27d9005fb5bed9d4d743f43b937adbc10f8987"
+  }
+}

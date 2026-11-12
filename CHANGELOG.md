@@ -1,13 +1,225 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on Keep a Changelog, and this project aims to follow Semantic Versioning once public releases begin.
+All engine packages currently share one release version. Each published version requires a nonempty matching entry here with compatibility notes, verification evidence and remaining limitations. Entries under Unreleased describe workspace changes and are not published release claims.
 
 ## [Unreleased]
 
+## [0.2.0-preview.0] — Local candidate (not published)
+
+This prerelease contains the changes below. IR version 2 and changes to the structural TypeScript `PresentationSlide` interface require consumers to review compatibility. Experimental features and Office interoperability retain the limits documented in the candidate scope.
+
+- Experimental `notesTextProfile: "master-style-v1"` resolves supported notes-master/type-matched text defaults under independent notes themes, with source provenance and captured scalar-save validation. Direct-notes defaults remain compatible; full notes-page/native appearance and style writes remain open.
+
+- Experimental `script-families-v2` content import retains admitted theme/table supplemental font maps after native-slot inheritance, with bounded per-key provenance and captured-profile scalar-save validation. Default/v1 and source font-write guards remain unchanged; native font/shaping admission remains open.
+
+- Experimental script font maps: per-script authoring/reset inheritance, explicit language/Han selection and shared Layout/SVG fragments; fresh PPTX warns while materializing concrete fonts. Supplemental source import, map round-trip and native typography remain open.
+
+- Add chart category and series-name source eligibility and scoped mixed scalar saves. The experimental series-order profile reports source IDs and order disagreements but blocks structural order-save requests: native and dependency checks identified cases requiring element and legend-index remapping. Internal candidates and PowerPoint controls remain research rather than a public save guarantee. See [chart save scope](docs/api/chart-value-save.md) and [order evidence](docs/testing/chart-series-order-research.md).
+
+- SVG previews now warn when a directly embedded JPEG header declares non-8-bit sample precision or the header exceeds the bounded inspection prefix; original bytes and explicit resolver behavior are unchanged. A bounded prefix scan cannot certify viewer support. Named 12-bit samples rendered in PowerPoint but produced transparent pixels in Chromium despite successful decode promises; see [evidence](docs/testing/jpeg-12-native.md).
+
+- Browser font-backed measurement now resolves explicit tab stops for a restricted ASCII/Han/precomposed kana and Hangul profile, including specified bullet and Arabic-number markers and wrapping frames whose explicit lines fit. It reports other tabbed bodies as unmeasurable instead of treating CSS tab expansion as native geometry. This changes prior measurement results for tab characters; application-supplied providers are unaffected. General tab layout and native visual equivalence remain open.
+
+- Add owned master artwork with transactional replacement, global element IDs and hidden/unused resource protection. Resolve shared master geometry, sizing/analysis/composition and render master/layout/page layers without flattening. Add separate layout/page visibility declarations and managed-slide setter; fresh native output retains owning parts and image/chart/workbook relationships. [Six-page actual native evidence](docs/testing/master-artwork.md) covers named shape/text/image/group controls and three reopens; advanced master native appearance/editing and source writes remain open.
+
+- Extend inheritance reports to regional and direct table cell formatting, preserving actual merge declarations, explicit defaults/null barriers, implicit blanks and repeated-object occurrence paths. Ordinary IR remains unchanged; logical candidate origins stay separate from Layout’s visible shared borders. See [verification](docs/testing/table-format-origins.md); native reusable styles and source style writes remain open.
+
+- Extend format origins to effective chart text and authored slide notes, with distinct title defaults, symbolic chart declarations, slide-scoped notes targets and empty/reset/null semantics. Ordinary IR/output stays compatible; full Node/ESM/global output and independent XML checks are recorded in [verification](docs/testing/chart-notes-origins.md). Table-region origins and authored notes-master/theme graphs remain open.
+
+- Extend authoring origin reports to text boxes, shape text and placeholders, retaining preset declarations, explicit false/zero values and optional-font clear barriers. Preserve the original target interface and add text target cases. Fix fresh PPTX by retaining placeholder paragraph/run defaults and explicitly serializing false bold/italic/underline/strike, including empty insertion styles. This intentionally changes native XML; named three-round native reopening is verified while complete live template-edit admission remains pending. Also keep layout-owned placeholder-bound artwork visible and fix leading-empty list marker formatting/frame-edge clipping in SVG. See [verification](docs/testing/text-format-origins.md).
+
+- Add `resolvePresentationInheritance` with immutable per-role theme and background declaration origins alongside unchanged ordinary IR. Core normalization and downstream output share the selection path; built-in paint/opacity defaults and explicit none/zero remain distinguishable. Element/preset/notes origins and complete template graphs remain open. See [verification](docs/testing/inheritance-origins.md).
+
+- Add `ManagedPresentationDocument` with shared master creation/replacement and atomic layout replacement. Preserve the base document contract; omitted declarations resume inheritance. Stage IDs, allocator and affected-slide checks before commit. [Verification](docs/testing/shared-definition-edit.md) separates automated consumer/output checks from pending property origins, artwork and native shared-edit admission.
+
+- Prevent PowerPoint repair for authored multi-master output by allocating master IDs after the layout ID range. Preserve legacy IDs and all other source payloads. Actual two-factor open controls and corrected three-round no-edit native evidence are recorded in [verification](docs/testing/multi-master-native.md); full template edits remain pending.
+
+- Add immutable initializer slide masters and layout master bindings, resolved theme/background ownership, matching Layout measurements/SVG and independent native master/theme output. Old inputs omit new IR fields; background origin gains `master`. Complete artwork/template editing, semantic source import and actual native operations remain open. See [ADR0057](docs/architecture/decisions/0057-master-theme-ownership.md).
+
+- Add standalone `inspectPptxNotes` for bounded notes/master source roles, actual relationship domains, raw geometry/artwork and selected stored field caches with raw XML identities. Node/browser/installed consumers and independent captured-file checks cover the source-only contract; full notes rendering, field evaluation, authored mapping and broader source writes remain pending. See [ADR0056](docs/architecture/decisions/0056-notes-source-inventory.md) and [evidence](docs/testing/notes-source-inventory.md).
+
+- Preserve the final empty-run insertion style in paragraph-end properties across notes, text boxes, shape text and table cells, without duplicating actions or changing nonempty endings. [Native empty/actual-typing evidence](docs/testing/notes-insertion-styles.md) verifies four controls over six reopen rounds; original failed files remain retained. Source style writes and general trailing insertion styles remain outside scope.
+
+- Fix default fresh notes pages with aspect-preserving native slide-image and separate body placeholders, retaining the existing notesSize and public notes API. Three-size PowerPoint save/reopen evidence covers copied/absent notes; the initial empty insertion-style failure is fixed separately through paragraph-mark properties, while zero-character run identity loss remains explicit. See [ADR0054](docs/architecture/decisions/0054-default-notes-page-output.md) and [verification](docs/testing/authored-notes-pages.md).
+
+- Fix native SVG no-wrap handling, repeated/trailing hard breaks, whitespace and grapheme boundaries across selected-font fragments. Preserve empty XHTML paragraph/final-line height and quote literal native text/chart font names consistently with XHTML. No public option changes; missing Intl grapheme support uses XHTML. See [ADR0052](docs/architecture/decisions/0052-svg-text-boundaries-and-font-names.md) and [16 exact-face SVG controls](docs/testing/real-font-svg.md). Full shaped line layout, bidi/emoji and native Office typography remain open.
+
+- Add explicit Parser `textFontProfile: "script-families-v3"`: supplemental rules require their effective native bucket, and missing EA/CS selections remain located unsupported records instead of borrowing Latin dictionaries. Preserve older profiles, captured byte/file/candidate semantics and source font-write guards. See [contract](docs/api/declared-slot-font-import.md), [ADR0051](docs/architecture/decisions/0051-declared-slot-supplemental-projection.md) and [four-package source evidence](docs/testing/declared-slot-font-import.md). Implicit native fonts, glyph shaping and native table/notes/theme editing remain open.
+
+- Add explicit Parser `textFontProfile: "script-families-v1"` for independent Latin/East Asian/complex-script cascade and provenance, including direct notes and table slots. Preserve legacy defaults, trace missing theme components, isolate inherited audit state by target scope and retain the captured profile during scalar candidate validation. Source font edits remain blocked; native typography and language/supplemental selection remain open. See [contract](docs/api/script-font-import.md), [ADR0047](docs/architecture/decisions/0047-source-script-font-profile.md) and [independent source/native evidence](docs/testing/script-font-import.md).
+
+- Add optional Core East Asian/complex-script font families with independent inheritance/null reset, validation and a bounded shared Unicode font selector. Layout measurement and SVG consume concrete script fragments; fresh PPTX retains original runs and distinct native slots. Source multi-family projection/style writes and full native shaping remain gated. See [contract](docs/api/script-fonts.md) and [ADR0046](docs/architecture/decisions/0046-script-font-authoring-and-selection.md).
+
+- Project table `fontRef` default colors below explicit region/local colors, preserving ordered RGB/alpha transforms and independent font eligibility. Resolve explicit theme lt/ea/cs slots and collapse equal explicit script-font collections with provenance; differing/missing alternatives block misleading Latin projection. Native default color and font substitution remain partial. See [ADR0045](docs/architecture/decisions/0045-table-text-appearance-and-uniform-fonts.md) and [source/PDF observations](docs/testing/table-text-appearance.md).
+
+- Extend source table styles with bounded `fillRef`/`lnRef`, independent format-component selection, lazy `phClr` binding and ordered color/alpha composition with final RGB quantization. Original style/theme bytes remain preserved during admitted scalar saves; style writes remain blocked. Five native controls retain background/transform/line discrepancies and one application failure. See [ADR0044](docs/architecture/decisions/0044-table-theme-matrix-references.md), [contract](docs/api/table-style-import.md#theme-format-matrix-extension) and [observations](docs/testing/theme-matrix.md).
+
+- Add experimental Parser `tableStyleInheritance`: verified inline/reference/default source selection, bounded direct-region fill/border/text projection, target-scope theme evaluation and selected provenance with three captured session limits. Vertical source bands now override horizontal bands, correcting four independent native fill discrepancies. Conditional previews remain fallback; style-matrix/default appearance, native interaction and source-style writes remain open. See [contract/evidence](docs/api/table-style-import.md) and [ADR0043](docs/architecture/decisions/0043-source-table-style-projection.md).
+
+- Add table-local region style authoring: whole-table, row/column bands, first/last lines, corners, outer/interior borders and text defaults, resolved once into bounded effective cells with local override priority. Edits recompute rules; pagination retains source-row formatting. Fresh PPTX reports `table-style-materialized` because reusable native rules are absent. See [contract](docs/api/table-style.md), [ADR0042](docs/architecture/decisions/0042-table-region-style-materialization.md) and scoped native fill/text evidence.
+
+- Add sparse direct table borders and bounded shared physical-edge resolution across Core/Layout, SVG and fresh PPTX; import supported unequal direct edges while preserving source-style write guards. Fix wholly merged outer border loss and Office continuation spans. Export rotated/flipped tables through explicit native groups with root identity/action retained. Native width/alpha/transform fidelity remains partial; see [contract/evidence](docs/api/table-borders.md) and [ADR0041](docs/architecture/decisions/0041-shared-table-borders.md).
+
+- Add Core `editTable` for pure atomic row/column insert/delete and merge/split transactions, explicit content/frame policies, bounded plain-data capture and complete original-anchor mappings. Integrate through existing `replaceElement`, sizing/pagination and fresh native output; source structural saves remain blocked. Fix mixed table merges wider than two columns misplacing vertical continuation records. See [contract](docs/api/table-editing.md) and [ADR0040](docs/architecture/decisions/0040-atomic-table-structure-edits.md).
+
+- Add explicit `textTargetSaveProfile: "paragraph-stable-v1"` for existing scalar text edits with proven raw shape/paragraph identity and transparent in-bounds paragraph-index targets. Default guards remain compatible; character/opaque/topology edits still block. Independent three-round ZIP/XML and browser consumers verify source preservation. Named LibreOffice resaves rewrite the range even on the unedited control; playback remains untested. See [contract](docs/api/paragraph-target-save.md) and [ADR0039](docs/architecture/decisions/0039-stable-paragraph-target-preservation.md).
+
+- Add opt-in `inspectPptxTiming` source inventory with bounded raw/effective observations, part-local drawing/time candidates and explicit unknown/alias/subobject findings. Independent DOM/Python and installed consumers verify inspection; no authored mapping, timing writes or native playback is admitted. See [contract](docs/api/native-timing-inventory.md) and [ADR0038](docs/architecture/decisions/0038-native-timing-source-inventory.md).
+
+- Add experimental slide-owned event stage authoring, actual target binding, optional IR/Layout transport and whole-slide target/source remapping. Add atomic `replaceElement` and referenced deletion guards. Default PPTX output rejects with `PptxExportError`; explicit `eventTimelineMode: "omit"` reports per-stage static loss before pagination/assets. Static SVG warns, timed page splitting is unapplied, and Parser authored timing mutations block source saves. Native mapping/playback remains unimplemented. See [contract](docs/api/slide-event-timeline.md) and [ADR0037](docs/architecture/decisions/0037-slide-event-target-transport.md).
+
+- Add experimental Core `compileEventTimeline` / `replayEventTimeline` for explicit foreground gates, page/visit event identity, mandatory current target inventories, deterministic one-row click consumption and immutable replay observations. Reuse exact finite arithmetic/validation with shared budgets and JSON transport. No listeners, authored/IR/native effects or clock/controller behavior are introduced. See [contract](docs/api/event-timeline.md) and [ADR0036](docs/architecture/decisions/0036-event-timeline-replay.md).
+
+- Add experimental Core `compileFiniteTimeline` / `sampleFiniteTimeline` for detached finite integer-time span/group schedules, algebraic repeats, exact boundary/overflow semantics and immutable random-access progress. Validate transported schedules and bounded data inputs with located typed errors. Unknown/fractional/infinite/autoReverse semantics reject; authoring/IR effects/targets and native playback remain unimplemented. See [contract](docs/api/finite-timeline.md) and [ADR0035](docs/architecture/decisions/0035-public-finite-timeline-arithmetic.md).
+
+- Add optional independent Python ZIP/XML evidence for three chart numeric source-save rounds, adversarial stale/extra-mutation checks and named LibreOffice headless resave/PDF observations. Native resaves retain numeric caches but remove referenced XLSX, remaining ineligible for numeric writes; interactive Edit Data is untested. See [evidence](docs/testing/chart-value-save.md).
+
+- Add experimental `chartEditSaveProfile: "existing-values-v1"` for existing chart numbers with exact cache/XLSX source bindings, atomic lexical writes, independent two-layer comparisons and actual-candidate rebinding. Shared/formula/external/conflicting sources and unsupported mixed edits block. Default authority stays compatible; native Edit Data and topology remain open. See [contract](docs/api/chart-value-save.md) and [ADR0034](docs/architecture/decisions/0034-chart-numeric-preservation-save.md).
+- Add pure versioned `describeImportCapabilities`: exact source/Core subjects, seven operation rows, explicit unreported/conflicting states, detached task/artifact references, cumulative limits and complete-subject truncation. Expose opt-in CLI capability views/filters with browser/installed consumer coverage. Static references do not certify native input or source-save readiness. See [the contract](docs/api/import-capabilities.md).
+
+- Implement read-only `pptkit inspect` / `compare` and `runCliAsync` over the public Parser package, with versioned JSON, located human diagnostics, stable status/stream routing, bounded regular-file capture/output and cancellation. Add command/encoder, actual-process and installed-shim coverage. CLI now depends on Parser; authoring/source-write commands and complete task-linked capability reports remain open. See [the contract](docs/api/cli-inspection.md).
+
+- Record 24 PowerPoint cache-conflict/re-layout/repeated-rebuild outputs with independent content identity/order/text/cache and resource checks. PowerPoint rebuilds from source data while the named LibreOffice version reuses nonempty stored cache; this does not admit native writes or imported freshness. See [ADR0031](docs/architecture/decisions/0031-native-stale-cache-policy.md).
+
+- Add opt-in direct SmartArt paragraph comparisons over explicit associations, with located equal/different/unavailable observations, cumulative limits and unknown freshness. Seven focused/three integration groups and installed consumers cover the contract; fifteen controlled native save/reopen cases demonstrate stored-cache disagreement. No native write or freshness admission is granted. See [ADR0030](docs/architecture/decisions/0030-diagram-text-observations.md).
+
+- Add private diagram-cache dependency/revision tracking, explicit unknown/invalidated/managed-current states, block/omit/rebuild policies and independently validated staged byte plans with cancellation, quotas and failure retry. Seven pure/four spacing groups and an actual SVG DOM integration cover it. Native spacing/EMU/stroke observations retain the prior mismatches and do not calibrate the solver or admit native cache writes. See [ADR0029](docs/architecture/decisions/0029-diagram-cache-consistency-research.md).
+
+- Add private deterministic Cycle equal-circle layout with closed directed geometry, separate two-node arcs, frame transforms, explicit measured text placement/overflow and shared resource bounds. Six pure/two browser groups cover geometry, actual font measurement, negative bearings and failures. Six PowerPoint cache comparisons retain 0.137–0.235 point mismatches against a 0.1-point research threshold; no public/native/cache admission is granted. See [ADR0028](docs/architecture/decisions/0028-cycle-layout-feasibility.md).
+
+- Add private scoped SmartArt source-to-managed bindings with canonical raw identity provenance, context/root guards, explicit retired-source restoration and shared projection/binding budgets. Seven pure groups, Parser/DOM/fresh-writer integration and independent checks over eleven retained real-file versions validate the research slice. Producer-wide ID renumbering rejects; no source-preservation writes or native stateful-writer admission is granted. See [ADR0027](docs/architecture/decisions/0027-smartart-source-binding-research.md).
+
+- Add private explicit SmartArt identity-state reconciliation across generated insertion, reorder, reparent, deletion and restoration; reserve retired keys, reject collisions/exhaustion, and share generation work budgets without mutating caller state on failure. Five pure groups and fourteen native research groups include independent DOM/structural checks; native stateful-writer admission remains open. Separately record authorized PowerPoint Cycle blank-node deletion and successful four-node reopen. See [ADR0026](docs/architecture/decisions/0026-smartart-identity-state-research.md).
+
+- Record generated Process/Hierarchy/Cycle PowerPoint edit/theme/re-layout/reopen observations and three native GUID Cycle text cycles. Add explicit private GUID specimen generation, 24 structural controls, six headless producer cases and nine-stage independent file verification. Integer defaults remain compatible; managed identities, deletion, full native matrix and public authoring admission remain open. Process overflow also reproduces in original-source LibreOffice controls. See [ADR0025](docs/architecture/decisions/0025-generated-smartart-native-edit-evidence.md).
+
+- Add private native SmartArt geometry observation and a 24-case FODP/PDF baseline, with independent unit/rectangle checks, raw transformed geometry, stored/PDF text separation and repeated-name evidence. Seven pure Node and seven optional Python fixture groups cover unit conversion, scopes, lists/whitespace, ambiguity, budgets and cache-comparison mutations. Long-label clipping and PDF extraction discrepancies remain unresolved; no public layout or native-edit API is admitted. See [ADR0024](docs/architecture/decisions/0024-smartart-native-geometry-observation.md).
+
+- Add private minimum-native SmartArt generation research with bounded forests, reciprocal transitions, exact-layout presentation mappings and explicit absent/empty cache controls. Correct the plain-text customization flag and distinguish PDF word fragmentation from missing markers. Independent structural/browser/save tests, six standard headless producer cases and a five-variant Cycle differential provide scoped evidence; content-only controls still fail lexical display checks. Public native authoring/editing remains unadmitted. See [ADR0023](docs/architecture/decisions/0023-native-smartart-generation-research.md).
+
+- Add an unpublished SmartArt content-forest research prototype with exact layout admission, ordered/multi-root content, assistant roles, layout-generated Cycle closure and bounded topology validation. Seven offline test groups and independent source/native file checks cover it. PowerPoint source edits were observed for Process/Hierarchy only; no public diagram authoring, family layout or native exporter API is admitted. See [ADR0022](docs/architecture/decisions/0022-smartart-content-model-research.md).
+
+- Add normalized SmartArt presentation association evidence and cache model references per explicitly used data/cache pair, with alias/collision handling, recognized-tree/MCE boundaries and cumulative work/finding limits. Independent DOM and seven source files verify 103 presentation maps and ten cache shapes; differing targets remain descriptive evidence. Native layout/editing and cache freshness remain open. See [the mapping contract](docs/api/diagram-mapping.md).
+
+- Add bounded SmartArt source data graphs with raw point/connection identities, typed references, stored direct text and separate cache shape model references. Format-owned cumulative graph limits are captured through byte/file imports and source-save candidate validation. Independent DOM/Python source checks and public consumers cover this inspection profile; semantic node editing, full data/cache mapping and native family admission remain open. See [the contract](docs/api/diagram-data.md).
+
+- Extend explicit cached SmartArt preview with complete unflipped independent text rectangles and relative shape/text/body rotation. Known text can remain visible with unsupported visual presets, and source-save bindings stay blocked. Browser geometry/baseline checks and seven independently parsed source frames cover the profile; native fidelity, flip/upright combinations and full styles remain open. See [the preview contract](docs/api/diagram-preview.md).
+
+- Add explicit content-only `diagramPreview: "cache"`: associated cached shapes, direct text, groups and rectangular raster fills become ordinary Core preview groups; absent/empty/unsupported caches have located fallback reports and placeholders. Freshness stays unknown and native SmartArt editing remains unsupported. Byte/file imports capture the option, text-save validation reprojects consistently, and cached text receives no source-save bindings. Aggregate preview work and existing image/report budgets apply. See [the contract](docs/api/diagram-preview.md).
+
+- Extend SmartArt inspection with explicit slide-scoped cache associations, unassigned cache candidates, deduplicated component/image resources and outside incoming relationships. Raw image references retain branch provenance without rendering or loading. Cache freshness stays unknown; complete closure, preview and native node editing remain open. See [the inventory contract](docs/api/smartart-inventory.md#drawing-cache-association).
+
+- Add experimental SmartArt source inventory to slide inspection: effective graphic frames and nested-group/raw identities, drawing-ID ambiguity, and four component association statuses in both dialects. Independent DOM/browser and three-round unrelated text-save fixtures cover the bounded profile. Cache/resource ownership, semantic nodes, preview and native SmartArt editing remain open. See [the contract](docs/api/smartart-inventory.md).
+
+- Extend experimental page transitions with Push/Wipe and explicit cardinal direction. All eight variants have bounded source import and native XML output, three-round and independent DOM evidence. Static preview stays unchanged; playback, interruption and native application certification remain open.
+
+- Add experimental page Fade snapshots, `setTransition`, detached IR/Layout timing and bounded native import/fresh output with exact `p14:dur` milliseconds. Zero and manual/click/timed advance are explicit; static SVG remains unchanged. Unknown effects and speed-only fallbacks remain source-only, and transition changes block preservation saves. Custom slide implementations must implement the additive getter/setter. Native interactive/playback evidence remains open. See [the contract](docs/api/slide-transitions.md).
+
+- Add experimental `@pptkit/pptx-parser/node` file import/output. Stable source capture is bounded and regular-file only; output requires explicit create or an authentic replace snapshot, validates a same-directory temporary file and publishes through exclusive hard link or guarded rename. A new synchronous `assertSavePlanCurrent` closes the final async freshness gap, while postcommit sync/cleanup failures remain visible warnings. Injected IO/races, real three-round integration, browser isolation and installed consumers cover the profile. Portable Node has no cross-process compare-and-swap between final verification and rename, and Windows/filesystem semantics remain unverified. See [the file contract](docs/api/file-save.md) and [ADR 0011](docs/architecture/decisions/0011-node-file-publication.md).
+
+- Add experimental `editSaveProfile: "text-runs-v3"` for existing bound table-anchor run characters. Immutable provenance distinguishes compact Core anchor cells from physical source columns; complete grid validation precedes binding, and earlier profiles retain their owner scopes/report shapes. Unknown cell/table markup, grids, merges and unselected payloads remain retained. Independent merge partitions, mixed-owner three-round tests, browser/installed consumers and native headless evidence cover this text-only slice; native geometry/opaque-content changes are recorded. Direct style/metric/structural writes and interactive/PowerPoint gates remain open. See [the table-save contract](docs/api/table-text-save.md) and [ADR 0010](docs/architecture/decisions/0010-table-text-preservation-save.md).
+
+- Add experimental `editSaveProfile: "text-runs-v2"` for bound mapped shape-text and direct speaker-notes run characters, alongside the existing text-box scope. Separate readonly notes provenance avoids fabricated drawing IDs; raw range guards are scoped by source part and object. Combined binding budgets, complete mixed-plan rejection, exact payload checks, candidate reprojection, three-round mixed decks, browser/installed consumers and headless producer evidence cover the bounded profile. V1/default behavior stays compatible. PowerPoint, interactive editing and full notes/reference fidelity remain open. See [the owner contract](docs/api/text-owner-save.md) and [ADR 0009](docs/architecture/decisions/0009-text-owner-preservation-save.md).
+
+- Add experimental content-import `editSaveProfile: "text-runs-v1"` for existing bound text-box run character changes. Source-to-Core raw identities, full-snapshot change classification, shared/range/policy guards, lexical XML edits and ZIP32 patching preserve untouched source payloads. Exact OPC comparison and actual-output reprojection validate candidates before snapshot-bound plans become ready. New readonly source/change reports and four save-analysis/validation limits are additive; default edit blocking, original-byte no-op and rebuild blocking remain compatible. Independent ZIP/XML/DOM, three-round, browser/installed-consumer and native-producer evidence cover the bounded profile; broader edits and PowerPoint/interactive fidelity remain open. See [the contract](docs/api/text-edit-save.md) and [ADR 0008](docs/architecture/decisions/0008-direct-text-preservation-save.md).
+
+- Add a private source-anchored XML character-edit primitive with lexical/encoding retention, identity/baseline guards, exact output budgets and candidate revalidation. Tests cover mixed/opaque neighbors and three PPTX patch rounds in both dialects; the separate opt-in profile above supplies session ownership/writing. See [ADR 0007](docs/architecture/decisions/0007-xml-character-edit-boundaries.md).
+
+- Add experimental `inspectOpcClosure` with explicit roots, all source relationship branches, owned `.rels`, incoming owners, selected footprint/work limits, immutable findings and branch-aware ID ambiguity checks. The bounded graph profile does not authorize cleanup or preservation edits. See [the closure contract](docs/api/preservation-closure.md).
+
+- Add experimental `compareOpcPackages`: exact source payload and opt-in conservative XML profiles, relationship differences, combined expansion/work/report limits, immutable findings and cancellation. Independent ZIP/SHA256, browser DOM and candidate-mutation tests cover the bounded profile; semantic fresh-output/native validation and edit-aware preservation remain pending. See [the comparison contract](docs/api/package-comparison.md).
+
+- Experimental content import now matches source placeholders by scoped index/type and projects bounded inherited dimensions/preset names, with per-property EMU/source provenance and a distinct-declaration budget. Ambiguity, grouped inheritance and non-neutral ancestor transforms are reported; complete theme/style inheritance, Core multi-master/rebinding, source geometry/style writes and rebuild remain pending.
+
+- Experimental content import now projects bounded 2D bar/line/pie data with explicit cache/workbook priority, nested XLSX/work budgets, direct styles and approximate preview; source chart edits/rebuild remain blocked. Chart frames now retain rotation/flips in fresh output, and late content MCE processing uses detached report snapshots.
+
+
+### Fixed
+
+- Detach caller abort-signal listeners synchronously when an import session is disposed, while aborting child preparation and releasing output reservations. Regression tests cancel/dispose after the child relay is subscribed, verify listener cleanup and retry capacity, and retain one relay for concurrent operations sharing a signal.
+
+- Retain table rotation/flips in native graphic-frame transforms during fresh PPTX export, preserving identity-transform serialization and ordinary drawing namespaces.
+
+- Preserve all-empty speaker-notes paragraphs when they carry formatting or actions in fresh export, while omitting the plain empty paragraph synthesized by normalization. Notes structural inspection distinguishes explicit slide links from the owning-slide backlink.
+
+- Correct connector anchor geometry for rotated/flipped targets in Layout, group intrinsic fitting, preview and export; allow these supported target transforms in the experimental native straight profile.
+
+- Remap copied slide/group connector targets to fresh element IDs, and copied slide self-links (including rich text and notes) to the new slide. External targets and shared resources retain identity; invalid copy destinations reject before ID allocation.
+
+- Keep chart identifiers local to each PPTX export so concurrent exports with asynchronous assets cannot corrupt chart relationships or content-type declarations.
+- Escape relationship attributes, including hyperlink query strings containing XML delimiters.
+
 ### Added
 
-- Initial open-source documentation structure
-- Project README and governance documents
-- Docs, examples, and benchmark directory scaffolding
+- Add optional run `colorOpacity` across Core normalization/validation, text/shape/cell/notes output and SVG/HTML preview. Experimental text import evaluates ordered tint/shade, luminance/saturation and alpha transforms with source provenance and an independent dependency budget. Unknown transforms block RGB and alpha together; opaque IR snapshots retain their prior shape. Nine native samples record eight matching results and one gray-shade discrepancy; PowerPoint and preservation edit/rebuild remain unverified.
+
+- Experimental content import now resolves bounded text-style inheritance, theme color maps and major/minor Latin fonts into local Core values with `resolvedFrom` provenance. Partial theme overrides inherit color/font components independently in the target slide/layout/master chain, while unsupported higher declarations block older values. Complete color-transform coverage/native parity, script-specific fonts, backgrounds, rebinding, source style writes and rebuild remain pending. Automated three-round/browser/installed checks pass; a named LibreOfficeDev experiment records source/fresh theme-style differences rather than native fidelity.
+
+- Extend experimental content import with authored table grids, validated rectangular merge anchors, cell rich text/actions and bounded direct fills/borders/margins. Missing optional cell bodies map to empty text; nonpositive/sparse grids or nonempty merge continuations remain source-only. Table styles/theme inheritance, per-edge borders and edit/rebuild preservation saves remain unsupported. Tests include independent partitions, three fresh projection rounds, browser pixels and installed consumers.
+
+- Map native section member names to Core slide labels in both import projections, resolving membership by source slide identity. Keep native GUID/collection/empty-section semantics source-only with operation findings; fresh export remains PPTKit label metadata only and edit-preservation saves remain blocked.
+
+- Add Core `slide.setNotes()` replacement/clear with immutable snapshots and experimental direct speaker-notes rich-text import. Notes source identities use kind `"notes"` with the owning Core slide ID; custom `PresentationSlide` implementations and exhaustive identity-kind consumers must accommodate the additive contract. Notes-page/master inheritance, preview and edit/rebuild saves remain incomplete.
+
+- Extend experimental content import with embedded PNG/JPEG/GIF pictures, bounded header dimensions, crop/opacity/transforms, shared source-part assets and relationship provenance. External references remain unloaded; unsupported picture semantics are reported and picture edit/rebuild saves remain blocked.
+
+- Extend experimental content import with supported same-scope straight connector attachments and direct URL/slide click actions. Preserve attachment identities for explicit native connector export, serialize slide jumps with source-part-relative targets, and record unsupported references/actions. LibreOffice evidence records producer-side action/tooltip loss separately; connector/action edits and rebuild saves remain blocked.
+
+- Add experimental `projection: "content"` import for direct rich text, seven preset shapes and nested groups, with effective source identities and unmapped-property reports. Original-byte no-op sessions remain available; inheritance, remaining object families and edit/rebuild saves stay incomplete.
+
+- Add experimental `connectorMode: "native"` for straight connectors and a bounded cardinal-attachment profile, with part-local ID mapping and explicit fallback diagnostics. Layout retains optional authored endpoint identities; default path output remains unchanged. Native headless attachment inventory is recorded; interactive and broader-profile verification remains open.
+
+- Add Core asset reference inventory, stable-ID replacement, guarded removal/cleanup with explicit retention, and opt-in exact byte/metadata matching. Existing snapshots stay detached; custom `PresentationDocument` implementations must implement the new methods. Format preservation closure remains separate.
+
+- Add immutable byte-backed image sources, explicit export asset resolvers, per-asset size limits and generation cancellation. Byte/resolver PNG/JPEG/GIF signatures are checked; SVG preview embeds supported bytes directly. IR v2 gains a `bytes` source variant; exhaustive source consumers must handle it. Full decoding and broader image formats remain outside this profile.
+
+- Add experimental explicit structural `importPptx` sessions with source/Core identity reports, frozen capabilities, original-byte no-op plans, lifecycle/freshness/consent checks and bounded concurrent output preparation. Parser uses the public Core dependency; structural projection does not map drawings and blocks edit/rebuild. Content projection and its opt-in text-run profile are separate additions above.
+
+- Extend experimental `inspectPptx` with native MS-PPTX section identities, empty sections, exact page membership, order/coverage findings and unknown-extension descriptors. The known section extension participates in scoped MCE processing; generic opaque-extension behavior remains unchanged.
+
+- Extend experimental `inspectPptx` with source-linked core/extended/custom document metadata, lossless scalar precision, mixed-language keyword segments, explicit uninterpreted complex values and metadata traversal cancellation. This does not add semantic import or preservation save.
+
+- Experimental `inspectPptx` reads effective slide order, source identities, exact EMU sizes, hidden state and typed master/layout/notes/theme relationships with explicit unresolved-inheritance findings. It shares one bounded OPC/XML read and MCE projection; semantic content import and preservation sessions remain pending.
+
+- Experimental `inspectMarkupCompatibility` projects supported MCE constructs using explicit namespace capabilities and opaque extension islands, reporting source identities and effective counts. OPC relationship inspection now validates effective markup and exposes compatibility decisions; source XML budgets still include discarded branches. Unknown MCE policy rejects explicitly; no preservation serializer is implied.
+
+- Experimental `inspectPresentationPackage` identifies the PresentationML main part through its package relationship, verifies the entry dialect/root and classifies six presentation/template/slideshow main content types. It reuses bounded OPC inspection without a second parse; full dialect/MCE processing and semantic import remain pending.
+
+- Experimental `inspectOpcPackage` composes ZIP/XML inspection with logical part names, content-type mappings, relationship source/target validation and cumulative XML/edge budgets. External references remain unresolved; unsupported relationship extensions and physical mappings reject explicitly. This is an OPC profile, not semantic PPTX import.
+
+- Experimental `inspectXmlPart` with namespace-aware XML 1.0 checks, UTF-8/BOM-marked UTF-16 decoding, DTD rejection, bounded source/structure/content parsing, cancellation and located errors. Pinned XML parsing stays private to Parser; browser bundles include third-party notices. OPC graphs and semantic import remain pending.
+
+- Experimental `@pptkit/pptx-parser` ZIP32 archive inventory with bounded streaming decode, local/central header checks, CRC, conservative path policy, cancellation and public Node/browser entries. Independent DEFLATE structure/end-boundary checks reject hidden compressed tails and invalid back-references before decoding; OPC/XML validation and semantic import remain pending.
+
+- Explicit table pagination with repeated headers, indivisible merged rows, continuation layouts, deterministic IDs, source-row mapping and per-table atomic overflow/budget diagnostics. Preview and PPTX consume the same resolved fragments.
+
+- Explicit intrinsic text/image/group sizing with bounds, image ratios, group rebasing and atomic dependency failure.
+- Bounded fixed/content/fraction grid tracks with spans and deterministic allocation verified against exhaustive small-domain feasibility.
+- Affine frame constraints for dimensions and positions, peer/container references, bounds, iterative dependency resolution and atomic cycle/conflict diagnostics. Cross-format parity tests compare native package bytes and SVG with manual authoring.
+
+- Opt-in measured table row sizing with merged-span constraints, fixed/automatic rows, min/max bounds and explicit preserve/clip policies. Resolved cell geometry prevents browser table expansion, and browser tests compare actual cells with native PPTX row/frame dimensions.
+
+- Explicit Layout composition rules for alignment, equal-gap distribution and horizontal/vertical stacks, including nested local coordinates, rotated visual bounds, fixed-size failure diagnostics and connector reconciliation. Cross-format tests compare complete PPTX bytes and SVG with independently positioned authoring.
+
+- Explicit `@pptkit/layout/dom` browser measurement adapter with caller-owned loaded fonts, coverage-aware fallback, isolated disposable DOM state and pinned Latin/CJK tests. This analyzes CSS typography; it does not change rendering or claim Office parity.
+
+- Optional synchronous text/font measurement contracts and detached Layout analysis, including text/table-cell overflow, transformed slide bounds, provider failure diagnostics and explicit off-slide exceptions. Export and SVG APIs forward these warnings without changing generated content.
+
+- Initial open-source documentation structure.
+- Project README and governance documents.
+- Docs, examples, and benchmark directory scaffolding.
+- Shared seven-fixture regression corpus, real PNG assets, pinned-font preview snapshots, XML/relationship/workbook verification and repeatable artifact export.
+- Mixed-deck normalization/Layout/preview/export/memory/output-size baselines for 10, 50 and 200 slides.
+- Isolated npm tarball consumers exercising Node, browser bundles, TypeScript declarations and the CLI executable.
+
+### Compatibility
+
+- Package authoring APIs and IR remain provisional; current IR is v2.
+- All package manifests declare Node.js >=20 for installation/tooling; browser-neutral entry points continue to avoid Node APIs.
+- Future 0.x and preview.N publications explicitly use the `next` dist-tag. Existing registry tags are not changed by these workspace edits.
+
+### Validation and limitations
+
+- Release policy and failure-ordering tests cover dry runs, cancellation, version/tag/changelog validation and partial publication.
+- Native macOS LibreOfficeDev has saved and reopened the shared fixtures; interactive editability, native visual parity and the full application matrix remain incomplete.
+- See the execution record and per-feature capability matrix for completed checks and outstanding work. No publication has been performed as part of this change.

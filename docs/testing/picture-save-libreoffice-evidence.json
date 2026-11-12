@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "scope": "One shared two-picture slide, one PPTKit replacement with preserved crop, LibreOffice headless PDF render and three producer resaves. No interactive editing, repair-dialog observation, PowerPoint, arbitrary effects or full image-save conformance.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K",
+  "sourceSha256": "646311087e978a91e8afd2cd66e58dd6f22c3bc688d972acce1330857e675f80",
+  "editedSha256": "2c0ae8a9cee7498986c6b874077bf3dd144cb86bd790ab263a5bef2487ba36be",
+  "nativeSha256": [
+    "5bb66d23dfa6dc24efb3e676a48f9f74d9a5ebfaf69d6b997b8723f99787fd97",
+    "e437db98b97369084cd1fcc22d6c7758437fb494728592330c7aacd29b452bdc",
+    "e6d62f1981fb3035ca6cc0a946f5c3c82969c401b3e4267e07cdb68a7b768ecf"
+  ],
+  "report": {
+    "mode": "edit",
+    "assurance": "scoped-preservation",
+    "losses": [],
+    "changes": [
+      {
+        "kind": "asset",
+        "documentPath": "/assets/1"
+      },
+      {
+        "kind": "asset",
+        "documentPath": "/slides/0/elements/0/assetId",
+        "slideId": "source-slide-256",
+        "elementId": "source-slide-256-object-2",
+        "source": {
+          "part": "/ppt/slides/slide1.xml",
+          "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:pic[1]",
+          "sourceObjectId": "2",
+          "elementIndex": 20,
+          "relationshipId": "rId3"
+        }
+      }
+    ],
+    "diagnostics": []
+  },
+  "independent": {
+    "oracle": "Python zipfile + ElementTree + PyMuPDF",
+    "pictureRecords": [
+      [
+        {
+          "name": "target",
+          "embed": "rId3",
+          "target": "../media/shared.png",
+          "crop": {
+            "l": "12500",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        },
+        {
+          "name": "sibling",
+          "embed": "rId4",
+          "target": "../media/shared.png",
+          "crop": {
+            "l": "12500",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        }
+      ],
+      [
+        {
+          "name": "target",
+          "embed": "pptkitImage1",
+          "target": "../../ppt/media/pptkit-image-1.png",
+          "crop": {
+            "l": "12500",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        },
+        {
+          "name": "sibling",
+          "embed": "rId4",
+          "target": "../media/shared.png",
+          "crop": {
+            "l": "12500",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        }
+      ],
+      [
+        {
+          "name": "target",
+          "embed": "rId1",
+          "target": "../media/image1.png",
+          "crop": {
+            "l": "12264",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        },
+        {
+          "name": "sibling",
+          "embed": "rId2",
+          "target": "../media/image2.png",
+          "crop": {
+            "l": "12736",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        }
+      ],
+      [
+        {
+          "name": "target",
+          "embed": "rId1",
+          "target": "../media/image1.png",
+          "crop": {
+            "l": "12264",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        },
+        {
+          "name": "sibling",
+          "embed": "rId2",
+          "target": "../media/image2.png",
+          "crop": {
+            "l": "12736",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        }
+      ],
+      [
+        {
+          "name": "target",
+          "embed": "rId1",
+          "target": "../media/image1.png",
+          "crop": {
+            "l": "12264",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        },
+        {
+          "name": "sibling",
+          "embed": "rId2",
+          "target": "../media/image2.png",
+          "crop": {
+            "l": "12736",
+            "t": "0",
+            "r": "0",
+            "b": "0"
+          }
+        }
+      ]
+    ],
+    "regionSha256": [
+      {
+        "target": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8",
+        "sibling": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8"
+      },
+      {
+        "target": "557578130a00c7b4fe404fe320c2f2de5fb15b2d92c216463a28aea202bde4de",
+        "sibling": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8"
+      },
+      {
+        "target": "557578130a00c7b4fe404fe320c2f2de5fb15b2d92c216463a28aea202bde4de",
+        "sibling": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8"
+      },
+      {
+        "target": "557578130a00c7b4fe404fe320c2f2de5fb15b2d92c216463a28aea202bde4de",
+        "sibling": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8"
+      },
+      {
+        "target": "557578130a00c7b4fe404fe320c2f2de5fb15b2d92c216463a28aea202bde4de",
+        "sibling": "eafcf525b80326e4beedc3b36cd31a6504b466834a1b6ffad5255a3e4ddd10c8"
+      }
+    ],
+    "targetChangedInEditedPdf": true,
+    "siblingUnchangedInEditedPdf": true,
+    "targetMatchesEditedAfterNativeRounds": [
+      true,
+      true,
+      true
+    ],
+    "siblingMatchesEditedAfterNativeRounds": [
+      true,
+      true,
+      true
+    ],
+    "nativeCropLeftValues": [
+      [
+        12264,
+        12736
+      ],
+      [
+        12264,
+        12736
+      ],
+      [
+        12264,
+        12736
+      ]
+    ],
+    "nativeCropLeftDeltaFromEdited": [
+      [
+        -236,
+        236
+      ],
+      [
+        -236,
+        236
+      ],
+      [
+        -236,
+        236
+      ]
+    ]
+  },
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-1/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-2/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-3/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/picture-save-native/run-7uMB6K/round-3/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "profile": "powerpoint-stale-cache-verifier-negatives-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/smartart-stale-cache/verifier-negative-6aRLVD",
+  "originalNativeSha256": "f23249a582a620c9ca7e780aed94e807412ca55f3d64c537d1e5cafcc914bafc",
+  "originalEvidenceSha256": "524287df234b7333085f7d14f9cb77353b9373d9473f271d715b1bc7be280062",
+  "checks": [
+    {
+      "case": "snapshot-mismatch",
+      "rejected": true,
+      "reason": "Reopened copy differs"
+    },
+    {
+      "case": "cache-disagreement",
+      "rejected": true,
+      "reason": "Native saved source/cache direct text differs"
+    },
+    {
+      "case": "consistent-identity-rewrite",
+      "rejected": true,
+      "reason": "content identity/role/text changed"
+    }
+  ],
+  "originalNativeAndEvidenceUnchanged": true
+}

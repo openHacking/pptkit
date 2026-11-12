@@ -1,0 +1,22 @@
+{
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "scope": "One independently authored fixture, three headless resaves; not interactive PowerPoint.",
+  "records": [
+    {
+      "round": 0,
+      "sha256": "4f02960467a9992ead0fcf92d10ba5821c9872dfd4b2f63f1816ea04f5c235a0"
+    },
+    {
+      "round": 1,
+      "sha256": "f4ef1f1ca8835e8762a8568b6d016411c16d4d50c49ce77504e7ac7f1d13109b"
+    },
+    {
+      "round": 2,
+      "sha256": "cdce0cccab2ba37a7bbf31309df1a2e2ed8458e4dab36b65d4f903e05738e260"
+    },
+    {
+      "round": 3,
+      "sha256": "53f6844c3cd22137f70efe0bae793aef898753fe94970175f2b0163f7a548d92"
+    }
+  ]
+}

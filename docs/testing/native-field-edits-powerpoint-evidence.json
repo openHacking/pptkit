@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104",
+    "build": "16.104.25121423"
+  },
+  "observedDate": "2026-10-28",
+  "sourceEvidence": "docs/testing/native-fields-powerpoint-evidence.json",
+  "operation": "On a Save As copy of the third baseline round, cut the first slide and pasted it after the second. Saved and reopened reordered.pptx. Saved a new edited.pptx, inserted EDIT plus a space before the first slide ordinary text, saved and reopened it.",
+  "observedUI": "Before saving, original slide 2 showed Page 2: 1 and original slide 1 showed Page 1: 2. After reopening the edited file the first page showed EDIT Page 2: 1 / Date: 28 October 2026. Screenshots were displayed during the session but not retained as local artifacts.",
+  "records": [
+    {
+      "file": ".tmp/native-field-powerpoint-01/reordered.pptx",
+      "sha256": "c40e814081ccd3f2236a11cc939f0ac9839c0db48927ce42f81389fe79448333",
+      "slides": [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "text": "Page 2: 1 / Date: 28 October 2026",
+          "fields": [
+            {
+              "id": "{11111111-2222-3333-4444-000000000002}",
+              "type": "slidenum",
+              "cache": "1"
+            },
+            {
+              "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+              "type": "datetime3",
+              "cache": "28 October 2026"
+            }
+          ]
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "text": "Page 1: 2 / Date: 28 October 2026",
+          "fields": [
+            {
+              "id": "{11111111-2222-3333-4444-000000000001}",
+              "type": "slidenum",
+              "cache": "2"
+            },
+            {
+              "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+              "type": "datetime3",
+              "cache": "28 October 2026"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": ".tmp/native-field-powerpoint-01/edited.pptx",
+      "sha256": "5efa3d16d95b0b15873ee23970aaefa7200e187983a576606c45c694fea7bf5e",
+      "slides": [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "text": "EDIT Page 2: 1 / Date: 28 October 2026",
+          "fields": [
+            {
+              "id": "{11111111-2222-3333-4444-000000000002}",
+              "type": "slidenum",
+              "cache": "1"
+            },
+            {
+              "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000002}",
+              "type": "datetime3",
+              "cache": "28 October 2026"
+            }
+          ]
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "text": "Page 1: 2 / Date: 28 October 2026",
+          "fields": [
+            {
+              "id": "{11111111-2222-3333-4444-000000000001}",
+              "type": "slidenum",
+              "cache": "2"
+            },
+            {
+              "id": "{AAAAAAAA-BBBB-CCCC-DDDD-000000000001}",
+              "type": "datetime3",
+              "cache": "28 October 2026"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "One two-slide sample, one cut-and-paste reorder and one adjacent plain-text edit with one reopen each. No three-round edited stability, no other field types, dates, masters, layouts, notes, or host versions. The read-only XML inspector does not replay or independently prove the GUI actions."
+}

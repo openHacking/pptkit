@@ -1,0 +1,33 @@
+{
+  "scope": "One dense two-series fixed-axis PPTKit-authored scatter chart had three source-bound X/Y coordinate edits. PowerPoint opened the edited file, saved a copy, closed and reopened it once. Cache values, workbook cells, formulas, the source-to-edited changed parts and the two retained accessibility captures were checked. The captures are retained observations, not independently authenticated provenance. Native interactive workbook editing, sparse coordinates, other producers, geometry measurements and further reopen rounds are not established.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "b07c6a8d5e8e6e0ed9c73763bb636aee708bb3d24b5c50c9fd2633f5f32132ed",
+  "verifierSha256": "efe90450f96ec7f30b963e65ba172a47765a0b0a1faa58b673ff64432ccb79a8",
+  "manifestSha256": "eba705f19d41f73fec01eb489fc7c059573a96b1d2b86348068666eb1854a0d6",
+  "packages": [
+    {
+      "file": ".tmp/native-scatter-coordinate-save/powerpoint-bI3pt5/source.pptx",
+      "sha256": "65657cfec64ba5a87fb0fabce9914b9218e43b6f2ea1143d44515dc279fcbcc8"
+    },
+    {
+      "file": ".tmp/native-scatter-coordinate-save/powerpoint-bI3pt5/edited.pptx",
+      "sha256": "5c041ddf6aa820048882a057d0d270b86a1e588ba361e590cf37f8a9e7c087dc"
+    },
+    {
+      "file": ".tmp/native-scatter-coordinate-save/powerpoint-bI3pt5/native-round-1.pptx",
+      "sha256": "2979b0f1cbe30fbd0db924f0a8861ef30d89eb14102981050faeb05a822077c5"
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "axSha256": "f42df3a5cfc60b8a86d169a158e08f835ffbf63a07d9145e10f773b1e7f66cca",
+      "screenshotSha256": "5289eb0c314f4660ea0d5398126f0482baa046124a8df27d471866afb2758d99"
+    },
+    {
+      "phase": "reopen",
+      "axSha256": "a3a27f68679ab7d1eebc973dee4684a5c81b593398bdebbff99cddac1265f950",
+      "screenshotSha256": "4e4eae3de1bccb1c4a99d08c88f53cfe9b6853a4e17355b258721d969217f415"
+    }
+  ]
+}

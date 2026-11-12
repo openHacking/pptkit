@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 1,
+  "scope": "One three-slide PPTKit visibility edit versus an unchanged control, three LibreOfficeDev headless PPTX resaves and four PDF exports per input. PDF extraction is not slideshow or interactive verification.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "python": "3.14.3",
+    "pymupdf": "1.28.0"
+  },
+  "runnerSha256": "1701ca18ec6a0194f3824ff3cc5e8a1dc19b646ef4c43d09f99fd723923763fd",
+  "oracleSha256": "e8deab08dfc1d096a626700bdcc61c1b5d9de7c490809a7acbbc7d31efaf94d9",
+  "sourceChangedParts": [
+    "ppt/slides/slide2.xml"
+  ],
+  "logs": [
+    {
+      "phase": "pdf",
+      "round": 0,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-0/control.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 0,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/input/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-0/hidden.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 1,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 1,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/input/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/hidden.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 1,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-1/control.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 1,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-1/hidden.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 2,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 2,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/hidden.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 2,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-2/control.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 2,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-2/hidden.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 3,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/control.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "save",
+      "round": 3,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/hidden.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 3,
+      "kind": "control",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-3/control.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "phase": "pdf",
+      "round": 3,
+      "kind": "hidden",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/hidden.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-3/hidden.pdf using filter : impress_pdf_Export",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    }
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/input/control.pptx",
+        "sha256": "acd2940f356464a5c21adb7d3e96403a03633a049e52e99ed4b2df48531695c0"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-0/control.pdf",
+        "sha256": "caffe7a501b96fc71eb8aee8490d9ca43042c18c73c2ac01290b07871e82b297"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 3,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Target Beta\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 0,
+      "kind": "hidden",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/input/hidden.pptx",
+        "sha256": "f60edcda7f1ae6c594f2b418addd72d33e29ba968312441b1b9144b21e7e7996"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-0/hidden.pdf",
+        "sha256": "dfd948675522b6786e4a89a7f28522d396e1d2c5668689ceeb273b30299d4d73"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": "0",
+              "hidden": true,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 2,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/control.pptx",
+        "sha256": "bb8774f6283d99bc39466dd67b594b06e1b8e0f386f8685aa08c132cddd68482"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-1/control.pdf",
+        "sha256": "67151fc84053369ff59ff7372482b31dec31020b465fc072f3f006927ee1f6db"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 3,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Target Beta\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 1,
+      "kind": "hidden",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-1/hidden.pptx",
+        "sha256": "545775d760a1665c01f420118ee1520ec50e5844a03afa066f4bc86c94ca8473"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-1/hidden.pdf",
+        "sha256": "74d9c248386b5705434de0bcf53240c43c6ac14ac6d251631256e4ab94cd1d8e"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": "0",
+              "hidden": true,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 2,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/control.pptx",
+        "sha256": "4e9170561f79628d5b50b5f324af248f05a2d6b4e8557a4a57445991894a683f"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-2/control.pdf",
+        "sha256": "5848cdb5442d487b12c4fd035861b0ae9128c407e4b622200caaefa6a68cb3ba"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 3,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Target Beta\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 2,
+      "kind": "hidden",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-2/hidden.pptx",
+        "sha256": "ce097ce7660be030c190e4c7cf4e75e26c4532750eb2b54c97c12aa1f23f32c3"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-2/hidden.pdf",
+        "sha256": "5558876a3d5dc22d1aa851b034a6454d08a581f567df727a839815c33b79a030"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": "0",
+              "hidden": true,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 2,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/control.pptx",
+        "sha256": "f2fce28240900b625efd83493d1faa1b8cdd0281179e0a2563e53ff400f39abd"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-3/control.pdf",
+        "sha256": "bbfa23becc8c621858e6dcdeebb768ec69d3937bc95851b50efbfe24a43aee1f"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 3,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Target Beta\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "round": 3,
+      "kind": "hidden",
+      "pptx": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/round-3/hidden.pptx",
+        "sha256": "59191afae2962a4d0782832036212cfdb2c7c959977bbcdfbfa730136620a731"
+      },
+      "pdf": {
+        "path": ".tmp/slide-visibility-libreoffice/run-97iHZ2/pdf-3/hidden.pdf",
+        "sha256": "2f779e48a00947e22780aa1beb49e79268b8bdc4fef8f49c7bbd2bb2b65e975b"
+      },
+      "inventory": {
+        "pptx": {
+          "slides": [
+            {
+              "id": "256",
+              "part": "ppt/slides/slide1.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Alpha"
+            },
+            {
+              "id": "257",
+              "part": "ppt/slides/slide2.xml",
+              "show": "0",
+              "hidden": true,
+              "text": "Target Beta"
+            },
+            {
+              "id": "258",
+              "part": "ppt/slides/slide3.xml",
+              "show": null,
+              "hidden": false,
+              "text": "Visible Gamma"
+            }
+          ]
+        },
+        "pdf": {
+          "pageCount": 2,
+          "pages": [
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Alpha\n"
+            },
+            {
+              "width": 399.9968566894531,
+              "height": 225.01417541503906,
+              "text": "Visible Gamma\n"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

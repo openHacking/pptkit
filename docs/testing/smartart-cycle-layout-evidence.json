@@ -1,0 +1,1342 @@
+{
+  "profile": "equal-circle-cycle-native-box-comparison-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR",
+  "nativeApplication": "Microsoft PowerPoint 16.104",
+  "build": "16.104.25121423",
+  "os": "macOS 26.5",
+  "nativeEvidenceSha256": "0488b3d0064b365448689a5e98454c675e6518388512330f5758a2bff98c0550",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "records": [
+    {
+      "file": "cycle-before-native-delete.pptx",
+      "sha256": "2eed744af1eef4f53e7656e8f8b800a375894c06ee0a9774f268e01bd084a4fd",
+      "nodes": 5,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 90.68203812013087,
+      "maxAbsCoordinateDelta": 0.1644790650127561,
+      "rmsCoordinateDelta": 0.13183883996213114,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+          "cacheModelId": "{F26308EE-C5D5-5644-AC8D-A4FC136BE20E}",
+          "native": {
+            "x": 314.7411811023622,
+            "y": 100.04929133858268,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 314.65898093993457,
+            "y": 100,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.0822001624276254,
+            "y": -0.04929133858267676,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{22E229B4-8996-304D-B994-D579F61B879C}",
+          "cacheModelId": "{8AFD9D23-3885-BA47-9E22-2F0B04645CF7}",
+          "native": {
+            "x": 424.8207086614173,
+            "y": 180.0267716535433,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 424.7039458255486,
+            "y": 179.95234698225514,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.1167628358687125,
+            "y": -0.07442467128817043,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000004}",
+          "sourceModelId": "{04610588-3BCD-A442-98E8-C7382BE245CC}",
+          "cacheModelId": "{9D135596-061A-504C-B74D-3A4ACAE3ACD2}",
+          "native": {
+            "x": 382.77409448818895,
+            "y": 309.43307086614175,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 382.67050953003275,
+            "y": 309.3179618798691,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.10358495815620472,
+            "y": -0.11510898627267352,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+          "sourceModelId": "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+          "cacheModelId": "{56B76E37-504C-C047-949D-0CDBD1C8DC13}",
+          "native": {
+            "x": 246.70826771653543,
+            "y": 309.43307086614175,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 246.64745234983644,
+            "y": 309.31796187986913,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.06081536669898924,
+            "y": -0.11510898627261668,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+          "sourceModelId": "{F387286A-1AE3-714E-81B0-64C48F9D2B99}",
+          "cacheModelId": "{8F7DAFFB-9828-AC44-BA19-9D73FAB21547}",
+          "native": {
+            "x": 204.66165354330707,
+            "y": 180.0267716535433,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 204.61401605432056,
+            "y": 179.95234698225522,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.04763748898650988,
+            "y": -0.07442467128808516,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 5,
+        "center": {
+          "x": 359.99996062992125,
+          "y": 261.05257480314964
+        },
+        "diameter": 90.51755905511811,
+        "radius": 115.7444922216213,
+        "observedGapRatio": 0.5031979711366974,
+        "maxFitResidual": 0.00002599359152100078,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.04929133858267676,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.1644790650127419,
+          "roundedMaxCoordinateDelta": 0.16448818897636386,
+          "maxRoundingAdjustment": 0.00003708908786848042,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 314.7411811023622,
+              "y": 100.04930305396928,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 314.65897637795274,
+              "y": 100,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.04929133858267676,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7007086614173232
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 424.82073465500883,
+              "y": 180.0267801738107,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 424.703937007874,
+              "y": 179.9523622047244,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 80.0267716535433,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": 79.2767716535433
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000004}",
+            "fitted": {
+              "x": 382.77408666431205,
+              "y": 309.43305648818114,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 382.6704724409449,
+              "y": 309.3179527559055,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.049370078740139434,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7006299212598606
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+            "fitted": {
+              "x": 246.70827554041233,
+              "y": 309.43305648818114,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 246.64748031496063,
+              "y": 309.3179527559055,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.049370078740139434,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7006299212598606
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+            "fitted": {
+              "x": 204.66162754971555,
+              "y": 180.02678017381072,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 204.61401574803148,
+              "y": 179.9523622047244,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 80.0267716535433,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": 79.2767716535433
+          }
+        ],
+        "work": 35,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 5,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    },
+    {
+      "file": "cycle-round2-theme.pptx",
+      "sha256": "68b1d2e58687850e75e4f86e589dc8492a476028e5a84f1fe2a14ae0f60f58eb",
+      "nodes": 5,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 90.68203812013087,
+      "maxAbsCoordinateDelta": 0.1644790650127561,
+      "rmsCoordinateDelta": 0.13183883996213114,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+          "cacheModelId": "{F92F534C-6A67-B047-8EE9-6272C36C6F3D}",
+          "native": {
+            "x": 314.7411811023622,
+            "y": 100.04929133858268,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 314.65898093993457,
+            "y": 100,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.0822001624276254,
+            "y": -0.04929133858267676,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{22E229B4-8996-304D-B994-D579F61B879C}",
+          "cacheModelId": "{CDB32826-DA04-5B46-A555-BDD0456D356F}",
+          "native": {
+            "x": 424.8207086614173,
+            "y": 180.0267716535433,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 424.7039458255486,
+            "y": 179.95234698225514,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.1167628358687125,
+            "y": -0.07442467128817043,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000004}",
+          "sourceModelId": "{04610588-3BCD-A442-98E8-C7382BE245CC}",
+          "cacheModelId": "{26267D5C-42C5-C348-9C4B-2D04FCBF31CE}",
+          "native": {
+            "x": 382.77409448818895,
+            "y": 309.43307086614175,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 382.67050953003275,
+            "y": 309.3179618798691,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.10358495815620472,
+            "y": -0.11510898627267352,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+          "sourceModelId": "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+          "cacheModelId": "{F9CAABE4-758F-054B-B234-EFB69AC2B5E3}",
+          "native": {
+            "x": 246.70826771653543,
+            "y": 309.43307086614175,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 246.64745234983644,
+            "y": 309.31796187986913,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.06081536669898924,
+            "y": -0.11510898627261668,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+          "sourceModelId": "{F387286A-1AE3-714E-81B0-64C48F9D2B99}",
+          "cacheModelId": "{B783511B-D89A-5B4A-BC48-A635DB5A8166}",
+          "native": {
+            "x": 204.66165354330707,
+            "y": 180.0267716535433,
+            "width": 90.51755905511811,
+            "height": 90.51755905511811
+          },
+          "proposed": {
+            "x": 204.61401605432056,
+            "y": 179.95234698225522,
+            "width": 90.68203812013085,
+            "height": 90.68203812013085
+          },
+          "delta": {
+            "x": -0.04763748898650988,
+            "y": -0.07442467128808516,
+            "width": 0.1644790650127419,
+            "height": 0.1644790650127419
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 5,
+        "center": {
+          "x": 359.99996062992125,
+          "y": 261.05257480314964
+        },
+        "diameter": 90.51755905511811,
+        "radius": 115.7444922216213,
+        "observedGapRatio": 0.5031979711366974,
+        "maxFitResidual": 0.00002599359152100078,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.04929133858267676,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.1644790650127419,
+          "roundedMaxCoordinateDelta": 0.16448818897636386,
+          "maxRoundingAdjustment": 0.00003708908786848042,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 314.7411811023622,
+              "y": 100.04930305396928,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 314.65897637795274,
+              "y": 100,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.04929133858267676,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": -0.45070866141732324
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 424.82073465500883,
+              "y": 180.0267801738107,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 424.703937007874,
+              "y": 179.9523622047244,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 80.0267716535433,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": 79.5267716535433
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000004}",
+            "fitted": {
+              "x": 382.77408666431205,
+              "y": 309.43305648818114,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 382.6704724409449,
+              "y": 309.3179527559055,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.049370078740139434,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": -0.45062992125986057
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+            "fitted": {
+              "x": 246.70827554041233,
+              "y": 309.43305648818114,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 246.64748031496063,
+              "y": 309.3179527559055,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 0.049370078740139434,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": -0.45062992125986057
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+            "fitted": {
+              "x": 204.66162754971555,
+              "y": 180.02678017381072,
+              "width": 90.51755905511811,
+              "height": 90.51755905511811
+            },
+            "nearestQuantumProposed": {
+              "x": 204.61401574803148,
+              "y": 179.9523622047244,
+              "width": 90.68204724409448,
+              "height": 90.68204724409448
+            },
+            "minimumBoxInset": 80.0267716535433,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": 79.5267716535433
+          }
+        ],
+        "work": 35,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 5,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    },
+    {
+      "file": "cycle-guid-round1.pptx",
+      "sha256": "ef60d80cb13c97963292986d6107b9cf9cc1a89f82c88a02001566adb3e37e31",
+      "nodes": 3,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 130.4893552043598,
+      "maxAbsCoordinateDelta": 0.23549693664327265,
+      "rmsCoordinateDelta": 0.19959934606508561,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+          "cacheModelId": "{7BB70AFC-53E7-4E46-A8B0-B5A91C3BB027}",
+          "native": {
+            "x": 294.87299212598424,
+            "y": 100.03165354330709,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 294.75532239782,
+            "y": 100.00000000000001,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.11766972816423049,
+            "y": -0.031653543307072596,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+          "cacheModelId": "{A4814AE1-2A9D-2940-94C3-610AC96D6505}",
+          "native": {
+            "x": 392.83937007874016,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 392.62233880109,
+            "y": 269.5106447956401,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.2170312776501646,
+            "y": -0.20376465317878,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+          "cacheModelId": "{98CF106C-1009-5D46-8D1A-5A8D5EC089D4}",
+          "native": {
+            "x": 196.90661417322835,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 196.88830599455014,
+            "y": 269.51064479564013,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.018308178678211107,
+            "y": -0.20376465317872317,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 3,
+        "center": {
+          "x": 359.9999212598425,
+          "y": 278.2804199475065
+        },
+        "diameter": 130.25385826771654,
+        "radius": 113.12183331772684,
+        "observedGapRatio": 0.5042376890589404,
+        "maxFitResidual": 0.000003952614321178771,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.03165354330708681,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.23549693664330107,
+          "roundedMaxCoordinateDelta": 0.2355118110235992,
+          "maxRoundingAdjustment": 0.00003827801472766623,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 294.87299212598424,
+              "y": 100.03165749592141,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 294.75535433070866,
+              "y": 100,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.03165354330708681,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7183464566929132
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 392.8393735018046,
+              "y": 269.71440747251165,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 392.62236220472437,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+            "fitted": {
+              "x": 196.9066107501639,
+              "y": 269.7144074725117,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 196.8882677165354,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          }
+        ],
+        "work": 21,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 3,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    },
+    {
+      "file": "cycle-guid-round2.pptx",
+      "sha256": "303096459e6fddf27369b3e3c917044f84ff0fa837f1b93fc322fedc12b64f96",
+      "nodes": 3,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 130.4893552043598,
+      "maxAbsCoordinateDelta": 0.23549693664327265,
+      "rmsCoordinateDelta": 0.19959934606508561,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+          "cacheModelId": "{7BB70AFC-53E7-4E46-A8B0-B5A91C3BB027}",
+          "native": {
+            "x": 294.87299212598424,
+            "y": 100.03165354330709,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 294.75532239782,
+            "y": 100.00000000000001,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.11766972816423049,
+            "y": -0.031653543307072596,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+          "cacheModelId": "{A4814AE1-2A9D-2940-94C3-610AC96D6505}",
+          "native": {
+            "x": 392.83937007874016,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 392.62233880109,
+            "y": 269.5106447956401,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.2170312776501646,
+            "y": -0.20376465317878,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+          "cacheModelId": "{98CF106C-1009-5D46-8D1A-5A8D5EC089D4}",
+          "native": {
+            "x": 196.90661417322835,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 196.88830599455014,
+            "y": 269.51064479564013,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.018308178678211107,
+            "y": -0.20376465317872317,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 3,
+        "center": {
+          "x": 359.9999212598425,
+          "y": 278.2804199475065
+        },
+        "diameter": 130.25385826771654,
+        "radius": 113.12183331772684,
+        "observedGapRatio": 0.5042376890589404,
+        "maxFitResidual": 0.000003952614321178771,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.03165354330708681,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.23549693664330107,
+          "roundedMaxCoordinateDelta": 0.2355118110235992,
+          "maxRoundingAdjustment": 0.00003827801472766623,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 294.87299212598424,
+              "y": 100.03165749592141,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 294.75535433070866,
+              "y": 100,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.03165354330708681,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7183464566929132
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 392.8393735018046,
+              "y": 269.71440747251165,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 392.62236220472437,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+            "fitted": {
+              "x": 196.9066107501639,
+              "y": 269.7144074725117,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 196.8882677165354,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          }
+        ],
+        "work": 21,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 3,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    },
+    {
+      "file": "cycle-guid-round3.pptx",
+      "sha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+      "nodes": 3,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 130.4893552043598,
+      "maxAbsCoordinateDelta": 0.23549693664327265,
+      "rmsCoordinateDelta": 0.19959934606508561,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+          "cacheModelId": "{7BB70AFC-53E7-4E46-A8B0-B5A91C3BB027}",
+          "native": {
+            "x": 294.87299212598424,
+            "y": 100.03165354330709,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 294.75532239782,
+            "y": 100.00000000000001,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.11766972816423049,
+            "y": -0.031653543307072596,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+          "cacheModelId": "{A4814AE1-2A9D-2940-94C3-610AC96D6505}",
+          "native": {
+            "x": 392.83937007874016,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 392.62233880109,
+            "y": 269.5106447956401,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.2170312776501646,
+            "y": -0.20376465317878,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        },
+        {
+          "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+          "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+          "cacheModelId": "{98CF106C-1009-5D46-8D1A-5A8D5EC089D4}",
+          "native": {
+            "x": 196.90661417322835,
+            "y": 269.71440944881886,
+            "width": 130.25385826771654,
+            "height": 130.25385826771654
+          },
+          "proposed": {
+            "x": 196.88830599455014,
+            "y": 269.51064479564013,
+            "width": 130.48935520435984,
+            "height": 130.48935520435984
+          },
+          "delta": {
+            "x": -0.018308178678211107,
+            "y": -0.20376465317872317,
+            "width": 0.23549693664330107,
+            "height": 0.23549693664330107
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 3,
+        "center": {
+          "x": 359.9999212598425,
+          "y": 278.2804199475065
+        },
+        "diameter": 130.25385826771654,
+        "radius": 113.12183331772684,
+        "observedGapRatio": 0.5042376890589404,
+        "maxFitResidual": 0.000003952614321178771,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.03165354330708681,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.23549693664330107,
+          "roundedMaxCoordinateDelta": 0.2355118110235992,
+          "maxRoundingAdjustment": 0.00003827801472766623,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 294.87299212598424,
+              "y": 100.03165749592141,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 294.75535433070866,
+              "y": 100,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.03165354330708681,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7183464566929132
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 392.8393735018046,
+              "y": 269.71440747251165,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 392.62236220472437,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          },
+          {
+            "id": "{88888888-1234-4ABC-8DEF-000000000004}",
+            "fitted": {
+              "x": 196.9066107501639,
+              "y": 269.7144074725117,
+              "width": 130.25385826771654,
+              "height": 130.25385826771654
+            },
+            "nearestQuantumProposed": {
+              "x": 196.8882677165354,
+              "y": 269.5106299212598,
+              "width": 130.48937007874014,
+              "height": 130.48937007874014
+            },
+            "minimumBoxInset": 0.031732283464606326,
+            "strokeWidth": 1.5,
+            "strokeAlignment": "unspecified",
+            "centeredStrokeInsetHypothesis": -0.7182677165353937
+          }
+        ],
+        "work": 21,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 3,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    },
+    {
+      "file": "cycle-after-native-delete.pptx",
+      "sha256": "c37c9f1cdf1c1732b4230b03ee275825c0739c8eff2c72d4c98a32a0bb7ee46f",
+      "nodes": 4,
+      "frame": {
+        "x": 100,
+        "y": 100,
+        "width": 520,
+        "height": 300
+      },
+      "diameter": 96.11317230511222,
+      "maxAbsCoordinateDelta": 0.13663687204135044,
+      "rmsCoordinateDelta": 0.10901125812722243,
+      "tolerancePoints": 0.1,
+      "matchesWithinTolerance": false,
+      "deltas": [
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+          "sourceModelId": "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+          "cacheModelId": "{F92F534C-6A67-B047-8EE9-6272C36C6F3D}",
+          "native": {
+            "x": 312.0116535433071,
+            "y": 100.09787401574803,
+            "width": 95.97653543307086,
+            "height": 95.97653543307086
+          },
+          "proposed": {
+            "x": 311.9434138474439,
+            "y": 100.00000000000001,
+            "width": 96.11317230511222,
+            "height": 96.11317230511222
+          },
+          "delta": {
+            "x": -0.06823969586321255,
+            "y": -0.0978740157480189,
+            "width": 0.13663687204135044,
+            "height": 0.13663687204135044
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+          "sourceModelId": "{22E229B4-8996-304D-B994-D579F61B879C}",
+          "cacheModelId": "{CDB32826-DA04-5B46-A555-BDD0456D356F}",
+          "native": {
+            "x": 413.9255118110236,
+            "y": 202.0116535433071,
+            "width": 95.97653543307086,
+            "height": 95.97653543307086
+          },
+          "proposed": {
+            "x": 413.88682769488776,
+            "y": 201.94341384744388,
+            "width": 96.11317230511222,
+            "height": 96.11317230511222
+          },
+          "delta": {
+            "x": -0.03868411613586886,
+            "y": -0.06823969586321255,
+            "width": 0.13663687204135044,
+            "height": 0.13663687204135044
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+          "sourceModelId": "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+          "cacheModelId": "{F9CAABE4-758F-054B-B234-EFB69AC2B5E3}",
+          "native": {
+            "x": 312.0116535433071,
+            "y": 303.9255118110236,
+            "width": 95.97653543307086,
+            "height": 95.97653543307086
+          },
+          "proposed": {
+            "x": 311.94341384744394,
+            "y": 303.88682769488776,
+            "width": 96.11317230511222,
+            "height": 96.11317230511222
+          },
+          "delta": {
+            "x": -0.0682396958631557,
+            "y": -0.03868411613586886,
+            "width": 0.13663687204135044,
+            "height": 0.13663687204135044
+          }
+        },
+        {
+          "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+          "sourceModelId": "{F387286A-1AE3-714E-81B0-64C48F9D2B99}",
+          "cacheModelId": "{B783511B-D89A-5B4A-BC48-A635DB5A8166}",
+          "native": {
+            "x": 210.09787401574803,
+            "y": 202.0116535433071,
+            "width": 95.97653543307086,
+            "height": 95.97653543307086
+          },
+          "proposed": {
+            "x": 210,
+            "y": 201.94341384744394,
+            "width": 96.11317230511222,
+            "height": 96.11317230511222
+          },
+          "delta": {
+            "x": -0.09787401574803312,
+            "y": -0.0682396958631557,
+            "width": 0.13663687204135044,
+            "height": 0.13663687204135044
+          }
+        }
+      ],
+      "attribution": {
+        "profile": "cycle-spacing-observation-v1",
+        "consistentOrderedCircleRing": true,
+        "circleCount": 4,
+        "center": {
+          "x": 359.9999409448819,
+          "y": 249.9999409448819
+        },
+        "diameter": 95.97653543307086,
+        "radius": 101.91381889763781,
+        "observedGapRatio": 0.5016993917099899,
+        "maxFitResidual": 0.00001968503940474875,
+        "fitTolerancePoints": 0.001,
+        "minimumBoxInset": 0.09787401574803312,
+        "rounding": {
+          "quantumPoints": 0.00007874015748031496,
+          "maxCoordinateDelta": 0.13663687204135044,
+          "roundedMaxCoordinateDelta": 0.13661417322833813,
+          "maxRoundingAdjustment": 0.000028020672289130744,
+          "comparisonTolerancePoints": 0.1,
+          "nearestQuantumMeetsComparison": false
+        },
+        "rows": [
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000002}",
+            "fitted": {
+              "x": 312.01167322834647,
+              "y": 100.09785433070866,
+              "width": 95.97653543307086,
+              "height": 95.97653543307086
+            },
+            "nearestQuantumProposed": {
+              "x": 311.94338582677165,
+              "y": 100,
+              "width": 96.1131496062992,
+              "height": 96.1131496062992
+            },
+            "minimumBoxInset": 0.09787401574803312,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": -0.4021259842519669
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000003}",
+            "fitted": {
+              "x": 413.9254921259843,
+              "y": 202.01167322834647,
+              "width": 95.97653543307086,
+              "height": 95.97653543307086
+            },
+            "nearestQuantumProposed": {
+              "x": 413.88685039370074,
+              "y": 201.94338582677165,
+              "width": 96.1131496062992,
+              "height": 96.1131496062992
+            },
+            "minimumBoxInset": 102.01165354330709,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": 101.51165354330709
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000005}",
+            "fitted": {
+              "x": 312.01167322834647,
+              "y": 303.9254921259843,
+              "width": 95.97653543307086,
+              "height": 95.97653543307086
+            },
+            "nearestQuantumProposed": {
+              "x": 311.94338582677165,
+              "y": 303.8868503937008,
+              "width": 96.1131496062992,
+              "height": 96.1131496062992
+            },
+            "minimumBoxInset": 0.09795275590551,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": -0.40204724409449
+          },
+          {
+            "id": "{99999999-1234-4ABC-8DEF-000000000006}",
+            "fitted": {
+              "x": 210.09785433070866,
+              "y": 202.0116732283465,
+              "width": 95.97653543307086,
+              "height": 95.97653543307086
+            },
+            "nearestQuantumProposed": {
+              "x": 210,
+              "y": 201.94338582677165,
+              "width": 96.1131496062992,
+              "height": 96.1131496062992
+            },
+            "minimumBoxInset": 102.01165354330709,
+            "strokeWidth": 1,
+            "strokeAlignment": "ctr",
+            "centeredStrokeInsetHypothesis": 101.51165354330709
+          }
+        ],
+        "work": 28,
+        "limitations": [
+          "Parameters are observed from one ordered snapshot, not native solver rules or correction constants.",
+          "Stroke inset is explicitly a centered-stroke hypothesis when raw alignment is unspecified.",
+          "Ring fitting and EMU rounding do not explain text fitting, arrows, paints or cache freshness."
+        ]
+      },
+      "unmeasuredTextNodes": 4,
+      "independentPackingAndDeltaCheck": true,
+      "independentSpacingAndQuantizationCheck": true
+    }
+  ],
+  "svgFiles": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-before-native-delete.svg",
+      "sha256": "b0c651fd362bdf24e3fac338cd66d4a4e9b12acab61301c3bf9e04b36210b9d5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-round2-theme.svg",
+      "sha256": "b0c651fd362bdf24e3fac338cd66d4a4e9b12acab61301c3bf9e04b36210b9d5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-guid-round1.svg",
+      "sha256": "1dce7d2e49ef5dd2a4d79b3fa1f30f47653aa8c4d62fd6eed5b75280f38e6b88"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-guid-round2.svg",
+      "sha256": "1dce7d2e49ef5dd2a4d79b3fa1f30f47653aa8c4d62fd6eed5b75280f38e6b88"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-guid-round3.svg",
+      "sha256": "1dce7d2e49ef5dd2a4d79b3fa1f30f47653aa8c4d62fd6eed5b75280f38e6b88"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cycle-layout/run-BcMSqR/cycle-after-native-delete.svg",
+      "sha256": "72cc8db2d822135f6d5d848b04141eeeada81a6f47cf0cebb31651962727a0bb"
+    }
+  ],
+  "limitations": [
+    "Offline comparisons over retained native outputs; no new UI replay or native authoring admission.",
+    "0.1-point tolerance is an explicit research comparison threshold; mismatches remain mismatches.",
+    "Only circle boxes are compared. Arrows, text fitting/typography, cache freshness and other native parameters are unverified.",
+    "Two-node curved geometry is a proposed policy with no native comparison. LibreOffice ellipse observations remain separate."
+  ],
+  "strokeControl": {
+    "before": {
+      "file": "cycle-before-native-delete.pptx",
+      "sha256": "2eed744af1eef4f53e7656e8f8b800a375894c06ee0a9774f268e01bd084a4fd",
+      "widthsPoints": [
+        1.5
+      ]
+    },
+    "after": {
+      "file": "cycle-round2-theme.pptx",
+      "sha256": "68b1d2e58687850e75e4f86e589dc8492a476028e5a84f1fe2a14ae0f60f58eb",
+      "widthsPoints": [
+        1
+      ]
+    },
+    "exactCircleGeometryRetained": true,
+    "scope": "Observed theme-change pair only; does not prove arbitrary stroke changes never affect native re-layout."
+  }
+}

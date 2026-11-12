@@ -1,0 +1,69 @@
+{
+  "scope": "One deliberately mismatched opaque red SVG/blue PNG pair plus blue control, one PowerPoint save/reopen. Sampled screen colors and package media are checked; UI provenance is observed, and arbitrary SVG, alpha, edits and other versions remain unverified.",
+  "reopenRounds": 1,
+  "artifactDirectory": ".tmp/native-svg-pair",
+  "source": {
+    "SVG red / PNG blue": {
+      "size": [
+        20,
+        20
+      ],
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "baseSha256": "fd298a04c9d501c6bc2f4900c902cbe49f5031717600c7a0de9a6ebe83803ee9",
+      "svgSha256": "342048b552c12845e6d8d6ce03f3761ecb89b4b4dfb7ea1e8a247557b4dc9bfe"
+    },
+    "PNG blue control": {
+      "size": [
+        20,
+        20
+      ],
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "baseSha256": "fd298a04c9d501c6bc2f4900c902cbe49f5031717600c7a0de9a6ebe83803ee9",
+      "svgSha256": null
+    }
+  },
+  "saved": {
+    "SVG red / PNG blue": {
+      "size": [
+        40,
+        40
+      ],
+      "color": [
+        255,
+        0,
+        0
+      ],
+      "baseSha256": "7a7206f45f9ba5bd42b1f7d40889ad8ccc1bfe78e5bb6d442e8dd256d0d8a9b9",
+      "svgSha256": "342048b552c12845e6d8d6ce03f3761ecb89b4b4dfb7ea1e8a247557b4dc9bfe"
+    },
+    "PNG blue control": {
+      "size": [
+        20,
+        20
+      ],
+      "color": [
+        0,
+        0,
+        255
+      ],
+      "baseSha256": "fd298a04c9d501c6bc2f4900c902cbe49f5031717600c7a0de9a6ebe83803ee9",
+      "svgSha256": null
+    }
+  },
+  "sha256": {
+    "valid-source.pptx": "e3822de127bcd9034665d16ac67b49720150eeb1dde404246ab2323dc8dd601e",
+    "native-round-1.pptx": "4fc8a689ca8b2283c1f4af6be0a779de0c808103ad557e68ffe4386a5ede9049",
+    "first.ax.txt": "82c7116d8a64bce1e3c969817df2397a72ffac2d2ab6c2de30eb93f6dd1bba69",
+    "first.jpg": "efbbaa1199bb3a339667e54a659ce51888477a7c053db972b4edbc6c63cc1e71",
+    "reopen.ax.txt": "f3067eaf3998390a62449566bff2fc4337704a8cd53800c6c8c56aaeb8954296",
+    "reopen.jpg": "647484ccbba658e5ef6055a1c8bc7c7633011c3f20817d83d4370ae775248c79"
+  }
+}

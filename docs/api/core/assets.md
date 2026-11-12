@@ -1,16 +1,18 @@
 # Assets
 
-Core owns asset identity and descriptive metadata. It deliberately does not read local files, download URLs, store binary payloads, hash bytes, or create PPTX media relationships.
+Core owns asset identity, descriptive metadata and immutable byte-source snapshots. It does not read local files, download URLs, decode images, hash content or create PPTX media relationships.
 
 ## `registerAsset(input)`
 
 ```ts
-registerAsset(input: PresentationAssetInput): PresentationAsset;
+registerAsset(input: PresentationAssetInput, options?: AssetRegistrationOptions): PresentationAsset;
 
 interface PresentationAssetInput {
   id?: string;
   kind: "image";
-  source: { type: "path" | "url"; value: string };
+  source: { type: "path" | "url"; value: string }
+    | { type: "bytes"; value: Uint8Array; encoding?: "raw" }
+    | { type: "bytes"; value: string; encoding: "base64" };
   mimeType?: string;
   width?: number;
   height?: number;
@@ -26,7 +28,7 @@ interface PresentationAssetInput {
 | --- | --- | --- |
 | `id` | no | Stable ID; generated when omitted. |
 | `kind` | yes | Currently only `image`. |
-| `source` | yes | Environment-neutral path or URL descriptor. |
+| `source` | yes | Path/URL descriptor, raw Uint8Array, or canonical Base64 byte source. |
 | `mimeType` | no | Declared media type; exporter may infer common raster types when omitted. |
 | `width`, `height` | no | Positive source dimensions used for `contain` and `cover` layout. |
 | `accessibility` | no | Asset-level description and decorative flag. |
@@ -61,6 +63,8 @@ slide.addElement({
 - Re-registering the same identity with different metadata throws an error.
 - Reusing an ID for a different asset throws an error.
 
+For opt-in byte content matching, stable-ID replacement, reference inventory and guarded deletion/cleanup, see [asset lifecycle](../asset-lifecycle.md).
+
 ## `getAsset(assetId)`
 
 ```ts
@@ -71,8 +75,12 @@ Returns the registered immutable asset or `undefined`. It does not load or verif
 
 ## Runtime loading boundary
 
-The browser-neutral exporter loads URL sources and rejects path sources with a warning. The Node.js exporter loads both URL and local path sources. See [PPTX exporter](../pptx-exporter.md) for runtime behavior.
+Both exporter entries load supported byte sources. The browser-neutral exporter loads URL sources and rejects path sources with a warning unless an explicit resolver handles them. The Node.js exporter additionally loads local path sources. See [PPTX exporter](../pptx-exporter.md) for runtime behavior.
 
 ## Validation
 
 Validation reports empty source values, non-positive dimensions, and image elements that reference missing assets. Asset loading failures happen later in the exporter and are returned as export warnings so other valid content can still be packaged.
+
+## Byte-backed resources
+
+See [byte assets and explicit export resolution](../byte-assets.md) for immutable registration snapshots, supported image signatures, self-contained preview, export resolvers, resource budgets and cancellation.

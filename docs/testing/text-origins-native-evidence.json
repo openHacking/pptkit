@@ -1,0 +1,1824 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T20:48:51.978461+00:00",
+  "directory": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9",
+  "application": "PowerPoint 16.104 (25121423), captured About panel",
+  "sourceSha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d",
+  "firstOpenPdf": [
+    {
+      "page": 1,
+      "text": "Shared\n1. Next Plain\nShape\n",
+      "spans": [
+        {
+          "size": 13.007598876953125,
+          "flags": 22,
+          "bidi": 0,
+          "char_flags": 24,
+          "font": "Arial-BoldItalicMT",
+          "color": 1193046,
+          "alpha": 255,
+          "ascender": 0.9049999713897705,
+          "descender": -0.21199999749660492,
+          "text": "Shared",
+          "origin": [
+            51.29167175292969,
+            341.23992919921875
+          ],
+          "bbox": [
+            51.29167175292969,
+            329.461181640625,
+            96.74616241455078,
+            343.9991455078125
+          ]
+        },
+        {
+          "size": 19.011104583740234,
+          "flags": 20,
+          "bidi": 0,
+          "char_flags": 24,
+          "font": "Arial-BoldMT",
+          "color": 1193046,
+          "alpha": 255,
+          "ascender": 0.9049999713897705,
+          "descender": -0.21199999749660492,
+          "text": "1. Next",
+          "origin": [
+            48.91667175292969,
+            137.23992919921875
+          ],
+          "bbox": [
+            48.91667175292969,
+            120.02481842041016,
+            111.54066467285156,
+            141.27264404296875
+          ]
+        },
+        {
+          "size": 19.011104583740234,
+          "flags": 4,
+          "bidi": 0,
+          "char_flags": 16,
+          "font": "ArialMT",
+          "color": 1193046,
+          "alpha": 255,
+          "ascender": 0.9049999713897705,
+          "descender": -0.21199999749660492,
+          "text": " Plain",
+          "origin": [
+            111.55729675292969,
+            137.23992919921875
+          ],
+          "bbox": [
+            111.55729675292969,
+            120.02481842041016,
+            159.1302947998047,
+            141.27264404296875
+          ]
+        },
+        {
+          "size": 13.007598876953125,
+          "flags": 22,
+          "bidi": 0,
+          "char_flags": 24,
+          "font": "Arial-BoldItalicMT",
+          "color": 1193046,
+          "alpha": 255,
+          "ascender": 0.9049999713897705,
+          "descender": -0.21199999749660492,
+          "text": "Shape",
+          "origin": [
+            51.29167175292969,
+            214.2799072265625
+          ],
+          "bbox": [
+            51.29167175292969,
+            202.5011444091797,
+            91.47206115722656,
+            217.03912353515625
+          ]
+        }
+      ],
+      "rasterSha256": "cfc2b2701bcc5fa78787640505a1169fb93b44170938ae11bdac9dd941a7cd0a",
+      "traceSha256": "f5e62d166c244278d8a8a3ffd351583f2feb81ef2c35b44951e202298f9fcd26",
+      "drawingsSha256": "5e94d842772991b9090698e774bec93ab07bab98d89dfe3d1376f4ddc3700022",
+      "fontPrograms": [
+        [
+          "Arial-BoldItalicMT",
+          "a8112d30edf6a1ab3e06b6502b52a84accd5332afecc622fa704a19c2a5c2c0f"
+        ],
+        [
+          "Arial-BoldMT",
+          "adb3aed15dab607145230e8fa0eed11c7e70c0c7a615e15f6ecf7afed7b524e1"
+        ],
+        [
+          "ArialMT",
+          "a0d0f7a775a07b555568df858c582a37b7ceae7d9a6acbc9ba94e3a4be47b867"
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "text": "Other\n",
+      "spans": [
+        {
+          "size": 14.008182525634766,
+          "flags": 4,
+          "bidi": 0,
+          "char_flags": 16,
+          "font": "ArialMT",
+          "color": 11259375,
+          "alpha": 255,
+          "ascender": 0.9049999713897705,
+          "descender": -0.21199999749660492,
+          "text": "Other",
+          "origin": [
+            54.45832824707031,
+            115.63995361328125
+          ],
+          "bbox": [
+            54.45832824707031,
+            102.95513916015625,
+            90.00153350830078,
+            118.6114273071289
+          ]
+        }
+      ],
+      "rasterSha256": "39228d896fbd9f0412d289ae18246c006090186b42cbee7c84c28ff83bc43f6d",
+      "traceSha256": "3c052fd5f87a82887af6b32c0b8b05b4781cc9da22a34d49baeb5acf132384f6",
+      "drawingsSha256": "1e2bc46f400d7ec3b10239e4b30e59d56ee64e0dbea620dd9940556dd5f88ac2",
+      "fontPrograms": [
+        [
+          "ArialMT",
+          "b9f3f9fcb239ab012f8708e5ee2191cb21f79f37f92c879896865ac9939228be"
+        ]
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1.pptx",
+      "sha256": "fab1638c44f25df1a9b71d7585b9d4f68eaee792caff79d10c71adfa45a76104",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml"
+        }
+      ],
+      "pdf": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1.pdf",
+      "pdfSha256": "7c4691b3da914443fa70810d74505822039ae95f1608f6c302d5b568e94a73ca",
+      "pages": [
+        {
+          "page": 1,
+          "text": "Shared\n1. Next Plain\nShape\n",
+          "spans": [
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shared",
+              "origin": [
+                51.29167175292969,
+                341.23992919921875
+              ],
+              "bbox": [
+                51.29167175292969,
+                329.461181640625,
+                96.74616241455078,
+                343.9991455078125
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 20,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "1. Next",
+              "origin": [
+                48.91667175292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                48.91667175292969,
+                120.02481842041016,
+                111.54066467285156,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": " Plain",
+              "origin": [
+                111.55729675292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                111.55729675292969,
+                120.02481842041016,
+                159.1302947998047,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shape",
+              "origin": [
+                51.29167175292969,
+                214.2799072265625
+              ],
+              "bbox": [
+                51.29167175292969,
+                202.5011444091797,
+                91.47206115722656,
+                217.03912353515625
+              ]
+            }
+          ],
+          "rasterSha256": "cfc2b2701bcc5fa78787640505a1169fb93b44170938ae11bdac9dd941a7cd0a",
+          "traceSha256": "f5e62d166c244278d8a8a3ffd351583f2feb81ef2c35b44951e202298f9fcd26",
+          "drawingsSha256": "5e94d842772991b9090698e774bec93ab07bab98d89dfe3d1376f4ddc3700022",
+          "fontPrograms": [
+            [
+              "Arial-BoldItalicMT",
+              "a8112d30edf6a1ab3e06b6502b52a84accd5332afecc622fa704a19c2a5c2c0f"
+            ],
+            [
+              "Arial-BoldMT",
+              "adb3aed15dab607145230e8fa0eed11c7e70c0c7a615e15f6ecf7afed7b524e1"
+            ],
+            [
+              "ArialMT",
+              "a0d0f7a775a07b555568df858c582a37b7ceae7d9a6acbc9ba94e3a4be47b867"
+            ]
+          ]
+        },
+        {
+          "page": 2,
+          "text": "Other\n",
+          "spans": [
+            {
+              "size": 14.008182525634766,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 11259375,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Other",
+              "origin": [
+                54.45832824707031,
+                115.63995361328125
+              ],
+              "bbox": [
+                54.45832824707031,
+                102.95513916015625,
+                90.00153350830078,
+                118.6114273071289
+              ]
+            }
+          ],
+          "rasterSha256": "39228d896fbd9f0412d289ae18246c006090186b42cbee7c84c28ff83bc43f6d",
+          "traceSha256": "3c052fd5f87a82887af6b32c0b8b05b4781cc9da22a34d49baeb5acf132384f6",
+          "drawingsSha256": "1e2bc46f400d7ec3b10239e4b30e59d56ee64e0dbea620dd9940556dd5f88ac2",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "b9f3f9fcb239ab012f8708e5ee2191cb21f79f37f92c879896865ac9939228be"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2.pptx",
+      "sha256": "f010f35ca000ddfe1b9e8f155cacd3c20ca4ab2de319c3ccbc422cd88bc91d74",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml"
+        }
+      ],
+      "pdf": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2.pdf",
+      "pdfSha256": "d0724cc9f4699cfc83d4100648ac1505fcd72e2d544911a999ac84f7882cc6d3",
+      "pages": [
+        {
+          "page": 1,
+          "text": "Shared\n1. Next Plain\nShape\n",
+          "spans": [
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shared",
+              "origin": [
+                51.29167175292969,
+                341.23992919921875
+              ],
+              "bbox": [
+                51.29167175292969,
+                329.461181640625,
+                96.74616241455078,
+                343.9991455078125
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 20,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "1. Next",
+              "origin": [
+                48.91667175292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                48.91667175292969,
+                120.02481842041016,
+                111.54066467285156,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": " Plain",
+              "origin": [
+                111.55729675292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                111.55729675292969,
+                120.02481842041016,
+                159.1302947998047,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shape",
+              "origin": [
+                51.29167175292969,
+                214.2799072265625
+              ],
+              "bbox": [
+                51.29167175292969,
+                202.5011444091797,
+                91.47206115722656,
+                217.03912353515625
+              ]
+            }
+          ],
+          "rasterSha256": "cfc2b2701bcc5fa78787640505a1169fb93b44170938ae11bdac9dd941a7cd0a",
+          "traceSha256": "f5e62d166c244278d8a8a3ffd351583f2feb81ef2c35b44951e202298f9fcd26",
+          "drawingsSha256": "5e94d842772991b9090698e774bec93ab07bab98d89dfe3d1376f4ddc3700022",
+          "fontPrograms": [
+            [
+              "Arial-BoldItalicMT",
+              "a8112d30edf6a1ab3e06b6502b52a84accd5332afecc622fa704a19c2a5c2c0f"
+            ],
+            [
+              "Arial-BoldMT",
+              "adb3aed15dab607145230e8fa0eed11c7e70c0c7a615e15f6ecf7afed7b524e1"
+            ],
+            [
+              "ArialMT",
+              "a0d0f7a775a07b555568df858c582a37b7ceae7d9a6acbc9ba94e3a4be47b867"
+            ]
+          ]
+        },
+        {
+          "page": 2,
+          "text": "Other\n",
+          "spans": [
+            {
+              "size": 14.008182525634766,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 11259375,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Other",
+              "origin": [
+                54.45832824707031,
+                115.63995361328125
+              ],
+              "bbox": [
+                54.45832824707031,
+                102.95513916015625,
+                90.00153350830078,
+                118.6114273071289
+              ]
+            }
+          ],
+          "rasterSha256": "39228d896fbd9f0412d289ae18246c006090186b42cbee7c84c28ff83bc43f6d",
+          "traceSha256": "3c052fd5f87a82887af6b32c0b8b05b4781cc9da22a34d49baeb5acf132384f6",
+          "drawingsSha256": "1e2bc46f400d7ec3b10239e4b30e59d56ee64e0dbea620dd9940556dd5f88ac2",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "b9f3f9fcb239ab012f8708e5ee2191cb21f79f37f92c879896865ac9939228be"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3.pptx",
+      "sha256": "d492d3d2e3b831e9b96c94d2b2436506d32bad99ed8d5bea32bd3e2e53fa07f0",
+      "domains": [
+        {
+          "page": 1,
+          "id": "256",
+          "slide": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml"
+        },
+        {
+          "page": 2,
+          "id": "257",
+          "slide": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "master": "ppt/slideMasters/slideMaster1.xml",
+          "theme": "ppt/theme/theme1.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml"
+        }
+      ],
+      "pdf": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3.pdf",
+      "pdfSha256": "b51b507ccec93ed6da3f77639f00ef672b6f9405078b269ca06d9a66881d0f96",
+      "pages": [
+        {
+          "page": 1,
+          "text": "Shared\n1. Next Plain\nShape\n",
+          "spans": [
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shared",
+              "origin": [
+                51.29167175292969,
+                341.23992919921875
+              ],
+              "bbox": [
+                51.29167175292969,
+                329.461181640625,
+                96.74616241455078,
+                343.9991455078125
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 20,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "1. Next",
+              "origin": [
+                48.91667175292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                48.91667175292969,
+                120.02481842041016,
+                111.54066467285156,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 19.011104583740234,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": " Plain",
+              "origin": [
+                111.55729675292969,
+                137.23992919921875
+              ],
+              "bbox": [
+                111.55729675292969,
+                120.02481842041016,
+                159.1302947998047,
+                141.27264404296875
+              ]
+            },
+            {
+              "size": 13.007598876953125,
+              "flags": 22,
+              "bidi": 0,
+              "char_flags": 24,
+              "font": "Arial-BoldItalicMT",
+              "color": 1193046,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Shape",
+              "origin": [
+                51.29167175292969,
+                214.2799072265625
+              ],
+              "bbox": [
+                51.29167175292969,
+                202.5011444091797,
+                91.47206115722656,
+                217.03912353515625
+              ]
+            }
+          ],
+          "rasterSha256": "cfc2b2701bcc5fa78787640505a1169fb93b44170938ae11bdac9dd941a7cd0a",
+          "traceSha256": "f5e62d166c244278d8a8a3ffd351583f2feb81ef2c35b44951e202298f9fcd26",
+          "drawingsSha256": "5e94d842772991b9090698e774bec93ab07bab98d89dfe3d1376f4ddc3700022",
+          "fontPrograms": [
+            [
+              "Arial-BoldItalicMT",
+              "a8112d30edf6a1ab3e06b6502b52a84accd5332afecc622fa704a19c2a5c2c0f"
+            ],
+            [
+              "Arial-BoldMT",
+              "adb3aed15dab607145230e8fa0eed11c7e70c0c7a615e15f6ecf7afed7b524e1"
+            ],
+            [
+              "ArialMT",
+              "a0d0f7a775a07b555568df858c582a37b7ceae7d9a6acbc9ba94e3a4be47b867"
+            ]
+          ]
+        },
+        {
+          "page": 2,
+          "text": "Other\n",
+          "spans": [
+            {
+              "size": 14.008182525634766,
+              "flags": 4,
+              "bidi": 0,
+              "char_flags": 16,
+              "font": "ArialMT",
+              "color": 11259375,
+              "alpha": 255,
+              "ascender": 0.9049999713897705,
+              "descender": -0.21199999749660492,
+              "text": "Other",
+              "origin": [
+                54.45832824707031,
+                115.63995361328125
+              ],
+              "bbox": [
+                54.45832824707031,
+                102.95513916015625,
+                90.00153350830078,
+                118.6114273071289
+              ]
+            }
+          ],
+          "rasterSha256": "39228d896fbd9f0412d289ae18246c006090186b42cbee7c84c28ff83bc43f6d",
+          "traceSha256": "3c052fd5f87a82887af6b32c0b8b05b4781cc9da22a34d49baeb5acf132384f6",
+          "drawingsSha256": "1e2bc46f400d7ec3b10239e4b30e59d56ee64e0dbea620dd9940556dd5f88ac2",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "b9f3f9fcb239ab012f8708e5ee2191cb21f79f37f92c879896865ac9939228be"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "name": "actual-missing-shared",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/first.pdf",
+      "sha256": "a6f6983abd0a351928af7e21b0f937b06267466f9f91d4d58c47d175a81711b5",
+      "reason": "Missing/reordered visible text (including Shared)"
+    },
+    {
+      "name": "bold",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/bold.pptx",
+      "sha256": "000fc5fc17efb1804b9cb787fa3ed724b862d4d964047b9a702a8ab13e62cb7c",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "italic",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/italic.pptx",
+      "sha256": "de679a90e022c77510c68abe4c8483d7294bc07862659d1936543f71c9ddb3f5",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "underline",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/underline.pptx",
+      "sha256": "9ce930c9785de14e0bafe1fcc6a1da32ded6589cddd80c28695e3d37169966e3",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "strike",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/strike.pptx",
+      "sha256": "67feb2e853a039bc7d2e02ee2cfa1332eb5d01bf003d671268abb375715cdc68",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "duplicate-placeholder",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/duplicate-placeholder.pptx",
+      "sha256": "ec1de90e27d85f24da4e0d6b8bc58a1c8956bcece755fc505157db71d0319b72",
+      "reason": "('Unapproved semantic change', ['layout/2147483650'])"
+    },
+    {
+      "name": "lost-shared-default",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/lost-shared-default.pptx",
+      "sha256": "133c884782f2d96986d2634a747e4528fb23abbd11173d9440a3423ca9c112eb",
+      "reason": "('Unapproved semantic change', ['layout/2147483650'])"
+    },
+    {
+      "name": "wrong-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-text.pptx",
+      "sha256": "7f81078d0ef556bf245a83059bec847f9fc52c5178d4a4338f898dcf882010aa",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "wrong-color",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-color.pptx",
+      "sha256": "1088793be50a27ee336581916e49b1a3dc79c06f806aae2287d20ab8a0285432",
+      "reason": "('Unapproved semantic change', ['layout/2147483650'])"
+    },
+    {
+      "name": "bad-scale",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/bad-scale.pptx",
+      "sha256": "d1f1af100184ce1127d39e90ebb7fe8cf8ec4276b75950ef567ef127da51a3ae",
+      "reason": "('Unapproved semantic change', ['slide/256'])"
+    },
+    {
+      "name": "notes-geometry",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/notes-geometry.pptx",
+      "sha256": "d6575b38314a0b79ceb2c4cab2f9c057b4bc853ba0daaa46a90178fd42cd1ee5",
+      "reason": "('Unapproved semantic change', ['notes-master'])"
+    },
+    {
+      "name": "cross-notes-theme",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/cross-notes-theme.pptx",
+      "sha256": "5f14d297f9f20c30d1427725dfa6dbb347e57fae0c090af2704b2e6f0137fbbe",
+      "reason": ""
+    },
+    {
+      "name": "id-collision",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/id-collision.pptx",
+      "sha256": "69c10afef92a22a5d7a9b1833b1da91538ef1c536cd9167a45bcd3ba41e77ed7",
+      "reason": "Wrong owner graph/ID namespace"
+    },
+    {
+      "name": "wrong-layout-owner",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-layout-owner.pptx",
+      "sha256": "5dda3d19dcf5e9c1baf5df84d91d0a4e6e9e515224ee1ce375332b8931495bee",
+      "reason": "Wrong layout owner"
+    },
+    {
+      "name": "covered-plain",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/covered-plain.pdf",
+      "sha256": "acf49c1772dfae58aa9fdf2c1443f6962aa688333a436aab3da0ac9cea6f4f97",
+      "reason": "Changed full raster"
+    },
+    {
+      "name": "swapped-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/swapped-pages.pdf",
+      "sha256": "a4ae6fadb4cf19c50c62e0199d650d5e5a8986c88299eff066c69975c027d290",
+      "reason": "Missing/reordered visible text (including Shared)"
+    },
+    {
+      "name": "same-raster-font-advance",
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/font-advance.pdf",
+      "sha256": "4aa7cb9c5a5583f0031a19a325444bb59cab5b4935243c7859610ad933b99d74",
+      "reason": "Changed raw glyph trace",
+      "sameRasterAsPositive": true,
+      "metricBefore": [
+        2048,
+        1593,
+        99,
+        "1d05dba5800bda6e679447d2ab7a5817c3c1fb14f4bc460bc62d5c8921c79e4a"
+      ],
+      "metricAfter": [
+        2048,
+        1594,
+        99,
+        "1d05dba5800bda6e679447d2ab7a5817c3c1fb14f4bc460bc62d5c8921c79e4a"
+      ]
+    }
+  ],
+  "firstSaveChanges": [
+    "Default fontScale=100000 omitted",
+    "Default startAt=1 omitted",
+    "Body leading zero-character alpha-zero run removed",
+    "Empty group child run removed, exact full insertion style retained at endParaRPr"
+  ],
+  "noncontentFirstSaveChanges": {
+    "ppt/presProps.xml": {
+      "before": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><p:presentationPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"/>",
+      "after": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<p:presentationPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:extLst><p:ext uri=\"{E76CE94A-603C-4142-B9EB-6D1370010A27}\"><p14:discardImageEditData xmlns:p14=\"http://schemas.microsoft.com/office/powerpoint/2010/main\" val=\"0\"/></p:ext><p:ext uri=\"{D31A062A-798A-4329-ABDD-BBA856620510}\"><p14:defaultImageDpi xmlns:p14=\"http://schemas.microsoft.com/office/powerpoint/2010/main\" val=\"220\"/></p:ext><p:ext uri=\"{FD5EFAAD-0ECE-453E-9831-46B23BE46B34}\"><p15:chartTrackingRefBased xmlns:p15=\"http://schemas.microsoft.com/office/powerpoint/2012/main\" val=\"0\"/></p:ext></p:extLst></p:presentationPr>"
+    },
+    "ppt/viewProps.xml": {
+      "before": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><p:viewPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:normalViewPr horzBarState=\"maximized\"><p:restoredLeft sz=\"15611\"/><p:restoredTop sz=\"94610\"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr snapToGrid=\"0\" snapToObjects=\"1\"><p:cViewPr varScale=\"1\"><p:scale><a:sx n=\"136\" d=\"100\"/><a:sy n=\"136\" d=\"100\"/></p:scale><p:origin x=\"216\" y=\"312\"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr><p:notesTextViewPr><p:cViewPr><p:scale><a:sx n=\"1\" d=\"1\"/><a:sy n=\"1\" d=\"1\"/></p:scale><p:origin x=\"0\" y=\"0\"/></p:cViewPr></p:notesTextViewPr><p:gridSpacing cx=\"76200\" cy=\"76200\"/></p:viewPr>",
+      "after": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<p:viewPr xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\"><p:normalViewPr horzBarState=\"maximized\"><p:restoredLeft sz=\"15611\"/><p:restoredTop sz=\"94610\"/></p:normalViewPr><p:slideViewPr><p:cSldViewPr snapToGrid=\"0\" snapToObjects=\"1\"><p:cViewPr varScale=\"1\"><p:scale><a:sx n=\"128\" d=\"100\"/><a:sy n=\"128\" d=\"100\"/></p:scale><p:origin x=\"480\" y=\"176\"/></p:cViewPr><p:guideLst/></p:cSldViewPr></p:slideViewPr><p:notesTextViewPr><p:cViewPr><p:scale><a:sx n=\"1\" d=\"1\"/><a:sy n=\"1\" d=\"1\"/></p:scale><p:origin x=\"0\" y=\"0\"/></p:cViewPr></p:notesTextViewPr><p:gridSpacing cx=\"76200\" cy=\"76200\"/></p:viewPr>"
+    },
+    "docProps/core.xml": {
+      "before": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cpTerms=\"http://purl.org/dc/terms/\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:revision>1</cp:revision><dc:language>en-US</dc:language></cp:coreProperties>",
+      "after": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>1</cp:revision><cp:lastPrinted>2026-10-26T19:56:58Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T19:58:49Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>"
+    },
+    "docProps/app.xml": {
+      "before": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\"><Application>PPTKit</Application><Slides>2</Slides><PresentationFormat>On-screen Show (16:9)</PresentationFormat></Properties>",
+      "after": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>0</TotalTime><Words>4</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>3</Paragraphs><Slides>2</Slides><Notes>2</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"6\" baseType=\"variant\"><vt:variant><vt:lpstr>已用的字体</vt:lpstr></vt:variant><vt:variant><vt:i4>1</vt:i4></vt:variant><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>1</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>2</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"4\" baseType=\"lpstr\"><vt:lpstr>Arial</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+    }
+  },
+  "laterMetadataChanges": [
+    "core modified/lastPrinted timestamps",
+    "app TotalTime 0→3→3 only"
+  ],
+  "dependencies": [
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/text-format-native.py",
+      "sha256": "a6c69d2b4a44ec9863d2a1389e6c17a2f3ab9bd0a7ce0016020c5bf545c8d287"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-native.py",
+      "sha256": "4a962fa1e47da9fd9b2bd0ce8cdd642913915e0c9834d63f9a9070669d6fd294"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-operations.py",
+      "sha256": "9d7b0694310fc1ed82808b521da8f0c1cfa86117e72f081350d2a8ce2c8bfc2a"
+    }
+  ],
+  "total": {
+    "rounds": 3,
+    "firstOpenPages": 2,
+    "reopenedPages": 6,
+    "zipNegatives": 13,
+    "pdfNegatives": 4
+  },
+  "scope": "Named style/reset/layout-artwork native stability only. Source zero-character identity loss is explicit. SVG/native physical list indentation and font/shaping parity, live native template links, broad script-language behavior and source style writes remain open.",
+  "listControls": {
+    "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control-first.pdf",
+    "sha256": "ef79f2d73b0fe69aa22d8feb60ed30b3919649032782df478e7d7aeb671f8560",
+    "observations": [
+      {
+        "case": [
+          "zero",
+          0,
+          27,
+          true,
+          false
+        ],
+        "text": "1. X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              59.50537109375,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": " ",
+            "origin": [
+              64.78736877441406,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              70.29167175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 21.375
+      },
+      {
+        "case": [
+          "zero-mixed",
+          0,
+          27,
+          true,
+          true
+        ],
+        "text": "1. X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              59.50537109375,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": " ",
+            "origin": [
+              64.78736877441406,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              70.29167175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 21.375
+      },
+      {
+        "case": [
+          "normal",
+          27,
+          27,
+          true,
+          false
+        ],
+        "text": "1. X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              59.50537109375,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": " ",
+            "origin": [
+              64.78736877441406,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              70.29167175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 21.375
+      },
+      {
+        "case": [
+          "wide",
+          50,
+          27,
+          true,
+          false
+        ],
+        "text": "1. X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              67.125,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              77.71369934082031,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": " ",
+            "origin": [
+              82.99569702148438,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              88.5,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 39.58332824707031
+      },
+      {
+        "case": [
+          "overhang",
+          10,
+          20,
+          true,
+          false
+        ],
+        "text": "1.X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              59.50537109375,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              64.75,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 15.833328247070312
+      },
+      {
+        "case": [
+          "nohang",
+          0,
+          0,
+          true,
+          false
+        ],
+        "text": "1.X\nX\n",
+        "characters": [
+          {
+            "character": "1",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": ".",
+            "origin": [
+              59.50537109375,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              64.75,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 15.833328247070312
+      },
+      {
+        "case": [
+          "plain-overhang",
+          0,
+          27,
+          false,
+          false
+        ],
+        "text": "X\nX\n",
+        "characters": [
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 0.0
+      },
+      {
+        "case": [
+          "plain",
+          0,
+          0,
+          false,
+          false
+        ],
+        "text": "X\nX\n",
+        "characters": [
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              116.8399658203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          },
+          {
+            "character": "X",
+            "origin": [
+              48.91667175292969,
+              212.11993408203125
+            ],
+            "font": "Arial-BoldMT",
+            "reportedFontSize": 19.011104583740234
+          }
+        ],
+        "deltaPdfPt": 0.0
+      }
+    ],
+    "scope": "Eight first-open controls. Large first-line clipping and empty-run marker style are corrected; general marker advances, wraps and full native/font geometry are not admitted."
+  },
+  "contact": {
+    "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/native-contact.png",
+    "sha256": "dea8f2d21d26ef04ad13f69586df739b502e6e49edbde89ed4723a959f8367aa"
+  },
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/first-open.ax.txt",
+      "sha256": "6106c4de3805c9871de5529a10731ec272117efdae8ef9e3e8a47d6eb4fb0770",
+      "bytes": 5941
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/first-open.png",
+      "sha256": "e2ea6d09ba698dbc7977c2a8afa912b3843cbc976d7f6c7c16bce2e92a314454",
+      "bytes": 98274
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/first.pdf",
+      "sha256": "a6f6983abd0a351928af7e21b0f937b06267466f9f91d4d58c47d175a81711b5",
+      "bytes": 11655
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-first-open.ax.txt",
+      "sha256": "7ffeba085adea096bf17a4712ec5ff851e8287bfa2e0656bda2ada1ccb20380f",
+      "bytes": 5965
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-first-open.png",
+      "sha256": "2fbed330f1c929cb5de43f7e6b90c752c470b0651b293243ebfb63a5d05f57c1",
+      "bytes": 100653
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-first-page1.png",
+      "sha256": "a44ea11bfb66a711efc31c1e308f1ebffd47eac4228648051d3d8587ebe08b72",
+      "bytes": 11149
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-first.pdf",
+      "sha256": "e929fdef860e73baa8d543c70db9e774ff498922676e82fd7f081dfaf960bf48",
+      "bytes": 11887
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-input-binding.json",
+      "sha256": "4c0cb45ddf128c794d7d28370e5954616d7a0c19f644c044188b96775e03259b",
+      "bytes": 573
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-input.pptx",
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d",
+      "bytes": 14490
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1-closed.ax.txt",
+      "sha256": "8662451f55213b21966489660d430e2909e703ecc74dcd3e0cf78104c36a301f",
+      "bytes": 6442
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1-reopened.ax.txt",
+      "sha256": "c656bd6cbeae264b60d71ab48104576688be87a194962685196c4a0936bb89b4",
+      "bytes": 5969
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1-reopened.png",
+      "sha256": "1930fc22e1e8d217a8ef104b529e41f04cfb7463c8bb2f80f1d408a9f2162b65",
+      "bytes": 100789
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1-saved.ax.txt",
+      "sha256": "46f70dc2a2c253204ad20f503386ea5713d91c708670d833a1b4316bfe7b3bd6",
+      "bytes": 6003
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1-saved.png",
+      "sha256": "3876abf0c830b373b86b9b46e5134e24af6b2a1bef09c6cec84f006c86ce7f12",
+      "bytes": 102167
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1.pdf",
+      "sha256": "7c4691b3da914443fa70810d74505822039ae95f1608f6c302d5b568e94a73ca",
+      "bytes": 11888
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1.pptx",
+      "sha256": "fab1638c44f25df1a9b71d7585b9d4f68eaee792caff79d10c71adfa45a76104",
+      "bytes": 17421
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2-closed.ax.txt",
+      "sha256": "8662451f55213b21966489660d430e2909e703ecc74dcd3e0cf78104c36a301f",
+      "bytes": 6442
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2-reopened.ax.txt",
+      "sha256": "e22ee0892648563626bbd902dbfe1b3e4d9a6fb1d16dcc054221fbd7dcaab792",
+      "bytes": 5969
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2-reopened.png",
+      "sha256": "5d27c326dee1bdfc1d461459328a5bbecc7f3be610f0a4c5abe4b733e82473e9",
+      "bytes": 100865
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2-saved.ax.txt",
+      "sha256": "655803d4993e180d6a85ffe02ac92337359aa3c9edb229ab98b2003f12493695",
+      "bytes": 6003
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2-saved.png",
+      "sha256": "39ec7fe5513d7201a8e5660ed064b44bc1e4f34030bf2d06b71dd897d95808b0",
+      "bytes": 102244
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2.pdf",
+      "sha256": "d0724cc9f4699cfc83d4100648ac1505fcd72e2d544911a999ac84f7882cc6d3",
+      "bytes": 11888
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2.pptx",
+      "sha256": "f010f35ca000ddfe1b9e8f155cacd3c20ca4ab2de319c3ccbc422cd88bc91d74",
+      "bytes": 17423
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3-closed.ax.txt",
+      "sha256": "8662451f55213b21966489660d430e2909e703ecc74dcd3e0cf78104c36a301f",
+      "bytes": 6442
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3-reopened.ax.txt",
+      "sha256": "efe03bf718046ad1be764a1eb820a8813db1948762b3f2e0591a8d99e100141b",
+      "bytes": 5969
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3-reopened.png",
+      "sha256": "ae85f86dde5eaad6b31984216602afc56f1504b67dbf28bf9af9a8066040cdbb",
+      "bytes": 100867
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3-saved.ax.txt",
+      "sha256": "1d0e8a61bd1286f5609e969592aac5fe91eef66ab0d5d3a2d38f45aaf32657ce",
+      "bytes": 6003
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3-saved.png",
+      "sha256": "714ebf60242d843828726bbc15ec95e5e3ff5426ed213e34bc74c5c9e8607cb3",
+      "bytes": 102231
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3.pdf",
+      "sha256": "b51b507ccec93ed6da3f77639f00ef672b6f9405078b269ca06d9a66881d0f96",
+      "bytes": 11888
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3.pptx",
+      "sha256": "d492d3d2e3b831e9b96c94d2b2436506d32bad99ed8d5bea32bd3e2e53fa07f0",
+      "bytes": 17419
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/input-binding.json",
+      "sha256": "b94604e4b2e636a6cca7ec2edb2879298623d6fbdb32adef80d7177ba5d0b30d",
+      "bytes": 284
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/input.pptx",
+      "sha256": "361d2da63daaceda3cd04cb796fd51baa1829db265f1dcc15303704fdc0b4789",
+      "bytes": 14489
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control-first.ax.txt",
+      "sha256": "010c65c38a5f2c2ee308ad8ed15993df26316ac4f24ad2d5f68d11009c419da6",
+      "bytes": 6411
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control-first.pdf",
+      "sha256": "ef79f2d73b0fe69aa22d8feb60ed30b3919649032782df478e7d7aeb671f8560",
+      "bytes": 9738
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control-first.png",
+      "sha256": "b4a5dbff54c416fb02d974a1bb2c9f849b8edaf3952804ed7cb019a320a19854",
+      "bytes": 102621
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control.json",
+      "sha256": "0440584347268617482e749f673284da83719ce8a4e0ab2e77f9987e6025ed46",
+      "bytes": 42270
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control.pptx",
+      "sha256": "9757bd8f6310b91329e66916e9e8fc856ae80f7f410469aaa94d63d1941f0054",
+      "bytes": 24017
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/native-contact.png",
+      "sha256": "dea8f2d21d26ef04ad13f69586df739b502e6e49edbde89ed4723a959f8367aa",
+      "bytes": 14621
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/bad-scale.pptx",
+      "sha256": "57073df1081038d2c34e7f4ea5c8928c9268819a389ff9a9f6a9610167a1d0e6",
+      "bytes": 15317
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/bold.pptx",
+      "sha256": "4cf161cb2be9dde91a5dc5074ae0d0c485e7bc2e0107e8aa2dfd997ac19fedec",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/covered-plain.pdf",
+      "sha256": "ac69c5b77ca3cbdf7f11f45208c2004977ea62298502dc19af0c7d3490e145c9",
+      "bytes": 11783
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/cross-notes-theme.pptx",
+      "sha256": "0ee48c890e3775a0837c31f5731c73de3c48c8744b7bcef50aa571375d200d0e",
+      "bytes": 15325
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/duplicate-placeholder.pptx",
+      "sha256": "818f8785ba1055c0df7da2ca1bc0aff34bb0abd7b0678bbac85090f41b2993a5",
+      "bytes": 15307
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/font-advance.pdf",
+      "sha256": "83661dbcd74eed0861066d2a7c746a280da2553fe5a4aacddb31428caeec4bda",
+      "bytes": 11633
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/id-collision.pptx",
+      "sha256": "86589e049842af90c047d2100a980af3b0e7fe308a697f5ebf5b86dadb9f2f35",
+      "bytes": 15320
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/italic.pptx",
+      "sha256": "041b7c147a0b2aa2fcebc2ee38c1a5854254b5198a9a8412d80220e0e783395e",
+      "bytes": 15311
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/lost-shared-default.pptx",
+      "sha256": "9f8a784443ac897bcd7fa74f63b0358a839d89e0c0413dc8d4e8d634c2ed30e1",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/notes-geometry.pptx",
+      "sha256": "2809b8127962c3fa8cfc0986f4853db9faa739bbaa0a1c1f025d9580e2f14e9b",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/strike.pptx",
+      "sha256": "6794085cc1518ef4da8542a67fb8a911592e4c11420b17bb5f6f1d1fedd005e0",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/swapped-pages.pdf",
+      "sha256": "6c570868b27feaa7f19e4af79b8d5db66940492f5340616a20c40e0d4e82e4ae",
+      "bytes": 11638
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/underline.pptx",
+      "sha256": "48d73eb272081d9c6f6a203f78de44c391ff79015e50a2c2b0d1637583007058",
+      "bytes": 15313
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/wrong-color.pptx",
+      "sha256": "661e3e8bc59b82891751393bd532fdf3d462cc12e0b075e8cea96aa80f23bb82",
+      "bytes": 15319
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/wrong-layout-owner.pptx",
+      "sha256": "4acfd7d2b80105b69d4606ee1983d102a84cae30e1a4199e0906a3afe14d2802",
+      "bytes": 15331
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-3li3yjwm/wrong-text.pptx",
+      "sha256": "6a3cdc75312967c49c2135b38d9484d25edd8d370feb3d634af15ce34f2e95bd",
+      "bytes": 15316
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/bad-scale.pptx",
+      "sha256": "89cccee8c0e0fb655714c4fc47f2481e4a519c6094082f119af2ed072ace4eb5",
+      "bytes": 15317
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/bold.pptx",
+      "sha256": "5f3c353d93e3a3e6da3c155151db9602618488298fce92771f881fb6b2b3ca90",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/covered-plain.pdf",
+      "sha256": "0ec71091e56849f2c2b014dc3c74fccb546041554f2e7c8dd81b49154acd421b",
+      "bytes": 11783
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/cross-notes-theme.pptx",
+      "sha256": "9ee5348dd939003f39f0d8589cc94ba774100e1c4665d41a785b5bc4542ca893",
+      "bytes": 15325
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/duplicate-placeholder.pptx",
+      "sha256": "f2ca06f4269e877cb85e35bca971259525eba32131c75c2b04fbd28471732ce6",
+      "bytes": 15307
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/font-advance.pdf",
+      "sha256": "56f9bdf8d14ea315306f98f95776960588134467bd27d5cecca022c5743a2acb",
+      "bytes": 11633
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/id-collision.pptx",
+      "sha256": "4225f5fb4a2cb94aeeb8d153ecd5ec0d5be26d16ac8ce1efd1306322d6397231",
+      "bytes": 15320
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/italic.pptx",
+      "sha256": "9254841d410ae7b2d359c465ea21f5b9db2f7a824ffa44cde2883d727b89232b",
+      "bytes": 15311
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/lost-shared-default.pptx",
+      "sha256": "df6d3ae70f6a46ae9c5fb1263625846071cebf9ec4d90439c8a69238102f1f4a",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/notes-geometry.pptx",
+      "sha256": "49799a046090eb1d4e3dfac2b569bb4d94ffc6138183e2553cef57b81ca7024d",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/strike.pptx",
+      "sha256": "c7419caea24e9d7e3d4e51972c729c97d2ec1cc597b7eeb2195017c89b6b95bc",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/swapped-pages.pdf",
+      "sha256": "7e1df4de90d401533356296beb9d6e67685e65ea8cb5b4f8d94adc24602c9032",
+      "bytes": 11638
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/underline.pptx",
+      "sha256": "39c4391eeb988cc8381f89b0ee1e5b56823875823b3d77763d7c1caa4c73c3ec",
+      "bytes": 15313
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/wrong-color.pptx",
+      "sha256": "2ef0c4c58e75a835c572baaca35fd93b42310574b2225c63befce5087596ff18",
+      "bytes": 15319
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/wrong-layout-owner.pptx",
+      "sha256": "fc30fa583421d75ce7a32c0b4242f064d0fddfb0565a6ba818ac53364ae7ab54",
+      "bytes": 15331
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-6qz67_pf/wrong-text.pptx",
+      "sha256": "42d9ad238fd2d45beb24b3853c80af66d9e95b99e4537d9fae3fa83e1f49c33f",
+      "bytes": 15316
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/bad-scale.pptx",
+      "sha256": "d1f1af100184ce1127d39e90ebb7fe8cf8ec4276b75950ef567ef127da51a3ae",
+      "bytes": 15317
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/bold.pptx",
+      "sha256": "000fc5fc17efb1804b9cb787fa3ed724b862d4d964047b9a702a8ab13e62cb7c",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/covered-plain.pdf",
+      "sha256": "acf49c1772dfae58aa9fdf2c1443f6962aa688333a436aab3da0ac9cea6f4f97",
+      "bytes": 11783
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/cross-notes-theme.pptx",
+      "sha256": "5f14d297f9f20c30d1427725dfa6dbb347e57fae0c090af2704b2e6f0137fbbe",
+      "bytes": 15325
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/duplicate-placeholder.pptx",
+      "sha256": "ec1de90e27d85f24da4e0d6b8bc58a1c8956bcece755fc505157db71d0319b72",
+      "bytes": 15307
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/font-advance.pdf",
+      "sha256": "4aa7cb9c5a5583f0031a19a325444bb59cab5b4935243c7859610ad933b99d74",
+      "bytes": 11633
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/id-collision.pptx",
+      "sha256": "69c10afef92a22a5d7a9b1833b1da91538ef1c536cd9167a45bcd3ba41e77ed7",
+      "bytes": 15320
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/italic.pptx",
+      "sha256": "de679a90e022c77510c68abe4c8483d7294bc07862659d1936543f71c9ddb3f5",
+      "bytes": 15311
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/lost-shared-default.pptx",
+      "sha256": "133c884782f2d96986d2634a747e4528fb23abbd11173d9440a3423ca9c112eb",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/notes-geometry.pptx",
+      "sha256": "d6575b38314a0b79ceb2c4cab2f9c057b4bc853ba0daaa46a90178fd42cd1ee5",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/strike.pptx",
+      "sha256": "67feb2e853a039bc7d2e02ee2cfa1332eb5d01bf003d671268abb375715cdc68",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/swapped-pages.pdf",
+      "sha256": "a4ae6fadb4cf19c50c62e0199d650d5e5a8986c88299eff066c69975c027d290",
+      "bytes": 11638
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/underline.pptx",
+      "sha256": "9ce930c9785de14e0bafe1fcc6a1da32ded6589cddd80c28695e3d37169966e3",
+      "bytes": 15313
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-color.pptx",
+      "sha256": "1088793be50a27ee336581916e49b1a3dc79c06f806aae2287d20ab8a0285432",
+      "bytes": 15319
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-layout-owner.pptx",
+      "sha256": "5dda3d19dcf5e9c1baf5df84d91d0a4e6e9e515224ee1ce375332b8931495bee",
+      "bytes": 15331
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-f9pv8qxi/wrong-text.pptx",
+      "sha256": "7f81078d0ef556bf245a83059bec847f9fc52c5178d4a4338f898dcf882010aa",
+      "bytes": 15316
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/bad-scale.pptx",
+      "sha256": "15f9f03b0c816287b83a3a8fc7d4a2df2804a2b198ff644e22bf53b275831e2a",
+      "bytes": 15317
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/bold.pptx",
+      "sha256": "85c7da7399dfabc1c69dc4287494d974375773312c3c3e3e097503978c3cea76",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/covered-plain.pdf",
+      "sha256": "777be904307b3c1741635b1b7b962788eceb16bf9e0d31a41fc2ae392b4ee498",
+      "bytes": 11783
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/cross-notes-theme.pptx",
+      "sha256": "49bb04777054478eb36c7ef4210db1469344a20e2a7f288cf3697d9bdb2de99f",
+      "bytes": 15325
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/duplicate-placeholder.pptx",
+      "sha256": "19662b4aed593be27f987a5596c95a1d020b4025bbf988903ab73469cb51bbcf",
+      "bytes": 15307
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/font-advance.pdf",
+      "sha256": "0d6ac01cd3a3a7e8f44658689ddc5de3d548b913571144ccfa40ed95b99bac81",
+      "bytes": 11633
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/id-collision.pptx",
+      "sha256": "476deb2d166095b49a02af47b1e44df72cfdb3885de8b658fb528b41737509c6",
+      "bytes": 15320
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/italic.pptx",
+      "sha256": "eef0f29e27a30cacf06f477a6ca0e526c21fe303a2e77cf6e6d3aa8e29c2782f",
+      "bytes": 15311
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/lost-shared-default.pptx",
+      "sha256": "23c0775508098d145dbd84c65a64275acbf688ff7f9e3d46f04aadf6ccb0163e",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/notes-geometry.pptx",
+      "sha256": "db4bf1e4911b1a5eea692d2059ab00cb2700fe7ee9685bead52f84b013480f4a",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/strike.pptx",
+      "sha256": "c8b3d1db75e3a94d587cd19ecd163e59b52553eaee08d7c035bf907ad2eece42",
+      "bytes": 15314
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/swapped-pages.pdf",
+      "sha256": "15b040fb87e9deee633e5767bff0fcc8b224eac81d4b9ec362719211306d220f",
+      "bytes": 11638
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/underline.pptx",
+      "sha256": "4ccadb94e4eadb9e5679287fc72e9ecc3c7aedfc0d2230e788c6066c79c0766c",
+      "bytes": 15313
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/wrong-color.pptx",
+      "sha256": "e78abc53f99f2f34b98057f47b54466938338ff61630036a0064301ad21d0fe6",
+      "bytes": 15319
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/wrong-layout-owner.pptx",
+      "sha256": "2e17b08f74fbdb0fb6b8a24382df9206a78d85680b75e20caf58500003349061",
+      "bytes": 15331
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/negative-jmxo0q6f/wrong-text.pptx",
+      "sha256": "2a578be43c253b1e99c2545860efc0bd11460a0f52f917ea2b53da5f771fdd0e",
+      "bytes": 15316
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/fixed-input.pptx.json",
+      "sha256": "b7e94b4a0fd73b0c69d8cd315d7a12411ccdc42641b1bfe1f679f99629bd8970",
+      "bytes": 192623
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/fixed-round1.pptx.json",
+      "sha256": "30cdf57aeabba3b5b5db7f1e79ef30ba70e4bc290cd68095893b483d6f98111b",
+      "bytes": 200187
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/fixed-round2.pptx.json",
+      "sha256": "fc4fe1637836f4a271677b4c2f270b271493f591e17fa926a9bf74b6d07eb632",
+      "bytes": 200187
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/fixed-round3.pptx.json",
+      "sha256": "a05349241052b9525218ce097f2399ace22acc217e166db4dd6b49817685a521",
+      "bytes": 200185
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/input.pptx.json",
+      "sha256": "56720509d4a346d14d4e532c9fb866e9e0acad86f4adff72656bb8b47cb4a94c",
+      "bytes": 192623
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-EgUGcw/list-control.pptx.json",
+      "sha256": "e99f04dd31f7eb9bbec64b2d7e2c9299f16597f80315a6ba48b80b2f2db956bb",
+      "bytes": 331155
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/powerpoint-version.ax.txt",
+      "sha256": "87c82d95cd953d44a2c985265c20c9d687983b27bc3b547bcd945f7c103ded5c",
+      "bytes": 968
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/powerpoint-version.png",
+      "sha256": "9079565bb7d67f72e773bbb6aaeac6ec7c0e0e72ba000b1aec161319f8c23f2e",
+      "bytes": 30641
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/~$fixed-round3.pptx",
+      "sha256": "c0f5a659bcc61da0a2b38cfdc78a0a564913934b72f371efc7ea88d954de61f8",
+      "bytes": 165
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/~$input.pptx",
+      "sha256": "c0f5a659bcc61da0a2b38cfdc78a0a564913934b72f371efc7ea88d954de61f8",
+      "bytes": 165
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/~$list-control.pptx",
+      "sha256": "c0f5a659bcc61da0a2b38cfdc78a0a564913934b72f371efc7ea88d954de61f8",
+      "bytes": 165
+    }
+  ]
+}

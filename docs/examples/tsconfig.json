@@ -5,15 +5,43 @@
     "composite": false,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "baseUrl": "../..",
     "paths": {
-      "@pptkit/core": ["packages/core/src/index.ts"],
-      "@pptkit/layout": ["packages/layout/src/index.ts"],
-      "@pptkit/pptx-exporter": ["packages/pptx-exporter/src/index.ts"],
-      "@pptkit/pptx-exporter/node": ["packages/pptx-exporter/src/node.ts"],
-      "@pptkit/svg-renderer": ["packages/svg-renderer/src/index.ts"]
+      "@pptkit/core": [
+        "packages/core/src/index.ts"
+      ],
+      "@pptkit/layout": [
+        "packages/layout/src/index.ts"
+      ],
+      "@pptkit/pptx-exporter": [
+        "packages/pptx-exporter/src/index.ts"
+      ],
+      "@pptkit/pptx-exporter/node": [
+        "packages/pptx-exporter/src/node.ts"
+      ],
+      "@pptkit/svg-renderer": [
+        "packages/svg-renderer/src/index.ts"
+      ],
+      "@pptkit/layout/dom": [
+        "packages/layout/src/dom.ts"
+      ],
+      "@pptkit/pptx-parser": [
+        "packages/pptx-parser/src/index.ts"
+      ],
+      "@pptkit/pptx-parser/node": [
+        "packages/pptx-parser/src/node.ts"
+      ],
+      "@pptkit/cli": [
+        "packages/cli/src/index.ts"
+      ]
     }
   },
-  "include": ["./*.ts"]
+  "include": [
+    "./*.ts"
+  ]
 }

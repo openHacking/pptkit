@@ -1,0 +1,558 @@
+{
+  "profile": "smartart-source-managed-bindings-v1",
+  "directory": "/Volumes/github/private/pptkit/.tmp/diagram-source-bindings/run-KfzlbU",
+  "sourceCommit": "0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2",
+  "sourceEvidenceSha256": "a7c9b6d371440eb0745cc6ad54c426659728ec6ee4cce2ba98051be72b5ec916",
+  "generatedEvidenceSha256": "0488b3d0064b365448689a5e98454c675e6518388512330f5758a2bff98c0550",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "cases": [
+    {
+      "name": "source-process",
+      "family": "process",
+      "versions": [
+        {
+          "kind": "source",
+          "file": "/Volumes/github/private/pptkit/.tmp/smartart-source-corpus/0ea8f79d15a6/smartart-accent-process.pptx",
+          "sha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+          "nodes": 4,
+          "roots": 2,
+          "retained": 0,
+          "added": 4,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}",
+              "canonicalModelId": "guid:{3D35CC81-3AA1-4486-9B26-9F5A52F48807}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 38,
+              "sourceModelId": "{C515AB2F-289B-42FD-8210-049BC5527592}",
+              "canonicalModelId": "guid:{C515AB2F-289B-42FD-8210-049BC5527592}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 65,
+              "sourceModelId": "{D371A627-A015-451F-8389-9118F71987E1}",
+              "canonicalModelId": "guid:{D371A627-A015-451F-8389-9118F71987E1}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 95,
+              "sourceModelId": "{7E3C9309-C119-4B47-A6CC-8827871EB22F}",
+              "canonicalModelId": "guid:{7E3C9309-C119-4B47-A6CC-8827871EB22F}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "native-saved",
+          "file": "/Volumes/github/private/pptkit/.tmp/smartart-native-model-20261025/smartart-accent-process.pptx",
+          "sha256": "4b652de76824dfd6a4e47bfb7f7ede44830709ccc3bb61d3dc0cb25e95fcec7d",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+          "nodes": 5,
+          "roots": 3,
+          "retained": 4,
+          "added": 1,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 128,
+              "sourceModelId": "{D6FC5A54-B477-5746-9EDE-B2F9773B5258}",
+              "canonicalModelId": "guid:{D6FC5A54-B477-5746-9EDE-B2F9773B5258}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}",
+              "canonicalModelId": "guid:{3D35CC81-3AA1-4486-9B26-9F5A52F48807}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 50,
+              "sourceModelId": "{C515AB2F-289B-42FD-8210-049BC5527592}",
+              "canonicalModelId": "guid:{C515AB2F-289B-42FD-8210-049BC5527592}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 76,
+              "sourceModelId": "{D371A627-A015-451F-8389-9118F71987E1}",
+              "canonicalModelId": "guid:{D371A627-A015-451F-8389-9118F71987E1}"
+            },
+            {
+              "id": "{00000001-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 102,
+              "sourceModelId": "{7E3C9309-C119-4B47-A6CC-8827871EB22F}",
+              "canonicalModelId": "guid:{7E3C9309-C119-4B47-A6CC-8827871EB22F}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "source-hierarchy",
+      "family": "hierarchy",
+      "versions": [
+        {
+          "kind": "source",
+          "file": "/Volumes/github/private/pptkit/.tmp/smartart-source-corpus/0ea8f79d15a6/smartart-org-chart.pptx",
+          "sha256": "7a457c32c73efed6244cf79e184994a2f2a0cb65901f6ce4f3dfcd22dbcf4ac1",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+          "nodes": 5,
+          "roots": 2,
+          "retained": 0,
+          "added": 5,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}",
+              "canonicalModelId": "guid:{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 43,
+              "sourceModelId": "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}",
+              "canonicalModelId": "guid:{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 70,
+              "sourceModelId": "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}",
+              "canonicalModelId": "guid:{EE8A25CC-646E-4C3E-A390-0945F2BDB392}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 124,
+              "sourceModelId": "{819F243A-D3B6-4E91-AF5E-691A813F59DF}",
+              "canonicalModelId": "guid:{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 97,
+              "sourceModelId": "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}",
+              "canonicalModelId": "guid:{CD4A3225-006D-4542-B06E-2238A0DE6B7C}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "native-saved",
+          "file": "/Volumes/github/private/pptkit/.tmp/smartart-native-model-20261025/smartart-org-chart.pptx",
+          "sha256": "7c1194ac8662313621b9c151aff7f37bbb084c23ec21293f0518318de8d74c27",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+          "nodes": 6,
+          "roots": 2,
+          "retained": 5,
+          "added": 1,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}",
+              "canonicalModelId": "guid:{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 54,
+              "sourceModelId": "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}",
+              "canonicalModelId": "guid:{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 80,
+              "sourceModelId": "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}",
+              "canonicalModelId": "guid:{EE8A25CC-646E-4C3E-A390-0945F2BDB392}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000007}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 158,
+              "sourceModelId": "{0A85D344-918B-594C-AEBB-3CB564D2E071}",
+              "canonicalModelId": "guid:{0A85D344-918B-594C-AEBB-3CB564D2E071}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 132,
+              "sourceModelId": "{819F243A-D3B6-4E91-AF5E-691A813F59DF}",
+              "canonicalModelId": "guid:{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+            },
+            {
+              "id": "{00000002-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 106,
+              "sourceModelId": "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}",
+              "canonicalModelId": "guid:{CD4A3225-006D-4542-B06E-2238A0DE6B7C}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "source-cycle",
+      "family": "cycle",
+      "versions": [
+        {
+          "kind": "source",
+          "file": "/Volumes/github/private/pptkit/.tmp/smartart-source-corpus/0ea8f79d15a6/smartart-cycle.pptx",
+          "sha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 5,
+          "roots": 5,
+          "retained": 0,
+          "added": 5,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000003-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}",
+              "canonicalModelId": "guid:{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}"
+            },
+            {
+              "id": "{00000003-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 38,
+              "sourceModelId": "{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}",
+              "canonicalModelId": "guid:{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}"
+            },
+            {
+              "id": "{00000003-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 65,
+              "sourceModelId": "{6264B464-1F5E-4869-A663-E3C521582573}",
+              "canonicalModelId": "guid:{6264B464-1F5E-4869-A663-E3C521582573}"
+            },
+            {
+              "id": "{00000003-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 92,
+              "sourceModelId": "{0C0A1E91-DF74-469A-868A-CAD295846B75}",
+              "canonicalModelId": "guid:{0C0A1E91-DF74-469A-868A-CAD295846B75}"
+            },
+            {
+              "id": "{00000003-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 119,
+              "sourceModelId": "{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}",
+              "canonicalModelId": "guid:{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "generated-guid-cycle-text-rounds",
+      "family": "cycle",
+      "versions": [
+        {
+          "kind": "input",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/differential-TVpBCc/fresh-guid.pptx",
+          "sha256": "4596f5cf45574c5091bf6921268d28cf630df8db80aea68ef4a600596acd3a42",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 3,
+          "roots": 3,
+          "retained": 0,
+          "added": 3,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 12,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000001}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 21,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000002}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 30,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000003}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "cycle-guid-round1.pptx",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round1.pptx",
+          "sha256": "ef60d80cb13c97963292986d6107b9cf9cc1a89f82c88a02001566adb3e37e31",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 3,
+          "roots": 3,
+          "retained": 3,
+          "added": 0,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000001}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 24,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000002}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 33,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000003}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "cycle-guid-round2.pptx",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round2.pptx",
+          "sha256": "303096459e6fddf27369b3e3c917044f84ff0fa837f1b93fc322fedc12b64f96",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 3,
+          "roots": 3,
+          "retained": 3,
+          "added": 0,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000001}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 24,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000002}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 37,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000003}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "cycle-guid-round3.pptx",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-guid-round3.pptx",
+          "sha256": "dfb0a118563efe7a4364c76e0355b865249aaa8fde6c26ae399d96f16e54bc2c",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 3,
+          "roots": 3,
+          "retained": 3,
+          "added": 0,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000001}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000001}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 24,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000002}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000002}"
+            },
+            {
+              "id": "{00000004-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 37,
+              "sourceModelId": "{00000000-0000-4000-8000-000000000003}",
+              "canonicalModelId": "guid:{00000000-0000-4000-8000-000000000003}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "native-cycle-blank-deletion",
+      "family": "cycle",
+      "versions": [
+        {
+          "kind": "cycle-round2-theme.pptx",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-round2-theme.pptx",
+          "sha256": "68b1d2e58687850e75e4f86e589dc8492a476028e5a84f1fe2a14ae0f60f58eb",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 5,
+          "roots": 5,
+          "retained": 0,
+          "added": 5,
+          "removed": 0,
+          "bindings": [
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+              "canonicalModelId": "guid:{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 123,
+              "sourceModelId": "{22E229B4-8996-304D-B994-D579F61B879C}",
+              "canonicalModelId": "guid:{22E229B4-8996-304D-B994-D579F61B879C}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000004}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 99,
+              "sourceModelId": "{04610588-3BCD-A442-98E8-C7382BE245CC}",
+              "canonicalModelId": "guid:{04610588-3BCD-A442-98E8-C7382BE245CC}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 33,
+              "sourceModelId": "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+              "canonicalModelId": "guid:{55D5DD49-23DE-0E41-B486-846605DB4173}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 42,
+              "sourceModelId": "{F387286A-1AE3-714E-81B0-64C48F9D2B99}",
+              "canonicalModelId": "guid:{F387286A-1AE3-714E-81B0-64C48F9D2B99}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        },
+        {
+          "kind": "cycle-after-native-delete.pptx",
+          "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-after-native-delete.pptx",
+          "sha256": "c37c9f1cdf1c1732b4230b03ee275825c0739c8eff2c72d4c98a32a0bb7ee46f",
+          "part": "/ppt/diagrams/data1.xml",
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 4,
+          "roots": 4,
+          "retained": 4,
+          "added": 0,
+          "removed": 1,
+          "bindings": [
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000002}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 11,
+              "sourceModelId": "{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}",
+              "canonicalModelId": "guid:{E1FC5A5F-DF41-4F4E-8D06-2833AFF54E68}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000003}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 99,
+              "sourceModelId": "{22E229B4-8996-304D-B994-D579F61B879C}",
+              "canonicalModelId": "guid:{22E229B4-8996-304D-B994-D579F61B879C}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000005}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 33,
+              "sourceModelId": "{55D5DD49-23DE-0E41-B486-846605DB4173}",
+              "canonicalModelId": "guid:{55D5DD49-23DE-0E41-B486-846605DB4173}"
+            },
+            {
+              "id": "{00000005-1234-4ABC-8DEF-000000000006}",
+              "part": "/ppt/diagrams/data1.xml",
+              "elementIndex": 42,
+              "sourceModelId": "{F387286A-1AE3-714E-81B0-64C48F9D2B99}",
+              "canonicalModelId": "guid:{F387286A-1AE3-714E-81B0-64C48F9D2B99}"
+            }
+          ],
+          "independentIdentityTopologyTextAndRoles": true
+        }
+      ]
+    }
+  ],
+  "expectedRejections": [
+    {
+      "name": "integer-native-renumber",
+      "before": {
+        "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/cycle-standard-absent-presentation.pptx",
+        "sha256": "a6fd2e43e5fe0a8de79115164fafafd0582f18cdc51c815255830f77b03f0707",
+        "part": "/ppt/diagrams/data1.xml"
+      },
+      "after": {
+        "kind": "cycle-before-native-delete.pptx",
+        "file": "/Volumes/github/private/pptkit/.tmp/native-diagram-powerpoint-kmjuxfmg/cycle-before-native-delete.pptx",
+        "sha256": "2eed744af1eef4f53e7656e8f8b800a375894c06ee0a9774f268e01bd084a4fd",
+        "part": "/ppt/diagrams/data1.xml"
+      },
+      "reason": "Source document root/model IDs changed on native save; no label or positional matching is permitted.",
+      "status": "rejected-context-root-mismatch",
+      "beforeRootIdentity": "int:0",
+      "afterRootIdentity": "guid:{72AFA8A9-F17C-0946-A7A7-35569C6B7083}",
+      "independentRootMismatch": true
+    }
+  ],
+  "limitations": [
+    "Offline binding/file evidence only; no new native UI operations replayed or certified.",
+    "Plain paragraph/ordered forest research only; no rich-text/style/cache/freshness or source-save authority.",
+    "Scope/root/part/layout changes and producer-renumbered identities need a separate explicit reconciliation policy; labels/positions are not used.",
+    "Managed binding IDs and fresh-writer native IDs remain separate; neither this adapter nor earlier native observations admits the stateful writer in native applications.",
+    "Third-party source/native artifacts remain local pending redistribution admission."
+  ]
+}

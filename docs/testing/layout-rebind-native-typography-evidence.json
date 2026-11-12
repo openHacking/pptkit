@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-27T00:52:34.747901+00:00",
+  "verifiedTypographyAndReopen": true,
+  "completeNativeRebindAccepted": false,
+  "directory": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF",
+  "failedDirectory": ".tmp/layout-rebind/native-0OWvU8",
+  "sourceSha256": "cc14ef5dea496aa54a62edc172365e36f83006657dc763679f59a8166da393d0",
+  "beforeSha256": "b1b03e761eb82ca0f0b1ac7e3ca94b757f60b63290b7715ff42b7511e5ea8638",
+  "pages": 3,
+  "rounds": 3,
+  "glyphBystanderPages": [
+    0,
+    2
+  ],
+  "negatives": [
+    {
+      "name": "covered-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/typography-negatives-_xc6i1dd/covered-text.pdf",
+      "bytes": 67344,
+      "sha256": "9e526a4f9831b959da254bb9b5f2e424dce31c164180f95400923feddbf0d680",
+      "reason": "Changed actual native PDF records"
+    },
+    {
+      "name": "swapped-pages",
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/typography-negatives-_xc6i1dd/swapped-pages.pdf",
+      "bytes": 67187,
+      "sha256": "43d9f32db0f66a7d3d134e6b8aefaeb56263fc5946aaf5ac2f0798e99c3cf151",
+      "reason": "Changed actual native PDF records"
+    },
+    {
+      "name": "missing-hidden-page",
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/typography-negatives-_xc6i1dd/missing-hidden-page.pdf",
+      "bytes": 67180,
+      "sha256": "e43c535ecaaf2bc75c71e68acd079470534ecea6bf66cd8d98351923ec15d5fb",
+      "reason": "Hidden slide omitted or unexpected page count"
+    },
+    {
+      "name": "same-raster-font-advance",
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/typography-negatives-_xc6i1dd/same-raster-font-advance.pdf",
+      "bytes": 67189,
+      "sha256": "4dd9565a4b926481fcd0d9fe8bbb7266c23fe7e264824a37c41db282d9180a7a",
+      "reason": "Changed actual native PDF records"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before-open.ax.txt",
+      "bytes": 6054,
+      "sha256": "10de8221853a758733ecb07386a407e0e6850a96c8b1d9294edc72bc0ab7b1b4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before-open.png",
+      "bytes": 126651,
+      "sha256": "2a9e9588215ce95d54f838433d8ffc4977b311194b31a224fc24caaf858a0b0b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before-print-options.png",
+      "bytes": 72016,
+      "sha256": "d8fbaa4308b984fa8779431ed9d889f625d5965b48dd20696d547420734ce10e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before.pdf",
+      "bytes": 21070,
+      "sha256": "d3c05e42ad739062d91184f0b1d9a2c4fb572542f39a23d82683294138d0e5d0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before.pptx",
+      "bytes": 35729,
+      "sha256": "b1b03e761eb82ca0f0b1ac7e3ca94b757f60b63290b7715ff42b7511e5ea8638"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/first-open.ax.txt",
+      "bytes": 6050,
+      "sha256": "beeae0de97805688bfd84b5c6c9a5f2e62c044e1d32e7d79c886f659766c97de"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/first-open.png",
+      "bytes": 126680,
+      "sha256": "3aeee33e0b319d6ad75557ac5273cf64aca48f13c7091acff3872bfb5c961b9c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/first-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/first-print-options.png",
+      "bytes": 72544,
+      "sha256": "0f767721855ae84ee4907c8d2b839a95ce57183019459c054eefae09bac8b709"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/first.pdf",
+      "bytes": 67842,
+      "sha256": "9fda7bdb9f4d5d31f75664b37a806931b4f9f16fdd7743b0c1f82b1bee8bd7cd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/input.pptx",
+      "bytes": 35748,
+      "sha256": "cc14ef5dea496aa54a62edc172365e36f83006657dc763679f59a8166da393d0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-closed.ax.txt",
+      "bytes": 6085,
+      "sha256": "8c8702411a9910181805859455bc85e367f017ad60a4b5f88ceb1f97248f75a7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-print-options.png",
+      "bytes": 72541,
+      "sha256": "87cc9e8d3c2856a809d1a5f3835aeebb1b92dc6acc581a1c6ec61bd3defa2e80"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "8ba1a25adc11e65e36fb5d954a89642c62bd7954a0c674249d206c18d87bf803"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-reopened.png",
+      "bytes": 127529,
+      "sha256": "427a63188f9800a743f9851aa8d1435d868f66712162dbdd85e7077a47582ec7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "d7f478e8c699852b03731ad0780256873ea10c65b48cbe95901b0bf7385872db"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1-saved.png",
+      "bytes": 128906,
+      "sha256": "74dee05f69ed4e0851b2a89b272889da9e09af443f1b44075c3db71d106d6fc3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1.pdf",
+      "bytes": 67850,
+      "sha256": "90413c56b598902d6bd9cc52a12cdff025c87d2e1525d32e9d64e3680a058f6e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1.pptx",
+      "bytes": 40736,
+      "sha256": "8cc34be64a17995c03263833f0fbf9ff14092e6e0e737a4bb37ca2489d37ff60"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-closed.ax.txt",
+      "bytes": 6085,
+      "sha256": "8c8702411a9910181805859455bc85e367f017ad60a4b5f88ceb1f97248f75a7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-print-options.png",
+      "bytes": 72542,
+      "sha256": "eafdf32c59c3b350c70538a3ccc28822b2e3f953127b2c547e2a3cf7537d24f0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "6b8558cd3dae59de55418e8f1ec5f9cd6eea829c1740b1a8356d23c113200132"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-reopened.png",
+      "bytes": 127567,
+      "sha256": "1898529aeddee8a8702921f75eb3d9e768fd648f4590cb5181daf0a40e27b4b1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "b59dfba2e7f97030f4bbbb17623e2f45ebad505a5fad387fb837787c29e85d6e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2-saved.png",
+      "bytes": 128959,
+      "sha256": "abf0b7d6e58c21edbdcd691392fde4258ef7e070e4d6601a5e160d3d78e7f0e5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2.pdf",
+      "bytes": 67850,
+      "sha256": "f0a261083674bdcab1d005440fd2a8c61d60ccafae88524690eeca4618141e3b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2.pptx",
+      "bytes": 40735,
+      "sha256": "4460786a9e5525a997fba94b5a02a95c17f9b86f3510a8b332efe52d9cd1140b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-closed.ax.txt",
+      "bytes": 6085,
+      "sha256": "8c8702411a9910181805859455bc85e367f017ad60a4b5f88ceb1f97248f75a7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-print-options.png",
+      "bytes": 72549,
+      "sha256": "fb9822704a582db0d9708565b122659356948545f5292da10824a476a71431f1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "3a3b0d5a907ae9f9ee03acfb33727440b63ff27fb2f32f008364f0f41681c0e2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-reopened.png",
+      "bytes": 127539,
+      "sha256": "a786477ffd10d75225c5902e68a04da0d1a563aa4c9db0e2012ac4fbb7a6caf9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "be86c7cbbe92ee70b4080147efc3c6580c20ec6b58af2b280ef7507e2fd18aaf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3-saved.png",
+      "bytes": 128980,
+      "sha256": "b86c227eeeac130ee858b34b47c5c814de18c450db3f290ffe5852fb6684a35b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3.pdf",
+      "bytes": 67850,
+      "sha256": "8b6a7a47997ff5c6bd1266a138eaf0cc12dce4c636ec559e5d6700c9fbc4ceea"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3.pptx",
+      "bytes": 40733,
+      "sha256": "2072a14ce70536e5565e02ff1c887df011b1c158deb11c1dd9eeb3676a381994"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before-open.ax.txt",
+      "bytes": 6054,
+      "sha256": "cef479c2c0d0dee1ff7768dd9638d2abf25613c57a6bb2a0371b7e7a45f80e57"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before-open.png",
+      "bytes": 126639,
+      "sha256": "16618c3eb7f0d76324bebf8410d5d287d15bc7977ebe53a26ae4d135392c2725"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before-print-options.png",
+      "bytes": 72026,
+      "sha256": "8255a15c556a26f16c2a4412b435b3467e75b3393b7e2815c55bcecef35e088a"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before.pdf",
+      "bytes": 21070,
+      "sha256": "6d2b5dd335c92719c584c12814d148369e4ab81995d5e0c27b8d144a8b9b0de6"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before.pdf.png",
+      "bytes": 6346,
+      "sha256": "b62e6b002a3d1ece441795dc4a602eda67f8ac392d8d66b4bf45939f10257301"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/before.pptx",
+      "bytes": 35679,
+      "sha256": "046aa772a8097575b7af74ad066e7c5d94b9b1c83448b56d8a82fac39f7676ff"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font-open.ax.txt",
+      "bytes": 6078,
+      "sha256": "25745165b6c4bf8eb5670ef4534aa3687fcc60be686ca832030986132b04cb0e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font-open.png",
+      "bytes": 127396,
+      "sha256": "b98264bd0546068214db2482b53bdb7c06a7fd253e2ab94666241c1b0ab2368f"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font-print-options.png",
+      "bytes": 72544,
+      "sha256": "afee341ffd0c0cf87d1d473bf8acab8c6565b766864c1de1f77f1ac6a5dd6b10"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font.pdf",
+      "bytes": 67849,
+      "sha256": "30fb3838577a7204b8f5b3e25d5ac18b6370b341887663303f49d4b8055f81ce"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/default-font.pptx",
+      "bytes": 35150,
+      "sha256": "438db537c1f6db54a9f4eb76a7c49d101c78b2eb7636413d370a369f5a738eb6"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font-open.ax.txt",
+      "bytes": 6062,
+      "sha256": "d42eddfc0fbd18b3ae7bced72517e3dee3364cb2f66a52b808a274d744ae1546"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font-open.png",
+      "bytes": 126962,
+      "sha256": "b1df8f99b776835baf5972e7479dbe93055009dbc051a858dc58785cda9bb05e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font-print-options.png",
+      "bytes": 72550,
+      "sha256": "a198970479ae97fecceb1d9bcb54d33301f9de8a66367d493c996f594f68aede"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font.pdf",
+      "bytes": 67845,
+      "sha256": "ff38e0a8095b118a73d244893b73fa082561467e8d4eebc25cc78c69c42973cb"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/end-font.pptx",
+      "bytes": 35143,
+      "sha256": "aff804ee45e8debb9dd5ab75fc714b87f921f24a5a91687eec994d3693c89852"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first-open.ax.txt",
+      "bytes": 6050,
+      "sha256": "8d766ce7f11eb9df7092700dcaf805c2596afe04dca1498579ff751d8a6afb96"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first-open.png",
+      "bytes": 126429,
+      "sha256": "b8dcfc9a4324a24a220b119278dbf60fb859661dbc3bad4aca1a6514a8921edc"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first-print-options.png",
+      "bytes": 72575,
+      "sha256": "5cd416320907bb86e7772da441e3ecf2b1227aa34db3bc683544785086b36629"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first.pdf",
+      "bytes": 67848,
+      "sha256": "52bead1a64ce540965f19c84b34fc6c8f086c639501ee6101cc912f47d661dec"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/first.pdf.png",
+      "bytes": 6381,
+      "sha256": "96d9894bfd2b119c89da40b765192a165db8a2ab7b4bccc885f6fc7ea1d09991"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all-open.ax.txt",
+      "bytes": 6062,
+      "sha256": "ab288a1d8d92cfc4516483c448f32786065d52fea1fb5747929da8a3654ee34a"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all-open.png",
+      "bytes": 126774,
+      "sha256": "beb7b16e98bd6fe68e023a0ef359f49d84efc122ad9ea6d017cda59bcdf6829e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all-print-options.png",
+      "bytes": 72019,
+      "sha256": "4e0ce5666e8823dcf412cbbcaa0a4b46412f7ae76a44eceabe0ed32811954991"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all.pdf",
+      "bytes": 21072,
+      "sha256": "a80fd390457b78eccefb19ff5be83f293807fca7015622eda62f0fcc92a2e5fe"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-all.pptx",
+      "bytes": 35142,
+      "sha256": "b98999b9afc5a5c5b167161f322555a5c44f5a1aa6016d22e25338f972a6194c"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux-open.ax.txt",
+      "bytes": 6062,
+      "sha256": "31c969d46598c2cbb8de40f95711cf651d6ee3a65d339d3688a36d7d18924025"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux-open.png",
+      "bytes": 126854,
+      "sha256": "15fcb068a6e69d2202b569645c97f620065e4da542d4d404032640086f9e6458"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux-print-options.png",
+      "bytes": 72023,
+      "sha256": "b3af35dda003d95863c22ac1413504c41b1b890e8222de20a5afbfa4fb7f04c2"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux.pdf",
+      "bytes": 21072,
+      "sha256": "dc16667a496cb368181c67f377c5098b174dc72ffba018711b0eb4afa1a6674c"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-aux.pptx",
+      "bytes": 35144,
+      "sha256": "a63cfa62907a986bd8f4683349cb3b30189e6ac7419ad0582f196052ec934cfd"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-controls.json",
+      "bytes": 1172,
+      "sha256": "d6000527e98128c292a3f3a7182da9d2fa8c48c86622e1dacfd4efb36303dc35"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin-open.ax.txt",
+      "bytes": 6070,
+      "sha256": "18c96c8debc3b363b2a39bf07265cc84268c1e8d1d59c6746147cc3a85eb9d62"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin-open.png",
+      "bytes": 126922,
+      "sha256": "7517e48ef7ab72d078370bbffcb8b50be0a40cfddb4d6dc71c1b34f022e025cc"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin-print-options.png",
+      "bytes": 72016,
+      "sha256": "e4a3000f43661fc7e1068ba723fe4f9cb5c3a8585bcb211cf79fb68fbbe522c6"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin.pdf",
+      "bytes": 21074,
+      "sha256": "b4006dcf55ac965e762666ba930f0760e88f0e0ee27df8ef693e0574b69d413e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/font-latin.pptx",
+      "bytes": 35142,
+      "sha256": "86afe58ccba364e4397ccc7fcc7d5288247e329d07e5fd51499f3b3e291a8ace"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/input.pptx",
+      "bytes": 35697,
+      "sha256": "29e184670e77e44af63f3b905dfdd718b7cfb814c93e16f0e1a312fcbb6e277a"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/powerpoint-version.ax.txt",
+      "bytes": 968,
+      "sha256": "87c82d95cd953d44a2c985265c20c9d687983b27bc3b547bcd945f7c103ded5c"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/powerpoint-version.png",
+      "bytes": 28693,
+      "sha256": "19aa5b691213a59a0eedec9c4126ff10e32aaa6e4f2fa6da5763e072433a4480"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-closed.ax.txt",
+      "bytes": 6085,
+      "sha256": "7aba1890af29b694320a4dbae1464cbabc82836242a66dd1cada2c7addab9dc8"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-print-options.png",
+      "bytes": 72565,
+      "sha256": "6d2275009d70fca9069f95620db71e52ed749ab5a174618dc10490cfad8f0345"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "4d8d94d01d0fbf4188b5ccfe1e84adb824959023ba3e009cf82714eed6976784"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-reopened.png",
+      "bytes": 127318,
+      "sha256": "21d2ca12d6f3fe6ba9795a66216f2fd7cc3a64682836a99be1a1027f38325562"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "b3ffc314a5281cf4009d96ad84c38fb23e854f05a68ce788bfdd5aaa36ee6dff"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1-saved.png",
+      "bytes": 128669,
+      "sha256": "69a5268c91ea0051a16e906f0c7acec2797462cfbed8f19e8ebcaefbc8c7493e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1.pdf",
+      "bytes": 67856,
+      "sha256": "e1e2664be01259fca8642cd8384f65b73d6a1555aac4d6886a2a67bcb1bd29cb"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round1.pptx",
+      "bytes": 40699,
+      "sha256": "f0920d5028163badafa993e633c2c774c1ec7373060f06153f8954c63fb2a98d"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-closed.ax.txt",
+      "bytes": 6093,
+      "sha256": "8d5ddd71663853fa53f762d673c4d8b1417ecc22e1577ac7c6ffde8032f7028a"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-print-options.png",
+      "bytes": 72572,
+      "sha256": "2ee7a28f433dd4c3b06f81845005d0cd91754fd848adf13c8676d5fea05120bd"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "738c339fe8dc24550e8e886b0c3e72df18b19f2b6e23a80ea7bbb3caa511a6d7"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-reopened.png",
+      "bytes": 127334,
+      "sha256": "03db1607a3e41bcb29a8ba4afa1286f17c6a9ebdaa5dbb6ac3f3670b53d70dba"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "a8b00a3ef9e420d5665dbf18c56002e2ab813f77e27f88407fe1ee732925be7f"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2-saved.png",
+      "bytes": 128735,
+      "sha256": "ab34651189e586cb099c65bb5e8d37d7c6c4a172235f4fc819cca20c47385e04"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2.pdf",
+      "bytes": 67856,
+      "sha256": "9bdf2b866f64870c43a35af1414f31908182fc4b50048c608b26e79342c257ea"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round2.pptx",
+      "bytes": 40700,
+      "sha256": "a042a2f71119095b6cfcb2cdbba991172de14fab568c4318d50d87a6d3c0dd89"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-closed.ax.txt",
+      "bytes": 6093,
+      "sha256": "8d5ddd71663853fa53f762d673c4d8b1417ecc22e1577ac7c6ffde8032f7028a"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-print-options.ax.txt",
+      "bytes": 3489,
+      "sha256": "75831dcac297163faf9f075fea89c1a013c919351282cd50f337b552cef3bf2b"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-print-options.png",
+      "bytes": 72574,
+      "sha256": "220d6574c656270ab756ea11d30bb09ad13a529127acaacefaa5df43e213797e"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-reopened.ax.txt",
+      "bytes": 6082,
+      "sha256": "3eab6472a0045d0fa22a57dc47053905dfc5827b58844297be37812df964bee5"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-reopened.png",
+      "bytes": 127329,
+      "sha256": "194b54f706451f8821800a0a1227ba79f4c66a86050b370b1ab9fd55862e7a18"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-saved.ax.txt",
+      "bytes": 6116,
+      "sha256": "4de42a2368002afd805de665cd85b6ecab59d302dad227ebb206d8164902d731"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3-saved.png",
+      "bytes": 128749,
+      "sha256": "a9b002c3f7f0d2b8c7fea518cfaffc175c27bbf8430df483785ae82e50b45ec9"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3.pdf",
+      "bytes": 67856,
+      "sha256": "532fcaf797a899ea2fe96bffb5aacaac6becdcdedf68e6b498c246528026bff0"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/rebind-round3.pptx",
+      "bytes": 40698,
+      "sha256": "4c9f5ecaf38615783922ce9fb7d24be8222dc356eb950510d19e47f1201cc59c"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/round2-open-panel.ax.txt",
+      "bytes": 34743,
+      "sha256": "3e50e6ff720d94c5b84bf8c1e654087a5d2f8f5fbf610f6ec79005da8461c8a0"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/round2-open-panel.png",
+      "bytes": 67420,
+      "sha256": "51e7de7435dd23993138d959ea72c21a9f7c32cc7a9ba979f84b791909abb811"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/round3-print-complete.ax.txt",
+      "bytes": 6113,
+      "sha256": "fc4c7ac68347eade21ae005f3aa0b69530d72fe7314741b997f40fb2064e0ec1"
+    },
+    {
+      "file": ".tmp/layout-rebind/native-0OWvU8/round3-print-complete.png",
+      "bytes": 128747,
+      "sha256": "a4e5d84309bb4d82e568a11f7d7bc8e2cb3d7fd23c9fd76c63c93628af10d822"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/layout-rebind-native.py",
+      "sha256": "592abfe0a50b657fab18125fa90aa440261ae4df63e03f7b8a3d1c4f9d0dcbf7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/master-cell-properties-native.py",
+      "sha256": "081f341ea2ee3924a1b6749ca785e5fff6fc118fe42faea3ea36e902baed29b6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/master-artwork-native.py",
+      "sha256": "004b98a25e13abaeb3df5fbe4fd5ce7e06f1690d53b5c7a60656707241fac7fc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-operations.py",
+      "sha256": "9d7b0694310fc1ed82808b521da8f0c1cfa86117e72f081350d2a8ce2c8bfc2a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-native.py",
+      "sha256": "4a962fa1e47da9fd9b2bd0ce8cdd642913915e0c9834d63f9a9070669d6fd294"
+    }
+  ],
+  "scope": "Exact used ASCII glyph programs/metrics, text positions, images and drawing geometry on preserve/unselected pages; only the named master accent fill changes. Entire actual PDF records exact through three reopen rounds; every native package part exact after first save except validated clocks/TotalTime. Captured first-save additions/defaults, reset-page semantics, complete source ownership/chart/workbook graph and Parser no-op binding remain under review. This bounded proof does not accept the full rebind API or all first-save deltas."
+}

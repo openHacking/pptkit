@@ -1,0 +1,175 @@
+{
+  "scope": "Missing core fields and inserted values, each with three LibreOfficeDev headless resaves; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "0734ca9ff95361feb03fc082b894aa626d863e183cf025055e003be18c48f943",
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/input/control.pptx",
+      "sha256": "e2dffe03ad78a38a720bda3dec06e5d9ec677b4068843daa9331feb3e012f566",
+      "metadata": {
+        "title": null,
+        "creator": "Sentinel Author",
+        "subject": null,
+        "description": null,
+        "language": null,
+        "revision": "7",
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/input/edited.pptx",
+      "sha256": "1ece5b242611e2e1adfad28f298aa8cccd166f8741215286965f0ae3db6f1bff",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "revision": "7",
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/control.pptx",
+      "sha256": "2c6a72880ad7929a4135c556e0697350900a43f135340b0a8c0e86caf1be8d05",
+      "metadata": {
+        "title": "",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "",
+        "language": "zh-CN",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/edited.pptx",
+      "sha256": "4161cecc3d7e72ca38b43e31a5b25a94b56954f8e0297a09067e2b111c549a6f",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/control.pptx",
+      "sha256": "5a89206ab3683650a5e25a589c7b6cbed8544fba0843e6c76879f200b4bb84b2",
+      "metadata": {
+        "title": "",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "",
+        "language": "zh-CN",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/edited.pptx",
+      "sha256": "954b33c912a781807ecf446d3be3c6f8627fb7f262f4b35abc6032228f4957ce",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-3/control.pptx",
+      "sha256": "61e6b22f87636c66238b726e52f7c3a406618c67ab56ddde74217e318b51a172",
+      "metadata": {
+        "title": "",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "",
+        "language": "zh-CN",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/core-insert-libreoffice/run-j_hbqn0l/round-3/edited.pptx",
+      "sha256": "fd9f6c0aaab69a926e7d55ab18693efb60392c50142f641fc69affd5ab8522da",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "creator": "Sentinel Author",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-insert-libreoffice/run-j_hbqn0l/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

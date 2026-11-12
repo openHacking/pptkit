@@ -1,0 +1,163 @@
+{
+  "scope": "One offset-date control and PPTKit date removal, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "0f0d2e6d31e58e67dd240326319c2158ebafc72f09f84e57f0c225affd31fb47",
+  "seed": {
+    "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/input/seed.pptx",
+    "sha256": "36c9478b29bfeac51bac83d70d1a615b2bae2f8ac2543f07c00c3f6c7396596f"
+  },
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/input/control.pptx",
+      "sha256": "a824876b76bb3f566e6313c7d6067ac895f83737ac3f0ccb290d60965c0bd489",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": "2020-02-29T10:00:00.1200+08:00",
+        "modified": "2021-01-02T03:04:05.123Z"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/input/edited.pptx",
+      "sha256": "f3cb1b43e455bd9fc929dbd5e0e9ca7a35fe1476d8828b767b2be8b074fc2bb0",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": null,
+        "modified": null
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/control.pptx",
+      "sha256": "d5183c33f0f24d322423f722839794b80eb4144d7c9dd10163849212b119ea54",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": "2020-02-29T02:00:00Z",
+        "modified": "2021-01-02T03:04:05Z"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/edited.pptx",
+      "sha256": "3df9bb503d8bdca8f5caa5164920b6138ca51edbeba8e4b95e5844d8f211bdf4",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": null,
+        "modified": null
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/control.pptx",
+      "sha256": "e0c87f2dffb2d2a9044058ab0039e6434cfb670e0f4198316aebdd052bca1560",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": "2020-02-29T02:00:00Z",
+        "modified": "2021-01-02T03:04:05Z"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/edited.pptx",
+      "sha256": "ee68ccfa47ff597177306d9906527a8c8558dea50d90c5ab5572997444320feb",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": null,
+        "modified": null
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-3/control.pptx",
+      "sha256": "2cfdd571a1536aa4b8a9b82fdbd0c1c2ce98eb2fac3c42d3afc6df004048ade1",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": "2020-02-29T02:00:00Z",
+        "modified": "2021-01-02T03:04:05Z"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/metadata-date-remove-libreoffice/run-077e1ish/round-3/edited.pptx",
+      "sha256": "aec22b16191d960057cd5ff2ecf18dce5b333d90a3445b8fe864935c4d5d3509",
+      "metadata": {
+        "title": "Date removal control",
+        "subject": "Sentinel",
+        "revision": "7",
+        "created": null,
+        "modified": null
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-date-remove-libreoffice/run-077e1ish/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

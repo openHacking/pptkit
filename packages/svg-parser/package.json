@@ -1,0 +1,13 @@
+{
+  "name": "@pptkit/svg-parser",
+  "version": "0.2.0-preview.0",
+  "private": true,
+  "pptkitPrivateReason": "Experimental SVG importer lacks browser, native and installed-consumer acceptance.",
+  "type": "module",
+  "description": "Experimental bounded directional SVG import for PPTKit.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": { "@pptkit/core": "workspace:*", "saxes": "6.0.0" },
+  "scripts": { "build": "tsc -p tsconfig.json && node ../../scripts/build-browser-bundle.mjs @pptkit/svg-parser", "test": "pnpm run build && node --test test/*.test.mjs" },
+  "engines": { "node": ">=20.0.0" }
+}

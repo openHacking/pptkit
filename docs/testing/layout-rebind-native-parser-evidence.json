@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/layout-rebind-native-typography-evidence.json",
+  "nativeEvidenceSha256": "6110d58e66a16715e154ef241d8a9c7b1331717cce26cf35732e8d8848dcc580",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/before.pptx",
+      "sha256": "b1b03e761eb82ca0f0b1ac7e3ca94b757f60b63290b7715ff42b7511e5ea8638",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/parser-6WcGfB/before.pptx.json",
+      "snapshotSha256": "23d92be25fb57899ee7547d734b75212459fa6e3a243ca61bb76e49d982f0360",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/input.pptx",
+      "sha256": "cc14ef5dea496aa54a62edc172365e36f83006657dc763679f59a8166da393d0",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/parser-6WcGfB/input.pptx.json",
+      "snapshotSha256": "a55a9da5a565388216fd6d94e942eb8ba3ea8a390b2a1824a2379ab78fbf2b18",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round1.pptx",
+      "sha256": "8cc34be64a17995c03263833f0fbf9ff14092e6e0e737a4bb37ca2489d37ff60",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/parser-6WcGfB/rebind-round1.pptx.json",
+      "snapshotSha256": "9deb9cad580b2543e06fc7c1b45611e2d5aa432adbefc54fabd3095fb74c0827",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round2.pptx",
+      "sha256": "4460786a9e5525a997fba94b5a02a95c17f9b86f3510a8b332efe52d9cd1140b",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/parser-6WcGfB/rebind-round2.pptx.json",
+      "snapshotSha256": "2df324bce5897cb0f840a6a028f57bb547e5cef10afed6155a381a5dc295bf78",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/rebind-round3.pptx",
+      "sha256": "2072a14ce70536e5565e02ff1c887df011b1c158deb11c1dd9eeb3676a381994",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/layout-rebind/native-OiIJHF/parser-6WcGfB/rebind-round3.pptx.json",
+      "snapshotSha256": "7bce40a464703820214d504a2b16b5dffe02bb92b58b45c3d9de915a3699db12",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 5,
+    "consumerNoOps": 15
+  },
+  "scope": "Five actual before/after/reopened layout-rebind files, full structural inspections/reports in Node/ESM/global and 15 exact source-only no-ops. No complete master/artwork Core import, visibility projection or source style/structure write authority."
+}

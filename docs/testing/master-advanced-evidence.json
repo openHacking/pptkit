@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T23:09:09.063Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF",
+  "sourceSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/source.pptx",
+      "bytes": 42399,
+      "sha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/normalized.json",
+      "bytes": 65629,
+      "sha256": "3c02277bc121b0f528081551edc24923149f8d0dd561e52470a4fe73e4909095"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/layout.json",
+      "bytes": 87699,
+      "sha256": "c5d7a1c4c3c179188933d537c6a01d6c32b83dd5fe6818c0614e139714126dda"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/origins.json",
+      "bytes": 160994,
+      "sha256": "fb503ef90b25464e8651cba46bc6fb73c9dab30a66a85368cb805caef9e188b7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/warnings.json",
+      "bytes": 477,
+      "sha256": "38a3ac9e0ef1bc08b5e39c3e787ff195fa7f0f8d2b0dcaf6bd4e953c938bccd2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/page-0.svg",
+      "bytes": 18862,
+      "sha256": "242f781bbee9dbe709ea318fa4a11d6527b1a5ec7994654fabb5f686c05972bc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/page-1.svg",
+      "bytes": 813,
+      "sha256": "b10b230afb41cf2dea9041be56e33228164168088605f03287e5ca1aca85c7ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/page-2.svg",
+      "bytes": 18862,
+      "sha256": "53513b1036d285e25eff76390bd3500c251d2c329b9ad0cffd2f0b43fa3c3294"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/page-3.svg",
+      "bytes": 17730,
+      "sha256": "d81b4eddab6c25cbc46664843300b3f30d8fdd0f158bd805c17883632bfc5b5a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/run-y4xpHp/native-contact.png",
+      "bytes": 32424,
+      "sha256": "8cfcf591e7a86df3b4b2b30e3a356baffc4109a5266b13650298cb93b6bd1fd8"
+    }
+  ],
+  "nativeApplication": "Actual PowerPoint 16.104 (25121423); historical corrected-cell three-round controls retained. Current producer has a separate exact six-paragraph font delta and actual four-page first-open equivalence bridge.",
+  "dependencies": [
+    {
+      "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+      "sha256": "f2b15f7a672e65ad3662536b6b6c354136e86653526bc8e3442fd07ef29f7de1"
+    },
+    {
+      "file": "packages/pptx-exporter/test/table-cell-properties.test.mjs",
+      "sha256": "3f4778c2e7b07141eac4f2533f8fad76f238460f9cda1c965220a420a4cb4460"
+    },
+    {
+      "file": "tests/fixtures/master-advanced.mjs",
+      "sha256": "f23a7f8be2e3cf41aa33e4ce09da1e5fd0b70539c1096edeb045222c7757022b"
+    },
+    {
+      "file": "scripts/prepare-master-advanced.mjs",
+      "sha256": "4a175d9f7f1f6b9961ed10d91b5201262cb745dc800c0c36ff9c67519f4691ac"
+    },
+    {
+      "file": "scripts/inspect-native-master-cell-properties.mjs",
+      "sha256": "6e1eb7de13b85e5a8192c14c0092e52137f9cbedc84de5bf680a8a0478c8eabb"
+    },
+    {
+      "file": "scripts/verify-master-cell-properties-evidence.mjs",
+      "sha256": "bf2c40fc03b1cca3a41f946b63644beb8e312a1a13aa80828b2fb93f101c9201"
+    },
+    {
+      "file": "scripts/table-style-parity.test.mjs",
+      "sha256": "21447ea893cb80fc240d1f1fd06ceb9f69ac1d89f55d3bbd398d41178faad342"
+    },
+    {
+      "file": "scripts/table-origins-parity.test.mjs",
+      "sha256": "e23fa8a1d7cd64a53632cc72ae7f03bdfb0ebd04e68fe5a0f81c9364ce95d25f"
+    },
+    {
+      "file": "scripts/inspect-table-style.mjs",
+      "sha256": "327b9040b9dc994475cb7737ee4734d36ac5a7ffaa13d6e78ed39efcd94f34c9"
+    }
+  ],
+  "scope": "Cell margin/anchor placement and border-before-fill repair. Actual old failure/isolated controls/new native three rounds; full later package stability, chart caches/workbook closure/native connector/owner/visibility controls and all-page raster/trace/drawing/image/font stability. Full source-to-first-save chart style equivalence, native shared editing and general advanced master admission remain unaccepted.",
+  "nativeEvidence": {
+    "file": "docs/testing/master-cell-properties-native-evidence.json",
+    "sha256": "78bca4b12e89be00dcbbdb0af5b5cda847807364eb410a4b8887a2591b6085f1"
+  },
+  "parserEvidence": {
+    "file": "docs/testing/master-cell-properties-native-parser-evidence.json",
+    "sha256": "77b629182e7dbd9ac3dd4eef261b8c072c5ed1f0cb84eb9629217d861959a3f7"
+  },
+  "finalizedAt": "2026-10-27T05:18:21.947Z",
+  "currentProducer": {
+    "sourceSha256": "0ecf999b736656fe2c4ccaa28bad8f3ca93e97ac20a6681b311101bfc667824f",
+    "historicalSourceSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+    "bridgeEvidence": {
+      "file": "docs/testing/master-paragraph-font-bridge-evidence.json",
+      "sha256": "3afdf05aa09ca255c290ae6e4f5f73eb46bb826ff73d8d2cd63916b8dd26c209"
+    },
+    "dependencies": [
+      {
+        "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+        "sha256": "f1bf225cd1ebda04d203fe4ff10c9404f2275a3c334d5f79a887faed27f9ccf4"
+      },
+      {
+        "file": "packages/pptx-exporter/test/table-cell-properties.test.mjs",
+        "sha256": "3f4778c2e7b07141eac4f2533f8fad76f238460f9cda1c965220a420a4cb4460"
+      },
+      {
+        "file": "tests/fixtures/master-advanced.mjs",
+        "sha256": "f23a7f8be2e3cf41aa33e4ce09da1e5fd0b70539c1096edeb045222c7757022b"
+      },
+      {
+        "file": "scripts/prepare-master-advanced.mjs",
+        "sha256": "4a175d9f7f1f6b9961ed10d91b5201262cb745dc800c0c36ff9c67519f4691ac"
+      },
+      {
+        "file": "scripts/inspect-native-master-cell-properties.mjs",
+        "sha256": "6e1eb7de13b85e5a8192c14c0092e52137f9cbedc84de5bf680a8a0478c8eabb"
+      },
+      {
+        "file": "scripts/verify-master-cell-properties-evidence.mjs",
+        "sha256": "80b8c2e9d96e402133dc771e2f5aeb41fafcbb909642ed6543b76da8e4de3250"
+      },
+      {
+        "file": "scripts/table-style-parity.test.mjs",
+        "sha256": "21447ea893cb80fc240d1f1fd06ceb9f69ac1d89f55d3bbd398d41178faad342"
+      },
+      {
+        "file": "scripts/table-origins-parity.test.mjs",
+        "sha256": "e23fa8a1d7cd64a53632cc72ae7f03bdfb0ebd04e68fe5a0f81c9364ce95d25f"
+      },
+      {
+        "file": "scripts/inspect-table-style.mjs",
+        "sha256": "327b9040b9dc994475cb7737ee4734d36ac5a7ffaa13d6e78ed39efcd94f34c9"
+      },
+      {
+        "file": "scripts/research/advanced-table-font-bridge.mjs",
+        "sha256": "f3ed66598e453f7b1fac8e01e4fa95c4e5efe703761c82cf217b160858d8165c"
+      }
+    ]
+  }
+}

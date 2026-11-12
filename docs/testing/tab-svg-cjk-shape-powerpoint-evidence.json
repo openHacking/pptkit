@@ -1,0 +1,710 @@
+{
+  "scope": "First-open PowerPoint PDF versus Chromium SVG suffix characters in 12 Chinese-prefix shape samples with Hiragino Sans GB; no edit/reopen, Japanese/Korean or other-font claim.",
+  "source": "docs/testing/tab-cjk-shape-powerpoint-evidence.json",
+  "sourceSha256": "64fb08d02354781fbeded60fa9f3c1d1801426a29025ed6b1c5b42df9e39b088",
+  "runnerSha256": "46eecd7450fcc370f9f8466fe69c5518b52f2d0addde4de7e03742eedccef97d",
+  "browser": "149.0.7827.55",
+  "bundles": [
+    {
+      "name": "@pptkit/core",
+      "file": "packages/core/dist/browser/index.js",
+      "sha256": "b1cffe8969bcc46adc5272462ebfe402b0e27586a2f3a8a21d185826150a682e"
+    },
+    {
+      "name": "@pptkit/layout",
+      "file": "packages/layout/dist/browser/index.js",
+      "sha256": "ee1168de2b8e56ac9bc408a58e99a10d74693a4ac22b48290095d5537b425844"
+    },
+    {
+      "name": "@pptkit/svg-renderer",
+      "file": "packages/svg-renderer/dist/browser/index.js",
+      "sha256": "3ad9176180968c68bcfa07f7c2710b2976bf108c6eecd08a27ab9b051aca4060"
+    }
+  ],
+  "font": {
+    "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "sha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0"
+  },
+  "selectedFonts": [
+    [
+      {
+        "familyName": "Hiragino Sans GB",
+        "postScriptName": "HiraginoSansGB-W3",
+        "isCustomFont": false,
+        "glyphCount": 1
+      }
+    ],
+    [
+      {
+        "familyName": "Hiragino Sans GB",
+        "postScriptName": "HiraginoSansGB-W6",
+        "isCustomFont": false,
+        "glyphCount": 3
+      }
+    ]
+  ],
+  "items": [
+    {
+      "align": "left",
+      "word": "一",
+      "bold": false,
+      "chars": [
+        {
+          "char": "一",
+          "native": {
+            "char": "一",
+            "left": 280.0000462582271,
+            "right": 307.78952198290074,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "一",
+            "left": 280,
+            "right": 308,
+            "baseline": 28
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": 0.21047801709926262,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "left",
+      "word": "销售",
+      "bold": false,
+      "chars": [
+        {
+          "char": "销",
+          "native": {
+            "char": "销",
+            "left": 280.0000462582271,
+            "right": 307.78952198290074,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "销",
+            "left": 280,
+            "right": 308,
+            "baseline": 28
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": 0.21047801709926262,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "售",
+          "native": {
+            "char": "售",
+            "left": 308.00072933804694,
+            "right": 335.79020506272064,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "售",
+            "left": 308,
+            "right": 336,
+            "baseline": 28
+          },
+          "leftDifference": -0.0007293380469377553,
+          "rightDifference": 0.20979493727935505,
+          "baselineDifference": -0.15876831434024297
+        }
+      ]
+    },
+    {
+      "align": "left",
+      "word": "总收入",
+      "bold": true,
+      "chars": [
+        {
+          "char": "总",
+          "native": {
+            "char": "总",
+            "left": 280.0000462582271,
+            "right": 307.78952198290074,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "总",
+            "left": 280,
+            "right": 308,
+            "baseline": 28
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": 0.21047801709926262,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "收",
+          "native": {
+            "char": "收",
+            "left": 308.00072933804694,
+            "right": 335.79020506272064,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "收",
+            "left": 308,
+            "right": 336,
+            "baseline": 28
+          },
+          "leftDifference": -0.0007293380469377553,
+          "rightDifference": 0.20979493727935505,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "入",
+          "native": {
+            "char": "入",
+            "left": 336.00137386934426,
+            "right": 363.79084959401797,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "入",
+            "left": 336,
+            "right": 364,
+            "baseline": 28
+          },
+          "leftDifference": -0.001373869344263312,
+          "rightDifference": 0.2091504059820295,
+          "baselineDifference": -0.24657807706501345
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "一",
+      "bold": false,
+      "chars": [
+        {
+          "char": "一",
+          "native": {
+            "char": "一",
+            "left": 265.9999938322364,
+            "right": 293.78946955691003,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "一",
+            "left": 266,
+            "right": 294,
+            "baseline": 28
+          },
+          "leftDifference": 0.000006167763615394506,
+          "rightDifference": 0.21053044308996505,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "销售",
+      "bold": false,
+      "chars": [
+        {
+          "char": "销",
+          "native": {
+            "char": "销",
+            "left": 252.00001850329082,
+            "right": 279.7894942279645,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "销",
+            "left": 252,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.000018503290817761808,
+          "rightDifference": 0.21050577203550347,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "售",
+          "native": {
+            "char": "售",
+            "left": 280.0007015831107,
+            "right": 307.7901773077844,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "售",
+            "left": 280,
+            "right": 308,
+            "baseline": 28
+          },
+          "leftDifference": -0.0007015831106969017,
+          "rightDifference": 0.2098226922155959,
+          "baselineDifference": -0.15876831434024297
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "总收入",
+      "bold": true,
+      "chars": [
+        {
+          "char": "总",
+          "native": {
+            "char": "总",
+            "left": 238.00004317434528,
+            "right": 265.78951889901896,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "总",
+            "left": 238,
+            "right": 266,
+            "baseline": 28
+          },
+          "leftDifference": -0.00004317434527933983,
+          "rightDifference": 0.2104811009810419,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "收",
+          "native": {
+            "char": "收",
+            "left": 266.00072625416516,
+            "right": 293.7902019788388,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "收",
+            "left": 266,
+            "right": 294,
+            "baseline": 28
+          },
+          "leftDifference": -0.0007262541651584797,
+          "rightDifference": 0.20979802116119117,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "入",
+          "native": {
+            "char": "入",
+            "left": 294.0013707854625,
+            "right": 321.79084651013613,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "入",
+            "left": 294,
+            "right": 322,
+            "baseline": 28
+          },
+          "leftDifference": -0.0013707854624840365,
+          "rightDifference": 0.20915348986386562,
+          "baselineDifference": -0.24657807706501345
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "一",
+      "bold": false,
+      "chars": [
+        {
+          "char": "一",
+          "native": {
+            "char": "一",
+            "left": 252.00001850329082,
+            "right": 279.7894942279645,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "一",
+            "left": 252,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.000018503290817761808,
+          "rightDifference": 0.21050577203550347,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "销售",
+      "bold": false,
+      "chars": [
+        {
+          "char": "销",
+          "native": {
+            "char": "销",
+            "left": 223.99999074835458,
+            "right": 251.78946647302826,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "销",
+            "left": 224,
+            "right": 252,
+            "baseline": 28
+          },
+          "leftDifference": 0.000009251645423091759,
+          "rightDifference": 0.21053352697174432,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "售",
+          "native": {
+            "char": "售",
+            "left": 252.00067382817446,
+            "right": 279.79014955284816,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "售",
+            "left": 252,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.0006738281744560481,
+          "rightDifference": 0.20985044715183676,
+          "baselineDifference": -0.15876831434024297
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "总收入",
+      "bold": true,
+      "chars": [
+        {
+          "char": "总",
+          "native": {
+            "char": "总",
+            "left": 196.00005936472473,
+            "right": 223.78951581513715,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "总",
+            "left": 196,
+            "right": 224,
+            "baseline": 28
+          },
+          "leftDifference": -0.00005936472473422327,
+          "rightDifference": 0.2104841848628496,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "收",
+          "native": {
+            "char": "收",
+            "left": 224.00072317028335,
+            "right": 251.79019889495703,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "收",
+            "left": 224,
+            "right": 252,
+            "baseline": 28
+          },
+          "leftDifference": -0.0007231702833507825,
+          "rightDifference": 0.20980110504297045,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "入",
+          "native": {
+            "char": "入",
+            "left": 252.00140625010326,
+            "right": 279.79088197477694,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "入",
+            "left": 252,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.001406250103258344,
+          "rightDifference": 0.2091180252230629,
+          "baselineDifference": -0.24657807706501345
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "1.2",
+      "bold": false,
+      "chars": [
+        {
+          "char": "1",
+          "native": {
+            "char": "1",
+            "left": 261.62504490902876,
+            "right": 279.8827431040548,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "1",
+            "left": 261.59375,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.031294909028758866,
+          "rightDifference": 0.11725689594521782,
+          "baselineDifference": -0.07094181942685296
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 279.999429481866,
+            "right": 286.6689021138468,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 286.734375,
+            "baseline": 28
+          },
+          "leftDifference": 0.0005705181339976662,
+          "rightDifference": 0.06547288615320213,
+          "baselineDifference": -0.07094181942685296
+        },
+        {
+          "char": "2",
+          "native": {
+            "char": "2",
+            "left": 286.75783355540955,
+            "right": 305.0155317504355,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "2",
+            "left": 286.71875,
+            "right": 305.125,
+            "baseline": 28
+          },
+          "leftDifference": -0.039083555409547444,
+          "rightDifference": 0.10946824956448609,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "123.45",
+      "bold": false,
+      "chars": [
+        {
+          "char": "1",
+          "native": {
+            "char": "1",
+            "left": 224.87496511358708,
+            "right": 243.13266330861308,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "1",
+            "left": 224.796875,
+            "right": 243.203125,
+            "baseline": 28
+          },
+          "leftDifference": -0.07809011358708062,
+          "rightDifference": 0.07046169138692449,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "2",
+          "native": {
+            "char": "2",
+            "left": 243.24934968642427,
+            "right": 261.50704788145026,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "2",
+            "left": 243.1875,
+            "right": 261.59375,
+            "baseline": 28
+          },
+          "leftDifference": -0.06184968642426725,
+          "rightDifference": 0.08670211854973786,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "3",
+          "native": {
+            "char": "3",
+            "left": 261.62377280778406,
+            "right": 279.8814710028101,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "3",
+            "left": 261.578125,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.0456478077840643,
+          "rightDifference": 0.11852899718991239,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 279.99815738062125,
+            "right": 286.66763001260205,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 286.734375,
+            "baseline": 28
+          },
+          "leftDifference": 0.0018426193787490774,
+          "rightDifference": 0.06674498739795354,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "4",
+          "native": {
+            "char": "4",
+            "left": 286.7565614541648,
+            "right": 305.12539503975233,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "4",
+            "left": 286.71875,
+            "right": 305.234375,
+            "baseline": 28
+          },
+          "leftDifference": -0.03781145416479603,
+          "rightDifference": 0.10897996024766599,
+          "baselineDifference": -0.15876831434024297
+        },
+        {
+          "char": "5",
+          "native": {
+            "char": "5",
+            "left": 305.26991345085713,
+            "right": 323.5276116458831,
+            "baseline": 28.158768314340243
+          },
+          "svg": {
+            "char": "5",
+            "left": 305.21875,
+            "right": 323.625,
+            "baseline": 28
+          },
+          "leftDifference": -0.05116345085713192,
+          "rightDifference": 0.09738835411690161,
+          "baselineDifference": -0.15876831434024297
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "0.678",
+      "bold": true,
+      "chars": [
+        {
+          "char": "0",
+          "native": {
+            "char": "0",
+            "left": 260.12504479889014,
+            "right": 279.91115336518686,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "0",
+            "left": 260.0625,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.0625447988901442,
+          "rightDifference": 0.08884663481313737,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 280.0000848067496,
+            "right": 287.50324633629333,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 287.5625,
+            "baseline": 28
+          },
+          "leftDifference": -0.00008480674961219847,
+          "rightDifference": 0.05925366370667007,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "6",
+          "native": {
+            "char": "6",
+            "left": 287.50879732354304,
+            "right": 307.29490588983975,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "6",
+            "left": 287.546875,
+            "right": 307.5,
+            "baseline": 28
+          },
+          "leftDifference": 0.03807767645696458,
+          "rightDifference": 0.20509411016024615,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "7",
+          "native": {
+            "char": "7",
+            "left": 307.3838373314025,
+            "right": 327.1699458976993,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "7",
+            "left": 307.484375,
+            "right": 327.4375,
+            "baseline": 28
+          },
+          "leftDifference": 0.10053766859749658,
+          "rightDifference": 0.2675541023007213,
+          "baselineDifference": -0.24657807706501345
+        },
+        {
+          "char": "8",
+          "native": {
+            "char": "8",
+            "left": 327.25883879073945,
+            "right": 347.04494735703616,
+            "baseline": 28.246578077065013
+          },
+          "svg": {
+            "char": "8",
+            "left": 327.421875,
+            "right": 347.375,
+            "baseline": 28
+          },
+          "leftDifference": 0.16303620926055373,
+          "rightDifference": 0.3300526429638353,
+          "baselineDifference": -0.24657807706501345
+        }
+      ]
+    }
+  ],
+  "maxHorizontal": 0.3300526429638353,
+  "maxBaseline": 0.24657807706501345
+}

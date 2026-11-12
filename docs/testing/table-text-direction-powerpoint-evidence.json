@@ -1,0 +1,83 @@
+{
+  "scope": "PowerPoint 16.104 on macOS: one generated 1x4 table, one Save As and reopen. The first and reopened screenshots show horizontal default, clockwise and counterclockwise text, and explicit horizontal. No text editing, alternate fonts, margins, alignments, shared styles, merged cells or additional versions are covered. UI provenance is observed, not authenticated.",
+  "artifactDirectory": ".tmp/native-table-text-direction",
+  "reopenRounds": 1,
+  "glyphMaskComparison": {
+    "threshold": "all RGB channels below 80",
+    "regions": [
+      {
+        "name": "default",
+        "bounds": [
+          435,
+          270,
+          610,
+          315
+        ],
+        "first": 1257,
+        "reopen": 1257,
+        "symmetricDifference": 0
+      },
+      {
+        "name": "clockwise",
+        "bounds": [
+          832,
+          265,
+          875,
+          485
+        ],
+        "first": 1810,
+        "reopen": 1810,
+        "symmetricDifference": 0
+      },
+      {
+        "name": "counter",
+        "bounds": [
+          905,
+          480,
+          950,
+          665
+        ],
+        "first": 1498,
+        "reopen": 1498,
+        "symmetricDifference": 0
+      },
+      {
+        "name": "horizontal",
+        "bounds": [
+          1125,
+          270,
+          1325,
+          350
+        ],
+        "first": 1921,
+        "reopen": 1921,
+        "symmetricDifference": 0
+      }
+    ]
+  },
+  "packageObservation": {
+    "sourceDirections": [
+      null,
+      "vert",
+      "vert270",
+      "horz"
+    ],
+    "savedDirections": [
+      null,
+      "vert",
+      "vert270",
+      null
+    ],
+    "note": "PowerPoint removed the explicit horizontal attribute. The sampled appearance remained horizontal; inherited override semantics were not tested."
+  },
+  "fixture": "tests/fixtures/table-text-direction-powerpoint-resave.pptx",
+  "sha256": {
+    "source.pptx": "11558d7be0b9484ec2c932d5e76be147cbb87eb17d6e3e4d497785971a624e45",
+    "native-round-1.pptx": "4296ed8c8478330147d8a9af21d531756c24d5df1f46f3bd894fb4140f4f1781",
+    "first.png": "d1698c20a04b9388fbe516bc1f536336348abda26fe2b4ebaf06151cd3796a0b",
+    "first.ax.txt": "b176493441b9c5929db32ef46dc5aadb21e42fb89c16b5a3fc4c3c54fe78bf78",
+    "reopen.png": "b5dba41f3a81e60752d80bf055b893e678516efc33a4ca2bc703d0c75e5f9d79",
+    "reopen.ax.txt": "2a5d2a300036f22df03416b616e36cc7db0dd610c8e0828b1a13d32dfaccec1e",
+    "fixture": "4296ed8c8478330147d8a9af21d531756c24d5df1f46f3bd894fb4140f4f1781"
+  }
+}

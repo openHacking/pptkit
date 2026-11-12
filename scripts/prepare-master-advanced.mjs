@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {createPresentation,normalizePresentation,resolvePresentationInheritance} from '../packages/core/dist/index.js';
+import {resolveLayout} from '../packages/layout/dist/index.js';
+import {generatePptx} from '../packages/pptx-exporter/dist/index.js';
+import {renderLayoutToSvg} from '../packages/svg-renderer/dist/index.js';
+import {masterAdvancedDocument} from '../tests/fixtures/master-advanced.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+await mkdir('.tmp/master-advanced',{recursive:true});
+const directory=path.resolve(await mkdtemp('.tmp/master-advanced/run-')),nativeDirectory=path.resolve(await mkdtemp('.tmp/master-advanced/native-')),artifacts=[];
+async function save(name,value){const file=path.join(directory,name),bytes=typeof value==='string'||value instanceof Uint8Array?value:JSON.stringify(value,null,2)+'\n';await writeFile(file,bytes);artifacts.push({file,bytes:Buffer.byteLength(bytes),sha256:sha(bytes)});}
+const d=masterAdvancedDocument(createPresentation),layout=resolveLayout(d),out=await generatePptx(d,{connectorMode:'native'}),svg=await renderLayoutToSvg(layout);
+assert.equal(out.slideCount,4);assert.equal(out.warnings.length,2);assert.ok(out.warnings.every(w=>w.code==='table-style-materialized'&&['red','blue'].includes(w.masterId)));
+await save('source.pptx',out.bytes);await save('normalized.json',normalizePresentation(d));await save('layout.json',layout);await save('origins.json',resolvePresentationInheritance(d).origins);await save('warnings.json',out.warnings);
+for(const[i,s]of svg.slides.entries())await save('page-'+i+'.svg',s.svg);
+await writeFile(path.join(nativeDirectory,'input.pptx'),out.bytes);
+const manifest={schemaVersion:1,recordedAt:new Date().toISOString(),directory,nativeDirectory,sourceSha256:sha(out.bytes),artifacts,nativeApplication:'pending actual advanced-master opening and three save-close-reopen controls'};
+await writeFile('docs/testing/master-advanced-evidence.json',JSON.stringify(manifest,null,2)+'\n');console.log(JSON.stringify({directory,nativeDirectory,sourceSha256:manifest.sourceSha256,warnings:out.warnings}));

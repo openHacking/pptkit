@@ -1,0 +1,20 @@
+{
+  "scope": "A copy of the PowerPoint-edited mixed transaction sample: native group selected, nudged five times right and three times down, saved, closed and reopened once in PowerPoint for Mac. No repair prompt observed. UI provenance is observational, not authenticated; no calibrated visual comparison.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "system": "macOS 26.5 (25F71)",
+  "artifacts": {
+    "input": { "path": "tests/fixtures/edit-operation-native-powerpoint.pptx", "sha256": "adc5c52989ac8a14c7fcc4686c3dbb740c3be7115c43ee4a9b4effbca1745dac" },
+    "output": { "path": "tests/fixtures/edit-operation-native-move-powerpoint.pptx", "sha256": "228ac2d06ff4d9898c14d6718a0475006cdc22ade19e434c3ae52da79c6035aa" }
+  },
+  "artifactDirectory": ".tmp/edit-operation-native",
+  "captures": {
+    "move-selected.png": "ba727f8bfefafe18bad00fdc9e3e1f0fc67b23fd1c8b4ec8ee699136feafcf05",
+    "move-selected.ax.txt": "94811f88ead48570bf3d15b4fa88479e8c28270170db2c842adb33d2b85b7705",
+    "move-after.png": "64f4ceba4804cbef10cca57cd9d5a343972dc723385d6d00440a67c380efbb1d",
+    "move-after.ax.txt": "42bc3123f8165c83758422f12ef760d625acfe22c18f52f761f969aa83e1297b",
+    "move-reopen.png": "fa20a31b7617ce6c8f1ebb9a11a15696601805a2fd4a28c2d9f21091eef5d9a2",
+    "move-reopen.ax.txt": "6a6eacce9c1fbeb84da4c4112a568c997cc7ba883ebe310ecafa40f2ff6999d9"
+  },
+  "observation": "Group offset changed from 2286000/1905000 to 2345634/1974573 EMU. Group extents and child coordinate extents, nested shape geometry, headline geometry and both texts are retained. Both texts and the group appear in the reopened accessibility tree.",
+  "limitations": "One group, one native nudge sequence and one reopen. No child text edit, arbitrary transforms, native undo, source-preserving PPTKit save, calibrated fidelity or other application claims."
+}

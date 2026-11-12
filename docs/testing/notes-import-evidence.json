@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T17:35:30.179Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/notes-import-native/run-FdSlGl",
+  "scope": "LibreOffice-produced direct notes-body text/click projection: independent notes XML text and click inventory, exact no-op bytes, fresh projection export and slide PDF reopen. Not notes-page geometry, master inheritance, native notes rendering, interactive editing/navigation or preservation edit-save.",
+  "original": {
+    "sha256": "91cc5912ea76f589d352d7d6fa97042dca184eb6f2080b348f5a5ee6c131dbac",
+    "inventory": [
+      {
+        "paragraphs": [
+          "Speaker α😀 & <literal>\nLine two",
+          "Next Self URL",
+          ""
+        ],
+        "actions": [
+          {
+            "paragraph": 1,
+            "run": 0,
+            "type": "slide",
+            "target": "ppt/slides/slide2.xml",
+            "tooltip": "Next slide"
+          },
+          {
+            "paragraph": 1,
+            "run": 1,
+            "type": "slide",
+            "target": "ppt/slides/slide1.xml"
+          },
+          {
+            "paragraph": 1,
+            "run": 2,
+            "type": "url",
+            "target": "https://example.invalid/notes?a=1&b=%E4%B8%AD",
+            "tooltip": "Notes URL"
+          }
+        ],
+        "bodyCount": 1
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 1
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 1
+      }
+    ]
+  },
+  "nativeSource": {
+    "sha256": "e9d9089cb3176165402d9b7b491608293faa6fc6422e62b1e2fcc79af6d7c73d",
+    "inventory": [
+      {
+        "paragraphs": [
+          "Speaker α😀 & <literal>",
+          "Line two",
+          "Next Self URL",
+          ""
+        ],
+        "actions": [
+          {
+            "paragraph": 2,
+            "run": 0,
+            "type": "url",
+            "target": "../slides/slide2.xml"
+          },
+          {
+            "paragraph": 2,
+            "run": 1,
+            "type": "url",
+            "target": "../slides/slide1.xml"
+          },
+          {
+            "paragraph": 2,
+            "run": 2,
+            "type": "url",
+            "target": "https://example.invalid/notes?a=1&b=中"
+          }
+        ],
+        "bodyCount": 1
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 0
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 0
+      }
+    ]
+  },
+  "projection": {
+    "inventory": [
+      {
+        "paragraphs": [
+          "Speaker α😀 & <literal>",
+          "Line two",
+          "Next Self URL",
+          ""
+        ],
+        "actions": [
+          {
+            "paragraph": 2,
+            "run": 2,
+            "type": "url",
+            "target": "https://example.invalid/notes?a=1&b=中"
+          }
+        ]
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": []
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": []
+      }
+    ],
+    "importFindings": {
+      "notes.click-action:unsupported": 2,
+      "notes.click-action:editable": 1,
+      "notes.body.mapped-fields:editable": 1,
+      "notes.inheritance-and-defaults:fallback": 1,
+      "notes.unmapped-property:unsupported": 58
+    },
+    "sourceOnlyActions": [
+      {
+        "slideIndex": 0,
+        "paragraph": 2,
+        "run": 0,
+        "type": "url",
+        "target": "../slides/slide2.xml"
+      },
+      {
+        "slideIndex": 0,
+        "paragraph": 2,
+        "run": 1,
+        "type": "url",
+        "target": "../slides/slide1.xml"
+      }
+    ]
+  },
+  "independentMappedInventoryVerified": true,
+  "noOpOriginalBytes": true,
+  "producerChangedInventory": true,
+  "producerLimitations": "LibreOffice splits the authored line break into paragraphs, converts notes slide-jumps into relative external links, strips tooltips and normalizes URL escaping. The two relative links remain source-only with located diagnostics; fresh export retains projected text and supported actions only.",
+  "freshExport": {
+    "sha256": "7dee68dc0d29d5eb3d69fb1fee577c47e4182f103d4002409f08d88324b17aa6",
+    "inventory": [
+      {
+        "paragraphs": [
+          "Speaker α😀 & <literal>",
+          "Line two",
+          "Next Self URL",
+          ""
+        ],
+        "actions": [
+          {
+            "paragraph": 2,
+            "run": 2,
+            "type": "url",
+            "target": "https://example.invalid/notes?a=1&b=中"
+          }
+        ],
+        "bodyCount": 1
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 1
+      },
+      {
+        "paragraphs": [
+          ""
+        ],
+        "actions": [],
+        "bodyCount": 1
+      }
+    ],
+    "sourceTextInventoryRetained": true,
+    "mappedActionInventoryRetained": true,
+    "sourceOnlyActionCount": 2
+  },
+  "reopenedPdf": {
+    "sha256": "8f8e7e7e37c55c33e70115c35cfe84beb22e4a17361d94b04276be919d692652",
+    "byteLength": 13986
+  },
+  "logs": {
+    "native": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-import-native/run-FdSlGl/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-import-native/run-FdSlGl/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-import-native/run-FdSlGl/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-import-native/run-FdSlGl/reopened/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

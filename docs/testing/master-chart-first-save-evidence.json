@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T23:34:57.385429+00:00",
+  "verified": true,
+  "sourceSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+  "nativeEvidence": "docs/testing/master-cell-properties-native-evidence.json",
+  "nativeEvidenceSha256": "78bca4b12e89be00dcbbdb0af5b5cda847807364eb410a4b8887a2591b6085f1",
+  "rounds": [
+    {
+      "round": 1,
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round1.pptx",
+      "charts": [
+        {
+          "part": "ppt/charts/chart1.xml",
+          "sourceSha256": "6633b65b4a0b2b89b76158a122985817cc26dbbc9711d6c9a906dae15cd3076a",
+          "nativeSha256": "a2dc7f2ec6ce851f9cdc7ece058b83e3ec47be7a6277bc6048f8c990083f7e40",
+          "canonicalSha256": "00d727b09a15cd0ef3654bb24293700dae088112a468b78e37d3d3bbb6f88e74"
+        },
+        {
+          "part": "ppt/charts/chart2.xml",
+          "sourceSha256": "1b76da9c9fa139579b6580cda72e01bfaa2bdc7ecedeaa3314e8da487650c813",
+          "nativeSha256": "d9fbbe039d4c52c1cb499a50ec44c19a1e3ad6240f118b99dbc3a84fb265eebc",
+          "canonicalSha256": "6c710ecf09aa85c286e0d94537ee6ca649fe44b90f6d88dd788ee34c63a124c0"
+        },
+        {
+          "part": "ppt/charts/chart3.xml",
+          "sourceSha256": "f013b087b60b58b6bb678b50ee6b1091b04a869db77b219bdd4883ab87ee418b",
+          "nativeSha256": "06038f3b568cc46703c70d6b8ffcd0e47686d0eaddc9f0706ed8ba64af05bd31",
+          "canonicalSha256": "774db2bc62d0098214ebffacf896a51f77815673b7d766d0bb99f7ddec434d71"
+        },
+        {
+          "part": "ppt/charts/chart4.xml",
+          "sourceSha256": "d7f5ec4211ff7ea89b45be75101801ed35e950a8103067c9bd42cc29b4b63d0f",
+          "nativeSha256": "6795e199051e022f6069b7af0b42d17465fbc2ebdaa76ea301f6fe45351aed98",
+          "canonicalSha256": "52693c33084c58ce10f5dbff56e5fcdc9846d620020ddcc6932ef7882c714bd2"
+        },
+        {
+          "part": "ppt/charts/chart5.xml",
+          "sourceSha256": "d62b8055d7406616ff201260765f8ef5c7050da5ce415b6ca5db82b075246aa9",
+          "nativeSha256": "148ac9f71595620b8378a3cb9d06063f08ead2b4c0e7c4f40ad2fa2c70750314",
+          "canonicalSha256": "3d50bb5a8a0028bcc3286446e3d7e336519150d51bd11c8456eb64c9d9946909"
+        },
+        {
+          "part": "ppt/charts/chart6.xml",
+          "sourceSha256": "4f5fc252e546d91dbdf9d778558c615acde3ed4783b7a128a613b7aafe4a195e",
+          "nativeSha256": "a0ee663d597267423603ccc335a1ea8e7180a62f4da5221116527c761812a4f0",
+          "canonicalSha256": "ebfad7434e44c9458e927352b9cb275d29c39dd540ebcb3728ada519fef9d1fe"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round2.pptx",
+      "charts": [
+        {
+          "part": "ppt/charts/chart1.xml",
+          "sourceSha256": "6633b65b4a0b2b89b76158a122985817cc26dbbc9711d6c9a906dae15cd3076a",
+          "nativeSha256": "a2dc7f2ec6ce851f9cdc7ece058b83e3ec47be7a6277bc6048f8c990083f7e40",
+          "canonicalSha256": "00d727b09a15cd0ef3654bb24293700dae088112a468b78e37d3d3bbb6f88e74"
+        },
+        {
+          "part": "ppt/charts/chart2.xml",
+          "sourceSha256": "1b76da9c9fa139579b6580cda72e01bfaa2bdc7ecedeaa3314e8da487650c813",
+          "nativeSha256": "d9fbbe039d4c52c1cb499a50ec44c19a1e3ad6240f118b99dbc3a84fb265eebc",
+          "canonicalSha256": "6c710ecf09aa85c286e0d94537ee6ca649fe44b90f6d88dd788ee34c63a124c0"
+        },
+        {
+          "part": "ppt/charts/chart3.xml",
+          "sourceSha256": "f013b087b60b58b6bb678b50ee6b1091b04a869db77b219bdd4883ab87ee418b",
+          "nativeSha256": "06038f3b568cc46703c70d6b8ffcd0e47686d0eaddc9f0706ed8ba64af05bd31",
+          "canonicalSha256": "774db2bc62d0098214ebffacf896a51f77815673b7d766d0bb99f7ddec434d71"
+        },
+        {
+          "part": "ppt/charts/chart4.xml",
+          "sourceSha256": "d7f5ec4211ff7ea89b45be75101801ed35e950a8103067c9bd42cc29b4b63d0f",
+          "nativeSha256": "6795e199051e022f6069b7af0b42d17465fbc2ebdaa76ea301f6fe45351aed98",
+          "canonicalSha256": "52693c33084c58ce10f5dbff56e5fcdc9846d620020ddcc6932ef7882c714bd2"
+        },
+        {
+          "part": "ppt/charts/chart5.xml",
+          "sourceSha256": "d62b8055d7406616ff201260765f8ef5c7050da5ce415b6ca5db82b075246aa9",
+          "nativeSha256": "148ac9f71595620b8378a3cb9d06063f08ead2b4c0e7c4f40ad2fa2c70750314",
+          "canonicalSha256": "3d50bb5a8a0028bcc3286446e3d7e336519150d51bd11c8456eb64c9d9946909"
+        },
+        {
+          "part": "ppt/charts/chart6.xml",
+          "sourceSha256": "4f5fc252e546d91dbdf9d778558c615acde3ed4783b7a128a613b7aafe4a195e",
+          "nativeSha256": "a0ee663d597267423603ccc335a1ea8e7180a62f4da5221116527c761812a4f0",
+          "canonicalSha256": "ebfad7434e44c9458e927352b9cb275d29c39dd540ebcb3728ada519fef9d1fe"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/cell-fixed-round3.pptx",
+      "charts": [
+        {
+          "part": "ppt/charts/chart1.xml",
+          "sourceSha256": "6633b65b4a0b2b89b76158a122985817cc26dbbc9711d6c9a906dae15cd3076a",
+          "nativeSha256": "a2dc7f2ec6ce851f9cdc7ece058b83e3ec47be7a6277bc6048f8c990083f7e40",
+          "canonicalSha256": "00d727b09a15cd0ef3654bb24293700dae088112a468b78e37d3d3bbb6f88e74"
+        },
+        {
+          "part": "ppt/charts/chart2.xml",
+          "sourceSha256": "1b76da9c9fa139579b6580cda72e01bfaa2bdc7ecedeaa3314e8da487650c813",
+          "nativeSha256": "d9fbbe039d4c52c1cb499a50ec44c19a1e3ad6240f118b99dbc3a84fb265eebc",
+          "canonicalSha256": "6c710ecf09aa85c286e0d94537ee6ca649fe44b90f6d88dd788ee34c63a124c0"
+        },
+        {
+          "part": "ppt/charts/chart3.xml",
+          "sourceSha256": "f013b087b60b58b6bb678b50ee6b1091b04a869db77b219bdd4883ab87ee418b",
+          "nativeSha256": "06038f3b568cc46703c70d6b8ffcd0e47686d0eaddc9f0706ed8ba64af05bd31",
+          "canonicalSha256": "774db2bc62d0098214ebffacf896a51f77815673b7d766d0bb99f7ddec434d71"
+        },
+        {
+          "part": "ppt/charts/chart4.xml",
+          "sourceSha256": "d7f5ec4211ff7ea89b45be75101801ed35e950a8103067c9bd42cc29b4b63d0f",
+          "nativeSha256": "6795e199051e022f6069b7af0b42d17465fbc2ebdaa76ea301f6fe45351aed98",
+          "canonicalSha256": "52693c33084c58ce10f5dbff56e5fcdc9846d620020ddcc6932ef7882c714bd2"
+        },
+        {
+          "part": "ppt/charts/chart5.xml",
+          "sourceSha256": "d62b8055d7406616ff201260765f8ef5c7050da5ce415b6ca5db82b075246aa9",
+          "nativeSha256": "148ac9f71595620b8378a3cb9d06063f08ead2b4c0e7c4f40ad2fa2c70750314",
+          "canonicalSha256": "3d50bb5a8a0028bcc3286446e3d7e336519150d51bd11c8456eb64c9d9946909"
+        },
+        {
+          "part": "ppt/charts/chart6.xml",
+          "sourceSha256": "4f5fc252e546d91dbdf9d778558c615acde3ed4783b7a128a613b7aafe4a195e",
+          "nativeSha256": "a0ee663d597267423603ccc335a1ea8e7180a62f4da5221116527c761812a4f0",
+          "canonicalSha256": "ebfad7434e44c9458e927352b9cb275d29c39dd540ebcb3728ada519fef9d1fe"
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/color.pptx",
+      "bytes": 44491,
+      "sha256": "70964aef0139008ad6591ee8ae914d9d89bb3b56fdbcd766fb26a4928f6385d9",
+      "name": "color",
+      "reason": "('Unapproved chart change', 'ppt/charts/chart1.xml')"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/font-size.pptx",
+      "bytes": 44496,
+      "sha256": "241fa85eb986e20a33010840a1c8fd6cccd499ec57d186cd86bc6b7e4a53a636",
+      "name": "font-size",
+      "reason": "('Unapproved chart change', 'ppt/charts/chart1.xml')"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/one-ulp-layout.pptx",
+      "bytes": 44492,
+      "sha256": "07e725d2843e304a2a70593bfb9ee84ec1680b52ffd927481014c0ea921b6055",
+      "name": "one-ulp-layout",
+      "reason": "('Unapproved chart change', 'ppt/charts/chart1.xml')"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/layout-mode.pptx",
+      "bytes": 44497,
+      "sha256": "e03fef0ad113b89772b977c78cb24ab863b8dd60eb00ce0373309d9de6793d8c",
+      "name": "layout-mode",
+      "reason": ""
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/visible-label.pptx",
+      "bytes": 44496,
+      "sha256": "5d06c8b12386bfe19bb69daf89c999d2aa74376b73c41ee6813dd603d4d48cbf",
+      "name": "visible-label",
+      "reason": ""
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/category-format.pptx",
+      "bytes": 44499,
+      "sha256": "982b2b850f405bcabde0f1bf2ddd43380027662ddb53c2f31ef4e275030ce3a8",
+      "name": "category-format",
+      "reason": ""
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/negative-fill.pptx",
+      "bytes": 44494,
+      "sha256": "609e5c8ec867a3795d3ae8903fd517efcc7a20e93a6d9100ac44f447f0439ca4",
+      "name": "negative-fill",
+      "reason": "Unexpected negative-value formatting extension"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/bad-guid.pptx",
+      "bytes": 44466,
+      "sha256": "f00bfce02a9039553feef8c698bdc8725f877a0255e55b297d8662940fe82ffe",
+      "name": "bad-guid",
+      "reason": "Malformed/duplicate chart identity"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/duplicate-guid.pptx",
+      "bytes": 44495,
+      "sha256": "cb701d2915a1885f8b19089cd3f8a0022ef5cc45bc534acc6061a1e98ff7fe1e",
+      "name": "duplicate-guid",
+      "reason": "Malformed/duplicate chart identity"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/unknown-extension.pptx",
+      "bytes": 44500,
+      "sha256": "e3e17168af2bfb9b320d5e0862ee3308815975cc393a8389e78676280b10149a",
+      "name": "unknown-extension",
+      "reason": ""
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/chart-review-drxmbfoi/cache.pptx",
+      "bytes": 44495,
+      "sha256": "9292159562397b03b3cb7a66b12e98f6d291dd48c24aa6c894b367f63c458931",
+      "name": "cache",
+      "reason": "('Unapproved chart change', 'ppt/charts/chart1.xml')"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/master-chart-first-save.py",
+      "sha256": "042e27991518cfedb12e4c599682d1882d668f438646cf4166e0d572eefcce07"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/master-cell-properties-native.py",
+      "sha256": "081f341ea2ee3924a1b6749ca785e5fff6fc118fe42faea3ea36e902baed29b6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/master-artwork-native.py",
+      "sha256": "004b98a25e13abaeb3df5fbe4fd5ce7e06f1690d53b5c7a60656707241fac7fc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-native.py",
+      "sha256": "4a962fa1e47da9fd9b2bd0ce8cdd642913915e0c9834d63f9a9070669d6fd294"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/scripts/research/oracles/multi-master-operations.py",
+      "sha256": "9d7b0694310fc1ed82808b521da8f0c1cfa86117e72f081350d2a8ce2c8bfc2a"
+    }
+  ],
+  "scope": "Six named positive two-point bar/line/pie charts, explicit colors/text, absent data labels and A/B categories. All chart XML exact after listed captured first-save additions/default omissions/binary64-equivalent layout lexical changes. Known locale/style2/unused negative-fill additions are observations for these controls, not universal formatting equivalence or support for negative values, visible labels, locale-dependent categories or native shared chart-data/style editing."
+}

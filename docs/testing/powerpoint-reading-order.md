@@ -1,0 +1,9 @@
+# PowerPoint reading order and stacking
+
+The [PowerPoint 16.104 for macOS observation](powerpoint-reading-order-evidence.json) uses two overlapping rectangles. The source requests Blue then Red in Core's independent order, but PPTX export reports omission and retains Red then Blue in the shape tree. PowerPoint's initial Reading Order pane lists Red first and Blue second.
+
+Moving Blue up in the pane puts Blue first and Red second, and Red covers Blue in the overlap. Saving and reopening retains both the new pane order and the visible stacking. The independently checked [native fixture](../../tests/fixtures/reading-order-powerpoint-resave.pptx) reverses the two shape-tree children while keeping their drawing IDs, names, descriptions, bounds and fills. The observed slide has no extension list carrying a separate order. The parser projects the saved drawing order and preserves the complete original bytes on a no-op save.
+
+This matches [Microsoft's Reading Order pane guidance](https://support.microsoft.com/en-us/powerpoint/make-slides-easier-to-read-by-using-the-reading-order-pane) on overlap and the [shape tree's ordering contract](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.presentation.shapetree?view=openxml-3.0.1). The test covers two rectangles and one save/reopen in this application build. It does not establish a screen reader's traversal, a separate native order representation, or behavior for groups, inherited artwork or other application builds.
+
+After building, use `node scripts/prepare-reading-order-probe.mjs /path/to/new/source.pptx` to recreate the control. Make a separate copy for the PowerPoint edit. After saving it, run `python3 scripts/research/verify-powerpoint-reading-order.py SOURCE.pptx NATIVE-SAVED.pptx` to verify the XML properties and record both file hashes.

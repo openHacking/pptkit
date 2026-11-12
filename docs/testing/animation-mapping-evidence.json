@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "scope": "Hand-authored entrance/emphasis/exit/path timing specimens, independent source/native inventories, headless save and saved-output PDF reopening. Not schema certification, playback, editability, repair-dialog absence, visual fidelity or public/native animation support.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/animation-native/run-UKB5dV",
+  "specimens": [
+    {
+      "name": "fade-in",
+      "tag": "animEffect",
+      "attributes": {
+        "transition": "in",
+        "filter": "fade"
+      },
+      "category": "entr"
+    },
+    {
+      "name": "spin",
+      "tag": "animRot",
+      "attributes": {
+        "by": "21600000"
+      },
+      "category": "emph"
+    },
+    {
+      "name": "fade-out",
+      "tag": "animEffect",
+      "attributes": {
+        "transition": "out",
+        "filter": "fade"
+      },
+      "category": "exit"
+    },
+    {
+      "name": "line-path",
+      "tag": "animMotion",
+      "attributes": {
+        "origin": "layout",
+        "path": "M 0 0 L 0.25 0 E",
+        "pathEditMode": "relative"
+      },
+      "category": "path"
+    }
+  ],
+  "sourceSha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
+  "nativeSha256": "b0e3eefa2d4b843b8ada6e0005b85d9d925f465f121e5981035272085a3df1a3",
+  "pdfSha256": "63a6f5d394464f54510d43ac77abb1f5d2cdeb97bd6a25000b313c7b38b4402f",
+  "independent": {
+    "oracle": "Python zipfile + ElementTree + PyMuPDF",
+    "source": [
+      {
+        "behaviors": [
+          {
+            "tag": "animEffect",
+            "attributes": {
+              "transition": "in",
+              "filter": "fade"
+            },
+            "targetNames": [
+              "fade-in"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev",
+            "delay": "0"
+          },
+          {
+            "evt": "onNext",
+            "delay": "0"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animRot",
+            "attributes": {
+              "by": "21600000"
+            },
+            "targetNames": [
+              "spin"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev",
+            "delay": "0"
+          },
+          {
+            "evt": "onNext",
+            "delay": "0"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animEffect",
+            "attributes": {
+              "transition": "out",
+              "filter": "fade"
+            },
+            "targetNames": [
+              "fade-out"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev",
+            "delay": "0"
+          },
+          {
+            "evt": "onNext",
+            "delay": "0"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animMotion",
+            "attributes": {
+              "origin": "layout",
+              "path": "M 0 0 L 0.25 0 E",
+              "pathEditMode": "relative"
+            },
+            "targetNames": [
+              "line-path"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev",
+            "delay": "0"
+          },
+          {
+            "evt": "onNext",
+            "delay": "0"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "behaviors": [
+          {
+            "tag": "animEffect",
+            "attributes": {
+              "transition": "in",
+              "filter": "fade"
+            },
+            "targetNames": [
+              "fade-in"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev"
+          },
+          {
+            "evt": "onNext"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animRot",
+            "attributes": {
+              "by": "21600000"
+            },
+            "targetNames": [
+              "spin"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev"
+          },
+          {
+            "evt": "onNext"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animEffect",
+            "attributes": {
+              "transition": "out",
+              "filter": "fade"
+            },
+            "targetNames": [
+              "fade-out"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev"
+          },
+          {
+            "evt": "onNext"
+          }
+        ]
+      },
+      {
+        "behaviors": [
+          {
+            "tag": "animMotion",
+            "attributes": {
+              "origin": "layout",
+              "path": "M 0 0 L 0.25 0 E"
+            },
+            "targetNames": [
+              "line-path"
+            ],
+            "durations": [
+              "500"
+            ]
+          }
+        ],
+        "timingIds": [
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ],
+        "conditions": [
+          {
+            "delay": "indefinite"
+          },
+          {
+            "delay": "0"
+          },
+          {
+            "evt": "onPrev"
+          },
+          {
+            "evt": "onNext"
+          }
+        ]
+      }
+    ],
+    "reopenedPdfPages": 4,
+    "rawTimingInventoryEqual": false
+  },
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/animation-native/run-UKB5dV/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/animation-native/run-UKB5dV/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/animation-native/run-UKB5dV/native/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/animation-native/run-UKB5dV/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

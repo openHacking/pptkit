@@ -1,0 +1,138 @@
+{
+  "scope": "PowerPoint first open and one interactive move/save/close/reopen of three transparent fill/stroke samples. Package XML checks colors and alpha; fixed screen samples check color trends and first/reopen equality. Display color management affects RGB; these samples are not an exact sRGB or full-pixel comparison. Captures do not authenticate provenance. Other backgrounds, overlapping objects, transparency editing and further rounds remain unverified.",
+  "applicationVersion": "16.104",
+  "directory": ".tmp/native-svg-opacity",
+  "generatorSha256": "c01149d47c180201e1e089c9775bd7b51be5d1ea6857face49cc62032772705f",
+  "verifierSha256": "9569ec0fd41d1bfed26c52083d3993d036136dcca17fc2916e8be0ec95922c9b",
+  "sha256": {
+    "source.svg": "b96f0e1b382c1be691585cc2cc55b8e16e059c4c85a94c2a0261daea8f66bdf6",
+    "original.pptx": "2673e42ed5003bc3a74f3d9400f8eeb227f8c68d95c0af52e6927dc0b9a55013",
+    "source.pptx": "2318723cbc2529da8f62e3ec359611610a32c3814528170b401ee4bb87747061",
+    "first.png": "dc70525e6eea908d5ca18b30f9319324982a061d00d3f89ade7151da2e674107",
+    "reopen.png": "0fdccd2462b3745010559688f6caa3f747eb3407d2494d7034410c009b74acfc",
+    "first.ax.txt": "0c4023eaf290640f86e008c2b0c495c01393cd66b8ceed27df4870ffa2036dbb",
+    "reopen.ax.txt": "f5a3796ce95d3995883169397350073ce7b0eec78b165a35a74fb0c5f70b3aec"
+  },
+  "before": [
+    {
+      "offset": [
+        952500,
+        952500
+      ],
+      "colors": [
+        {
+          "rgb": "FF0000",
+          "alpha": 26667
+        }
+      ]
+    },
+    {
+      "offset": [
+        3143250,
+        857250
+      ],
+      "colors": [
+        {
+          "rgb": "00FF00",
+          "alpha": 40157
+        }
+      ]
+    },
+    {
+      "offset": [
+        6191250,
+        952500
+      ],
+      "colors": [
+        {
+          "rgb": "0000FF",
+          "alpha": 25000
+        }
+      ]
+    }
+  ],
+  "after": [
+    {
+      "offset": [
+        959934,
+        952500
+      ],
+      "colors": [
+        {
+          "rgb": "FF0000",
+          "alpha": 26667
+        }
+      ]
+    },
+    {
+      "offset": [
+        3143250,
+        857250
+      ],
+      "colors": [
+        {
+          "rgb": "00FF00",
+          "alpha": 40157
+        }
+      ]
+    },
+    {
+      "offset": [
+        6191250,
+        952500
+      ],
+      "colors": [
+        {
+          "rgb": "0000FF",
+          "alpha": 25000
+        }
+      ]
+    }
+  ],
+  "samples": {
+    "first": {
+      "redFill": [
+        255,
+        187,
+        190
+      ],
+      "greenStroke": [
+        153,
+        254,
+        176
+      ],
+      "blueFill": [
+        190,
+        200,
+        253
+      ],
+      "background": [
+        255,
+        255,
+        255
+      ]
+    },
+    "reopen": {
+      "redFill": [
+        255,
+        187,
+        190
+      ],
+      "greenStroke": [
+        153,
+        254,
+        176
+      ],
+      "blueFill": [
+        190,
+        200,
+        253
+      ],
+      "background": [
+        255,
+        255,
+        255
+      ]
+    }
+  }
+}

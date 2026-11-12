@@ -1,0 +1,1373 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T14:31:02.157891+00:00",
+  "manifest": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/manifest-before-recovery.json",
+  "manifestSha256": "ffa61d70f6a852d8397f8212c6e1bc948d46dceba06b907bc1e0b86a16268f50",
+  "checks": [
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/native-notes-append-evidence.json",
+      "sha256": "c71eafa8d709e03ecaabcbfe7eb5b195a0fca3abd9c5655e136d6722a1f2d64c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/native-notes-styles-evidence.json",
+      "sha256": "c32b5b278ec414920c53b8a887f388abf63285a0ccae5e94e674adf1dc4a6a24"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/native-notes-themes-evidence.json",
+      "sha256": "e4230c8262f419610f3cae799edcb10b95307c8540a9ab9982e496d4838626fc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/input.pptx",
+      "sha256": "5fbbd7a87c60e277f54c15ca32cea84fe14951d1d68c974855f2460d69d041c7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/input-inspection.json",
+      "sha256": "b942a8cf0dc683fd9e306ded317bf7fbae09bd73ef88e814831942bf608c57ab"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-round1.pptx",
+      "sha256": "5fbbd7a87c60e277f54c15ca32cea84fe14951d1d68c974855f2460d69d041c7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-1.pptx",
+      "sha256": "87233dad8298dd355e862763f5e0dcd6e8054b503a7d778c7d96f36ae907282d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-1.json",
+      "sha256": "c2cbb1baff5f2a17a48581a7ec78299ba3b083205964305fe9a5eff11e882af1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-2.pptx",
+      "sha256": "0eec2bcf20896db0da9874bc33557eb9f16ff807f6b1c77269de6d3d9df79089"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-2.json",
+      "sha256": "967eb5920b9117bdda05df27d2687f003c69dffc76251185091c949c25cdad75"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-3.pptx",
+      "sha256": "4d95f98468ae347dc30f7ca00741566f0f56d22c4e825917b4278a34bc1f516c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-01/candidate-3.json",
+      "sha256": "aa45706192c7299d829b04f91ac6b8424e635570d6d410d22eba3b172b319fee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/input.pptx",
+      "sha256": "f4731271dde8797b54d21d7bdc7f614e9d25e89725c69e3dee10fe2cca60e4cd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/input-inspection.json",
+      "sha256": "a671705d83cfe31439d96d74bce95279cede67d0aa25adf9eaf3ee63ef54a20c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-round2.pptx",
+      "sha256": "f4731271dde8797b54d21d7bdc7f614e9d25e89725c69e3dee10fe2cca60e4cd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-1.pptx",
+      "sha256": "b7ace86cc7f694a6445808e5a3c1fc2a9ab21641f997a71b746b54ed58aa9b88"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-1.json",
+      "sha256": "3a0384d64a6fc7809f76fcc26c9f38d386dbc77554924d17e84581de4a790afc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-2.pptx",
+      "sha256": "4bde15a0255a8fa74fc04a578b0ae1e3c2ba814b8a5af4f1d50b2b6435a74ed9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-2.json",
+      "sha256": "10e3d62684a19d01d86a869de0299acd3429c31964a0e13d21d07eccf0b1a85c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-3.pptx",
+      "sha256": "70d35a169b8faefdab0ca7bc437e5cfda9ee74d85ba1e4ad94ea2e722fc7d1e1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-02/candidate-3.json",
+      "sha256": "2355d7bff84fefc11e4c92588541dfa83ac10e07c4ab6e7aa49769590dbcb9bf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/input.pptx",
+      "sha256": "f6405006e0247dc245471b216ed4144e616acc331ab8fa709eab0550de113940"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/input-inspection.json",
+      "sha256": "d11353c00db240cb95ef42f08a89762c3d8a6ce387ac196b32bf85b0a07059a2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/append-round3.pptx",
+      "sha256": "f6405006e0247dc245471b216ed4144e616acc331ab8fa709eab0550de113940"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-1.pptx",
+      "sha256": "379f4a73f853a7f8c0ed10c3484db561d78c981479eea743a925fab469643cce"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-1.json",
+      "sha256": "444e094fcc46a4694d0d91c66100e5398bd0989e8e3bbe93a722f28511102128"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-2.pptx",
+      "sha256": "c920f7c0fb8f5c3bb8a28794415e165711c339f8448eb48a53880e443ff0220d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-2.json",
+      "sha256": "881b5946d90f825a5f4c619c3e53d63bf90b17c604fbd700af5817b146c64107"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-3.pptx",
+      "sha256": "3076fcfc4fce478752eb4b60501cac56b9124079a4ca62edc8c618b421c9b7c2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-03/candidate-3.json",
+      "sha256": "47d3e95cdd8b5d8ec7fedc80006305b914b13be1c8f99b9ccf3831d14f16705c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/input.pptx",
+      "sha256": "b6cbedd8a0645c4c3a0474ac1b1342f022380620fa1641afed15f78716b20dce"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/input-inspection.json",
+      "sha256": "fae0cb9efc9f073872b6f541cb3f80fca758a4c91f79462a1e5874deff14ff94"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-round1.pptx",
+      "sha256": "b6cbedd8a0645c4c3a0474ac1b1342f022380620fa1641afed15f78716b20dce"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-1.pptx",
+      "sha256": "ca72f0176960f119855f2d3937400e6ddef0f98f9646e3513a1e4a4474b77dfe"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-1.json",
+      "sha256": "086bc15f9bcd27119eae8b9b6b5ab2368537be35aed71febc8233942f172422b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-2.pptx",
+      "sha256": "52b7cd4aa30011fe5a0d0114da6f28a2a40ad537fef84e4fbd4d6481ddc3a554"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-2.json",
+      "sha256": "3f4479d1a89358418c09fb9e80f40756636c3c86931477535877ef87ce73c920"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-3.pptx",
+      "sha256": "5b04e43cdbe2745b9ed41ffc525233670f0546454d6340a2cb143cceefa43549"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-04/candidate-3.json",
+      "sha256": "b5b01ced8d51be456f838541092cf55580fbe40a04c6efd7e505b86118f5ea46"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/input.pptx",
+      "sha256": "beb402aedfd935393647f47f8b76a7f18d69183baf3e3e36b1cb6aaaa4075f9a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/input-inspection.json",
+      "sha256": "be05a7499f35be9179cc9b3dda67b9b21f4eb2042834326aadf98a4cbc06b9cb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-round2.pptx",
+      "sha256": "beb402aedfd935393647f47f8b76a7f18d69183baf3e3e36b1cb6aaaa4075f9a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-1.pptx",
+      "sha256": "865ea0b1859db5f89f8ac4aeda3d869cfd30a83afd201c739a67567af03a05c2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-1.json",
+      "sha256": "e12751be494d45596dd6ee991a19d45fa71d831a1e77d4906488ef52b3b1f45d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-2.pptx",
+      "sha256": "10d139d11e589b936ad40439f58a10d1212ef1f3ece1ea6bc5177283c176f8bc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-2.json",
+      "sha256": "d51f9043816fbdc0ce10afb385ff8d93ce2f09f2be52c91515d6acacacaab133"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-3.pptx",
+      "sha256": "635946ae934a06d8c2353361424a68dc660556341146b3f6101835445b8f4f15"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-05/candidate-3.json",
+      "sha256": "b949b6ea0ea8c4ad1d1d3ced96a355e0295b9cc809a6f44db28ef80380f07e7f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/input.pptx",
+      "sha256": "a9f5e938a05b34706acbe8c30609667ca83eb107b26497a342a31f904b4baa0b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/input-inspection.json",
+      "sha256": "243f82ccd35a114ff9d7b5a6ea8e5e66a2dec4d21ef0d6dcdd5327324a027ec8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/append-round3.pptx",
+      "sha256": "a9f5e938a05b34706acbe8c30609667ca83eb107b26497a342a31f904b4baa0b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-1.pptx",
+      "sha256": "c0ddd02619657c06f6318f232e83c4e309eb2b7bcfff268dd7c973e114ab1166"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-1.json",
+      "sha256": "8b4465a4fdf7627f3adc586c1dc8586bf1491a52049faa5477bc6451ccfbdd69"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-2.pptx",
+      "sha256": "165b1be7f574b7aa0d0a9e684db514fee61384eedf0bbfc4035b400ccab0ea6b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-2.json",
+      "sha256": "bb0049b08fe92991fa486d4adf558365e50695c591b4fa9fa369570c602f5d60"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-3.pptx",
+      "sha256": "754345c229eda9a208afc4af17831d37bde3936006ba96d3935a29e81af95dda"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-06/candidate-3.json",
+      "sha256": "e118c2d44c914e66f9dc4db3633309abf6297acfb8a3b5e4149885bda00507ac"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/input.pptx",
+      "sha256": "afa63d44437dec19d1790e5823cc0ee2eb3c7d286343a11a0e541adeb6727d6f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/input-inspection.json",
+      "sha256": "acc1084088b23dc125ab02d00f8ea659359211f8a2fb5f46479d8fd2104386d9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/bold-round1.pptx",
+      "sha256": "afa63d44437dec19d1790e5823cc0ee2eb3c7d286343a11a0e541adeb6727d6f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-1.pptx",
+      "sha256": "2005687e1a7f4064974cba63a49db6a26f581b50a4cfb46ec14a23ce092366bd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-1.json",
+      "sha256": "26fccd474df17c7a613860ed9d13d6ee6100edc4fc9f8f09fa653d49a95a7f62"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-2.pptx",
+      "sha256": "b72fafd8ce663ef1a189bd953d9e93c746ab444f13003693d7b0deff5e2ba853"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-2.json",
+      "sha256": "a3aba7c0576787b4133369bfd0fb4f0f217fc111cce39b5428e8d9476d24f3d2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-3.pptx",
+      "sha256": "1162296b997cc7b700ebff537549e6757c65bb7834705d675e3e3fcd4b4caca5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-07/candidate-3.json",
+      "sha256": "07a92c124efee80425c979f0864bb5e2cee72cce94742e366d00218fb9fed7a8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/input.pptx",
+      "sha256": "2649e85b80497a2443bcc52c21ea795b537c0d8c4e248a25739c34b6aba64f3d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/input-inspection.json",
+      "sha256": "119a5eedea93accfb6c6e70fa3b3cc88da7b12efd4576da93daa97ffa5a61b52"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/bold-round2.pptx",
+      "sha256": "2649e85b80497a2443bcc52c21ea795b537c0d8c4e248a25739c34b6aba64f3d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-1.pptx",
+      "sha256": "eb245a54c19e8971b33a46e6f2689f9dfdd383e209aea85c4a9ddf4b4b43b412"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-1.json",
+      "sha256": "f627564a6b308978a740f6e75e6df2ff0a9b78cbbac89d1256be9e7998627ab1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-2.pptx",
+      "sha256": "a30250ea51090364b4d23ed5c77a7f44929c9ad8224c2138d5eab9bcddd710bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-2.json",
+      "sha256": "cd92aa0e53fbe6a0a82329ee7b72a56de243a37c63615fe86e59b2c7b077f7ea"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-3.pptx",
+      "sha256": "768cbd2badc355fdaba6bcaf3753572a68a3558e3fbdcb41715d2ec9e64ea1e8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-08/candidate-3.json",
+      "sha256": "61cdc97a137b655acbdeaf6d14feece05bebedac1cd4e54773d7470dbc5512e8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/input.pptx",
+      "sha256": "81ccabab01730298ba99e44b5f7d6ca57d8e42b75aa4e0e3e3eccd5c330f4338"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/input-inspection.json",
+      "sha256": "865ebae824457040618e9a5e46568d961f1fd88a1a6cf51979ced00dbf7f4ef5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/bold-round3.pptx",
+      "sha256": "81ccabab01730298ba99e44b5f7d6ca57d8e42b75aa4e0e3e3eccd5c330f4338"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-1.pptx",
+      "sha256": "76728e83b5ce426c201a873c8a2c834a5089e3ab381f94ed3709fddcbdf119ef"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-1.json",
+      "sha256": "2f78a97a5da3b6d269c15f2889281c4d7bf921b4b2842080a3dbd64d349fae21"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-2.pptx",
+      "sha256": "3ac1f2cb6cb744a4c3430aaa6cd320768cebce979bd9f0e4fbc48340e6358ed4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-2.json",
+      "sha256": "ad841d3218be5fc87f0a9042a081f07cd2424c4ad8d3705d5c886057a3ce6cec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-3.pptx",
+      "sha256": "8b61c1f114d3c1799b372d9b2f2cb82481093472aca2f313b83e0979bfec7771"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-09/candidate-3.json",
+      "sha256": "36b8b3b7ba4eec8e419a4cc25e1977187bead00ed83289fd3b60e67ae5540776"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/input.pptx",
+      "sha256": "fe274779ba123cc334ff12e19a2972e707482ab8076e6499e065d10cba048f77"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/input-inspection.json",
+      "sha256": "7722bd323a53c5e3e5ed570230df61998a82178635b84e573d1640da98295a29"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/italic-round1.pptx",
+      "sha256": "fe274779ba123cc334ff12e19a2972e707482ab8076e6499e065d10cba048f77"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-1.pptx",
+      "sha256": "427ffe9351f90dc9564b4488669a4dee49e411a8ca3620fedfe4d7315ad81847"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-1.json",
+      "sha256": "509f222428dbfdfcbdee06afbf7cb49484c37b5d4136729808450f5758d25a7c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-2.pptx",
+      "sha256": "a4d18f49ae736d3449daeee973067954d9be9e848a32e99ec0614203ce2f744f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-2.json",
+      "sha256": "3d6057549fcf9c362f9f7db86486d030eb31d4848118de91720aeaf7cf9bb869"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-3.pptx",
+      "sha256": "d4be969bfaa1158975acb014814933989b984e11a60e3ea1f598ead364f23a7d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-10/candidate-3.json",
+      "sha256": "ac88c87b508c66638e22d90b5bedb0c1dd316047b891beb6ce3c7954b04ef8a8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/input.pptx",
+      "sha256": "6d8adc6453b427895e9b25a84be9fbbd6ce532245643b104998b928441578472"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/input-inspection.json",
+      "sha256": "b6b52aed8fcb5694b9e95b36ce43515711f72f98e2d43e2b37d8906d3e3eb932"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/italic-round2.pptx",
+      "sha256": "6d8adc6453b427895e9b25a84be9fbbd6ce532245643b104998b928441578472"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-1.pptx",
+      "sha256": "ddf55b0d696cc730bb5e306dca7b3f1a14ddb817a4a49dba5c2efd2787590950"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-1.json",
+      "sha256": "d033e7ba97712d81308cac0ef29aa19cf3bb4235b2045c7b9d8f59e21abc6527"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-2.pptx",
+      "sha256": "fb8ef212c8f1dae68a6e913c2a905f8a8848e68e3cb3cfa771498b2aea209075"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-2.json",
+      "sha256": "b62128ff3ea3925c33e4f462a976c6fe8ea9da96db0ffda3da6c62adc2b7cc84"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-3.pptx",
+      "sha256": "2d03b333bce9bfb542433d97574b50e0856439d15e7de5903b31f7998457bb66"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-11/candidate-3.json",
+      "sha256": "7b2a8e3e900c63a98fa1fd978868dc7ba9df8135cd1fe6a74327a77ee0728c5f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/input.pptx",
+      "sha256": "9961c6599d3a9b6ffb56d11e5aa8366a57f19e8ba33703b5436e26623fd1f624"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/input-inspection.json",
+      "sha256": "e62c06d94013ee31f6cffdb4c9a7e64220d5d25738ac391d82eae3cd6b3a7b78"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/italic-round3.pptx",
+      "sha256": "9961c6599d3a9b6ffb56d11e5aa8366a57f19e8ba33703b5436e26623fd1f624"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-1.pptx",
+      "sha256": "8bc7ed6eeb76d8fdd5323b16da2891bec76bcaba1cc7fea22d12f3e67ad689e5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-1.json",
+      "sha256": "fd03cbcf1fdfb8f96e9a998d1c69e6177686ad2399e7bb79f18f0104e61ca4a1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-2.pptx",
+      "sha256": "b1fc7c2f1e7e545f784168fe5823642772c39061b372ce1faf1b34d7ecf79ce6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-2.json",
+      "sha256": "b3bc387107c03a5239421f06f3f3736878be402d2a710cc2e02b1e43e5b4bc14"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-3.pptx",
+      "sha256": "e09bfb6d58432ae0023ecba947fcea0ac0ee74bbbe5b74e6c8b095f8b32da58b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-12/candidate-3.json",
+      "sha256": "714e11bf1d039422c8c2f959c6f550107494c0b19d80d2f2a090c7c269b97807"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/input.pptx",
+      "sha256": "f4387b911bfd5ed1e853ee45c42b60cad52e449d336e9179634233db28c4f794"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/input-inspection.json",
+      "sha256": "c6ca0ba92b5cd5805cdd4df97520e24d2ce57740b2724cc89fc4dafdbb996771"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/regular-round1.pptx",
+      "sha256": "f4387b911bfd5ed1e853ee45c42b60cad52e449d336e9179634233db28c4f794"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-1.pptx",
+      "sha256": "b48ffb324de80fd1f92441cc30e9ffd1e9d4843e3e02020f2d6b1859f2a5adfd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-1.json",
+      "sha256": "949e02521e35d4c000b902f45a98fb0321ea6fb385a5c72b50301078c1e228e9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-2.pptx",
+      "sha256": "5a7158bf2033c15313c01604493a483fd5244e51681687f857611e3bbd852487"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-2.json",
+      "sha256": "a3d4318893da53f8df40c253adf6f4ab6e89e468a283b4aca7fa3e50b4cf91fc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-3.pptx",
+      "sha256": "1ed49ce94283c3a721628a9c141b44c5ff694cab6c47fcaac46ac5de59c8209f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-13/candidate-3.json",
+      "sha256": "a277fb0d4bd78531a7c23cbb77bcfa7b0c8cc633ba16c8dd853daa787b676219"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/input.pptx",
+      "sha256": "c6041be1eba21371ce09f098dbd912414791537ea4c5c1f0e225bb7930106e69"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/input-inspection.json",
+      "sha256": "efbedeb51af991f34fcc93f6e8a2171a9de9bad634ce505b4486a7748c79c57a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/regular-round2.pptx",
+      "sha256": "c6041be1eba21371ce09f098dbd912414791537ea4c5c1f0e225bb7930106e69"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-1.pptx",
+      "sha256": "b4ffbbc07c5676d60bd4a53f2c10ec159333689b6ec8212a09d884a00231af6c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-1.json",
+      "sha256": "c8e88b511d656a59161cdaaf2e2acbf412502d120052f754510db1ff334c0d74"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-2.pptx",
+      "sha256": "f86205b4655c3295ac5d754de1cc3c01cf7dafc8ab1f5de0f8115f072c4b3a1c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-2.json",
+      "sha256": "dbdd4bd562d9dadfca36f1cb70db6a65de9c9cb7348d9fb6c353c8822bcad124"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-3.pptx",
+      "sha256": "0bce42137fce439aa7b4a7de9ef65b01d1cbef6b82d49c5a68586ea961c303ec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-14/candidate-3.json",
+      "sha256": "b3d01c435cb17ef3c965141a0d86dfc51f2b1a3477c2bd13c0e8db9290bc7e59"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/input.pptx",
+      "sha256": "e2e48a8aca8c9e06def3f591bdfdd5af53bd3edf65fe2c58f0c3ed8e7562652a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/input-inspection.json",
+      "sha256": "eb48d6d3483de271e1339eeb42523348b57aa357fc5d13f52dbeb7a7224e4b0f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/A/regular-round3.pptx",
+      "sha256": "e2e48a8aca8c9e06def3f591bdfdd5af53bd3edf65fe2c58f0c3ed8e7562652a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/baseline.pptx",
+      "sha256": "e2e48a8aca8c9e06def3f591bdfdd5af53bd3edf65fe2c58f0c3ed8e7562652a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-1.pptx",
+      "sha256": "96a202862658f703000f1f948ce7bd8e4be7e210770326467d138d48f9f934b5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-1.json",
+      "sha256": "70bddd63518c192606a5183a4183065667a2c946124f4dae10ccaa3b669ce052"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-2.pptx",
+      "sha256": "e7d9a4065b12afc88a1de51d309cba2bf6eb81dabd051cd843211b8d8634300e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-2.json",
+      "sha256": "059a74a75480fd6b44856887cbfe9529b3775ba668e898950bb25bd424434929"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-3.pptx",
+      "sha256": "d05a133efdd645ff64bf3faff9c1efe423709106b2ad6b012a69f12c9767247b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-15/candidate-3.json",
+      "sha256": "996ddd4a1d7a05d31eab1eb29d389aa0631beb9a54fadf639899918e71aede09"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/input.pptx",
+      "sha256": "4d32724dbc16d1da4039c42083f600fc76c625a639eae35c9d14bda492ce457e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/input-inspection.json",
+      "sha256": "b5aa42c9b2524bdad90bbe551e2387b30a261c41d06161cd500df2b4431cb999"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/bold-round1.pptx",
+      "sha256": "4d32724dbc16d1da4039c42083f600fc76c625a639eae35c9d14bda492ce457e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-1.pptx",
+      "sha256": "983c98eabf50a11d6450e12b1f4588dd1b9675c859a5482e81facaf39c90e3cc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-1.json",
+      "sha256": "fe01fe05acdd44c3189072fe54ad26f7ac3a3bd8ea6f9b1933abda49b1955141"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-2.pptx",
+      "sha256": "d9e25c750505645913179364d34a14348bec80ddd8e6dada9310b25f074840f6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-2.json",
+      "sha256": "670bf717783c4d7c31fc901150d5eb16285ed937b3778f46e1e759fc0f4b02bd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-3.pptx",
+      "sha256": "6f9db5e8a55a0d25beafccb501a7bcba986b9e853e1a5714430dbb5d5d57c305"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-16/candidate-3.json",
+      "sha256": "eb5a9075f12e4495d36c6e776205eb13eb532c66d39e085cb0822d18b78b3ec9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/input.pptx",
+      "sha256": "e79adb7f6b45906938013847e915c6aa2827b271c916d564ca1d36b845df94d9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/input-inspection.json",
+      "sha256": "d37a548c67bd2513972266f5bd497ba4d576f62db066be15c71d0afc3cb51192"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/bold-round2.pptx",
+      "sha256": "e79adb7f6b45906938013847e915c6aa2827b271c916d564ca1d36b845df94d9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-1.pptx",
+      "sha256": "4208a69176c16167200ec007d60180297cc6dce7f77e89fdd5a9a3323a2af914"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-1.json",
+      "sha256": "f0d5a97ba1622e9ae17b68483e170d4cb5684cd73a77954ca1d4952d9662f190"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-2.pptx",
+      "sha256": "108b551e84898d7991e509aad7b8e9b34aadb6cd375503e082677a1e826d97cf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-2.json",
+      "sha256": "7039fad88129944cc67e3a2487b9d01ad573515c748efc76215f125d68c2b623"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-3.pptx",
+      "sha256": "23404f37102ef5b15def159c64c2035f934c6f6c86a63a676adaf77217d5c119"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-17/candidate-3.json",
+      "sha256": "84074601d5f29affe171b5ab1ccd7cf6fe4a3eae8bdb3426a33f5a819fe4fc22"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/input.pptx",
+      "sha256": "9f0fe29f50d03a84889e0ae01fcc4e5d376646b09eb4e1c24a777f9cf18ca179"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/input-inspection.json",
+      "sha256": "45063a0e472fb68fa7c6d3791d24c5588cde7eb54a964d141cd01c7b26522394"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/bold-round3.pptx",
+      "sha256": "9f0fe29f50d03a84889e0ae01fcc4e5d376646b09eb4e1c24a777f9cf18ca179"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-1.pptx",
+      "sha256": "3905dfc4f1e5e09d224c7deddda66304a1a1de1f96e39d764cac6b80eeda59e2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-1.json",
+      "sha256": "99c6212ea090725aecbbeb564668c19e37cf59881280b4d964cdbca0d0fc0609"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-2.pptx",
+      "sha256": "c30ecf32181560d11f4fc78f98272572d8249a1ee65b3c1d58299bb4b30b0efe"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-2.json",
+      "sha256": "b254d46d3f1c5ca9a323fb7970ae186a12e3cc461744594988512c6aee444735"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-3.pptx",
+      "sha256": "601dd841c483478a06f1d6167a29c0e946334091fd95f2048abb8df80e05f1ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-18/candidate-3.json",
+      "sha256": "3ff111ac0fa2fc2cecdae39c95640b1011d434bed30b255c823a0a8f26d3cbe8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/input.pptx",
+      "sha256": "77f259de082e3b7b948c9b9ee0571258f09b5e30e7b0ba6fd73034aa7c406466"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/input-inspection.json",
+      "sha256": "ac16fb960192dc431a44e07b9c629ceb5084b587963c1fcd895f737ed6f19068"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/italic-round1.pptx",
+      "sha256": "77f259de082e3b7b948c9b9ee0571258f09b5e30e7b0ba6fd73034aa7c406466"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-1.pptx",
+      "sha256": "22ebc8595408c4fec73658c3a0aafc725c286cb5ed791f5f9ffd6ceb428ba41d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-1.json",
+      "sha256": "9fa178395f257bb27d57f05cf782328faaf0a847f704c1818962201c8bf71eae"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-2.pptx",
+      "sha256": "504fc9bc0fd68fe62316c6c32ecd7bc59b3ebffa9e43de1c5e5228bd337ae532"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-2.json",
+      "sha256": "a536115732c9c9010fd8303b1f5018b0dd2f70c23cc074a9c24373733d376431"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-3.pptx",
+      "sha256": "deed7d5c0bcfa03f9e57586b567fbcf8c86d25828908c15fa3e17fff2d208f91"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-19/candidate-3.json",
+      "sha256": "bc860d324a46820f6af1d5602d960e02a98b6dccc3939048bd596b2e50a5cbd1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/input.pptx",
+      "sha256": "64fc02190cd60a9a4c35df90ee3993e55184551d9861fc8d3b7886063dabc425"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/input-inspection.json",
+      "sha256": "e90ad835d1aa20c015fd7def6420911b31c4bd983fe8ee94a850a5e3fb438278"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/italic-round2.pptx",
+      "sha256": "64fc02190cd60a9a4c35df90ee3993e55184551d9861fc8d3b7886063dabc425"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-1.pptx",
+      "sha256": "8b39ce5b33f870b7d6f0c24a3fe25ae45abb030715c51ed1541fd5cebee0d527"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-1.json",
+      "sha256": "48516e33dc0b8f880c68f7c57805a1e2337ea38eb8141c889c7ab5961a053acf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-2.pptx",
+      "sha256": "f4686f9e753178bfb2b1a27593f5d1df89b77ec72760ee37b10317d19f0b126f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-2.json",
+      "sha256": "0c3fe46dc87b8ac22de3900e751bc15dd6bd26d71ab8c1a5dd8a67a08dc6d656"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-3.pptx",
+      "sha256": "bd238debf4faa2a6f8151f1bd7dfeaae382d55148fb7d75b5ca61c8bfcbe292d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-20/candidate-3.json",
+      "sha256": "07c87f016c8d8be9ebbcdf981e07116d0d385fae26d90dbaa81ce2d24e604b34"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/input.pptx",
+      "sha256": "347ccdedb4c3ea24eb56177d4591b2437dfea9f20aed9aba426e9848573e3085"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/input-inspection.json",
+      "sha256": "0be4f2ad0a10a0326d20838eba164d955809dc703b3a7deaa4793cb8dced4225"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/italic-round3.pptx",
+      "sha256": "347ccdedb4c3ea24eb56177d4591b2437dfea9f20aed9aba426e9848573e3085"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-1.pptx",
+      "sha256": "17b038e476178cb9ab76fa20ae5882265404d7e0735e52e7898b83da4599db7c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-1.json",
+      "sha256": "509768ed8f658c5353ef9e09e67fd1512f16e783f3e7fca51f1063a1f61760f9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-2.pptx",
+      "sha256": "7b12d91fcae70a24ad2dbc11c34888f43771376dd1c3b184113e0d2d7cb28c8f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-2.json",
+      "sha256": "f16cff5f54b24a2f126d6daab0ec263d6c67d582b91396e3ae851011ffd417dd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-3.pptx",
+      "sha256": "751eb1e73d6a8c765dd6eb97b8e1398b12cd4d02c044eeb39e059e08bdd31e82"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-21/candidate-3.json",
+      "sha256": "be4902939eff8a2e2ae44914cd25ea4f1d4f3b20dbc1ce14a73dd153545ab1ad"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/input.pptx",
+      "sha256": "5c9faf9e6806427444c4b3194be3ac18daf7a6ce07e1989a4eb883a9d664fae7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/input-inspection.json",
+      "sha256": "94450daeed1c9af1ef1b690e4b9cc80093064d2aef1815447ef33d02d9f70bc2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/regular-round1.pptx",
+      "sha256": "5c9faf9e6806427444c4b3194be3ac18daf7a6ce07e1989a4eb883a9d664fae7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-1.pptx",
+      "sha256": "553f2be8c100221662fe1630652b21b6408eca4fc456e51fdcf597f9e7b8d523"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-1.json",
+      "sha256": "b62891d0830779e3ac999b001e8a21e9d25a715cb7796536b63d261ab5cf4970"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-2.pptx",
+      "sha256": "6a55a04f3951ca9b1a0dddd3b2db592e5b7d65e99656f846f2c00f65b120401b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-2.json",
+      "sha256": "5f2615e482b4d299ea5166a16933cd785c08dd2de12c6e931b8d4271e5b183b6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-3.pptx",
+      "sha256": "bb7814c6fb4605a9b67ffab224119098cfeae5a9744308a6b3cd02a990ed9515"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-22/candidate-3.json",
+      "sha256": "644d90b0b05b690b27e0f9f7d7983335843de59f72e9a75cef326ee1321ebb9e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/input.pptx",
+      "sha256": "ab7f8b7755c5d4cf608659f0989a19ff0c012ef42c5504948853746fbc4f5545"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/input-inspection.json",
+      "sha256": "b732008c2744d88d1bb440de31a398f401e3e1135ab1166e54496f4d69922734"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/regular-round2.pptx",
+      "sha256": "ab7f8b7755c5d4cf608659f0989a19ff0c012ef42c5504948853746fbc4f5545"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-1.pptx",
+      "sha256": "f74d80a95b9be3cd7261460e7b196c9cbd6e2c78f54d8c76d5c2e6d38baf2f32"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-1.json",
+      "sha256": "0fb607261597d540141d7e2bb002a7ab9c204d59f365287d90347e3e55032188"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-2.pptx",
+      "sha256": "c7ca47425ea0b2b67155fbe1b442dbc6f1fc41ca924c32e30b82d1b83fbab802"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-2.json",
+      "sha256": "ae8b22a5484ffd2e127758de8d00911c91f58907f75b0b42197c67faa4dac3f4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-3.pptx",
+      "sha256": "c81fe484bbe3407c50852df68cae102c50e0656424bbac352d474e2a1acbcb8e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-23/candidate-3.json",
+      "sha256": "883c7313e1212b4715f683c1467beab098271fd176be2c85ec44de3bb4eaade3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/input.pptx",
+      "sha256": "8830aafa31e24279a787e7b45604fc320a71b9ca0a893594f982a397bad3ca22"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/input-inspection.json",
+      "sha256": "97234ae8c65092594e1925d07a0d607900fe927e4bf821ead347094ad778e9d8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-edits/run-t0kxZH/B/regular-round3.pptx",
+      "sha256": "8830aafa31e24279a787e7b45604fc320a71b9ca0a893594f982a397bad3ca22"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/baseline.pptx",
+      "sha256": "8830aafa31e24279a787e7b45604fc320a71b9ca0a893594f982a397bad3ca22"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-1.pptx",
+      "sha256": "694f13c4ddbb097509b61d3d0a04555c28cdc82487377eca4525b809824d599b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-1.json",
+      "sha256": "8da673ab9664a6c4c8321484fdb9fca511678710078a89f76ac59ad985ce0ecd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-2.pptx",
+      "sha256": "92eb6a0fe581b87484f841b9f1bc6660cc98024793a3ac4a3bc9b0ab5bee3e73"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-2.json",
+      "sha256": "f8b3b5074eb58ac549645a81dbae438b83755d8b581866c6346c71fc11d87b57"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-3.pptx",
+      "sha256": "1c334a286db251fa22f62c79e6566c14296a6c2f20aade7bee542b54b10fdcbc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-24/candidate-3.json",
+      "sha256": "27acfa6b4daec6282b090326549836ade4958a9b71ef94339931cc5a3218c12c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/input.pptx",
+      "sha256": "30f911c9e6b05a2fc59d11e3f47adbd1c1098ce92a5bfdbfa3e40cc25eb221aa"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/input-inspection.json",
+      "sha256": "73be616a06665c0836755cafbcb5273c8c31aaab9f23b0d7696000880cb236e5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/office-round1.pptx",
+      "sha256": "30f911c9e6b05a2fc59d11e3f47adbd1c1098ce92a5bfdbfa3e40cc25eb221aa"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-1.pptx",
+      "sha256": "fd4532baac7e8adea481a878d3e60927f9d1d01917e054db0419e0a21ca21203"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-1.json",
+      "sha256": "b8bc5e75a3643cd07befce30814103b260da1e0026ffcfbcd75cd9f1b9127b55"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-2.pptx",
+      "sha256": "3018fcf756312e614b92ad7da1b9f19c492200cc13ec62003c15bff2e958d0ee"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-2.json",
+      "sha256": "72f6e6f30d861a22cc42997448ccd995131aeafca8c5faf894564e382e103116"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-3.pptx",
+      "sha256": "94b8fc40b3b7ff7b02a7f781b9eb0387fe4d9814aa4b95ca8a56e38eddac316e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-25/candidate-3.json",
+      "sha256": "8d8c75657e68cc093f692514e9a4038f919a7af1dfe1e79441fc1d06420e85f0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/input.pptx",
+      "sha256": "ee0aa4b9a666b4c4e9fda78b705a7e732e0a870e73055470d1bd69045d7336e6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/input-inspection.json",
+      "sha256": "fae55cd7fbfa43f7f5d3875b61db4d9bc80cfed5b0b39cb529e9b1cff83070f2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/office-round2.pptx",
+      "sha256": "ee0aa4b9a666b4c4e9fda78b705a7e732e0a870e73055470d1bd69045d7336e6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-1.pptx",
+      "sha256": "3fc2153b49b52540c81ac2abadb0a5c44e453bc1a65d1509ee1363ea87476e64"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-1.json",
+      "sha256": "56a47b2c48ba09a7c731737203cea9b3a737835614f29ff11e19ca3532ecb014"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-2.pptx",
+      "sha256": "ad6b5882cb25bbb5cbae50e58baa1610f4ab25f49b6ab2e2b47bb2bcd96ae8e8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-2.json",
+      "sha256": "1ac8a8b7ddf1d728a6633c8f5504514fb7c48123634ec787189f595f2effff97"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-3.pptx",
+      "sha256": "448d32249b1d5cacfc9782670e18706d2a03b98f85527bb94bac2ce8d06bc6f1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-26/candidate-3.json",
+      "sha256": "229119ed859fcb619e2f2eb024bdab109ce7ffe43c07a087c2632c5473372923"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/input.pptx",
+      "sha256": "61818cc8fc3286f3544a2884921251f49aa010d777d20579dad4d423d93bd1bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/input-inspection.json",
+      "sha256": "0582335c234dcc02054ddf1c19eee164e3961b261cc5fb19036eb27fd6804e3b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/A/office-round3.pptx",
+      "sha256": "61818cc8fc3286f3544a2884921251f49aa010d777d20579dad4d423d93bd1bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-1.pptx",
+      "sha256": "1c6b2ffe9259248117eecf737237b08e0775c6ea7142a3030c4747765966c5d0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-1.json",
+      "sha256": "e6714c4e0ad21a5b526c5d1a75ecfe1f43db0c9a77b6d181c8438f3ffa288ebe"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-2.pptx",
+      "sha256": "d1d92986d19a867e49a3c4ec77ec8844f4e5e89a6f819f17f60b3aa418ad4c43"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-2.json",
+      "sha256": "d87b81aeb9c1f93eb13b35c17054cbce0fe6e3d5c50d0aebc501cc3aecf01990"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-3.pptx",
+      "sha256": "b27b2dd2ca0030cd5c5da9fdc3003c2d4fbc6529224e2cf17a613559a2906eed"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-27/candidate-3.json",
+      "sha256": "983897cbed535c956abd817e00c6f1637438573e974efd7411a6d6f3b447e7e8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/input.pptx",
+      "sha256": "37877a93588b17b8ccb18cb56a26b02aae651a090ca441d1beb8b4a9b3e4ffb1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/input-inspection.json",
+      "sha256": "84366873fb5d2cc34c785cf4ad44af9daa3495ff9de9230bc3c6d7f986f56e8b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/office-round1.pptx",
+      "sha256": "37877a93588b17b8ccb18cb56a26b02aae651a090ca441d1beb8b4a9b3e4ffb1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-1.pptx",
+      "sha256": "69d84ab5a016165e2fb0bc2e6fcf4554a804a06ec413c54fab0b42c01e9ca6a3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-1.json",
+      "sha256": "8888c8e20942ad194f7b74f1643e876bb2b05e3957e6f38da39eb80386f363a8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-2.pptx",
+      "sha256": "581e824bca533e434af92c19f8a8d63f6ec0555a7157c3007d584a851d9264bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-2.json",
+      "sha256": "593c81632292e66a27d9a6ff505367c3cd1f0949814672b5212e1e5376748c5b"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-3.pptx",
+      "sha256": "b81f9d07cc9d44f524b47539a7754e5782021b05f95e1017c589bcca9877e7bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-28/candidate-3.json",
+      "sha256": "f5fe2994fc048b6f15c04b0b0d14d78ddc8481e9778281433b3720bae66331c9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/input.pptx",
+      "sha256": "6c3a2c2172e6d36048d1da07f0505de4afda04ac9e22f62aab220db3e0f91ccc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/input-inspection.json",
+      "sha256": "85d4f37f930adee99938f472fe761462d650f36a3695a337d27da34a339645b8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/office-round2.pptx",
+      "sha256": "6c3a2c2172e6d36048d1da07f0505de4afda04ac9e22f62aab220db3e0f91ccc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-1.pptx",
+      "sha256": "70beb91d55c4b9fd2b01118a696a9f013ef85a221924efabf11bb8686e5fc7ac"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-1.json",
+      "sha256": "be636a810d1d5a645250caf5862abbf0ff45d8e34a48aec998678058d1d04687"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-2.pptx",
+      "sha256": "512e5923cfc5586fb47f2159feee0672435c0ebf82f41d5e7d18ef9db866b5ba"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-2.json",
+      "sha256": "4266a5d1ad2e432a4c4e3acc7152ce3a77c9026e6895463703d10084e3d1fd92"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-3.pptx",
+      "sha256": "27034ec8dc3983334028c2c7939e84cc8b228b48ccb267577149b452e55020e3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-29/candidate-3.json",
+      "sha256": "463e504ee81dedefb13d4912d9c3063c400e8b0b7341fcb9dd2f4e61fda4dc51"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/input.pptx",
+      "sha256": "1b695531a1100591e6a7b31425fed7acaeb0d2d0a53115c11d3a5265be13c1bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/input-inspection.json",
+      "sha256": "f57c57fbc5749422b3493180a01a3dcfc97b4a44a34b25ed3f2e25d1639bb5f4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/B/office-round3.pptx",
+      "sha256": "1b695531a1100591e6a7b31425fed7acaeb0d2d0a53115c11d3a5265be13c1bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-1.pptx",
+      "sha256": "2c225346fa6719a299550a3d3243d2d77405a6cfb94861769db10ba6727063e8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-1.json",
+      "sha256": "372916341ddc87e640c578af27db239da50639a902074b55491b7a7db55f82bc"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-2.pptx",
+      "sha256": "77470bcb196935db9407570020bdfb56154f03552310471f04ca8f4503a737e7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-2.json",
+      "sha256": "0b4422aaed941bca37ed75892455f5e9601f67c1c5dd9be10eb3aa4dbf4e3814"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-3.pptx",
+      "sha256": "d9ed99d44074dc07ea4efe23804b9f387e63927efe1464a832acf12577e85671"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-30/candidate-3.json",
+      "sha256": "879cb094bb441b5893bf37cb5fd307b5e73be23020b26e9175033f07ce22d4ef"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/input.pptx",
+      "sha256": "21844f33c8e99b46904516da85a1b2d23a00f8ed7732e86af30348a74f67d535"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/input-inspection.json",
+      "sha256": "fcf966ea864b43d1956885d429aaf71331fde920ee71910c0edd2064d54ef6c8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/control-distinct-overrides.pptx",
+      "sha256": "21844f33c8e99b46904516da85a1b2d23a00f8ed7732e86af30348a74f67d535"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-1.pptx",
+      "sha256": "173959f09028198e72988315114a3a5d0bfbf73daa8cb6ac2271b90aaa2eb58e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-1.json",
+      "sha256": "e1952cb84c1ac5ec46332678355df4900dc5c8220bce30e1c84d43301905b7b2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-2.pptx",
+      "sha256": "ca1ae596d36d7deff37e9c31a1826741333fcf12242810ff07bc16b2bccd48fd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-2.json",
+      "sha256": "79be5aaf8be50f7bb40919d6086c119acf609d56794611b0812d0f623750e1d1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-3.pptx",
+      "sha256": "b35ca72bde67dbd081f22abbccfe83fd4d654c811427aef88ecd6e2e0b16ea2e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-31/candidate-3.json",
+      "sha256": "907cd511e18be2c22b510fcecd318d488105437752105cd21615f58d3bc3fae6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/input.pptx",
+      "sha256": "21c93b62203a99494506ce6a34c3657224e06dcd6889a85746a32da16550ac4f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/input-inspection.json",
+      "sha256": "ac9747cc7f69e25534695ad7a24deafd6c5319c86ac2bf25beb46dec5880b247"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/native-baseline-round1.pptx",
+      "sha256": "21c93b62203a99494506ce6a34c3657224e06dcd6889a85746a32da16550ac4f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-1.pptx",
+      "sha256": "453b747a7b1815422060326789085513fbcfb2f5891a26b6804a98257704fbb9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-1.json",
+      "sha256": "f9692a38b6f38642de0366a9e6bf89cc3808f86c8436d73914900bd0f85c9b34"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-2.pptx",
+      "sha256": "8614e26ebf9d889cce32f03e761e72deeb7a26d008df035625b181e386898150"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-2.json",
+      "sha256": "ae1759ea8a0b3e35d6743f1fac7eb298aff2ab92105516abc89f20eb2a25e98d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-3.pptx",
+      "sha256": "00ccb9cad66d8e8254a537a7aca4adecdbb094aea285a4757fed445b208abf78"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-32/candidate-3.json",
+      "sha256": "4cc987fc21b2ba58479d43ecca5eb93aab666e9f726012994d5b802b642a192c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/input.pptx",
+      "sha256": "9f67ba23028a6f38373358222429b263feb2564ed2445594abe43893714348de"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/input-inspection.json",
+      "sha256": "fb92cd178ac17ff8d9a7884478e5525b1cd7a20d3ec9f024f84106489b76eee6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/native-baseline-round2.pptx",
+      "sha256": "9f67ba23028a6f38373358222429b263feb2564ed2445594abe43893714348de"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-1.pptx",
+      "sha256": "410120969fb441365f1ed441ad5d281235418e6dae1581aa6a7feb3e74a6b277"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-1.json",
+      "sha256": "892ec57720fdadfcbeb637325b9bb1eeedb87ab6944c033996aa026f387d422f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-2.pptx",
+      "sha256": "06621b9ec26d1fdf83372757180c7e2a1c6ac9878e1dd49300beb3b18088c2e0"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-2.json",
+      "sha256": "36dc3fb0bd8c832b47f8738848413682200a40b506efed1881bbb0f507d76c44"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-3.pptx",
+      "sha256": "5f44940b07bdc50ae0455e6bb332138bd9f6416c1d204e5fa29f30d96abd8847"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-33/candidate-3.json",
+      "sha256": "4a79e4db848958b4931406cf0c28d42a0601f93dbbe48a08a7ead2c509157080"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/input.pptx",
+      "sha256": "9b6dac5618c08acb65ab486c21e74db5d0fb61d4587748f6681f5bc610e99cec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/input-inspection.json",
+      "sha256": "271a800fe22c992b1cf2cf3436db265c56db1f6293ac44de514e3b77b0ed4485"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/native-baseline-round3.pptx",
+      "sha256": "9b6dac5618c08acb65ab486c21e74db5d0fb61d4587748f6681f5bc610e99cec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-1.pptx",
+      "sha256": "225cbfae5b1eb872ef470a84e59dbe7fb4b0c2f3a9aa1bbba52eefb80ce4d2e3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-1.json",
+      "sha256": "faab5f619c1509f2beee56d1bc053c79bfd186621ab52161140e88107c4e430c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-2.pptx",
+      "sha256": "9d01dffd3cfd5605325ccb26fd38ff859b4cacfebe46f17a76638b3ecd4bda79"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-2.json",
+      "sha256": "47ec57fa92cba6a3d893b036aa9fc29bf1bcbfcdd400e6d00d73017b398711e6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-3.pptx",
+      "sha256": "28eb6ed93a377325f79c42382f296e8f3a1a77b9e27ddbc0aa62176ad998cced"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-34/candidate-3.json",
+      "sha256": "bc065c8df8b35239ad06a5a369305a74d18a46d42c8899df964e1ddfafa37c49"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/input.pptx",
+      "sha256": "313ef7b2f0e1c2e6f20f20410f5903017440b63ce8be51fbbcecb4b76808263f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/input-inspection.json",
+      "sha256": "e4a0e3d85a23ef542d05d0427be01f65c158fa4092e33462b76603b6174ddc82"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/office-round1.pptx",
+      "sha256": "313ef7b2f0e1c2e6f20f20410f5903017440b63ce8be51fbbcecb4b76808263f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-1.pptx",
+      "sha256": "a0144f9b4390b8fa56bdf75a2b098fd3ed3927aa29cc610e2c7ebc74448c4679"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-1.json",
+      "sha256": "9fd61efc78ec2d907b1002f7fd6f884b7e77386c8b7ee93e5f2f03ffc9421b19"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-2.pptx",
+      "sha256": "f6fdc94f2f495c766df2f5c98a72fd595083bbd24284d8e85e6b998871a1728c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-2.json",
+      "sha256": "51010f26e955e385c8de16966350ea2e2615cd2d160fc71aa3983340948834b7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-3.pptx",
+      "sha256": "92f446510672aa173bcd4d6337ba8ab4222935ef049d0e97a6a06aaf4f35a91c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-35/candidate-3.json",
+      "sha256": "0e242b106e3162b36062523d3db0f043d6f3dc6035c4e37acdfdc0eb490e84a2"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/input.pptx",
+      "sha256": "1c9666935c69b371ed0aab60ceba7bc31cc2dc279286c725ada0a53b5049a235"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/input-inspection.json",
+      "sha256": "7b20051620385da0f8a52217062ee1679e94edde0bf84badf945c49cfef1d2b1"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/office-round2.pptx",
+      "sha256": "1c9666935c69b371ed0aab60ceba7bc31cc2dc279286c725ada0a53b5049a235"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-1.pptx",
+      "sha256": "e7cb815d3afd470f4e4e81e08140ce6364778daa1f42d89183108b054505ea73"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-1.json",
+      "sha256": "6a7ef8259d46513c34adeac5905c4fd63c7eddf7478f8d8f8cbf682e936dea71"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-2.pptx",
+      "sha256": "bfaf6b9d73e39e4a64721da240f85fc5d2ea3a7a122693b7963e5fb1c44b78bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-2.json",
+      "sha256": "a45297e9a3b7b8df1e2136288bfde860f812533a5fafb999657ccaf1c75e50e5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-3.pptx",
+      "sha256": "67d52c1644436501dd092b32769e2d1cc94ccdaedb82d22850aa5aa5aff19482"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-36/candidate-3.json",
+      "sha256": "df66489683fc544991c469341270108e86a55eb556eb546c4c27b2d9ae9a6e98"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/input.pptx",
+      "sha256": "f07f5cfc2b5f9e5a6e9ce2444d71fa198b12bb749ee4ccedce2a0cc02fd17155"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/input-inspection.json",
+      "sha256": "3130ee48ed91266ec989e9e42b1b0845a354b9cdfb9ba54ada4d5561c9718ac3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-font-themes/run-r7ySY9/override/office-round3.pptx",
+      "sha256": "f07f5cfc2b5f9e5a6e9ce2444d71fa198b12bb749ee4ccedce2a0cc02fd17155"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-1.pptx",
+      "sha256": "bb87141ac3b7b94d7bc85e1d6f9b8d9cf84e24fbc0d54e588b52bd65afc25e87"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-1.json",
+      "sha256": "8145e73cdf910bf0b6ec1e5bfe92146636a524ea0fba034f41ed7bf72163b2bb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-2.pptx",
+      "sha256": "4d9a41862e7b2dd08e8b03df11adbf6b8de8605bfa4b25f34686c1ed3f86f312"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-2.json",
+      "sha256": "3b284868498dd34dc58da6b1bf7092ceabd1cff04d4a28ab817e7e53133d3d31"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-3.pptx",
+      "sha256": "9665ab390d19a1c148bc33b322727c0ebe18d4e95e8bec53c51b7be2b8fcf3ba"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-consolidated/run-MaKV81/input-37/candidate-3.json",
+      "sha256": "d40ebb89672ee16f8e071adfeccdec2aa337888e05fb6561477e9f204b1a0ce9"
+    }
+  ],
+  "total": {
+    "logicalInputPaths": 39,
+    "uniqueInputFiles": 37,
+    "consumers": 3,
+    "exactNoOpPaths": 111,
+    "additionalExactRestores": 333,
+    "mixedWriteRejections": 333,
+    "characterCandidatePaths": 333,
+    "materializedNodeCandidates": 111,
+    "nativeReopenedCandidates": 0
+  },
+  "scope": "Recovered captured input/candidate/snapshot bytes verified against prior manifest, not a rerun of its Node/browser operations. Current full workspace tests and current rect source regression are separately recorded.",
+  "originalManifest": "/Volumes/github/private/pptkit/docs/testing/native-notes-consolidated-evidence.json"
+}

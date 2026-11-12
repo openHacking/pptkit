@@ -1,0 +1,191 @@
+{
+  "scope": "Existing created date edited and missing modified date inserted, each with three LibreOfficeDev headless resaves; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "562810f28daf68bdfc65b75dbd98adb66b4f1ea862252d906275e6e95834fcd4",
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/input/control.pptx",
+      "sha256": "b5e21e59dcd361d2156632ee7744009e1e6e9ade262200934cd329260748f17e",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha, beta",
+        "created": "2020-01-02T11:04:05.1200+08:00",
+        "modified": null
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/input/edited.pptx",
+      "sha256": "6da81f7ab79b4d488ed70e3c52b85f0b6f98c8bbc813eb362fcab2bdf557d471",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha, beta",
+        "created": "2022-03-04T05:06:07.123Z",
+        "modified": "2023-04-05T06:07:08.456Z"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-1/control.pptx",
+      "sha256": "71dd8b8bb6b4a887ae10dd7cf017aecc6356f39b6de64ebb0eb452361c75125c",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2020-01-02T03:04:05Z",
+        "modified": null
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-1/edited.pptx",
+      "sha256": "50fcfba6e3ed6d4b10ef83e02148c153331b9d4e9c346d2eaa7e414351f433ff",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2022-03-04T05:06:07Z",
+        "modified": "2023-04-05T06:07:08Z"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-2/control.pptx",
+      "sha256": "2d196d9aee4ce420cd478325696fc11bc63ceab0df8d939365e809d50ada16f6",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2020-01-02T03:04:05Z",
+        "modified": null
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-2/edited.pptx",
+      "sha256": "1f4682eec0ef722a49df272ba663d6124f63833b751a5481e5f38c2c3e4dd0b2",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2022-03-04T05:06:07Z",
+        "modified": "2023-04-05T06:07:08Z"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-3/control.pptx",
+      "sha256": "8758d2aed07eb0387d5c6db86c9c82019b345e8f91a4eec4194a859932f3a00e",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2020-01-02T03:04:05Z",
+        "modified": null
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/core-date-libreoffice/run-fyxxg4et/round-3/edited.pptx",
+      "sha256": "52c2576de15ef23b8832f460cd8592d19dfe51011e6a15064aa600b80c429bdd",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "subject": "Original subject",
+        "description": "Original description",
+        "language": "en-US",
+        "revision": "7",
+        "keywords": "alpha beta",
+        "created": "2022-03-04T05:06:07Z",
+        "modified": "2023-04-05T06:07:08Z"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-date-libreoffice/run-fyxxg4et/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

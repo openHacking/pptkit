@@ -1,0 +1,11 @@
+{
+  "scope": "One generated control with integer 50 and its 050% single-attribute variant were converted headlessly by LibreOfficeDev to PDF. Colored shape bounding boxes agree across the two PDFs. The inner-to-outer ring boundary ratio is compared with an independently recorded PowerPoint print; LibreOffice resave, interactive editing, other values and other versions are not established.",
+  "applicationVersion": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "verifierSha256": "90faf5d2b105647a02f9160cd4172c5dee934887eb2615c1c0d4590b0c664420",
+  "controlPdfSha256": "116973eb90296f9ff581896d17d37f1b6af2691c7bf13b49d4a8700cc7d8d189",
+  "percentPdfSha256": "32766de77575304d876b45c250f5273d86513636138d26329e3767e6913ed640",
+  "percentSourceSha256": "10f7367f581f91833f49c0e6cc132d432d42fcc69832c98fd2899f4071a4e15c",
+  "powerPointEvidenceSha256": "9f596b3aa3b13942f9c1f3bb1d6c1492499b5f19dd25b3b5b40cfe4637e3fb96",
+  "libreOfficeInnerToOuterRadius": 0.6666179905549205,
+  "powerPointInnerToOuterRadius": 0.7499997972386577
+}

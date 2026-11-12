@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/native-connectors/run-2bmp84",
+  "scope": "Experimental native straight connector profile; headless save/reopen and independent attachment inventory, not interactive attachment movement, visual parity or PowerPoint certification",
+  "original": {
+    "sha256": "5afa589d045c98db4500a15a788ccbd77d7a94a0d2f148f2b88342bff4dad418",
+    "connectors": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "name": "horizontal-forward",
+        "id": "2",
+        "bindings": {
+          "stCxn": {
+            "target": "rect-a",
+            "index": 3
+          },
+          "endCxn": {
+            "target": "ellipse-b",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "1143000",
+              "y": "762000"
+            },
+            {
+              "tag": "ext",
+              "cx": "2159000",
+              "cy": "0"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "name": "horizontal-reverse",
+        "id": "3",
+        "bindings": {
+          "stCxn": {
+            "target": "ellipse-b",
+            "index": 2
+          },
+          "endCxn": {
+            "target": "rect-a",
+            "index": 3
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "1143000",
+              "y": "762000"
+            },
+            {
+              "tag": "ext",
+              "cx": "2159000",
+              "cy": "0"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide2.xml",
+        "name": "vertical-forward",
+        "id": "2",
+        "bindings": {
+          "stCxn": {
+            "target": "round-a",
+            "index": 2
+          },
+          "endCxn": {
+            "target": "round-b",
+            "index": 0
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "1397000",
+              "y": "762000"
+            },
+            {
+              "tag": "ext",
+              "cx": "0",
+              "cy": "1397000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide2.xml",
+        "name": "vertical-reverse",
+        "id": "3",
+        "bindings": {
+          "stCxn": {
+            "target": "round-b",
+            "index": 0
+          },
+          "endCxn": {
+            "target": "round-a",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "1397000",
+              "y": "762000"
+            },
+            {
+              "tag": "ext",
+              "cx": "0",
+              "cy": "1397000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide3.xml",
+        "name": "group-edge",
+        "id": "3",
+        "bindings": {
+          "stCxn": {
+            "target": "group-a",
+            "index": 3
+          },
+          "endCxn": {
+            "target": "group-b",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "889000",
+              "y": "635000"
+            },
+            {
+              "tag": "ext",
+              "cx": "1651000",
+              "cy": "635000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-0",
+        "id": "2",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "1270000"
+            },
+            {
+              "tag": "ext",
+              "cx": "1524000",
+              "cy": "1270000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-1",
+        "id": "3",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "508000",
+              "y": "1270000"
+            },
+            {
+              "tag": "ext",
+              "cx": "1778000",
+              "cy": "1270000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-2",
+        "id": "4",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "508000"
+            },
+            {
+              "tag": "ext",
+              "cx": "1524000",
+              "cy": "762000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-3",
+        "id": "5",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1",
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "508000",
+              "y": "508000"
+            },
+            {
+              "tag": "ext",
+              "cx": "1778000",
+              "cy": "762000"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-4",
+        "id": "6",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "1270000"
+            },
+            {
+              "tag": "ext",
+              "cx": "0",
+              "cy": "0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "saved": {
+    "sha256": "d4e5fd56a83f07749a7072eee071a8924b21acc87b2ff726d1c9333923d5a69a",
+    "connectors": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "name": "horizontal-forward",
+        "id": "4",
+        "bindings": {
+          "stCxn": {
+            "target": "rect-a",
+            "index": 3
+          },
+          "endCxn": {
+            "target": "ellipse-b",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "1142640",
+              "y": "761760"
+            },
+            {
+              "tag": "ext",
+              "cx": "2159640",
+              "cy": "360"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "name": "horizontal-reverse",
+        "id": "7",
+        "bindings": {
+          "stCxn": {
+            "target": "ellipse-b",
+            "index": 2
+          },
+          "endCxn": {
+            "target": "rect-a",
+            "index": 3
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "1142640",
+              "y": "761760"
+            },
+            {
+              "tag": "ext",
+              "cx": "2159640",
+              "cy": "360"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide2.xml",
+        "name": "vertical-forward",
+        "id": "8",
+        "bindings": {
+          "stCxn": {
+            "target": "round-a",
+            "index": 2
+          },
+          "endCxn": {
+            "target": "round-b",
+            "index": 0
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "1396800",
+              "y": "761760"
+            },
+            {
+              "tag": "ext",
+              "cx": "360",
+              "cy": "1397520"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide2.xml",
+        "name": "vertical-reverse",
+        "id": "11",
+        "bindings": {
+          "stCxn": {
+            "target": "round-b",
+            "index": 0
+          },
+          "endCxn": {
+            "target": "round-a",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "1396800",
+              "y": "761760"
+            },
+            {
+              "tag": "ext",
+              "cx": "360",
+              "cy": "1397520"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide3.xml",
+        "name": "group-edge",
+        "id": "13",
+        "bindings": {
+          "stCxn": {
+            "target": "group-a",
+            "index": 3
+          },
+          "endCxn": {
+            "target": "group-b",
+            "index": 2
+          }
+        },
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "1657080",
+              "y": "765720"
+            },
+            {
+              "tag": "ext",
+              "cx": "1430640",
+              "cy": "1041120"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-0",
+        "id": "16",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "1269720"
+            },
+            {
+              "tag": "ext",
+              "cx": "1524240",
+              "cy": "1270440"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-1",
+        "id": "17",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "507960",
+              "y": "1269720"
+            },
+            {
+              "tag": "ext",
+              "cx": "1778400",
+              "cy": "1270440"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-2",
+        "id": "18",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "507960"
+            },
+            {
+              "tag": "ext",
+              "cx": "1524240",
+              "cy": "762120"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-3",
+        "id": "19",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {
+            "flipH": "1",
+            "flipV": "1"
+          },
+          "children": [
+            {
+              "tag": "off",
+              "x": "507960",
+              "y": "507960"
+            },
+            {
+              "tag": "ext",
+              "cx": "1778400",
+              "cy": "762120"
+            }
+          ]
+        }
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "name": "free-4",
+        "id": "20",
+        "bindings": {},
+        "preset": "straightConnector1",
+        "transform": {
+          "attributes": {},
+          "children": [
+            {
+              "tag": "off",
+              "x": "2286000",
+              "y": "1269720"
+            },
+            {
+              "tag": "ext",
+              "cx": "360",
+              "cy": "360"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "reopenedPdf": {
+    "sha256": "faf9f200235e9d3dcb70712ee6d1ddb2dcb327238bbf1562e4df4cbecc5e3b2a",
+    "byteLength": 13785
+  },
+  "attachmentInventoryPreserved": true,
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-connectors/run-2bmp84/connectors.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-connectors/run-2bmp84/saved/connectors.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-connectors/run-2bmp84/saved/connectors.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-connectors/run-2bmp84/reopened/connectors.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "scope": "Synthetic ten-variant source based on PPTKit-created package, one explicit value edit and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "3891f517f6f1bde5c11125d30ef798943f53524bcda1c9fe5f19d4248ee6d030",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/input/control.pptx",
+      "sha256": "b2a494bd477558d50b921ad5c4569518d56baf8a98704b4f0c975dc8773e1a38",
+      "properties": [
+        {
+          "name": "i1",
+          "pid": "2",
+          "type": "i1",
+          "value": "0"
+        },
+        {
+          "name": "i2",
+          "pid": "3",
+          "type": "i2",
+          "value": "0"
+        },
+        {
+          "name": "i4",
+          "pid": "4",
+          "type": "i4",
+          "value": "0"
+        },
+        {
+          "name": "int",
+          "pid": "5",
+          "type": "int",
+          "value": "0"
+        },
+        {
+          "name": "i8",
+          "pid": "6",
+          "type": "i8",
+          "value": "0"
+        },
+        {
+          "name": "ui1",
+          "pid": "7",
+          "type": "ui1",
+          "value": "0"
+        },
+        {
+          "name": "ui2",
+          "pid": "8",
+          "type": "ui2",
+          "value": "0"
+        },
+        {
+          "name": "ui4",
+          "pid": "9",
+          "type": "ui4",
+          "value": "0"
+        },
+        {
+          "name": "uint",
+          "pid": "10",
+          "type": "uint",
+          "value": "0"
+        },
+        {
+          "name": "ui8",
+          "pid": "11",
+          "type": "ui8",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/input/edited.pptx",
+      "sha256": "463b3b88ebbd6a890929d9ead187b18a2edff939fe04c4b6af238e74533395e9",
+      "properties": [
+        {
+          "name": "i1",
+          "pid": "2",
+          "type": "i1",
+          "value": "1"
+        },
+        {
+          "name": "i2",
+          "pid": "3",
+          "type": "i2",
+          "value": "2"
+        },
+        {
+          "name": "i4",
+          "pid": "4",
+          "type": "i4",
+          "value": "3"
+        },
+        {
+          "name": "int",
+          "pid": "5",
+          "type": "int",
+          "value": "4"
+        },
+        {
+          "name": "i8",
+          "pid": "6",
+          "type": "i8",
+          "value": "5"
+        },
+        {
+          "name": "ui1",
+          "pid": "7",
+          "type": "ui1",
+          "value": "6"
+        },
+        {
+          "name": "ui2",
+          "pid": "8",
+          "type": "ui2",
+          "value": "7"
+        },
+        {
+          "name": "ui4",
+          "pid": "9",
+          "type": "ui4",
+          "value": "8"
+        },
+        {
+          "name": "uint",
+          "pid": "10",
+          "type": "uint",
+          "value": "9"
+        },
+        {
+          "name": "ui8",
+          "pid": "11",
+          "type": "ui8",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/control.pptx",
+      "sha256": "72b5ce7b9e9c8778b93a7bec63451d48adf4a201b9e1b33484ac27fb1c73716f",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/edited.pptx",
+      "sha256": "dc19a481f867898e076298d7584110ab6fe88fcc094caf90253ad4b0e704ae3b",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "2"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "3"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/control.pptx",
+      "sha256": "b801d402ff1c673d4bab47902129eefb40ce8bbe5000fc01fabb48b902d75c08",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/edited.pptx",
+      "sha256": "086f26c7d3109375aee3e7aa1c873dc22206f849b3760b8dc911576574c85d79",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "2"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "3"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-3/control.pptx",
+      "sha256": "c0651fb163be98e0b832ee36663b8b66b9b5e4f907cb0811406a02676244139f",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-3/edited.pptx",
+      "sha256": "203d1c137a4bd9285326d7a842cf09a6347cc9a5960039350ba38f4cd45d5188",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i1",
+          "pid": "4",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "i2",
+          "pid": "5",
+          "type": "r8",
+          "value": "2"
+        },
+        {
+          "name": "i4",
+          "pid": "6",
+          "type": "r8",
+          "value": "3"
+        },
+        {
+          "name": "int",
+          "pid": "7",
+          "type": "r8",
+          "value": "4"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-integer-variants-libreoffice/run-eva6iuav/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "scope": "PowerPoint 16.104 on macOS: edited clockwise and counterclockwise text in one 1x4 table, saved, closed and reopened once. Screenshot and accessibility state were observed after reopen; provenance is not authenticated. Other fonts, alignment, merged cells and PowerPoint versions are not covered.",
+  "artifactDirectory": ".tmp/native-table-text-direction",
+  "fixture": "tests/fixtures/table-text-direction-powerpoint-interactive.pptx",
+  "reopenRounds": 1,
+  "cellText": [
+    "DEFAULT",
+    "CWEDIT",
+    "CCWEDIT",
+    "HORIZONTAL"
+  ],
+  "savedDirections": [
+    null,
+    "vert",
+    "vert270",
+    null
+  ],
+  "sha256": {
+    "native-interactive.pptx": "0fb22138e69369c72787f623570b8f98e7f21c8f17a9e16dcdd83fca11a8c117",
+    "interactive-reopen.png": "953e528fd0d8262862cf83c02fcb172fc02d7bb1f225f363e4ba95d9c0e8fb91",
+    "interactive-reopen.ax.txt": "8bdbd6d70ff728f4d545dc011563c12827dd92960acc82a6293577aafdf8cffc",
+    "fixture": "0fb22138e69369c72787f623570b8f98e7f21c8f17a9e16dcdd83fca11a8c117"
+  }
+}

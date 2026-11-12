@@ -1,0 +1,12 @@
+import { writeFile } from 'node:fs/promises';
+import { createPresentation } from '../packages/core/dist/index.js';
+import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
+import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js';
+import { chromium } from '@playwright/test';
+const dir=process.argv[2];if(!dir) throw Error('Specify evidence directory');
+const d=createPresentation({size:{width:960,height:540}});
+const cases=[[0,false,1],[90,false,1],[45,false,1],[45,true,1],[0,false,.5],[270,false,1]];
+for(const [i,[angle,scaled,opacity]] of cases.entries()) d.addSlide({id:`gradient-${i+1}`,background:{type:'linearGradient',angle,scaled,stops:[{position:0,color:'FF0000',opacity},{position:1,color:'0000FF'}]}});
+await writeFile(`${dir}/gradient.pptx`,(await generatePptx(d)).bytes,{flag:'wx'});
+const svgs=(await renderPresentationToSvg(d)).slides;const browser=await chromium.launch();const page=await browser.newPage({viewport:{width:960,height:540},deviceScaleFactor:1});
+for(const [i,slide] of svgs.entries()){await page.setContent(`<style>body{margin:0;background:white}</style>${slide.svg}`);await page.screenshot({path:`${dir}/svg-${i+1}.png`});}await browser.close();

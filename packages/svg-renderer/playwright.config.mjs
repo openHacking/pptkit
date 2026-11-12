@@ -4,7 +4,7 @@ import path from "node:path";
 
 export default defineConfig({
   testDir: "./test",
-  testMatch: "visual.spec.mjs",
+  testMatch: ["visual.spec.mjs", "measurement.spec.mjs"],
   fullyParallel: false,
   workers: 1,
   reporter: "line",

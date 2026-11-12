@@ -1,0 +1,56 @@
+{
+  "scope": "Chromium 149 browser JPEG normalization and PowerPoint 16.104 manual slideshow on one EXIF 6 sample; pixel checks do not independently witness UI actions or guarantee color/crop fidelity.",
+  "directory": ".tmp/jpeg-orientation-native-01",
+  "files": {
+    "orientation6.jpg": "f88b5aded39e8cc6687a60602b329d3d26b02e4614c33ca496cc9ae1772a573e",
+    "browser-normalized.png": "c0bd9436846959f4b6fc52968e971ddbb4c3510991ce7b3bdb88f9b6fe40d5cb",
+    "browser-normalized-candidate.pptx": "b7c41d8dd36a97421c287a3c4fe64eb08a9e2e65ff7b0f7467767ce23e037486",
+    "browser-normalized-powerpoint.png": "fd126b1d4e64fbad30352a67c670451f82551cda28f7bb801ab3354e0595bcb0"
+  },
+  "browserReportSha256": "1a57e78ec9833b456b6b775317af3cb06860786162a64c1b40bf40e280837858",
+  "producerSha256": "64b453b5b4357c72cb2e90788a8e76e3b0fe018aeb22e96cee0c4360b44b8f76",
+  "originalEvidenceSha256": "aab9bc251940451eae7cdd192341a811213973658ad902d27ef7da36cea2411f",
+  "referenceOracleSha256": "75ee8c71ec58d9feff9a50bfbce2c7db86c6087ec8bb98d6cf21fffb7318f2b0",
+  "oracleSha256": "cef9f20b6649aaf2ab4ac073ee458fd4a3dbb491e39e10ac355f72a439409a74",
+  "scripts": {
+    "scripts/prepare-browser-jpeg-normalization.mjs": "b95843d2150d43f9aca0d0549e8c08a29609d272a98ea86cbb6f090a48b311a6",
+    "scripts/prepare-jpeg-browser-normalized-pptx.mjs": "4ef4363eca9983e02df334b0b8a0dc06e30632f861b0b11eecdc3b211986bf75",
+    "scripts/jpeg-normalization-browser.test.mjs": "d2405775458223df279808332de9e803fc8d6bad88aa246bac9076213136c887",
+    "packages/pptx-exporter/src/adapters/browser-jpeg-normalization.ts": "0c57cdad9f3a8398e805b6c00e99c3620fc958e3dca1ff47dac4188ecd2b7df9"
+  },
+  "observation": {
+    "pictureTargets": [
+      "ppt/media/exif.png",
+      "ppt/media/normalized.png"
+    ],
+    "left": [
+      [
+        "yellow",
+        "red"
+      ],
+      [
+        "magenta",
+        "green"
+      ],
+      [
+        "cyan",
+        "blue"
+      ]
+    ],
+    "right": [
+      [
+        "yellow",
+        "red"
+      ],
+      [
+        "magenta",
+        "green"
+      ],
+      [
+        "cyan",
+        "blue"
+      ]
+    ]
+  },
+  "negativeCasesRejected": 3
+}

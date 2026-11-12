@@ -1,0 +1,1537 @@
+{
+  "baselineEvidence": "/Volumes/github/private/pptkit/docs/testing/multi-master-native-evidence.json",
+  "baselineEvidenceSha256": "58d2264ec2c886d540973707ab0a71fb0bfc972cd9e1b4a7b683975ca1406464",
+  "textPreSaveDifference": {
+    "spanCountBefore": 3,
+    "spanCountAfter": 2,
+    "characterIndex": 6,
+    "unicode": 48,
+    "xBefore": 99.1875,
+    "xAfter": 99.18272399902344,
+    "xDeltaPt": -0.0047760009765625,
+    "reportedSpacewidthBefore": 6.999999046325684,
+    "reportedSpacewidthAfter": 3.499999523162842,
+    "fontProgramAndRasterEqual": true,
+    "savedRound1To2To3RawTraceEqual": true
+  },
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T18:18:16.671783+00:00",
+  "directory": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0",
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104"
+  },
+  "stages": [
+    {
+      "changedMetadata": {
+        "docProps/app.xml": {
+          "beforeSha256": "7f61ac91f45aeb0af8e13ccf28bc1994c439cc6180ab56daaf4d4a80034c42e9",
+          "afterSha256": "b18701d3d767ad9d43a1a374ff9c9266dc20a22b1a5b3aa390070b055d849462",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>0</TotalTime><Words>16</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>2</TotalTime><Words>16</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+        },
+        "docProps/core.xml": {
+          "beforeSha256": "f488d22142164f979aa2c892e42fdd7e6c54cf089ae2d7f412f6b4a9fec84dad",
+          "afterSha256": "7338c3b834b4fe45432a9c488b1a177ac13d5e9e55dfdf46e802fbdbe30f5b11",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>1</cp:revision><cp:lastPrinted>2026-10-26T17:11:56Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:12:03Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>2</cp:revision><cp:lastPrinted>2026-10-26T17:33:06Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:33:10Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>"
+        }
+      },
+      "stage": "layout",
+      "inputFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-input.pptx",
+      "inputSha256": "d10d1f5c803ffba1a75e59de035d11d6888e231e90d868513998fb04e51b1056",
+      "firstPdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-first.pdf",
+      "firstPdfSha256": "e8d51a3b61c63f9dfb0e97745458ec0187d554b21db7ac54f77542ad60ba50dd",
+      "firstPages": [
+        {
+          "page": 1,
+          "text": "Owned 0",
+          "actualFace": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "rasterSha256": "9ef4449aaebcd328f6a86537332fa75d9c4d58f1299c503f34609a721be967ba",
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+            ]
+          ],
+          "rawTraceSha256": "09f6e935579ced0ac57f301a337222cbfd995da46df69f6270a43babcb5a162c",
+          "bystanderGlyphProgramTraceSha256": null
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "actualFace": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+            ]
+          ],
+          "rawTraceSha256": "28b33331e40520036cc73af8915ac9ca88dd2381f14e0bf7ce63434711804daa",
+          "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "actualFace": "Georgia",
+          "color": "CC2200",
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+          "fontPrograms": [
+            [
+              "Georgia",
+              "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+            ]
+          ],
+          "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+          "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "actualFace": "ArialMT",
+          "color": "112233",
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+            ]
+          ],
+          "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+          "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+        }
+      ],
+      "operationScreenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-applied.png",
+      "screenshotSha256": "442ec62cd4b89ab63b87d86ce7a7927dc74920fa40dfe00ffb1088d7df78b16f",
+      "officeProfile": null,
+      "rounds": [
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round1.pptx",
+          "sha256": "0a4f340e3c5c550a355b53e9b3a9b5801605b2bc5b46625c959d6d3a72a9c9ec",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round1.pdf",
+          "pdfSha256": "62c3b6557007d0ccd76717bd9f10ef7296ae92ba64e809dfd5184e99b2247d87",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "9ef4449aaebcd328f6a86537332fa75d9c4d58f1299c503f34609a721be967ba",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "09f6e935579ced0ac57f301a337222cbfd995da46df69f6270a43babcb5a162c",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "28b33331e40520036cc73af8915ac9ca88dd2381f14e0bf7ce63434711804daa",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round2.pptx",
+          "sha256": "4885868cbcd793ce7e483c8511bd8a4d97a45e269281564f040805b32f3e9eed",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round2.pdf",
+          "pdfSha256": "0b29a4ee129b6b9b3e07caa28637053265cba51a34cbdad01fd225b888b8e3e1",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "9ef4449aaebcd328f6a86537332fa75d9c4d58f1299c503f34609a721be967ba",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "09f6e935579ced0ac57f301a337222cbfd995da46df69f6270a43babcb5a162c",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "28b33331e40520036cc73af8915ac9ca88dd2381f14e0bf7ce63434711804daa",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round3.pptx",
+          "sha256": "cc973226235427571688393cae4208c3a5199abf3b25d2523b308dc52b2639e8",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/layout-round3.pdf",
+          "pdfSha256": "8a0a88eeba932dad5f502ebc0496167138e3eac4f484b98326bf7ce138907470",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "9ef4449aaebcd328f6a86537332fa75d9c4d58f1299c503f34609a721be967ba",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "09f6e935579ced0ac57f301a337222cbfd995da46df69f6270a43babcb5a162c",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "d69bebe64db183e8be76c1b3f98c1eaaa63a05854bd456d4ff18f0ba886b52d7"
+                ]
+              ],
+              "rawTraceSha256": "28b33331e40520036cc73af8915ac9ca88dd2381f14e0bf7ce63434711804daa",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "changedMetadata": {
+        "docProps/app.xml": {
+          "beforeSha256": "b18701d3d767ad9d43a1a374ff9c9266dc20a22b1a5b3aa390070b055d849462",
+          "afterSha256": "b954efcee8702c7eca8365c9eb064e5d522d665d326a2e74cf2ff1c8ebd61c5c",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>2</TotalTime><Words>16</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>2</TotalTime><Words>17</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+        },
+        "docProps/core.xml": {
+          "beforeSha256": "42be0885bd3275a94e719696aa64e27c9cd71998c4c5d7ce20166f1f0ea6bd3f",
+          "afterSha256": "1665f0591a7260275a06ae86526c168072ba1cb50f4e99de543f90d920a76a7d",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>2</cp:revision><cp:lastPrinted>2026-10-26T17:33:50Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:33:58Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>3</cp:revision><cp:lastPrinted>2026-10-26T17:35:39Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:35:43Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>"
+        }
+      },
+      "stage": "text",
+      "inputFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-input.pptx",
+      "inputSha256": "cc973226235427571688393cae4208c3a5199abf3b25d2523b308dc52b2639e8",
+      "firstPdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-first.pdf",
+      "firstPdfSha256": "03ac3637d506e97e52a11045b78e7e2d43ac2fb3d4221dc1a46d7f4dfafdcd24",
+      "firstPages": [
+        {
+          "page": 1,
+          "text": "Owned 0 EDIT",
+          "actualFace": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "rasterSha256": "3bf1bc505adf15c1c921ef3575c233871c554afaaa7c04f60e0703634de00673",
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+            ]
+          ],
+          "rawTraceSha256": "a42f77f04f28bae4032c8e07fcc541be383e5a6b27c25120a80775fd8b9553eb",
+          "bystanderGlyphProgramTraceSha256": null
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "actualFace": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+            ]
+          ],
+          "rawTraceSha256": "a58b3e440f985a1a9e8f578b90b4bbb9a9970a910953be23bf1c5e08b5e9f7a4",
+          "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "actualFace": "Georgia",
+          "color": "CC2200",
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+          "fontPrograms": [
+            [
+              "Georgia",
+              "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+            ]
+          ],
+          "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+          "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "actualFace": "ArialMT",
+          "color": "112233",
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+            ]
+          ],
+          "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+          "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+        }
+      ],
+      "operationScreenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-edited.png",
+      "screenshotSha256": "834fa6958a1df0de641d9e41f2bdbbabb6cd44f60c814774bc1546827808599b",
+      "officeProfile": null,
+      "rounds": [
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round1.pptx",
+          "sha256": "7babe485279df0600f77472fc102f70f8a1ea0f813bd312cc7fe7ef436004558",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round1.pdf",
+          "pdfSha256": "f9a86552e56effd7f99e801523dec2ecdae2320e7dd0f801ddbca9827c53a126",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "3bf1bc505adf15c1c921ef3575c233871c554afaaa7c04f60e0703634de00673",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "4dfa30764fa4feeffaacd78c05e9d6d9eaf314cd7e3223c4b0dfed75cf74f5af",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "a58b3e440f985a1a9e8f578b90b4bbb9a9970a910953be23bf1c5e08b5e9f7a4",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round2.pptx",
+          "sha256": "1f88e5f876b374a1ed3ec9278b4f15e3a8d4dcc981415f9b2d4060ca3cab847a",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round2.pdf",
+          "pdfSha256": "2bd2ecc6f649c5d46a45ddafa1c59c0898c093ba2ea3c27278c297f9ee416a29",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "3bf1bc505adf15c1c921ef3575c233871c554afaaa7c04f60e0703634de00673",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "4dfa30764fa4feeffaacd78c05e9d6d9eaf314cd7e3223c4b0dfed75cf74f5af",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "a58b3e440f985a1a9e8f578b90b4bbb9a9970a910953be23bf1c5e08b5e9f7a4",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round3.pptx",
+          "sha256": "923bd8e1292267b8a471893fd75feaf36daf361dad790c1cd58a1990acb59362",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/text-round3.pdf",
+          "pdfSha256": "582ae063b0c521c416618ba0593be1919f473959f1d8a0b098457fc055d5dc5d",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "3bf1bc505adf15c1c921ef3575c233871c554afaaa7c04f60e0703634de00673",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "4dfa30764fa4feeffaacd78c05e9d6d9eaf314cd7e3223c4b0dfed75cf74f5af",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "c0537997bf3873bd02742634833837cee23721fa79fa81ea3161c381e9cdc61a"
+                ]
+              ],
+              "rawTraceSha256": "a58b3e440f985a1a9e8f578b90b4bbb9a9970a910953be23bf1c5e08b5e9f7a4",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "eb0ede4d220e84e9259363219b2a9f4716e07a296c1c4f0810b2554dece9cea2"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "0aa7e90fb86041a2d345f682dedacee3daa263be069e71d9d68d4344c4258062"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "changedMetadata": {
+        "docProps/app.xml": {
+          "beforeSha256": "b954efcee8702c7eca8365c9eb064e5d522d665d326a2e74cf2ff1c8ebd61c5c",
+          "afterSha256": "997d674f4f8f82af17f026da171725e9ba0c72a5c6a7198b33a5022d148c4572",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>2</TotalTime><Words>17</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"4\" baseType=\"variant\"><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"8\" baseType=\"lpstr\"><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<Properties xmlns=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><TotalTime>2</TotalTime><Words>17</Words><Application>Microsoft Macintosh PowerPoint</Application><PresentationFormat>宽屏</PresentationFormat><Paragraphs>8</Paragraphs><Slides>4</Slides><Notes>4</Notes><HiddenSlides>0</HiddenSlides><MMClips>0</MMClips><ScaleCrop>false</ScaleCrop><HeadingPairs><vt:vector size=\"6\" baseType=\"variant\"><vt:variant><vt:lpstr>已用的字体</vt:lpstr></vt:variant><vt:variant><vt:i4>3</vt:i4></vt:variant><vt:variant><vt:lpstr>主题</vt:lpstr></vt:variant><vt:variant><vt:i4>5</vt:i4></vt:variant><vt:variant><vt:lpstr>幻灯片标题</vt:lpstr></vt:variant><vt:variant><vt:i4>4</vt:i4></vt:variant></vt:vector></HeadingPairs><TitlesOfParts><vt:vector size=\"12\" baseType=\"lpstr\"><vt:lpstr>等线</vt:lpstr><vt:lpstr>等线 Light</vt:lpstr><vt:lpstr>Arial</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Red theme</vt:lpstr><vt:lpstr>Blue theme</vt:lpstr><vt:lpstr>PPTKit</vt:lpstr><vt:lpstr>Office 主题​​</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr><vt:lpstr>PowerPoint 演示文稿</vt:lpstr></vt:vector></TitlesOfParts><LinksUpToDate>false</LinksUpToDate><SharedDoc>false</SharedDoc><HyperlinksChanged>false</HyperlinksChanged><AppVersion>16.0000</AppVersion></Properties>"
+        },
+        "docProps/core.xml": {
+          "beforeSha256": "e22a800f43479e9009c668f9fb1d06922991210a72f5df56b9bd4247e2dda5fe",
+          "afterSha256": "8939be6e01abd9cbaba74401974aa98f075d99fedfd406230fc927390ad06778",
+          "beforeXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>3</cp:revision><cp:lastPrinted>2026-10-26T17:36:19Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:36:26Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>",
+          "afterXml": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<cp:coreProperties xmlns:cp=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:dcterms=\"http://purl.org/dc/terms/\" xmlns:dcmitype=\"http://purl.org/dc/dcmitype/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:title>PPTKit Presentation</dc:title><dc:creator>PPTKit</dc:creator><cp:keywords></cp:keywords><cp:lastModifiedBy>openHacking</cp:lastModifiedBy><cp:revision>4</cp:revision><cp:lastPrinted>2026-10-26T17:37:35Z</cp:lastPrinted><dcterms:modified xsi:type=\"dcterms:W3CDTF\">2026-10-26T17:37:38Z</dcterms:modified><dc:language>en-US</dc:language></cp:coreProperties>"
+        }
+      },
+      "stage": "theme",
+      "inputFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-input.pptx",
+      "inputSha256": "923bd8e1292267b8a471893fd75feaf36daf361dad790c1cd58a1990acb59362",
+      "firstPdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-first.pdf",
+      "firstPdfSha256": "cf2ac7da19a3216ee34c379eefda71a92ab61335c08c8c28a1ee1a6feca7063a",
+      "firstPages": [
+        {
+          "page": 1,
+          "text": "Owned 0 EDIT",
+          "actualFace": "DengXian-Regular",
+          "color": "4472C4",
+          "rasterSha256": "52d9e323a4315fd2fea88cee7170646c2230f3b632bb7cfb8bd1e0f88c86aa86",
+          "fontPrograms": [
+            [
+              "DengXian-Regular",
+              "ac33c4b57da8294d483f910116686279ba4fd91191f56760892e9d54b9b931b6"
+            ]
+          ],
+          "rawTraceSha256": "4b46ac7a57c66931254fe55296b1f129ae26be00aa64194bc181d9596e195b34",
+          "bystanderGlyphProgramTraceSha256": null
+        },
+        {
+          "page": 2,
+          "text": "Owned 1",
+          "actualFace": "TimesNewRomanPSMT",
+          "color": "0044CC",
+          "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+          "fontPrograms": [
+            [
+              "TimesNewRomanPSMT",
+              "03c801b9e56547532509157bf7b19212a352e9b3b146f7f749b3ae8484c05711"
+            ]
+          ],
+          "rawTraceSha256": "38f5d7279b04c1b71b32af67c3ae1fe0f016bc1579945fe8261a8310c54cb9b8",
+          "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+        },
+        {
+          "page": 3,
+          "text": "Owned 2",
+          "actualFace": "Georgia",
+          "color": "CC2200",
+          "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+          "fontPrograms": [
+            [
+              "Georgia",
+              "348d2a32a47dab55de63d57a957668541ebbaf951b58276fa8d53a5e0bc6481a"
+            ]
+          ],
+          "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+          "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+        },
+        {
+          "page": 4,
+          "text": "Owned 3",
+          "actualFace": "ArialMT",
+          "color": "112233",
+          "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+          "fontPrograms": [
+            [
+              "ArialMT",
+              "95b500ae1ddecc986315df72182f59b854237404ea7762e33df300aace8ea874"
+            ]
+          ],
+          "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+          "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+        }
+      ],
+      "operationScreenshot": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-selected-slide.png",
+      "screenshotSha256": "f311291f4091c701051e07fbc7184e449b88ce31ff481b3c6880ef17e6c8673d",
+      "officeProfile": {
+        "label": "Office 主题 (selected-slide command)",
+        "nativeName": "Office 主题​​",
+        "assets": [
+          {
+            "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/office-assets/Office 2013 - 2022 Theme.thmx",
+            "sha256": "bc3d3bf67948db8e3c0b0660fadb839db85644e0503747ae6f7a51668dc12f4e"
+          },
+          {
+            "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/office-assets/Office Theme.thmx",
+            "sha256": "2e5736d631395c47f4f45c6ef062b87b11c3a15176f24dd84dc501030b08a269"
+          }
+        ],
+        "observedProfile": "Legacy palette/format; legacy font scheme with Hans Latin names and 17 modern supplemental entries per major/minor. Structural match, not a claim about the native internal algorithm."
+      },
+      "rounds": [
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round1.pptx",
+          "sha256": "c1e572833e5bc031420e8b163576cb3be4a4f6473b9667e51b356506383a52fe",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round1.pdf",
+          "pdfSha256": "7b21a92f3bf605d26b49df226f8984fd13159fa862aa66db546d97ca44b0cc25",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout17.xml",
+              "master": "ppt/slideMasters/slideMaster5.xml",
+              "theme": "ppt/theme/theme5.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483669",
+              "masterId": "2147483657"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "DengXian-Regular",
+              "color": "4472C4",
+              "rasterSha256": "52d9e323a4315fd2fea88cee7170646c2230f3b632bb7cfb8bd1e0f88c86aa86",
+              "fontPrograms": [
+                [
+                  "DengXian-Regular",
+                  "ac33c4b57da8294d483f910116686279ba4fd91191f56760892e9d54b9b931b6"
+                ]
+              ],
+              "rawTraceSha256": "4b46ac7a57c66931254fe55296b1f129ae26be00aa64194bc181d9596e195b34",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "03c801b9e56547532509157bf7b19212a352e9b3b146f7f749b3ae8484c05711"
+                ]
+              ],
+              "rawTraceSha256": "38f5d7279b04c1b71b32af67c3ae1fe0f016bc1579945fe8261a8310c54cb9b8",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "348d2a32a47dab55de63d57a957668541ebbaf951b58276fa8d53a5e0bc6481a"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "95b500ae1ddecc986315df72182f59b854237404ea7762e33df300aace8ea874"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round2.pptx",
+          "sha256": "6498381352fbdde1264a6b4630e467e57c28b15fd88b90bd05d062c246156acd",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round2.pdf",
+          "pdfSha256": "b270a71d153e1eeba6f84bb0727738aa600bc0c05172641962d56a02f15a6bc1",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout17.xml",
+              "master": "ppt/slideMasters/slideMaster5.xml",
+              "theme": "ppt/theme/theme5.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483669",
+              "masterId": "2147483657"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "DengXian-Regular",
+              "color": "4472C4",
+              "rasterSha256": "52d9e323a4315fd2fea88cee7170646c2230f3b632bb7cfb8bd1e0f88c86aa86",
+              "fontPrograms": [
+                [
+                  "DengXian-Regular",
+                  "ac33c4b57da8294d483f910116686279ba4fd91191f56760892e9d54b9b931b6"
+                ]
+              ],
+              "rawTraceSha256": "4b46ac7a57c66931254fe55296b1f129ae26be00aa64194bc181d9596e195b34",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "03c801b9e56547532509157bf7b19212a352e9b3b146f7f749b3ae8484c05711"
+                ]
+              ],
+              "rawTraceSha256": "38f5d7279b04c1b71b32af67c3ae1fe0f016bc1579945fe8261a8310c54cb9b8",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "348d2a32a47dab55de63d57a957668541ebbaf951b58276fa8d53a5e0bc6481a"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "95b500ae1ddecc986315df72182f59b854237404ea7762e33df300aace8ea874"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        },
+        {
+          "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round3.pptx",
+          "sha256": "d1fdb97549f91b795ebd320543c72c0bcd77212ac4bc479fd34253e2db8f8d8f",
+          "pdf": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/theme-round3.pdf",
+          "pdfSha256": "3c513d73723259a7fffe385625b362e7358f3084790e0e26a8382ec80526dabf",
+          "domains": [
+            {
+              "page": 1,
+              "id": "256",
+              "slide": "ppt/slides/slide1.xml",
+              "layout": "ppt/slideLayouts/slideLayout17.xml",
+              "master": "ppt/slideMasters/slideMaster5.xml",
+              "theme": "ppt/theme/theme5.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "layoutId": "2147483669",
+              "masterId": "2147483657"
+            },
+            {
+              "page": 2,
+              "id": "257",
+              "slide": "ppt/slides/slide2.xml",
+              "layout": "ppt/slideLayouts/slideLayout5.xml",
+              "master": "ppt/slideMasters/slideMaster3.xml",
+              "theme": "ppt/theme/theme3.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "layoutId": "2147483651",
+              "masterId": "2147483655"
+            },
+            {
+              "page": 3,
+              "id": "258",
+              "slide": "ppt/slides/slide3.xml",
+              "layout": "ppt/slideLayouts/slideLayout4.xml",
+              "master": "ppt/slideMasters/slideMaster2.xml",
+              "theme": "ppt/theme/theme2.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "layoutId": "2147483652",
+              "masterId": "2147483654"
+            },
+            {
+              "page": 4,
+              "id": "259",
+              "slide": "ppt/slides/slide4.xml",
+              "layout": "ppt/slideLayouts/slideLayout2.xml",
+              "master": "ppt/slideMasters/slideMaster1.xml",
+              "theme": "ppt/theme/theme1.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "layoutId": "2147483653",
+              "masterId": "2147483648"
+            }
+          ],
+          "pages": [
+            {
+              "page": 1,
+              "text": "Owned 0 EDIT",
+              "actualFace": "DengXian-Regular",
+              "color": "4472C4",
+              "rasterSha256": "52d9e323a4315fd2fea88cee7170646c2230f3b632bb7cfb8bd1e0f88c86aa86",
+              "fontPrograms": [
+                [
+                  "DengXian-Regular",
+                  "ac33c4b57da8294d483f910116686279ba4fd91191f56760892e9d54b9b931b6"
+                ]
+              ],
+              "rawTraceSha256": "4b46ac7a57c66931254fe55296b1f129ae26be00aa64194bc181d9596e195b34",
+              "bystanderGlyphProgramTraceSha256": null
+            },
+            {
+              "page": 2,
+              "text": "Owned 1",
+              "actualFace": "TimesNewRomanPSMT",
+              "color": "0044CC",
+              "rasterSha256": "45d550ac5116b5a0d76cc3f6a0a339f9700aeb9125bd495f5c26117b154fcbf6",
+              "fontPrograms": [
+                [
+                  "TimesNewRomanPSMT",
+                  "03c801b9e56547532509157bf7b19212a352e9b3b146f7f749b3ae8484c05711"
+                ]
+              ],
+              "rawTraceSha256": "38f5d7279b04c1b71b32af67c3ae1fe0f016bc1579945fe8261a8310c54cb9b8",
+              "bystanderGlyphProgramTraceSha256": "ba0ffbaf20d60401ef9774182cea1a52f565b45262278be6440fdcb808a56829"
+            },
+            {
+              "page": 3,
+              "text": "Owned 2",
+              "actualFace": "Georgia",
+              "color": "CC2200",
+              "rasterSha256": "83f484e7b5ab3547eb4168b120fe1310aae6a38b2c6286a4edaa802d8b7243aa",
+              "fontPrograms": [
+                [
+                  "Georgia",
+                  "348d2a32a47dab55de63d57a957668541ebbaf951b58276fa8d53a5e0bc6481a"
+                ]
+              ],
+              "rawTraceSha256": "3d1d1f6090221119205ed6a2d253d400c1ebed98b754d51217c3f893f36beb18",
+              "bystanderGlyphProgramTraceSha256": "e9540833f020d24782f02c7317fe6c17d55aef0f26f846d5dff44ad71721ea60"
+            },
+            {
+              "page": 4,
+              "text": "Owned 3",
+              "actualFace": "ArialMT",
+              "color": "112233",
+              "rasterSha256": "f3888f673854bdf49a820f1be7b0f7b9adaf81050f0d68cbf6d5e980f91351ec",
+              "fontPrograms": [
+                [
+                  "ArialMT",
+                  "95b500ae1ddecc986315df72182f59b854237404ea7762e33df300aace8ea874"
+                ]
+              ],
+              "rawTraceSha256": "41fb499646cd46e43bc8c0409722e02ad768e1fa06277d07c8c5650a91cbe805",
+              "bystanderGlyphProgramTraceSha256": "76391d72ed773809fc053ad12fd2b6ce0a7769554f69e75597203e9b99192db8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "stage": "layout",
+      "name": "target-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-target-text.pptx",
+      "sha256": "5633e43c0ba79e24c225fcb2d10bb2357c6cc7cb934de936a9e70f4291b8eb25",
+      "reason": "('Unapproved source change', ['slide/256'])"
+    },
+    {
+      "stage": "layout",
+      "name": "bystander",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-bystander.pptx",
+      "sha256": "506c7249a7230137e658c0b5eb021b8ed36bdec06f0cb5cdf28b8971dedd395d",
+      "reason": "('Unapproved source change', ['slide/257'])"
+    },
+    {
+      "stage": "layout",
+      "name": "notes",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-notes.pptx",
+      "sha256": "51e8bf0faa2d4c1b194f390d9692cf4e1a6c50920e9fb47da13c511dad77e9bb",
+      "reason": "('Unapproved source change', ['notes/256'])"
+    },
+    {
+      "stage": "layout",
+      "name": "color",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-color.pptx",
+      "sha256": "a0354ea87a7173ec75000062792a5a4105e992eae69170c15ff3942c1903a65d",
+      "reason": "('Unapproved source change', ['theme/master/2147483655'])"
+    },
+    {
+      "stage": "layout",
+      "name": "font",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-font.pptx",
+      "sha256": "983aa00d15ad0a84920153f47e41e2bd62554a1c162edd35981aa11531335376",
+      "reason": "('Unapproved source change', ['theme/master/2147483655'])"
+    },
+    {
+      "stage": "layout",
+      "name": "layout-edge",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-layout-edge.pptx",
+      "sha256": "c9a58def158984041a4d786b2dde044f91b2ecfde96b3fbd50208ec17ac9a121",
+      "reason": "('Unapproved source change', ['slide/256/relationships'])"
+    },
+    {
+      "stage": "layout",
+      "name": "blank-label",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-blank-label.pdf",
+      "sha256": "5df6ab9cf17f7e71293c77d6fbb1941abfb13bbc9cad0f11d700fa05d32f63a7",
+      "reason": "Changed post-operation raster"
+    },
+    {
+      "stage": "layout",
+      "name": "page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-page-order.pdf",
+      "sha256": "414128fd0142bb29c6582fee6559080aa3b7b271c91eb8c986335007a23357d4",
+      "reason": "Wrong visible text/page mapping"
+    },
+    {
+      "stage": "layout",
+      "name": "font-advance",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/layout-font-advance.pdf",
+      "sha256": "696d14ad1e0a117e378568527327a80bde09d3633b9c94f63870ec397fc5458c",
+      "sameRasterAsPositive": true,
+      "reason": "Bystander Unicode/glyph program/advance/position changed"
+    },
+    {
+      "stage": "text",
+      "name": "target-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-target-text.pptx",
+      "sha256": "ee1b1ee1db862d3cfc5fa0ce4d93d5a585393e08eac2d220606bb194738da1d5",
+      "reason": "('Unapproved source change', ['slide/256'])"
+    },
+    {
+      "stage": "text",
+      "name": "bystander",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-bystander.pptx",
+      "sha256": "1754520e7c01ea2ef74b6cf41370c1ea133d2e7877cb6f026dc28c3b745fdbe0",
+      "reason": "('Unapproved source change', ['slide/257'])"
+    },
+    {
+      "stage": "text",
+      "name": "notes",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-notes.pptx",
+      "sha256": "aa5e530e633f84917481257f9b8081879d1c0bd3e8f04255f80af1c061e3bcdc",
+      "reason": "('Unapproved source change', ['notes/256'])"
+    },
+    {
+      "stage": "text",
+      "name": "color",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-color.pptx",
+      "sha256": "39e32ca3a27bacbb7fd911327e74d1c4593dac6c466a965252a3037cd7c50bcd",
+      "reason": "('Unapproved source change', ['theme/master/2147483655'])"
+    },
+    {
+      "stage": "text",
+      "name": "font",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-font.pptx",
+      "sha256": "6040ab14bbe713af453cba9eca9b7f1d080c5fe1cd48ce1438a65cc3a191f2c3",
+      "reason": "('Unapproved source change', ['theme/master/2147483655'])"
+    },
+    {
+      "stage": "text",
+      "name": "layout-edge",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-layout-edge.pptx",
+      "sha256": "eece010a130276aaee38361f3536d3434302f0861ff2a92e5ac24f1ee27011f1",
+      "reason": "('Unapproved source change', ['slide/256/relationships'])"
+    },
+    {
+      "stage": "text",
+      "name": "blank-label",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-blank-label.pdf",
+      "sha256": "407a0dcf9058e5ed8c01b097f222c553b665a08eea9f34416a41106cba02ee1a",
+      "reason": "Changed post-operation raster"
+    },
+    {
+      "stage": "text",
+      "name": "page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-page-order.pdf",
+      "sha256": "8eaf8fef322ba2cd1fb439ff4924c65baabc8608f29643a0795d2a3a035a691c",
+      "reason": "Wrong visible text/page mapping"
+    },
+    {
+      "stage": "text",
+      "name": "font-advance",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/text-font-advance.pdf",
+      "sha256": "0896ed4c299ab05668a2daaa476d5de8e07281f05c989aed0ebd993ae418aebd",
+      "sameRasterAsPositive": true,
+      "reason": "Bystander Unicode/glyph program/advance/position changed"
+    },
+    {
+      "stage": "theme",
+      "name": "target-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-target-text.pptx",
+      "sha256": "36cb93856de3951cfebfb04d2e06a1fdbdf77bad45ebf18fa11633a3e6313682",
+      "reason": "('Unapproved source change', ['slide/256'])"
+    },
+    {
+      "stage": "theme",
+      "name": "bystander",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-bystander.pptx",
+      "sha256": "105f24cd722bfb763b08cd5713f67162b2a8eeb19dcbbf533b263d808f0bb19d",
+      "reason": "('Unapproved source change', ['slide/257'])"
+    },
+    {
+      "stage": "theme",
+      "name": "notes",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-notes.pptx",
+      "sha256": "ba0e38aefbd186813a63f4049fbbdfb9585b9e9111950b01596e762e84996726",
+      "reason": "('Unapproved source change', ['notes/256'])"
+    },
+    {
+      "stage": "theme",
+      "name": "color",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-color.pptx",
+      "sha256": "18384256f20db649f81ac869957cb78f81a79728a183cfebb711e75912818602",
+      "reason": "('Unapproved source change', ['theme/master/2147483657'])"
+    },
+    {
+      "stage": "theme",
+      "name": "font",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-font.pptx",
+      "sha256": "ab4fdb6189be595051b9d5e3d1ce0e36caed0664ecae14707a0ef730f20d959c",
+      "reason": "('Unapproved source change', ['theme/master/2147483657'])"
+    },
+    {
+      "stage": "theme",
+      "name": "layout-edge",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-layout-edge.pptx",
+      "sha256": "6020d917ae7233bbfb2788ad228d68dfacd9e96e58b1c26bf954e0609c33a5fc",
+      "reason": "('Unapproved source change', ['slide/256/relationships'])"
+    },
+    {
+      "stage": "theme",
+      "name": "blank-label",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-blank-label.pdf",
+      "sha256": "3753f124c5dcc38ebfe1dddc3d649433100981a8eb0a5c890d818417cbab42f9",
+      "reason": "Changed post-operation raster"
+    },
+    {
+      "stage": "theme",
+      "name": "page-order",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-page-order.pdf",
+      "sha256": "ac3f21417232c451c223ce2e08b5455451a12560a906deb61b4f277d418d5116",
+      "reason": "Wrong visible text/page mapping"
+    },
+    {
+      "stage": "theme",
+      "name": "font-advance",
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operation-negatives/theme-font-advance.pdf",
+      "sha256": "dd8bd7d607dc4665cb85fb8a04f975ea969ac99f52cce12cfd912fc1bdbf3a62",
+      "sameRasterAsPositive": true,
+      "reason": "Bystander Unicode/glyph program/advance/position changed"
+    }
+  ],
+  "contact": {
+    "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/operations-contact.png",
+    "sha256": "801932e38470deb4523273a87a5ae3dfe62e365224eacd207c38c16c186d1a2e"
+  },
+  "total": {
+    "nativeOperationStages": 3,
+    "nativeSaveCloseReopenRounds": 9,
+    "firstOperationPages": 12,
+    "reopenedPages": 36,
+    "actualZipNegatives": 18,
+    "actualPdfNegatives": 9
+  },
+  "scope": "Actual cross-master layout change, placeholder text append, and Office selected-slide theme operation only. Complete artwork/template semantics, Core shared-edit APIs and source style/layout writers remain open."
+}

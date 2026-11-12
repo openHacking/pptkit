@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/presentation-format-native-evidence.json",
+  "nativeEvidenceSha256": "33e8e20e7607702ff89446dfdd4a8150a4411d967fbae491046e0f9c3ff08d7f",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/input.pptx",
+      "sha256": "acbe40dc3140880d1da734d13af59405ad6b740c7585884dd7e89bbbc0b98770",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/parser-TR6wad/input.pptx.json",
+      "snapshotSha256": "8de0a8000c845cab1b2c98f88156838f27581f4ee0ba4e9fc2c739b632d3d9ac",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/format-round1.pptx",
+      "sha256": "2b9c057bdf87fd7659363c07fb78dfe09baa853f400461496aa75d382eeea558",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/parser-TR6wad/format-round1.pptx.json",
+      "snapshotSha256": "e18e4af8e6a9463d854c42a4ed70a5981b5169882060640d05d4b4b7d2e9a07c",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/format-round2.pptx",
+      "sha256": "53f7a36cdec691dfd4fa03cb42273e6c9384fff03a4c1180e4a30c4d22cc09ce",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/parser-TR6wad/format-round2.pptx.json",
+      "snapshotSha256": "b37ccd5ed15dad71916764fbeedb477af21364ace4ad2a3730622235a2708f7b",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/format-round3.pptx",
+      "sha256": "8360187832f3e9e77a0f3d323d83580034c242a4575bf385a6a73d05836d12ab",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/presentation-format/native-EU32W4/parser-TR6wad/format-round3.pptx.json",
+      "snapshotSha256": "1acfdaa745c1a7059a2d54fd30c1b9ff496004767d1741cc52618d93024c7f07",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 4,
+    "consumerNoOps": 12
+  },
+  "scope": "Four actual source/reopened presentation-format files, full structural inspections/reports in Node/ESM/global and 12 exact source-only no-ops. No complete master/artwork Core import, visibility projection or source style/structure write authority."
+}

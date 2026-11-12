@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two copied slides mapped to distinct layouts with explicit indexes 0 and 4294967295; LibreOfficeDev headless three saves and final PDF reopen. No interactive edits, repair-dialog, PowerPoint or full visual fidelity claim.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3",
+  "fileHashes": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/input.pptx",
+      "sha256": "f0c5ef4971eb485bac1c937d5508619e2b80faca16c2c6d139a726744e777b36"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-1/input.pptx",
+      "sha256": "a3d74eee3b835aeccb95a6ee89cb7bdf73be57a32ba43387704d6681fbce4146"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-2/input.pptx",
+      "sha256": "2acf3f8c1d220bc2b040f37bb314e073120f7cc69cd02ca35190b50146411ce4"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-3/input.pptx",
+      "sha256": "fcd4d70a13a78df953508b2394449dd05d43f29ffbb858b6eef6fb5798a6f3c6"
+    }
+  ],
+  "pdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/pdf/input.pdf",
+    "sha256": "c01bc10060a5a7dc9e110676916ac925ea56a156a2db6b0621e0ba09a1484f91"
+  },
+  "independent": {
+    "oracle": "Python zipfile, ElementTree and PyMuPDF",
+    "rounds": [
+      [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "slidePlaceholders": [
+            {
+              "name": "element-1",
+              "type": "title",
+              "index": "0",
+              "text": "Title A"
+            },
+            {
+              "name": "element-2",
+              "type": "body",
+              "index": "4294967295",
+              "text": "Body A"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "heading-a",
+              "type": "title",
+              "index": "0",
+              "text": ""
+            },
+            {
+              "name": "body-a",
+              "type": "body",
+              "index": "4294967295",
+              "text": ""
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide1.xml",
+          "noteBacklink": "ppt/slides/slide1.xml",
+          "noteText": "Notes A"
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "slidePlaceholders": [
+            {
+              "name": "element-3",
+              "type": "title",
+              "index": "0",
+              "text": "Title B"
+            },
+            {
+              "name": "element-4",
+              "type": "body",
+              "index": "4294967295",
+              "text": "Body B"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "heading-b",
+              "type": "title",
+              "index": "0",
+              "text": ""
+            },
+            {
+              "name": "body-b",
+              "type": "body",
+              "index": "4294967295",
+              "text": ""
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide2.xml",
+          "noteBacklink": "ppt/slides/slide2.xml",
+          "noteText": "Notes B"
+        }
+      ],
+      [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title A"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body A"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": ""
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide1.xml",
+          "noteBacklink": "ppt/slides/slide1.xml",
+          "noteText": "Notes A"
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title B"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body B"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": ""
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide2.xml",
+          "noteBacklink": "ppt/slides/slide2.xml",
+          "noteText": "Notes B"
+        }
+      ],
+      [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title A"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body A"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": "Click to edit the outline text format Second Outline Level Third Outline Level Fourth Outline Level Fifth Outline Level Sixth Outline Level Seventh Outline Level"
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide1.xml",
+          "noteBacklink": "ppt/slides/slide1.xml",
+          "noteText": "Notes A"
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title B"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body B"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": "Click to edit the outline text format Second Outline Level Third Outline Level Fourth Outline Level Fifth Outline Level Sixth Outline Level Seventh Outline Level"
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide2.xml",
+          "noteBacklink": "ppt/slides/slide2.xml",
+          "noteText": "Notes B"
+        }
+      ],
+      [
+        {
+          "part": "ppt/slides/slide1.xml",
+          "layout": "ppt/slideLayouts/slideLayout2.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title A"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body A"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": "Click to edit the outline text format Second Outline Level Third Outline Level Fourth Outline Level Fifth Outline Level Sixth Outline Level Seventh Outline Level"
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide1.xml",
+          "noteBacklink": "ppt/slides/slide1.xml",
+          "noteText": "Notes A"
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "layout": "ppt/slideLayouts/slideLayout3.xml",
+          "slidePlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Title B"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": null,
+              "index": null,
+              "text": "Body B"
+            }
+          ],
+          "layoutPlaceholders": [
+            {
+              "name": "PlaceHolder 1",
+              "type": "title",
+              "index": null,
+              "text": "Click to edit the title text format"
+            },
+            {
+              "name": "PlaceHolder 2",
+              "type": "body",
+              "index": null,
+              "text": "Click to edit the outline text format Second Outline Level Third Outline Level Fourth Outline Level Fifth Outline Level Sixth Outline Level Seventh Outline Level"
+            }
+          ],
+          "note": "ppt/notesSlides/notesSlide2.xml",
+          "noteBacklink": "ppt/slides/slide2.xml",
+          "noteText": "Notes B"
+        }
+      ]
+    ],
+    "finalPdfText": [
+      "Title A\nBody A\n",
+      "Title B\nBody B\n"
+    ]
+  },
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/round-3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-index-libreoffice/run-0Rb6Y3/pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  }
+}

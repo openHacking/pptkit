@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {mkdtemp,readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {createPresentation,normalizePresentation,resolvePresentationInheritance} from '../packages/core/dist/index.js';
+import {resolveLayout} from '../packages/layout/dist/index.js';
+import {generatePptx} from '../packages/pptx-exporter/dist/index.js';
+import {renderLayoutToSvg} from '../packages/svg-renderer/dist/index.js';
+import {masterAdvancedDocument,editMasterHeading} from '../tests/fixtures/master-advanced.mjs';
+import {readGeneratedZip} from '../tests/support/read-generated-zip.mjs';
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const directory=path.resolve(await mkdtemp('.tmp/master-advanced/shared-run-')),nativeDirectory=path.resolve('.tmp/master-advanced/shared-native-vwggt5tr'),artifacts=[];
+async function save(name,value){const file=path.join(directory,name),bytes=typeof value==='string'||value instanceof Uint8Array?value:JSON.stringify(value,null,2)+'\n';await writeFile(file,bytes);artifacts.push({file,bytes:Buffer.byteLength(bytes),sha256:sha(bytes)});}
+const d=masterAdvancedDocument(createPresentation),before=await generatePptx(d,{connectorMode:'native'});await save('before.pptx',before.bytes);await save('before-normalized.json',normalizePresentation(d));
+const advanced=JSON.parse(await readFile('docs/testing/master-advanced-evidence.json'));assert.equal(sha(before.bytes),advanced.sourceSha256);
+editMasterHeading(d);const after=await generatePptx(d,{connectorMode:'native'});assert.deepEqual(before.warnings,after.warnings);
+const x=readGeneratedZip(before.bytes),y=readGeneratedZip(after.bytes);assert.deepEqual([...x.keys()],[...y.keys()]);assert.deepEqual([...x.keys()].filter(k=>!x.get(k).equals(y.get(k))),['ppt/slideMasters/slideMaster2.xml']);
+await save('after.pptx',after.bytes);await save('after-normalized.json',normalizePresentation(d));await save('after-origins.json',resolvePresentationInheritance(d).origins);const l=resolveLayout(d);await save('after-layout.json',l);await save('warnings.json',after.warnings);for(const[i,s]of (await renderLayoutToSvg(l)).slides.entries())await save('page-'+i+'.svg',s.svg);
+await writeFile(path.join(nativeDirectory,'fresh-core-edit.pptx'),after.bytes,{flag:'wx'});
+const input=await readFile(path.join(nativeDirectory,'input.pptx'));
+const e={schemaVersion:1,recordedAt:new Date().toISOString(),directory,nativeDirectory,sourceSha256:sha(input),freshBeforeSha256:sha(before.bytes),freshEditedSha256:sha(after.bytes),artifacts,scope:'Public Core red-master heading replacement and independent actual native master-heading editing; broader object edits remain open.'};await writeFile('docs/testing/master-shared-evidence.json',JSON.stringify(e,null,2)+'\n');console.log(JSON.stringify({directory,nativeDirectory,freshBeforeSha256:e.freshBeforeSha256,freshEditedSha256:e.freshEditedSha256}));

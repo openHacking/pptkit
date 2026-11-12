@@ -4,7 +4,13 @@ export function escapeXml(value: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+    .replace(/'/g, "&#39;")
+    .replace(/\r/g, "&#13;");
+}
+
+/** XML-escaped, quoted CSS family name for presentation attributes and styles. */
+export function cssFontFamily(value: string): string {
+  return `&quot;${escapeXml(value.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/[\u0000-\u001F\u007F]/g, character => `\\${character.charCodeAt(0).toString(16)} `))}&quot;`;
 }
 
 export function safeId(value: string): string {

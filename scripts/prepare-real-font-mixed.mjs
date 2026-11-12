@@ -1,0 +1,23 @@
+import assert from "node:assert/strict";
+import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import path from "node:path";
+import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
+import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
+import { nativeFontFamilies } from "./research/font-native-cases.mjs";
+import { createRealFontMixedFixture } from "../tests/fixtures/real-font-mixed.mjs";
+
+if (process.argv.length !== 2) throw Error("Usage: node scripts/prepare-real-font-mixed.mjs");
+const hash = data => createHash("sha256").update(data).digest("hex");
+const fonts = JSON.parse(await readFile("docs/testing/real-font-native-evidence.json", "utf8")).fonts;
+for (const font of fonts) assert.equal(hash(await readFile(font.file)), font.sha256);
+const fixture = createRealFontMixedFixture(createPresentation, nativeFontFamilies), before = normalizePresentation(fixture.document);
+const generated = await generatePptx(fixture.document);
+assert.deepEqual(normalizePresentation(fixture.document), before);
+assert.deepEqual(generated.warnings.filter(w => w.code === "script-font-map-materialized").map(w => [w.slideId, w.elementId]), fixture.controls.map(c => [c.slideId, c.elementId]));
+await mkdir(".tmp/real-font-mixed", { recursive: true });
+const directory = await mkdtemp(path.resolve(".tmp/real-font-mixed/run-"));
+await writeFile(path.join(directory, "mixed-fonts.pptx"), generated.bytes);
+await writeFile(path.join(directory, "expected.json"), JSON.stringify({ recordedAt: new Date().toISOString(), sourceSha256: hash(generated.bytes), controls: fixture.controls, sourceMap: fixture.sourceMap, fonts, warnings: generated.warnings, document: before }, null, 2) + "\n");
+await writeFile(".tmp/real-font-mixed/latest.txt", directory);
+console.log(JSON.stringify({ directory, file: path.join(directory, "mixed-fonts.pptx"), slides: fixture.controls.length, warnings: generated.warnings.length }));

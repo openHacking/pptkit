@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two no-op file publications from a retained validated mixed-deck source: an exclusive create and a snapshot-guarded replacement. Exact source bytes, ordinary mode, directory sync and temporary cleanup were checked. This is not a cross-process compare-and-swap, Windows, remote-filesystem, ACL, extended-attribute or application compatibility result.",
+  "source": ".tmp/table-save-native/run-hObU32/source.pptx",
+  "sourceSha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+  "editedCandidateSha256": "f8a30500894276b88d6d5912ad792b21a7fa972f9a7752ee5f7a90545586db9e",
+  "outputSha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+  "operations": [
+    "importPptxFile with content/text-runs-v3",
+    "prepareSave no-op",
+    "writePptxFile create",
+    "writePptxFile replace with the import receipt",
+    "recheck created/source bytes, mode 0640, directory sync and temporary names"
+  ],
+  "checks": {
+    "createExactBytes": true,
+    "replaceExactBytes": true,
+    "ordinaryModeRetained": "0640",
+    "createdDirectorySynced": true,
+    "replacedDirectorySynced": true,
+    "warnings": 0,
+    "temporaryNamesRemaining": 0,
+    "staleModeSnapshotRejectedBeforeSuccess": "file-target-changed",
+    "editedCandidateDistinguished": true
+  },
+  "retainedArtifact": ".tmp/file-save-native-slice"
+}

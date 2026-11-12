@@ -1,0 +1,216 @@
+import type { Box, NormalizedTransform, Point } from "@pptkit/core";
+import type { LayoutElement, LayoutResult, LayoutSlide } from "@pptkit/layout";
+import { shapePolygonPoints } from "./shape-polygon.js";
+
+/** A transformed authoring frame, not an outline or a pixel-accurate painted region. */
+export interface SvgSelectionFrame {
+  readonly elementId: string;
+  readonly ancestorIds: readonly string[];
+  /** Clockwise in the element's untransformed coordinate system, in slide coordinates. */
+  readonly corners: readonly [Readonly<Point>, Readonly<Point>, Readonly<Point>, Readonly<Point>];
+}
+
+export interface SvgSelectionOwner { readonly type: "slide" | "layout" | "master"; readonly id: string }
+export interface SvgOwnedSelectionFrame extends SvgSelectionFrame { readonly owner: SvgSelectionOwner }
+export interface SvgSelectionConnector {
+  readonly kind: "connector";
+  readonly elementId: string;
+  readonly ancestorIds: readonly string[];
+  readonly owner: SvgSelectionOwner;
+  readonly points: readonly Readonly<Point>[];
+}
+export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
+export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline }) | SvgSelectionConnector;
+/** Optional coarse selection policies; these do not perform painted-pixel tests. */
+export interface SvgSelectionGeometryOptions {
+  readonly excludeZeroOpacity?: boolean;
+  readonly excludeUnpaintedShapes?: boolean;
+}
+
+function hasNoShapePaint(element: Extract<LayoutElement, { type: "shape" }>): boolean {
+  if (element.text !== undefined || element.style.shadow !== undefined) return false;
+  const { fill, stroke } = element.style;
+  const fillInvisible = fill.type === "none" || (fill.type === "solid" && fill.opacity === 0)
+    || (fill.type === "linearGradient" && fill.stops.every(stop => stop.opacity === 0))
+    || (fill.type === "pattern" && fill.foregroundOpacity === 0 && fill.backgroundOpacity === 0);
+  const strokeInvisible = stroke.width === 0 || stroke.paint.type === "none" || stroke.paint.opacity === 0;
+  return fillInvisible && strokeInvisible;
+}
+
+function shapeOutline(element: Extract<LayoutElement, { type: "shape" }>): SvgShapeOutline | undefined {
+  const b = element.box;
+  if (element.shape === "rect") return undefined;
+  if (element.shape === "ellipse") return Object.freeze({ type: "ellipse" });
+  if (element.shape === "roundRect") {
+    const radius = Math.min(b.width, b.height) * 0.08;
+    const radiusX = radius / b.width, radiusY = radius / b.height;
+    if (radiusX === 0 || radiusY === 0) return undefined;
+    return Object.freeze({ type: "rounded-rectangle", radiusX, radiusY });
+  }
+  const points = shapePolygonPoints(b, element.shape, element.slant).map(point => Object.freeze({ x: (point.x - b.x) / b.width, y: (point.y - b.y) / b.height }));
+  if (!points.every(point => Number.isFinite(point.x) && Number.isFinite(point.y))) throw new TypeError("Selection outline overflowed.");
+  return Object.freeze({ type: "polygon", points: Object.freeze(points) });
+}
+
+type Matrix = readonly [number, number, number, number, number, number];
+const identity: Matrix = [1, 0, 0, 1, 0, 0];
+const multiply = (a: Matrix, b: Matrix): Matrix => [
+  a[0] * b[0] + a[2] * b[1], a[1] * b[0] + a[3] * b[1],
+  a[0] * b[2] + a[2] * b[3], a[1] * b[2] + a[3] * b[3],
+  a[0] * b[4] + a[2] * b[5] + a[4], a[1] * b[4] + a[3] * b[5] + a[5],
+];
+const translate = (x: number, y: number): Matrix => [1, 0, 0, 1, x, y];
+const apply = (m: Matrix, x: number, y: number): Readonly<Point> => Object.freeze({ x: m[0] * x + m[2] * y + m[4], y: m[1] * x + m[3] * y + m[5] });
+
+function transform(box: Box, t: NormalizedTransform): Matrix {
+  if (![box.x, box.y, box.width, box.height, t.rotation].every(Number.isFinite) || box.width < 0 || box.height < 0) throw new TypeError("Selection geometry requires finite, nonnegative frames and finite rotations.");
+  const angle = t.rotation * Math.PI / 180, c = Math.cos(angle), s = Math.sin(angle);
+  const cx = box.x + box.width / 2, cy = box.y + box.height / 2;
+  return multiply(multiply(translate(cx, cy), [c * (t.flipH ? -1 : 1), s * (t.flipH ? -1 : 1), -s * (t.flipV ? -1 : 1), c * (t.flipV ? -1 : 1), 0, 0]), translate(-cx, -cy));
+}
+
+function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: SvgSelectionOwner }[], includeConnectors = false, options: SvgSelectionGeometryOptions = {}): readonly (SvgSelectionFrame | SvgSelectionGeometry)[] {
+  const frames: (SvgSelectionFrame | SvgSelectionGeometry)[] = [];
+  let visited = 0, connectorPoints = 0;
+  const visit = (elements: readonly LayoutElement[], parent: Matrix, ancestors: readonly string[], depth: number, owner?: SvgSelectionOwner): void => {
+    if (depth > 64) throw new RangeError("Selection geometry exceeds maximum group depth.");
+    for (const element of elements) {
+      if (++visited > 100000) throw new RangeError("Selection geometry exceeds maximum element count.");
+      if (element.hidden || (options.excludeZeroOpacity && element.opacity === 0) || (options.excludeUnpaintedShapes && element.type === "shape" && hasNoShapePaint(element))) continue;
+      const b = element.box, matrix = multiply(parent, transform(b, element.transform));
+      if (element.type === "group") {
+        if (![element.coordinateSize.width, element.coordinateSize.height].every(v => Number.isFinite(v) && v > 0)) throw new TypeError("Selection geometry requires positive group coordinate dimensions.");
+        if (b.width === 0 || b.height === 0) continue;
+        const child = multiply(matrix, [b.width / element.coordinateSize.width, 0, 0, b.height / element.coordinateSize.height, b.x, b.y]);
+        visit(element.children, child, [...ancestors, element.id], depth + 1, owner);
+      } else if (element.type === "connector" && includeConnectors && owner) {
+        connectorPoints += element.route.length + 2;
+        if (connectorPoints > 1000000) throw new RangeError("Selection geometry exceeds maximum connector points.");
+        const rawPoints = [element.start, ...element.route, element.end];
+        const points = Object.freeze(rawPoints.map(point => apply(matrix, point.x, point.y)));
+        if (!points.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
+        frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points }));
+      } else if (element.type !== "connector" && b.width > 0 && b.height > 0) {
+        const corners = Object.freeze([apply(matrix, b.x, b.y), apply(matrix, b.x + b.width, b.y), apply(matrix, b.x + b.width, b.y + b.height), apply(matrix, b.x, b.y + b.height)]) as SvgSelectionFrame["corners"];
+        if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
+        const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
+        frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}) }));
+      }
+    }
+  };
+  for (const layer of layers) visit(layer.elements, identity, [], 0, layer.owner);
+  return Object.freeze(frames);
+}
+
+/** Return detached, ordered slide-owned non-connector frames; inherited artwork is excluded. */
+export function getSvgSelectionFrames(slide: LayoutSlide): readonly SvgSelectionFrame[] {
+  return collect([{ elements: slide.elements }]) as readonly SvgSelectionFrame[];
+}
+
+function slideLayers(layout: LayoutResult, slideIndex: number): { elements: readonly LayoutElement[]; owner: SvgSelectionOwner }[] {
+  if (!Number.isSafeInteger(slideIndex) || slideIndex < 0 || slideIndex >= layout.slides.length) throw new RangeError("slideIndex must identify a resolved slide.");
+  const slide = layout.slides[slideIndex]!;
+  const slideLayout = new Map(layout.layouts.map(item => [item.id, item])).get(slide.layoutId);
+  if (slideLayout?.masterId !== undefined && !slideLayout.theme) throw new TypeError(`Layout "${slideLayout.id}" has no resolved master theme.`);
+  const layers: { elements: readonly LayoutElement[]; owner: SvgSelectionOwner }[] = [];
+  if (slide.showInheritedShapes !== false) {
+    const master = slideLayout?.masterId === undefined ? undefined : new Map((layout.masters ?? []).map(item => [item.id, item])).get(slideLayout.masterId);
+    if (master && slideLayout?.showMasterShapes !== false) layers.push({ elements: master.elements ?? [], owner: Object.freeze({ type: "master", id: master.id }) });
+    if (slideLayout) layers.push({ elements: slideLayout.elements, owner: Object.freeze({ type: "layout", id: slideLayout.id }) });
+  }
+  layers.push({ elements: slide.elements, owner: Object.freeze({ type: "slide", id: slide.id }) });
+  return layers;
+}
+
+/** Include visible master and layout artwork in the same layer order as the SVG renderer. */
+export function getSvgSlideSelectionFrames(layout: LayoutResult, slideIndex: number): readonly SvgOwnedSelectionFrame[] {
+  return collect(slideLayers(layout, slideIndex)) as readonly SvgOwnedSelectionFrame[];
+}
+
+/** Include transformed connector polylines alongside frames in SVG paint order. */
+export function getSvgSlideSelectionGeometry(layout: LayoutResult, slideIndex: number, options?: SvgSelectionGeometryOptions): readonly SvgSelectionGeometry[] {
+  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
+  return collect(slideLayers(layout, slideIndex), true, options) as readonly SvgSelectionGeometry[];
+}
+
+/** Topmost frame containing a slide-space point; transparent areas inside frames still count. */
+export function hitTestSvgSelectionFrames<T extends SvgSelectionFrame>(frames: readonly T[], point: Point): T | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  for (let i = frames.length - 1; i >= 0; i--) {
+    const frame = frames[i]!, corners = frame.corners;
+    let positive = false, negative = false;
+    for (let j = 0; j < 4; j++) {
+      const a = corners[j]!, b = corners[(j + 1) % 4]!;
+      const dx = b.x - a.x, dy = b.y - a.y, px = point.x - a.x, py = point.y - a.y;
+      if (![dx, dy, px, py].every(Number.isFinite)) throw new RangeError("Frame geometry exceeds finite hit-test range.");
+      // Scale the two vectors independently: their cross-product sign is unchanged,
+      // while multiplication of otherwise finite coordinates cannot overflow.
+      const edgeScale = Math.max(Math.abs(dx), Math.abs(dy));
+      const pointScale = Math.max(Math.abs(px), Math.abs(py));
+      const first = edgeScale === 0 || pointScale === 0 ? 0 : (dx / edgeScale) * (py / pointScale);
+      const second = edgeScale === 0 || pointScale === 0 ? 0 : (dy / edgeScale) * (px / pointScale);
+      const cross = first - second, tolerance = 16 * Number.EPSILON * (Math.abs(first) + Math.abs(second));
+      if (cross > tolerance) positive = true; else if (cross < -tolerance) negative = true;
+    }
+    if (!(positive && negative) && (positive || negative)) return frame;
+  }
+  return undefined;
+}
+
+/** Hit the topmost frame or connector centerline within a slide-space tolerance. */
+export function hitTestSvgSelectionGeometry(items: readonly SvgSelectionGeometry[], point: Point, connectorTolerance: number): SvgSelectionGeometry | undefined {
+  return hitGeometry(items, point, connectorTolerance, false);
+}
+
+/** Use shape outlines for shapes, retaining frame and connector-centerline behavior for other objects. */
+export function hitTestSvgSelectionOutlines(items: readonly SvgSelectionGeometry[], point: Point, connectorTolerance: number): SvgSelectionGeometry | undefined {
+  return hitGeometry(items, point, connectorTolerance, true);
+}
+
+function hitGeometry(items: readonly SvgSelectionGeometry[], point: Point, connectorTolerance: number, useOutlines: boolean): SvgSelectionGeometry | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  if (!Number.isFinite(connectorTolerance) || connectorTolerance < 0) throw new RangeError("Connector tolerance must be finite and nonnegative.");
+  for (let i = items.length - 1; i >= 0; i--) {
+    const item = items[i]!;
+    if (item.kind === "frame") {
+      if (hitTestSvgSelectionFrames([item], point) && (!useOutlines || !item.outline || insideOutline(item, point))) return item;
+    } else {
+      for (let j = 1; j < item.points.length; j++) {
+        const a = item.points[j - 1]!, b = item.points[j]!;
+        const dx = b.x - a.x, dy = b.y - a.y, length = Math.hypot(dx, dy);
+        const px = point.x - a.x, py = point.y - a.y;
+        if (![length, px, py].every(Number.isFinite)) throw new RangeError("Connector geometry exceeds finite hit-test range.");
+        const projection = length === 0 ? 0 : px * (dx / length) + py * (dy / length);
+        if (!Number.isFinite(projection)) throw new RangeError("Connector geometry exceeds finite hit-test range.");
+        const along = Math.max(0, Math.min(length, projection));
+        if (Math.hypot(point.x - (a.x + (length === 0 ? 0 : dx / length) * along), point.y - (a.y + (length === 0 ? 0 : dy / length) * along)) <= connectorTolerance) return item;
+      }
+    }
+  }
+  return undefined;
+}
+
+function insideOutline(frame: SvgOwnedSelectionFrame & { readonly outline?: SvgShapeOutline }, point: Point): boolean {
+  const [a, b, , d] = frame.corners, ux = b.x - a.x, uy = b.y - a.y, vx = d.x - a.x, vy = d.y - a.y;
+  const scale = Math.max(Math.abs(ux), Math.abs(uy), Math.abs(vx), Math.abs(vy));
+  if (!Number.isFinite(scale) || scale === 0) return false;
+  const u0 = ux / scale, u1 = uy / scale, v0 = vx / scale, v1 = vy / scale;
+  const px = (point.x - a.x) / scale, py = (point.y - a.y) / scale, det = u0 * v1 - u1 * v0;
+  if (!Number.isFinite(px) || !Number.isFinite(py) || !Number.isFinite(det) || det === 0) return false;
+  const x = (px * v1 - py * v0) / det, y = (u0 * py - u1 * px) / det;
+  const outline = frame.outline!;
+  if (outline.type === "ellipse") return ((x - 0.5) * 2) ** 2 + ((y - 0.5) * 2) ** 2 <= 1 + 1e-12;
+  if (outline.type === "rounded-rectangle") {
+    const dx = Math.max(outline.radiusX - x, 0, x - (1 - outline.radiusX)) / outline.radiusX;
+    const dy = Math.max(outline.radiusY - y, 0, y - (1 - outline.radiusY)) / outline.radiusY;
+    return dx * dx + dy * dy <= 1 + 1e-12;
+  }
+  let inside = false;
+  for (let i = 0, j = outline.points.length - 1; i < outline.points.length; j = i++) {
+    const p = outline.points[i]!, q = outline.points[j]!;
+    const cross = (x - p.x) * (q.y - p.y) - (y - p.y) * (q.x - p.x);
+    if (Math.abs(cross) <= 1e-12 && x >= Math.min(p.x, q.x) - 1e-12 && x <= Math.max(p.x, q.x) + 1e-12 && y >= Math.min(p.y, q.y) - 1e-12 && y <= Math.max(p.y, q.y) + 1e-12) return true;
+    if ((p.y > y) !== (q.y > y) && x < (q.x - p.x) * (y - p.y) / (q.y - p.y) + p.x) inside = !inside;
+  }
+  return inside;
+}

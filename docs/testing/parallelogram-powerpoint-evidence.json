@@ -1,0 +1,25 @@
+{
+  "scope": "One opaque red slide with wide, tall and rotated/flipped defaults, one PowerPoint save and reopen. Fixed grid points at least 4 pt from edges, excluding the pointer halo, are compared against an independent polygon model; native UI provenance is observed, not authenticated. Edges, text, adjustments, interactive edits and other versions remain unverified.",
+  "reopenRounds": 1,
+  "samples": {
+    "first": {
+      "outside": 2341,
+      "inside": 628,
+      "mismatches": 0
+    },
+    "reopen": {
+      "outside": 2341,
+      "inside": 628,
+      "mismatches": 0
+    }
+  },
+  "artifactDirectory": ".tmp/native-parallelogram",
+  "sha256": {
+    "source.pptx": "c2d876b3403e4451f4af51d24bffe422c5e55bd195554d189a29f3d101265896",
+    "native-round-1.pptx": "b8d230920078d81f3535f9893c824434b23b2ff8e2c6cb2ff47ae592dfcab079",
+    "first.ax.txt": "c5a51c390155c482793f90fb6791cc6875fb6641cf17d45d8be213bb1b56db6e",
+    "first.jpg": "cb6bf8b73ea01c0da64b759f8cd698cdc9308c0dd14bf83195e1d26001ffcb73",
+    "reopen.ax.txt": "787a01d18559e693e12c539eb58bb70ebe6a8055125ba15966d4b160326a2880",
+    "reopen.jpg": "9d7929c428a7f041abdec518bd91c24e68bb07f0ac87227f93312b950d3f2a8a"
+  }
+}

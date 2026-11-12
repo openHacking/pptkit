@@ -1,0 +1,27 @@
+{
+  "scope": "manual effective paragraph-mark font probe, PowerPoint 16.104 initial render only",
+  "directory": "/Volumes/github/private/pptkit/.tmp/style-reset-native/run-uFixey",
+  "files": {
+    "input.pptx": "ef158ed7f03ca97547ae3361b827613803942452b6dd11c32ec71d269d4e02cb",
+    "mark-effective.pptx": "3c9ae7a66759f800a669a6472b70fd31b3e3bf16ba7e7f501af2a150b8ea7591",
+    "mark-effective.pdf": "4afb121afa7347282f30957f685620310917e3c154ce2170e49fc6bac60bf5ba",
+    "mark-effective-bold.pptx": "8bdcedfebf57cffa310a99869e5bf3b609dc38555f9eca6465ae74c1563d31f7",
+    "mark-effective-bold.pdf": "a0041218adf4eaec64c59a102e9e00e42a20cde83a4cafdb224a601644a57190",
+    "default-materialized.pptx": "6a99761038861cb0f0063d6be67a3c2e6db5aaea7fde91626aee2a96ab01ee2d",
+    "default-materialized.pdf": "71ccd761bcb462a09c6e9b014c808b0f024e082bdbef7fce75689c7d93524f60"
+  },
+  "sourceSha256": {
+    "/Volumes/github/private/pptkit/scripts/research/oracles/native-mixed-effective-mark.py": "8a08afaedac2ce535ff47fb5dbe88d3331a3aede0ceea9ffca610ee48e80e2ce",
+    "scripts/research/prepare-mixed-effective-mark.py": "7860f86df1a8b69a023b1a9e3000c9f342049ed5faf53a381bead12de843b10c"
+  },
+  "bodyShiftPoints": [
+    -0.96002197265625,
+    0.0,
+    0.0
+  ],
+  "selectedPageStillShifted": true,
+  "markBoldDidNotChangeResult": true,
+  "localControlRestored": true,
+  "nativeSaveReopenVerified": false,
+  "productionFixImplemented": false
+}

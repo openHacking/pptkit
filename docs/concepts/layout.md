@@ -19,6 +19,6 @@ Keeping layout outside Core and exporters makes placement behavior independently
 
 ## Roadmap behavior
 
-Text measurement, overflow diagnostics, constraints, automatic composition, table measurement, and pagination belong in Layout but are not implemented yet. They must remain predictable transformations rather than hidden “magic” inside export.
+Layout supports opt-in injected text/font measurement and overflow/boundary diagnostics without resizing content. An explicit `/dom` adapter supplies browser font-backed measurement; explicit alignment/distribution/stacks are available through composition options. Explicit measured table rows support merged spans and fixed/automatic heights. Explicit intrinsic sizing, bounded grids, affine frame constraints and table pagination are implemented; automatic column sizing and general text/story flow remain future work. They must remain predictable transformations rather than hidden “magic” inside export.
 
 See the [`@pptkit/layout` API](../api/layout.md) for callable behavior and [Layout Engine](../architecture/layout-engine.md) for contributor constraints.

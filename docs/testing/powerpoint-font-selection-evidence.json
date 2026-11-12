@@ -1,0 +1,1837 @@
+{
+  "status": "observed",
+  "sourceDirectory": ".tmp/real-font-native/run-mfnnLO",
+  "deckPath": ".tmp/powerpoint-font-probe/font-controls-v2.pptx",
+  "pdfPath": ".tmp/powerpoint-font-probe/font-controls-v2.pdf",
+  "recordedAt": "2026-10-26T02:23:07.272770+00:00",
+  "deckSha256": "3d22a498a8cacb9157725939552d20c7fe871a8e4f43c57ea079df1409b79bdc",
+  "pdfSha256": "246060103f62c78dea2de2862de177ed175b1233e1e9cf2e354f26138785fd39",
+  "sourceSlideAndThemePayloadsVerified": true,
+  "sourceControlValuesAndThemeChainsVerified": true,
+  "comparisons": [
+    {
+      "id": "direct-sc",
+      "page": 1,
+      "source": {
+        "language": "zh-CN",
+        "slots": [
+          "Arial",
+          "Hiragino Sans GB",
+          "Geeza Pro"
+        ],
+        "themePart": "ppt/theme/theme1.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "projectedFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 1824,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 4528,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2615,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 1618,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "direct-arabic",
+      "page": 2,
+      "source": {
+        "language": "ar",
+        "slots": [
+          "Arial",
+          "Hiragino Sans GB",
+          "Geeza Pro"
+        ],
+        "themePart": "ppt/theme/theme2.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "GeezaPro"
+      ],
+      "projectedFonts": [
+        "GeezaPro"
+      ],
+      "fontMatch": true,
+      "bodyText": "لا",
+      "glyphs": [
+        {
+          "unicode": 1604,
+          "glyph": 1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        },
+        {
+          "unicode": 1575,
+          "glyph": -1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "direct-hebrew",
+      "page": 3,
+      "source": {
+        "language": "he",
+        "slots": [
+          "Arial",
+          "Hiragino Sans GB",
+          "Arial Hebrew"
+        ],
+        "themePart": "ppt/theme/theme3.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "ArialHebrew"
+      ],
+      "projectedFonts": [
+        "ArialHebrew"
+      ],
+      "fontMatch": true,
+      "bodyText": "שָׁלוֹם",
+      "glyphs": [
+        {
+          "unicode": 64298,
+          "glyph": 7,
+          "origin": [
+            82.80799102783203,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1464,
+          "glyph": 1,
+          "origin": [
+            86.23039245605469,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1500,
+          "glyph": 4,
+          "origin": [
+            60.660797119140625,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 64331,
+          "glyph": 8,
+          "origin": [
+            48.77119445800781,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1501,
+          "glyph": 5,
+          "origin": [
+            19.985597610473633,
+            131.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-sc",
+      "page": 4,
+      "source": {
+        "language": "zh-CN",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme4.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "projectedFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 1824,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 4528,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2615,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 1618,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-tc",
+      "page": 5,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme5.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "STSongti-TC-Regular"
+      ],
+      "projectedFonts": [
+        "STSongti-TC-Regular"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 3,
+          "origin": [
+            20.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 1,
+          "origin": [
+            68.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2,
+          "origin": [
+            116.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 4,
+          "origin": [
+            164.0,
+            133.92001342773438
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-ja",
+      "page": 6,
+      "source": {
+        "language": "ja",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme6.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraMinProN-W3"
+      ],
+      "projectedFonts": [
+        "HiraMinProN-W3"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 2062,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 3034,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 4009,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 3622,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-ko",
+      "page": 7,
+      "source": {
+        "language": "ko",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme7.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "MicrosoftYaHei"
+      ],
+      "projectedFonts": [
+        "AppleSDGothicNeo-Regular"
+      ],
+      "fontMatch": false,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 4,
+          "origin": [
+            20.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 2,
+          "origin": [
+            68.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 1,
+          "origin": [
+            116.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 3,
+          "origin": [
+            164.0,
+            136.08001708984375
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-arabic",
+      "page": 8,
+      "source": {
+        "language": "ar",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme8.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "GeezaPro"
+      ],
+      "projectedFonts": [
+        "GeezaPro"
+      ],
+      "fontMatch": true,
+      "bodyText": "لا",
+      "glyphs": [
+        {
+          "unicode": 1604,
+          "glyph": 1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        },
+        {
+          "unicode": 1575,
+          "glyph": -1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-hebrew",
+      "page": 9,
+      "source": {
+        "language": "he",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme9.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "ArialHebrew"
+      ],
+      "projectedFonts": [
+        "ArialHebrew"
+      ],
+      "fontMatch": true,
+      "bodyText": "שָׁלוֹם",
+      "glyphs": [
+        {
+          "unicode": 64298,
+          "glyph": 7,
+          "origin": [
+            82.80799102783203,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1464,
+          "glyph": 1,
+          "origin": [
+            86.23039245605469,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1500,
+          "glyph": 4,
+          "origin": [
+            60.660797119140625,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 64331,
+          "glyph": 8,
+          "origin": [
+            48.77119445800781,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1501,
+          "glyph": 5,
+          "origin": [
+            19.985597610473633,
+            131.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-explicit-greek",
+      "page": 10,
+      "source": {
+        "language": "el",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme10.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "Georgia"
+      ],
+      "projectedFonts": [
+        "Georgia"
+      ],
+      "fontMatch": true,
+      "bodyText": "ΩΣ",
+      "glyphs": [
+        {
+          "unicode": 937,
+          "glyph": 2,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 931,
+          "glyph": 1,
+          "origin": [
+            57.372798919677734,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-empty-sc",
+      "page": 11,
+      "source": {
+        "language": "zh-CN",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme11.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "",
+          ""
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "projectedFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 1824,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 4528,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2615,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 1618,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-empty-tc",
+      "page": 12,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme12.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "",
+          ""
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "STSongti-TC-Regular"
+      ],
+      "projectedFonts": [
+        "STSongti-TC-Regular"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 3,
+          "origin": [
+            20.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 1,
+          "origin": [
+            68.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2,
+          "origin": [
+            116.0,
+            133.92001342773438
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 4,
+          "origin": [
+            164.0,
+            133.92001342773438
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-empty-arabic",
+      "page": 13,
+      "source": {
+        "language": "ar",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme13.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "",
+          ""
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "GeezaPro"
+      ],
+      "projectedFonts": [
+        "GeezaPro"
+      ],
+      "fontMatch": true,
+      "bodyText": "لا",
+      "glyphs": [
+        {
+          "unicode": 1604,
+          "glyph": 1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        },
+        {
+          "unicode": 1575,
+          "glyph": -1,
+          "origin": [
+            20.02981185913086,
+            132.96002197265625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "theme-empty-hebrew",
+      "page": 14,
+      "source": {
+        "language": "he",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme14.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "",
+          ""
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "ArialHebrew"
+      ],
+      "projectedFonts": [
+        "ArialHebrew"
+      ],
+      "fontMatch": true,
+      "bodyText": "שָׁלוֹם",
+      "glyphs": [
+        {
+          "unicode": 64298,
+          "glyph": 7,
+          "origin": [
+            82.80799102783203,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1464,
+          "glyph": 1,
+          "origin": [
+            86.23039245605469,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1500,
+          "glyph": 4,
+          "origin": [
+            60.660797119140625,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 64331,
+          "glyph": 8,
+          "origin": [
+            48.77119445800781,
+            131.0400390625
+          ]
+        },
+        {
+          "unicode": 1501,
+          "glyph": 5,
+          "origin": [
+            19.985597610473633,
+            131.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "latin-only-tc",
+      "page": 15,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          "+mn-lt",
+          null,
+          null
+        ],
+        "themePart": "ppt/theme/theme15.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "MicrosoftYaHei"
+      ],
+      "projectedFonts": [
+        "STSongti-TC-Regular"
+      ],
+      "fontMatch": false,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 4,
+          "origin": [
+            20.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 2,
+          "origin": [
+            68.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 1,
+          "origin": [
+            116.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 3,
+          "origin": [
+            164.0,
+            136.08001708984375
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "cross-slot-ea",
+      "page": 16,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          "+mn-lt",
+          "+mn-lt",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme16.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "MicrosoftYaHei"
+      ],
+      "projectedFonts": [
+        "ArialMT"
+      ],
+      "fontMatch": false,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 4,
+          "origin": [
+            20.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 2,
+          "origin": [
+            68.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 1,
+          "origin": [
+            116.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 3,
+          "origin": [
+            164.0,
+            136.08001708984375
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "local-ea-overrides",
+      "page": 17,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          null,
+          "Hiragino Sans GB",
+          null
+        ],
+        "themePart": "ppt/theme/theme17.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "projectedFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "fontMatch": true,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 1824,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 4528,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2615,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 1618,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "local-cs-overrides",
+      "page": 18,
+      "source": {
+        "language": "he",
+        "slots": [
+          null,
+          null,
+          "Arial Unicode MS"
+        ],
+        "themePart": "ppt/theme/theme18.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "ArialUnicodeMS"
+      ],
+      "projectedFonts": [
+        "ArialUnicodeMS"
+      ],
+      "fontMatch": true,
+      "bodyText": "שָׁ לוֹ ם",
+      "glyphs": [
+        {
+          "unicode": 1513,
+          "glyph": 7,
+          "origin": [
+            138.6356201171875,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1473,
+          "glyph": 3,
+          "origin": [
+            121.34602355957031,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1464,
+          "glyph": 1,
+          "origin": [
+            104.10442352294922,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1500,
+          "glyph": 5,
+          "origin": [
+            80.91082763671875,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1493,
+          "glyph": 4,
+          "origin": [
+            65.73323059082031,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1465,
+          "glyph": 2,
+          "origin": [
+            48.49163055419922,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 1501,
+          "glyph": 6,
+          "origin": [
+            19.970035552978516,
+            136.08001708984375
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "bare-zh-empty",
+      "page": 19,
+      "source": {
+        "language": "zh",
+        "slots": [
+          "+mn-lt",
+          "+mn-ea",
+          "+mn-cs"
+        ],
+        "themePart": "ppt/theme/theme19.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "",
+          ""
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "HiraginoSansGB-W3"
+      ],
+      "projectedFonts": [
+        "ArialMT"
+      ],
+      "fontMatch": false,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 1824,
+          "origin": [
+            20.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 4528,
+          "origin": [
+            68.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 2615,
+          "origin": [
+            116.0,
+            137.0400390625
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 1618,
+          "origin": [
+            164.0,
+            137.0400390625
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    },
+    {
+      "id": "missing-glyph-latin",
+      "page": 20,
+      "source": {
+        "language": "zh-TW",
+        "slots": [
+          "Arial",
+          "Arial",
+          "Arial"
+        ],
+        "themePart": "ppt/theme/theme20.xml",
+        "collection": "minorFont",
+        "themeSlots": [
+          "Arial",
+          "Arial Unicode MS",
+          "Arial Unicode MS"
+        ],
+        "supplemental": [
+          [
+            "Hans",
+            "Hiragino Sans GB"
+          ],
+          [
+            "Hant",
+            "Songti TC"
+          ],
+          [
+            "Jpan",
+            "Hiragino Mincho ProN"
+          ],
+          [
+            "Hang",
+            "Apple SD Gothic Neo"
+          ],
+          [
+            "Arab",
+            "Geeza Pro"
+          ],
+          [
+            "Hebr",
+            "Arial Hebrew"
+          ],
+          [
+            "Grek",
+            "Georgia"
+          ]
+        ]
+      },
+      "actualFonts": [
+        "MicrosoftYaHei"
+      ],
+      "projectedFonts": [
+        "ArialMT"
+      ],
+      "fontMatch": false,
+      "bodyText": "骨直令返",
+      "glyphs": [
+        {
+          "unicode": 39592,
+          "glyph": 4,
+          "origin": [
+            20.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 30452,
+          "glyph": 2,
+          "origin": [
+            68.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 20196,
+          "glyph": 1,
+          "origin": [
+            116.0,
+            136.08001708984375
+          ]
+        },
+        {
+          "unicode": 36820,
+          "glyph": 3,
+          "origin": [
+            164.0,
+            136.08001708984375
+          ]
+        }
+      ],
+      "missingGlyphZeroCount": 0
+    }
+  ]
+}

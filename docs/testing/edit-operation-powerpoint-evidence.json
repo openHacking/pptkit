@@ -1,0 +1,19 @@
+{
+  "scope": "One generated slide with mixed Core text-string, nested shape text-run and group-box edits; PowerPoint for Mac first open, native headline word edit, save, close and reopen once. No repair prompt observed. UI capture is observational, not authenticated; no calibrated visual comparison.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "system": "macOS 26.5 (25F71)",
+  "artifacts": {
+    "source": { "path": "tests/fixtures/edit-operation-native-source.pptx", "sha256": "886ace87f3ec69d96e2d8e297b2a3dc6efc5ce9ab3c71ba2264095fd1bda6f71" },
+    "output": { "path": "tests/fixtures/edit-operation-native-powerpoint.pptx", "sha256": "adc5c52989ac8a14c7fcc4686c3dbb740c3be7115c43ee4a9b4effbca1745dac" }
+  },
+  "artifactDirectory": ".tmp/edit-operation-native",
+  "captures": {
+    "inverse.json": "8e4b19f74cdf6cf5de918de8ee5e21b9e0dfb3f44dd6f4f5c042f3cde5018852",
+    "first.png": "5a53652c97aea2c2295bd2eacc106771751ebe7b1749d5fbcc447465a8d03dbb",
+    "first.ax.txt": "3a5a48592510b2c4aad2edbb3c5f85a6be65b4da0aacec58cf8a4ed3800b8533",
+    "reopen.png": "1a7e4110d8307b8d9b30b8b220390a5b10250cbcabc87deb9136bd7e0fd98e60",
+    "reopen.ax.txt": "815ec338cb6d728eecf1aab28feb483a0c05cf53b6f1d0a4b4cd5f4ed24df713"
+  },
+  "observation": "Edited headline and Edited shape were visible first open. Headline was changed to Edited native in PowerPoint and both texts were visible on reopen. Independent XML inspection verifies shape ownership and group offset 2286000/1905000 EMU and extents 2540000/1143000 EMU before and after native save.",
+  "limitations": "One edit and one reopen; no native movement or edit of grouped shape, other operations, general geometry, native undo, source-preserving save, calibrated fidelity or other application claims."
+}

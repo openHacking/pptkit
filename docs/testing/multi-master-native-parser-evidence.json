@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/multi-master-native-evidence.json",
+  "nativeEvidenceSha256": "58d2264ec2c886d540973707ab0a71fb0bfc972cd9e1b4a7b683975ca1406464",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/fixed.pptx",
+      "sha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/parser-inspections/fixed.pptx.json",
+      "snapshotSha256": "616cac013c276ba96d4478706a7261e6744ebf926378d672df07094a2f68f376",
+      "nodeEsmGlobalReportsAndNoOpBytesEqual": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round1.pptx",
+      "sha256": "a16569f376a0411acab8dfdd54f03bdc1d1126dff745d0a2cae41099f0fbc492",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/parser-inspections/round1.pptx.json",
+      "snapshotSha256": "eb5c9bfbe1cb9249305c0c6b81ae894b2b595c230e2c12acf764fb9ae2c3eff3",
+      "nodeEsmGlobalReportsAndNoOpBytesEqual": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round2.pptx",
+      "sha256": "8c8c12e8807c465377953529887ece5a68b16d514c8d82556182b4674aa5b3ef",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/parser-inspections/round2.pptx.json",
+      "snapshotSha256": "e1c0197df1ad1b8b839d06632fa5be60fa648051683ed95c0dffc325fccb126d",
+      "nodeEsmGlobalReportsAndNoOpBytesEqual": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/round3.pptx",
+      "sha256": "d10d1f5c803ffba1a75e59de035d11d6888e231e90d868513998fb04e51b1056",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/parser-inspections/round3.pptx.json",
+      "snapshotSha256": "3e1c3037450ef6fb77582a01fd7c682be12f856777013954cc9084f94801afd1",
+      "nodeEsmGlobalReportsAndNoOpBytesEqual": true
+    }
+  ],
+  "total": {
+    "actualInputs": 4,
+    "consumerNoOps": 12
+  },
+  "scope": "Current structural inspection/full report and exact no-op across captured source/native inputs. No authored registry import, source master editing or new native app operation."
+}

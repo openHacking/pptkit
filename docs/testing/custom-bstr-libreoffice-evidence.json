@@ -1,0 +1,385 @@
+{
+  "scope": "Synthetic bstr source based on PPTKit-created package, four value edits and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "2cc85a4e0bd074cc0c8d4b9e6bccbd00ab34f166c755201298bc1514eb1e5548",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/input/control.pptx",
+      "sha256": "408a9698ebe78276ff36a73753c976e3b3a3fd358603ade7ab8753633b44454c",
+      "properties": [
+        {
+          "name": "Unicode",
+          "pid": "2",
+          "type": "bstr",
+          "value": "中文 & text"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "bstr",
+          "value": ""
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "bstr",
+          "value": "_x005F_x0041_"
+        },
+        {
+          "name": "Emoji",
+          "pid": "5",
+          "type": "bstr",
+          "value": "😀"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/input/edited.pptx",
+      "sha256": "6c6b500b07265ce5491127540000658a9f9cdc6da2ad6698274ab16e4e5b06e0",
+      "properties": [
+        {
+          "name": "Unicode",
+          "pid": "2",
+          "type": "bstr",
+          "value": "Edited 中文 & text"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "bstr",
+          "value": "now nonempty"
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "bstr",
+          "value": "_x005F_x0042_"
+        },
+        {
+          "name": "Emoji",
+          "pid": "5",
+          "type": "bstr",
+          "value": "changed 😀"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/control.pptx",
+      "sha256": "bde04d12da5e459faa40035af2a99f46147388d01a3a428cf0a2ad116d316700",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0041_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/edited.pptx",
+      "sha256": "c47de2baf3559ac661ab71198b0d97b06dde144644b625e0c385757bf4accd6b",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "changed 😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": "now nonempty"
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0042_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "Edited 中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/control.pptx",
+      "sha256": "5d44bae8f56f0a26fb592031308a66312df56a08d8f20855d0d098f744d47426",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0041_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/edited.pptx",
+      "sha256": "c95a126c4a9c2e742b7b66828f4f9007deec448aae07675ce9259436a295e99f",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "changed 😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": "now nonempty"
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0042_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "Edited 中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-3/control.pptx",
+      "sha256": "4ec4c28ad206449e0f3f3362b38601e9262561f6ca2de53ffc77ece6258ceef5",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0041_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-3/edited.pptx",
+      "sha256": "7456f8a194d56d390508990f33b4e7d9dc5d005c965648a00612f27013fe7301",
+      "properties": [
+        {
+          "name": "Emoji",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "changed 😀"
+        },
+        {
+          "name": "Empty",
+          "pid": "3",
+          "type": "lpwstr",
+          "value": "now nonempty"
+        },
+        {
+          "name": "Literal",
+          "pid": "4",
+          "type": "lpwstr",
+          "value": "_x005F_x0042_"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "6",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Unicode",
+          "pid": "7",
+          "type": "lpwstr",
+          "value": "Edited 中文 & text"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-bstr-libreoffice/run-w1e3qkwr/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

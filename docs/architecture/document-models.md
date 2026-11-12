@@ -43,3 +43,9 @@ editable .pptx
 A future parser will inspect a PPTX Package Model and classify structures by capability. Supported semantics can become editable normalized structures; unknown or partially understood structures may require preservation or fallback representations. Silent data loss is not an acceptable default.
 
 The reverse flow is not implemented and is not documented as universal round-trip support.
+
+
+Optional master artwork remains one owned collection in Authoring/Canonical IR and one resolved collection in Layout. Ordinary rendering selects visible master/layout layers without appending copies to slide elements; fresh PPTX writes original native owners. `LayoutSlideMaster` carries resolved connector/chart/table/image geometry. Legacy inputs omit the new fields. Visibility declarations do not alter background selection or remove geometric/reference ownership; see [the contract](../api/master-artwork.md).
+
+
+Read-only `PresentationData` and `PresentationSlideData` describe authoring values without methods; they do not add a fourth model or native package state. [Reviewed layout plans](../api/layout-rebind.md) consume those values and produce a separate frozen review sidecar. Factory apply commits authoring state, then ordinary normalization recomputes Canonical IR.

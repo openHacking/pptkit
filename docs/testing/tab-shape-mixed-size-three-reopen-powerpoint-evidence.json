@@ -1,0 +1,26 @@
+{
+  "scope": "Three sequential PowerPoint save/close/reopen rounds of 12 mixed-size shape-text samples. Every saved package is checked; first and third reopened four-page prints match first-open word geometry and fills. Only first-page windows observed; no native edit or other-font/transform claim. Capture hashes do not independently establish provenance.",
+  "firstEvidenceSha256": "68a137b1268fa2469f185f64a784339f75c6f8bd2e6a1cf44d0b8416151298ba",
+  "rounds": [
+    {
+      "pptxSha256": "bb10fdf65c5351f6a15a62af273cd4336573d69be894688f5b38125368c9e531",
+      "axSha256": "900afc82efd03ea415775c28e983a02e471e0fcf3499aeeb17f535706f2cd385",
+      "screenshotSha256": "bd09c09ec16a28d3e58ce01b71dd90483600a437455cccecaec4e45e03aab982"
+    },
+    {
+      "pptxSha256": "ee2a64745bccfa64ab75a03a5bc68987aa58a398290b6af717de163ad7e83cfb",
+      "axSha256": "bdea9620b30851c22fac4ea9464b301dd57b9ea18b8c0b38dde3e63a6bfbf7bd",
+      "screenshotSha256": "508c7d804c623c887d7894ed445e024de6aa66dce95b9bee48412b4541a84fb0"
+    },
+    {
+      "pptxSha256": "e11ed7f562c2370f342447250750fb9f83f3f6250c2613795e0631ee63fcee6c",
+      "axSha256": "6ebe3a23614b1dc02c668c083cd1f584e5547a6eca8b6e0ba938ca12683b9677",
+      "screenshotSha256": "9bf8a11e49a4517720e11e3baf18751f949a472eace0666c24ecea5c5ec46439"
+    }
+  ],
+  "reopenedPdfSha256": [
+    "c15b88e67eeda7b68b6c6ee5d7835b7906b5183093198c58eedf69c21560b264",
+    "2a8437f0ae31ab2c5639d7a5abc508c580d40da3ee243892b503511317ab9718"
+  ],
+  "verifierSha256": "866e224861587222677b884c521580734169d9c8b13700bfa55820636716201b"
+}

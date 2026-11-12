@@ -1,0 +1,33 @@
+{
+  "pymupdf": "1.28.0",
+  "mupdf": "1.29.0",
+  "observed": {
+    "plain": {
+      "spans": [
+        {
+          "font": "Times-Roman",
+          "text": "iiii WWWW 12345"
+        }
+      ],
+      "pixelsSha256": "2e54d487e5899d9ec7a2e55d17921fd839f91f59933004b8f30c3816898b610f"
+    },
+    "embedded": {
+      "spans": [
+        {
+          "font": "Times-Roman",
+          "text": "iiii WWWW 12345"
+        }
+      ],
+      "pixelsSha256": "2e54d487e5899d9ec7a2e55d17921fd839f91f59933004b8f30c3816898b610f"
+    }
+  },
+  "fontSha256": "e03013e0baa5690a803c188da2214d920c3245b25ad78421ecc8ae86cd842ae9",
+  "sha256": {
+    "plain.svg": "38cf8e0671cd21efcff869a360b65ef7bd1104eed908e6ca5ee5ff44c2915995",
+    "plain-warnings.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "plain-mupdf.png": "7583268f995c17f81b10308e7fddee670e84a7175d96adf94bd2de7b23e04a30",
+    "embedded.svg": "b389845a21a1a50fb125d6fda1d5eb799ee799dece18c08d1ce8b32a4a063af2",
+    "embedded-warnings.json": "00446ca4bc0ea4c30ae532fce7551677cb01602cbc325de6553a95c0cbe97492",
+    "embedded-mupdf.png": "7583268f995c17f81b10308e7fddee670e84a7175d96adf94bd2de7b23e04a30"
+  }
+}

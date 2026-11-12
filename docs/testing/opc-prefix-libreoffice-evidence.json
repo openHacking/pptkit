@@ -1,0 +1,149 @@
+{
+  "scope": "Two synthetic source branches; independently vary OPC root/child namespace prefixes and XML declaration standalone, one LibreOfficeDev headless conversion per input, no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "84aff547f23bfc4839b8e8b3ed0a233d387c5ddb1cb8945cd8bc8adc8a7eca66",
+  "seedEvidenceSha256": "74788bd5492923d1d8dfe90ce37d2d3aded3f8ced8d95f3973583986a8d9858d",
+  "records": [
+    {
+      "kind": "control",
+      "variant": "baseline",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/control-baseline/input.pptx",
+      "sha256": "84616bd6882c0e3e417b7b9ab2ec43eba0f5d46a1a4533fe379d5d30068b1eba",
+      "changedParts": [],
+      "exitCode": 0,
+      "outputExists": true,
+      "outputSha256": "f86181a2791184945811430a0b926f5ae4e009dbd42b271ee54f6af714170c8d",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/control-baseline/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/control-baseline/output/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "control",
+      "variant": "rel-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/control-rel-prefix/input.pptx",
+      "sha256": "22e8d128dd2c0decda36044132ebcace673424a3ba06b00ee63b61970c611f7f",
+      "changedParts": [
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "control",
+      "variant": "types-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/control-types-prefix/input.pptx",
+      "sha256": "08c70984ddb14c96ee01a3236fa500a8b9c44605a2e4a2083292c54dda11fe3a",
+      "changedParts": [
+        "[Content_Types].xml"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "control",
+      "variant": "both-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/control-both-prefix/input.pptx",
+      "sha256": "10a25557a9c417cd12d0b439649abcb78e55d09b81eb50e892cec2e90ef1a48d",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "control",
+      "variant": "declaration",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/control-declaration/input.pptx",
+      "sha256": "6739043cab53a16033ff11b8bf6d22b742c8e0a77148092ad2c626cb7daf2d39",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outputSha256": "ed5f7a75d76ed1d8f11f5f949072e312096e79346f2e3e094c45bd0c9616a0d6",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/control-declaration/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/control-declaration/output/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "variant": "baseline",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/edited-baseline/input.pptx",
+      "sha256": "9881822e36a93aedce0159308113eb299f740af0c64a2f84c74f33076b2f340b",
+      "changedParts": [],
+      "exitCode": 0,
+      "outputExists": true,
+      "outputSha256": "5d284a83999806c81c50a8b9f72c41871d002f3baff3528e6b24f880fff7a251",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/edited-baseline/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/edited-baseline/output/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "variant": "rel-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/edited-rel-prefix/input.pptx",
+      "sha256": "0fcc5c38d904c77d8ff115fb82a5856a32e1489e4ac6464bdc35662ac01304bf",
+      "changedParts": [
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "edited",
+      "variant": "types-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/edited-types-prefix/input.pptx",
+      "sha256": "0249e9048e68450b4d9c9ca234812ac3542dc5eaf9cf99b438406a3e2e29ccbb",
+      "changedParts": [
+        "[Content_Types].xml"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "edited",
+      "variant": "both-prefix",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/edited-both-prefix/input.pptx",
+      "sha256": "63bd2bcd38c529cfcdb1874af0cb2dc423bae1a95d1a23a5a7a178ce630730ed",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "outputSha256": null,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "edited",
+      "variant": "declaration",
+      "path": ".tmp/opc-prefix-libreoffice/run-iet9abvm/edited-declaration/input.pptx",
+      "sha256": "b1c4cd72e5cf8f37b17bce31252ca722c511279e2a807d2223208c5b76aa8ec4",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 0,
+      "outputExists": true,
+      "outputSha256": "55b403caf02d20071c5dd5aa612e066de14a3172243e8762aa1ebb66fb1dac9e",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/edited-declaration/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/opc-prefix-libreoffice/run-iet9abvm/edited-declaration/output/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

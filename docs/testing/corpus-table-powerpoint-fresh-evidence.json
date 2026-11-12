@@ -1,0 +1,49 @@
+{
+  "scope": "Fresh generated corpus table; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. One vertically merged cell text edit, save, close and reopen. No repair prompt was observed. This does not establish calibrated preview parity, actual substituted font, other sample types or other application versions. UI provenance is observed, not authenticated.",
+  "font": "PPTKit Fixture theme body reported by PowerPoint; actual substituted font not independently identified",
+  "sourceManifest": ".tmp/corpus-powerpoint-fresh/manifest.json",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/table.pptx",
+    "sha256": "b370a1a185f309ed33234668aa7bf979be9bbd6ed94f7651dda69273edbdac20"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-table-powerpoint-fresh-interactive.pptx",
+    "sha256": "11da796d9e8d2135e62ca7c23332af0958a4e51595f7c85e7920febbcb1fa9a5"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-table",
+  "operation": "Replace Two with Edited in vertically merged cell Two rows; save, close and reopen once.",
+  "expectedTextBefore": [
+    "Merged heading",
+    "Two rows",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "expectedTextAfter": [
+    "Merged heading",
+    "Edited rows",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "mergeAttributes": {
+    "heading": {
+      "gridSpan": "3"
+    },
+    "verticalAnchor": {
+      "rowSpan": "2"
+    },
+    "verticalContinuation": {
+      "vMerge": "1"
+    }
+  },
+  "sha256": {
+    "fresh-first.png": "08de9659975abd213a3e1e702b4bab715424eaff527037a4c6daea2c0ec39802",
+    "fresh-first.ax.txt": "6b9ffea9c521b8354a6d2e11ca5fae95dfca5bcc400d661e6d10d3f01be10fae",
+    "fresh-reopen.png": "88ccf12b7234855601e8a146bec26530dbcc886a7b4f6c90f8a8b1b1053dbbc5",
+    "fresh-reopen.ax.txt": "0213d89cd9caafa0508a6e510af423347085b3415dd97928347c3b319fe71534"
+  },
+  "formatObservation": "Fresh heading run specifies b=0; historical input omitted b and appeared bold in this application. The difference is not a controlled isolated experiment."
+}

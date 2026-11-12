@@ -1,0 +1,168 @@
+{
+  "scope": "One PPTKit source and three-field removal, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "f5b9148aff8cdceb7d2532bbd421472f0a99950cebefe7853bbbe71f0a3f233d",
+  "sourceChangedParts": [
+    "docProps/app.xml",
+    "docProps/core.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/input/control.pptx",
+      "sha256": "51bc8ef3c53f2a0d214024e29c127d7ec296d835d6a2cb077555796d4d2713e0",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "Subject 中文",
+        "description": "Description & control",
+        "revision": "7",
+        "company": "Company 中文",
+        "application": "PPTKit"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/input/edited.pptx",
+      "sha256": "b6458cc7ccedcaa2c446763642af53a52756e81b66e6a0e20b6f78bc13a0dc77",
+      "metadata": {
+        "title": "Removal control",
+        "subject": null,
+        "description": null,
+        "revision": "7",
+        "company": null,
+        "application": "PPTKit"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/control.pptx",
+      "sha256": "7d086f5ab06afd10463d03640dfaa65aeb3c1ef4000f8ea5ebc60b5f27c5d717",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "Subject 中文",
+        "description": "Description & control",
+        "revision": "7",
+        "company": "Company 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/edited.pptx",
+      "sha256": "ee1c2a6decc2bb26c57a1ea530f254b59969545a0787c8604d837118bfc92467",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "",
+        "description": "",
+        "revision": "7",
+        "company": null,
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/control.pptx",
+      "sha256": "38db9c809451b0b8e89281045b263a3c5874e33e319d5ae095abac51068b0c04",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "Subject 中文",
+        "description": "Description & control",
+        "revision": "7",
+        "company": "Company 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/edited.pptx",
+      "sha256": "520fa1263db97565c21d790df984325472773f7da7d65dca6f125cdeb36370a8",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "",
+        "description": "",
+        "revision": "7",
+        "company": null,
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-3/control.pptx",
+      "sha256": "2cb82d5d15a15f8ae741d5f2fdee045ee3200c9a3054de3a4523aa4bcb0ecc37",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "Subject 中文",
+        "description": "Description & control",
+        "revision": "7",
+        "company": "Company 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-3/edited.pptx",
+      "sha256": "f2c4ff59593d9e275b198b7ad939174941e9db3ddb31d4bf51ab9a205bbd1d37",
+      "metadata": {
+        "title": "Removal control",
+        "subject": "",
+        "description": "",
+        "revision": "7",
+        "company": null,
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/metadata-remove-libreoffice/run-9mhkfi3y/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "scope": "Three named Fade timing records, headless native save and reopening of saved output to PDF. Not interactive settings/editability, actual slideshow playback, repair-dialog absence, PowerPoint or visual fidelity.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/transition-native/run-ICNA1E",
+  "sourceSha256": "3cddc5e06789b235432889777c47b13a7fc6ab31372c71705c923edd733c8da0",
+  "nativeSha256": "27a8dee71cc3cfed17012642f66acd13869afaccff97223e02f314cd1f0dd05c",
+  "reopenedPdfSha256": "1c44e141d223bfeae3cb8f5c7fd212d2654fa95dc56a535298a530b6f0905f73",
+  "transitions": [
+    {
+      "type": "fade",
+      "durationMs": 1234,
+      "onClick": true,
+      "afterMs": 3456
+    },
+    {
+      "type": "fade",
+      "durationMs": 0,
+      "onClick": false,
+      "afterMs": 0
+    },
+    {
+      "type": "fade",
+      "durationMs": 2000,
+      "onClick": false
+    }
+  ],
+  "independent": {
+    "oracle": "Python zipfile + ElementTree",
+    "source": [
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1234",
+            "spd": "med",
+            "advTm": "3456"
+          },
+          "durationMs": "1234",
+          "onClick": "1",
+          "afterMs": "3456",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "0",
+            "spd": "fast",
+            "advClick": "0",
+            "advTm": "0"
+          },
+          "durationMs": "0",
+          "onClick": "0",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "p14",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "2000",
+            "spd": "slow",
+            "advClick": "0"
+          },
+          "durationMs": "2000",
+          "onClick": "0",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ]
+    ],
+    "native": [
+      [
+        {
+          "attributes": {
+            "spd": "slow",
+            "advTm": "3000",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "1234"
+          },
+          "durationMs": "1234",
+          "onClick": "1",
+          "afterMs": "3000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "slow",
+            "advTm": "3000"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "3000",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "advTm": "0",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "10"
+          },
+          "durationMs": "10",
+          "onClick": "1",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        },
+        {
+          "attributes": {
+            "advTm": "0"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": "0",
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ],
+      [
+        {
+          "attributes": {
+            "spd": "slow",
+            "{http://schemas.microsoft.com/office/powerpoint/2010/main}dur": "2000"
+          },
+          "durationMs": "2000",
+          "onClick": "1",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        },
+        {
+          "attributes": {
+            "spd": "slow"
+          },
+          "durationMs": null,
+          "onClick": "1",
+          "afterMs": null,
+          "effects": [
+            "{http://schemas.openxmlformats.org/presentationml/2006/main}fade"
+          ]
+        }
+      ]
+    ],
+    "rawTransitionRecordsEqual": false
+  },
+  "timingComparisons": [
+    {
+      "slide": 1,
+      "nativeDurationMs": "1234",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": true,
+      "automaticAdvanceRetained": false
+    },
+    {
+      "slide": 2,
+      "nativeDurationMs": "10",
+      "exactDurationRetained": false,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": true
+    },
+    {
+      "slide": 3,
+      "nativeDurationMs": "2000",
+      "exactDurationRetained": true,
+      "clickPolicyRetained": false,
+      "automaticAdvanceRetained": true
+    }
+  ],
+  "parserNativeTransitions": [
+    {
+      "status": "source-only",
+      "speed": "slow",
+      "onClick": true,
+      "afterMs": 3000,
+      "reason": "Mapping requires a plain direct fade with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "fast",
+      "onClick": true,
+      "afterMs": 0,
+      "reason": "Mapping requires a plain direct fade with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    },
+    {
+      "status": "source-only",
+      "speed": "slow",
+      "onClick": true,
+      "reason": "Mapping requires a plain direct fade with explicit p14:dur; speed-only, through-black, sounds, unknown effects/attributes and extensions remain source-only."
+    }
+  ],
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/transition-native/run-ICNA1E/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/transition-native/run-ICNA1E/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopen": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/transition-native/run-ICNA1E/native/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/transition-native/run-ICNA1E/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

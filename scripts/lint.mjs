@@ -46,9 +46,9 @@ for (const dirName of packageDirs) {
     );
   }
 
-  if (manifest.private !== false) {
+  if (manifest.private !== false && !(manifest.private === true && typeof manifest.pptkitPrivateReason === "string" && manifest.pptkitPrivateReason.trim())) {
     issues.push(
-      `Package ${expectedPackageName} should set "private": false for future publishing.`,
+      `Package ${expectedPackageName} must be publishable or provide a nonempty pptkitPrivateReason.`,
     );
   }
 }

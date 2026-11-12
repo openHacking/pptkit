@@ -1,0 +1,82 @@
+{
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/source.pptx",
+      "bytes": 25739,
+      "sha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/source.json",
+      "bytes": 22963,
+      "sha256": "03cf7c6267dcfc49729fc927fa303ba46d0dc5a9911f32b9daf82dc9454e5735"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/page-1.svg",
+      "bytes": 798,
+      "sha256": "c3d302bff10cf2250a606a8135819214a59b5d53bd5a2b55e14c6cdba65851ac"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/page-2.svg",
+      "bytes": 806,
+      "sha256": "79c1ece1f1e8404fc782f1186f479ca21bcca9a014b8c84cd4dd55c728cdc52d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/page-3.svg",
+      "bytes": 798,
+      "sha256": "d98929a97978fadef680404353b9cb83cad09e339a784861ecd48aa933eccae7"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/page-4.svg",
+      "bytes": 796,
+      "sha256": "a2781f1f94c775ec5e75e3669a8f968978b204a337e9a88f02bbf6bbf6c6b325"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/browser-preview.png",
+      "bytes": 6322,
+      "sha256": "5da1c41a872d47351422280429163b5fd6f7003f3bcd0f4b4df58d26936e1cf3"
+    }
+  ],
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T17:09:20.879Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj",
+  "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/source.pptx",
+  "sha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89",
+  "slides": [
+    {
+      "index": 1,
+      "id": "page-0",
+      "layoutId": "layout-0",
+      "masterId": "red",
+      "backgroundSource": "master"
+    },
+    {
+      "index": 2,
+      "id": "page-1",
+      "layoutId": "layout-1",
+      "masterId": "blue",
+      "backgroundSource": "master"
+    },
+    {
+      "index": 3,
+      "id": "page-2",
+      "layoutId": "layout-2",
+      "masterId": "red",
+      "backgroundSource": "master"
+    },
+    {
+      "index": 4,
+      "id": "page-3",
+      "layoutId": "layout-3",
+      "masterId": null,
+      "backgroundSource": "theme"
+    }
+  ],
+  "browserPreview": {
+    "file": "/Volumes/github/private/pptkit/.tmp/multi-master/run-DaS9Lj/browser-preview.png",
+    "sha256": "5da1c41a872d47351422280429163b5fd6f7003f3bcd0f4b4df58d26936e1cf3",
+    "browserVersion": "149.0.7827.55"
+  },
+  "nativeReopen": "not performed",
+  "sourceOnlyInspection": "scripts/multi-master-parity.test.mjs",
+  "scope": "Public authoring source, SVG and native OOXML graph; no native app save/edit/reopen or artwork admission yet."
+}

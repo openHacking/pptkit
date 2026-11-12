@@ -1,0 +1,286 @@
+{
+  "scope": "one APNG in Chromium; screenshot samples do not prove timing, UI provenance or other viewers",
+  "svgSha256": "2d6fa5c9b029a868432d1afd26012c20a2990e23b8ba377e65f0f3ec8e0d4dcf",
+  "samplePoint": [
+    400,
+    250
+  ],
+  "modes": {
+    "inline": [
+      {
+        "elapsedBeforeScreenshotMs": 63,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 150,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 223,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 294,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 364,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 441,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 522,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 597,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 676,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 754,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      }
+    ],
+    "svg-image": [
+      {
+        "elapsedBeforeScreenshotMs": 62,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 132,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 211,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 288,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 365,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 443,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 520,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 594,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 667,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 748,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      }
+    ],
+    "direct-image": [
+      {
+        "elapsedBeforeScreenshotMs": 63,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 133,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 212,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 285,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 365,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 443,
+        "pixel": [
+          255,
+          0,
+          0
+        ],
+        "sha256": "04d2fc49a1e59f8beb94d8bc6d33c856ce86ce0d406f517143d2fdc7eef4023f"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 517,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 591,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 668,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      },
+      {
+        "elapsedBeforeScreenshotMs": 744,
+        "pixel": [
+          127,
+          0,
+          128
+        ],
+        "sha256": "218ec65fa80dbd8330cb1df5d02680fd784d0a8ce17df5677d6db83ec0c35700"
+      }
+    ]
+  }
+}

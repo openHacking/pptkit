@@ -7,6 +7,6 @@ test("runCli exposes a help response", () => {
   const result = runCli(["--help"]);
 
   assert.equal(result.exitCode, 0);
-  assert.match(result.output, /bootstrap/i);
+  assert.match(result.output, /PPTKit CLI/);
 });
 

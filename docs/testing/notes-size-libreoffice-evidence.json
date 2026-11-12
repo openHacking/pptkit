@@ -1,0 +1,789 @@
+{
+  "scope": "Three fresh two-slide decks with schema-boundary dimensions; three LibreOfficeDev headless resaves each, independent OPC/XML inventory only. No GUI, PowerPoint or notes PDF.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "generatorSha256": "0d4cd573fe371761d9a2bf7b706f55d02e8ad15a0bc4cdade2470c8ee5c90e83",
+  "runnerSha256": "6cedf6e6182089e7ee9443896065b766ad81b7cf3d2ee2951ca9a469910e004d",
+  "inventorySha256": "396dac23026c69f43c5c3c0c132f5183e343379207453eb61ad2c6d8fc439916",
+  "records": [
+    {
+      "scenario": "portrait",
+      "round": 0,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/portrait.pptx",
+      "sha256": "0835b26a9323b291283491be1c19131171da77448b57cd71dd292654d120340f",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": "2",
+          "preset": "rect",
+          "frame": {
+            "x": 3396343,
+            "y": 457200,
+            "width": 65314,
+            "height": 3657600
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-FIRST",
+            "notesText": "NOTES-portrait-FIRST",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-SECOND",
+            "notesText": "NOTES-portrait-SECOND",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "portrait",
+      "round": 1,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/portrait/1/portrait.pptx",
+      "sha256": "a0420b5489ef4d34984d4e1ad0a0d713999c3191ebb19d46f00017d1ed11db93",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-FIRST",
+            "notesText": "NOTES-portrait-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64800,
+                "height": 3657240
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-SECOND",
+            "notesText": "NOTES-portrait-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64800,
+                "height": 3657240
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "portrait",
+      "round": 2,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/portrait/2/portrait.pptx",
+      "sha256": "2014f2e15c5e004b7c6e2d83b490f73329e6c8c375bff064166aa52a1dc89a44",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-FIRST",
+            "notesText": "NOTES-portrait-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64440,
+                "height": 3656880
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-SECOND",
+            "notesText": "NOTES-portrait-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64440,
+                "height": 3656880
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "portrait",
+      "round": 3,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/portrait/3/portrait.pptx",
+      "sha256": "4b5436883a6e170b39e03f1c86d8d6538926672dd3b047ddb59644bc8a640cd7",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-FIRST",
+            "notesText": "NOTES-portrait-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64080,
+                "height": 3656520
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-portrait-SECOND",
+            "notesText": "NOTES-portrait-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64080,
+                "height": 3656520
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "landscape",
+      "round": 0,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/landscape.pptx",
+      "sha256": "c3b1ddc98ef70830d2d3f1bc46b53b517ef80ede754eb932c05464087c7da267",
+      "inventory": {
+        "slideSize": [
+          51206400,
+          914400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": "2",
+          "preset": "rect",
+          "frame": {
+            "x": 457200,
+            "y": 2232932,
+            "width": 5943600,
+            "height": 106136
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-FIRST",
+            "notesText": "NOTES-landscape-FIRST",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-SECOND",
+            "notesText": "NOTES-landscape-SECOND",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "landscape",
+      "round": 1,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/landscape/1/landscape.pptx",
+      "sha256": "e9c6065de6ff720906b7b3bea5638c96fb6ff9fff1093782208d7bb01ed1ff47",
+      "inventory": {
+        "slideSize": [
+          51206400,
+          914400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-FIRST",
+            "notesText": "NOTES-landscape-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5943240,
+                "height": 105840
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-SECOND",
+            "notesText": "NOTES-landscape-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5943240,
+                "height": 105840
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "landscape",
+      "round": 2,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/landscape/2/landscape.pptx",
+      "sha256": "274a6f06a540faaccc28f88fe37d53860bb0982cdf4c15dfb8c012998b99f703",
+      "inventory": {
+        "slideSize": [
+          51206400,
+          914400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-FIRST",
+            "notesText": "NOTES-landscape-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5942880,
+                "height": 105480
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-SECOND",
+            "notesText": "NOTES-landscape-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5942880,
+                "height": 105480
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "landscape",
+      "round": 3,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/landscape/3/landscape.pptx",
+      "sha256": "7b038a5cc9e183be3f7b3c4d4296d9ed602f4e367c6f4109715b9e9fd3fd4a17",
+      "inventory": {
+        "slideSize": [
+          51206400,
+          914400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-FIRST",
+            "notesText": "NOTES-landscape-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5942520,
+                "height": 105120
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-landscape-SECOND",
+            "notesText": "NOTES-landscape-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 457200,
+                "y": 2233080,
+                "width": 5942520,
+                "height": 105120
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "rounded",
+      "round": 0,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/rounded.pptx",
+      "sha256": "f0621e1cb86bf0b4ca9402bc17cbbf06667174616fa55117904f81ee8a4bc742",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": "2",
+          "preset": "rect",
+          "frame": {
+            "x": 3396343,
+            "y": 457200,
+            "width": 65314,
+            "height": 3657600
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-FIRST",
+            "notesText": "NOTES-rounded-FIRST",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-SECOND",
+            "notesText": "NOTES-rounded-SECOND",
+            "localImage": {
+              "idx": "2",
+              "preset": null,
+              "frame": null
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "rounded",
+      "round": 1,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/rounded/1/rounded.pptx",
+      "sha256": "569c4a15eff53bb1eda82df995aede0b373b164f5db5b7c603c311236292a0d3",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-FIRST",
+            "notesText": "NOTES-rounded-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64800,
+                "height": 3657240
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-SECOND",
+            "notesText": "NOTES-rounded-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64800,
+                "height": 3657240
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "rounded",
+      "round": 2,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/rounded/2/rounded.pptx",
+      "sha256": "f95d008613230e2c83d84bf3ea80e97c73a2e1fa932d1065ed675ceb3f0bb168",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-FIRST",
+            "notesText": "NOTES-rounded-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64440,
+                "height": 3656880
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-SECOND",
+            "notesText": "NOTES-rounded-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64440,
+                "height": 3656880
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "rounded",
+      "round": 3,
+      "file": ".tmp/notes-size-libreoffice/run-yhslt6m2/rounded/3/rounded.pptx",
+      "sha256": "5aded88de98683e856da81779b1d0f4cd6936c2a7338549e84d42bf2b31794e5",
+      "inventory": {
+        "slideSize": [
+          914400,
+          51206400
+        ],
+        "notesSize": [
+          6858000,
+          9144000
+        ],
+        "masterImage": {
+          "idx": null,
+          "preset": "rect",
+          "frame": {
+            "x": 216000,
+            "y": 812520,
+            "width": 7127280,
+            "height": 4008960
+          }
+        },
+        "slides": [
+          {
+            "slide": "ppt/slides/slide1.xml",
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-FIRST",
+            "notesText": "NOTES-rounded-FIRST",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64080,
+                "height": 3656520
+              }
+            }
+          },
+          {
+            "slide": "ppt/slides/slide2.xml",
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "master": "ppt/notesMasters/notesMaster1.xml",
+            "slideText": "SLIDE-rounded-SECOND",
+            "notesText": "NOTES-rounded-SECOND",
+            "localImage": {
+              "idx": null,
+              "preset": "rect",
+              "frame": {
+                "x": 3396240,
+                "y": 457200,
+                "width": 64080,
+                "height": 3656520
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "logs": [
+    {
+      "scenario": "portrait",
+      "round": 1,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait/1/portrait.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "portrait",
+      "round": 2,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait/1/portrait.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait/2/portrait.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "portrait",
+      "round": 3,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait/2/portrait.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/portrait/3/portrait.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "landscape",
+      "round": 1,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape/1/landscape.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "landscape",
+      "round": 2,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape/1/landscape.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape/2/landscape.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "landscape",
+      "round": 3,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape/2/landscape.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/landscape/3/landscape.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "rounded",
+      "round": 1,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded/1/rounded.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "rounded",
+      "round": 2,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded/1/rounded.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded/2/rounded.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "scenario": "rounded",
+      "round": 3,
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded/2/rounded.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/notes-size-libreoffice/run-yhslt6m2/rounded/3/rounded.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,0 +1,946 @@
+{
+  "scope": "First-open PowerPoint PDF versus Chromium SVG for suffix characters in 12 mixed-size Arial shape samples; compares per-character left/right and baseline, not native editing, reopening, other fonts or transforms.",
+  "source": "docs/testing/tab-shape-mixed-size-powerpoint-evidence.json",
+  "sourceSha256": "68a137b1268fa2469f185f64a784339f75c6f8bd2e6a1cf44d0b8416151298ba",
+  "runnerSha256": "5c38785559ee47e478f36cb5f5a9f74d0729186fdb1b02e7e517e3fb30666570",
+  "browser": "149.0.7827.55",
+  "bundles": [
+    {
+      "name": "@pptkit/core",
+      "file": "packages/core/dist/browser/index.js",
+      "sha256": "b1cffe8969bcc46adc5272462ebfe402b0e27586a2f3a8a21d185826150a682e"
+    },
+    {
+      "name": "@pptkit/layout",
+      "file": "packages/layout/dist/browser/index.js",
+      "sha256": "ee1168de2b8e56ac9bc408a58e99a10d74693a4ac22b48290095d5537b425844"
+    },
+    {
+      "name": "@pptkit/svg-renderer",
+      "file": "packages/svg-renderer/dist/browser/index.js",
+      "sha256": "3ad9176180968c68bcfa07f7c2710b2976bf108c6eecd08a27ab9b051aca4060"
+    }
+  ],
+  "fonts": [
+    {
+      "weight": "Regular",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "weight": "Bold",
+      "file": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "selectedFonts": [
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "ArialMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ],
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "Arial-BoldMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ]
+  ],
+  "items": [
+    {
+      "align": "left",
+      "word": "I",
+      "suffixSize": 28,
+      "bold": false,
+      "chars": [
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 280.0000462582271,
+            "right": 287.72551711741636,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "I",
+            "left": 280,
+            "right": 287.78125,
+            "baseline": 28
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": 0.05573288258364073,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "left",
+      "word": "WIDE",
+      "suffixSize": 36,
+      "bold": false,
+      "chars": [
+        {
+          "char": "W",
+          "native": {
+            "char": "W",
+            "left": 280.0000462582271,
+            "right": 314.58026826687825,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "W",
+            "left": 280,
+            "right": 313.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": -0.5958932668782495,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 314.0014622005303,
+            "right": 324.18505669826834,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "I",
+            "left": 313.96875,
+            "right": 323.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.03271220053028401,
+          "rightDifference": -0.20068169826834037,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 324.00919833831637,
+            "right": 350.4571854776481,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "D",
+            "left": 323.96875,
+            "right": 349.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.04044833831636652,
+          "rightDifference": -0.47281047764812456,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 350.0249794426236,
+            "right": 374.4582280499756,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "E",
+            "left": 349.96875,
+            "right": 374,
+            "baseline": 36
+          },
+          "leftDifference": -0.05622944262358942,
+          "rightDifference": -0.4582280499756166,
+          "baselineDifference": 0.27113457389651785
+        }
+      ]
+    },
+    {
+      "align": "left",
+      "word": "MIXED",
+      "suffixSize": 16,
+      "bold": true,
+      "chars": [
+        {
+          "char": "M",
+          "native": {
+            "char": "M",
+            "left": 280.0000462582271,
+            "right": 293.67879674861933,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "M",
+            "left": 280,
+            "right": 293.328125,
+            "baseline": 20
+          },
+          "leftDifference": -0.000046258227087037085,
+          "rightDifference": -0.3506717486193338,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 293.37499584226646,
+            "right": 297.940066078776,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "I",
+            "left": 293.328125,
+            "right": 297.78125,
+            "baseline": 20
+          },
+          "leftDifference": -0.04687084226645766,
+          "rightDifference": -0.1588160787759989,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "X",
+          "native": {
+            "char": "X",
+            "left": 297.88259023162817,
+            "right": 308.83542049719665,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "X",
+            "left": 297.765625,
+            "right": 308.453125,
+            "baseline": 20
+          },
+          "leftDifference": -0.1169652316281713,
+          "rightDifference": -0.382295497196651,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 308.4987762496164,
+            "right": 319.4516065151849,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "E",
+            "left": 308.4375,
+            "right": 319.125,
+            "baseline": 20
+          },
+          "leftDifference": -0.061276249616412315,
+          "rightDifference": -0.32660651518489203,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 319.1150008161273,
+            "right": 330.9709844169249,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "D",
+            "left": 319.109375,
+            "right": 330.671875,
+            "baseline": 20
+          },
+          "leftDifference": -0.0056258161272921825,
+          "rightDifference": -0.2991094169249209,
+          "baselineDifference": 0.8375484773649866
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "I",
+      "suffixSize": 28,
+      "bold": false,
+      "chars": [
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 276.1249560271496,
+            "right": 283.8504268863389,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "I",
+            "left": 276.109375,
+            "right": 283.890625,
+            "baseline": 28
+          },
+          "leftDifference": -0.015581027149607962,
+          "rightDifference": 0.040198113661119805,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "WIDE",
+      "suffixSize": 36,
+      "bold": false,
+      "chars": [
+        {
+          "char": "W",
+          "native": {
+            "char": "W",
+            "left": 232.99999140918638,
+            "right": 267.58021341783757,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "W",
+            "left": 233,
+            "right": 266.984375,
+            "baseline": 36
+          },
+          "leftDifference": 0.000008590813621367488,
+          "rightDifference": -0.5958384178375695,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 267.0014073514896,
+            "right": 277.18500184922766,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "I",
+            "left": 266.96875,
+            "right": 276.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.032657351489604025,
+          "rightDifference": -0.2006268492276604,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 277.0091434892757,
+            "right": 303.45713062860744,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "D",
+            "left": 276.96875,
+            "right": 302.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.040393489275686534,
+          "rightDifference": -0.4727556286074446,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 303.0249245935829,
+            "right": 327.45817320093494,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "E",
+            "left": 302.96875,
+            "right": 327,
+            "baseline": 36
+          },
+          "leftDifference": -0.05617459358290944,
+          "rightDifference": -0.45817320093493663,
+          "baselineDifference": 0.27113457389651785
+        }
+      ]
+    },
+    {
+      "align": "center",
+      "word": "MIXED",
+      "suffixSize": 16,
+      "bold": true,
+      "chars": [
+        {
+          "char": "M",
+          "native": {
+            "char": "M",
+            "left": 254.69005005360447,
+            "right": 268.3688005439967,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "M",
+            "left": 254.6640625,
+            "right": 267.9921875,
+            "baseline": 20
+          },
+          "leftDifference": -0.02598755360446603,
+          "rightDifference": -0.3766130439967128,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 268.0649996376439,
+            "right": 272.6300698741534,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "I",
+            "left": 267.9921875,
+            "right": 272.4453125,
+            "baseline": 20
+          },
+          "leftDifference": -0.0728121376438935,
+          "rightDifference": -0.1847573741533779,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "X",
+          "native": {
+            "char": "X",
+            "left": 272.57259402700555,
+            "right": 283.52542429257403,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "X",
+            "left": 272.4296875,
+            "right": 283.1171875,
+            "baseline": 20
+          },
+          "leftDifference": -0.1429065270055503,
+          "rightDifference": -0.40823679257403,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 283.18878004499385,
+            "right": 294.1416103105623,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "E",
+            "left": 283.1015625,
+            "right": 293.7890625,
+            "baseline": 20
+          },
+          "leftDifference": -0.08721754499384815,
+          "rightDifference": -0.35254781056232787,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 293.80500461150467,
+            "right": 305.66098821230236,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "D",
+            "left": 293.7734375,
+            "right": 305.3359375,
+            "baseline": 20
+          },
+          "leftDifference": -0.031567111504671175,
+          "rightDifference": -0.3250507123023567,
+          "baselineDifference": 0.8375484773649866
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "I",
+      "suffixSize": 28,
+      "bold": false,
+      "chars": [
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 272.2499428931173,
+            "right": 279.97541375230657,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "I",
+            "left": 272.21875,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": -0.031192893117292897,
+          "rightDifference": 0.02458624769343487,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "WIDE",
+      "suffixSize": 36,
+      "bold": false,
+      "chars": [
+        {
+          "char": "W",
+          "native": {
+            "char": "W",
+            "left": 186.00001365719083,
+            "right": 220.58023566584203,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "W",
+            "left": 186,
+            "right": 219.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.000013657190834237554,
+          "rightDifference": -0.5958606658420251,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 220.00142959949406,
+            "right": 230.18502409723214,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "I",
+            "left": 219.96875,
+            "right": 229.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.03267959949405963,
+          "rightDifference": -0.2006490972321444,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 230.00916573728014,
+            "right": 256.4571528766119,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "D",
+            "left": 229.96875,
+            "right": 255.984375,
+            "baseline": 36
+          },
+          "leftDifference": -0.04041573728014214,
+          "rightDifference": -0.47277787661187176,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 256.0249468415874,
+            "right": 280.45819544893936,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "E",
+            "left": 255.96875,
+            "right": 280,
+            "baseline": 36
+          },
+          "leftDifference": -0.056196841587393465,
+          "rightDifference": -0.4581954489393638,
+          "baselineDifference": 0.27113457389651785
+        }
+      ]
+    },
+    {
+      "align": "right",
+      "word": "MIXED",
+      "suffixSize": 16,
+      "bold": true,
+      "chars": [
+        {
+          "char": "M",
+          "native": {
+            "char": "M",
+            "left": 229.37496544400298,
+            "right": 243.05371593439526,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "M",
+            "left": 229.328125,
+            "right": 242.65625,
+            "baseline": 20
+          },
+          "leftDifference": -0.046840444002981485,
+          "rightDifference": -0.3974659343952567,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "I",
+          "native": {
+            "char": "I",
+            "left": 242.74991502804238,
+            "right": 247.3149852645519,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "I",
+            "left": 242.65625,
+            "right": 247.109375,
+            "baseline": 20
+          },
+          "leftDifference": -0.09366502804238053,
+          "rightDifference": -0.20561026455189335,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "X",
+          "native": {
+            "char": "X",
+            "left": 247.25750941740407,
+            "right": 258.2103396829725,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "X",
+            "left": 247.09375,
+            "right": 257.78125,
+            "baseline": 20
+          },
+          "leftDifference": -0.16375941740406574,
+          "rightDifference": -0.42908968297251704,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "E",
+          "native": {
+            "char": "E",
+            "left": 257.87369543539234,
+            "right": 268.8265257009608,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "E",
+            "left": 257.765625,
+            "right": 268.453125,
+            "baseline": 20
+          },
+          "leftDifference": -0.10807043539233518,
+          "rightDifference": -0.3734007009608149,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "D",
+          "native": {
+            "char": "D",
+            "left": 268.48992000190316,
+            "right": 280.34590360270084,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "D",
+            "left": 268.4375,
+            "right": 280,
+            "baseline": 20
+          },
+          "leftDifference": -0.05242000190315821,
+          "rightDifference": -0.34590360270084375,
+          "baselineDifference": 0.8375484773649866
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "1.2",
+      "suffixSize": 28,
+      "bold": false,
+      "chars": [
+        {
+          "char": "1",
+          "native": {
+            "char": "1",
+            "left": 264.3750579604571,
+            "right": 279.82599967883573,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "1",
+            "left": 264.421875,
+            "right": 280,
+            "baseline": 28
+          },
+          "leftDifference": 0.04681703954287286,
+          "rightDifference": 0.17400032116427155,
+          "baselineDifference": -0.07094181942685296
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 280.0010870683364,
+            "right": 287.7265579275257,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 287.78125,
+            "baseline": 28
+          },
+          "leftDifference": -0.001087068336403263,
+          "rightDifference": 0.054692072474324505,
+          "baselineDifference": -0.07094181942685296
+        },
+        {
+          "char": "2",
+          "native": {
+            "char": "2",
+            "left": 287.76267789317126,
+            "right": 303.2136196115498,
+            "baseline": 28.070941819426853
+          },
+          "svg": {
+            "char": "2",
+            "left": 287.765625,
+            "right": 303.359375,
+            "baseline": 28
+          },
+          "leftDifference": 0.0029471068287421076,
+          "rightDifference": 0.14575538845019764,
+          "baselineDifference": -0.07094181942685296
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "123.45",
+      "suffixSize": 36,
+      "bold": false,
+      "chars": [
+        {
+          "char": "1",
+          "native": {
+            "char": "1",
+            "left": 220.00004185268165,
+            "right": 240.36719229963524,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "1",
+            "left": 219.921875,
+            "right": 239.953125,
+            "baseline": 36
+          },
+          "leftDifference": -0.07816685268164747,
+          "rightDifference": -0.41406729963523503,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "2",
+          "native": {
+            "char": "2",
+            "left": 240.00086568967822,
+            "right": 260.3680161366318,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "2",
+            "left": 239.9375,
+            "right": 259.96875,
+            "baseline": 36
+          },
+          "leftDifference": -0.06336568967822132,
+          "rightDifference": -0.3992661366318089,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "3",
+          "native": {
+            "char": "3",
+            "left": 260.0017280751974,
+            "right": 280.36887852215096,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "3",
+            "left": 259.953125,
+            "right": 280,
+            "baseline": 36
+          },
+          "leftDifference": -0.048603075197377166,
+          "rightDifference": -0.3688785221509647,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 280.00255191219395,
+            "right": 290.186146409932,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 290.015625,
+            "baseline": 36
+          },
+          "leftDifference": -0.0025519121939510114,
+          "rightDifference": -0.17052140993200737,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "4",
+          "native": {
+            "char": "4",
+            "left": 290.0030023792148,
+            "right": 310.3701528261684,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "4",
+            "left": 290,
+            "right": 310.03125,
+            "baseline": 36
+          },
+          "leftDifference": -0.003002379214819939,
+          "rightDifference": -0.3389028261684075,
+          "baselineDifference": 0.27113457389651785
+        },
+        {
+          "char": "5",
+          "native": {
+            "char": "5",
+            "left": 310.0038262162114,
+            "right": 330.370976663165,
+            "baseline": 35.72886542610348
+          },
+          "svg": {
+            "char": "5",
+            "left": 310.015625,
+            "right": 330.046875,
+            "baseline": 36
+          },
+          "leftDifference": 0.011798783788606215,
+          "rightDifference": -0.32410166316498135,
+          "baselineDifference": 0.27113457389651785
+        }
+      ]
+    },
+    {
+      "align": "decimal",
+      "word": "0.678",
+      "suffixSize": 16,
+      "bold": true,
+      "chars": [
+        {
+          "char": "0",
+          "native": {
+            "char": "0",
+            "left": 271.12498135903587,
+            "right": 280.2550832835323,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "0",
+            "left": 271.09375,
+            "right": 280,
+            "baseline": 20
+          },
+          "leftDifference": -0.031231359035871264,
+          "rightDifference": -0.2550832835323149,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": ".",
+          "native": {
+            "char": ".",
+            "left": 280.0005473890204,
+            "right": 284.56561762552997,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": ".",
+            "left": 280,
+            "right": 284.453125,
+            "baseline": 20
+          },
+          "leftDifference": -0.0005473890204257259,
+          "rightDifference": -0.11249262552996697,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "6",
+          "native": {
+            "char": "6",
+            "left": 284.5081417783821,
+            "right": 293.6382437028785,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "6",
+            "left": 284.4375,
+            "right": 293.34375,
+            "baseline": 20
+          },
+          "leftDifference": -0.07064177838208252,
+          "rightDifference": -0.29449370287852616,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "7",
+          "native": {
+            "char": "7",
+            "left": 293.3837078083667,
+            "right": 302.51380973286314,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "7",
+            "left": 293.34375,
+            "right": 302.25,
+            "baseline": 20
+          },
+          "leftDifference": -0.039957808366693826,
+          "rightDifference": -0.26380973286313747,
+          "baselineDifference": 0.8375484773649866
+        },
+        {
+          "char": "8",
+          "native": {
+            "char": "8",
+            "left": 302.25931238687383,
+            "right": 311.3894143113703,
+            "baseline": 19.162451522635013
+          },
+          "svg": {
+            "char": "8",
+            "left": 302.234375,
+            "right": 311.140625,
+            "baseline": 20
+          },
+          "leftDifference": -0.02493738687383029,
+          "rightDifference": -0.24878931137027394,
+          "baselineDifference": 0.8375484773649866
+        }
+      ]
+    }
+  ],
+  "maxHorizontal": 0.5958932668782495,
+  "maxBaseline": 0.8375484773649866
+}

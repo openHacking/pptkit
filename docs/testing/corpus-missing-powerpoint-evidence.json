@@ -1,0 +1,27 @@
+{
+  "scope": "Fresh missing-asset corpus sample; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. Opened, saved, closed and reopened once; no repair prompt observed. Page appeared blank and no image object was exposed. No content edit was performed. UI provenance observational, not authenticated; other applications remain untested.",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/missing-asset.pptx",
+    "sha256": "ed6dd8d479b0193dc257aec014450cb287126d3b969e4d4546cc8b332b86a56d",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-missing-powerpoint-resave.pptx",
+    "sha256": "64bb78b94b59a39ebf4b074c57769d67d4f026c275f3da89ef6b3e11f18a6bbe"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-missing",
+  "captures": {
+    "first.png": "57e983e718f337e51798a56d96ed4c0f15894662a0a47beb239d59b6603f5fa3",
+    "first.ax.txt": "ee5611191999304f2f6d95b76b2fe72f3b733c1fd3559f384930dd680477b911",
+    "reopen.png": "5768b934ed096a0ccc859d643f144d07569591a3243d69a7de48143889580f57",
+    "reopen.ax.txt": "ee5611191999304f2f6d95b76b2fe72f3b733c1fd3559f384930dd680477b911"
+  },
+  "exportWarningCodes": [
+    "asset-read-failed",
+    "image-omitted"
+  ],
+  "previewWarningCodes": [
+    "asset-path-unsupported"
+  ],
+  "observation": "Both source and saved page contain no picture object, image relationship, or packaged media part."
+}

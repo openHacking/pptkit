@@ -1,0 +1,17 @@
+{
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "platform": "macOS 26.5",
+  "date": "2026-10-31",
+  "scope": "Previously edited text corpus fixture reopened in PowerPoint; Tab twice focuses internal link, Return reaches hidden slide 2; notes pane displays the saved notes. No new edit/save was performed in this observation.",
+  "artifactDirectory": ".tmp/corpus-theme-change-20261031",
+  "files": {
+    "text-surface.pptx": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49",
+    "text-notes.ax.txt": "2f0d41158d9e3a81360eab6914d8ffe7375234d23c4a138405ae2b3aefffe2b5",
+    "text-notes.png": "6792b8bd70f3557ef351c8bb8c0feee1b4922f43191b8bef84ab6e2d640b6f5f",
+    "link-before.ax.txt": "4566e9da68906b9c5157d530f6e72ee58662c850d49d43f750b8edc20e338186",
+    "link-before.png": "8cc06c41fffecca87ff04e93ed934b37cca5145487615d36950725af9fb89566",
+    "link-focused.png": "f30c2d39c65f351407fe099adcc3f50e56a0f517bd33b48f227606306218b80c",
+    "link-destination.ax.txt": "adc740ebf7b3e1e19d1db4224384c883dceb7a04cfaf43ba1cdd3a4ab25d1c96",
+    "link-destination.png": "ea8ad944a1a3befac6c8ccbd20a42983380180ddc0ae29d7f611299aedfac9be"
+  }
+}

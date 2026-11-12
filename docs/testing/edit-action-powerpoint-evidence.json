@@ -1,0 +1,11 @@
+{
+  "scope": "Three generated internal slide actions were tested in PowerPoint slide show using Tab to focus and Return to activate: shape 1→3, text run 3→1 and table-cell run 3→2. After selecting the slide-2 title, pressing Right, saving and reopening once, all three keyboard activations reached the same pages again; no repair prompt was observed. On that reopened file, clicking each link object exposed by the accessibility tree also reached its expected page (text 3→1, shape 1→3, table 3→2). UI provenance is observational and not authenticated.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "system": "macOS 26.5 (25F71)",
+  "artifacts": {
+    "source": { "path": "tests/fixtures/edit-action-source.pptx", "sha256": "7420b27867a421382d5c57391141810b963f0bc33a96f1a521dc87bda64d0777" },
+    "saved": { "path": "tests/fixtures/edit-action-powerpoint.pptx", "sha256": "c77a60e59544efe938697a694e4d1f2591725d283f7e45b85cc0b8a70f916860" },
+    "generator": { "path": "scripts/research/generate-edit-action-native.mjs", "sha256": "81e29b59be30130225f9011c89d4ef4f8bfc5a09c04725b01aae7e909df2a633" }
+  },
+  "limitations": "One three-slide sample and one native save/reopen. Earlier coordinate clicks advanced normally rather than reaching their intended target; their coordinate mapping or hotspot behavior was not resolved. Accessibility-object clicks establish only those selected points, not the full clickable area. External URLs, native editing of links, other consumers and source-preserving edits were not tested."
+}

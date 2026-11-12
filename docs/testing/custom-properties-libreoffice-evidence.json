@@ -1,0 +1,239 @@
+{
+  "scope": "One independently authored fixture, three headless resaves; not interactive PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "1df7b73b76fc0569c6e36a4e7fafee332d38d0be16c08207a77e6b1e03dbcc48",
+  "seed": {
+    "path": ".tmp/core-metadata-libreoffice/run-DQ1cui/generated.pptx",
+    "sha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6"
+  },
+  "records": [
+    {
+      "round": 0,
+      "path": ".tmp/custom-properties-libreoffice/run-y6ebf8fm/input.pptx",
+      "sha256": "4f02960467a9992ead0fcf92d10ba5821c9872dfd4b2f63f1816ea04f5c235a0",
+      "properties": [
+        {
+          "name": "Text",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "中文 & text"
+        },
+        {
+          "name": "Boolean",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}bool",
+          "value": "false"
+        },
+        {
+          "name": "Integer",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}i4",
+          "value": "-2147483648"
+        },
+        {
+          "name": "Real",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Date",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}filetime",
+          "value": "2020-01-02T03:04:05Z"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "path": ".tmp/custom-properties-libreoffice/run-y6ebf8fm/round-1/input.pptx",
+      "sha256": "f4ef1f1ca8835e8762a8568b6d016411c16d4d50c49ce77504e7ac7f1d13109b",
+      "properties": [
+        {
+          "name": "Boolean",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}bool",
+          "value": "0"
+        },
+        {
+          "name": "Date",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Integer",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1"
+        },
+        {
+          "name": "Text",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "path": ".tmp/custom-properties-libreoffice/run-y6ebf8fm/round-2/input.pptx",
+      "sha256": "cdce0cccab2ba37a7bbf31309df1a2e2ed8458e4dab36b65d4f903e05738e260",
+      "properties": [
+        {
+          "name": "Boolean",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}bool",
+          "value": "0"
+        },
+        {
+          "name": "Date",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Integer",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1"
+        },
+        {
+          "name": "Text",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "path": ".tmp/custom-properties-libreoffice/run-y6ebf8fm/round-3/input.pptx",
+      "sha256": "53f6844c3cd22137f70efe0bae793aef898753fe94970175f2b0163f7a548d92",
+      "properties": [
+        {
+          "name": "Boolean",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}bool",
+          "value": "0"
+        },
+        {
+          "name": "Date",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Integer",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}r8",
+          "value": "1"
+        },
+        {
+          "name": "Text",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "{http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes}lpwstr",
+          "value": "中文 & text"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-properties-libreoffice/run-y6ebf8fm/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

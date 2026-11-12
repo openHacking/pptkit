@@ -1,0 +1,27 @@
+{
+  "scope": "Newly generated theme-layout corpus sample; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. Edited title placeholder text, saved, closed and reopened once; no repair prompt observed. UI provenance is observational, not authenticated. This is not a live theme change, calibrated visual parity, hidden-slide render or native inheritance proof.",
+  "font": "PPTKit Fixture theme heading reported by PowerPoint; actual substituted font not independently identified",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/theme-layout.pptx",
+    "sha256": "66ee758482b05422fbae5a4329da4485dbbf1638b0b71be63452d7099c981dfd",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-theme-powerpoint-interactive.pptx",
+    "sha256": "fe900d73329f71129f4da3559820b5e1091cc3e2c768ed3180c3935911a1b558"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-theme",
+  "captures": {
+    "first.png": "c7a98a08c2e3deb2616f4cfd5042d0d59cfd80bdf4007a6843d52be9c90e734b",
+    "first.ax.txt": "91bb375045aec6bef6b85f7f795e7629b2743d2e185c33c4610a973b2cb6239a",
+    "reopen.png": "561bf0d934204e0ec7e73b5d3f8ab33e3623a861e164277a58457518a8410c1f",
+    "reopen.ax.txt": "e3467339e9882829a2bd1fd6418291872d9bc7fea96e97678cc308a7902a781f"
+  },
+  "operation": "Replace Inherited with Edited in first slide title, save, close, reopen.",
+  "observations": [
+    "Edited title retained",
+    "second slide hidden",
+    "title placeholder type title index 1",
+    "slide -> layout2 -> master1 -> theme1 relationships retained"
+  ]
+}

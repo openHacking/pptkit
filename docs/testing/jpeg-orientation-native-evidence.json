@@ -1,0 +1,80 @@
+{
+  "scope": "One synthetic JPEG and PNG control, PowerPoint 16.104 manual slideshow and Chromium browser preview. Pixel samples and package inspection do not prove UI provenance, full visual equivalence or other images/versions.",
+  "directory": ".tmp/jpeg-orientation-native-01",
+  "files": {
+    "orientation6.jpg": "f88b5aded39e8cc6687a60602b329d3d26b02e4614c33ca496cc9ae1772a573e",
+    "normalized.png": "a633855485145c52a351da309590520ab1278bae7d73a4cf6beec0c439cb031b",
+    "candidate.pptx": "a7b4559a69c0409bed8ca9185f6b181e5070e7ac9bebdf6acdfe01f616b0541f",
+    "preview.svg": "1e6d0f6a294467ad432db50f1f1bfb5412aba5c766dc363b7e64775c8abc5418",
+    "powerpoint.png": "24b685e88976f03d2bfeb2acc848724f795e749ed88f636cda26f935fe624f7e",
+    "browser.png": "bcaba05f6d49deebe206a1f291e2488ebf9c0f2723219db9a0e6fcd6a8eaa79f"
+  },
+  "producerSha256": "d0d3207e168cf703d964dd2d4f3198330b594444d48287e177c72675c41b89c8",
+  "browserInfo": {
+    "version": "149.0.7827.55",
+    "requests": []
+  },
+  "observedGrids": {
+    "nativeJpeg": [
+      [
+        "red",
+        "green",
+        "blue"
+      ],
+      [
+        "yellow",
+        "magenta",
+        "cyan"
+      ]
+    ],
+    "nativeControl": [
+      [
+        "yellow",
+        "red"
+      ],
+      [
+        "magenta",
+        "green"
+      ],
+      [
+        "cyan",
+        "blue"
+      ]
+    ],
+    "browserJpeg": [
+      [
+        "yellow",
+        "red"
+      ],
+      [
+        "magenta",
+        "green"
+      ],
+      [
+        "cyan",
+        "blue"
+      ]
+    ],
+    "browserControl": [
+      [
+        "yellow",
+        "red"
+      ],
+      [
+        "magenta",
+        "green"
+      ],
+      [
+        "cyan",
+        "blue"
+      ]
+    ]
+  },
+  "negativeCasesRejected": 3,
+  "oracleSha256": "fce6332ae77a7102f3a7a5bad5c6a5fbd3b3b2b2e43c54e3ce8e5acc7e62a04d",
+  "scripts": {
+    "scripts/prepare-jpeg-orientation-source.py": "a495c14ed6ce015a2de2b50112aece044f8cf680a11ad008de2e6525ae34d871",
+    "scripts/prepare-jpeg-orientation-native.mjs": "9258ce70af207d66775a39d7cfc166f2e50b527a7d073540928a7ee6dfbc7246",
+    "scripts/inspect-jpeg-orientation-browser.mjs": "71e2960627242f00ad96afa2806337216c556175686f1bf222079d157259730c"
+  }
+}

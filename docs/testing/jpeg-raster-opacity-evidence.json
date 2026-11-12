@@ -1,0 +1,163 @@
+{
+  "producerSha256": "fa70b00f6704883c984c7b67ca1bb53bee7e7a239ec5a51100f38bd82c91c519",
+  "fixtures": {
+    "exif-orientation6.jpg": "ffae1ea68f8c3cac10a69b3b9aadea0a23ddba1487cc17c6ce8ccf26e78441f1",
+    "jpeg-12bit-sequential.jpg": "4cbd30ea571652ace5a2450d0234dadf7067c3d91da59e750f7e1933a2115117",
+    "jpeg-12bit-progressive.jpg": "5b096a41566f899b48aa258689379198dc208fe7128df75655f7e8b5908b9966"
+  },
+  "observations": [
+    {
+      "engine": "chromium",
+      "version": "149.0.7827.55",
+      "networkRequests": [],
+      "results": [
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "chromium-0-browser.png",
+          "pngSha256": "c8c7a1d26a217a2fe40489de9a52f93011213d48e16f700522d7828ad12ee0b4"
+        },
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "require-opaque",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "chromium-0-require-opaque.png",
+          "pngSha256": "c8c7a1d26a217a2fe40489de9a52f93011213d48e16f700522d7828ad12ee0b4"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 24,
+          "png": "chromium-1-browser.png",
+          "pngSha256": "ac88ba3f83f41800abfe1164ece2241a68971ae2ae97042740436cd6afb0ec4a"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "require-opaque",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 24,
+          "png": "chromium-2-browser.png",
+          "pngSha256": "ac88ba3f83f41800abfe1164ece2241a68971ae2ae97042740436cd6afb0ec4a"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "require-opaque",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "version": "151.0",
+      "networkRequests": [],
+      "results": [
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "firefox-0-browser.png",
+          "pngSha256": "eef491ea46fcc649d8cd81c693e3d31da73bd923985330369e0e6fa20132758b"
+        },
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "require-opaque",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "firefox-0-require-opaque.png",
+          "pngSha256": "eef491ea46fcc649d8cd81c693e3d31da73bd923985330369e0e6fa20132758b"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "browser",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "require-opaque",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "browser",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "require-opaque",
+          "status": "rejected",
+          "code": "raster-resource-unavailable"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "networkRequests": [],
+      "results": [
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-0-browser.png",
+          "pngSha256": "3c08e5a8b63f8d8659cb6d530cd949be7ad3c25ad3c5f259291d53269aac7d25"
+        },
+        {
+          "fixture": "exif-orientation6.jpg",
+          "policy": "require-opaque",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-0-require-opaque.png",
+          "pngSha256": "3c08e5a8b63f8d8659cb6d530cd949be7ad3c25ad3c5f259291d53269aac7d25"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-1-browser.png",
+          "pngSha256": "3a061bd3383b3dee001921be04874bbfde8f9b36373a0a5764df125785bcf05a"
+        },
+        {
+          "fixture": "jpeg-12bit-sequential.jpg",
+          "policy": "require-opaque",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-1-require-opaque.png",
+          "pngSha256": "3a061bd3383b3dee001921be04874bbfde8f9b36373a0a5764df125785bcf05a"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "browser",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-2-browser.png",
+          "pngSha256": "3a061bd3383b3dee001921be04874bbfde8f9b36373a0a5764df125785bcf05a"
+        },
+        {
+          "fixture": "jpeg-12bit-progressive.jpg",
+          "policy": "require-opaque",
+          "status": "rendered",
+          "nonopaque": 0,
+          "png": "webkit-2-require-opaque.png",
+          "pngSha256": "3a061bd3383b3dee001921be04874bbfde8f9b36373a0a5764df125785bcf05a"
+        }
+      ]
+    }
+  ]
+}

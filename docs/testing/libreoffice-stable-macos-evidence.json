@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native headless save/reopen and paired PDF raster observation; no interactive editing, repair-dialog or calibrated visual parity claim.",
+  "application": "LibreOffice 26.8.2.2 9dea406ab7695df6325b11b0e19fdca8db4b7276",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "pymupdfVersion": "1.28.0",
+  "pinnedCorpusEvidenceSha256": "2600cc6d78976be42cdf07f4d4a20c0508a8ca459cd069ab43878b3b2d7c59ea",
+  "runnerSha256": "284e539c586f4232941222f0e8507e99ff1b2f28082a1044b680a7a0b69c7f11",
+  "rasterAuditSha256": "15944c6f7c0544bb146d8786193dc1244caa6c832fe44904f5cff47970f69cb5",
+  "directory": ".tmp/corpus-native-resave-hj6qx2vp",
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fixtures/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/text.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/theme-layout.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/geometry.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/images.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/table.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/charts.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/missing-asset.pptx using filter : Impress MS PowerPoint 2007 XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nFontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "sourcePdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fixtures/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/source-pdf/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nFontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "reopenedPdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/saved/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-hj6qx2vp/reopened-pdf/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nFontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "fixtures": [
+    {
+      "fixture": "text",
+      "source": {
+        "sha256": "5430ce4c5e7c1bf81363da056f83bed7c8c0e460dbbdda9321155e7343dad8ee",
+        "bytes": 11501,
+        "xmlParts": 25,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Rich & <editable> text",
+              "Numbered paragraph",
+              "Bulleted paragraph",
+              "Go to notes"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "9ca4cec809eac48cc3ceb51a9ae40147f14b72a2f1a7130ee76dcca162f2ffee",
+        "bytes": 12817,
+        "xmlParts": 22,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Rich & <editable> text",
+              "Numbered paragraph",
+              "Bulleted paragraph",
+              "Go to notes"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "4b8c1a7ba8fd35f2fade833f97d0f92a2f690f0bd5448d0dfc613d121541f96a"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "7b73fd87f6de22bcb089d48bd1457e20e2b42bf8dc2aa0e70ec7ceda79a7fede"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 455,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            46,
+            38,
+            223,
+            244
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "theme-layout",
+      "source": {
+        "sha256": "3dc639e4ed69a8a20a5aee96a8c4b4efa2544c8d0c820a785586fd90561309ca",
+        "bytes": 12337,
+        "xmlParts": 27,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Inherited title"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "0c489854b5c44bb81bd643412c53e2c147dd555521fe6df020c9f5117bfec1fc",
+        "bytes": 10012,
+        "xmlParts": 19,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Inherited title"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "d00ed5a23013898694ef232a7eab99f11d53def6dc1af69b0c3ede2f213dfaf8"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "1cfe134b3b37a0182cdbaf79ce8150572dcb62d14498551af132054c7b8f558d"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "geometry",
+      "source": {
+        "sha256": "e7c4df39945e2d7497233f8b43c358cf87bd3df20b14b2b1f22543a19ad40732",
+        "bytes": 9859,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Source",
+              "Nested"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "581ecd787a7ae8753127e0065d099338865af4a2487fa90f81f111119c648a79",
+        "bytes": 7708,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Source",
+              "Nested"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "e3b447b37b6584803921ec2d4bf0ed9d788dc6af66bb27d8bb26d3af55938839"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "fa81a58dcf87b4190ab69197cfca9157e06e8377df30fc1b8f1a60e4ff7558ae"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 937,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            39,
+            39,
+            579,
+            365
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "images",
+      "source": {
+        "sha256": "223c870075c7d75c11650774e549b6c29f28aa3c3f9c21c1c74eb9c873f8af88",
+        "bytes": 10091,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "stretch",
+              "contain",
+              "cover",
+              "crop"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "2c1cabaed621282c38c2c8729705c792cbd5fe5f7e26e32d26218778b2ae415f",
+        "bytes": 7815,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "stretch",
+              "contain",
+              "cover",
+              "crop"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "192e2f44f71b8fedadc20cce8317b2dce97cb6c5d1b30f8045a07002dbbcda1f"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "93afa0b859cce99484d61ebdf10bb356e5732256bb29ee8c451bc647db0a0b95"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 292,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            87,
+            189,
+            512,
+            241
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "table",
+      "source": {
+        "sha256": "646c609a7dc34145dce54599078904a9c26f2ac86ba923c1e1433eeab5a5ef0f",
+        "bytes": 9655,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Merged heading",
+              "Two rows",
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "0aac4fea3859e37102925daa5e06f26a1f0757e15871cb3345340c118fa47088",
+        "bytes": 7364,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Merged heading",
+              "Two rows",
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "7584d9952008953af54d6e02f8564393a21b2962ecdd07fc8a5e7c7c16b2a00f"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "aa2b9a362eaf59fe127ee9720e40f9417d0ec1c1c074de6c165d32d42cdb8298"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "charts",
+      "source": {
+        "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+        "bytes": 19045,
+        "xmlParts": 27,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {
+          "ppt/charts/chart1.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart2.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart3.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ]
+        },
+        "chartExternalDataAttributes": {
+          "ppt/charts/chart1.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ],
+          "ppt/charts/chart2.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ],
+          "ppt/charts/chart3.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ]
+        },
+        "embeddedXlsxParts": [
+          "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        ]
+      },
+      "saved": {
+        "sha256": "00e0d424d36dc9b0da74c09ffbcf8d12aef9ed7b88d60b8fcdf5b38b121d4936",
+        "bytes": 15610,
+        "xmlParts": 27,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {
+          "ppt/charts/chart1.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart2.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart3.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ]
+        },
+        "chartExternalDataAttributes": {
+          "ppt/charts/chart1.xml": [],
+          "ppt/charts/chart2.xml": [],
+          "ppt/charts/chart3.xml": []
+        },
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "12c50303b3f0f086f544df1d76f765fe496f9b3e602f2e49cfa91c1017cc44bf"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "4c6aaf698e0d85cadd89fcd938032d13c31094e142fea02e53a0977ab44dd172"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 2433,
+          "totalPixels": 518940,
+          "maxChannelDelta": 23,
+          "changedBoundsInclusive": [
+            71,
+            109,
+            916,
+            354
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "missing-asset",
+      "source": {
+        "sha256": "32ec9612b21095db3a4b7935da21656183729900f11461e9b7ec2a0c83f8298e",
+        "bytes": 9028,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "94469f7dd4519f0e942891b4bdd1de6ed6c59d560bd08680e51b2145a7079975",
+        "bytes": 6680,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "0565bc9636b04519490e72e96bb9f57d8992caf6a40333c69c997d70b232716a"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "0c15a12578e35eb6a7a053e71bdb093c92da46f2d492438a46f1da24db9d63a6"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    }
+  ],
+  "macOSBuild": "25F71",
+  "distribution": {
+    "release": "26.8.2",
+    "officialReleasePage": "https://us.libreoffice.org/download/libreoffice-stable/?lang=en-US&type=mac-aarch64&version=26.8.2",
+    "image": "LibreOffice_26.8.2_MacOS_aarch64.dmg",
+    "imageSha256": "9f24fe83ab1ed5c95eb3df580119f32932f713e577feeac02bf619fb00749b55",
+    "verification": "Official SHA-256 matched; read-only image attachment verified CRC; codesign --verify --deep --strict succeeded."
+  }
+}

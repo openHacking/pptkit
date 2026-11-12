@@ -1,0 +1,45 @@
+{
+  "profile": "native-diagram-geometry-visual-review-v1",
+  "date": "2026-10-25",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "observations": [
+    {
+      "file": "cycle-standard-absent-presentation.pptx",
+      "inputSha256": "a6fd2e43e5fe0a8de79115164fafafd0582f18cdc51c815255830f77b03f0707",
+      "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/geometry-run-CcWRRZ/pdf/cycle-standard-absent-presentation.png",
+      "pictureSha256": "8d45e721f3c1c09c7f95a4031786653d61d7d891114c1cb834b89005b0fe7733",
+      "method": "Assistant visual inspection using view_image of the generated native PDF picture",
+      "findings": [
+        "Three labeled Cycle nodes and three closing arrows are visible. Labels may wrap; no calibrated geometry or editability conclusion."
+      ]
+    },
+    {
+      "file": "cycle-long-absent-presentation.pptx",
+      "inputSha256": "f7b812aa27934653b8a6cfdff553421ff866cd8193b2ae1d527974869e3270c1",
+      "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/geometry-run-CcWRRZ/pdf/cycle-long-absent-presentation.png",
+      "pictureSha256": "337a7462d2839b80dce2db0fbc2f1fe0aebc3aad112cc38947d79722d081f3b4",
+      "method": "Assistant visual inspection using view_image of the generated native PDF picture",
+      "findings": [
+        "The top oval clips the long label; its beginning and full content are not visibly available within the oval.",
+        "The other two Cycle labels and closing arrows remain visible.",
+        "This visual failure is separate from stored drawing text retention and PDF lexical matching."
+      ]
+    },
+    {
+      "file": "process-standard-absent-presentation.pptx",
+      "inputSha256": "20ac29da3569c09fa2ce36bdb4686276bf599b8334f63f7e96fac48bb19d910c",
+      "picture": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/geometry-run-CcWRRZ/pdf/process-standard-absent-presentation.png",
+      "pictureSha256": "6eae5d2e7a9c236410bfa4cd61e4b300848a79181dd8d03020be11087f175b9c",
+      "method": "Assistant visual inspection using view_image of the generated native PDF picture",
+      "findings": [
+        "Two labeled Process cards and a connecting arrow are visible.",
+        "The right card extends beyond the source frame right edge (620 page points); numeric FODP observations flag three out-of-frame boxes for this input.",
+        "This is an observed frame/layout limitation, not a calibrated native-versus-PPTKit geometry comparison."
+      ]
+    }
+  ],
+  "limitations": [
+    "Manual picture review only, not automated clipping detection or native interactive editing.",
+    "Three pictures only (two Cycle and one Process); findings are not extended to all layouts/corpus images."
+  ]
+}

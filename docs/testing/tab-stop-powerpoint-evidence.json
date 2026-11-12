@@ -1,0 +1,258 @@
+{
+  "scope": "PowerPoint first open and A4 scaled print-to-PDF of four generated slides; three Save As/close/reopen rounds check source XML on all slides and the first slide's window. A separate one-character native edit is saved and reopened once. No reopened PDF comparison. Screenshot and AX hashes are not independent proof of provenance.",
+  "applicationVersion": "16.104",
+  "directory": ".tmp/native-tab-stops/run-snt5VZ",
+  "sourceSha256": "824f941737795f8262a83af9e7de15fa0fc94b97459fd13e54e6df74e639793d",
+  "pdfSha256": "b7e2416bdb281b402ff41078ec7ec2adc6358623c3b512271ca9f2366538f320",
+  "generatorSha256": "158782010b7a112e174bb2c59e6ed2d9061f6fa122b96b35beb16ab508dc40b0",
+  "verifierSha256": "5cd4f279eb29e48f1fbebf42dac8dc5ec08933e37b07c5a609259830a6b757f1",
+  "slides": [
+    {
+      "slide": "left",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "text": "I",
+          "prefix": [
+            88.5,
+            180.4266,
+            103.174,
+            205.0294
+          ],
+          "word": [
+            310.1667,
+            180.4266,
+            316.2827,
+            205.0294
+          ],
+          "anchor": 310.1667
+        },
+        {
+          "text": "WIDE",
+          "prefix": [
+            88.5,
+            247.8666,
+            103.174,
+            272.4694
+          ],
+          "word": [
+            310.1667,
+            247.8666,
+            367.9013,
+            272.4694
+          ],
+          "anchor": 310.1667
+        },
+        {
+          "text": "MIXED",
+          "prefix": [
+            88.5,
+            315.3066,
+            103.174,
+            339.9094
+          ],
+          "word": [
+            310.1667,
+            315.3066,
+            380.1795,
+            339.9094
+          ],
+          "anchor": 310.1667
+        }
+      ],
+      "screenshotSha256": "175155afda55345ab23ad692f866051b2ed0106556bcf8074815bf73891f05db",
+      "axSha256": "c3e6443d8fe5e7e71ee4d55cde16f2d613bd2a840db616f54b86199fd025fbde"
+    },
+    {
+      "slide": "center",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "text": "I",
+          "prefix": [
+            88.5,
+            180.4266,
+            103.174,
+            205.0294
+          ],
+          "word": [
+            307.0989,
+            180.4266,
+            313.2149,
+            205.0294
+          ],
+          "anchor": 310.1569
+        },
+        {
+          "text": "WIDE",
+          "prefix": [
+            88.5,
+            247.8666,
+            103.174,
+            272.4694
+          ],
+          "word": [
+            281.2708,
+            247.8666,
+            339.0054,
+            272.4694
+          ],
+          "anchor": 310.1381
+        },
+        {
+          "text": "MIXED",
+          "prefix": [
+            88.5,
+            315.3066,
+            103.174,
+            339.9094
+          ],
+          "word": [
+            275.0879,
+            315.3066,
+            345.1007,
+            339.9094
+          ],
+          "anchor": 310.0943
+        }
+      ],
+      "screenshotSha256": "8c18c81e58459b6984a040eef6220d77c5b11a0ddcd02c040fec4ea9b7f9e3ca",
+      "axSha256": "c7be188a6d9f3f512ef0859ca47e977252273fd9f79e2a3276dec81fd37f4dfd"
+    },
+    {
+      "slide": "right",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "text": "I",
+          "prefix": [
+            88.5,
+            180.4266,
+            103.174,
+            205.0294
+          ],
+          "word": [
+            304.0312,
+            180.4266,
+            310.1472,
+            205.0294
+          ],
+          "anchor": 310.1472
+        },
+        {
+          "text": "WIDE",
+          "prefix": [
+            88.5,
+            247.8666,
+            103.174,
+            272.4694
+          ],
+          "word": [
+            252.375,
+            247.8666,
+            310.1096,
+            272.4694
+          ],
+          "anchor": 310.1096
+        },
+        {
+          "text": "MIXED",
+          "prefix": [
+            88.5,
+            315.3066,
+            103.174,
+            339.9094
+          ],
+          "word": [
+            240.0052,
+            315.3066,
+            310.018,
+            339.9094
+          ],
+          "anchor": 310.018
+        }
+      ],
+      "screenshotSha256": "7ac86dc1e46e18ad4fd68e38bc20953ba175ddb1ae8d9020d184aefe78a5c34a",
+      "axSha256": "5ac4ee8ed2e4ec18405e1e26e2adfb8b87096a5bb680c37ee15203ea1679a292"
+    },
+    {
+      "slide": "decimal",
+      "guide": 310.1667,
+      "rows": [
+        {
+          "text": "1.2",
+          "prefix": [
+            88.5,
+            180.4266,
+            103.174,
+            205.0294
+          ],
+          "word": [
+            297.7969,
+            180.4266,
+            328.5441,
+            205.0294
+          ],
+          "anchor": 310.1675
+        },
+        {
+          "text": "123.45",
+          "prefix": [
+            88.5,
+            247.8666,
+            103.174,
+            272.4694
+          ],
+          "word": [
+            273.0573,
+            247.8666,
+            340.9163,
+            272.4694
+          ],
+          "anchor": 310.1691
+        },
+        {
+          "text": "0.678",
+          "prefix": [
+            88.5,
+            315.3066,
+            103.174,
+            339.9094
+          ],
+          "word": [
+            297.7969,
+            315.3066,
+            353.2853,
+            339.9094
+          ],
+          "anchor": 310.1675
+        }
+      ],
+      "screenshotSha256": "02b89a87d0a2f740dab3658e5e63e4d81b62eb0130918f6f51edde512eeea029",
+      "axSha256": "0154b1b226348dd4532edeec1deb87aed1666e7611247a3c7a48c5d792dcb6d0"
+    }
+  ],
+  "rounds": [
+    {
+      "pptxSha256": "9a4ef3ecc3e36a51d3d8fcc795d3bd02599d5fe99a75d874138b913974133c40",
+      "axSha256": "92d7daabd03b9431e4ccbcc759b65d1413a58aea8849303769488be3bccbff73",
+      "screenshotSha256": "3436702288bb5d1730f6e083d6d10cf300d719a76a3eb8c378c7dba1e088eabd"
+    },
+    {
+      "pptxSha256": "a1a13fd317486be59acb01641bd8899fb96f3fab61422557a3fc4dd250a456dc",
+      "axSha256": "c28d97009d00a3a16ec9d69900312077722304162c141f550ba3119d56f01379",
+      "screenshotSha256": "839f65caf91ced344061a7cdd10efd9afe59ed88e5b191ef88da15d01062bb05"
+    },
+    {
+      "pptxSha256": "64df776ba9bd802c575940956296df770d5da6e5be6d4be77b6205b5d2398bb5",
+      "axSha256": "6bde808d7fedc719ab462fdb1ff503a547c820682549f97b778b253ea11105be",
+      "screenshotSha256": "162f1269dced418a083ec342b1c54f3e106e5abfb891c9c14ca1450159c2c582"
+    }
+  ],
+  "edit": {
+    "pptxSha256": "ad0b4cf89796abc70a1b9c6e710a83c5659729ae5efb0cb0f7af8085942866f9",
+    "axSha256": "e4cc6fd3c9acb1f5cc28ae15b8e9f96cf10903df7fd289e6bf2ebb771be98949",
+    "screenshotSha256": "1d2737d2677a64cedbe3fb05d253f2d86961126cb8fb0d88a15aba9b0ed46ac2",
+    "beforeCloseAxSha256": "54a50f8dd9e72f3e5b63a4434d2ab8c1e4f11a99adaad35126228ccaa5a6259b"
+  }
+}

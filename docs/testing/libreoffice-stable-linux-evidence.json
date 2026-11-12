@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native headless save/reopen and paired PDF raster observation; no interactive editing, repair-dialog or calibrated visual parity claim.",
+  "application": "LibreOffice 25.2.3.2 520(Build:2)",
+  "platform": "Debian GNU/Linux 13.7 (trixie), arm64; Linux 6.10.14-linuxkit",
+  "pymupdfVersion": "1.28.0",
+  "pinnedCorpusEvidenceSha256": "2600cc6d78976be42cdf07f4d4a20c0508a8ca459cd069ab43878b3b2d7c59ea",
+  "runnerSha256": "284e539c586f4232941222f0e8507e99ff1b2f28082a1044b680a7a0b69c7f11",
+  "rasterAuditSha256": "15944c6f7c0544bb146d8786193dc1244caa6c832fe44904f5cff47970f69cb5",
+  "directory": ".tmp/corpus-native-resave-4_odg_o_",
+  "logs": {
+    "save": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fixtures/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/text.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/theme-layout.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/geometry.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/images.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/table.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/charts.pptx using filter : Impress MS PowerPoint 2007 XML\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/missing-asset.pptx using filter : Impress MS PowerPoint 2007 XML\n",
+      "stderr": "Warning: failed to launch javaldx - java may not function correctly\n"
+    },
+    "sourcePdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fixtures/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/source-pdf/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Warning: failed to launch javaldx - java may not function correctly\n"
+    },
+    "reopenedPdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/saved/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-native-resave-4_odg_o_/reopened-pdf/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Warning: failed to launch javaldx - java may not function correctly\n"
+    }
+  },
+  "fixtures": [
+    {
+      "fixture": "text",
+      "source": {
+        "sha256": "5430ce4c5e7c1bf81363da056f83bed7c8c0e460dbbdda9321155e7343dad8ee",
+        "bytes": 11501,
+        "xmlParts": 25,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Rich & <editable> text",
+              "Numbered paragraph",
+              "Bulleted paragraph",
+              "Go to notes"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "f14b3e538013937cb729dfdc4c228dd23e4b72ac1b4b50707aef626942543e0b",
+        "bytes": 12669,
+        "xmlParts": 22,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Rich & <editable> text",
+              "Numbered paragraph",
+              "Bulleted paragraph",
+              "Go to notes"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "6916d0f0b8230e20f78fbc256c4e6cc279de618a86082388c323156addd6d294"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "af8d8dbeeda6622f453ca060f9a907dcf42859c8215e73fac51234bc7231c84a"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 422,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            46,
+            37,
+            266,
+            242
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "theme-layout",
+      "source": {
+        "sha256": "3dc639e4ed69a8a20a5aee96a8c4b4efa2544c8d0c820a785586fd90561309ca",
+        "bytes": 12337,
+        "xmlParts": 27,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Inherited title"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "ea7bbbad4f4bdf8d6a9555d6e7c975712d4e57d48bfe8155a0b4dd900f23ad39",
+        "bytes": 9824,
+        "xmlParts": 19,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Inherited title"
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "hidden": true,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "e19f575bd810881c4474b52369f099492124a096f34bb26c2a3630a15d736ab7"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "9cd4d6c2decae794a856918fa12b8751ac91f418aed0f8b87e790182068f07ec"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "geometry",
+      "source": {
+        "sha256": "e7c4df39945e2d7497233f8b43c358cf87bd3df20b14b2b1f22543a19ad40732",
+        "bytes": 9859,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Source",
+              "Nested"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "c77342ceb4f45ca6c8d8a31ac1b654630428dd1515c4aa5cf28c2cfdd21b8f4a",
+        "bytes": 7675,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Source",
+              "Nested"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "f92e194fe8e80eb0cfa15730e5b3ab12e35d63fbc908f2930a4a8e67e46b5193"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "d06fedff4890a6cd05cf49c3e988507a290eb9853de7c9b3e59de2e89078f83b"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 894,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            39,
+            39,
+            579,
+            365
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "images",
+      "source": {
+        "sha256": "223c870075c7d75c11650774e549b6c29f28aa3c3f9c21c1c74eb9c873f8af88",
+        "bytes": 10091,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "stretch",
+              "contain",
+              "cover",
+              "crop"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "cd8735caafcfcaf75166e63d3461bc65372c0f2a156a4c9a030c400462afaa25",
+        "bytes": 7801,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "stretch",
+              "contain",
+              "cover",
+              "crop"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "dc406cd4dcb33e595065ea564eedc284b22070b113cc87b5cdd76550b802902f"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "c9edde617ca883a2af92bf96b183956244a369076628b0775ae886fd6c614ab9"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 226,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            90,
+            189,
+            439,
+            241
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "table",
+      "source": {
+        "sha256": "646c609a7dc34145dce54599078904a9c26f2ac86ba923c1e1433eeab5a5ef0f",
+        "bytes": 9655,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Merged heading",
+              "Two rows",
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "f9fe4adda86f4dbd4fdbfca6c9a3bacc4285a88f92b73b3c5ee9d327aef03eb7",
+        "bytes": 7306,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": [
+              "Merged heading",
+              "Two rows",
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "c847736de73fa3a778491b52661cf981941f240794579e2a0934ee1bcf0f488f"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "2691c64510c0c502c2ad05fe58f160fe13b3cff93a5bdcf3b69604dfc3931c8f"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "charts",
+      "source": {
+        "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+        "bytes": 19045,
+        "xmlParts": 27,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {
+          "ppt/charts/chart1.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart2.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart3.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ]
+        },
+        "chartExternalDataAttributes": {
+          "ppt/charts/chart1.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ],
+          "ppt/charts/chart2.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ],
+          "ppt/charts/chart3.xml": [
+            {
+              "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id": "rId1"
+            }
+          ]
+        },
+        "embeddedXlsxParts": [
+          "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx",
+          "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        ]
+      },
+      "saved": {
+        "sha256": "258fa4fa8cce2799b5608140b0ffedb2d18eebd2f25545bed4fcdd71ed85607b",
+        "bytes": 11376,
+        "xmlParts": 18,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {
+          "ppt/charts/chart1.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart2.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ],
+          "ppt/charts/chart3.xml": [
+            [
+              [
+                "0",
+                "2"
+              ],
+              [
+                "1",
+                "4"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          ]
+        },
+        "chartExternalDataAttributes": {
+          "ppt/charts/chart1.xml": [],
+          "ppt/charts/chart2.xml": [],
+          "ppt/charts/chart3.xml": []
+        },
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "5d47a2ab4d1423693b21874ddd43b5b6c0fa27f6a9516db088bb87bd265eaa12"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "ee956c9b1945f37832132743a5bcdae60de12651836a669f007ca24ac4e5eed1"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 2597,
+          "totalPixels": 518940,
+          "maxChannelDelta": 131,
+          "changedBoundsInclusive": [
+            71,
+            109,
+            922,
+            365
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "missing-asset",
+      "source": {
+        "sha256": "32ec9612b21095db3a4b7935da21656183729900f11461e9b7ec2a0c83f8298e",
+        "bytes": 9028,
+        "xmlParts": 21,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "saved": {
+        "sha256": "b7455041234fab5c68f8a66807e8701da6dc11a266ba3f9c1a72d868c57eec61",
+        "bytes": 6655,
+        "xmlParts": 15,
+        "slides": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "hidden": false,
+            "paragraphs": []
+          }
+        ],
+        "chartNumericCaches": {},
+        "chartExternalDataAttributes": {},
+        "embeddedXlsxParts": []
+      },
+      "sourcePdf": {
+        "pages": 1,
+        "sha256": "e8c3f5f5377cafef48ed1f092b4982ba48a00f3ad0c52094dfcd746ebbec502a"
+      },
+      "reopenedPdf": {
+        "pages": 1,
+        "sha256": "eb93f79c777e947eed1a3e16e157f4be9c3d818e919511826eb97f3f87a07b70"
+      },
+      "pairedPageRasters": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    }
+  ],
+  "collectorPlatform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "container": {
+    "engine": "Docker Desktop Linux VM on Apple Silicon",
+    "imageId": "sha256:439628264bf2e50c4de89986cfa0f478d9e236af6fb2e2b80a387124e6ddde7b",
+    "baseImage": "docker.io/library/debian:trixie-slim",
+    "manifestDigest": "sha256:24a01011d10eba3a023bc8585b9650b8b29021240d4217c05b905e09ef4a5232",
+    "layerDigest": "sha256:acd43e9bebc37bc4ba7a5f47bd7598913337803e53d468f37d940f11f5d5f1ef",
+    "packages": {
+      "libreoffice-core": "4:25.2.3-2+deb13u9",
+      "libreoffice-impress": "4:25.2.3-2+deb13u9",
+      "fonts-liberation": "1:2.1.5-3"
+    },
+    "network": "none for all audit operations",
+    "wrapperSha256": "feed37c86af36309b477723e7c7f0270328c90af7459804c22408e7a1274ae50"
+  }
+}

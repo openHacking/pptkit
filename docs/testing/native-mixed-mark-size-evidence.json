@@ -1,0 +1,32 @@
+{
+  "scope": "PowerPoint 16.104 paragraph mark size probes, initial open only",
+  "directory": "/Volumes/github/private/pptkit/.tmp/style-reset-native/run-uFixey",
+  "files": {
+    "input.pptx": "ef158ed7f03ca97547ae3361b827613803942452b6dd11c32ec71d269d4e02cb",
+    "input.pdf": "1a302ac37552433f0040d1ebcffc9506aa4d1877515cc2c05fb7048f75d8704e",
+    "mark-size.pptx": "871e6220fc915546db8558de0692b8cc66379a8f6073e272df42d502212ae5d0",
+    "mark-size.pdf": "71c2e195e5515a45f10cd3453510533f209096232597da83572ea33c9a6b564e",
+    "mark-effective.pptx": "3c9ae7a66759f800a669a6472b70fd31b3e3bf16ba7e7f501af2a150b8ea7591",
+    "mark-effective.pdf": "4afb121afa7347282f30957f685620310917e3c154ce2170e49fc6bac60bf5ba",
+    "mark-effective-size.pptx": "39abe4078328e891f26669d987b04432f127df6d57b46196c3f4793b7596eae0",
+    "mark-effective-size.pdf": "bab7fe8f6bb73068780b2d43ba88d4c608e54b62b019ac70c1561adec67de100",
+    "default-materialized.pdf": "71ccd761bcb462a09c6e9b014c808b0f024e082bdbef7fce75689c7d93524f60"
+  },
+  "sourceSha256": {
+    "/Volumes/github/private/pptkit/scripts/research/oracles/native-mixed-mark-size.py": "2492407e21d3810a87f71ea7c5246c5df5e7c5128b720ce0e38b8cd6de9c1eab",
+    "scripts/research/prepare-mixed-mark-size.py": "30dc674189fb78b93b8c06695b2aca62a6f4a8112209524c77fe0e74aa55ce2e"
+  },
+  "negativeCorruptedSizesRejected": {
+    "1": true,
+    "2": true
+  },
+  "sizeOnlyIdenticalToInput": true,
+  "sizePlusFontsIdenticalToFontOnly": true,
+  "bodyShiftAgainstMaterializedPoints": [
+    -0.96002197265625,
+    0.0,
+    0.0
+  ],
+  "nativeSaveReopenVerified": false,
+  "productionFixImplemented": false
+}

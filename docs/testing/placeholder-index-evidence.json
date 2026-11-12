@@ -1,0 +1,1005 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-27T01:25:50.184Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz",
+  "nativeDirectory": "/Volumes/github/private/pptkit/.tmp/placeholder-index/native-5fWET2",
+  "beforeSha256": "3db127f3b6befde74f1e8fe9ffeca226335459b8c80fdaee96ab2a52205cce89",
+  "sourceSha256": "114824002c396627ad13557c60edc2d4020f246b367e825af3e2309e91370c35",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before.pptx",
+      "bytes": 22054,
+      "sha256": "3db127f3b6befde74f1e8fe9ffeca226335459b8c80fdaee96ab2a52205cce89"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before-normalized.json",
+      "bytes": 48015,
+      "sha256": "5f76b1bb2cc0dcd9fbea3620a17005d8d8fbedd5ce0d83e7778efa87cf99eb7c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before-layout.json",
+      "bytes": 48011,
+      "sha256": "54f3ca8c486fa294f24951cc5357cb0cc0669e8cf77eddf488f5a7862b720bae"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before-0.svg",
+      "bytes": 3122,
+      "sha256": "4c9668d3dbf2f49054686803a23fc2d633ab0317fac26cae482f49c25b90bf26"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before-1.svg",
+      "bytes": 3124,
+      "sha256": "2f30ce1aace8c79a5a8e4fc4a91040ff8ca911532e751b2e5447a0d51debe652"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/before-2.svg",
+      "bytes": 3124,
+      "sha256": "e0b71aecdadd9ad26d8b2c68c28820de23f6d8f09cc270d3849b725a798a3333"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after.pptx",
+      "bytes": 22090,
+      "sha256": "114824002c396627ad13557c60edc2d4020f246b367e825af3e2309e91370c35"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-normalized.json",
+      "bytes": 47483,
+      "sha256": "850cb4d7c7ee0ec75df8fa01f1cd33877f0720152fcef5c75ae2e9040f6ccd87"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-layout.json",
+      "bytes": 47479,
+      "sha256": "0a8072cbdacd9c50a0ee572356535462eaea71561360c0c8ead6947550473757"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-origins.json",
+      "bytes": 172275,
+      "sha256": "528868bf0ddad5b4bfbf01b4047cfc7029528dcc7b3d62daae0157ab0e196ec8"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/plans.json",
+      "bytes": 23079,
+      "sha256": "439d4950b162c9b1b36ae5e2af9d200acc9d479f34c34e7d22b6084b95031fcd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/warnings.json",
+      "bytes": 34,
+      "sha256": "3dc1504dc3dd08fa71c7c01a1a9e357eb919864ca464ea7686182d8576453ac5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-0.svg",
+      "bytes": 3124,
+      "sha256": "9bcbb43568ab89a7ecded9f993313ac7f0034b77e868b53ff4958732dfde0e21"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-1.svg",
+      "bytes": 3152,
+      "sha256": "861e2970a4b944361a3c640d5e43fc095898a0dd6d9072cac56cd946766d1912"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/after-2.svg",
+      "bytes": 3124,
+      "sha256": "e0b71aecdadd9ad26d8b2c68c28820de23f6d8f09cc270d3849b725a798a3333"
+    }
+  ],
+  "nativeApplication": "Named explicit-zero/max/mixed implicit allocation control accepted over three actual native reopen rounds, 23 corrupt ZIPs/four corrupt PDFs, complete content projection/inspection/report comparisons and fifteen exact source-only no-ops. General native template import/reset/cross-document/source editing remains open.",
+  "currentProducerDependencies": [
+    {
+      "file": "package.json",
+      "sha256": "a369aa486a6270db3dd8106afef7b9ed4ae3662d7e32028b3e666865940864e4"
+    },
+    {
+      "file": "packages/core/src/constants/presentation.ts",
+      "sha256": "cdc302e02e54875cb791558380b2008b4ecead7b45b514864f34a444b69839df"
+    },
+    {
+      "file": "packages/core/src/document/asset-references.ts",
+      "sha256": "557f85cc8f1d888b31f5dbefd23b3dc1c3e0f5262d7794a5f2ad6e0acc149842"
+    },
+    {
+      "file": "packages/core/src/document/asset-registry.ts",
+      "sha256": "bea0e939c97560eab078686393d5d7ac5b27758fe5245a04123db20a776c7507"
+    },
+    {
+      "file": "packages/core/src/document/asset-source.ts",
+      "sha256": "a052e9b4cbb7aecfe131bd17808e4db6d595f5224a9aa0b3eb4d22532c11217f"
+    },
+    {
+      "file": "packages/core/src/document/copy-references.ts",
+      "sha256": "5908e8e75e0a4b7036e5fcc422e14982d33b044f13d82fb25072c5e08dfb97c9"
+    },
+    {
+      "file": "packages/core/src/document/definition-input.ts",
+      "sha256": "2fb115dc2c8189243c78754016bcdba3e6e7c08d4ac3a4b6c5bdd5d1b91f9ccb"
+    },
+    {
+      "file": "packages/core/src/document/element-store.ts",
+      "sha256": "622bc40736fc716c930f6c6e84e5a0e7226815889853d99a702b9ef00c7538e0"
+    },
+    {
+      "file": "packages/core/src/document/layout-rebind.ts",
+      "sha256": "55f83f7efc996952265289572ed284eca7ccf366ba3ee37e96e52e22970ae727"
+    },
+    {
+      "file": "packages/core/src/document/presentation-document.ts",
+      "sha256": "9f71b81809566c6edaeb3d55d4d2ea9808a64fcf0b7195700f253b41c77bd7b3"
+    },
+    {
+      "file": "packages/core/src/document/presentation-slide.ts",
+      "sha256": "57fbdaf1b57c234da278d0908e688af31c0def952917b9ba27aac35b3456de5b"
+    },
+    {
+      "file": "packages/core/src/document/slide-event-timeline.ts",
+      "sha256": "2ce8fb34e9b685687657e2c325e6c4a724ff30576719fd5efb485ee793b74ff2"
+    },
+    {
+      "file": "packages/core/src/factories/create-presentation.ts",
+      "sha256": "0c46af04665f50393b291ed9b8efda0cbcbc8f6a0735b2fffe9fdea4e0276af7"
+    },
+    {
+      "file": "packages/core/src/index.ts",
+      "sha256": "cbbb39d4e387847fb9b6d0c6ac6d580400cc3ff7b25f918620591c4114ec2909"
+    },
+    {
+      "file": "packages/core/src/normalization/inheritance.ts",
+      "sha256": "97dda1f8284e155aef08b76deed74269b3446c090acd82c0d1e956407027735b"
+    },
+    {
+      "file": "packages/core/src/normalization/measure-text.ts",
+      "sha256": "5abf7b73572f126a2538f45a83ce0179294d81e7c0afe47cdc4c08db3816979f"
+    },
+    {
+      "file": "packages/core/src/normalization/normalize-presentation.ts",
+      "sha256": "a6c3f1093a8fddea5c8182a7764212ba32ed8a8c7f9f7d4480bb9f309eb72599"
+    },
+    {
+      "file": "packages/core/src/normalization/normalize-styles.ts",
+      "sha256": "3be5fcf2b946ade586bc512078b5993f43a781eb8fc5fc21e02656a36e4dbc07"
+    },
+    {
+      "file": "packages/core/src/normalization/presentation-normalizer.ts",
+      "sha256": "1039e0e768c0b004279f426588ab7fae0da9d4c0b8f4fb52bd5e703c1523464b"
+    },
+    {
+      "file": "packages/core/src/normalization/style-input-origins.ts",
+      "sha256": "413c045be91e365ab4027b06de794cdd9a604130abcdbfd43d0e25f084623528"
+    },
+    {
+      "file": "packages/core/src/normalization/style-origins.ts",
+      "sha256": "95bab3908952ab35200a5173a8e48a13d33fef229d5aaf1ece15d76dea7b05ce"
+    },
+    {
+      "file": "packages/core/src/normalization/table-style.ts",
+      "sha256": "3aa0e5d72590d21f9f57fae28a65f184a06121560a908c06de4d3dd90f7d4cbc"
+    },
+    {
+      "file": "packages/core/src/normalization/text-origins.ts",
+      "sha256": "6db24929149c52f979976e41388404d14ef05e1b3e86c06b5f994a5e9df03fd3"
+    },
+    {
+      "file": "packages/core/src/table/edit-grid.ts",
+      "sha256": "d546ffd8761b169caf0df66a0c56620f088898fc0d20d87fe7cb7fa6c08c4b62"
+    },
+    {
+      "file": "packages/core/src/table/edit-input.ts",
+      "sha256": "54f51561c74c5af1aae9e6455f49ad1b5236ec3613ccea95e0d0736f506ad248"
+    },
+    {
+      "file": "packages/core/src/table/edit-table.ts",
+      "sha256": "2b5bb0e0ffb20f5835e7dcca430dd910151d608d763fea5545bba9584643669d"
+    },
+    {
+      "file": "packages/core/src/table/style-grid.ts",
+      "sha256": "f1b785b828ee8ac930aa68de511845d1b7f44c8f5d010a1e0c4f6120f1cd33b9"
+    },
+    {
+      "file": "packages/core/src/text/font-scripts.ts",
+      "sha256": "84413cf729084d5fa488310e2dd0274cdd057d55eb8bda857b51242e9cdb396a"
+    },
+    {
+      "file": "packages/core/src/text/font-segments.ts",
+      "sha256": "69c9ff963e171089b99c5dff0386a18234aa723cbbec4a42a333ff7b86f362fe"
+    },
+    {
+      "file": "packages/core/src/text/reset-frame-margin.ts",
+      "sha256": "4cb4b853dc2af3c6a43444aa0ca8ab31d38a9d40f45ffcc91812090280f98600"
+    },
+    {
+      "file": "packages/core/src/text/reset-script-font.ts",
+      "sha256": "8b60c96e4b38140b80bc7831a981de396de2844527b4567b270f816eaa6fdd05"
+    },
+    {
+      "file": "packages/core/src/text/run-properties.ts",
+      "sha256": "6c293e52dda5d74f165c8b68bfc9b079a5e5c033b26842ab502c99f77213aa49"
+    },
+    {
+      "file": "packages/core/src/timeline/compile.ts",
+      "sha256": "e168fba939c509217934cf0effd3208b09e6e8481a754dd88ae769be32a3c13b"
+    },
+    {
+      "file": "packages/core/src/timeline/event-compile.ts",
+      "sha256": "34a2198df42194088a5f33827e7c7f64be6e1ef16f5bbe0a4801e8498defb1ce"
+    },
+    {
+      "file": "packages/core/src/timeline/event-input.ts",
+      "sha256": "c53031ca0141c64aa3f3c912dffe456f0d8479a0c30a59f9b9853e48201ab00b"
+    },
+    {
+      "file": "packages/core/src/timeline/event-replay.ts",
+      "sha256": "4d5cf1a1eaaeae161c87293f8225d174eb1d3546a4236575ff1f9c45e8559e81"
+    },
+    {
+      "file": "packages/core/src/timeline/input.ts",
+      "sha256": "f2931e0e9eda0df12e3f3d20ba66d2a3b777e7a5aecc857f5daca3c6f1e0fae5"
+    },
+    {
+      "file": "packages/core/src/timeline/sample.ts",
+      "sha256": "aa5b8d2f3b615ac442973d3a4a2f1341b89a30b6689d3fab630eb3626db3a569"
+    },
+    {
+      "file": "packages/core/src/types/asset.ts",
+      "sha256": "9737099fab35de5bbed337e56250f5457bfa4f6dc2772fd105b515b969aa4619"
+    },
+    {
+      "file": "packages/core/src/types/diagnostic.ts",
+      "sha256": "750f76e8d7078e902d77e8469d7973fcbcd8e1e87a8582edef8843449627ac46"
+    },
+    {
+      "file": "packages/core/src/types/element.ts",
+      "sha256": "0b0f17cb65e07c441811dc106e74dc727fe00c951bfa5e889fc9e2c69c2978b0"
+    },
+    {
+      "file": "packages/core/src/types/event-timeline.ts",
+      "sha256": "dc36ed77023d79bbcce6b34eb7ff928e2fb18c49e35d5c048bfdf9f6740352ea"
+    },
+    {
+      "file": "packages/core/src/types/geometry.ts",
+      "sha256": "234698153e0813b88cb97932665545d5734d137c0f12b046307f063838e58293"
+    },
+    {
+      "file": "packages/core/src/types/index.ts",
+      "sha256": "2537e286ddc56877556158528e088c37b82b85aaba16fdb6afe431b5f4c6d617"
+    },
+    {
+      "file": "packages/core/src/types/inheritance.ts",
+      "sha256": "a5e27b4b219dd82a97c0d24a2dc50be4d46a38d14b25759c00ba2aaa58744f30"
+    },
+    {
+      "file": "packages/core/src/types/layout-rebind.ts",
+      "sha256": "97cab8e7d97ca6031a0025400c59b1511e3732a850ab6f78633d0f066f72760b"
+    },
+    {
+      "file": "packages/core/src/types/normalized.ts",
+      "sha256": "0c143a0c927f4de32a72662bde58eaf477a81bfc0b14390d4b0c24f40f4f254b"
+    },
+    {
+      "file": "packages/core/src/types/presentation.ts",
+      "sha256": "c646d5fd0349f7c03540d885cf75252853abe5baec5c3fd903bb5d99a99c0067"
+    },
+    {
+      "file": "packages/core/src/types/style.ts",
+      "sha256": "ee6782b8467c0d818a1d57893b43318fa2cccefe51a29a3d03a05c157bbf782b"
+    },
+    {
+      "file": "packages/core/src/types/table-edit.ts",
+      "sha256": "2ca27ffbbd583e25f656efd9e27b8ccaa0cf7922cf45aecf1926f681097c9c73"
+    },
+    {
+      "file": "packages/core/src/types/theme.ts",
+      "sha256": "70696bd0dfcec30451ed5c35b0026251108f6b874fffc0e6a8a56e63b0a2dad1"
+    },
+    {
+      "file": "packages/core/src/types/timeline.ts",
+      "sha256": "7f404311a3805486ebc830fe6d95f1a7bb030f70333bd4162cd5cd5b7f8193bc"
+    },
+    {
+      "file": "packages/core/src/utils/clone.ts",
+      "sha256": "45651f5602336c9158c59bd3f0fd333036f4edfc3b1291a5d2705e20b3d1b93e"
+    },
+    {
+      "file": "packages/core/src/utils/id.ts",
+      "sha256": "37ccdaa3f8f928d84f4d6a362bf071e52297f4aa4d280ac0578debdc8f082d81"
+    },
+    {
+      "file": "packages/core/src/validation/collection.ts",
+      "sha256": "02ea7c68f919f4546c621b9c30568eb5ee355065a9b2d32d517e63ba7aa5f230"
+    },
+    {
+      "file": "packages/core/src/validation/geometry.ts",
+      "sha256": "c7fb181a6ac7328091381c6652fafaaf328759b27a1a73716c9e3f412490a6c6"
+    },
+    {
+      "file": "packages/core/src/validation/style.ts",
+      "sha256": "471371f69aa0c6e3c1600ee458b8613e8c5aba0563314c8607977c20683adb30"
+    },
+    {
+      "file": "packages/core/src/validation/table-style.ts",
+      "sha256": "71397dfa09601fac10c477a19a71a0f82a9d011165a84800aae9ef5d2dea9b90"
+    },
+    {
+      "file": "packages/core/src/validation/validate-presentation.ts",
+      "sha256": "705a54758f2db759d4cb4ab0279c0e77e8d6fd6130dc611c76926cdb6845e185"
+    },
+    {
+      "file": "packages/layout/src/adapters/browser-text-measurement.ts",
+      "sha256": "8f2c207959d3241e06750adc096afba8d21c8067be78f9da86c7a011ea45b41d"
+    },
+    {
+      "file": "packages/layout/src/analysis/analyze-layout.ts",
+      "sha256": "2ee0bbe8e0095f46c377e2a1d19b50d7f04369357e8e672b201b6fc4a58423ff"
+    },
+    {
+      "file": "packages/layout/src/analysis/geometry.ts",
+      "sha256": "308354362d25eaf354e9d093b2209d67ae45bebfa3d98e90d4a00f373440ebaa"
+    },
+    {
+      "file": "packages/layout/src/analysis/measure-text.ts",
+      "sha256": "9e139659b2c21a261e0dc238b499e1ed211280a472f8fb2d710438a1e714e89c"
+    },
+    {
+      "file": "packages/layout/src/analysis/owner-theme.ts",
+      "sha256": "3b3d0d4cb9bc1407df3eeffb1bd3a0c155d75e5168f694e7028d3a5a9af3f073"
+    },
+    {
+      "file": "packages/layout/src/chart/resolve-chart-layout.ts",
+      "sha256": "b200c5cc835f39cea8ff793048863d6a8fb80aeabab4357c8f4ac8cf35c11921"
+    },
+    {
+      "file": "packages/layout/src/composition/compose.ts",
+      "sha256": "1fa11c942bab9f7b34d0087e663605a2cfa38ad3d1ede28eda0062136673839f"
+    },
+    {
+      "file": "packages/layout/src/composition/constraints.ts",
+      "sha256": "3a64df280d72270ecbff28cd2e7d17089a8b8748d4a5f5bfeb69d8787a0e9c94"
+    },
+    {
+      "file": "packages/layout/src/composition/grid.ts",
+      "sha256": "0428a86ffcdfb8e1efec144c49b0c36346670e9e1e0e173ba7ee25f80aad6215"
+    },
+    {
+      "file": "packages/layout/src/dom.ts",
+      "sha256": "92eb777381c0888480b595cbcb68442bdea51aa1c66c438c6b4fa043584e89b9"
+    },
+    {
+      "file": "packages/layout/src/engine/resolve-layout.ts",
+      "sha256": "8dd9c13b69370fcddbf2c2a5055b786c00860aea30127ce94996dca04372dd55"
+    },
+    {
+      "file": "packages/layout/src/engine/resolve-normalized-layout.ts",
+      "sha256": "6d3545c0ee186e1e573fb831aab07e0bf4ee638cf3847a278e2eef74dcbafec4"
+    },
+    {
+      "file": "packages/layout/src/geometry/connector.ts",
+      "sha256": "7c82f436e5c939e7e1c335c580f6a72875eae53c61c6adcd0160edbb3fc5f80c"
+    },
+    {
+      "file": "packages/layout/src/index.ts",
+      "sha256": "7501ea52a577e9c648a1d9b07378750aca1600a18c5ebc90e59eadd776afd526"
+    },
+    {
+      "file": "packages/layout/src/sizing/resolve-intrinsic.ts",
+      "sha256": "469e22c81ebc8d7838ee88681fbdce9aee76a6dc05b57d4971a6d2a05b6d3522"
+    },
+    {
+      "file": "packages/layout/src/table/cell-grid.ts",
+      "sha256": "02eec6e22b83604f906fdbdbdb913d506cb429b681e63be404d8619260ebce26"
+    },
+    {
+      "file": "packages/layout/src/table/paginate-tables.ts",
+      "sha256": "4fc5dc7f0d54ddfc928fa5f63458053c685964a92063ab4b1c23f4abc69919ee"
+    },
+    {
+      "file": "packages/layout/src/table/resolve-borders.ts",
+      "sha256": "9e167abf5f5d41581cfa600009e33327629529970913a11ee4558bdd498cbb89"
+    },
+    {
+      "file": "packages/layout/src/table/size-tables.ts",
+      "sha256": "332d0e79c0bc405d70c4aea3aa2eedf907b06fa954b3fd4f79d492dc48ae5263"
+    },
+    {
+      "file": "packages/layout/src/types/analysis.ts",
+      "sha256": "ba8d0328793d6831e4b3a53d508ad5cfdca620221c9a033cb592810b89e076ea"
+    },
+    {
+      "file": "packages/layout/src/types/composition.ts",
+      "sha256": "88c02c02e5de48223d0e294d48627c9f2b80e8ea8e943d2c83c3cdac0c13dfb7"
+    },
+    {
+      "file": "packages/layout/src/types/intrinsic.ts",
+      "sha256": "c39677f1a841582e1a44ab5baa4cd3c8b7b3cae94f852af1ad67e1f4e9d39d22"
+    },
+    {
+      "file": "packages/layout/src/types/layout.ts",
+      "sha256": "14c8acf145bd1b51870b6683b6656241bff5063c598f577a7409532a72da0f1d"
+    },
+    {
+      "file": "packages/layout/src/types/pagination.ts",
+      "sha256": "fa5ab094d0a4e5288e38ddfde8ec606c021aa1420bbcea8e7e91cb1f22dc9354"
+    },
+    {
+      "file": "packages/layout/src/types/table-borders.ts",
+      "sha256": "11a2f2501b93ea30a4d23500f5d647739bd5c9acb911956a8a59c1080e1d97b4"
+    },
+    {
+      "file": "packages/layout/src/types/table.ts",
+      "sha256": "fd199b8a624ffb75d389035413c1d842ae28750293a21ee319e3ac2d0dd694fe"
+    },
+    {
+      "file": "packages/layout/src/validation/event-timeline.ts",
+      "sha256": "62ec8c224752890c6ec58f13ee39f2ffc63659b0eb960ec30d824813332abb92"
+    },
+    {
+      "file": "packages/pptx-exporter/src/archive/create-zip.ts",
+      "sha256": "5374e96bb4acb506b9332b47673e7145aacf97f82c67fd1cfa25ceb155180b59"
+    },
+    {
+      "file": "packages/pptx-exporter/src/assets/create-asset-loader.ts",
+      "sha256": "83a6c134f959e7a15e1ef0cd672d989647f85ac2258504708cda88eb6d8e3816"
+    },
+    {
+      "file": "packages/pptx-exporter/src/assets/limits.ts",
+      "sha256": "6328752a7e5e83e75fe7aa5990babe3a9afeac3b5c1393523a847b5187f3ba7e"
+    },
+    {
+      "file": "packages/pptx-exporter/src/assets/load-asset.node.ts",
+      "sha256": "f74b3f3a7d3626780a802d877ab1e217e4ddac6d90ccc6d49f4048cc2f44749c"
+    },
+    {
+      "file": "packages/pptx-exporter/src/assets/load-asset.ts",
+      "sha256": "e0c5d347ce53afc2baff44ef14e1b9826b1acd2553de29eea575ccbe80f5fcec"
+    },
+    {
+      "file": "packages/pptx-exporter/src/assets/load-bytes.ts",
+      "sha256": "3b3fb89d50f51fb88e177dc7201c4643cbb6cbcc53c0486d72fd9a4eb036418d"
+    },
+    {
+      "file": "packages/pptx-exporter/src/binary/encode.ts",
+      "sha256": "8d7f07fec3c67af4d06b7a3882f225a88a4ea7daaa36da8663a586992ea8316e"
+    },
+    {
+      "file": "packages/pptx-exporter/src/constants/ooxml.ts",
+      "sha256": "e4213f8fc3098a11595cb9b696a613ffe60e6c8a76f1f8da6cb7c768911156a8"
+    },
+    {
+      "file": "packages/pptx-exporter/src/generation/event-timelines.ts",
+      "sha256": "80aa052192af3cdd57934331835f6ee5fd80a30c316b1e560b6896fe69f566e2"
+    },
+    {
+      "file": "packages/pptx-exporter/src/generation/generate-pptx.ts",
+      "sha256": "935127c2db21fa08d17a58ad4152eea26dd7a12630ea4fa35edd552c21c548bb"
+    },
+    {
+      "file": "packages/pptx-exporter/src/generation/native-placeholder-inheritance.ts",
+      "sha256": "544e177032889b6febb3775ad8b38000c73d25df107ebd60b1c0614769a29417"
+    },
+    {
+      "file": "packages/pptx-exporter/src/index.ts",
+      "sha256": "65e34e97a0b5d8f6f008e943a0f39e532cae3dc512f2d2221b8ea54a1eef028d"
+    },
+    {
+      "file": "packages/pptx-exporter/src/node.ts",
+      "sha256": "192162411f94748daee8d791e26ac21f844d9025fc36d57619c33b0f163b4eaa"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/chart-workbook.ts",
+      "sha256": "0bdfb895b85d7d864a09b11651067f81618ab493a07ac6a70c9b2991b559c591"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/chart.ts",
+      "sha256": "1eab7c0280dc230372267df19212bc1cce683956b1459ad5c9c5c5e69e10b7f7"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+      "sha256": "f1bf225cd1ebda04d203fe4ff10c9404f2275a3c334d5f79a887faed27f9ccf4"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/native-connectors.ts",
+      "sha256": "dc0d7f0c6a7684de64bc04a00f784fe0059ed10152bcbaae24270ce79d8bcd4c"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/package-parts.ts",
+      "sha256": "c32c4e5d5b632016a81e8ae52307963cf143543a86e4a5dfe87047c2d3a4bf91"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/placeholder-indices.ts",
+      "sha256": "2d35b27df12ad734bac11e2e14158113b684da830b19bee01dd119184216a935"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/relationships.ts",
+      "sha256": "5543ab22c1c26536ce23ede6730bfe800427d6ba7166fcd4da446a0e5df64b32"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/xml.ts",
+      "sha256": "6b3aebe39801d6e0f5f74b36fb0beb49bbfde2d55c94383956d4174440abe688"
+    },
+    {
+      "file": "packages/pptx-exporter/src/output/write-output.ts",
+      "sha256": "62ea829de62f645fc0185160337b50734fc8dc0576ff53ce141612dca273d1b4"
+    },
+    {
+      "file": "packages/pptx-exporter/src/packaging/build-package.ts",
+      "sha256": "85df97b6042f03abf59a627a7cb4831548c1eb0d1b5b301de1fa9f463b5f18c4"
+    },
+    {
+      "file": "packages/pptx-exporter/src/types/export.ts",
+      "sha256": "dfef42bcc683ded574d3e30c16a38421292b89c5147aa32abddd9f86a14ce1d0"
+    },
+    {
+      "file": "packages/pptx-exporter/src/types/internal.ts",
+      "sha256": "fb51212c3f927b88649f165dffa5ffc3565386887b98807559f0f261845f28b9"
+    },
+    {
+      "file": "packages/pptx-exporter/src/types/native-placeholder-inheritance.ts",
+      "sha256": "3b4ce96f32a486d17b9de437474cf316d34827fccf25893d1197ebd9dfd0924e"
+    },
+    {
+      "file": "packages/pptx-parser/src/archive/crc32.ts",
+      "sha256": "749b80da451660ee94bd0e4e66c50af015afbc75a3cfa55e124f423f0d19ec9e"
+    },
+    {
+      "file": "packages/pptx-parser/src/archive/read-archive.ts",
+      "sha256": "a3132f2723d1b66bf5e7d7f6965686cd5690b539bfbca964f47c73bc9fe74063"
+    },
+    {
+      "file": "packages/pptx-parser/src/archive/validate-deflate.ts",
+      "sha256": "1398b5222ef9e0fc8588d0e93068734d62c5823a77b0798840513fc36ef2b9e6"
+    },
+    {
+      "file": "packages/pptx-parser/src/comparison/compare-packages.ts",
+      "sha256": "cddf1ed96312bc2fbc1bb1c7e550131c697aa9d2c287d8899391c379e587feb3"
+    },
+    {
+      "file": "packages/pptx-parser/src/comparison/xml-tokens.ts",
+      "sha256": "4eef1d3fe005b6b5a28c24fee6352d7a838c4dcfa0d82a1b0920efbb4a866ccb"
+    },
+    {
+      "file": "packages/pptx-parser/src/compatibility/configuration.ts",
+      "sha256": "e2e8a1c0c29f079b755671e4975b4ab1b77c1572ad9f7c290196d38246722063"
+    },
+    {
+      "file": "packages/pptx-parser/src/compatibility/inspect.ts",
+      "sha256": "d3ac96d5a1db1db0d4fa0f9fd482813ec46a8c37ac3b7e548b05f145541f52c8"
+    },
+    {
+      "file": "packages/pptx-parser/src/compatibility/process.ts",
+      "sha256": "4b170cb4eb98c6be5c99f75478487430dae7aad82871e5315f1dbe6a457a3601"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/analyze-text-edits.ts",
+      "sha256": "a409b0b4b49a1d9cb5a83750b107efc383162e383a6a13cd6d40f41f7049d3e8"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/capability-catalog.ts",
+      "sha256": "c5611d841a3eca86410d487d33e68a6d330c7c41beea9171d5a37ce479be45e2"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/capability-report.ts",
+      "sha256": "199971424d599ed99b9be4ac8947854a83747f468ffe68fb75e77393ea8b456b"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/chart-data.ts",
+      "sha256": "570ddbdcaab1923049cc1b5e705bf3112547185b830df726260a1c5f009cfd7c"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/chart-style.ts",
+      "sha256": "64034a004c83066074f014ab962179c550203f30aefc17f9b10cf81eecd596bf"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/chart-value-bindings.ts",
+      "sha256": "5ad2e511c3ed1a803b28a523545b70dfdbc16ced0a34f4d4aa08e9c8cacb8b7d"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/chart-workbook.ts",
+      "sha256": "6da6130aa13cf58b4fdbcd0334152c60923589ba59abc579e88eef613db309c5"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/color-transforms.ts",
+      "sha256": "a6125c071e04bdd84d454c554ac1e0f91ccb33daca5914df8920a81642371220"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-actions.ts",
+      "sha256": "8e1e483269cf0ad7d4c06091871dbaa1531aa1af1cc403199b2d19ba86f854d1"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-chart.ts",
+      "sha256": "0c239086e80f9594ff62da85c477daaaba6b010013d9a2e43bc528338786765e"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-connectors.ts",
+      "sha256": "41a69c27c7314c4795da29556a8ceee0dccf2c6c44eb8e507b8cd8b677c4b768"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-images.ts",
+      "sha256": "9afc7a0384b7af21bfa042f8f7c1d18ef6624a7013833757fcc3d5753220b701"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-notes.ts",
+      "sha256": "db9c6acc1f41ace0e0c231ce2e894ddcba93b15da3901e9e247ddae1e71d87d0"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-reader.ts",
+      "sha256": "efb25a67c6d05c11f6d3608921f5fce3af8e2764cf0d94c9f4cb808f3fdfbd8f"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-table.ts",
+      "sha256": "f66a890f2ddd16bd4ebefae0d35cc95cfd605e186e6105f04dc3ed63f0405a3d"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-text-style.ts",
+      "sha256": "6c7a1f4ab8bea76d44822f6af3e2de5abfc90ae7707cf269b28953d16163a64a"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/content-text.ts",
+      "sha256": "e590376b5bf21a3d178604638172a40eb10b19e2fdbd6d8e0de4b4e4f9d34689"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/diagram-preview.ts",
+      "sha256": "e2d1e6f57ce3852f592b35ca3126868f24a9a2349ee569d98f89769a334d426d"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/font-map.ts",
+      "sha256": "afbde1f0933c6940cc90e366dd7401e7ad5bf51f9da50e946b1afb63e030ff92"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/image-metadata.ts",
+      "sha256": "4cbd607da6ba9afd9df49847ed2681a3f0c5cf030ab9b1e7f6ea204a21e4367b"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/import-pptx.ts",
+      "sha256": "5535ed24003df26db3bb5975f4d7226e8adf221d52c0d77b7b7749f0be805dde"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/notes-master-body.ts",
+      "sha256": "ea7f0fbc4c723113c95bf991645caa8c50d85ffafe87d23e32e48de689473f2d"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/paragraph-targets.ts",
+      "sha256": "68db873df46afe50a9bf3148cf2a3d72ff8722df7980fd4d4c0a72db6aa5b705"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/placeholder-inheritance.ts",
+      "sha256": "52dcf1df69ec9c46b3faaadacf173b574a411d95ba71773dc21cfbbe057f5a58"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/prepare-chart-values.ts",
+      "sha256": "3fd8a1bd74279a065f0d17e5203b0358ac8706562b1a4d88129ff9aa4209f60c"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/prepare-text-candidate.ts",
+      "sha256": "8b1f8ebf11d44bd3ea5c19d6eeb86ccc8406bd184dee9ebdc919f45f41eadb49"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/project-content.ts",
+      "sha256": "4ba51daa65f9891de263ecd80e9ea4c886ab3df5448fb6827a888f486df650aa"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/project-sections.ts",
+      "sha256": "91fff514f1de9459bca33e62845374f7ec7c26d46b4958f015b1cd7024d658fb"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/project-structure.ts",
+      "sha256": "14c07dabf5b01e246652ffce5803151fd9bdeab130d05bdf866c8b400016aee6"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/session.ts",
+      "sha256": "d9a9d0844edf9b0bb43f29e3d4eeb22da2f2369e083a59d13bf7d8d91ae1dacc"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/state.ts",
+      "sha256": "177985c1185fe3b291d2b83b51466225b84459f10450b6dbfad883e5d6423ef6"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/table-style-inheritance.ts",
+      "sha256": "21d6085486de9c000e17489888ce43fc9b010d764908857729d23eb632681389"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/table-style-properties.ts",
+      "sha256": "d817575cc69fdffca4b83ed95c26f472f72aa93d4f04a412a3d28f7a8a305c85"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/text-edit-guards.ts",
+      "sha256": "04179c7237ff7a67937636795bc6285e1414b7e028f97b3436fcf3b86541bfd2"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/text-inheritance.ts",
+      "sha256": "ede76b7a3ce38721f83bb7ccc5458462c1eb65b8ea7ebcce1106348fa1827950"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/text-run-bindings.ts",
+      "sha256": "9afa2fe5459e5f37c4bed354be44edccf4a338fca40ef459fb9d63b03fb430a1"
+    },
+    {
+      "file": "packages/pptx-parser/src/import/theme-text-resolver.ts",
+      "sha256": "2b89dc7056eb2936a78ed9fd5b50b088e1fbee5bb3f804e9cc7bac6118d84158"
+    },
+    {
+      "file": "packages/pptx-parser/src/index.ts",
+      "sha256": "fa37e9ad7e63e234541bfa0e85851990d729f94fd004e07fc3b95ebaadc33dac"
+    },
+    {
+      "file": "packages/pptx-parser/src/metadata/core.ts",
+      "sha256": "3281294029ff7e5ad03e21f8c069f1a3b01547504c246d421ccea64ea5351ead"
+    },
+    {
+      "file": "packages/pptx-parser/src/metadata/properties.ts",
+      "sha256": "a0ad18b3f81ecf4cddb0515a1b18e6821cd9bfe5951cc89a62bd755a740c2422"
+    },
+    {
+      "file": "packages/pptx-parser/src/metadata/read-metadata.ts",
+      "sha256": "559d8b19bfddbdfc8dbae2cad086bc02b707b6871075be196448140b4f9e521a"
+    },
+    {
+      "file": "packages/pptx-parser/src/metadata/values.ts",
+      "sha256": "4015f1f4d0bf1420648a60d797c7c13008754a39697c27b35a6b6b0b7024a17c"
+    },
+    {
+      "file": "packages/pptx-parser/src/metadata/xml.ts",
+      "sha256": "62de6efba0d9e1ae07fbbd472b6f1aaef30dd07c4a73dbb8797b0cf246abdaef"
+    },
+    {
+      "file": "packages/pptx-parser/src/node.ts",
+      "sha256": "7298609b5ba5793a22103e01bb23d83cd67998a273d4c0c59e696aaf895d57e3"
+    },
+    {
+      "file": "packages/pptx-parser/src/node/file-adapter.ts",
+      "sha256": "0de2d4fc77655a4e950ed547681c16881439e248e1f12f9f6264d6443bec3d3e"
+    },
+    {
+      "file": "packages/pptx-parser/src/node/file-io.ts",
+      "sha256": "8badfa0e4eb7b2097e111837fb824fbbb83f8a0c7941e38d0555f3270325d349"
+    },
+    {
+      "file": "packages/pptx-parser/src/node/read-file.ts",
+      "sha256": "3b12d79415d9b3608c96c791b45995cd232758429ca82e5d7798cf998f1abe0e"
+    },
+    {
+      "file": "packages/pptx-parser/src/notes/budget.ts",
+      "sha256": "0e17646777f415496e6f887b032df7d8cc2896a9f0623447d46fc8ee641644e2"
+    },
+    {
+      "file": "packages/pptx-parser/src/notes/read-notes.ts",
+      "sha256": "147a42c9bc2b2825f417260059fc4287a604a7bc0b4c7c441d763881d70acfd1"
+    },
+    {
+      "file": "packages/pptx-parser/src/opc/markup.ts",
+      "sha256": "1fe56439e15646d2a548ce88ddefca40d328dff8f7f4c1fe3fd9befc433b2a89"
+    },
+    {
+      "file": "packages/pptx-parser/src/opc/names.ts",
+      "sha256": "2bdd87b89d7642eb34a13b3696b458162ee0ed502470b6a03682f51612de6639"
+    },
+    {
+      "file": "packages/pptx-parser/src/opc/read-package.ts",
+      "sha256": "cb29166114bf13204c1fe24ae41c90d283898b98a6dbb93800c64398771b4423"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-data.ts",
+      "sha256": "4d890dadf8d67a81856f7d450715aa50f702555a36a64aa52483b3409d247eb3"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-limits.ts",
+      "sha256": "ab44dcb39f9e50df49c1b8fd7777b24c6801fde09f04295cc90f724328a9cedc"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-mapping.ts",
+      "sha256": "60186a00a9d3834856a877fc481b55f215c6f464c9aba912b4469ebaa2354f74"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-model-id.ts",
+      "sha256": "2c8f88a587eeab965b4d9dfd8f1fbb271d5e65667d2b6dd41dcdb00b538980d6"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-resources.ts",
+      "sha256": "a0cc53d73ef3dedfcac50cc25541f784eb2f387fb12922c25ce2fe964786cc73"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/diagram-text-comparison.ts",
+      "sha256": "37ffab5861ff4a1c9dbf57a5fd286c9ef31908c8613fb8ffb0ea610f8c774939"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/inspect.ts",
+      "sha256": "3fcc3e9c7d9f3a61e4bc3edd7f47275b3563775c391bf8e7889a6d5a83c06de4"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/read-structure.ts",
+      "sha256": "85ee1c02f4b169c87b7fb820a5a907295ee4c57e0c2bcca0a04a5461689ac772"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/sections.ts",
+      "sha256": "b6964990b867eea81ee8a20e29d5994208f19f9ae2fcb58f6f383da5ab6b4e7f"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/smartart.ts",
+      "sha256": "cc02f59f47b346d7a527733db0d4b91168c1454a15b9440aeba0c87fdc440b6c"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/structure-context.ts",
+      "sha256": "e33890f5b5e3c13041c316e907f7a5c10910cea38ab97d7ea5b066dcbf499f89"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/structure-xml.ts",
+      "sha256": "693f91a6f691f62b916cd3a7faba10bdd32d44e76a3a8aea31828b1f5a9243db"
+    },
+    {
+      "file": "packages/pptx-parser/src/presentation/transition.ts",
+      "sha256": "06b0e33fb98d8e4e1df20a1df2e7007a437b14989aecd862ae5a3ea0f3470c85"
+    },
+    {
+      "file": "packages/pptx-parser/src/preservation/inspect-closure.ts",
+      "sha256": "ddcb9af4103795598779a56ab506d36d00275f22bf295f6dddc5d58cec5f3a3b"
+    },
+    {
+      "file": "packages/pptx-parser/src/preservation/replace-archive-entries.ts",
+      "sha256": "5a428fac13a0678ed2930f36584e633065e27a019da9e8a8bd6b68d2763c1f22"
+    },
+    {
+      "file": "packages/pptx-parser/src/preservation/source-relationships.ts",
+      "sha256": "0b837a60e16903feb77d81074bf465f4fcc4d81d2c38a7b80851623d41470ee4"
+    },
+    {
+      "file": "packages/pptx-parser/src/preservation/xml-text-source.ts",
+      "sha256": "2b399c32c5edb7543bdd931db6e1573344a9b5b65336174de52355f585ea147a"
+    },
+    {
+      "file": "packages/pptx-parser/src/timing/budget.ts",
+      "sha256": "0306f72df7888969009e888f8c6838ef0521b0b5ebced30ca121964f6a4c52fe"
+    },
+    {
+      "file": "packages/pptx-parser/src/timing/read-timing.ts",
+      "sha256": "dda827348dbedc23b97ead2873d2c1f8563508e90c6bb4076563c73d16750d71"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/archive.ts",
+      "sha256": "c57b4822319564880d5b4f55cb743447a6f5b7eeb370f5faaa6b5129970ee196"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/capability.ts",
+      "sha256": "0fcb5601ae965f6aaf0ac93481a48a038d065f61728f96aad77aea92b642d9a5"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/closure.ts",
+      "sha256": "b9b311528b2f8d6e450bca5e9730d383ab3c43704f6514ac13d92a3759fa15da"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/comparison.ts",
+      "sha256": "549aad0d52fd51bde12ef4c5630c73361dcc1ab50d8f95826517767a7c7dc097"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/compatibility.ts",
+      "sha256": "8cede970e5d6b8c8fc8552145b73e0122373c655c0d3e2b1a3a5ea925e79d11c"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/file.ts",
+      "sha256": "0e98010cae916bd2cf9e88ff10c19bb8d5647e05d5bf20fdaf9df0f3954fb023"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/import.ts",
+      "sha256": "57b0b81b925f8adb13800c8247bf613cccabe07ae019f7582a8054d84e145fe5"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/inheritance.ts",
+      "sha256": "5072285f4c7bfdc180889b6b91ce3a5ec67f66b34d3a9e34e2e156f884b2b9db"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/metadata.ts",
+      "sha256": "5f003c11385ccbfe6b1038e76d3594e3b629d74c01d203fc6218f18044cb05bb"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/notes.ts",
+      "sha256": "95dea17bcfcbb8e22c97764689ad002afad824bbf03160f449c3baabb66cec46"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/opc.ts",
+      "sha256": "7db16efcbf39a7185871e19a39f7f89234dd86debccd37b7152278b4e6199418"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/presentation.ts",
+      "sha256": "478dc3af73a6934cbd14c937f556419718872ad0ae12e645c8bbc67b9d9f9af4"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/smartart.ts",
+      "sha256": "0a068ca54279be122e44bdc89427729f2596334b9233020c38cd37056d3f8d57"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/source.ts",
+      "sha256": "3d97b698136572265dd9cdd963c4eef765e69d889ca7dfee053e8e2cc4fc4080"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/structure.ts",
+      "sha256": "26a410c8b3928147390c9ad3483a9aadf3529cceeb1f056293858b9288151648"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/timing.ts",
+      "sha256": "8ee16dcc55ec6b3d078ace9e8b38e87faf45ce4659a1530a8d7575cac504de4b"
+    },
+    {
+      "file": "packages/pptx-parser/src/types/xml.ts",
+      "sha256": "0dd54cab3252c5047ac54cbe207a50b0853bd908cffe7d3a7158322f21be888e"
+    },
+    {
+      "file": "packages/pptx-parser/src/xml/names.ts",
+      "sha256": "f4c51671c74ab531433d8fd924ee893cb2ce4713b7c6432bbf83ee522d03798b"
+    },
+    {
+      "file": "packages/pptx-parser/src/xml/read-xml.ts",
+      "sha256": "8264d0c7fe9fedbc56814c3483d204d31ad72b39767aaf72db863fa7f6f97b3c"
+    },
+    {
+      "file": "packages/svg-renderer/src/index.ts",
+      "sha256": "767485add55940a7fdf978231563d2e8d47921aaa055027d8c84e808f2ee9f0d"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/chart.ts",
+      "sha256": "dbd5b4c3d0235505684a6e69126780716425d582c651a4411f9989be03596a59"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/context.ts",
+      "sha256": "db4b63ababd382aa8de46a44b7143f89d0c68ef006fe548234a47500c12094c2"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/element.ts",
+      "sha256": "896a848219333c2aec2026e829d26831c78a5c937e70d41d6e1a1251d819c39e"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/escape.ts",
+      "sha256": "0f40d982717a2d2f9a8869811b6ba015a0d59f64bc47d9bf5cf2f99201bea8d1"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/render.ts",
+      "sha256": "5f0d1e889b36d0fed8a6d227e6dce8a06fa80cfb020a17fee0c2c2b45f193a96"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/style.ts",
+      "sha256": "04ee8eb7f5202d075354944731cc78ab6d7bcbe65f1fc234dff5f86c6b6c03fa"
+    },
+    {
+      "file": "packages/svg-renderer/src/rendering/text.ts",
+      "sha256": "b8ba27c082b566ad10eff7bc260379c744f230b0d970a50cd8791f6f4128a237"
+    },
+    {
+      "file": "packages/svg-renderer/src/types/public.ts",
+      "sha256": "9b3fbf99ec592ec93d42b9841cb9f1f4618e1f290dd3db24be3bc8d40912b260"
+    },
+    {
+      "file": "scripts/build-browser-bundle.mjs",
+      "sha256": "6ee186a042c410f19c0f0a5e82aea915820ab40256ec306d164bb4b1dc8f8a0a"
+    },
+    {
+      "file": "scripts/inspect-native-placeholder-index.mjs",
+      "sha256": "e3b60f6e51eb0d97cd146e774238867264a86883719e3c4853884523026e60ee"
+    },
+    {
+      "file": "scripts/layout-rebind-parity.test.mjs",
+      "sha256": "c01b31b427b65747d2b6a0a81aae2f88a4dfa88e1bc431ac19b3d32195fbd1d4"
+    },
+    {
+      "file": "scripts/prepare-placeholder-index.mjs",
+      "sha256": "5d71a0229cc315fcbfa2cfb200bb641e62c9f1c590537f7ea16f37e7409b3b49"
+    },
+    {
+      "file": "scripts/verify-placeholder-index-evidence.mjs",
+      "sha256": "1fae7e7837552dee580423b93d8cd678b8dc8b477ddf6f50ab68f050a33b243b"
+    },
+    {
+      "file": "tests/fixtures/placeholder-index.mjs",
+      "sha256": "84b9e23a6d712f69c481f300220a336d49224223457ba32d8144ebfad4cf0b7c"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "docs/testing/placeholder-index-native-evidence.json",
+      "sha256": "9a606cbbc074d03852169a8ef2ba105e395d876e2d0c66640c614e8e290a3efe"
+    },
+    {
+      "file": "docs/testing/placeholder-index-native-parser-evidence.json",
+      "sha256": "d2a96dc323eca861179b4ddc43be8bb695791a95edd6e4ac3e618b263e59f406"
+    }
+  ],
+  "visualArtifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/placeholder-index/run-uKHDrz/native-contact.png",
+      "bytes": 22771,
+      "sha256": "435be8a1d4e3b440067da6d815450f0abaad57c09cf901ab35d350e01e6beba3"
+    }
+  ]
+}

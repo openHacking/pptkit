@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/notes-image-domains-evidence.json",
+  "nativeEvidenceSha256": "9555114d00a06bbbee57e88fecf671d42be99e08a9c827ceb3395787035867a5",
+  "options": {
+    "projection": "content",
+    "textFontProfile": "script-families-v3",
+    "notesTextProfile": "master-style-v1",
+    "editSaveProfile": "text-runs-v3"
+  },
+  "records": [
+    {
+      "group": "B",
+      "name": "rect",
+      "sha256": "69396cad8cc8273f52c579f4224aaa555670ca184887855c990f5f3000ff8f01",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/rect.json",
+      "snapshotSha256": "dc073b307724bf6095a81ade1e7ebc4b175974303e30a1813a08d049c2a09411",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/rect-candidate.pptx",
+        "sha256": "f38d00db4c017e8524c8fddb5bee9ae890325b4242070afbe963a09e65a6e3a4",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "B",
+      "name": "round1",
+      "sha256": "ea9a43e5a6632beca03344f90f1ef79ba50e29198907fc863c24c5b037d186bc",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round1.json",
+      "snapshotSha256": "33b07a7a5d304e04150cbef6230f39b897618db844bdeaa2d3292823d08c65e7",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round1-candidate.pptx",
+        "sha256": "e994d29d43a5f40f43bf09e38d48b27bcae8ad1d7b7ec3424e2ac649d1e30c55",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "B",
+      "name": "round2",
+      "sha256": "94f8e990be9f1d4c5cf76625f009c6970c3f8d0e10677496610d44340235fbf7",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round2.json",
+      "snapshotSha256": "4d1e9a85f00da40f9ba904db955435dccc0546294cd1f524e66b45b2873ebfdf",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round2-candidate.pptx",
+        "sha256": "76edf20ab791e3d1b47e74eb13227dd88563bba4857530a7f1575603adf8edb8",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "B",
+      "name": "round3",
+      "sha256": "4aed7e74518696ab82752b070a3eff8bbb5fef75bec6e6c8a06109a0bde3441d",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round3.json",
+      "snapshotSha256": "5516c5f34ba3277387fd0d4183f8c1f6996761c230e1591c9ecb03b97728651e",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/parser-inspections/round3-candidate.pptx",
+        "sha256": "3ad5e04995b7ff71a31b614e4f7fd53e41235fbe887df37215e5fe23726467e9",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      },
+      "browser": {
+        "format": "global",
+        "completeSnapshotAndBytesEqual": true,
+        "requests": []
+      }
+    },
+    {
+      "group": "override",
+      "name": "rect",
+      "sha256": "a9bc6a7bdc8c4d07f61d52c1bce2fa507a669e9e4897149cdc3a78e46d789887",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/rect.json",
+      "snapshotSha256": "a6b754447018351529bfbc79616b08b927eda321071d555eccd30247ab05a807",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/rect-candidate.pptx",
+        "sha256": "1159fffe8a963dac97bd9cbf6a62f54751341e5529c83b67770331396c704b81",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "override",
+      "name": "round1",
+      "sha256": "8b00ae790c6128c4638daf40e1cdec7f74696fb9640347f94a08e65972f97af3",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round1.json",
+      "snapshotSha256": "d8830bc3efb61df232d5329691d04d8ba6124f70e840f34c90d10b5cc7e8ecde",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round1-candidate.pptx",
+        "sha256": "c4665ea98476e55e31c5166d9720d2aa354a2eb9646d41b26ded581f62522b43",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "override",
+      "name": "round2",
+      "sha256": "cc3e44d180fd54d87f67859a89bde24987d33e1c2b8b0fe3a309c6fc4d7510fd",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round2.json",
+      "snapshotSha256": "c1e2f282939c2f22f463d914b3fb050cad0f3baeaa095ab4819e0d5a6f874116",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round2-candidate.pptx",
+        "sha256": "279caa2a10947e02a4572a46f0b1f9c47e7e9798ac26dddd58c4e2a79accecae",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      }
+    },
+    {
+      "group": "override",
+      "name": "round3",
+      "sha256": "1b8524a57430362fbefa132b26adfead4fe24e090b5ef0b59a638acd07af671f",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round3.json",
+      "snapshotSha256": "e5b7959357174beaaac2e362f1822128f7d190997207818ec6506745581736ed",
+      "exactNoOpAndRestore": true,
+      "styleMixedWriteBlocked": true,
+      "candidate": {
+        "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/parser-inspections/round3-candidate.pptx",
+        "sha256": "c9a32e4a4ea51e41c656c66c99ed0126335c96f3ba43679ee6af19afc76a3f16",
+        "nativeReopen": "not tested",
+        "exactOutsideTargetCharacters": true
+      },
+      "browser": {
+        "format": "global",
+        "completeSnapshotAndBytesEqual": true,
+        "requests": []
+      }
+    }
+  ],
+  "total": {
+    "nodeInputs": 8,
+    "exactNodeNoOpsAndRestores": 8,
+    "mixedStyleRejections": 8,
+    "headlessCharacterCandidates": 8,
+    "browserGlobalNoOps": 2
+  },
+  "scope": "Captured rect and native states only. Source semantics remain equal to the original blank-image baseline; scalar candidates are not native reopened. No source style-write or general font equivalence claim."
+}

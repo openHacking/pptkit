@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/master-artwork-native-evidence.json",
+  "nativeEvidenceSha256": "74f0e7ce4b899bda4a2d6534084c307cd2bc0a8ded8305b2c336ab29f93f740c",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/input.pptx",
+      "sha256": "7773cbaa76a74d1bea8d714dc60ece07a2423b94b01b72aee441e061d535940b",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/parser-sp0N1a/input.pptx.json",
+      "snapshotSha256": "70dddc6e97badea5a677ea949b3e496619237f3083f719945e03c4e108a02a20",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/artwork-round1.pptx",
+      "sha256": "55e1326b5826b3a0284fa96ddce3764a942dc8d1f8817897202abc88c27f756e",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/parser-sp0N1a/artwork-round1.pptx.json",
+      "snapshotSha256": "fefeb2657267812e32f333cadcafed987584e0095c4faf8de3e14f4f00bee1fc",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/artwork-round2.pptx",
+      "sha256": "45e0257466937aa3db5515e3c948b5a406a35fecbfc4404287a8a7904aa631ca",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/parser-sp0N1a/artwork-round2.pptx.json",
+      "snapshotSha256": "9df937a3590466203e055ec03851310493a7462ce5418d6f02e654fc278106ff",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/artwork-round3.pptx",
+      "sha256": "5eaae3605a4701a51a48cfc2af4bda7fe43ca4ab6ae048bc2cf1ae21a71b5112",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/master-artwork/native-XYerBL/parser-sp0N1a/artwork-round3.pptx.json",
+      "snapshotSha256": "931f3da272462da91ce7f20366e776742371457d6727f76d705ced9fb28741d4",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 4,
+    "consumerNoOps": 12
+  },
+  "scope": "Four actual source/reopened master-artwork files, full structural inspections/reports in Node/ESM/global and 12 exact source-only no-ops. No complete master/artwork Core import, visibility projection or source style/structure write authority."
+}

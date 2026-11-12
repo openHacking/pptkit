@@ -1,0 +1,312 @@
+{
+  "profile": "native-diagram-headless-producer-v1",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI",
+  "sourceDirectory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "cases": [
+    {
+      "file": "smartart-accent-process.pptx",
+      "family": "process",
+      "cache": "original-source",
+      "inputSha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+      "nativeSha256": "5ab6224ea5c55c61692979aa77a0351a23cff5777172e027b533c722882f073d",
+      "pdfSha256": "e104f140d17060fd6a1e25d9d49ac0be559d2f2b5d8f521c7be8025e24fd5e7f",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/drawing1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}": "a",
+              "{C515AB2F-289B-42FD-8210-049BC5527592}": "b",
+              "{D371A627-A015-451F-8389-9118F71987E1}": "cc",
+              "{7E3C9309-C119-4B47-A6CC-8827871EB22F}": "d"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 24,
+            "connections": 23,
+            "texts": {
+              "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}": "a",
+              "{C515AB2F-289B-42FD-8210-049BC5527592}": "b",
+              "{D371A627-A015-451F-8389-9118F71987E1}": "cc",
+              "{7E3C9309-C119-4B47-A6CC-8827871EB22F}": "d"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 24,
+            "connections": 23
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": false,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true
+    },
+    {
+      "file": "smartart-org-chart.pptx",
+      "family": "hierarchy",
+      "cache": "original-source",
+      "inputSha256": "7a457c32c73efed6244cf79e184994a2f2a0cb65901f6ce4f3dfcd22dbcf4ac1",
+      "nativeSha256": "25aed2ce9a0cd9b5ed2e3a0a18693cdb4b131708d7a1958bb1bfedca7c8f7d4f",
+      "pdfSha256": "60f99556be6373cdeff7c861c07cae20290bc41eb0887315090e71f9068c1598",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/drawing1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 50,
+            "connections": 52,
+            "texts": {
+              "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}": "Manager\nSecond para",
+              "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}": "Employee",
+              "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}": "Employee2",
+              "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}": "Manager2",
+              "{819F243A-D3B6-4E91-AF5E-691A813F59DF}": "Assistant"
+            },
+            "assistantIds": [
+              "{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 50,
+            "connections": 52,
+            "texts": {
+              "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}": "Manager\nSecond para",
+              "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}": "Employee",
+              "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}": "Employee2",
+              "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}": "Manager2",
+              "{819F243A-D3B6-4E91-AF5E-691A813F59DF}": "Assistant"
+            },
+            "assistantIds": [
+              "{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+            ]
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 50,
+            "connections": 52
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": false,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true
+    },
+    {
+      "file": "smartart-cycle.pptx",
+      "family": "cycle",
+      "cache": "original-source",
+      "inputSha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+      "nativeSha256": "ca5dfb947dcd9984a86b147c326b3ac5c1d0f878ebf83d5444c59224b881fe98",
+      "pdfSha256": "96f6ebac0aa8a24185243fe99f770712589940764b7f51b8cc08b48d5d92d377",
+      "status": "saved-and-reopened",
+      "source": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 32,
+            "connections": 36,
+            "texts": {
+              "{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}": "a",
+              "{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}": "b",
+              "{6264B464-1F5E-4869-A663-E3C521582573}": "c",
+              "{0C0A1E91-DF74-469A-868A-CAD295846B75}": "d",
+              "{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}": "e"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "native": {
+        "diagramParts": [
+          "ppt/diagrams/colors1.xml",
+          "ppt/diagrams/data1.xml",
+          "ppt/diagrams/layout1.xml",
+          "ppt/diagrams/quickStyle1.xml"
+        ],
+        "dataModels": [
+          {
+            "part": "ppt/diagrams/data1.xml",
+            "points": 32,
+            "connections": 36,
+            "texts": {
+              "{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}": "a",
+              "{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}": "b",
+              "{6264B464-1F5E-4869-A663-E3C521582573}": "c",
+              "{0C0A1E91-DF74-469A-868A-CAD295846B75}": "d",
+              "{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}": "e"
+            },
+            "assistantIds": []
+          }
+        ],
+        "cacheShapes": 0,
+        "graphicUris": [
+          "http://schemas.openxmlformats.org/drawingml/2006/diagram"
+        ],
+        "ordinaryShapes": 0
+      },
+      "parser": {
+        "status": "inspected",
+        "slides": 1,
+        "diagrams": 1,
+        "dataModels": [
+          {
+            "part": "/ppt/diagrams/data1.xml",
+            "status": "inspected",
+            "points": 32,
+            "connections": 36
+          }
+        ]
+      },
+      "pdfPages": 1,
+      "missingTextMarkers": [],
+      "allTextMarkersInPdf": true,
+      "controlTextInPdf": false,
+      "exactDataInventoryRetained": true,
+      "diagramGraphicRetained": true,
+      "independentZipXmlPdf": true
+    }
+  ],
+  "logs": [
+    {
+      "file": "smartart-accent-process.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/smartart-accent-process.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-accent-process.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-accent-process.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/pdf/smartart-accent-process.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "smartart-org-chart.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/smartart-org-chart.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-org-chart.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-org-chart.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/pdf/smartart-org-chart.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    },
+    {
+      "file": "smartart-cycle.pptx",
+      "save": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/smartart-cycle.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-cycle.pptx using filter : Impress Office Open XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "reopen": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/native/smartart-cycle.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/native-run-PyIzXI/pdf/smartart-cycle.pdf using filter : impress_pdf_Export\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      }
+    }
+  ],
+  "limitations": [
+    "Headless application save/PDF reopening only; no interactive editability, repair-dialog, playback or calibrated visual-fidelity claim.",
+    "Native source/model losses and PDF text omissions are observed results, not silently accepted compatibility passes.",
+    "The development LibreOffice runtime does not establish stable LibreOffice or PowerPoint support.",
+    "Third-party component payloads and resulting artifacts remain local; native family admission remains incomplete."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@pptkit-example/report-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": { "check": "tsc --noEmit -p tsconfig.json", "start": "node dashboard.mjs", "diagram": "node diagram-template.mjs" },
+  "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/pptx-exporter": "workspace:*",
+    "@pptkit/svg-renderer": "workspace:*"
+  }
+}

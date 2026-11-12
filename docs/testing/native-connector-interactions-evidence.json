@@ -1,0 +1,27 @@
+{
+  "scope": "Three separate PowerPoint 16.104 interactive observations on generated rectangle targets; each has one save/close/reopen. Screenshot hashes and stated actions do not independently authenticate provenance. Other angles, shapes, routes, applications and repeated native reopens are unverified.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423), macOS 26.5 (25F71)",
+  "straightMove": {
+    "sourceSha256": "236e395583f6dad2a3665c1133d92de3392c187e5c61858aedaee79a62f2e1ba",
+    "outputSha256": "81901be601596dd5f4ee47e2282e1191d6df0edbee34eb7afbe8cf0f4c73fbf2",
+    "bindingsRetained": true,
+    "targetMoved": true,
+    "nativeReopenRounds": 1
+  },
+  "elbowMove": {
+    "sourceSha256": "76c7fb5ff261da2ec334417ebac7348a1c64049b86dedf8124b1b69459d71468",
+    "outputSha256": "86bc9d6b844362e33d726256da17489d658eeeb713705099fc950e642fd1ed95",
+    "bindingsRetained": true,
+    "beforePreset": "bentConnector2",
+    "afterPreset": "bentConnector3",
+    "nativeReopenRounds": 1
+  },
+  "straightRotation": {
+    "sourceSha256": "236e395583f6dad2a3665c1133d92de3392c187e5c61858aedaee79a62f2e1ba",
+    "outputSha256": "d38cc889c4348928ad998eadbfa09e63f2b76a5adf2cf60b47ffd80289c5f272",
+    "bindingsRetained": true,
+    "rotation60000ths": 2727718,
+    "endpointToleranceEmu": 2,
+    "nativeReopenRounds": 1
+  }
+}

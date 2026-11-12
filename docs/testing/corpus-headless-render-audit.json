@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "scope": "Fresh headless PDF render of retained source and saved PPTX; exact raster differences are observations, not interactive, semantic, repair-dialog or application support claims.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "pymupdfVersion": "1.28.0",
+  "historicalManifestSha256": "2600cc6d78976be42cdf07f4d4a20c0508a8ca459cd069ab43878b3b2d7c59ea",
+  "auditScriptSha256": "15944c6f7c0544bb146d8786193dc1244caa6c832fe44904f5cff47970f69cb5",
+  "retainedVerifierSha256": "0b787f3df351dc1ccf04b440f50061009fa3a3a877cff3a642669de019d6c5e8",
+  "directory": ".tmp/corpus-headless-render-jc95lhse",
+  "logs": {
+    "source": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fixtures/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/fixtures/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/source/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "saved": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/text.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/text.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/theme-layout.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/theme-layout.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/geometry.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/geometry.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/images.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/images.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/table.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/table.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/charts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/charts.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/compatibility/roundtrip/missing-asset.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/corpus-headless-render-jc95lhse/saved/missing-asset.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  },
+  "fixtures": [
+    {
+      "fixture": "text",
+      "sourcePptxSha256": "5430ce4c5e7c1bf81363da056f83bed7c8c0e460dbbdda9321155e7343dad8ee",
+      "savedPptxSha256": "68b3552fe0eb3d2f27eb8283280b78b07815963f6ec3420b9f355d45fe01cef9",
+      "sourcePdfSha256": "a7414f40bcd8c0b2f744a81694c1a1bbcefff60f014f129e73c7c00f38c24b31",
+      "savedPdfSha256": "585e4a3017f38ff2e7b152727bf5f96323cb41e68688b8bcb1546e597abf93d1",
+      "historicalSavedPdfSha256": "cb21a0a72ec7e4d06c65ff9fa0c05d7308090c8d6a07d7cdb4b15f6a8faa439c",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 455,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            46,
+            38,
+            223,
+            244
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "theme-layout",
+      "sourcePptxSha256": "3dc639e4ed69a8a20a5aee96a8c4b4efa2544c8d0c820a785586fd90561309ca",
+      "savedPptxSha256": "c56dab6f536edda34ba749bd93a5ef716472a15fb6cfdf8f7384bd3210af916c",
+      "sourcePdfSha256": "2843b06e4cbebbdc9b681b35c59552003a7ad7472c5c2a8c4f4301cfaf80342b",
+      "savedPdfSha256": "568a77311d52b29db125163c03a08c9554602e5c432df13ac660eedf447dcd3a",
+      "historicalSavedPdfSha256": "d529732aa7d89f85b2bc91bfc959f81cf87fc37a03a3979bb87e16ce900e1324",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "geometry",
+      "sourcePptxSha256": "e7c4df39945e2d7497233f8b43c358cf87bd3df20b14b2b1f22543a19ad40732",
+      "savedPptxSha256": "9666d79735a600faf7d4f9f018de3dda1a24a62da945467c5401b9c77646c258",
+      "sourcePdfSha256": "7dc6e3314cf26f6b3d5d0f655b166c27c002b12b9dbc3395c07f16125aec2b21",
+      "savedPdfSha256": "54ad3e52e7a3fb8fe4dfc0a66e57e6e687a1aa8153566631917c5854c13faffa",
+      "historicalSavedPdfSha256": "cce16b0985592db6e1c2f8a5a591e0964fa92053ede15261a7b18c53c2f3ccaa",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 937,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            39,
+            39,
+            579,
+            365
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "images",
+      "sourcePptxSha256": "223c870075c7d75c11650774e549b6c29f28aa3c3f9c21c1c74eb9c873f8af88",
+      "savedPptxSha256": "0d2c8e2326637e7ddab270c2c63f55a1aad4f2acfa9a16dd99a982df2b6e8a5e",
+      "sourcePdfSha256": "b1196dc170db023bf78a1b107306baf1ea349d3c65c5e3099692dbdb99ec68b6",
+      "savedPdfSha256": "e7b347dd2f1ba049086fb45d2fe6f3962d3231f4648df78884cd71fe97e675c0",
+      "historicalSavedPdfSha256": "ad5d77dee1a789704a45130227f88fc456ba2118d7de684b979846de6e326cb5",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 292,
+          "totalPixels": 518940,
+          "maxChannelDelta": 65,
+          "changedBoundsInclusive": [
+            87,
+            189,
+            512,
+            241
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "table",
+      "sourcePptxSha256": "646c609a7dc34145dce54599078904a9c26f2ac86ba923c1e1433eeab5a5ef0f",
+      "savedPptxSha256": "82b1534228eb443b4ced44c68acc59442426c79b686700d79eeb5e35067e9097",
+      "sourcePdfSha256": "994a1ffb9152c5cbd2f87646eb3af17f48a560fd815caff041c3c63d88356540",
+      "savedPdfSha256": "e17e88842c017f77f503972258d83963e6c9ffa16115eff8fde05536fa806257",
+      "historicalSavedPdfSha256": "6bc61a767f1dedb6330881daa6f877a3a1a2fd1029de8301f0655246df6c72ba",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    },
+    {
+      "fixture": "charts",
+      "sourcePptxSha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+      "savedPptxSha256": "358223320e50130d03f15d1303501cc1fecd6e6cc425ea30a64db14c9e9e2668",
+      "sourcePdfSha256": "1df681ad3541b9fea88f180b7b9cc157440cf9d05c11a668c5a411f4e4c169d2",
+      "savedPdfSha256": "b7f27cd5e385a9147cc1ed8a8234d5d82294bc84892175138ffd5caa6ca1d901",
+      "historicalSavedPdfSha256": "d94a528328037d262be2bfbc788becc62b085c5def17db29114a2999f66b87bf",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 2433,
+          "totalPixels": 518940,
+          "maxChannelDelta": 23,
+          "changedBoundsInclusive": [
+            71,
+            109,
+            916,
+            354
+          ]
+        }
+      ]
+    },
+    {
+      "fixture": "missing-asset",
+      "sourcePptxSha256": "32ec9612b21095db3a4b7935da21656183729900f11461e9b7ec2a0c83f8298e",
+      "savedPptxSha256": "4c0c04b219b1b08ab9d467b962525a6786ac0e37243e964fec3ad10d1575ee84",
+      "sourcePdfSha256": "decefe72b0e8273f51a08413db604b6a7563c547d0208a03ff0d6bd2709495a7",
+      "savedPdfSha256": "24a2bde0ff32b212de2058d3e93559af573ae6fc9190f2f25800236044bfe8af",
+      "historicalSavedPdfSha256": "96c4ccc03072b1dff06ba8e1a59c0cc538a4fc70e32fb0ffba06d7893e1049bc",
+      "sourcePages": 1,
+      "savedPages": 1,
+      "pages": [
+        {
+          "status": "compared",
+          "width": 961,
+          "height": 540,
+          "changedPixels": 0,
+          "totalPixels": 518940,
+          "maxChannelDelta": 0,
+          "changedBoundsInclusive": null
+        }
+      ]
+    }
+  ]
+}

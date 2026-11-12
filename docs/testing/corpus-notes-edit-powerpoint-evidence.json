@@ -1,0 +1,21 @@
+{
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "platform": "macOS 26.5",
+  "date": "2026-10-31",
+  "scope": "One native notes-pane text edit, save and reopen on the hidden second slide of a previously PowerPoint-edited text corpus fixture; no claim for complete notes geometry or other producers.",
+  "source": {
+    "path": "tests/fixtures/corpus-text-powerpoint-interactive.pptx",
+    "sha256": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-text-notes-powerpoint-interactive.pptx",
+    "sha256": "fdaee82bbde450de3ad954fe5fd38a9f76700cd614ca60ff407a2eb9fdfb14e9"
+  },
+  "artifactDirectory": ".tmp/corpus-theme-change-20261031",
+  "captures": {
+    "notes-edit-first.ax.txt": "d10bda2488a6e0b37c2eef03083c8f9f6a92e264c4c1c67d7553576c837f0291",
+    "notes-edit-first.png": "2c3d4ac417f15bef68a8bc59cb5ecfe672a7f39e0ac8458c0ea9662ff15de4a0",
+    "notes-edit-reopen.ax.txt": "a1eb3b042e333834ff2558ab38a559cd444e012581f70d7c372b8d4b29a0099e",
+    "notes-edit-reopen.png": "a4870d40f0f3d71b8b8048bd26e8da97f0617b9c8d612fc60ab0ee4997ae2c6c"
+  }
+}

@@ -1,0 +1,2047 @@
+{
+  "profile": "native-process-layout-controls-v1",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo",
+  "manifest": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/run-7fBhxd/manifest.json",
+  "controls": "/Volumes/github/private/pptkit/.tmp/native-diagram-generated/source-controls/manifest.json",
+  "sourceSha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+  "candidateSha256": "20ac29da3569c09fa2ce36bdb4686276bf599b8334f63f7e96fac48bb19d910c",
+  "records": [
+    {
+      "variant": "original-source",
+      "file": "original-source.pptx",
+      "inputSha256": "cc259ba4621464d23801dbd277a81cfc7411a1be35b28a56bf1cb06ab16037d0",
+      "nativeSha256": "aef37f3711737eb28ff0ad255ea5ad5a2ba450c8c116dce0b9d99a5f85132a17",
+      "copiedPresentationVariables": [],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/original-source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/original-source.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 120,
+          "y": 110,
+          "width": 480,
+          "height": 320
+        },
+        "shapes": [
+          {
+            "occurrence": 3,
+            "raw": {
+              "ordinal": 3,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{695C98C7-A37E-432A-AEB5-63C8229523CB}",
+              "x": "4.233cm",
+              "y": "3.881cm",
+              "width": "16.932cm",
+              "height": "11.288cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 119.99055118110235,
+              "y": 110.01259842519684,
+              "width": 479.9622047244094,
+              "height": 319.9748031496063
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                3
+              ]
+            }
+          },
+          {
+            "occurrence": 11,
+            "raw": {
+              "ordinal": 11,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{B0D1CAA8-292F-4D14-BB8A-3E757BDA97AC}",
+              "x": "4.233cm",
+              "y": "3.881cm",
+              "width": "5.621cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 119.99055118110235,
+              "y": 110.01259842519684,
+              "width": 159.33543307086615,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                139
+              ],
+              "repeatedNameOrdinals": [
+                11
+              ]
+            }
+          },
+          {
+            "occurrence": 35,
+            "raw": {
+              "ordinal": 35,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "a"
+              ],
+              "ancestorTransforms": [],
+              "name": "{090315FE-015B-4E96-96C5-8C468EC00519}",
+              "x": "4.233cm",
+              "y": "3.881cm",
+              "width": "5.621cm",
+              "height": "2.248cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 119.99055118110235,
+              "y": 110.01259842519684,
+              "width": 159.33543307086615,
+              "height": 63.722834645669295
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                132
+              ],
+              "repeatedNameOrdinals": [
+                35
+              ]
+            }
+          },
+          {
+            "occurrence": 39,
+            "raw": {
+              "ordinal": 39,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "b"
+              ],
+              "ancestorTransforms": [],
+              "name": "{18C98BC8-4748-408E-98B5-BF5E38C6610F}",
+              "x": "5.385cm",
+              "y": "6.129cm",
+              "width": "5.621cm",
+              "height": "9.039cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 152.64566929133858,
+              "y": 173.73543307086612,
+              "width": 159.33543307086615,
+              "height": 256.2236220472441
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                142
+              ],
+              "repeatedNameOrdinals": [
+                39
+              ]
+            }
+          },
+          {
+            "occurrence": 66,
+            "raw": {
+              "ordinal": 66,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{7CE86AE3-7E37-4FF7-9A26-D64535F9B0F4}",
+              "x": "11.007cm",
+              "y": "6.9cm",
+              "width": "8.466cm",
+              "height": "5.248cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 312.0094488188976,
+              "y": 195.59055118110237,
+              "width": 239.9811023622047,
+              "height": 148.76220472440946
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                147
+              ],
+              "repeatedNameOrdinals": [
+                66
+              ]
+            }
+          },
+          {
+            "occurrence": 87,
+            "raw": {
+              "ordinal": 87,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{A077A2D0-0179-4C44-89C3-75F29B816FE2}",
+              "x": "19.473cm",
+              "y": "3.881cm",
+              "width": "5.621cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 551.9905511811023,
+              "y": 110.01259842519684,
+              "width": 159.33543307086615,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                163
+              ],
+              "repeatedNameOrdinals": [
+                87
+              ]
+            }
+          },
+          {
+            "occurrence": 111,
+            "raw": {
+              "ordinal": 111,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "cc"
+              ],
+              "ancestorTransforms": [],
+              "name": "{A8919FE2-9A66-4C59-95C6-DB17D28E5ABF}",
+              "x": "19.473cm",
+              "y": "3.881cm",
+              "width": "5.621cm",
+              "height": "2.248cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 551.9905511811023,
+              "y": 110.01259842519684,
+              "width": 159.33543307086615,
+              "height": 63.722834645669295
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                156
+              ],
+              "repeatedNameOrdinals": [
+                111
+              ]
+            }
+          },
+          {
+            "occurrence": 115,
+            "raw": {
+              "ordinal": 115,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "d"
+              ],
+              "ancestorTransforms": [],
+              "name": "{3E21B797-10A8-4CDA-97BE-E56283048871}",
+              "x": "20.625cm",
+              "y": "6.129cm",
+              "width": "5.621cm",
+              "height": "9.039cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 584.6456692913385,
+              "y": 173.73543307086612,
+              "width": 159.33543307086615,
+              "height": 256.2236220472441
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                166
+              ],
+              "repeatedNameOrdinals": [
+                115
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    },
+    {
+      "variant": "fresh-shell-source-data",
+      "file": "fresh-shell-source-data.pptx",
+      "inputSha256": "db147ac8681205dd69c4615372de989eb1e421d18c18d3d85903ebefda0b8efe",
+      "nativeSha256": "f98481eac6c90dfc872e965258a07c0937af94b7050be0dac0f5844aa53513a7",
+      "copiedPresentationVariables": [],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/fresh-shell-source-data.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/fresh-shell-source-data.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 100,
+          "y": 100,
+          "width": 520,
+          "height": 300
+        },
+        "shapes": [
+          {
+            "occurrence": 12,
+            "raw": {
+              "ordinal": 12,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{E10E46BF-6725-4E4E-9579-2310B721BF11}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "18.343cm",
+              "height": "10.582cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 519.9590551181102,
+              "height": 299.96220472440945
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                12
+              ]
+            }
+          },
+          {
+            "occurrence": 20,
+            "raw": {
+              "ordinal": 20,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{B0D1CAA8-292F-4D14-BB8A-3E757BDA97AC}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                139
+              ],
+              "repeatedNameOrdinals": [
+                20
+              ]
+            }
+          },
+          {
+            "occurrence": 44,
+            "raw": {
+              "ordinal": 44,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "a"
+              ],
+              "ancestorTransforms": [],
+              "name": "{090315FE-015B-4E96-96C5-8C468EC00519}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                132
+              ],
+              "repeatedNameOrdinals": [
+                44
+              ]
+            }
+          },
+          {
+            "occurrence": 48,
+            "raw": {
+              "ordinal": 48,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "b"
+              ],
+              "ancestorTransforms": [],
+              "name": "{18C98BC8-4748-408E-98B5-BF5E38C6610F}",
+              "x": "4.775cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 135.35433070866142,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                142
+              ],
+              "repeatedNameOrdinals": [
+                48
+              ]
+            }
+          },
+          {
+            "occurrence": 75,
+            "raw": {
+              "ordinal": 75,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{7CE86AE3-7E37-4FF7-9A26-D64535F9B0F4}",
+              "x": "10.866cm",
+              "y": "5.976cm",
+              "width": "9.171cm",
+              "height": "5.686cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 308.0125984251968,
+              "y": 169.39842519685038,
+              "width": 259.96535433070864,
+              "height": 161.1779527559055
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                147
+              ],
+              "repeatedNameOrdinals": [
+                75
+              ]
+            }
+          },
+          {
+            "occurrence": 96,
+            "raw": {
+              "ordinal": 96,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{A077A2D0-0179-4C44-89C3-75F29B816FE2}",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                163
+              ],
+              "repeatedNameOrdinals": [
+                96
+              ]
+            }
+          },
+          {
+            "occurrence": 120,
+            "raw": {
+              "ordinal": 120,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "cc"
+              ],
+              "ancestorTransforms": [],
+              "name": "{A8919FE2-9A66-4C59-95C6-DB17D28E5ABF}",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                156
+              ],
+              "repeatedNameOrdinals": [
+                120
+              ]
+            }
+          },
+          {
+            "occurrence": 124,
+            "raw": {
+              "ordinal": 124,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "d"
+              ],
+              "ancestorTransforms": [],
+              "name": "{3E21B797-10A8-4CDA-97BE-E56283048871}",
+              "x": "21.285cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 603.3543307086615,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                166
+              ],
+              "repeatedNameOrdinals": [
+                124
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    },
+    {
+      "variant": "generated-baseline",
+      "file": "generated-baseline.pptx",
+      "inputSha256": "ef4c89824501fe41eabb6946617af01979da8369576d41de17521b449bab330e",
+      "nativeSha256": "319afe7a708f1673996d3a7f9cb39b093cee3c5a841f51d9c4c85a791eb9b30f",
+      "copiedPresentationVariables": [],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/generated-baseline.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/generated-baseline.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 100,
+          "y": 100,
+          "width": 520,
+          "height": 300
+        },
+        "shapes": [
+          {
+            "occurrence": 12,
+            "raw": {
+              "ordinal": 12,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{B8940792-DF70-4626-9F95-945A0194C5DC}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "18.343cm",
+              "height": "10.582cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 519.9590551181102,
+              "height": 299.96220472440945
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                12
+              ]
+            }
+          },
+          {
+            "occurrence": 20,
+            "raw": {
+              "ordinal": 20,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "23",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                147
+              ],
+              "repeatedNameOrdinals": [
+                20
+              ]
+            }
+          },
+          {
+            "occurrence": 44,
+            "raw": {
+              "ordinal": 44,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "process lead"
+              ],
+              "ancestorTransforms": [],
+              "name": "21",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                138
+              ],
+              "repeatedNameOrdinals": [
+                44
+              ]
+            }
+          },
+          {
+            "occurrence": 48,
+            "raw": {
+              "ordinal": 48,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Research detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "25",
+              "x": "4.775cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 135.35433070866142,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                156
+              ],
+              "repeatedNameOrdinals": [
+                48
+              ]
+            }
+          },
+          {
+            "occurrence": 75,
+            "raw": {
+              "ordinal": 75,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "30",
+              "x": "10.866cm",
+              "y": "5.976cm",
+              "width": "9.171cm",
+              "height": "5.686cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 308.0125984251968,
+              "y": 169.39842519685038,
+              "width": 259.96535433070864,
+              "height": 161.1779527559055
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                165
+              ],
+              "repeatedNameOrdinals": [
+                75
+              ]
+            }
+          },
+          {
+            "occurrence": 97,
+            "raw": {
+              "ordinal": 97,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "40",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                201
+              ],
+              "repeatedNameOrdinals": [
+                97
+              ]
+            }
+          },
+          {
+            "occurrence": 121,
+            "raw": {
+              "ordinal": 121,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Ship"
+              ],
+              "ancestorTransforms": [],
+              "name": "38",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                192
+              ],
+              "repeatedNameOrdinals": [
+                121
+              ]
+            }
+          },
+          {
+            "occurrence": 125,
+            "raw": {
+              "ordinal": 125,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Release detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "42",
+              "x": "21.285cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 603.3543307086615,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                210
+              ],
+              "repeatedNameOrdinals": [
+                125
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    },
+    {
+      "variant": "root-variables",
+      "file": "root-variables.pptx",
+      "inputSha256": "e02cea5c58bde8a6c6dfb6898f92f2348c7a1ba0f7cc8cc7d427a7a0bef4bd2b",
+      "nativeSha256": "dabb2b8e1403fa42ba780141b651301cf06dbb32a097456845878cf77c27f13a",
+      "copiedPresentationVariables": [
+        "linearFlow"
+      ],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/root-variables.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/root-variables.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 100,
+          "y": 100,
+          "width": 520,
+          "height": 300
+        },
+        "shapes": [
+          {
+            "occurrence": 12,
+            "raw": {
+              "ordinal": 12,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{63767768-280E-4196-B74C-C9AF6B820810}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "18.343cm",
+              "height": "10.582cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 519.9590551181102,
+              "height": 299.96220472440945
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                12
+              ]
+            }
+          },
+          {
+            "occurrence": 20,
+            "raw": {
+              "ordinal": 20,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "23",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                151
+              ],
+              "repeatedNameOrdinals": [
+                20
+              ]
+            }
+          },
+          {
+            "occurrence": 44,
+            "raw": {
+              "ordinal": 44,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "process lead"
+              ],
+              "ancestorTransforms": [],
+              "name": "21",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                142
+              ],
+              "repeatedNameOrdinals": [
+                44
+              ]
+            }
+          },
+          {
+            "occurrence": 48,
+            "raw": {
+              "ordinal": 48,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Research detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "25",
+              "x": "4.775cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 135.35433070866142,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                160
+              ],
+              "repeatedNameOrdinals": [
+                48
+              ]
+            }
+          },
+          {
+            "occurrence": 75,
+            "raw": {
+              "ordinal": 75,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "30",
+              "x": "10.866cm",
+              "y": "5.976cm",
+              "width": "9.171cm",
+              "height": "5.686cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 308.0125984251968,
+              "y": 169.39842519685038,
+              "width": 259.96535433070864,
+              "height": 161.1779527559055
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                169
+              ],
+              "repeatedNameOrdinals": [
+                75
+              ]
+            }
+          },
+          {
+            "occurrence": 97,
+            "raw": {
+              "ordinal": 97,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "40",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                205
+              ],
+              "repeatedNameOrdinals": [
+                97
+              ]
+            }
+          },
+          {
+            "occurrence": 121,
+            "raw": {
+              "ordinal": 121,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Ship"
+              ],
+              "ancestorTransforms": [],
+              "name": "38",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                196
+              ],
+              "repeatedNameOrdinals": [
+                121
+              ]
+            }
+          },
+          {
+            "occurrence": 125,
+            "raw": {
+              "ordinal": 125,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Release detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "42",
+              "x": "21.285cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 603.3543307086615,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                214
+              ],
+              "repeatedNameOrdinals": [
+                125
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    },
+    {
+      "variant": "title-variables",
+      "file": "title-variables.pptx",
+      "inputSha256": "2683053faaed3bbd148cec06caf340333bdc92cdb5725cdd005e856436a5cb19",
+      "nativeSha256": "9ee92c8a9e0d1023ee41782848b33ceae49e6e98a527daab2048301ed281e9bb",
+      "copiedPresentationVariables": [
+        "parTx"
+      ],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/title-variables.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/title-variables.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 100,
+          "y": 100,
+          "width": 520,
+          "height": 300
+        },
+        "shapes": [
+          {
+            "occurrence": 12,
+            "raw": {
+              "ordinal": 12,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{6C3F792B-7705-4170-9DDA-3009EC4F825D}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "18.343cm",
+              "height": "10.582cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 519.9590551181102,
+              "height": 299.96220472440945
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                12
+              ]
+            }
+          },
+          {
+            "occurrence": 20,
+            "raw": {
+              "ordinal": 20,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "23",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                151
+              ],
+              "repeatedNameOrdinals": [
+                20
+              ]
+            }
+          },
+          {
+            "occurrence": 44,
+            "raw": {
+              "ordinal": 44,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "process lead"
+              ],
+              "ancestorTransforms": [],
+              "name": "21",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                138
+              ],
+              "repeatedNameOrdinals": [
+                44
+              ]
+            }
+          },
+          {
+            "occurrence": 48,
+            "raw": {
+              "ordinal": 48,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Research detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "25",
+              "x": "4.775cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 135.35433070866142,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                160
+              ],
+              "repeatedNameOrdinals": [
+                48
+              ]
+            }
+          },
+          {
+            "occurrence": 75,
+            "raw": {
+              "ordinal": 75,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "30",
+              "x": "10.866cm",
+              "y": "5.976cm",
+              "width": "9.171cm",
+              "height": "5.686cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 308.0125984251968,
+              "y": 169.39842519685038,
+              "width": 259.96535433070864,
+              "height": 161.1779527559055
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                169
+              ],
+              "repeatedNameOrdinals": [
+                75
+              ]
+            }
+          },
+          {
+            "occurrence": 97,
+            "raw": {
+              "ordinal": 97,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "40",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                209
+              ],
+              "repeatedNameOrdinals": [
+                97
+              ]
+            }
+          },
+          {
+            "occurrence": 121,
+            "raw": {
+              "ordinal": 121,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Ship"
+              ],
+              "ancestorTransforms": [],
+              "name": "38",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                196
+              ],
+              "repeatedNameOrdinals": [
+                121
+              ]
+            }
+          },
+          {
+            "occurrence": 125,
+            "raw": {
+              "ordinal": 125,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Release detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "42",
+              "x": "21.285cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 603.3543307086615,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                218
+              ],
+              "repeatedNameOrdinals": [
+                125
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    },
+    {
+      "variant": "all-variables",
+      "file": "all-variables.pptx",
+      "inputSha256": "7f6aefda79fcbd0a93f797bcf00ee38c810b15e8988b24296c303b7c8891afab",
+      "nativeSha256": "e779b1f67b0ad7dc04dec7fe913270f4a5232c75731c00890f7216113a6cac75",
+      "copiedPresentationVariables": [
+        "desTx",
+        "linearFlow",
+        "parTx"
+      ],
+      "log": {
+        "stdout": "convert /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/all-variables.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/native-diagram-generated/process-layout-controls-np1EHo/all-variables.fodp using filter : OpenDocument Presentation Flat XML\n",
+        "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+      },
+      "observation": {
+        "profile": "native-diagram-geometry-observation-v1",
+        "coordinateSpace": "page-points",
+        "framePoints": {
+          "x": 100,
+          "y": 100,
+          "width": 520,
+          "height": 300
+        },
+        "shapes": [
+          {
+            "occurrence": 12,
+            "raw": {
+              "ordinal": 12,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "{64B075B8-6387-41EB-AACD-EEE377B914A7}",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "18.343cm",
+              "height": "10.582cm",
+              "preset": "ooxml-rect",
+              "textAreas": "0 0 ?f3 ?f2",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 519.9590551181102,
+              "height": 299.96220472440945
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "unmatched-name",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [],
+              "repeatedNameOrdinals": [
+                12
+              ]
+            }
+          },
+          {
+            "occurrence": 20,
+            "raw": {
+              "ordinal": 20,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "23",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                155
+              ],
+              "repeatedNameOrdinals": [
+                20
+              ]
+            }
+          },
+          {
+            "occurrence": 44,
+            "raw": {
+              "ordinal": 44,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "process lead"
+              ],
+              "ancestorTransforms": [],
+              "name": "21",
+              "x": "3.528cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 100.00629921259842,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                142
+              ],
+              "repeatedNameOrdinals": [
+                44
+              ]
+            }
+          },
+          {
+            "occurrence": 48,
+            "raw": {
+              "ordinal": 48,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Research detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "25",
+              "x": "4.775cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 135.35433070866142,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                164
+              ],
+              "repeatedNameOrdinals": [
+                48
+              ]
+            }
+          },
+          {
+            "occurrence": 75,
+            "raw": {
+              "ordinal": 75,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "30",
+              "x": "10.866cm",
+              "y": "5.976cm",
+              "width": "9.171cm",
+              "height": "5.686cm",
+              "preset": "ooxml-rightArrow",
+              "textAreas": "0 ?f8 ?f12 ?f9",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 308.0125984251968,
+              "y": 169.39842519685038,
+              "width": 259.96535433070864,
+              "height": 161.1779527559055
+            },
+            "outsideFrame": false,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                175
+              ],
+              "repeatedNameOrdinals": [
+                75
+              ]
+            }
+          },
+          {
+            "occurrence": 97,
+            "raw": {
+              "ordinal": 97,
+              "kind": "custom-shape",
+              "paragraphs": [
+                ""
+              ],
+              "ancestorTransforms": [],
+              "name": "40",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "7.799cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 221.0740157480315
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                215
+              ],
+              "repeatedNameOrdinals": [
+                97
+              ]
+            }
+          },
+          {
+            "occurrence": 121,
+            "raw": {
+              "ordinal": 121,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Ship"
+              ],
+              "ancestorTransforms": [],
+              "name": "38",
+              "x": "20.038cm",
+              "y": "3.528cm",
+              "width": "6.089cm",
+              "height": "2.435cm",
+              "preset": "ooxml-non-primitive",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 568.0062992125984,
+              "y": 100.00629921259842,
+              "width": 172.60157480314962,
+              "height": 69.02362204724409
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                202
+              ],
+              "repeatedNameOrdinals": [
+                121
+              ]
+            }
+          },
+          {
+            "occurrence": 125,
+            "raw": {
+              "ordinal": 125,
+              "kind": "custom-shape",
+              "paragraphs": [
+                "Release detail"
+              ],
+              "ancestorTransforms": [],
+              "name": "42",
+              "x": "21.285cm",
+              "y": "5.964cm",
+              "width": "6.089cm",
+              "height": "8.146cm",
+              "preset": "ooxml-roundRect",
+              "textAreas": "?f5 ?f5 ?f6 ?f7",
+              "mirrorHorizontal": "false",
+              "mirrorVertical": "false"
+            },
+            "geometryStatus": "axis-aligned",
+            "boundsPoints": {
+              "x": 603.3543307086615,
+              "y": 169.05826771653545,
+              "width": 172.60157480314962,
+              "height": 230.91023622047246
+            },
+            "outsideFrame": true,
+            "association": {
+              "status": "presentation-name-match",
+              "evidence": "exact-producer-name-only",
+              "sourceElementIndices": [
+                224
+              ],
+              "repeatedNameOrdinals": [
+                125
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "shapes": 8,
+          "axisAligned": 8,
+          "transformed": 0,
+          "incomplete": 0,
+          "outsideFrame": 3,
+          "repeatedNames": 0
+        },
+        "limitations": [
+          "Shape names provide source association evidence, not stable authoring/node identities.",
+          "Transforms, enhanced geometry equations, text-area expressions and clipping are retained without evaluation.",
+          "Axis-aligned boxes do not establish glyph bounds, legibility, connector topology, cache freshness or native editability."
+        ]
+      },
+      "independentGeometryChecked": true
+    }
+  ],
+  "limitations": [
+    "Six controlled FODP observations in one named development runtime, not a PowerPoint result or universal attribution.",
+    "The original source and fresh/source-data controls distinguish candidate-only problems from observed producer behavior; equal failure counts do not prove identical internals or geometry.",
+    "Copied presentation variables are diagnostic interventions only; no speculative production writer change is made.",
+    "Third-party source/components and transformed outputs remain local pending licensing admission."
+  ]
+}

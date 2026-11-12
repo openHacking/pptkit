@@ -1,0 +1,433 @@
+{
+  "scope": "Synthetic binary32 source based on PPTKit-created package, five value edits and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "8c74b9a9172e3c881115cab210f302d3b6a4dcdedd1b2c543a6ea220ff8314cc",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/input/control.pptx",
+      "sha256": "440ac244f4d74462b4db1781c5c1d62cfc72ade6f689134fd94ee47562d6703f",
+      "properties": [
+        {
+          "name": "Normal",
+          "pid": "2",
+          "type": "r4",
+          "value": "1.25"
+        },
+        {
+          "name": "Fraction",
+          "pid": "3",
+          "type": "r4",
+          "value": "0.125"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r4",
+          "value": "-0"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "5",
+          "type": "r4",
+          "value": "1.401298464324817e-45"
+        },
+        {
+          "name": "Maximum",
+          "pid": "6",
+          "type": "r4",
+          "value": "3.4028234663852886e+38"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/input/edited.pptx",
+      "sha256": "c93a1152b72e39364e9e07923a8b0659b9685c6aee85ab935fecd04ebec2227c",
+      "properties": [
+        {
+          "name": "Normal",
+          "pid": "2",
+          "type": "r4",
+          "value": "2.5"
+        },
+        {
+          "name": "Fraction",
+          "pid": "3",
+          "type": "r4",
+          "value": "0.25"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r4",
+          "value": "0"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "5",
+          "type": "r4",
+          "value": "2.802596928649634e-45"
+        },
+        {
+          "name": "Maximum",
+          "pid": "6",
+          "type": "r4",
+          "value": "1.7014117331926443e+38"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/control.pptx",
+      "sha256": "a1f8310641ef0e7e00ca2f112a2984cc1aba481120b40c9316667ec41ad4f523",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "3.40282346638529E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "-0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "1.40129846432482E-045"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/edited.pptx",
+      "sha256": "16fa2a5a0997463c84bd68fcf2ac21c667dad52a78a9496dac7866b4767930b3",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.25"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "1.70141173319264E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "2.5"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "2.80259692864963E-045"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/control.pptx",
+      "sha256": "b8f427e676bcb10c3b059598760f447f6dbea12894312c13fdf31af939177115",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "3.40282346638529E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "-0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "1.40129846432482E-045"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/edited.pptx",
+      "sha256": "b30d9b65d8d4d1df5bae9b41cbb69d48fbacf053aa32426f7e6a29d26922bcb0",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.25"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "1.70141173319264E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "2.5"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "2.80259692864963E-045"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-3/control.pptx",
+      "sha256": "855d9e2dac65a74f6d2a055a68a30a5919014719bba63096ee2eafb7357555d6",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "3.40282346638529E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "-0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "1.40129846432482E-045"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-r4-libreoffice/run-wpmmyxap/round-3/edited.pptx",
+      "sha256": "24389e029785789284ae85924f0fb2e3339f3cdb6f8076af9af8733cd239fce1",
+      "properties": [
+        {
+          "name": "Fraction",
+          "pid": "2",
+          "type": "r8",
+          "value": "0.25"
+        },
+        {
+          "name": "Maximum",
+          "pid": "3",
+          "type": "r8",
+          "value": "1.70141173319264E+038"
+        },
+        {
+          "name": "NegativeZero",
+          "pid": "4",
+          "type": "r8",
+          "value": "0"
+        },
+        {
+          "name": "Normal",
+          "pid": "5",
+          "type": "r8",
+          "value": "2.5"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        },
+        {
+          "name": "Subnormal",
+          "pid": "8",
+          "type": "r8",
+          "value": "2.80259692864963E-045"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-r4-libreoffice/run-wpmmyxap/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

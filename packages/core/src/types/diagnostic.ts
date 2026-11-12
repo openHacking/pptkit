@@ -9,6 +9,7 @@ export interface PresentationDiagnostic {
   elementId?: string;
   assetId?: string;
   layoutId?: string;
+  masterId?: string;
 }
 
 export class PresentationValidationError extends Error {

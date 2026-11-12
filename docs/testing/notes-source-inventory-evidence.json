@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T16:58:09.526Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5",
+  "manifests": [
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/native-notes-pages-evidence.json",
+      "sha256": "1953ca7b4d35e0dc8d967330c5d18d9fa07c3497bb08c42276ae91c840f99848"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/notes-image-domains-evidence.json",
+      "sha256": "9555114d00a06bbbee57e88fecf671d42be99e08a9c827ceb3395787035867a5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/authored-notes-pages-evidence.json",
+      "sha256": "9a48fcd38180972a515fbcb6767cfa805a7b711f2da3a3ab401400dcffdcb9cd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/docs/testing/notes-insertion-styles-evidence.json",
+      "sha256": "880897d6ecb33774d6f8375b7ab60020647b25e393450701ea3c2270ddc5a8b9"
+    }
+  ],
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-pages/run-VAnIFP/native-control.pptx",
+      "sha256": "62378e9fb8b35e921c3ffd016abf4d04ac1a6b5f01478248a676ea1446528bb1",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/0.json",
+      "snapshotSha256": "23b5b20d88ba26286ee54ca98b654a45187b7d6348f093aa63027153769a2dde",
+      "audit": {
+        "checkedSourceReferences": 369,
+        "parts": 3,
+        "fields": 4
+      },
+      "pages": 2,
+      "roles": [
+        "group-root",
+        "header",
+        "date",
+        "slide-image",
+        "body",
+        "footer",
+        "slide-number"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-pages/run-VAnIFP/rect-round3.pptx",
+      "sha256": "4ce88c1d08b3a3bc780d5df48e5099ba7046aee913f2c473d33c5cf814aafc89",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/1.json",
+      "snapshotSha256": "a3a4ee98e7bbf4c539f20ed2ff4ce2bebe03d33af69605e5e4d3ac3e30cf9129",
+      "audit": {
+        "checkedSourceReferences": 1171,
+        "parts": 16,
+        "fields": 0
+      },
+      "pages": 15,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "artwork",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/native-notes-pages/run-VAnIFP/rect-copy-round3.pptx",
+      "sha256": "494d6c66e1b63a1c10f476cfbd6dd9ff91bc71fa26759461111661dc34a349da",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/2.json",
+      "snapshotSha256": "c4b8a89699aa6ccd7b2c0cb74283d65c9c6f917f14bc0ba88f4504e1f1e02840",
+      "audit": {
+        "checkedSourceReferences": 1252,
+        "parts": 17,
+        "fields": 0
+      },
+      "pages": 16,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "artwork",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/B/round3.pptx",
+      "sha256": "4aed7e74518696ab82752b070a3eff8bbb5fef75bec6e6c8a06109a0bde3441d",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/3.json",
+      "snapshotSha256": "2ec3ff31b234edcfe7c7d1d2bd2990824bded8a471cb8657ea3fe68125ea82bf",
+      "audit": {
+        "checkedSourceReferences": 1171,
+        "parts": 16,
+        "fields": 0
+      },
+      "pages": 15,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "artwork",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-image-domains/run-k4KHeU/override/round3.pptx",
+      "sha256": "1b8524a57430362fbefa132b26adfead4fe24e090b5ef0b59a638acd07af671f",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/4.json",
+      "snapshotSha256": "a36587de69d3a8e93bb046ce7d5fcf61d6155059296e8b1791a3af4eca97b835",
+      "audit": {
+        "checkedSourceReferences": 2214,
+        "parts": 31,
+        "fields": 0
+      },
+      "pages": 30,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "artwork",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/authored-notes-pages/run-rM4cWd/wide-round3.pptx",
+      "sha256": "3c2f6b34b5746eb166b60cf2e6324b2ac8cd64b690f327a675a226171b87e29f",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/5.json",
+      "snapshotSha256": "34d380ea1c8755de987832e9de8b1b99f2f065d17473ad3b8c9c3f4693c1ea09",
+      "audit": {
+        "checkedSourceReferences": 269,
+        "parts": 5,
+        "fields": 0
+      },
+      "pages": 4,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/authored-notes-pages/run-rM4cWd/portrait-round3.pptx",
+      "sha256": "ff7b212b5292bcd73ef578a114744f7fced78c308e80449c53b078afd68bb13b",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/6.json",
+      "snapshotSha256": "6278e9d19e23d751092bf5b61d85d42356b9a8002caccec25be4e79a8a13c037",
+      "audit": {
+        "checkedSourceReferences": 269,
+        "parts": 5,
+        "fields": 0
+      },
+      "pages": 4,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/authored-notes-pages/run-rM4cWd/square-round3.pptx",
+      "sha256": "1d3726b881da170f201dd69002aed9a64e3e1ab3b16a4e1f7f8230d19cf10874",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/7.json",
+      "snapshotSha256": "449c5462d8eedf26e4b4a411192499ebef05e84eef23ec8f45c74997b5d62437",
+      "audit": {
+        "checkedSourceReferences": 269,
+        "parts": 5,
+        "fields": 0
+      },
+      "pages": 4,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/empty-round3.pptx",
+      "sha256": "c79dea9020f1f836afa023510544ad35bb52c405809c0d9e1eb865e034e52bcb",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/8.json",
+      "snapshotSha256": "ba3b70daf3b09d0ca9768772b642c4d9086e33cde130ed579fa3c274c499cf5c",
+      "audit": {
+        "checkedSourceReferences": 279,
+        "parts": 5,
+        "fields": 0
+      },
+      "pages": 4,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/typed-round3.pptx",
+      "sha256": "7647d46d378019d18f3840415d52ee1ef31a7eba6111f69ff354369c759d2f44",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/notes-source-inventory/run-CP5vJ5/9.json",
+      "snapshotSha256": "e646cd2462012fc3a08ea4200a8aed23208b06107009779997e8a5f163118a2c",
+      "audit": {
+        "checkedSourceReferences": 287,
+        "parts": 5,
+        "fields": 0
+      },
+      "pages": 4,
+      "roles": [
+        "group-root",
+        "slide-image",
+        "body"
+      ],
+      "exactNoOp": true,
+      "globalReportEqual": true,
+      "capturedDomainMapEqual": false
+    }
+  ],
+  "total": {
+    "inputs": 10,
+    "pages": 98,
+    "fields": 4,
+    "sourceReferences": 7550
+  },
+  "scope": "Current read-only inventory and exact no-op against hash-verified existing captured files; no new native app action, field evaluation, authored geometry or editing admission."
+}

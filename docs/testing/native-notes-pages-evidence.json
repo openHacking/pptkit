@@ -1,0 +1,4159 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T14:35:53.986538+00:00",
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104",
+    "operation": "GUI Save As, close, exact-path reopen, portrait Notes print"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/native-notes-pages/run-VAnIFP",
+  "files": [
+    {
+      "name": "native-control-notes.pdf",
+      "sha256": "54a5faea36c4466c765fe3ce3a93eb89dc2bd8f3d3ca7043c1c8e033aeae19f3"
+    },
+    {
+      "name": "native-control.pptx",
+      "sha256": "62378e9fb8b35e921c3ffd016abf4d04ac1a6b5f01478248a676ea1446528bb1"
+    },
+    {
+      "name": "patched-default-image-index-notes.pdf",
+      "sha256": "2d78a1e7491ace3e94d55f0432282a9bd2ad633a28f97501e5a09150955cd018"
+    },
+    {
+      "name": "patched-default-image-index.pptx",
+      "sha256": "464892b795e06ddc330bf6e090b7d9e3a81e72e7864e1db7b6d30b01794fdef6"
+    },
+    {
+      "name": "patched-master-rect-notes.pdf",
+      "sha256": "86f5deb0f37da2c667601003a5ca320cdfd5e9fe6109f720a46b3d296c6823d0"
+    },
+    {
+      "name": "patched-master-rect.pptx",
+      "sha256": "a16854064bba07cdb5f9c1a7db6bc0146e3680a980547f127718e109994212da"
+    },
+    {
+      "name": "patched-native-image-notes.pdf",
+      "sha256": "c4265c7bee4e01543f998dcd02fc580af87ba5ec98e3898191dc3196f9cdcbbf"
+    },
+    {
+      "name": "patched-native-image.pptx",
+      "sha256": "3f4df7a72549f4b0d1cb91e5881860c191ec639bbe57765cb57737e7320f20e0"
+    },
+    {
+      "name": "patched-native-rect-notes.pdf",
+      "sha256": "2793c448ae36f12e2faa2f79f9a07481992bbd70305c42c5aa7d5549213d2111"
+    },
+    {
+      "name": "patched-native-rect.pptx",
+      "sha256": "89b1a29eeb6908b09d12794dcb6d8ae5d0382bc92c9159cdf33768fd30e6cc98"
+    },
+    {
+      "name": "patched-no-image-text-notes.pdf",
+      "sha256": "e178c8f0e92b75b2144f31d5b18fee9c614970f6e64272d4174d55db185ccb14"
+    },
+    {
+      "name": "patched-no-image-text.pptx",
+      "sha256": "d64872417c18104c4416578aa35a104ea33efbc197cc2a9b47505bbb003eb476"
+    },
+    {
+      "name": "patched-original-notes.pdf",
+      "sha256": "3c37735f8a2d1904b9d0bf6b37fdb0c9c986cbb466c204e3ac8f5a0f81150d56"
+    },
+    {
+      "name": "patched-original.pptx",
+      "sha256": "47c6ade32885f9378d6b14955c6a69dfbc4c5a2df81533391ad7006c4fcf11e9"
+    },
+    {
+      "name": "rect-copy-round1-notes.pdf",
+      "sha256": "6e205f5606abce70675e734b24f9c538afd9a03288697be995f8cc57177218ca"
+    },
+    {
+      "name": "rect-copy-round1.pptx",
+      "sha256": "e02c0533dbba5b813f45449997fd1e9d008c0ea8c2068e13a53fd75a6c7cf818"
+    },
+    {
+      "name": "rect-copy-round2-notes.pdf",
+      "sha256": "178ac38694fad79432cb355e249cce7f66a24f132bd3375d7b1565e2d9b89a4d"
+    },
+    {
+      "name": "rect-copy-round2.pptx",
+      "sha256": "a686a5e7629543632eb56f23211450850a8e109dffebe98dba8b7a9dffaa4559"
+    },
+    {
+      "name": "rect-copy-round3-notes.pdf",
+      "sha256": "d751f8cc9ead33f7642d6cc1bbf96976d2a4f3c06e3db136d27130706897a83c"
+    },
+    {
+      "name": "rect-copy-round3.pptx",
+      "sha256": "494d6c66e1b63a1c10f476cfbd6dd9ff91bc71fa26759461111661dc34a349da"
+    },
+    {
+      "name": "rect-round1-notes.pdf",
+      "sha256": "46fb854dde58443049bb9ca11166d8e4b271e71be31f58f76ce90201994c5611"
+    },
+    {
+      "name": "rect-round1.pptx",
+      "sha256": "c528c381ba99eac617a2e4301adc70520f1567e08f4de488bd0d2001dc42f417"
+    },
+    {
+      "name": "rect-round2-notes.pdf",
+      "sha256": "d905847a7a1162e57eb71d9a51fc15148335f7a8d3519ea57397c223eef20679"
+    },
+    {
+      "name": "rect-round2.pptx",
+      "sha256": "b2f985025e89848ebdfab1e45d3630d8520599f6094acfe4cf4ead5d7b6fd310"
+    },
+    {
+      "name": "rect-round3-notes.pdf",
+      "sha256": "21db615f90ba6ce64e9baa29b32f17ce6ffc53a0589f0481f997076160cca5ab"
+    },
+    {
+      "name": "rect-round3.pptx",
+      "sha256": "4ce88c1d08b3a3bc780d5df48e5099ba7046aee913f2c473d33c5cf814aafc89"
+    }
+  ],
+  "rectOnlyChangeVerified": true,
+  "firstOpenPages": [
+    {
+      "label": "notes-A-latin",
+      "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+      "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+      "imageInkPixels": 701,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-sc",
+      "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+      "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+      "imageInkPixels": 1725,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAJ+HiraginoSansGB-W3",
+          "Type0",
+          "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-tc",
+      "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+      "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+      "imageInkPixels": 1719,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAL+STSongti-TC-Regular",
+          "TrueType",
+          "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-ja",
+      "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+      "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+      "imageInkPixels": 1729,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAM+HiraMinProN-W3",
+          "Type0",
+          "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-ko",
+      "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+      "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+      "imageInkPixels": 869,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAO+MalgunGothic",
+          "TrueType",
+          "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-ko-kr",
+      "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+      "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+      "imageInkPixels": 911,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAP+AppleSDGothicNeo-Regular",
+          "Type0",
+          "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-ar",
+      "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+      "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+      "imageInkPixels": 868,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAR+GeezaPro",
+          "TrueType",
+          "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-he",
+      "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+      "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+      "imageInkPixels": 729,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAT+ArialHebrew",
+          "TrueType",
+          "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-greek",
+      "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+      "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+      "imageInkPixels": 474,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAV+Georgia",
+          "TrueType",
+          "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-local-tc",
+      "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+      "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+      "imageInkPixels": 1808,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAX+ArialUnicodeMS",
+          "TrueType",
+          "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-local-ar",
+      "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+      "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+      "imageInkPixels": 953,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAX+ArialUnicodeMS",
+          "TrueType",
+          "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-local-he",
+      "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+      "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+      "imageInkPixels": 814,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAX+ArialUnicodeMS",
+          "TrueType",
+          "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-empty-ea-tc",
+      "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+      "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+      "imageInkPixels": 1889,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAZ+MicrosoftYaHei",
+          "TrueType",
+          "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-bad-ea-tc",
+      "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+      "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+      "imageInkPixels": 1850,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAZ+MicrosoftYaHei",
+          "TrueType",
+          "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+        ]
+      ]
+    },
+    {
+      "label": "notes-A-major-tc",
+      "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+      "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+      "imageInkPixels": 1820,
+      "embeddedFontPrograms": [
+        [
+          "AAAAAC+ArialMT",
+          "TrueType",
+          "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+        ],
+        [
+          "AAAAAE+ArialMT",
+          "TrueType",
+          "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+        ],
+        [
+          "AAAAAG+ArialMT",
+          "TrueType",
+          "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+        ],
+        [
+          "AAAAAI+ArialUnicodeMS",
+          "TrueType",
+          "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+        ],
+        [
+          "AAAAAL+STSongti-TC-Regular",
+          "TrueType",
+          "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+        ]
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "name": "rect-round1.pptx",
+      "pptxSha256": "c528c381ba99eac617a2e4301adc70520f1567e08f4de488bd0d2001dc42f417",
+      "pdfSha256": "46fb854dde58443049bb9ca11166d8e4b271e71be31f58f76ce90201994c5611",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rect-round2.pptx",
+      "pptxSha256": "b2f985025e89848ebdfab1e45d3630d8520599f6094acfe4cf4ead5d7b6fd310",
+      "pdfSha256": "d905847a7a1162e57eb71d9a51fc15148335f7a8d3519ea57397c223eef20679",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rect-round3.pptx",
+      "pptxSha256": "4ce88c1d08b3a3bc780d5df48e5099ba7046aee913f2c473d33c5cf814aafc89",
+      "pdfSha256": "21db615f90ba6ce64e9baa29b32f17ce6ffc53a0589f0481f997076160cca5ab",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "copiedSlideRounds": [
+    {
+      "name": "rect-copy-round1.pptx",
+      "pptxSha256": "e02c0533dbba5b813f45449997fd1e9d008c0ea8c2068e13a53fd75a6c7cf818",
+      "pdfSha256": "6e205f5606abce70675e734b24f9c538afd9a03288697be995f8cc57177218ca",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide16.xml",
+          "notes": "ppt/notesSlides/notesSlide16.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rect-copy-round2.pptx",
+      "pptxSha256": "a686a5e7629543632eb56f23211450850a8e109dffebe98dba8b7a9dffaa4559",
+      "pdfSha256": "178ac38694fad79432cb355e249cce7f66a24f132bd3375d7b1565e2d9b89a4d",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide16.xml",
+          "notes": "ppt/notesSlides/notesSlide16.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rect-copy-round3.pptx",
+      "pptxSha256": "494d6c66e1b63a1c10f476cfbd6dd9ff91bc71fa26759461111661dc34a349da",
+      "pdfSha256": "d751f8cc9ead33f7642d6cc1bbf96976d2a4f3c06e3db136d27130706897a83c",
+      "controls": [
+        {
+          "slide": "ppt/slides/slide1.xml",
+          "notes": "ppt/notesSlides/notesSlide1.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide2.xml",
+          "notes": "ppt/notesSlides/notesSlide2.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-latin"
+        },
+        {
+          "slide": "ppt/slides/slide3.xml",
+          "notes": "ppt/notesSlides/notesSlide3.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-sc"
+        },
+        {
+          "slide": "ppt/slides/slide4.xml",
+          "notes": "ppt/notesSlides/notesSlide4.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-tc"
+        },
+        {
+          "slide": "ppt/slides/slide5.xml",
+          "notes": "ppt/notesSlides/notesSlide5.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ja"
+        },
+        {
+          "slide": "ppt/slides/slide6.xml",
+          "notes": "ppt/notesSlides/notesSlide6.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko"
+        },
+        {
+          "slide": "ppt/slides/slide7.xml",
+          "notes": "ppt/notesSlides/notesSlide7.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ko-kr"
+        },
+        {
+          "slide": "ppt/slides/slide8.xml",
+          "notes": "ppt/notesSlides/notesSlide8.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-ar"
+        },
+        {
+          "slide": "ppt/slides/slide9.xml",
+          "notes": "ppt/notesSlides/notesSlide9.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-he"
+        },
+        {
+          "slide": "ppt/slides/slide10.xml",
+          "notes": "ppt/notesSlides/notesSlide10.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-greek"
+        },
+        {
+          "slide": "ppt/slides/slide11.xml",
+          "notes": "ppt/notesSlides/notesSlide11.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-tc"
+        },
+        {
+          "slide": "ppt/slides/slide12.xml",
+          "notes": "ppt/notesSlides/notesSlide12.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-ar"
+        },
+        {
+          "slide": "ppt/slides/slide13.xml",
+          "notes": "ppt/notesSlides/notesSlide13.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-local-he"
+        },
+        {
+          "slide": "ppt/slides/slide14.xml",
+          "notes": "ppt/notesSlides/notesSlide14.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-empty-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide15.xml",
+          "notes": "ppt/notesSlides/notesSlide15.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-bad-ea-tc"
+        },
+        {
+          "slide": "ppt/slides/slide16.xml",
+          "notes": "ppt/notesSlides/notesSlide16.xml",
+          "master": "ppt/notesMasters/notesMaster1.xml",
+          "label": "notes-A-major-tc"
+        }
+      ],
+      "pages": [
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-latin",
+          "rasterSha256": "26d0345e5470003fa2b2c26403aaa382d440f18d61e99ca77862920156ecfcf4",
+          "bodyDecorationSha256": "e2ec5f7838ac3af679d3a552c1200e9b196bcaa9fb67af9fd2f29cebc6cf0942",
+          "imageInkPixels": 701,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-sc",
+          "rasterSha256": "ca907b3953ef390e05f388abb3f3ce7cdd17eaee9e5592b058aed6cef35da406",
+          "bodyDecorationSha256": "ca39900460f4ddf65aa2839f3e942e49389acf4778bbf76690a4491a9b7abe0e",
+          "imageInkPixels": 1725,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAJ+HiraginoSansGB-W3",
+              "Type0",
+              "1f9c594553e95fc5047305623735fd5a7bf40fada3cfbee0fc962b986456c421"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-tc",
+          "rasterSha256": "826a176ff5bd1e1e836e59b7f910fed498dd54b42fa22d9f785b30e859db1954",
+          "bodyDecorationSha256": "165017e44f11dd7c3241af6d5aecdc98ae944e8292f57e3e08f9b2e167f856dc",
+          "imageInkPixels": 1719,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ja",
+          "rasterSha256": "d39055a51bcee7b06755f083d4980fe0ec96f7d8d5b90510a6ec0644c7c1f05d",
+          "bodyDecorationSha256": "e6d189cc17ff1b47020f35aeb6c60ef2e2a0723b4bca9d2a4fad6bcefc6df002",
+          "imageInkPixels": 1729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAM+HiraMinProN-W3",
+              "Type0",
+              "e077d6ea940e454971521876d518302329f139ab40b6fc72410a58ce0b35202d"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko",
+          "rasterSha256": "b5c255d77ae545f46d99f780ca3e2e05bd54194e6dfbf2a45ad2b1fffdd10f14",
+          "bodyDecorationSha256": "29193a3d63b8921e60864e5593410d031081767d783c69c8edbff888e2cb84ec",
+          "imageInkPixels": 869,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAO+MalgunGothic",
+              "TrueType",
+              "abc98572dbc5c356913c4b746ace4c36a7b0a55122a846bba9b571bae3711754"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ko-kr",
+          "rasterSha256": "f1ea3ae6b8f4a14b0dd15441c0f0faff2fe7421f81ea44a1b333034885766284",
+          "bodyDecorationSha256": "a426cb6d70c379109c9fc25cfb8d22dba9bb184de32182ee1e2e4c5708961f7d",
+          "imageInkPixels": 911,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAP+AppleSDGothicNeo-Regular",
+              "Type0",
+              "2b3349b1b94c33a2bdbe9942a6ce454b1a3bf378287fae743f37d6a598e90523"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-ar",
+          "rasterSha256": "0a9555789fdb504510e41018df4fa97d3207617293d6bf6a7ca6d70895653031",
+          "bodyDecorationSha256": "0a0dce61d22cacb0f9e3a0f47cb22c240c95ad4767d2153704b44845ee53ebdd",
+          "imageInkPixels": 868,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAR+GeezaPro",
+              "TrueType",
+              "a8f28912d00aec719d32ab48c2408b1e3110d9c9faa15fc037b038289f7cdf33"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-he",
+          "rasterSha256": "4413f289bc01707b0166b5882373735f3dc6c4565c497b844915f3813dac2f00",
+          "bodyDecorationSha256": "f81e0f9f2057c755a5def0e54274b0631387262cc9ac85c5b19a89071966e0e6",
+          "imageInkPixels": 729,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAT+ArialHebrew",
+              "TrueType",
+              "77ebb8f993f3fdb630656086e3a6e02da9f314638b1060208af6ea486bdfff48"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-greek",
+          "rasterSha256": "9602a4c22a4f89a3ca177b340746927d4f1bae5e2f0993ce249ffdf448611c0c",
+          "bodyDecorationSha256": "99fab8f31cf8ca76e2ee714f5109e9019502f732a2ffe223769093960200cf72",
+          "imageInkPixels": 474,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAV+Georgia",
+              "TrueType",
+              "db5395a071a166026ff1f85d075fb8a212a0d761f02f8eaa1a829ee9953bcddf"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-tc",
+          "rasterSha256": "4ddf3f663b07bedc568f3f17e823e9d3554c92f5412d1df49c2087fbc1706237",
+          "bodyDecorationSha256": "47aca4be7db8ef10110520696a90d4bf95076dfce41a2abaecf47382a030febc",
+          "imageInkPixels": 1808,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-ar",
+          "rasterSha256": "62abdb93c8b7011ba569f7ae1b7816717b2380977b2c612e8520df284ee45ac1",
+          "bodyDecorationSha256": "eb3e692fdb816c3276466993f1cc58fe17c150cd59eecc8f6a01c8a33903bf07",
+          "imageInkPixels": 953,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-local-he",
+          "rasterSha256": "8b07e381aac934459050d26ca18746c466c6c504e77eaea6adbeb2a9e0742e22",
+          "bodyDecorationSha256": "4fe1a17a68e8d3116b4d18950c00c146ef3e9f8b932828bdf81950d23ee89862",
+          "imageInkPixels": 814,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAX+ArialUnicodeMS",
+              "TrueType",
+              "b9ef5688fc6d2e8fdfb905eef70bfe550fdb521b7f0566b6b34e85705ec9b0fd"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-empty-ea-tc",
+          "rasterSha256": "d2da4b298a2bc6b32e79596b82cbba6f5a0586e6204885c8a8acca2fc291af3f",
+          "bodyDecorationSha256": "ad8bd5b21bfd1a4f90aa057fbcc68380c30f92fb2a4705e2695e5f2f002508e6",
+          "imageInkPixels": 1889,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-bad-ea-tc",
+          "rasterSha256": "d358648212e556fde615e2b14556cd39a6126ebcc1d0b549290dabe3f5781eb6",
+          "bodyDecorationSha256": "f745220e34f8209c814d118eeba1e5baaa713e0afa5deb95f6f4baa22f481051",
+          "imageInkPixels": 1850,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAZ+MicrosoftYaHei",
+              "TrueType",
+              "56fbfddfd311b76869914457b9369f813317e5374977ebf24240d2c954dca779"
+            ]
+          ]
+        },
+        {
+          "label": "notes-A-major-tc",
+          "rasterSha256": "9b22e317be39410e042fe714c20368a5c09e926ae3121e062d54778afcdfcb56",
+          "bodyDecorationSha256": "b5acece7c95acd8ac4baa028a6c0832bce774f79faf13040b13b1ea997fb8e38",
+          "imageInkPixels": 1820,
+          "embeddedFontPrograms": [
+            [
+              "AAAAAC+ArialMT",
+              "TrueType",
+              "88ce4205cbdcea772d19a48d6e4e51671ba0b620c403d7ef73af70bff4c9e123"
+            ],
+            [
+              "AAAAAE+ArialMT",
+              "TrueType",
+              "0cacb8b55d2fce909e8737ae15d0d02ad478b3072c90f2f6e462f05ab48431d6"
+            ],
+            [
+              "AAAAAG+ArialMT",
+              "TrueType",
+              "f578597217ba44b422d796a72f1b0343f42a936ace86c45d3172c40b4243354c"
+            ],
+            [
+              "AAAAAI+ArialUnicodeMS",
+              "TrueType",
+              "a48fab7b0c81f25f4e9565767f19416665500faf9db35ba492a5d95f715f0588"
+            ],
+            [
+              "AAAAAL+STSongti-TC-Regular",
+              "TrueType",
+              "5d06a22c0dc360f6ddbba638e4712f647f8150be857fa632537bbb5add47b849"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "rejectedControls": [
+    "patched-original",
+    "patched-no-image-text",
+    "patched-default-image-index",
+    "patched-native-image",
+    "wrong-page-correspondence",
+    "missing-master-rect"
+  ],
+  "total": {
+    "sourcePages": 15,
+    "nativeReopenedPages": 45,
+    "copiedSlideNativeReopenedPages": 48,
+    "negativeControlsRejected": 6
+  },
+  "scope": "Named A source assembly and native first-slide duplication only. Complete fresh-author notes pages, fields, B/override image admission, Windows and source style writes remain open."
+}

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "scope": "Same-page placeholder and ordinary text link controls in a two-page cross-document batch; LibreOfficeDev headless three saves and final PDF reopen. Not interactive activation, repair-dialog, PowerPoint or complete visual fidelity.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc",
+  "fileHashes": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/input.pptx",
+      "sha256": "af7e0708b5935a7fa0b32119a19c84b96d50dd93fa97d6d6f867d76b0e5bd95c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-1/input.pptx",
+      "sha256": "3a80b157721dcd077d5ee31d842014e6dd828b9acd4c94ec812e82838dc2926f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-2/input.pptx",
+      "sha256": "0bc5a95f53c7fbb1145c28c0e0b099363d5ed19e62fa4b64befed158cea79659"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-3/input.pptx",
+      "sha256": "e3d5006e533ccc31ef642b8aa511fda2c8de844feed484027f849125b309af2c"
+    }
+  ],
+  "pdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/pdf/input.pdf",
+    "sha256": "9b1cebf0fea8c0dc9b81f7b519474f4ba34021b95aada58ef6053e1b71e466d1"
+  },
+  "independent": {
+    "oracle": "Python zipfile, ElementTree and PyMuPDF",
+    "rounds": [
+      [
+        [
+          {
+            "name": "placeholder-a",
+            "text": "Placeholder A",
+            "placeholder": true,
+            "clickId": "rId3",
+            "target": "ppt/slides/slide2.xml",
+            "type": "slide"
+          },
+          {
+            "name": "control-a",
+            "text": "Control A",
+            "placeholder": false,
+            "clickId": "rId4",
+            "target": "ppt/slides/slide2.xml",
+            "type": "slide"
+          }
+        ],
+        [
+          {
+            "name": "placeholder-b",
+            "text": "Placeholder B",
+            "placeholder": true,
+            "clickId": "rId3",
+            "target": "ppt/slides/slide1.xml",
+            "type": "slide"
+          },
+          {
+            "name": "control-b",
+            "text": "Control B",
+            "placeholder": false,
+            "clickId": "rId4",
+            "target": "ppt/slides/slide1.xml",
+            "type": "slide"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder A",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-a",
+            "text": "Control A",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide2.xml",
+            "type": "slide"
+          }
+        ],
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder B",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-b",
+            "text": "Control B",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide1.xml",
+            "type": "slide"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder A",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-a",
+            "text": "Control A",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide2.xml",
+            "type": "slide"
+          }
+        ],
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder B",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-b",
+            "text": "Control B",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide1.xml",
+            "type": "slide"
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder A",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-a",
+            "text": "Control A",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide2.xml",
+            "type": "slide"
+          }
+        ],
+        [
+          {
+            "name": "PlaceHolder 1",
+            "text": "Placeholder B",
+            "placeholder": true,
+            "clickId": null,
+            "target": null,
+            "type": null
+          },
+          {
+            "name": "control-b",
+            "text": "Control B",
+            "placeholder": false,
+            "clickId": "rId1",
+            "target": "ppt/slides/slide1.xml",
+            "type": "slide"
+          }
+        ]
+      ]
+    ],
+    "comparisons": [
+      {
+        "placeholderLinks": [
+          true,
+          true
+        ],
+        "controlLinks": [
+          true,
+          true
+        ]
+      },
+      {
+        "placeholderLinks": [
+          false,
+          false
+        ],
+        "controlLinks": [
+          true,
+          true
+        ]
+      },
+      {
+        "placeholderLinks": [
+          false,
+          false
+        ],
+        "controlLinks": [
+          true,
+          true
+        ]
+      },
+      {
+        "placeholderLinks": [
+          false,
+          false
+        ],
+        "controlLinks": [
+          true,
+          true
+        ]
+      }
+    ],
+    "reopenedPdfPageText": [
+      "Placeholder A\nControl A\n",
+      "Placeholder B\nControl B\n"
+    ]
+  },
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/round-3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-placeholder-links-libreoffice/run-e3GnVc/pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  }
+}

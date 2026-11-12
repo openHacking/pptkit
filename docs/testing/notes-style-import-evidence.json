@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sourceConformance": {
+    "classification": "non-conforming-multi-notes-master-control",
+    "standardReference": "https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document#notes-master-part",
+    "reason": "PresentationML permits at most one Notes Master part. This fixture deliberately keeps a second unlisted actual master; source projection/preservation does not certify package compliance.",
+    "findings": [
+      {
+        "code": "unlisted-master",
+        "part": "/deck/notes/a.xml",
+        "message": "Notes slide points to an unlisted notes master."
+      }
+    ]
+  },
+  "recordedAt": "2026-10-26T10:52:01.033Z",
+  "artifactsDirectory": ".tmp/notes-style-import/run-GmgsCQ",
+  "profile": {
+    "projection": "content",
+    "notesTextProfile": "master-style-v1",
+    "textFontProfile": "script-families-v2",
+    "editSaveProfile": "text-runs-v3"
+  },
+  "hashes": [
+    {
+      "file": "round-0.pptx",
+      "sha256": "c00cc66550384e5c733947118e399a3a4df973ee1160ebd7f2d7769d88f4b29e"
+    },
+    {
+      "file": "round-1.pptx",
+      "sha256": "9a0fc7237216f98e8631bf18fb8549bed2cdf4e035c2dd2d878c6f41f78f1b3a"
+    },
+    {
+      "file": "round-2.pptx",
+      "sha256": "188956f77ec2e5755ccc4e67b52f549203ecf380d6570fc36bd60196fb3e3cbf"
+    },
+    {
+      "file": "round-3.pptx",
+      "sha256": "8c48ef4b41d9ef3fca89cbd11461e3ec3febd0293c37d234d5f9ff46e53f6f7e"
+    }
+  ],
+  "independent": {
+    "sourceVerified": true,
+    "oracle": "Python stdlib OPC/XML actual notes-master/theme relationships, type matching, style/font/color values and non-character bytes",
+    "rounds": [
+      {
+        "round": 0,
+        "stylePropertiesChecked": 22,
+        "notesTextsChecked": 2,
+        "changedParts": [],
+        "negativeControls": [
+          {
+            "part": "deck/notes-theme.xml",
+            "rejectedByBothChecks": true
+          },
+          {
+            "part": "deck/notes-master.xml",
+            "rejectedByBothChecks": true
+          }
+        ]
+      },
+      {
+        "round": 1,
+        "stylePropertiesChecked": 22,
+        "notesTextsChecked": 2,
+        "changedParts": [
+          "deck/notes/a.xml",
+          "deck/notes/z.xml",
+          "deck/z.xml"
+        ],
+        "negativeControls": [
+          {
+            "part": "deck/notes-theme.xml",
+            "rejectedByBothChecks": true
+          },
+          {
+            "part": "deck/notes-master.xml",
+            "rejectedByBothChecks": true
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "stylePropertiesChecked": 22,
+        "notesTextsChecked": 2,
+        "changedParts": [
+          "deck/notes/a.xml",
+          "deck/notes/z.xml",
+          "deck/z.xml"
+        ],
+        "negativeControls": [
+          {
+            "part": "deck/notes-theme.xml",
+            "rejectedByBothChecks": true
+          },
+          {
+            "part": "deck/notes-master.xml",
+            "rejectedByBothChecks": true
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "stylePropertiesChecked": 22,
+        "notesTextsChecked": 2,
+        "changedParts": [
+          "deck/notes/a.xml",
+          "deck/notes/z.xml",
+          "deck/z.xml"
+        ],
+        "negativeControls": [
+          {
+            "part": "deck/notes-theme.xml",
+            "rejectedByBothChecks": true
+          },
+          {
+            "part": "deck/notes-master.xml",
+            "rejectedByBothChecks": true
+          }
+        ]
+      }
+    ]
+  },
+  "nativeAppearanceAndEditing": "untested",
+  "fullNotesPageLayout": "unsupported",
+  "notesStyleWrites": "blocked",
+  "scope": "Non-conforming source control with two actual notes masters/themes, type-based placeholders with unequal indices, selected style/font/color rules and three mixed scalar source saves. No native layout or typography certification."
+}

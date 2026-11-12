@@ -1,0 +1,2612 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T15:20:20.427618+00:00",
+  "directory": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ",
+  "application": {
+    "name": "Microsoft PowerPoint for Mac",
+    "version": "16.104"
+  },
+  "sourceSha256": "b327a21e1b28e105614128f3cef026822811c8beafb7c0478c402d8bf5d8e802",
+  "groups": [
+    {
+      "stage": "empty",
+      "rounds": [
+        {
+          "name": "empty-round1",
+          "sha256": "e40ac8e2827468bc1bfc818d0a89d08dfd477fd02e27cc13a940c79966119bc1",
+          "pdfSha256": "2cc90c94894896eb7f3d29785b68cfa3b3e985486211dd32a6add9c75b26da4a",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "bd6367e0652b4b7fa588991af702cc634c82fdf9fd82bc88bd8792ff099b5af6",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "aa467a3ff8050029a2a3a851dce9567e3f44052563e82af24826aa269f8be3c9",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "4bea8ffb9d1582038c2cbcc7375b8336f5b5baaa8aaaa1ed8e09c48bf79b3c36",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "7879e2defb3cd2b0c34e6e979ac425c5732cd550998fb13826b95eb617b0a08c",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            }
+          ]
+        },
+        {
+          "name": "empty-round2",
+          "sha256": "02d86c3c06000d6400c615271e8e5c204785453a00b6cb85442733d9120bca45",
+          "pdfSha256": "d04ff5480663dcc7fe264dcb0e3d8c34f02d749bae22921643edecd1b8860db1",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "bd6367e0652b4b7fa588991af702cc634c82fdf9fd82bc88bd8792ff099b5af6",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "aa467a3ff8050029a2a3a851dce9567e3f44052563e82af24826aa269f8be3c9",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "4bea8ffb9d1582038c2cbcc7375b8336f5b5baaa8aaaa1ed8e09c48bf79b3c36",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "7879e2defb3cd2b0c34e6e979ac425c5732cd550998fb13826b95eb617b0a08c",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            }
+          ]
+        },
+        {
+          "name": "empty-round3",
+          "sha256": "c79dea9020f1f836afa023510544ad35bb52c405809c0d9e1eb865e034e52bcb",
+          "pdfSha256": "6c76f5be39905153e85d29c56564791923f67a9e85b838f0ad060ec5dc904f8c",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 0,
+              "nativeEndPresent": true,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "bd6367e0652b4b7fa588991af702cc634c82fdf9fd82bc88bd8792ff099b5af6",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "aa467a3ff8050029a2a3a851dce9567e3f44052563e82af24826aa269f8be3c9",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "4bea8ffb9d1582038c2cbcc7375b8336f5b5baaa8aaaa1ed8e09c48bf79b3c36",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "7879e2defb3cd2b0c34e6e979ac425c5732cd550998fb13826b95eb617b0a08c",
+              "fontPrograms": [
+                [
+                  "AAAAAC+ArialMT",
+                  "TrueType",
+                  "602c12c8d138527437005fe89851f8eeedde6db3d42a675341ace6ab265c3752"
+                ]
+              ],
+              "actualInkBounds": null,
+              "typedTrace": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "typed",
+      "rounds": [
+        {
+          "name": "typed-round1",
+          "sha256": "7b91367305f2b0fde647349d12d42df856a849371f1ada8f79419ccdc6f809c7",
+          "pdfSha256": "569a763718a596b184b009d574efcf18788a7da9d759cb16836ab3da879fb2af",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "fb9ba14c644c670972905c0417f9fb06ab167db037696ff3966b384ae6b2255f",
+              "fontPrograms": [
+                [
+                  "AAAAAB+Georgia",
+                  "TrueType",
+                  "ab1731fc9ab4f0c532c7a01119696bff683b4754975d9ddd2c79a0b2b5ba120f"
+                ],
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ]
+              ],
+              "actualInkBounds": [
+                63.34207144845277,
+                427.91125632543117,
+                98.51176377572119,
+                438.7052001673728
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia",
+                  "size": 13.999998092651367,
+                  "color": [
+                    0.07058823853731155,
+                    0.20392157137393951,
+                    0.33725491166114807
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    427.1990661621094,
+                    97.55473327636719,
+                    441.1990661621094
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "ac00b01d05123699f02815e6760db6eb914e4341ed01c5e133613b3c76f03c95",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAF+Arial-BoldItalicMT",
+                  "TrueType",
+                  "319ffa26b8730339a6b1f1c4a2b562ac11eef42d308ea13179b741c9bc95c344"
+                ]
+              ],
+              "actualInkBounds": [
+                63.206329345703125,
+                427.8438720703125,
+                96.70523834228516,
+                436.7266845703125
+              ],
+              "typedTrace": [
+                {
+                  "font": "Arial-BoldItalicMT",
+                  "size": 12.0,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.85772705078125,
+                    95.05289459228516,
+                    438.85772705078125
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "fc6e2de178227f60fa215aea3a78b6d399be6d06a13e209ebb33479b2950222c",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAH+ArialMT",
+                  "TrueType",
+                  "d82d6cdb74105bca36f5c1eb1a6be486ec8a4cb39b2aae655478bbde25e26424"
+                ]
+              ],
+              "actualInkBounds": [
+                64.18582123890519,
+                428.5076932068914,
+                107.99130129814148,
+                442.562866166234
+              ],
+              "typedTrace": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    107.33261108398438,
+                    445.9462890625
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "1008c4b670a6ccb4110a4343cf4cc25969fb5e78d92cee850f495e6cd105a567",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAI+Georgia-Italic",
+                  "TrueType",
+                  "7cbea927b384ef17eeef71bdd8036ddfc9d59b9647d127e875ce753497ad6a39"
+                ]
+              ],
+              "actualInkBounds": [
+                62.51248171273619,
+                427.56225730199367,
+                106.71498776599765,
+                444.1057124771178
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia-Italic",
+                  "size": 16.999998092651367,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.69744873046875,
+                    103.9010238647461,
+                    443.69744873046875
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "typed-round2",
+          "sha256": "f8e81541190198bb8cec39171c5ab7591d53578ad9e5db83002375d1c0cfff01",
+          "pdfSha256": "c4543ccbda1c021453ad8397381f9f89ce7a103f1299c847d44f22541c22a80d",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "fb9ba14c644c670972905c0417f9fb06ab167db037696ff3966b384ae6b2255f",
+              "fontPrograms": [
+                [
+                  "AAAAAB+Georgia",
+                  "TrueType",
+                  "ab1731fc9ab4f0c532c7a01119696bff683b4754975d9ddd2c79a0b2b5ba120f"
+                ],
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ]
+              ],
+              "actualInkBounds": [
+                63.34207144845277,
+                427.91125632543117,
+                98.51176377572119,
+                438.7052001673728
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia",
+                  "size": 13.999998092651367,
+                  "color": [
+                    0.07058823853731155,
+                    0.20392157137393951,
+                    0.33725491166114807
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    427.1990661621094,
+                    97.55473327636719,
+                    441.1990661621094
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "ac00b01d05123699f02815e6760db6eb914e4341ed01c5e133613b3c76f03c95",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAF+Arial-BoldItalicMT",
+                  "TrueType",
+                  "319ffa26b8730339a6b1f1c4a2b562ac11eef42d308ea13179b741c9bc95c344"
+                ]
+              ],
+              "actualInkBounds": [
+                63.206329345703125,
+                427.8438720703125,
+                96.70523834228516,
+                436.7266845703125
+              ],
+              "typedTrace": [
+                {
+                  "font": "Arial-BoldItalicMT",
+                  "size": 12.0,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.85772705078125,
+                    95.05289459228516,
+                    438.85772705078125
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "fc6e2de178227f60fa215aea3a78b6d399be6d06a13e209ebb33479b2950222c",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAH+ArialMT",
+                  "TrueType",
+                  "d82d6cdb74105bca36f5c1eb1a6be486ec8a4cb39b2aae655478bbde25e26424"
+                ]
+              ],
+              "actualInkBounds": [
+                64.18582123890519,
+                428.5076932068914,
+                107.99130129814148,
+                442.562866166234
+              ],
+              "typedTrace": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    107.33261108398438,
+                    445.9462890625
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "1008c4b670a6ccb4110a4343cf4cc25969fb5e78d92cee850f495e6cd105a567",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAI+Georgia-Italic",
+                  "TrueType",
+                  "7cbea927b384ef17eeef71bdd8036ddfc9d59b9647d127e875ce753497ad6a39"
+                ]
+              ],
+              "actualInkBounds": [
+                62.51248171273619,
+                427.56225730199367,
+                106.71498776599765,
+                444.1057124771178
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia-Italic",
+                  "size": 16.999998092651367,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.69744873046875,
+                    103.9010238647461,
+                    443.69744873046875
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "typed-round3",
+          "sha256": "7647d46d378019d18f3840415d52ee1ef31a7eba6111f69ff354369c759d2f44",
+          "pdfSha256": "71d91f97a4ee6d6e8f0df16b9c78176d215ea2c8a84a43450f5b47aac3d8840e",
+          "rows": [
+            {
+              "slide": "ppt/slides/slide1.xml",
+              "notes": "ppt/notesSlides/notesSlide1.xml",
+              "label": "Insertion regular",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "fr-FR"
+                  ],
+                  [
+                    "sz",
+                    "1400"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}srgbClr",
+                        [
+                          [
+                            "val",
+                            "123456"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide2.xml",
+              "notes": "ppt/notesSlides/notesSlide2.xml",
+              "label": "Insertion bold-italic",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "b",
+                    "1"
+                  ],
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1200"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide3.xml",
+              "notes": "ppt/notesSlides/notesSlide3.xml",
+              "label": "Insertion script-map",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1800"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Arial"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            },
+            {
+              "slide": "ppt/slides/slide4.xml",
+              "notes": "ppt/notesSlides/notesSlide4.xml",
+              "label": "Insertion two-empty",
+              "runCount": 1,
+              "nativeEndPresent": false,
+              "expectedCharacterProperties": [
+                "character-properties",
+                [
+                  [
+                    "i",
+                    "1"
+                  ],
+                  [
+                    "lang",
+                    "en-US"
+                  ],
+                  [
+                    "sz",
+                    "1600"
+                  ]
+                ],
+                "",
+                [
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}solidFill",
+                    [],
+                    "",
+                    [
+                      [
+                        "{http://schemas.openxmlformats.org/drawingml/2006/main}schemeClr",
+                        [
+                          [
+                            "val",
+                            "tx1"
+                          ]
+                        ],
+                        "",
+                        []
+                      ]
+                    ]
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}latin",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}ea",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ],
+                  [
+                    "{http://schemas.openxmlformats.org/drawingml/2006/main}cs",
+                    [
+                      [
+                        "typeface",
+                        "Georgia"
+                      ]
+                    ],
+                    "",
+                    []
+                  ]
+                ]
+              ]
+            }
+          ],
+          "pages": [
+            {
+              "label": "regular",
+              "rasterSha256": "fb9ba14c644c670972905c0417f9fb06ab167db037696ff3966b384ae6b2255f",
+              "fontPrograms": [
+                [
+                  "AAAAAB+Georgia",
+                  "TrueType",
+                  "ab1731fc9ab4f0c532c7a01119696bff683b4754975d9ddd2c79a0b2b5ba120f"
+                ],
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ]
+              ],
+              "actualInkBounds": [
+                63.34207144845277,
+                427.91125632543117,
+                98.51176377572119,
+                438.7052001673728
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia",
+                  "size": 13.999998092651367,
+                  "color": [
+                    0.07058823853731155,
+                    0.20392157137393951,
+                    0.33725491166114807
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    427.1990661621094,
+                    97.55473327636719,
+                    441.1990661621094
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "bold-italic",
+              "rasterSha256": "ac00b01d05123699f02815e6760db6eb914e4341ed01c5e133613b3c76f03c95",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAF+Arial-BoldItalicMT",
+                  "TrueType",
+                  "319ffa26b8730339a6b1f1c4a2b562ac11eef42d308ea13179b741c9bc95c344"
+                ]
+              ],
+              "actualInkBounds": [
+                63.206329345703125,
+                427.8438720703125,
+                96.70523834228516,
+                436.7266845703125
+              ],
+              "typedTrace": [
+                {
+                  "font": "Arial-BoldItalicMT",
+                  "size": 12.0,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.85772705078125,
+                    95.05289459228516,
+                    438.85772705078125
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "script-map",
+              "rasterSha256": "fc6e2de178227f60fa215aea3a78b6d399be6d06a13e209ebb33479b2950222c",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAH+ArialMT",
+                  "TrueType",
+                  "d82d6cdb74105bca36f5c1eb1a6be486ec8a4cb39b2aae655478bbde25e26424"
+                ]
+              ],
+              "actualInkBounds": [
+                64.18582123890519,
+                428.5076932068914,
+                107.99130129814148,
+                442.562866166234
+              ],
+              "typedTrace": [
+                {
+                  "font": "ArialMT",
+                  "size": 18.999996185302734,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.9462890625,
+                    107.33261108398438,
+                    445.9462890625
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "two-empty",
+              "rasterSha256": "1008c4b670a6ccb4110a4343cf4cc25969fb5e78d92cee850f495e6cd105a567",
+              "fontPrograms": [
+                [
+                  "AAAAAD+ArialMT",
+                  "TrueType",
+                  "987ff5ddb6874a6054ee3c1730f4f7cf9b146114c3c01a94ae740f85aef49e96"
+                ],
+                [
+                  "AAAAAI+Georgia-Italic",
+                  "TrueType",
+                  "7cbea927b384ef17eeef71bdd8036ddfc9d59b9647d127e875ce753497ad6a39"
+                ]
+              ],
+              "actualInkBounds": [
+                62.51248171273619,
+                427.56225730199367,
+                106.71498776599765,
+                444.1057124771178
+              ],
+              "typedTrace": [
+                {
+                  "font": "Georgia-Italic",
+                  "size": 16.999998092651367,
+                  "color": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "bbox": [
+                    62.720001220703125,
+                    426.69744873046875,
+                    103.9010238647461,
+                    443.69744873046875
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "name": "empty-size",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/empty-size.pptx",
+      "sha256": "2407d7daaea34be61b89177d36481472644b3206fc39eddbb2212418a7500869",
+      "reason": "Insertion mark style changed"
+    },
+    {
+      "name": "empty-language",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/empty-language.pptx",
+      "sha256": "fee25d737cbdcfc82b8de79ecf0ef2f47b9178cb6d483dd82c9ba4d4b09a0add",
+      "reason": "Insertion mark style changed"
+    },
+    {
+      "name": "empty-family",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/empty-family.pptx",
+      "sha256": "3fdd4c40d04c54f9f1e9e1eac17899954945723803734c2600cd06df4c29021e",
+      "reason": "Insertion mark style changed"
+    },
+    {
+      "name": "empty-bold",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/empty-bold.pptx",
+      "sha256": "74dd78822bab9baef2eae29a44cbc4a87a7ea0c508b1da6a44f3aab259c0ce85",
+      "reason": "Insertion mark style changed"
+    },
+    {
+      "name": "typed-family",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/typed-family.pptx",
+      "sha256": "7c3d391d0b0e19af316f5bd12f18a939bbe721ed77e237a90bbae6ff1abe46d0",
+      "reason": "Typed text did not inherit insertion style"
+    },
+    {
+      "name": "typed-color",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/typed-color.pptx",
+      "sha256": "66bd9046c07ca00197af6b7b9c380e6ee70b8d795239c5b95652825983f6f85e",
+      "reason": "Typed text did not inherit insertion style"
+    },
+    {
+      "name": "typed-italic",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/typed-italic.pptx",
+      "sha256": "fc42d5a2120b9629f516775cf935a313c78ee695d07ce922903a50dcdc5030b4",
+      "reason": "Typed text did not inherit insertion style"
+    },
+    {
+      "name": "typed-text",
+      "file": "/Volumes/github/private/pptkit/.tmp/notes-insertion-styles/run-VdgfBJ/negative-controls/typed-text.pptx",
+      "sha256": "49bb13a54ed6997423f8b9baf51beccc7ac999d73d60103454ed4e252b2ff016",
+      "reason": "Typed text lost/duplicated"
+    }
+  ],
+  "oldFailure": {
+    "file": ".tmp/authored-notes-pages/run-rM4cWd/wide-round1.pptx",
+    "sha256": "76b008bb16ed1f489782e430b3e1313aadd10b96b6c2f7524f5021a7a62fd947",
+    "missingSizeAndBold": true
+  },
+  "total": {
+    "controls": 4,
+    "emptyNativeReopenPages": 12,
+    "typedNativeReopenPages": 12,
+    "actualNativeInsertions": 4,
+    "sourceFirstOpenPages": 4,
+    "actualPptxCorruptionsRejected": 8
+  },
+  "scope": "All-empty notes paragraph insertion style only, including final-style choice for two empty runs. Native zero-character run identities/actions are not retained; this does not authorize source style writes or claim general trailing insertion/style/theme equivalence."
+}

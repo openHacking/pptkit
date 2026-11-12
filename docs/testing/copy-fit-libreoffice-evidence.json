@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "scope": "One explicit-geometry fit from 400x200 to 200x200 points, with text, rectangle, static connector, group and table; LibreOfficeDev headless three saves and source, input and final PDF conversions. No interactive editing, PowerPoint, or complete visual fidelity claim.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu",
+  "fileHashes": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input.pptx",
+      "sha256": "4f5baafe8a10d906e673f8779deabc90220c85bfffb9fc25768742cadbf1dde3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-1/input.pptx",
+      "sha256": "390668b8df2fb8b312c96810b5ec05c1a019d8e2d62e7511923836f9e82c825d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-2/input.pptx",
+      "sha256": "8938676e29afd6f1a26db277e4af8bde638806fda2d34836fd6eb74c95cbd0c9"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-3/input.pptx",
+      "sha256": "90353cbf33709a87eaf02f69c154b67b3a7356a5d33c0ee10505f7ef40068952"
+    }
+  ],
+  "control": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/source-control.pptx",
+    "sha256": "7a8996a9f5e0e4c9ee5a8d5d762688b3289ce1cdd0c84e7c31bb39ca9879cd6c",
+    "pdf": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/control-pdf/source-control.pdf",
+    "pdfSha256": "8e2e9bcef03c3284de92654ea99c3f898ceec547825bb86ed328716e743633c9",
+    "raster": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/control-pdf/source-control.pdf.png",
+    "rasterSha256": "8803859961ea6c6a663302321ece0bd1256993f6cbebed048eff7aa105132614"
+  },
+  "inputPdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input-pdf/input.pdf",
+    "sha256": "e6b08c6098a4c32317f69df423ab7d1a9bca15ea109e951d55e6b94082096fd2",
+    "raster": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input-pdf/input.pdf.png",
+    "rasterSha256": "c52a8be6cff955ea54eba4da2c4acd9eeb077be87171ae49637b758be2d13377"
+  },
+  "pdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/pdf/input.pdf",
+    "sha256": "aa4e8596ffd00face02d50e304f4a2ac30cd3b50c8644e355960270c7f59b3bc",
+    "raster": "/Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/pdf/input.pdf.png",
+    "rasterSha256": "466d5898bb69d8a6495d7db7b0926a81eb852ba7c5af9bcff267f6c5bb4f4193"
+  },
+  "independent": {
+    "oracle": "Python zipfile, ElementTree and PyMuPDF",
+    "rounds": [
+      {
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "698500"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "127000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "889000"
+              },
+              "ext": {
+                "cx": "381000",
+                "cy": "190500"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "508000",
+                "y": "984250"
+              },
+              "ext": {
+                "cx": "762000",
+                "cy": "127000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1397000",
+                "y": "857250"
+              },
+              "ext": {
+                "cx": "635000",
+                "cy": "254000"
+              },
+              "chOff": {
+                "x": "0",
+                "y": "0"
+              },
+              "chExt": {
+                "cx": "1270000",
+                "cy": "508000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "127000",
+                    "y": "63500"
+                  },
+                  "ext": {
+                    "cx": "508000",
+                    "cy": "254000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "1270000"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "254000"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              381000,
+              635000
+            ],
+            "rows": [
+              254000
+            ],
+            "children": []
+          }
+        ],
+        "text": "Geometry fit Left Right",
+        "notes": "Fit notes"
+      },
+      {
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "698400"
+              },
+              "ext": {
+                "cx": "1015560",
+                "cy": "126720"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "380520",
+                "cy": "190080"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "507960",
+                "y": "984240"
+              },
+              "ext": {
+                "cx": "761760",
+                "cy": "126720"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "253800",
+                "cy": "126720"
+              },
+              "chOff": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "chExt": {
+                "cx": "253800",
+                "cy": "126720"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "1460520",
+                    "y": "888840"
+                  },
+                  "ext": {
+                    "cx": "253800",
+                    "cy": "126720"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "1270080"
+              },
+              "ext": {
+                "cx": "1015560",
+                "cy": "911880"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              380880,
+              634680
+            ],
+            "rows": [
+              253800
+            ],
+            "children": []
+          }
+        ],
+        "text": "Geometry fit Left Right",
+        "notes": "Fit notes"
+      },
+      {
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "698400"
+              },
+              "ext": {
+                "cx": "1015200",
+                "cy": "126360"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "380160",
+                "cy": "189720"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "507960",
+                "y": "984240"
+              },
+              "ext": {
+                "cx": "761400",
+                "cy": "126360"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "253440",
+                "cy": "126360"
+              },
+              "chOff": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "chExt": {
+                "cx": "253440",
+                "cy": "126360"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "1460520",
+                    "y": "888840"
+                  },
+                  "ext": {
+                    "cx": "253440",
+                    "cy": "126360"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "1270080"
+              },
+              "ext": {
+                "cx": "1015200",
+                "cy": "911880"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              380880,
+              634680
+            ],
+            "rows": [
+              253800
+            ],
+            "children": []
+          }
+        ],
+        "text": "Geometry fit Left Right",
+        "notes": "Fit notes"
+      },
+      {
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "698400"
+              },
+              "ext": {
+                "cx": "1014840",
+                "cy": "126000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "379800",
+                "cy": "189360"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "507960",
+                "y": "984240"
+              },
+              "ext": {
+                "cx": "761040",
+                "cy": "126000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "ext": {
+                "cx": "253080",
+                "cy": "126000"
+              },
+              "chOff": {
+                "x": "1460520",
+                "y": "888840"
+              },
+              "chExt": {
+                "cx": "253080",
+                "cy": "126000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "1460520",
+                    "y": "888840"
+                  },
+                  "ext": {
+                    "cx": "253080",
+                    "cy": "126000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127080",
+                "y": "1270080"
+              },
+              "ext": {
+                "cx": "1015200",
+                "cy": "911880"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              380880,
+              634680
+            ],
+            "rows": [
+              253800
+            ],
+            "children": []
+          }
+        ],
+        "text": "Geometry fit Left Right",
+        "notes": "Fit notes"
+      }
+    ],
+    "controlPdf": {
+      "pageSize": [
+        399.9968566894531,
+        200.01260375976562
+      ],
+      "text": "Geometry fit\nLeft\nRight\n",
+      "continuousWordsPresent": [
+        true,
+        true,
+        true
+      ],
+      "drawingCount": 4
+    },
+    "inputPdf": {
+      "pageSize": [
+        200.01260375976562,
+        200.01260375976562
+      ],
+      "text": "Geometr\ny fit\nL\nef\nt\nRigh\nt\n",
+      "continuousWordsPresent": [
+        false,
+        false,
+        false
+      ],
+      "drawingCount": 4
+    },
+    "finalPdf": {
+      "pageSize": [
+        200.01260375976562,
+        200.01260375976562
+      ],
+      "text": "Geometr\ny fit\nL\nef\nt\nRigh\nt\n",
+      "continuousWordsPresent": [
+        false,
+        false,
+        false
+      ],
+      "drawingCount": 4
+    },
+    "rasterComparison": {
+      "width": 601,
+      "height": 601,
+      "changedPixels": 492,
+      "totalPixels": 361201
+    }
+  },
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "controlPdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/source-control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/control-pdf/source-control.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  },
+  "inputPdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/input-pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  },
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/round-3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/copy-fit-libreoffice/run-T93kZu/pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  }
+}

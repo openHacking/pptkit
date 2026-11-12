@@ -1,0 +1,170 @@
+{
+  "producerSha256": "b8b0c32dd056d58b2635c24bce9a3f37779f5850a817a24c5b5b335c7bc14cef",
+  "adapterSourceSha256": "beb18c08455c78802e04d319e81516667a4bdf9c100074d8aab35691d8e0c013",
+  "fontSha256": "e03013e0baa5690a803c188da2214d920c3245b25ad78421ecc8ae86cd842ae9",
+  "browser": "149.0.7827.55",
+  "foreignObject": [
+    false,
+    true
+  ],
+  "results": [
+    {
+      "name": "plain",
+      "sha256": "f9c4386be78278472feea8cfb52827020c5566ee090049b2aae3db90fcfd65be",
+      "pages": [
+        {
+          "slideId": "native",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "slideId": "xhtml",
+          "index": 1,
+          "hidden": false
+        }
+      ],
+      "warnings": [
+        {
+          "code": "svg-system-font-dependency",
+          "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+          "slideId": "native",
+          "elementId": "element-1",
+          "fontDependencies": [
+            {
+              "family": "PPTKit PDF Fixture Face 91237",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "code": "svg-foreign-object-dependency",
+          "message": "This object uses XHTML foreignObject, which may be omitted by standalone SVG viewers.",
+          "slideId": "xhtml",
+          "elementId": "element-2"
+        },
+        {
+          "code": "svg-system-font-dependency",
+          "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+          "slideId": "xhtml",
+          "elementId": "element-2",
+          "fontDependencies": [
+            {
+              "family": "PPTKit PDF Fixture Face 91237",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    },
+    {
+      "name": "embedded",
+      "sha256": "bb97e8d839bf615cc70de043132209f95e0b39735513a5b85271dfa45a1ecd4e",
+      "pages": [
+        {
+          "slideId": "native",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "slideId": "xhtml",
+          "index": 1,
+          "hidden": false
+        }
+      ],
+      "warnings": [
+        {
+          "code": "svg-embedded-font-unverified",
+          "slideId": "native",
+          "message": "Caller-supplied font programs were embedded; their validity, coverage and viewer support are not verified."
+        },
+        {
+          "code": "svg-system-font-dependency",
+          "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+          "slideId": "native",
+          "elementId": "element-1",
+          "fontDependencies": [
+            {
+              "family": "PPTKit PDF Fixture Face 91237",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "code": "svg-embedded-font-unverified",
+          "slideId": "xhtml",
+          "message": "Caller-supplied font programs were embedded; their validity, coverage and viewer support are not verified."
+        },
+        {
+          "code": "svg-foreign-object-dependency",
+          "message": "This object uses XHTML foreignObject, which may be omitted by standalone SVG viewers.",
+          "slideId": "xhtml",
+          "elementId": "element-2"
+        },
+        {
+          "code": "svg-system-font-dependency",
+          "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+          "slideId": "xhtml",
+          "elementId": "element-2",
+          "fontDependencies": [
+            {
+              "family": "PPTKit PDF Fixture Face 91237",
+              "bold": false,
+              "italic": false
+            }
+          ]
+        },
+        {
+          "code": "pdf-font-selection-unverified",
+          "message": "Browser font selection, glyph coverage and fallback are not verified."
+        },
+        {
+          "code": "pdf-page-size-rounding",
+          "message": "Chromium may round requested page dimensions."
+        }
+      ]
+    }
+  ],
+  "corrupt": "pdf-font-unavailable",
+  "coverage": {
+    "sha256": "a3d5b440ad972f9b7dbd7549673d82b6d53a28096db555843dd4ddf9cd3f1c3f",
+    "warnings": [
+      {
+        "code": "svg-embedded-font-unverified",
+        "slideId": "slide-1",
+        "message": "Caller-supplied font programs were embedded; their validity, coverage and viewer support are not verified."
+      },
+      {
+        "code": "svg-system-font-dependency",
+        "message": "This object requests fonts whose availability, coverage and viewer support are not verified.",
+        "slideId": "slide-1",
+        "elementId": "element-1",
+        "fontDependencies": [
+          {
+            "family": "PPTKit PDF Fixture Face 91237",
+            "bold": false,
+            "italic": false
+          }
+        ]
+      },
+      {
+        "code": "pdf-font-selection-unverified",
+        "message": "Browser font selection, glyph coverage and fallback are not verified."
+      },
+      {
+        "code": "pdf-page-size-rounding",
+        "message": "Chromium may round requested page dimensions."
+      }
+    ]
+  }
+}

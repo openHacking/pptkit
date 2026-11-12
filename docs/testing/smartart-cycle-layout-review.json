@@ -1,0 +1,15 @@
+{
+  "profile": "cycle-layout-preview-review-v1",
+  "artifact": "/Volumes/github/private/pptkit/.tmp/cycle-layout/browser-preview.png",
+  "sha256": "439aae5ffd5d3f7828a73982f7b1b62c31ceb9bd8390b07c5ccc10152eb696ea",
+  "review": "Manual image inspection in this run, separate from automated geometry checks.",
+  "observations": [
+    "Four circular nodes A/B/C/D and four directed block arrows form a closed loop.",
+    "Two circular nodes A/B have separate visible side arcs and arrowheads; the directed connections do not coincide."
+  ],
+  "limitations": [
+    "Owned experimental geometry preview only; not a native PowerPoint image or cache output.",
+    "Short sample letters do not prove general text fitting or glyph coverage.",
+    "Native circle-box comparisons remain mismatches at the declared 0.1-point research threshold."
+  ]
+}

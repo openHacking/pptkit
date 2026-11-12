@@ -1,0 +1,7 @@
+# Keyword removal: LibreOfficeDev observation
+
+The hash-checked PPTKit control contains one unsegmented keyword value `alpha, beta`, title `Original title`, creator `Sentinel Author` and revision 7. PPTKit's `metadata-keywords-remove-v15` removed the keyword element in an edited copy. Independent ZIP/XML checks confirm that only the core metadata part changed and all bytes outside the selected element stayed identical.
+
+LibreOfficeDev 26.8.0.0.alpha0 headlessly resaved the control and edited copy three times. The keyword remained absent in the edited branch; the control's `alpha, beta` became `alpha beta` on its first save and remained so. Both branches retained the title, creator and revision. This is one synthetic Transitional sample and does not establish general cross-application fidelity.
+
+The [evidence record](metadata-keywords-remove-libreoffice-evidence.json) binds the seed, eight actual files, inventories and conversion logs. `python3 scripts/research/verify-metadata-keywords-remove-libreoffice.py` independently checks source isolation, exact deletion span, package relationships, content type, hashes and three-round values. `python3 scripts/research/test_metadata_keywords_remove_evidence.py` checks five corrupted records and two rehashed damaged packages. Artifacts are under `.tmp/metadata-keywords-remove-libreoffice`; rerun `python3 scripts/research/metadata-keywords-remove-libreoffice.py` in the recorded environment. PowerPoint, interactive editing, repair prompts and Strict application behavior remain unverified.

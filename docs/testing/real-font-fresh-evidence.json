@@ -1,0 +1,1642 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T04:19:39.878Z",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "artifactsDirectory": ".tmp/real-font-fresh/run-81jnGm",
+  "generation": "direct author API; no XML patch or merger",
+  "controls": 16,
+  "sourceSha256": "ee318c757a9bcec08c156bf469efc0ea7b38c8b2717d75f28a1727bca2c62b03",
+  "warnings": [
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-sc",
+      "elementId": "probe-map-sc",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-tc",
+      "elementId": "probe-map-tc",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-ja",
+      "elementId": "probe-map-ja",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-ko",
+      "elementId": "probe-map-ko",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-ar",
+      "elementId": "probe-map-ar",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-ar-ligature",
+      "elementId": "probe-map-ar-ligature",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-he",
+      "elementId": "probe-map-he",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "map-latin",
+      "elementId": "probe-map-latin",
+      "path": "content"
+    }
+  ],
+  "fonts": [
+    {
+      "id": "latin",
+      "family": "Arial",
+      "postscriptName": "ArialMT",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "id": "generic",
+      "family": "Arial Unicode MS",
+      "postscriptName": "ArialUnicodeMS",
+      "file": "/Library/Fonts/Arial Unicode.ttf",
+      "index": 0,
+      "sha256": "876af2cd4854644e7f3e7feb2f688997fdb3343c6df6693611209c9dfb47ccec"
+    },
+    {
+      "id": "sc",
+      "family": "Hiragino Sans GB",
+      "postscriptName": "HiraginoSansGB-W3",
+      "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+      "index": 0,
+      "sha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0"
+    },
+    {
+      "id": "tc",
+      "family": "Songti TC",
+      "postscriptName": "STSongti-TC-Regular",
+      "file": "/System/Library/Fonts/Supplemental/Songti.ttc",
+      "index": 7,
+      "sha256": "6873ac2ccab5c2e74d87d6b690f3773098dd6a6238805363a3b3567f2caf6f47"
+    },
+    {
+      "id": "ja",
+      "family": "Hiragino Mincho ProN",
+      "postscriptName": "HiraMinProN-W3",
+      "file": "/System/Library/Fonts/ヒラギノ明朝 ProN.ttc",
+      "index": 0,
+      "sha256": "36adcf3dcbec5880364487b380178c6388fcf518cec729ba18a855e71b69495c"
+    },
+    {
+      "id": "ko",
+      "family": "Apple SD Gothic Neo",
+      "postscriptName": "AppleSDGothicNeo-Regular",
+      "file": "/System/Library/Fonts/AppleSDGothicNeo.ttc",
+      "index": 0,
+      "sha256": "e33989af92c53dd2b80efd88f50c404094a046658d0e7a7692619587570e616c"
+    },
+    {
+      "id": "ar",
+      "family": "Geeza Pro",
+      "postscriptName": "GeezaPro",
+      "file": "/System/Library/Fonts/GeezaPro.ttc",
+      "index": 0,
+      "sha256": "5b4309f8d596abee520c0826885a39483a16fb244489d2c313322575df4b04a2"
+    },
+    {
+      "id": "he",
+      "family": "Arial Hebrew",
+      "postscriptName": "ArialHebrew",
+      "file": "/System/Library/Fonts/ArialHB.ttc",
+      "index": 0,
+      "sha256": "45844259d86c0f2ea1b2446ecf34be47491b09d868f2f996672396ffe505f3f3"
+    },
+    {
+      "id": "greek",
+      "family": "Georgia",
+      "postscriptName": "Georgia",
+      "file": "/System/Library/Fonts/Supplemental/Georgia.ttf",
+      "index": 0,
+      "sha256": "4f54eb299fccea7f103edeb0d92437359bfd4441811d53222b82b335369f6218"
+    }
+  ],
+  "queriedVariants": [
+    {
+      "requestedStyle": "Regular",
+      "family": "Hiragino Sans GB",
+      "postscriptName": "HiraginoSansGB-W3",
+      "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+      "index": 0,
+      "weight": 50,
+      "slant": 0,
+      "sha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0"
+    },
+    {
+      "requestedStyle": "Bold",
+      "family": "Hiragino Sans GB",
+      "postscriptName": "HiraginoSansGB-W6",
+      "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+      "index": 2,
+      "weight": 180,
+      "slant": 0,
+      "sha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0"
+    },
+    {
+      "requestedStyle": "Italic",
+      "family": "Hiragino Sans GB",
+      "postscriptName": "HiraginoSansGB-W3",
+      "file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+      "index": 0,
+      "weight": 50,
+      "slant": 0,
+      "sha256": "f887295caf2881cab9554b14c5ab4c9ee624c3895599da152ec37416b5aefae0"
+    }
+  ],
+  "inspection": {
+    "source": {
+      "sha256": "ee318c757a9bcec08c156bf469efc0ea7b38c8b2717d75f28a1727bca2c62b03",
+      "controls": [
+        {
+          "id": "direct-sc",
+          "part": "ppt/slides/slide1.xml",
+          "text": "骨直令返",
+          "language": "zh-CN",
+          "slots": [
+            "Arial",
+            "Hiragino Sans GB",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-sc",
+          "part": "ppt/slides/slide2.xml",
+          "text": "骨直令返",
+          "language": "zh-CN",
+          "slots": [
+            "Hiragino Sans GB",
+            "Hiragino Sans GB",
+            "Hiragino Sans GB"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-tc",
+          "part": "ppt/slides/slide3.xml",
+          "text": "骨直令返",
+          "language": "zh-TW",
+          "slots": [
+            "Arial",
+            "Songti TC",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-tc",
+          "part": "ppt/slides/slide4.xml",
+          "text": "骨直令返",
+          "language": "zh-TW",
+          "slots": [
+            "Songti TC",
+            "Songti TC",
+            "Songti TC"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-ja",
+          "part": "ppt/slides/slide5.xml",
+          "text": "骨直令返",
+          "language": "ja",
+          "slots": [
+            "Arial",
+            "Hiragino Mincho ProN",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-ja",
+          "part": "ppt/slides/slide6.xml",
+          "text": "骨直令返",
+          "language": "ja",
+          "slots": [
+            "Hiragino Mincho ProN",
+            "Hiragino Mincho ProN",
+            "Hiragino Mincho ProN"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-ko",
+          "part": "ppt/slides/slide7.xml",
+          "text": "한글",
+          "language": "ko",
+          "slots": [
+            "Arial",
+            "Apple SD Gothic Neo",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-ko",
+          "part": "ppt/slides/slide8.xml",
+          "text": "한글",
+          "language": "ko",
+          "slots": [
+            "Apple SD Gothic Neo",
+            "Apple SD Gothic Neo",
+            "Apple SD Gothic Neo"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-ar",
+          "part": "ppt/slides/slide9.xml",
+          "text": "السَّلَامُ",
+          "language": "ar",
+          "slots": [
+            "Arial",
+            "Hiragino Sans GB",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-ar",
+          "part": "ppt/slides/slide10.xml",
+          "text": "السَّلَامُ",
+          "language": "ar",
+          "slots": [
+            "Geeza Pro",
+            "Geeza Pro",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-ar-ligature",
+          "part": "ppt/slides/slide11.xml",
+          "text": "لا",
+          "language": "ar",
+          "slots": [
+            "Arial",
+            "Hiragino Sans GB",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-ar-ligature",
+          "part": "ppt/slides/slide12.xml",
+          "text": "لا",
+          "language": "ar",
+          "slots": [
+            "Geeza Pro",
+            "Geeza Pro",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-he",
+          "part": "ppt/slides/slide13.xml",
+          "text": "שָׁלוֹם",
+          "language": "he",
+          "slots": [
+            "Arial",
+            "Hiragino Sans GB",
+            "Arial Hebrew"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-he",
+          "part": "ppt/slides/slide14.xml",
+          "text": "שָׁלוֹם",
+          "language": "he",
+          "slots": [
+            "Arial Hebrew",
+            "Arial Hebrew",
+            "Arial Hebrew"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "direct-latin",
+          "part": "ppt/slides/slide15.xml",
+          "text": "á",
+          "language": "en",
+          "slots": [
+            "Arial",
+            "Hiragino Sans GB",
+            "Geeza Pro"
+          ],
+          "runs": 1
+        },
+        {
+          "id": "map-latin",
+          "part": "ppt/slides/slide16.xml",
+          "text": "á",
+          "language": "en",
+          "slots": [
+            "Arial",
+            "Arial",
+            "Arial"
+          ],
+          "runs": 1
+        }
+      ]
+    },
+    "pdf": {
+      "sha256": "f20b183b853817de6ce4d7c74e1d8b9637006f552f619d5a4aae238da7dc18e1",
+      "controls": [
+        {
+          "id": "direct-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2586,
+          "rasterSha256": "afa5baba7c75048c351d969ce0ad4b92f89564c2e73021467e1c525fea2d1377"
+        },
+        {
+          "id": "map-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2586,
+          "rasterSha256": "951f28b47839fed1a528cc7c403b1b9d494182ce7c0c87be7954fcdb62409285"
+        },
+        {
+          "id": "direct-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2290,
+          "rasterSha256": "a790034e4bd057676c23410f8419d0d0b5e2ca9bb92ac2f906ada3adc48915ce"
+        },
+        {
+          "id": "map-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2290,
+          "rasterSha256": "12e2383f9ef82ea9d72c16d9cb27277dd3df1eeabcd849e08a087609b36b06ea"
+        },
+        {
+          "id": "direct-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2294,
+          "rasterSha256": "16e371fcc74de29f38dbd981c61dc6fbf6b106a68d201d18e1356ea8009825b0"
+        },
+        {
+          "id": "map-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "glyphCount": 4,
+          "glyphZeroCount": 0,
+          "darkPixels": 2294,
+          "rasterSha256": "a9719f5475ec792a550658797280817eab1c8a1c819048c80506a439bc35600a"
+        },
+        {
+          "id": "direct-ko",
+          "fonts": [
+            "AppleSDGothicNeo-Regular"
+          ],
+          "glyphCount": 2,
+          "glyphZeroCount": 0,
+          "darkPixels": 1190,
+          "rasterSha256": "6c3040fc979eeea28dd29c0f92af652285ea4945636155a52d06f975057aa6c2"
+        },
+        {
+          "id": "map-ko",
+          "fonts": [
+            "AppleSDGothicNeo-Regular"
+          ],
+          "glyphCount": 2,
+          "glyphZeroCount": 0,
+          "darkPixels": 1190,
+          "rasterSha256": "44cdf718ce61820a26f22d5524c3e29e82f24193b93d6a43cefa0925a497bb4e"
+        },
+        {
+          "id": "direct-ar",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "glyphCount": 9,
+          "glyphZeroCount": 0,
+          "darkPixels": 1085,
+          "rasterSha256": "b9b412277767b7ac04e87d9ef366cf0cb5b78053c263f027fa9c827e97c6729c"
+        },
+        {
+          "id": "map-ar",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "glyphCount": 9,
+          "glyphZeroCount": 0,
+          "darkPixels": 1085,
+          "rasterSha256": "6635141827a8b980c85c28c8a1f1ebd9d8a5225d924657b94e7cf1c638377f23"
+        },
+        {
+          "id": "direct-ar-ligature",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "glyphCount": 2,
+          "glyphZeroCount": 0,
+          "darkPixels": 258,
+          "rasterSha256": "c0ed6148f266858ff4523ec16ea4f66aae03a0421ffb9d44ac141da613e0fb53"
+        },
+        {
+          "id": "map-ar-ligature",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "glyphCount": 2,
+          "glyphZeroCount": 0,
+          "darkPixels": 258,
+          "rasterSha256": "cbf96077875abf4d7ab0aa804d4fc5e027b9abc7422095db2d8be7d9f13cc820"
+        },
+        {
+          "id": "direct-he",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "glyphCount": 5,
+          "glyphZeroCount": 0,
+          "darkPixels": 1163,
+          "rasterSha256": "9bc52c56edbd8db875900ec1dd0a7e01247d76f687e8c07efd7ba916d5bf615e"
+        },
+        {
+          "id": "map-he",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "glyphCount": 5,
+          "glyphZeroCount": 0,
+          "darkPixels": 1163,
+          "rasterSha256": "3fa2faa20dcfe2b4eae4f17b5df12aa3efcf24ef5d23a96ddbfbfc38e35aafad"
+        },
+        {
+          "id": "direct-latin",
+          "fonts": [
+            "ArialMT"
+          ],
+          "glyphCount": 1,
+          "glyphZeroCount": 0,
+          "darkPixels": 385,
+          "rasterSha256": "e0647b46affba94d26561e7b22451d5c45a0223e4db598a96bcc5b0ce2e015a7"
+        },
+        {
+          "id": "map-latin",
+          "fonts": [
+            "ArialMT"
+          ],
+          "glyphCount": 1,
+          "glyphZeroCount": 0,
+          "darkPixels": 385,
+          "rasterSha256": "7c3cf541d5287981989289e0ff424a56078991577f7018a1162096c627a5d8a9"
+        }
+      ],
+      "baselineRasterMatch": false
+    },
+    "fresh-round1": {
+      "package": {
+        "sha256": "2b66956a1680954fce9bab61f7418e15a1652138f1655d824e27067979d11b39",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "part": "ppt/slides/slide1.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-sc",
+            "part": "ppt/slides/slide2.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Hiragino Sans GB",
+              "Hiragino Sans GB",
+              "Hiragino Sans GB"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-tc",
+            "part": "ppt/slides/slide3.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Arial",
+              "Songti TC",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-tc",
+            "part": "ppt/slides/slide4.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Songti TC",
+              "Songti TC",
+              "Songti TC"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ja",
+            "part": "ppt/slides/slide5.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Arial",
+              "Hiragino Mincho ProN",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ja",
+            "part": "ppt/slides/slide6.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ko",
+            "part": "ppt/slides/slide7.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Arial",
+              "Apple SD Gothic Neo",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ko",
+            "part": "ppt/slides/slide8.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar",
+            "part": "ppt/slides/slide9.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar",
+            "part": "ppt/slides/slide10.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar-ligature",
+            "part": "ppt/slides/slide11.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar-ligature",
+            "part": "ppt/slides/slide12.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-he",
+            "part": "ppt/slides/slide13.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-he",
+            "part": "ppt/slides/slide14.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial Hebrew",
+              "Arial Hebrew",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-latin",
+            "part": "ppt/slides/slide15.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-latin",
+            "part": "ppt/slides/slide16.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Arial",
+              "Arial"
+            ],
+            "runs": 1
+          }
+        ]
+      },
+      "pdf": {
+        "sha256": "465a4fc0b09c8429dfe81568b5e31cc51ee56680632e80197b16e866572c5096",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "afa5baba7c75048c351d969ce0ad4b92f89564c2e73021467e1c525fea2d1377"
+          },
+          {
+            "id": "map-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "951f28b47839fed1a528cc7c403b1b9d494182ce7c0c87be7954fcdb62409285"
+          },
+          {
+            "id": "direct-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "a790034e4bd057676c23410f8419d0d0b5e2ca9bb92ac2f906ada3adc48915ce"
+          },
+          {
+            "id": "map-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "12e2383f9ef82ea9d72c16d9cb27277dd3df1eeabcd849e08a087609b36b06ea"
+          },
+          {
+            "id": "direct-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "16e371fcc74de29f38dbd981c61dc6fbf6b106a68d201d18e1356ea8009825b0"
+          },
+          {
+            "id": "map-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "a9719f5475ec792a550658797280817eab1c8a1c819048c80506a439bc35600a"
+          },
+          {
+            "id": "direct-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "6c3040fc979eeea28dd29c0f92af652285ea4945636155a52d06f975057aa6c2"
+          },
+          {
+            "id": "map-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "44cdf718ce61820a26f22d5524c3e29e82f24193b93d6a43cefa0925a497bb4e"
+          },
+          {
+            "id": "direct-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "b9b412277767b7ac04e87d9ef366cf0cb5b78053c263f027fa9c827e97c6729c"
+          },
+          {
+            "id": "map-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "6635141827a8b980c85c28c8a1f1ebd9d8a5225d924657b94e7cf1c638377f23"
+          },
+          {
+            "id": "direct-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "c0ed6148f266858ff4523ec16ea4f66aae03a0421ffb9d44ac141da613e0fb53"
+          },
+          {
+            "id": "map-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "cbf96077875abf4d7ab0aa804d4fc5e027b9abc7422095db2d8be7d9f13cc820"
+          },
+          {
+            "id": "direct-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "9bc52c56edbd8db875900ec1dd0a7e01247d76f687e8c07efd7ba916d5bf615e"
+          },
+          {
+            "id": "map-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "3fa2faa20dcfe2b4eae4f17b5df12aa3efcf24ef5d23a96ddbfbfc38e35aafad"
+          },
+          {
+            "id": "direct-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "e0647b46affba94d26561e7b22451d5c45a0223e4db598a96bcc5b0ce2e015a7"
+          },
+          {
+            "id": "map-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "7c3cf541d5287981989289e0ff424a56078991577f7018a1162096c627a5d8a9"
+          }
+        ],
+        "baselineRasterMatch": true
+      }
+    },
+    "fresh-round2": {
+      "package": {
+        "sha256": "1243dc68deea02b207ce15117af3c32b84f9a3920793431c750a348f8bf4671f",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "part": "ppt/slides/slide1.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-sc",
+            "part": "ppt/slides/slide2.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Hiragino Sans GB",
+              "Hiragino Sans GB",
+              "Hiragino Sans GB"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-tc",
+            "part": "ppt/slides/slide3.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Arial",
+              "Songti TC",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-tc",
+            "part": "ppt/slides/slide4.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Songti TC",
+              "Songti TC",
+              "Songti TC"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ja",
+            "part": "ppt/slides/slide5.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Arial",
+              "Hiragino Mincho ProN",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ja",
+            "part": "ppt/slides/slide6.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ko",
+            "part": "ppt/slides/slide7.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Arial",
+              "Apple SD Gothic Neo",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ko",
+            "part": "ppt/slides/slide8.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar",
+            "part": "ppt/slides/slide9.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar",
+            "part": "ppt/slides/slide10.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar-ligature",
+            "part": "ppt/slides/slide11.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar-ligature",
+            "part": "ppt/slides/slide12.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-he",
+            "part": "ppt/slides/slide13.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-he",
+            "part": "ppt/slides/slide14.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial Hebrew",
+              "Arial Hebrew",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-latin",
+            "part": "ppt/slides/slide15.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-latin",
+            "part": "ppt/slides/slide16.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Arial",
+              "Arial"
+            ],
+            "runs": 1
+          }
+        ]
+      },
+      "pdf": {
+        "sha256": "ad18c58d4c6d25cc159c6e63df18da4cb5a8e8c3d4359e4cb8e4b1a3073a04d5",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "afa5baba7c75048c351d969ce0ad4b92f89564c2e73021467e1c525fea2d1377"
+          },
+          {
+            "id": "map-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "951f28b47839fed1a528cc7c403b1b9d494182ce7c0c87be7954fcdb62409285"
+          },
+          {
+            "id": "direct-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "a790034e4bd057676c23410f8419d0d0b5e2ca9bb92ac2f906ada3adc48915ce"
+          },
+          {
+            "id": "map-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "12e2383f9ef82ea9d72c16d9cb27277dd3df1eeabcd849e08a087609b36b06ea"
+          },
+          {
+            "id": "direct-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "16e371fcc74de29f38dbd981c61dc6fbf6b106a68d201d18e1356ea8009825b0"
+          },
+          {
+            "id": "map-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "a9719f5475ec792a550658797280817eab1c8a1c819048c80506a439bc35600a"
+          },
+          {
+            "id": "direct-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "6c3040fc979eeea28dd29c0f92af652285ea4945636155a52d06f975057aa6c2"
+          },
+          {
+            "id": "map-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "44cdf718ce61820a26f22d5524c3e29e82f24193b93d6a43cefa0925a497bb4e"
+          },
+          {
+            "id": "direct-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "b9b412277767b7ac04e87d9ef366cf0cb5b78053c263f027fa9c827e97c6729c"
+          },
+          {
+            "id": "map-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "6635141827a8b980c85c28c8a1f1ebd9d8a5225d924657b94e7cf1c638377f23"
+          },
+          {
+            "id": "direct-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "c0ed6148f266858ff4523ec16ea4f66aae03a0421ffb9d44ac141da613e0fb53"
+          },
+          {
+            "id": "map-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "cbf96077875abf4d7ab0aa804d4fc5e027b9abc7422095db2d8be7d9f13cc820"
+          },
+          {
+            "id": "direct-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "9bc52c56edbd8db875900ec1dd0a7e01247d76f687e8c07efd7ba916d5bf615e"
+          },
+          {
+            "id": "map-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "3fa2faa20dcfe2b4eae4f17b5df12aa3efcf24ef5d23a96ddbfbfc38e35aafad"
+          },
+          {
+            "id": "direct-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "e0647b46affba94d26561e7b22451d5c45a0223e4db598a96bcc5b0ce2e015a7"
+          },
+          {
+            "id": "map-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "7c3cf541d5287981989289e0ff424a56078991577f7018a1162096c627a5d8a9"
+          }
+        ],
+        "baselineRasterMatch": true
+      }
+    },
+    "fresh-round3": {
+      "package": {
+        "sha256": "f5299751bc8d9bfd69d719abc1db8a071a30ce0e38ebc3797f841db2f9259faa",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "part": "ppt/slides/slide1.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-sc",
+            "part": "ppt/slides/slide2.xml",
+            "text": "骨直令返",
+            "language": "zh-CN",
+            "slots": [
+              "Hiragino Sans GB",
+              "Hiragino Sans GB",
+              "Hiragino Sans GB"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-tc",
+            "part": "ppt/slides/slide3.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Arial",
+              "Songti TC",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-tc",
+            "part": "ppt/slides/slide4.xml",
+            "text": "骨直令返",
+            "language": "zh-TW",
+            "slots": [
+              "Songti TC",
+              "Songti TC",
+              "Songti TC"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ja",
+            "part": "ppt/slides/slide5.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Arial",
+              "Hiragino Mincho ProN",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ja",
+            "part": "ppt/slides/slide6.xml",
+            "text": "骨直令返",
+            "language": "ja",
+            "slots": [
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN",
+              "Hiragino Mincho ProN"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ko",
+            "part": "ppt/slides/slide7.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Arial",
+              "Apple SD Gothic Neo",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ko",
+            "part": "ppt/slides/slide8.xml",
+            "text": "한글",
+            "language": "ko",
+            "slots": [
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo",
+              "Apple SD Gothic Neo"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar",
+            "part": "ppt/slides/slide9.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar",
+            "part": "ppt/slides/slide10.xml",
+            "text": "السَّلَامُ",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-ar-ligature",
+            "part": "ppt/slides/slide11.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-ar-ligature",
+            "part": "ppt/slides/slide12.xml",
+            "text": "لا",
+            "language": "ar",
+            "slots": [
+              "Geeza Pro",
+              "Geeza Pro",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-he",
+            "part": "ppt/slides/slide13.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-he",
+            "part": "ppt/slides/slide14.xml",
+            "text": "שָׁלוֹם",
+            "language": "he",
+            "slots": [
+              "Arial Hebrew",
+              "Arial Hebrew",
+              "Arial Hebrew"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "direct-latin",
+            "part": "ppt/slides/slide15.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Hiragino Sans GB",
+              "Geeza Pro"
+            ],
+            "runs": 1
+          },
+          {
+            "id": "map-latin",
+            "part": "ppt/slides/slide16.xml",
+            "text": "á",
+            "language": "en",
+            "slots": [
+              "Arial",
+              "Arial",
+              "Arial"
+            ],
+            "runs": 1
+          }
+        ]
+      },
+      "pdf": {
+        "sha256": "c72813a22ad9dda5597bdf45d1192e7c8076072067cabf66f9891c9595202294",
+        "controls": [
+          {
+            "id": "direct-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "afa5baba7c75048c351d969ce0ad4b92f89564c2e73021467e1c525fea2d1377"
+          },
+          {
+            "id": "map-sc",
+            "fonts": [
+              "HiraginoSansGB-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2586,
+            "rasterSha256": "951f28b47839fed1a528cc7c403b1b9d494182ce7c0c87be7954fcdb62409285"
+          },
+          {
+            "id": "direct-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "a790034e4bd057676c23410f8419d0d0b5e2ca9bb92ac2f906ada3adc48915ce"
+          },
+          {
+            "id": "map-tc",
+            "fonts": [
+              "STSongti-TC-Regular"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2290,
+            "rasterSha256": "12e2383f9ef82ea9d72c16d9cb27277dd3df1eeabcd849e08a087609b36b06ea"
+          },
+          {
+            "id": "direct-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "16e371fcc74de29f38dbd981c61dc6fbf6b106a68d201d18e1356ea8009825b0"
+          },
+          {
+            "id": "map-ja",
+            "fonts": [
+              "HiraMinProN-W3"
+            ],
+            "glyphCount": 4,
+            "glyphZeroCount": 0,
+            "darkPixels": 2294,
+            "rasterSha256": "a9719f5475ec792a550658797280817eab1c8a1c819048c80506a439bc35600a"
+          },
+          {
+            "id": "direct-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "6c3040fc979eeea28dd29c0f92af652285ea4945636155a52d06f975057aa6c2"
+          },
+          {
+            "id": "map-ko",
+            "fonts": [
+              "AppleSDGothicNeo-Regular"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 1190,
+            "rasterSha256": "44cdf718ce61820a26f22d5524c3e29e82f24193b93d6a43cefa0925a497bb4e"
+          },
+          {
+            "id": "direct-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "b9b412277767b7ac04e87d9ef366cf0cb5b78053c263f027fa9c827e97c6729c"
+          },
+          {
+            "id": "map-ar",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 9,
+            "glyphZeroCount": 0,
+            "darkPixels": 1085,
+            "rasterSha256": "6635141827a8b980c85c28c8a1f1ebd9d8a5225d924657b94e7cf1c638377f23"
+          },
+          {
+            "id": "direct-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "c0ed6148f266858ff4523ec16ea4f66aae03a0421ffb9d44ac141da613e0fb53"
+          },
+          {
+            "id": "map-ar-ligature",
+            "fonts": [
+              "GeezaPro"
+            ],
+            "glyphCount": 2,
+            "glyphZeroCount": 0,
+            "darkPixels": 258,
+            "rasterSha256": "cbf96077875abf4d7ab0aa804d4fc5e027b9abc7422095db2d8be7d9f13cc820"
+          },
+          {
+            "id": "direct-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "9bc52c56edbd8db875900ec1dd0a7e01247d76f687e8c07efd7ba916d5bf615e"
+          },
+          {
+            "id": "map-he",
+            "fonts": [
+              "ArialHebrew"
+            ],
+            "glyphCount": 5,
+            "glyphZeroCount": 0,
+            "darkPixels": 1163,
+            "rasterSha256": "3fa2faa20dcfe2b4eae4f17b5df12aa3efcf24ef5d23a96ddbfbfc38e35aafad"
+          },
+          {
+            "id": "direct-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "e0647b46affba94d26561e7b22451d5c45a0223e4db598a96bcc5b0ce2e015a7"
+          },
+          {
+            "id": "map-latin",
+            "fonts": [
+              "ArialMT"
+            ],
+            "glyphCount": 1,
+            "glyphZeroCount": 0,
+            "darkPixels": 385,
+            "rasterSha256": "7c3cf541d5287981989289e0ff424a56078991577f7018a1162096c627a5d8a9"
+          }
+        ],
+        "baselineRasterMatch": true
+      }
+    }
+  },
+  "negativeControls": [
+    "ZIP body",
+    "ZIP font slot",
+    "ZIP label",
+    "PDF order",
+    "PDF blank body"
+  ],
+  "nativeEdits": "not tested",
+  "scope": "named regular, isolated-script controls; three unedited native save/close/reopen rounds"
+}

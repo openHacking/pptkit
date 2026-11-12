@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T22:45:00.608Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/table-style-import-native/run-wK7o5u",
+  "scope": "Source table-style direct-region profile: selected source colors/provenance and named native saved direct-fill observations. Conditional precedence, native style retention, borders, alpha/fonts/shaping, interactive editing and source-style writes are separate gates.",
+  "hashes": [
+    {
+      "name": "regions",
+      "sourceSha256": "ae6d075046405ce98cb53732d34e2afbf0ac8f6ec77b7a0bc5ae997c3ecdba48",
+      "nativeSha256": "6c89e1a0cf09c0a3896441b764beb00a6ac993ea0bdb1f1914e3f4f3d74b5161",
+      "pdfSha256": "226261f492f81875cd367f2d9e15ed1743cfde70057a23298f99b6a5cf6ba378",
+      "sourceControlPdfSha256": "2186ed3ebe173e94fefba3ff7f70e06e03767e60bb7691cb2744b561a5c78180"
+    },
+    {
+      "name": "theme",
+      "sourceSha256": "8b9e4383d6c73b5b77ccac7a7e5b9df0b624c68bf10a9072c7781b0aaf29eb75",
+      "nativeSha256": "cea29aee35637fd37bf5a057f8e11aef58294fe02ffd65159803bc851857ff3f",
+      "pdfSha256": "8f4f5ab6e49359cde5dfe7390c0117fd827a29f22d18e94443a2af9c39afed62",
+      "sourceControlPdfSha256": "0a8c4ad923086fa909bca06bbf58d1039ac0a1d0758892cb3fe08e9eaa7d7ede"
+    },
+    {
+      "name": "local",
+      "sourceSha256": "a9af4054d277b88ab2c4c5835e798ca050bb0ea0b6ab5ca71e909d9d076f26ce",
+      "nativeSha256": "70e9d7b091224074f87dd479d8f32681629acf6b03347b0f98638ef2e67b270d",
+      "pdfSha256": "a142d8c6bbdf2c50107ba0d982fb6dbaea65c059e0d80519e414a81230c8e031",
+      "sourceControlPdfSha256": "13c4a838918b689213a194cfe9cd0bcc9d9df189d1fa6f06bc3c63ab8a7420e1"
+    }
+  ],
+  "independent": {
+    "verified": true,
+    "oracle": "Python ZIP/ElementTree selected source path and color resolution, deliberate mutation, native direct fills and source-control/saved PDF text/PNG",
+    "scenes": [
+      {
+        "name": "regions",
+        "independentSourceFillProperties": 16,
+        "deliberateColorMutationRejected": true,
+        "nativeDirectFills": {
+          "status": "pass",
+          "differences": []
+        },
+        "pdf": [
+          {
+            "kind": "native",
+            "text": "pass",
+            "png": "regions-native.png"
+          },
+          {
+            "kind": "source-control",
+            "text": "pass",
+            "png": "regions-source-control.png"
+          }
+        ]
+      },
+      {
+        "name": "theme",
+        "independentSourceFillProperties": 16,
+        "deliberateColorMutationRejected": true,
+        "nativeDirectFills": {
+          "status": "pass",
+          "differences": []
+        },
+        "pdf": [
+          {
+            "kind": "native",
+            "text": "pass",
+            "png": "theme-native.png"
+          },
+          {
+            "kind": "source-control",
+            "text": "pass",
+            "png": "theme-source-control.png"
+          }
+        ]
+      },
+      {
+        "name": "local",
+        "independentSourceFillProperties": 16,
+        "deliberateColorMutationRejected": true,
+        "nativeDirectFills": {
+          "status": "pass",
+          "differences": []
+        },
+        "pdf": [
+          {
+            "kind": "native",
+            "text": "pass",
+            "png": "local-native.png"
+          },
+          {
+            "kind": "source-control",
+            "text": "pass",
+            "png": "local-source-control.png"
+          }
+        ]
+      }
+    ]
+  },
+  "logs": [
+    "convert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/regions.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/regions.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/theme.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/theme.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/local.pptx using filter : Impress Office Open XML\n",
+    "convert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/regions.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/pdf/regions.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/theme.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/pdf/theme.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/native/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/pdf/local.pdf using filter : impress_pdf_Export\n",
+    "convert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/regions.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/source-pdf/regions.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/theme.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/source-pdf/theme.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/local.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-style-import-native/run-wK7o5u/source-pdf/local.pdf using filter : impress_pdf_Export\n"
+  ],
+  "interactiveEditing": "untested",
+  "sourceStyleWrites": "blocked"
+}

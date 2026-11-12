@@ -1,0 +1,7 @@
+# `lpstr` source save: LibreOfficeDev headless observation
+
+This experiment starts with the same synthetic `lpstr` source construction as the [earlier manual-edit comparison](custom-lpstr-libreoffice.md), but uses PPTKit's `scalar-v1` source save to change the four values. Independent verification found only the approved text regions changed and the resulting source and edited file hashes exactly match the earlier synthetic pair. Both records are retained separately; the earlier one does not claim PPTKit made its edits.
+
+LibreOfficeDev **26.8.0.0.alpha0**, on macOS 26.5 arm64, headlessly resaved the PPTKit-edited file and an unchanged control three times each. XML inventories retained the respective Unicode, empty, emoji and escaped-literal text values. The application converted `lpstr` to `lpwstr`, reordered entries, reassigned IDs and added `PresentationFormat` and `Slides`. The next two resaves retained the resulting inventory. This does not establish native UI display or type/identity preservation.
+
+The [record](custom-lpstr-save-libreoffice-evidence.json) contains hashes, exact inventories and process logs. Check retained files with `python3 scripts/research/verify-custom-lpstr-save-libreoffice.py` and reproduce in the recorded environment with `python3 scripts/research/custom-lpstr-save-libreoffice.py`. Artifacts under `.tmp` are local, not a portable fixture corpus. PowerPoint, interactive property editing, repair prompts and other strings remain untested.

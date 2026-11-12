@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T00:48:21.405Z",
+  "artifactsDirectory": ".tmp/supplemental-font-import/run-7bQSXk",
+  "profile": {
+    "projection": "content",
+    "textFontProfile": "script-families-v2",
+    "editSaveProfile": "text-runs-v3"
+  },
+  "hashes": [
+    {
+      "file": "round-0.pptx",
+      "sha256": "8480b55214c2f377939bc9d6d1c58c20ccfacbe92ea99eb32ceb02225477d009"
+    },
+    {
+      "file": "round-1.pptx",
+      "sha256": "90ea60b76e04e9413919cf937d3c525133f0e3d28b2d75476dad7f5fe886d1ed"
+    },
+    {
+      "file": "round-2.pptx",
+      "sha256": "6ae26c1532ad2659fd7de1764424e4add91ea058275a162866606fd0dc6fa4c4"
+    },
+    {
+      "file": "round-3.pptx",
+      "sha256": "d4b71a805a1e8c2d274d89d065ec2fb6a288a1ff2d7c3a5dbe2ab549dff509f7"
+    }
+  ],
+  "independent": {
+    "sourceVerified": true,
+    "oracle": "Python stdlib ZIP/ElementTree, actual map/provenance/target paths, scalar text, exact non-character source bytes and wrong-map negative controls",
+    "rounds": [
+      {
+        "round": 0,
+        "fontRulesChecked": 29,
+        "scalarTextsChecked": 6,
+        "changedParts": [],
+        "wrongMapRejectedByBothChecks": true
+      },
+      {
+        "round": 1,
+        "fontRulesChecked": 29,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "wrongMapRejectedByBothChecks": true
+      },
+      {
+        "round": 2,
+        "fontRulesChecked": 29,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "wrongMapRejectedByBothChecks": true
+      },
+      {
+        "round": 3,
+        "fontRulesChecked": 29,
+        "scalarTextsChecked": 6,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "wrongMapRejectedByBothChecks": true
+      }
+    ]
+  },
+  "native": "untested",
+  "fontCoverageAndShaping": "untested",
+  "sourceFontWrites": "blocked",
+  "scope": "Named generated mixed-owner source: supplemental map/provenance, actual scalar text and exact non-character bytes across three source saves. No native typography claim."
+}

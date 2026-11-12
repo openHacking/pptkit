@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import { readFile,writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { join } from "node:path";
+import { inspectPptxMasterPictures } from "../packages/pptx-parser/dist/index.js";
+const dir=process.argv[2];if(!dir||process.argv.length!==3)throw Error("Expected evidence directory.");
+const bytes=await readFile(join(dir,"master-image-native-edit.pptx")),inventory=await inspectPptxMasterPictures(bytes);
+const owner=inventory.masters.find(m=>m.pictures.some(p=>p.name==="logo"));assert.ok(owner);
+const picture=owner.pictures.find(p=>p.name==="logo");assert.equal(picture.crop.left,"20870");assert.equal(picture.embed.status,"internal-image");
+const report={inputSha256:createHash("sha256").update(bytes).digest("hex"),inventory};
+await writeFile(join(dir,"master-picture-inventory.json"),JSON.stringify(report,null,2)+"\n");console.log(JSON.stringify({part:owner.part,picture}));

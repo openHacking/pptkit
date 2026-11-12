@@ -1,0 +1,299 @@
+{
+  "scope": "12 two-run no-wrap shape-text samples, PowerPoint PDF versus SVG native text anchors in Chromium with named Arial candidates; regular prefix and regular/bold suffix. No edit/reopen, shape-transform or wrapping claim.",
+  "source": "docs/testing/tab-shape-powerpoint-evidence.json",
+  "sourceSha256": "2f6fe33bbd2d18a1899ff6dc7b5bf35bd3a6c429922077b985540ad96dd1483b",
+  "runnerSha256": "2ee13648ad84281853b714f9e8a1e26ddcac629d1c460a54d98bdd4ab6fb86cc",
+  "browser": "149.0.7827.55",
+  "bundles": [
+    {
+      "name": "@pptkit/core",
+      "file": "packages/core/dist/browser/index.js",
+      "sha256": "b1cffe8969bcc46adc5272462ebfe402b0e27586a2f3a8a21d185826150a682e"
+    },
+    {
+      "name": "@pptkit/layout",
+      "file": "packages/layout/dist/browser/index.js",
+      "sha256": "ee1168de2b8e56ac9bc408a58e99a10d74693a4ac22b48290095d5537b425844"
+    },
+    {
+      "name": "@pptkit/svg-renderer",
+      "file": "packages/svg-renderer/dist/browser/index.js",
+      "sha256": "3ad9176180968c68bcfa07f7c2710b2976bf108c6eecd08a27ab9b051aca4060"
+    }
+  ],
+  "fonts": [
+    {
+      "weight": "Regular",
+      "file": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "weight": "Bold",
+      "file": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "selectedFonts": [
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "ArialMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ],
+    [
+      {
+        "familyName": "Arial",
+        "postScriptName": "Arial-BoldMT",
+        "isCustomFont": true,
+        "glyphCount": 5
+      }
+    ]
+  ],
+  "items": [
+    {
+      "align": "left",
+      "text": "I",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 280,
+      "pdfRight": 287.7254725224853,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tI",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 280,
+      "svgRight": 287.78125,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0,
+      "rightDifference": 0.05577747751470952
+    },
+    {
+      "align": "left",
+      "text": "WIDE",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 280,
+      "pdfRight": 352.9279048228714,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tWIDE",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 280,
+      "svgRight": 353.109375,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0,
+      "rightDifference": 0.18147017712857405
+    },
+    {
+      "align": "left",
+      "text": "MIXED",
+      "bold": true,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 280,
+      "pdfRight": 368.43720775380336,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tMIXED",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "700"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 280,
+      "svgRight": 368.6875,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0,
+      "rightDifference": 0.25029224619663637
+    },
+    {
+      "align": "center",
+      "text": "I",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 276.12488479325043,
+      "pdfRight": 283.8503573157357,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tI",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 276.109375,
+      "svgRight": 283.890625,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.015509793250430448,
+      "rightDifference": 0.04026768426427907
+    },
+    {
+      "align": "center",
+      "text": "WIDE",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 243.49992127820732,
+      "pdfRight": 316.4278261010788,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tWIDE",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 243.4453125,
+      "svgRight": 316.5546875,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.05460877820732435,
+      "rightDifference": 0.12686139892122128
+    },
+    {
+      "align": "center",
+      "text": "MIXED",
+      "bold": true,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 235.68994350527163,
+      "pdfRight": 324.127151259075,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tMIXED",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "700"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 235.65625,
+      "svgRight": 324.34375,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.03369350527162851,
+      "rightDifference": 0.21659874092500786
+    },
+    {
+      "align": "right",
+      "text": "I",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 272.2498959022713,
+      "pdfRight": 279.9753684247566,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tI",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 272.21875,
+      "svgRight": 280,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.031145902271305204,
+      "rightDifference": 0.024631575243404313
+    },
+    {
+      "align": "right",
+      "text": "WIDE",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 206.99996887218512,
+      "pdfRight": 279.9278736950566,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tWIDE",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 206.890625,
+      "svgRight": 280,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.10934387218512143,
+      "rightDifference": 0.0721263049434242
+    },
+    {
+      "align": "right",
+      "text": "MIXED",
+      "bold": true,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 191.37496069549462,
+      "pdfRight": 279.8121684492979,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\tMIXED",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "700"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 191.3125,
+      "svgRight": 280,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": -0.06246069549462163,
+      "rightDifference": 0.18783155070207158
+    },
+    {
+      "align": "decimal",
+      "text": "1.2",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 264.3749918233095,
+      "pdfRight": 303.2135544039768,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\t1.2",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400",
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 264.421875,
+      "svgRight": 303.359375,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0.04688317669052822,
+      "rightDifference": 0.1458205960232135
+    },
+    {
+      "align": "decimal",
+      "text": "123.45",
+      "bold": false,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 233.1249754699285,
+      "pdfRight": 318.8415941591587,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\t123.45",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "400",
+        "400"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 233.28125,
+      "svgRight": 318.9375,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0.15627453007149938,
+      "rightDifference": 0.09590584084128295
+    },
+    {
+      "align": "decimal",
+      "text": "0.678",
+      "bold": true,
+      "pdfPrefixRight": 18.535576160063744,
+      "pdfLeft": 264.3749918233095,
+      "pdfRight": 334.46559180968546,
+      "svgFill": "#F2F5FA",
+      "svgText": "P\t0.678",
+      "svgPrefixWeight": "400",
+      "svgSuffixWeights": [
+        "700",
+        "700"
+      ],
+      "svgPrefixRight": 18.6875,
+      "svgLeft": 264.421875,
+      "svgRight": 334.5,
+      "prefixDifference": 0.1519238399362557,
+      "leftDifference": 0.04688317669052822,
+      "rightDifference": 0.03440819031453657
+    }
+  ]
+}

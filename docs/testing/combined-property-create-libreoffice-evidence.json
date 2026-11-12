@@ -1,0 +1,330 @@
+{
+  "scope": "One synthetic missing core/custom control and PPTKit combined creation, LibreOfficeDev headless conversion attempts over three rounds; failed branches remain recorded, no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "a5f1f097e5ec5173d3dcdbeea7f9704e75a32fd5afbfc55c33c74264539c7645",
+  "seedSha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6",
+  "sourceChangedParts": [
+    "[Content_Types].xml",
+    "_rels/.rels"
+  ],
+  "sourceAddedParts": [
+    "pptkit-core-properties-1.xml",
+    "pptkit-custom-properties-1.xml"
+  ],
+  "prefixProbe": [
+    {
+      "kind": "control",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/prefix-control.pptx",
+      "sha256": "46762162b70e4e480920a1b21da559a507dedfd1f36482077cba1d6822ca895e",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    },
+    {
+      "kind": "edited",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/prefix-edited.pptx",
+      "sha256": "58631a3d9f0d22fb1da51cddb5abb79474a66654b2425c2880cd230648160740",
+      "changedParts": [
+        "[Content_Types].xml",
+        "_rels/.rels"
+      ],
+      "exitCode": 1,
+      "outputExists": false,
+      "stdout": "",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nError: source file could not be loaded\n"
+    }
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/control.pptx",
+      "sha256": "84616bd6882c0e3e417b7b9ab2ec43eba0f5d46a1a4533fe379d5d30068b1eba",
+      "metadata": {
+        "core": {},
+        "custom": []
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/edited.pptx",
+      "sha256": "ad3db8f3571d08bd20e20ed79e8da03428c17a7e34125e2161709e07b49bb734",
+      "metadata": {
+        "core": {
+          "title": "Created 中文",
+          "creator": "Fixture Author",
+          "created": "2020-01-02T03:04:05.123Z"
+        },
+        "custom": [
+          {
+            "name": "Text",
+            "pid": "2",
+            "type": "lpwstr",
+            "value": "中文 & value"
+          },
+          {
+            "name": "Count",
+            "pid": "3",
+            "type": "i4",
+            "value": "42"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/control.pptx",
+      "sha256": "5abba985fbbf072c46af4c020dc68f2760ace1e0d9e89f14c758f13048c72da2",
+      "metadata": {
+        "core": {
+          "title": "",
+          "creator": "",
+          "created": null
+        },
+        "custom": [
+          {
+            "name": "PresentationFormat",
+            "pid": "2",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "3",
+            "type": "r8",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/edited.pptx",
+      "sha256": "01666fa02bc351d6b87eb21bbda52fb47b89618937fc7e69adaef078b3ac4ff4",
+      "metadata": {
+        "core": {
+          "title": "Created 中文",
+          "creator": "Fixture Author",
+          "created": "2020-01-02T03:04:05Z"
+        },
+        "custom": [
+          {
+            "name": "Count",
+            "pid": "2",
+            "type": "r8",
+            "value": "42"
+          },
+          {
+            "name": "PresentationFormat",
+            "pid": "3",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "4",
+            "type": "r8",
+            "value": "1"
+          },
+          {
+            "name": "Text",
+            "pid": "5",
+            "type": "lpwstr",
+            "value": "中文 & value"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/control.pptx",
+      "sha256": "99ade823d2d247c22c9172d629a1c0ddcd5f1d1405511b0992da70c81a01140f",
+      "metadata": {
+        "core": {
+          "title": "",
+          "creator": "",
+          "created": null
+        },
+        "custom": [
+          {
+            "name": "PresentationFormat",
+            "pid": "2",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "3",
+            "type": "r8",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/edited.pptx",
+      "sha256": "693ba623c59786e364243ed9ee291d6f691aed6484a6c8b117eb19a8ab3a5e32",
+      "metadata": {
+        "core": {
+          "title": "Created 中文",
+          "creator": "Fixture Author",
+          "created": "2020-01-02T03:04:05Z"
+        },
+        "custom": [
+          {
+            "name": "Count",
+            "pid": "2",
+            "type": "r8",
+            "value": "42"
+          },
+          {
+            "name": "PresentationFormat",
+            "pid": "3",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "4",
+            "type": "r8",
+            "value": "1"
+          },
+          {
+            "name": "Text",
+            "pid": "5",
+            "type": "lpwstr",
+            "value": "中文 & value"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-3/control.pptx",
+      "sha256": "e6fb30afe8900c63798010e5e9918aab6023ee591265cc7f3dcd766d36c18cb1",
+      "metadata": {
+        "core": {
+          "title": "",
+          "creator": "",
+          "created": null
+        },
+        "custom": [
+          {
+            "name": "PresentationFormat",
+            "pid": "2",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "3",
+            "type": "r8",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-3/edited.pptx",
+      "sha256": "a58825a08bbaed15f5c47b8605d69122f55e515c6ff7c68a17f324c860a26870",
+      "metadata": {
+        "core": {
+          "title": "Created 中文",
+          "creator": "Fixture Author",
+          "created": "2020-01-02T03:04:05Z"
+        },
+        "custom": [
+          {
+            "name": "Count",
+            "pid": "2",
+            "type": "r8",
+            "value": "42"
+          },
+          {
+            "name": "PresentationFormat",
+            "pid": "3",
+            "type": "lpwstr",
+            "value": "On-screen Show (16:9)"
+          },
+          {
+            "name": "Slides",
+            "pid": "4",
+            "type": "r8",
+            "value": "1"
+          },
+          {
+            "name": "Text",
+            "pid": "5",
+            "type": "lpwstr",
+            "value": "中文 & value"
+          }
+        ]
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "status": "saved",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/combined-property-create-libreoffice/run-jvk1jsrq/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

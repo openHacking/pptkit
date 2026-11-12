@@ -1,0 +1,99 @@
+# Import projections and source-preserving sessions
+
+`importPptx(bytes, { projection: "structure", ...options })` is experimental and available through the Parser root, `/browser` and global browser bundle. The projection option is required. It creates a valid Core document containing source dimensions (12700 EMU per point), ordered slides and hidden flags, plus title/author/subject/description/language/company strings when present. Aggregate keyword text maps to one Core keyword entry without splitting on punctuation; revision maps only for canonical decimal lexicals (`0` or an unsigned integer without leading zeros) within JavaScript's safe integer range. Signs, surrounding whitespace, leading zeros and unsafe values remain source-reported without conversion. Native section member names map to slide labels as described below. Source numeric slide IDs map deterministically to `source-slide-ID`; a separate report records the main part, relationship IDs and source slide identities. Separate sessions can have identical Core IDs without sharing preservation state.
+
+**Drawing content is not imported by this projection.** Shapes, text runs, images, tables, charts, backgrounds, theme/layout inheritance, notes, native section editing and other part content remain unrepresented in Core. Mixed keyword boundaries/language annotations, unsafe revision lexical values, dates and custom/complex values remain in the inspected source report. Unmapped Core fields use Core defaults and are reported as projection defaults, not inferred source values. Empty effective page order stays empty. Missing source slide dimensions reject rather than inventing a size.
+
+Rendering or calling the fresh exporter on `session.document` therefore produces an incomplete view of the source. Use the session's no-op save to retain the entire original package. This is the first runtime slice of [ADR 0001](../architecture/decisions/0001-import-preservation-save.md), not a complete semantic-import or edit-save implementation.
+
+`projection: "content"` additionally maps explicit text/shape/group/raster/connector/click subsets, [direct speaker-notes text](notes-import.md) [table grids/merged rich-text cells](table-import.md) and [bounded bar/line/pie charts](chart-import.md), with unmapped-property findings. See [content import](content-import.md) for the profiles and limitations. The lifecycle/save rules below apply to both projections.
+
+Content import can explicitly select `editSaveProfile: "text-runs-v1"` for [existing text-box run character edits](text-edit-save.md), or `"text-runs-v2"` to also admit [mapped shape text and direct notes-body runs](text-owner-save.md). The separate `"text-runs-v3"` profile also admits [existing table anchor run characters](table-text-save.md). All profiles retain source bytes around approved character regions, validate candidate package differences and reproject the actual output. Style, geometry, asset, chart text and structural edits remain blocked; table characters require V3. Independently, explicit `chartEditSaveProfile: "existing-values-v1"` admits [bound existing chart numbers](chart-value-save.md) with synchronized cache/XLSX validation and can combine with text profiles; `"existing-values-v2"` additionally admits existing nonblank points in supported sparse scatter charts. Omit all edit profiles to retain default edit blocking; structure projection rejects every edit profile.
+
+The separate [first-slide-number save profiles](first-slide-number-save.md) admit existing attribute replacement (`existing-v1`), or insertion, replacement and clearing (`attribute-v2`); `attribute-v2` can combine with existing text-run and chart-value edit profiles; the picture-replacement profile can also combine with `attribute-v2` under its separate restrictions.
+
+## Native section member labels
+
+Both projections resolve native section membership by the source numeric slide ID and set the corresponding Core `slide.section` to the decoded section name. Explicit empty names remain `""`; a missing name or unsectioned slide leaves the label absent. Names are never used as identities, so duplicate names do not merge inspected source sections. Partial, reversed or noncontiguous source membership retains the authoritative presentation page order and the existing located inspection findings.
+
+Core currently has slide labels rather than an independent section collection. The report therefore keeps all native GUIDs, empty sections, ordered memberships and nested extension descriptors in `inspection.sectionList`; it does not invent Core section identities. Each source section receives `section.native-collection` findings: only no-op save is preserved. Each mapped member receives `section.label` findings, with create/import editable, fresh export fallback, no-op preserved, and edit/preview/edit-save unsupported. A section without a name has an unsupported label-import finding instead of an inferred name. The warning `section-label-projection-only` explains the distinction.
+
+Moving a Core slide retains its label, and copying/removing slides follows existing Core metadata behavior. These operations do not reconcile native source membership and invalidate prepared no-op plans until the exact normalized state is restored. Fresh export writes labels only in PPTKit slide-extension metadata; it does not create a native PowerPoint section collection, preserve empty source sections or import that proprietary label extension on the next source import. Native section collection authoring, boundary edits and preservation-aware structural saves remain IMP-03.5/IMP-09 work.
+
+Evidence includes [focused section projection cases](../../packages/pptx-parser/test/section-import.test.mjs), an independently inspected [fresh-output boundary test](../../scripts/import-content-parity.test.mjs), Node/browser report parity and isolated installed consumers. The optional [native runner](../../scripts/inspect-native-sections.mjs) compares member labels against an independent XML inventory and exact no-op bytes; it does not establish native collection editing.
+
+## Input profile and report
+
+Input must be a `Uint8Array` over an ordinary buffer; Node `Buffer` and offset views are accepted. SharedArrayBuffer-backed input rejects because a concurrent agent could race the source snapshot. Input bytes, nested limits and the signal identity are captured at invocation before asynchronous work. Imports reuse the [bounded inspection profile](pptx-inspection.md); lower-layer failures never return a usable session. Non-macro presentation document kinds in Strict/Transitional are accepted. Templates, slideshows, macro-enabled main types, recognized VBA project/signature parts or relationships, and OPC digital signatures reject pending their own policy. Encryption/unsupported ZIP containers remain subject to the inspector's existing rejection rules.
+
+Unknown parts, embedded objects and external relationships are retained in the original bytes without execution or implicit loading. Retention is not semantic validation, signature validation, trust assessment or editability. Current classification is deliberately at **part and explicitly mapped structural-field granularity**, not a complete per-drawing-object capability inventory.
+
+`session.report` includes:
+
+- `projection`, the detached `inspection`, and source-to-Core `identities` for the presentation and slides.
+- `findings` with unique report-local IDs, feature, operation, tier, source location, optional Core identities and reason. Every part receives no-op preservation plus explicit unsupported content operations; separately mapped structure fields receive their own import findings.
+- `diagnostics` explaining the incomplete projection, Core defaults and inherited structural findings.
+- With a selected profile, `textRuns` records raw element/source identities and bound/unmapped drawing-run locations. V2 adds drawing owner tags and separate `notesTextRuns` with slide identities and no fabricated element IDs; V3 also adds separate `tableTextRuns` with compact anchor and physical source column coordinates. V1/V2 retain their original report shapes. Binding is not unconditional save permission: source guards, closure coverage and the entire candidate mutation set are checked during preparation. Broad part/object findings describe their complete field set, not this narrower run-character operation.
+
+Reports and nested records are deeply frozen. OOXML trees, decoded payload maps and source byte buffers are not public getters. Source paths describe the reported structure; Core validation paths use `documentPath` and never fabricate OOXML provenance for newly authored objects. Normal inspection APIs remain detached mutable JavaScript inventories; their readonly TypeScript contract is unchanged.
+
+## Save workflow
+
+| Request | Current behavior |
+| --- | --- |
+| `prepareSave({ mode: "no-op" })` | Requires the full normalized Core state to equal the imported baseline. Produces a private, session-owned plan with `original-bytes` assurance. |
+| `prepareSave({ mode: "edit" })` | Default: blocked `save-mode-unsupported`. Explicit text, chart-value or [first-slide-number](first-slide-number-save.md) profiles can produce a `scoped-preservation` plan for their admitted changes; unsupported mixed edits block the entire plan. See [text profile gates](text-edit-save.md#preparation-report-and-source-guards). |
+| `prepareSave({ mode: "rebuild" })` | Returns blocked `save-mode-unsupported`; per-feature loss enumeration and exporter integration remain pending. |
+| `save(plan, { acceptLossIds? })` | Validates ownership, liveness, normalized freshness and consent; returns a new caller-owned byte array and the frozen report. No filesystem writes, new fetching or source rebasing. |
+| `assertSavePlanCurrent(plan, { acceptLossIds? })` | Synchronously performs the same ownership, liveness, normalized freshness and consent checks without copying or consuming the plan. Node output calls it immediately before publication; ordinary callers normally use `save`. |
+
+Blocked preparation has `status: "blocked"`, diagnostics and `assurance: "none"`, with no plan or bytes. Invalid Core state includes located Core diagnostics where available. A changed baseline blocks no-op with `save-document-changed`; changes during preparation block with `save-snapshot-stale`. Resource exhaustion, cancellation and invalid lifecycle/consent use typed `PptxImportError` codes.
+
+All current ready plans have no losses: omit `acceptLossIds` or pass an empty array. Foreign/duplicate/nonempty IDs, non-array values and extra consent flags such as `allowLossy` reject. Selecting a different mode or supplying consent cannot bypass a blocked condition. Future lossy edit/rebuild plans must implement exact per-loss consent before becoming ready.
+
+Preparation does not change the authoring document or baseline. Multiple plans for unchanged state remain usable; saving does not consume them. Freshness compares full detached normalized structures, not hashes or mutation counters. Snapshot validation rejects cycles and non-record runtime objects (such as Map/Date) before comparison; pair memoization prevents repeated expansion of shared acyclic subgraphs. An edit followed by an exact semantic undo can restore validity. Invalid consent attempts do not destroy a valid plan. Caller option getters are read before the final save checks so they cannot change document/lifecycle state after freshness validation.
+
+No-op uses the complete invocation-time source snapshot, including unknown/unreachable parts, relationship cycles and ZIP metadata. Candidate output is an exact copy of that inspected immutable snapshot; it is not reconstructed XML and does not need a second parse to establish byte identity. This guarantees original bytes only, not native validity of every unparsed feature or arbitrary edits.
+
+## Lifetime, concurrency and budgets
+
+`plan.dispose()` releases its prepared output and snapshot; `session.dispose()` releases private source/baseline state and all live/in-flight plan reservations. Both are idempotent. Outstanding preparations fail after disposal; cancellation or stale/invalid candidates release their reservations. Previously returned bytes remain caller-owned. The already returned Core document and frozen report remain usable after session disposal, but cannot manufacture preservation state. JSON serialization of sessions/plans throws `session-not-serializable`; worker/process transfer requires re-importing source bytes.
+
+Import options extend `OpcInspectionOptions` with `projection`, explicit edit profiles and `sessionLimits`. `DEFAULT_SESSION_LIMITS` is frozen:
+
+| Limit | Default | Meaning |
+| --- | --- | --- |
+| `maxExpandedChartWorkbookBytes` | 16 MiB | Expanded streams per distinct embedded chart workbook. |
+| `maxTotalExpandedChartWorkbookBytes` | 64 MiB | Expanded streams across distinct workbooks; shared parts count once. |
+| `maxChartDataPoints` | 100,000 | Cache/literal points, inspected workbook cells/shared strings and referenced cell reads. |
+| `maxImportedAssetBytes` | 16 MiB | Bounds supported-MIME candidate image payloads before header scanning/Base64 registration; other MIME types remain source-only. |
+| `maxTotalImportedAssetBytes` | 64 MiB | Bounds distinct registered image-part bytes plus the current candidate. Shared mapped references count once; structure mode registers no images. |
+| `maxReportFindings` | 150000 | Bounds capability-report rows. Exceeding it fails import, never silently truncates findings. |
+| `maxPlaceholderEntries` | 100,000 | Distinct placeholder declarations in visited slide/layout/master parts for content projection. Shared parents count once; ambiguity lists are not expanded per child. See [placeholder dimensions](placeholder-inheritance.md). |
+| `maxTextStyleProperties` | 500,000 | Selected text-style provenance records in content projection. Shared style sources are parsed once; each local target record counts. See [text style inheritance](text-style-inheritance.md). |
+| `maxTextStyleDependencies` | 1,000,000 | Sum of selected text-style `resolvedFrom` locations, including repeated shared palette/transform uses. Independent from the property count. |
+| `maxSnapshotValues` | 1000000 | Bounds normalized values/pairs scheduled during snapshot validation and equality; cycles and non-record runtime objects reject, shared acyclic data is allowed. |
+| `maxSaveAnalysisWork` | 16 Mi units | Bounds whole-candidate value/path traversal and source guard analysis for text edits. |
+| `maxSaveChanges` | 10,000 | Bounds complete change/diagnostic reports and per-part XML edit requests; exhaustion throws without truncating a plan. |
+| `maxSaveValidationBytes` | 128 MiB | Combined expanded source/candidate payloads during edit comparison. |
+| `maxSaveValidationWork` | 512 Mi units | Independent source/candidate comparison work. |
+| `maxPreparedOutputBytes` | 64 MiB | Per-plan output size, checked before allocation. |
+| `maxRetainedOutputBytes` | 128 MiB | Aggregate output reservations across live plans and in-flight preparation. |
+| `maxLivePlans` | 16 | Combined prepared/in-flight reservation count. |
+
+All limits must be finite positive safe integers. Output reservations are acquired before copying and released on failure/disposal; concurrent preparations cannot bypass aggregate/count limits. Text-edit preparation reserves the full per-plan output limit before analysis/writing and shrinks it to the actual candidate size when ready; no-op reserves the source length. `save` returns additional caller-owned copies, which the application must manage. Source snapshots, temporary inspection trees, normalized snapshots and frozen reports consume additional memory beyond prepared-output budgets. Child work is reserved before expanding a record, so a wide record cannot enqueue values beyond the snapshot budget. Enumerating keys still allocates a key list; the snapshot-value limit is applied after Core normalization allocates its detached result. This is not a hard process-memory cap. The browser bundle includes Core internally to preserve standalone Parser usage; Node uses the declared public Core dependency.
+
+Preparation captures mode/signal once, yields before output work and between no-op copy chunks, checks cancellation/liveness and revalidates normalized state before exposing a plan. Text-edit work additionally checkpoints analysis, XML/package writing and validation. Session disposal aborts active child work; one relay per caller signal fans out cancellation and is removed when the operations finish. Core normalization, bounded snapshot validation/equality and report freezing are synchronous work; this release does not provide preemption during those operations. Invalid Core edits never serialize partial output. Callers should dispose plans explicitly instead of relying on garbage collection.
+
+## Errors and evidence
+
+`PptxImportError` carries `code`, optional source and an underlying `cause` where relevant. Codes include `import-invalid-package`, `import-unsupported`, `import-limit-exceeded`, `operation-aborted`, `session-disposed`, `plan-disposed`, `plan-session-mismatch`, `save-snapshot-stale`, `save-loss-consent-mismatch`, `save-limit-exceeded`, `save-candidate-invalid`, `save-invalid-document` and `session-not-serializable`. Lower inspection errors remain in `cause`, including XML cursor details. Expected unsupported text edits return blocked diagnostics instead; see the [profile table](text-edit-save.md#preparation-report-and-source-guards).
+
+See the [checked example](../examples/import-session.ts), [public workflow helper](../examples/import-save-contract.ts) and [session conformance cases](../../packages/pptx-parser/test/session.test.mjs). Tests cover source/options snapshots, both dialects, located capability reports, full-byte output, cycles/opaque parts, structural edits and undo, stale/forged/foreign/disposed plans, invalid documents/consent, JSON/clone behavior, concurrency reservations, multi-chunk cancellation and repeated saves. Generated corpus, native retained artifacts, browser bundles and installed Node/TypeScript/browser consumers extend the evidence beyond synthetic fixtures. Parent IMP-01/03/07/08/09 remain open until their full semantic/closure/edit-save gates pass.
+
+The [text-save contract and checked example](text-edit-save.md) add exact allowed-part differences, candidate reprojection, shared-source/range guards, profile reservations and independent multi-round/browser/native-producer evidence. The [Node file contract](file-save.md) adds stable path capture, create-only and snapshot-guarded replacement, same-directory temporary publication, cancellation/fault handling and explicit cross-process limits. These bounded operations do not close the full import/save gates.
+
+Both projections additionally map the experimental [plain page Fade profile](slide-transitions.md) when the selected source has exact milliseconds. Unknown transitions remain source-only with findings. Transition mutations invalidate no-op plans and block current edit-save profiles; unrelated character saves preserve original transition markup.
+
+
+The explicit content option [`diagramPreview: "cache"`](diagram-preview.md) projects bounded cached SmartArt drawing shapes or unavailable placeholders as ordinary Core groups. It defaults off, retains unknown freshness and separate fallback reports, and supplies no native node/edit-save semantics. Captured byte/file options and candidate reprojection retain this selection.

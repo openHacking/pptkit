@@ -1,0 +1,241 @@
+{
+  "scope": "Synthetic decimal source based on PPTKit-created package, three exact value edits, one inexact opaque value and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "df509dbc8efa2caf9560b137ae9657899e4aa848e422ea5c2db6327214dac5f4",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/input/control.pptx",
+      "sha256": "e6cb03ae8c0f970e39332d8c219f90873d0c7633df9813d85ffc8dde9a759930",
+      "properties": [
+        {
+          "name": "Normal",
+          "pid": "2",
+          "type": "decimal",
+          "value": "1.25"
+        },
+        {
+          "name": "Fraction",
+          "pid": "3",
+          "type": "decimal",
+          "value": "0.125"
+        },
+        {
+          "name": "Inexact",
+          "pid": "4",
+          "type": "decimal",
+          "value": "0.1"
+        },
+        {
+          "name": "Large",
+          "pid": "5",
+          "type": "decimal",
+          "value": "9007199254740992"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/input/edited.pptx",
+      "sha256": "d380544ae3dc695a29326b99b2b07f1d9ef7aaf781b27c6de5e63d710a51746a",
+      "properties": [
+        {
+          "name": "Normal",
+          "pid": "2",
+          "type": "decimal",
+          "value": "2.5"
+        },
+        {
+          "name": "Fraction",
+          "pid": "3",
+          "type": "decimal",
+          "value": "0.5"
+        },
+        {
+          "name": "Inexact",
+          "pid": "4",
+          "type": "decimal",
+          "value": "0.1"
+        },
+        {
+          "name": "Large",
+          "pid": "5",
+          "type": "decimal",
+          "value": "4503599627370496"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/control.pptx",
+      "sha256": "e274215613e2abf48757cc48e9568e992547f2eac55898aa2c4ab083db045c46",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/edited.pptx",
+      "sha256": "c678f85960603a16cf7f1b84ebc024b836f3323a7367930d9c620959a266a7d4",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/control.pptx",
+      "sha256": "af3901fc10b951727fdbaa6c218474530f9b86618985af4b19ff8e9cb2513253",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/edited.pptx",
+      "sha256": "af3901fc10b951727fdbaa6c218474530f9b86618985af4b19ff8e9cb2513253",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-3/control.pptx",
+      "sha256": "30ee2bea8a48a2a1e9801d1f1568f76d7686d2a4f0a79c41baab6dbb6ef09cd1",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-decimal-libreoffice/run-g08nnnfx/round-3/edited.pptx",
+      "sha256": "30ee2bea8a48a2a1e9801d1f1568f76d7686d2a4f0a79c41baab6dbb6ef09cd1",
+      "properties": [
+        {
+          "name": "PresentationFormat",
+          "pid": "2",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "3",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-decimal-libreoffice/run-g08nnnfx/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

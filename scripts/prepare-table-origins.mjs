@@ -1,0 +1,45 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { chromium } from '@playwright/test';
+import { createPresentation, normalizePresentation, resolvePresentationInheritance } from '../packages/core/dist/index.js';
+import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
+import { renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
+import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
+import { tableOriginsDocument } from '../tests/fixtures/table-origins.mjs';
+import { chartNotesOriginsDocument } from '../tests/fixtures/chart-notes-origins.mjs';
+import { textOriginsDocument } from '../tests/fixtures/text-origins.mjs';
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+await mkdir('.tmp/table-origins', { recursive: true });
+const directory = path.resolve(await mkdtemp('.tmp/table-origins/run-'));
+const d = tableOriginsDocument(createPresentation), resolution = resolvePresentationInheritance(d);
+assert.deepEqual(resolution.presentation, normalizePresentation(d));
+const layout = resolveNormalizedLayout(resolution.presentation), svg = await renderLayoutToSvg(layout), output = await generatePptx(d);
+const names = [];
+async function save(name, value) { names.push(name); await writeFile(path.join(directory, name), typeof value === 'string' || value instanceof Uint8Array ? value : JSON.stringify(value, null, 2)+'\n'); }
+await save('source.pptx', output.bytes); await save('normalized.json', resolution.presentation); await save('origins.json', resolution.origins); await save('layout.json', layout);
+for (const [index, slide] of svg.slides.entries()) await save(`page-${index+1}.svg`, slide.svg);
+await save('fixture.mjs', await readFile('tests/fixtures/table-origins.mjs', 'utf8'));
+const old = textOriginsDocument(createPresentation), group = old.slides[0].elements.find(e => e.id==='group');
+const { placeholderKey: _binding, ...ordinaryGroup } = group; old.slides[0].replaceElement(group.id, ordinaryGroup);
+const native = (await generatePptx(old)).bytes, nativeSha = 'ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d';
+assert.equal(sha(native),nativeSha); assert.deepEqual(Buffer.from(native),await readFile('.tmp/text-origins/native-QLLzu9/fixed-input.pptx')); await save('retained-native-source.pptx',native);
+const previous = JSON.parse(await readFile('docs/testing/chart-notes-origins-evidence.json','utf8'));
+const chart = chartNotesOriginsDocument(createPresentation), chartOutput = (await generatePptx(chart)).bytes;
+assert.deepEqual(Buffer.from(chartOutput),await readFile(path.join(previous.directory,'source.pptx')));
+const chartResolution = resolvePresentationInheritance(chart);
+assert.deepEqual(chartResolution.presentation,JSON.parse(await readFile(path.join(previous.directory,'normalized.json'),'utf8')));
+assert.deepEqual(chartResolution.origins,JSON.parse(await readFile(path.join(previous.directory,'origins.json'),'utf8')));
+await save('retained-chart-notes-source.pptx',chartOutput);
+const browser = await chromium.launch(); let browserVersion;
+try {
+  browserVersion = browser.version(); const page = await browser.newPage({ viewport: { width: 1000, height: 620 }, deviceScaleFactor: 1 });
+  await page.route('**/*',r=>r.abort()); await page.setContent('<style>body{margin:8px;display:grid;grid-template-columns:480px 480px;gap:8px;background:#ddd}svg{width:480px;height:270px;background:white}</style>'+svg.slides.map(s=>s.svg).join(''));
+  await page.evaluate(()=>document.fonts.ready); const name='browser-preview.png'; names.push(name); await page.screenshot({ path:path.join(directory,name) });
+} finally { await browser.close(); }
+const artifacts = await Promise.all(names.map(async name => { const file=path.join(directory,name), bytes=await readFile(file); return { file,bytes:bytes.length,sha256:sha(bytes) }; }));
+const dependencies = await Promise.all(['tests/fixtures/table-origins.mjs','packages/core/src/normalization/table-style.ts','packages/core/src/normalization/style-input-origins.ts','packages/core/src/normalization/style-origins.ts','packages/core/src/normalization/normalize-styles.ts','packages/core/src/normalization/text-origins.ts','packages/core/src/normalization/presentation-normalizer.ts','packages/core/src/table/style-grid.ts','packages/core/src/types/inheritance.ts','packages/core/test/table-origins.test.mjs','scripts/table-origins-parity.test.mjs','scripts/prepare-table-origins.mjs'].map(async file=>({ file,sha256:sha(await readFile(file)) })));
+const manifest={ schemaVersion:1,recordedAt:new Date().toISOString(),directory,artifacts,dependencies,browserVersion,originRecords:resolution.origins.length,warnings:output.warnings,retainedNativeSourceSha256:nativeSha,retainedChartNotes:{sha256:sha(chartOutput),ordinaryIrExact:true,originsExact:true},scope:'Logical table cell formatting declarations through actual regional/preset/local merge selectors. Shared physical border decisions belong to Layout. Fresh output materializes rules and script maps with warnings; no source style writes or new native reusable-table admission.',nativeApplication:'No new application run. Prior native source is byte-exact; new source/XML/SVG is checked independently in browser tests.' };
+await writeFile('docs/testing/table-origins-evidence.json',JSON.stringify(manifest,null,2)+'\n');
+console.log(JSON.stringify({ directory,artifacts:artifacts.length,records:resolution.origins.length,warnings:output.warnings.length,nativeSha,chartNotesSha:sha(chartOutput) }));

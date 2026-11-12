@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "scope": "One two-slide PPTKit source-preservation transaction followed by three LibreOffice headless conversions; no interactive edit, repair-dialog, PowerPoint or assistive-technology observation.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "runnerSha256": "014205ac5cfdf67b5dc0523dc8d4a06646cb60be81b7d841bedcec72371ff47a",
+  "oracleSha256": "23d29105b5df807adf3803010d43ef3c081a9567ec4d1f1670c4919c9319e3e1",
+  "original": {
+    "path": ".tmp/drawing-properties-libreoffice/run-505WoI/original.pptx",
+    "sha256": "8560b824cfe343fec34a8c2487d000c0fbfd92ab9d74d2c652116319b2c2f82d"
+  },
+  "sourceChangedParts": [
+    "ppt/presentation.xml",
+    "ppt/slides/slide1.xml"
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/round-1/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 2,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/round-2/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    },
+    {
+      "round": 3,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/drawing-properties-libreoffice/run-505WoI/round-3/edited.pptx using filter : Impress Office Open XML",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>"
+    }
+  ],
+  "rounds": [
+    {
+      "round": 0,
+      "path": ".tmp/drawing-properties-libreoffice/run-505WoI/edited.pptx",
+      "sha256": "5722fb3d4710479f6745f75564f3bf8e01e208bdcf4a3bdf75eedfc64d3d5206",
+      "inventory": {
+        "firstSlideNumber": "17",
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "objects": [
+              {
+                "name": "Edited target 中文",
+                "description": "Edited description & 中文",
+                "decorativeValues": [
+                  "0"
+                ],
+                "text": "Edited text"
+              },
+              {
+                "name": "Sibling",
+                "description": "Sibling description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Sibling text"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "objects": [
+              {
+                "name": "Other page",
+                "description": "Other description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Other text"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "round": 1,
+      "path": ".tmp/drawing-properties-libreoffice/run-505WoI/round-1/edited.pptx",
+      "sha256": "9fbc987e3da59a68843a101bc062c3290cbc5cb6d1763545be8fd33fe217559c",
+      "inventory": {
+        "firstSlideNumber": null,
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "objects": [
+              {
+                "name": "Edited target 中文",
+                "description": "Edited description & 中文",
+                "decorativeValues": [],
+                "text": "Edited text"
+              },
+              {
+                "name": "Sibling",
+                "description": "Sibling description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Sibling text"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "objects": [
+              {
+                "name": "Other page",
+                "description": "Other description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Other text"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "path": ".tmp/drawing-properties-libreoffice/run-505WoI/round-2/edited.pptx",
+      "sha256": "db2e28da2fc4f7829b9a768a92c57b91f7d6f45f0b5b660a07cf50d8571ae698",
+      "inventory": {
+        "firstSlideNumber": null,
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "objects": [
+              {
+                "name": "Edited target 中文",
+                "description": "Edited description & 中文",
+                "decorativeValues": [],
+                "text": "Edited text"
+              },
+              {
+                "name": "Sibling",
+                "description": "Sibling description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Sibling text"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "objects": [
+              {
+                "name": "Other page",
+                "description": "Other description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Other text"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "path": ".tmp/drawing-properties-libreoffice/run-505WoI/round-3/edited.pptx",
+      "sha256": "4b424fa8ee8834668520795ac6a6182de00ed8c4d03260ad0eafca0db7797ff1",
+      "inventory": {
+        "firstSlideNumber": null,
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "objects": [
+              {
+                "name": "Edited target 中文",
+                "description": "Edited description & 中文",
+                "decorativeValues": [],
+                "text": "Edited text"
+              },
+              {
+                "name": "Sibling",
+                "description": "Sibling description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Sibling text"
+              }
+            ]
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "objects": [
+              {
+                "name": "Other page",
+                "description": "Other description",
+                "decorativeValues": [
+                  "1"
+                ],
+                "text": "Other text"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

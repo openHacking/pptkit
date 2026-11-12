@@ -1,0 +1,341 @@
+{
+  "scope": "PowerPoint first-open and one save/close/reopen with A4 scaled prints: four free single elbows and four free double elbows with 25% adjustment. Checks selected PDF stroke-outline coordinates and source XML; no attached targets, interactive editing, additional reopen rounds or general preset claim. Capture hashes do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "directory": ".tmp/native-connectors/powerpoint-elbow-6OzKx0",
+  "sourceSha256": "f36bafbcc59db2a46feb506c96d9b39e950ac88fcadf7f6b496c9a7861cac44c",
+  "pdfSha256": "891441e686f5751c18a83d61267fd3e63fc6513742e049bca78cdb54b850ab90",
+  "savedSha256": "a261b554c44a99dc0b236f7828ebcc2e1568bf236071c132b76b5c6e1db50266",
+  "reopenedPdfSha256": "cbdb8f143cac6732c4621ad962804b8cdaae0e3397c191293e2190abd2fec202",
+  "generatorSha256": "7646d5da8f4df7c624665923552484e2b05b3ce0be5e4d1d6b392e04f797834b",
+  "verifierSha256": "40ef9ffb2b3b6301d54b10afa09f601c78649e4d850c82d4b4f0e4da1d367d88",
+  "pages": [
+    {
+      "phase": "first",
+      "kind": "single",
+      "pageRect": [
+        41.0,
+        83.0,
+        801.0,
+        511.0
+      ],
+      "samples": [
+        {
+          "name": "single-0",
+          "outline": [
+            136.0,
+            168.9963,
+            294.3333,
+            295.5208,
+            170.1852
+          ],
+          "expected": [
+            136.0,
+            168.9963,
+            294.3333,
+            295.5208,
+            170.1852
+          ]
+        },
+        {
+          "name": "single-1",
+          "outline": [
+            658.5,
+            168.9963,
+            500.1667,
+            498.9792,
+            170.1852
+          ],
+          "expected": [
+            658.5,
+            168.9963,
+            500.1667,
+            498.9792,
+            170.1852
+          ]
+        },
+        {
+          "name": "single-2",
+          "outline": [
+            136.0,
+            409.1518,
+            294.3333,
+            295.5208,
+            407.963
+          ],
+          "expected": [
+            136.0,
+            409.1518,
+            294.3333,
+            295.5208,
+            407.9629
+          ]
+        },
+        {
+          "name": "single-3",
+          "outline": [
+            658.5,
+            409.1518,
+            500.1667,
+            498.9792,
+            407.963
+          ],
+          "expected": [
+            658.5,
+            409.1518,
+            500.1667,
+            498.9792,
+            407.9629
+          ]
+        }
+      ],
+      "axSha256": "82711f72d226b8099a4410351e5af7afd749a20912687571170666d9fdc00b32",
+      "screenshotSha256": "f7728b662f06ade34b43a75fdb0c6ad0d49059bc58e2b5bed54dcb4c1ffbc0d2"
+    },
+    {
+      "phase": "first",
+      "kind": "double",
+      "pageRect": [
+        41.0,
+        83.0,
+        801.0,
+        511.0
+      ],
+      "samples": [
+        {
+          "name": "double-0",
+          "outline": [
+            136.0,
+            168.9963,
+            175.5833,
+            176.7708,
+            170.1852
+          ],
+          "expected": [
+            136.0,
+            168.9963,
+            175.5833,
+            176.7708,
+            170.1852
+          ]
+        },
+        {
+          "name": "double-1",
+          "outline": [
+            658.5,
+            168.9963,
+            618.9167,
+            617.7292,
+            170.1852
+          ],
+          "expected": [
+            658.5,
+            168.9963,
+            618.9167,
+            617.7292,
+            170.1852
+          ]
+        },
+        {
+          "name": "double-2",
+          "outline": [
+            136.0,
+            409.1518,
+            175.5833,
+            176.7708,
+            407.963
+          ],
+          "expected": [
+            136.0,
+            409.1518,
+            175.5833,
+            176.7708,
+            407.9629
+          ]
+        },
+        {
+          "name": "double-3",
+          "outline": [
+            658.5,
+            409.1518,
+            618.9167,
+            617.7292,
+            407.963
+          ],
+          "expected": [
+            658.5,
+            409.1518,
+            618.9167,
+            617.7292,
+            407.9629
+          ]
+        }
+      ],
+      "axSha256": "8c83f6743ed939df08e8645a962ff61219511c8a0b29661f5009014d0e6e1344",
+      "screenshotSha256": "6a1b285abcb77babd1a59dbc32fc1a6c4b74184c54b60792c5e71a28bb3664bc"
+    },
+    {
+      "phase": "reopen",
+      "kind": "single",
+      "pageRect": [
+        41.0,
+        83.0,
+        801.0,
+        511.0
+      ],
+      "samples": [
+        {
+          "name": "single-0",
+          "outline": [
+            136.0,
+            168.9963,
+            294.3333,
+            295.5208,
+            170.1852
+          ],
+          "expected": [
+            136.0,
+            168.9963,
+            294.3333,
+            295.5208,
+            170.1852
+          ]
+        },
+        {
+          "name": "single-1",
+          "outline": [
+            658.5,
+            168.9963,
+            500.1667,
+            498.9792,
+            170.1852
+          ],
+          "expected": [
+            658.5,
+            168.9963,
+            500.1667,
+            498.9792,
+            170.1852
+          ]
+        },
+        {
+          "name": "single-2",
+          "outline": [
+            136.0,
+            409.1518,
+            294.3333,
+            295.5208,
+            407.963
+          ],
+          "expected": [
+            136.0,
+            409.1518,
+            294.3333,
+            295.5208,
+            407.9629
+          ]
+        },
+        {
+          "name": "single-3",
+          "outline": [
+            658.5,
+            409.1518,
+            500.1667,
+            498.9792,
+            407.963
+          ],
+          "expected": [
+            658.5,
+            409.1518,
+            500.1667,
+            498.9792,
+            407.9629
+          ]
+        }
+      ],
+      "axSha256": "8454fe6c369ff48812fbc150ab79f565c0f37f04c14fecbc264c5a821117b2d8",
+      "screenshotSha256": "969f56104f5bcf9d3ed8d36a1b120ca0c039c638405f91bf11a1f2333ed43169"
+    },
+    {
+      "phase": "reopen",
+      "kind": "double",
+      "pageRect": [
+        41.0,
+        83.0,
+        801.0,
+        511.0
+      ],
+      "samples": [
+        {
+          "name": "double-0",
+          "outline": [
+            136.0,
+            168.9963,
+            175.5833,
+            176.7708,
+            170.1852
+          ],
+          "expected": [
+            136.0,
+            168.9963,
+            175.5833,
+            176.7708,
+            170.1852
+          ]
+        },
+        {
+          "name": "double-1",
+          "outline": [
+            658.5,
+            168.9963,
+            618.9167,
+            617.7292,
+            170.1852
+          ],
+          "expected": [
+            658.5,
+            168.9963,
+            618.9167,
+            617.7292,
+            170.1852
+          ]
+        },
+        {
+          "name": "double-2",
+          "outline": [
+            136.0,
+            409.1518,
+            175.5833,
+            176.7708,
+            407.963
+          ],
+          "expected": [
+            136.0,
+            409.1518,
+            175.5833,
+            176.7708,
+            407.9629
+          ]
+        },
+        {
+          "name": "double-3",
+          "outline": [
+            658.5,
+            409.1518,
+            618.9167,
+            617.7292,
+            407.963
+          ],
+          "expected": [
+            658.5,
+            409.1518,
+            618.9167,
+            617.7292,
+            407.9629
+          ]
+        }
+      ],
+      "axSha256": "2ea4e03030ee8afa65e4122cc374c992d03f31aeebba48973bc84b20ef737738",
+      "screenshotSha256": "ee349adbe022f1cf440843e852b31f432e19472654641afd656c7b8d33d73b6f"
+    }
+  ]
+}

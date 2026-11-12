@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "directory": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok",
+  "records": [
+    {
+      "mode": "before",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/before.pptx",
+      "sha256": "0ecf999b736656fe2c4ccaa28bad8f3ca93e97ac20a6681b311101bfc667824f",
+      "historicalFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/input.pptx",
+      "historicalSha256": "9643618a0df3f2dc10111acc645c5447e85bdcd2c5eb0c18b5cd37927176fcec",
+      "referencePdf": "/Volumes/github/private/pptkit/.tmp/master-advanced/native-QRT0SF/first.pdf",
+      "referencePdfSha256": "42dae0c03d39a2a75b9bcac54f51e184eeed5a758c252fa69c770f4612251352",
+      "changedParts": [
+        "ppt/slideMasters/slideMaster2.xml",
+        "ppt/slideMasters/slideMaster3.xml"
+      ],
+      "tables": 2,
+      "paragraphs": 6,
+      "delta": "Only the six nonempty Arial table paragraph marks acquire explicit Latin/EA/CS Arial fonts. Every other byte of every package payload is unchanged."
+    },
+    {
+      "mode": "after",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/after.pptx",
+      "sha256": "8cd5b9e17e91418a0c0922956227652e6cc2dc6efe098b03c7802a3af4e35a73",
+      "historicalFile": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/fresh-core-edit.pptx",
+      "historicalSha256": "b4fb8dd173f387a6237b69098316584be8df45f52da987d05aeaacbdd00f94b3",
+      "referencePdf": "/Volumes/github/private/pptkit/.tmp/master-advanced/shared-native-vwggt5tr/fresh-core-edit.pdf",
+      "referencePdfSha256": "749de0c5f8847e882cd5bf664335f98f4cc18855b7532039c3129365ea387219",
+      "changedParts": [
+        "ppt/slideMasters/slideMaster2.xml",
+        "ppt/slideMasters/slideMaster3.xml"
+      ],
+      "tables": 2,
+      "paragraphs": 6,
+      "delta": "Only the six nonempty Arial table paragraph marks acquire explicit Latin/EA/CS Arial fonts. Every other byte of every package payload is unchanged."
+    }
+  ],
+  "nativeApplication": "Actual PowerPoint 16.104 (25121423), two current source first-open prints/eight page records exactly equal to the historical before/edited native controls; historical reopen rounds retain their original identities.",
+  "verified": true,
+  "nativeEvidence": {
+    "file": "docs/testing/master-paragraph-font-native-evidence.json",
+    "sha256": "a4df6014a8c4fceda3571d0c2dd5b1ed3151441854dfa3aa9a237e57b62024ac"
+  },
+  "negativeRejections": [
+    {
+      "name": "missing-font-mark",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/negative-bf7kniq7/missing-font-mark.pptx",
+      "sha256": "270d2297756d87de6ad65fef58c583f00ab64f908ae48e545c2c58ac11f56b1c"
+    },
+    {
+      "name": "changed-run-size",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/negative-bf7kniq7/changed-run-size.pptx",
+      "sha256": "a0e3203499771fd5b05d9729e99dbaeb20ab330e2948a766332352e302135437"
+    },
+    {
+      "name": "unhide-master-artwork",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/negative-bf7kniq7/unhide-master-artwork.pptx",
+      "sha256": "e27c00b84249cabda8ef54a715ab45847f1dfee094f9560c67935288123b9609"
+    },
+    {
+      "name": "changed-metadata",
+      "file": "/Volumes/github/private/pptkit/.tmp/master-advanced/font-mark-bridge-TBvCok/negative-bf7kniq7/changed-metadata.pptx",
+      "sha256": "8162a864fb43c9df0f285ddfdfd1000eb52b1b1b3bbc009ff1d6a8bf18134562"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "scripts/prepare-master-paragraph-font-bridge.mjs",
+      "sha256": "1a8296dd7436b8fcbb4f710b3f78fbf0994484302e616cc3dca961dec694b93a"
+    },
+    {
+      "file": "scripts/verify-master-paragraph-font-bridge.mjs",
+      "sha256": "9a9176f0248ca4086e9881a45a8c4457b2a3b2d383049a4ba2bedf367b99b574"
+    },
+    {
+      "file": "scripts/research/advanced-table-font-bridge.mjs",
+      "sha256": "f3ed66598e453f7b1fac8e01e4fa95c4e5efe703761c82cf217b160858d8165c"
+    },
+    {
+      "file": "packages/pptx-exporter/src/ooxml/elements.ts",
+      "sha256": "f1bf225cd1ebda04d203fe4ff10c9404f2275a3c334d5f79a887faed27f9ccf4"
+    },
+    {
+      "file": "tests/fixtures/master-advanced.mjs",
+      "sha256": "f23a7f8be2e3cf41aa33e4ce09da1e5fd0b70539c1096edeb045222c7757022b"
+    }
+  ]
+}

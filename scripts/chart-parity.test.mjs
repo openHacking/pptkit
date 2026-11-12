@@ -1,8 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { inflateRawSync } from "node:zlib";
+import { readFile } from "node:fs/promises";
+import { chromium } from "@playwright/test";
 
-import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
+import { createPresentation, normalizePresentation, validatePresentation } from "../packages/core/dist/index.js";
 import { resolveNormalizedLayout } from "../packages/layout/dist/index.js";
 import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
@@ -133,4 +135,21 @@ test("SVG and PPTX consume the same canonical chart layout contract", async () =
     assert.ok(entries.has(`ppt/charts/_rels/chart${index}.xml.rels`));
     assert.ok(entries.has(`ppt/embeddings/Microsoft_Excel_Worksheet${index}.xlsx`));
   }
+});
+
+test("sparse chart data is rejected consistently in Node and the browser while zero exports identically", async t => {
+  const make = values => { const deck = createPresentation({ id: "deck" }); deck.addSlide({ id: "slide" }).addElement({ id: "chart", type: "chart", chartType: "bar", box: { x: 0, y: 0, width: 300, height: 200 }, categories: ["A", "B", "C"], series: [{ name: "S", values }] }); return deck; };
+  const sparse = make([1, , 3]), nodeDiagnostics = validatePresentation(sparse).map(d => ({ code: d.code, path: d.path }));
+  assert.ok(nodeDiagnostics.some(d => d.code === "chart-values-finite" && d.path.endsWith(".values.1")));
+  const nodeBytes = Array.from((await generatePptx(make([1, 0, 3]))).bytes);
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route("**/*", route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ["core", "layout", "pptx-exporter"]) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, "utf8") });
+  const result = await page.evaluate(async () => {
+    const make = values => { const deck = PPTKit.createPresentation({ id: "deck" }); deck.addSlide({ id: "slide" }).addElement({ id: "chart", type: "chart", chartType: "bar", box: { x: 0, y: 0, width: 300, height: 200 }, categories: ["A", "B", "C"], series: [{ name: "S", values }] }); return deck; };
+    const sparse = make([1, , 3]), diagnostics = PPTKit.validatePresentation(sparse).map(d => ({ code: d.code, path: d.path }));
+    let rejected = false; try { await PPTKit.generatePptx(sparse); } catch (error) { rejected = error.diagnostics?.some(d => d.code === "chart-values-finite") === true; }
+    return { diagnostics, rejected, bytes: Array.from((await PPTKit.generatePptx(make([1, 0, 3]))).bytes) };
+  });
+  assert.deepEqual(result.diagnostics, nodeDiagnostics); assert.equal(result.rejected, true); assert.deepEqual(result.bytes, nodeBytes); assert.deepEqual(requests, []);
 });

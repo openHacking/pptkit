@@ -1,0 +1,7 @@
+# Core property insertion: LibreOfficeDev headless observation
+
+A single presentation was prepared with existing core properties but no title, subject, description or language. The control retains those omissions. The edited branch uses `core-insert-v5` to insert title `PPTKit Presentation`, empty subject, description `Inserted & 中文`, and language `fr-FR`. Independent ZIP comparison found identical entry sets and only `docProps/core.xml` changed before the application was run.
+
+LibreOfficeDev 26.8.0.0.alpha0 headlessly resaved each branch three times. In this sample all four inserted values survived each edited-branch resave. In the control, the first resave created empty title, subject and description values and set language to `zh-CN`; all remained through round three. Both branches changed keywords `alpha, beta` to `alpha beta` on the first resave. Creator and revision remained unchanged in this inventory. These observations describe this environment and sample, not general document-property fidelity.
+
+The [evidence record](core-insert-libreoffice-evidence.json) includes paths, hashes, inventories and process logs. `python3 scripts/research/verify-core-insert-libreoffice.py` independently checks the retained artifacts and comparisons. `python3 scripts/research/core-insert-libreoffice.py` reproduces the experiment in the recorded environment using the hash-checked seed from the earlier core metadata experiment. Artifacts in `.tmp` are local. PowerPoint, interactive behavior, repair prompts and other source shapes remain unverified.

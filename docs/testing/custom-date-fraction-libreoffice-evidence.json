@@ -1,0 +1,385 @@
+{
+  "scope": "Synthetic fractional date/filetime source based on PPTKit-created package, four value edits and unchanged control, three LibreOfficeDev headless resaves per branch; no UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "d879205b34fe50215f50977991521aa766a27908c58ed30bcb25ea06aa8597ea",
+  "oracleSha256": "a8c51feea4de6b1f2d66b5d6fd679f01a7ebae0a75feac3ad09c17698fd9ef57",
+  "seedSha256": "2a56d5316a28c2dc2266de56653987e227b6d0292999be780a3cb02e5ec3711c",
+  "sourceChangedParts": [
+    "pptkit-custom-properties-1.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/input/control.pptx",
+      "sha256": "d63d80f6c95483eb256b0b7125bca0792d5d3e9d4242d49c28167a8ebb57e285",
+      "properties": [
+        {
+          "name": "DateTenth",
+          "pid": "2",
+          "type": "date",
+          "value": "2020-01-01T00:30:00.1+08:00"
+        },
+        {
+          "name": "DateHundredth",
+          "pid": "3",
+          "type": "date",
+          "value": "2020-02-29T23:30:00.12-05:30"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2021-01-01T00:30:00.1230000000+08:00"
+        },
+        {
+          "name": "FileZero",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2021-02-28T23:30:00.0000-05:30"
+        }
+      ]
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/input/edited.pptx",
+      "sha256": "ac1c43dd7b3ad54bf6f16882adb90e17fa94b2525b9b39bfced81d3e3c02b107",
+      "properties": [
+        {
+          "name": "DateTenth",
+          "pid": "2",
+          "type": "date",
+          "value": "2024-02-29T23:59:59.000Z"
+        },
+        {
+          "name": "DateHundredth",
+          "pid": "3",
+          "type": "date",
+          "value": "2024-02-29T23:59:59.456Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00.000Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00.789Z"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/control.pptx",
+      "sha256": "3a0865beb31175938e0d4c1ac25572a7d2e722fdcc0934787a02ea727b075feb",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/edited.pptx",
+      "sha256": "3c6167ac2a4de0bbbc0785914cf0405c413d6c29bb50ad98f744479ab7f2dc0b",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/control.pptx",
+      "sha256": "ef593da568a66d40adeffdc4e70f7dcbb732034152f6d4a9f18c3a1ab6cfcf32",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/edited.pptx",
+      "sha256": "dedfaed138e478da5592326e91325c2b3a7eea0e56c2e5a2d38c18d8faf4789c",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-3/control.pptx",
+      "sha256": "42c033aaa7148b8aea6c79fd480f990609f0da05f346fbc7264aa76cbb799d6d",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2020-03-01T05:00:00Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2019-12-31T16:30:00Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2021-03-01T05:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2020-12-31T16:30:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-3/edited.pptx",
+      "sha256": "99b4219e16b87d6d75ac273190c3f797b853cb195baefd4363cd5f36033bd03b",
+      "properties": [
+        {
+          "name": "DateHundredth",
+          "pid": "2",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "DateTenth",
+          "pid": "3",
+          "type": "filetime",
+          "value": "2024-02-29T23:59:59Z"
+        },
+        {
+          "name": "FileZero",
+          "pid": "4",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "FileZeros",
+          "pid": "5",
+          "type": "filetime",
+          "value": "2023-12-31T00:00:00Z"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "pid": "7",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/custom-date-fraction-libreoffice/run-1oianjfi/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

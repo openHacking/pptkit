@@ -1,0 +1,38 @@
+{
+  "scope": "Fresh corpus charts sample, PowerPoint 16.104 build 16.104.25121423, macOS 26.5. Edited chart1 title, saved, closed and reopened once; no repair prompt observed. Excel data editing command was disabled and Excel was not present in app inventory; cause not independently proven. No native workbook interaction or data-edit verification. UI provenance observational, not authenticated.",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/charts.pptx",
+    "sha256": "497af383e22e7865a74394c834ac11fa64aa7464572b54483cb9c21635cbbb33",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-charts-powerpoint-interactive.pptx",
+    "sha256": "44b04afbb9fe648e7409151162961ebc0f2f9c447a5449d8c2fd66013cd9106f"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-charts",
+  "captures": {
+    "first.png": "cfb5784730dd2eb147e1b9b0c8479221fe2998f8b52e9a96dc704c642fa37c90",
+    "first.ax.txt": "4f1afdc8de8d45e4af4db10883226b3c0484c8055c8204cfb6247251d1417abb",
+    "reopen.png": "d33f217084069a8fbc43594e14fddfdf2da27bb8357cbb164437078121e00db7",
+    "reopen.ax.txt": "b2dff15f4ace8f3ebece1b09f69f8811aa885434b35790468c5a7a8664783457",
+    "data-edit-disabled.png": "060cf6bd31c10496c43c00a03ce47b04836c1bb6e5f05e9af12b77eee5c27df1",
+    "data-edit-disabled.ax.txt": "3685b30185effb6321f9875528cfe810fe7795eb90ef721f94d6202b1bbcd09f"
+  },
+  "operation": "Change bar chart title from bar to Edited bar; save, close, reopen.",
+  "chartTitles": [
+    "Edited bar",
+    "line",
+    "pie"
+  ],
+  "chartValues": [
+    "2",
+    "4",
+    "3"
+  ],
+  "workbookValues": {
+    "B2": "2",
+    "B3": "4",
+    "B4": "3"
+  },
+  "observation": "PowerPoint retained three workbooks under new names; chart cache and workbook numeric cells agree for sampled values."
+}

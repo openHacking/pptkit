@@ -1,0 +1,162 @@
+{
+  "producerSha256": "733718799c0d04bb6a96a7e4a99720538c094b49b5eeb631791d59ae04ca8ea7",
+  "adapterSourceSha256": "beb18c08455c78802e04d319e81516667a4bdf9c100074d8aab35691d8e0c013",
+  "imageDataSha256": "0cd82e9bb32b8085a433c058b7160397b602dcd09bbd3bbc1e48d92b1a431ee4",
+  "mediaSources": {
+    "inspect-static.ts": "aa0b4c46a86ab6edcedd8b99b88e71c3adc29a74e8364124f2ea77b16ee57762",
+    "capture-image-input.ts": "f07133454419caef2e37eab6804981389046c6224b253ca21ceb7c7fc7519e0b",
+    "inspect-png.ts": "44e4b5ae812a81a0eb96ea59a9acf959f2cb9a5a60e1435d94fb24397936ede0",
+    "inspect-apng.ts": "df09a17adc87573467a052de15897520e536b2a7043e38269d78d5e261efc8e6",
+    "inspect-gif.ts": "f8552508925688c4d94c2438a125857711843dd4af0a3ffed0d0a5164d10f193",
+    "validate-gif-lzw.ts": "1e7080cff3c6ae6036e9419084f18a53d38a764c01330874c62b91c4b7d807aa"
+  },
+  "jpegSourceSha256": "3afa4c216f8c72e0a45ece963a3ec4f1861bfe3c9f9d1678cffdbd7edb86501a",
+  "browser": "149.0.7827.55",
+  "fixtures": {
+    "transparent-replacement.png": "6627f2ea583058eb08d52d63287278afd7416429211e6b27a781699202cdd1c1",
+    "two-frame-apng.png": "880fc96f95e86ec26d9f8555584a2be40793cb2766e031eaeb9bdb84196f6af2"
+  },
+  "gifFixtures": {
+    "still": "ef1955ae757c8b966c83248350331bd3a30f658ced11f387f8ebf05ab3368629",
+    "animated": "05bc47017e6242e0b4a20b2ac8f2f18ce62b676d7c96360a80a7b69e12f166c8"
+  },
+  "calls": [
+    {
+      "slideId": "s1",
+      "slideIndex": 1,
+      "mimeType": "image/png",
+      "dataSha256": "578df4e2b71f6c348a50b7dcdae203f44fccb9c6b7f508a6b9a642c698e0672c"
+    },
+    {
+      "slideId": "s0",
+      "slideIndex": 0,
+      "mimeType": "image/png",
+      "dataSha256": "578df4e2b71f6c348a50b7dcdae203f44fccb9c6b7f508a6b9a642c698e0672c"
+    }
+  ],
+  "rejected": "pdf-image-not-static",
+  "automaticRejected": "pdf-image-not-static",
+  "gifRejected": "pdf-image-not-static",
+  "still": {
+    "sha256": "ad3c4d377876959dbf9bec4dee4080d2f239663bf5a2e6ed90d7906c11986e00",
+    "pages": [
+      {
+        "slideId": "s1",
+        "index": 1,
+        "hidden": false
+      },
+      {
+        "slideId": "s0",
+        "index": 0,
+        "hidden": false
+      }
+    ],
+    "warnings": [
+      {
+        "code": "pdf-image-frame-unverified",
+        "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+      },
+      {
+        "code": "pdf-image-static-attested",
+        "message": "The caller attested that each emitted image is static; the assertion was not independently verified."
+      },
+      {
+        "code": "pdf-font-selection-unverified",
+        "message": "Browser font selection, glyph coverage and fallback are not verified."
+      },
+      {
+        "code": "pdf-page-size-rounding",
+        "message": "Chromium may round requested page dimensions."
+      }
+    ]
+  },
+  "automatic": {
+    "sha256": "ad3c4d377876959dbf9bec4dee4080d2f239663bf5a2e6ed90d7906c11986e00",
+    "pages": [
+      {
+        "slideId": "s1",
+        "index": 1,
+        "hidden": false
+      },
+      {
+        "slideId": "s0",
+        "index": 0,
+        "hidden": false
+      }
+    ],
+    "warnings": [
+      {
+        "code": "pdf-image-frame-unverified",
+        "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+      },
+      {
+        "code": "pdf-image-static-structure-checked",
+        "message": "Image structures matched the bounded static profile; decoding and painted pixels remain unverified."
+      },
+      {
+        "code": "pdf-font-selection-unverified",
+        "message": "Browser font selection, glyph coverage and fallback are not verified."
+      },
+      {
+        "code": "pdf-page-size-rounding",
+        "message": "Chromium may round requested page dimensions."
+      }
+    ]
+  },
+  "gif": {
+    "sha256": "adb0e46890ad622d15ccedeb1bc420491de01ed621cf77e7f489e042ee43d516",
+    "pages": [
+      {
+        "slideId": "s0",
+        "index": 0,
+        "hidden": false
+      }
+    ],
+    "warnings": [
+      {
+        "code": "pdf-image-frame-unverified",
+        "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+      },
+      {
+        "code": "pdf-image-static-structure-checked",
+        "message": "Image structures matched the bounded static profile; decoding and painted pixels remain unverified."
+      },
+      {
+        "code": "pdf-font-selection-unverified",
+        "message": "Browser font selection, glyph coverage and fallback are not verified."
+      },
+      {
+        "code": "pdf-page-size-rounding",
+        "message": "Chromium may round requested page dimensions."
+      }
+    ]
+  },
+  "misattested": {
+    "sha256": "083255144a79254479701de3b017b3c71a770e2b83089efb1c7b0e33feedaf81",
+    "pages": [
+      {
+        "slideId": "s0",
+        "index": 0,
+        "hidden": false
+      }
+    ],
+    "warnings": [
+      {
+        "code": "pdf-image-frame-unverified",
+        "message": "Image decoding, animation frame selection and painted pixels are not fully verified."
+      },
+      {
+        "code": "pdf-image-static-attested",
+        "message": "The caller attested that each emitted image is static; the assertion was not independently verified."
+      },
+      {
+        "code": "pdf-font-selection-unverified",
+        "message": "Browser font selection, glyph coverage and fallback are not verified."
+      },
+      {
+        "code": "pdf-page-size-rounding",
+        "message": "Chromium may round requested page dimensions."
+      }
+    ]
+  }
+}

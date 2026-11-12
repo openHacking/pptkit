@@ -1,0 +1,9 @@
+{
+  "scope": "One PowerPoint save/close/reopen of 12 mixed-size shape-text samples. Checks saved text, size, tab declarations and fills, plus all four PDF pages word geometry and fills; only first-page window observed. No native edit or other-font/transform claim. Capture hashes do not independently establish provenance.",
+  "firstEvidenceSha256": "68a137b1268fa2469f185f64a784339f75c6f8bd2e6a1cf44d0b8416151298ba",
+  "savedPptxSha256": "bb10fdf65c5351f6a15a62af273cd4336573d69be894688f5b38125368c9e531",
+  "reopenedPdfSha256": "c15b88e67eeda7b68b6c6ee5d7835b7906b5183093198c58eedf69c21560b264",
+  "axSha256": "900afc82efd03ea415775c28e983a02e471e0fcf3499aeeb17f535706f2cd385",
+  "screenshotSha256": "bd09c09ec16a28d3e58ce01b71dd90483600a437455cccecaec4e45e03aab982",
+  "verifierSha256": "e8c532d8ec5e73a22363e01c583e4a4d7b03f6ed691155a5ebcbfb54812595fe"
+}

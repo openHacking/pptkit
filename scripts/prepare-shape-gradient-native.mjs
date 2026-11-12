@@ -1,0 +1,12 @@
+import { writeFile } from 'node:fs/promises';
+import { createPresentation } from '../packages/core/dist/index.js';
+import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
+import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js';
+import { chromium } from '@playwright/test';
+const dir=process.argv[2];if(!dir)throw Error('Expected evidence directory.');
+const d=createPresentation({size:{width:960,height:540}}),fill={type:'linearGradient',angle:45,scaled:true,stops:[{position:0,color:'FF0000',opacity:.7},{position:1,color:'0000FF'}]};
+const shape=(id,rotation=0)=>({id,type:'shape',shape:'rect',box:{x:180,y:120,width:600,height:300},transform:{rotation},style:{fill,stroke:{paint:{type:'none'}}}});
+d.addSlide({id:'straight'}).addElement(shape('shape-1'));d.addSlide({id:'rotate'}).addElement(shape('shape-2',30));
+d.addSlide({id:'group'}).addElement({id:'group',type:'group',box:{x:180,y:120,width:600,height:300},coordinateSize:{width:600,height:300},opacity:.5,transform:{rotation:30},children:[{...shape('shape-3'),box:{x:0,y:0,width:600,height:300}}]});
+await writeFile(`${dir}/shape-gradient.pptx`,(await generatePptx(d)).bytes,{flag:'wx'});const slides=(await renderPresentationToSvg(d)).slides;
+const browser=await chromium.launch(),page=await browser.newPage({viewport:{width:960,height:540}});for(const [i,slide] of slides.entries()){await page.setContent(`<style>body{margin:0;background:white}</style>${slide.svg}`);await page.screenshot({path:`${dir}/svg-${i+1}.png`});}await browser.close();

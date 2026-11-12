@@ -1,0 +1,120 @@
+{
+  "scope": "PowerPoint 16.104 edits first shape angle and first stop transparency, Save As, close and reopen once; untouched page gradients and rotations compared. Screenshot and AX hashes alone do not prove provenance. No multi-cycle or general shape fidelity claim.",
+  "beforeSha256": "e8da62b1c9c3c08a382d26622dff0e80b529f8f73a1604a6737f4dc80c184879",
+  "afterSha256": "504f3e0794dc8a7070a2844cc2ffd3764d0456166ae089562433bd9144d68c22",
+  "uiSha256": "03198fea9b99ad68aa0e25d28b348a8c498ee501ffeda9b41f26c4ec4749d4b2",
+  "axSha256": "ed91a67414d2b75e7a7c23c7076a1d943c4e5ba42007f2c5af9b05de1d8f9e38",
+  "oracleSha256": "1d932107615f29cd66f0e4b16f4232ce9cb7091f169a733888b4281439db4e75",
+  "before": [
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "70000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ],
+      "shapeRotation": "0",
+      "groupRotation": null
+    },
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "70000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ],
+      "shapeRotation": "1800000",
+      "groupRotation": null
+    },
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "35000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "50000"
+        ]
+      ],
+      "shapeRotation": "0",
+      "groupRotation": "1800000"
+    }
+  ],
+  "after": [
+    {
+      "angle": "7200000",
+      "scaled": "0",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "50000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ],
+      "shapeRotation": "0",
+      "groupRotation": null
+    },
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "70000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "100000"
+        ]
+      ],
+      "shapeRotation": "1800000",
+      "groupRotation": null
+    },
+    {
+      "angle": "2700000",
+      "scaled": "1",
+      "stops": [
+        [
+          "0",
+          "FF0000",
+          "35000"
+        ],
+        [
+          "100000",
+          "0000FF",
+          "50000"
+        ]
+      ],
+      "shapeRotation": "0",
+      "groupRotation": "1800000"
+    }
+  ]
+}

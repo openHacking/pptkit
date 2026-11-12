@@ -1,0 +1,27 @@
+{
+  "scope": "PowerPoint 16.104 missing paragraph mark probe, initial open only",
+  "directory": "/Volumes/github/private/pptkit/.tmp/style-reset-native/run-uFixey",
+  "files": {
+    "input.pptx": "ef158ed7f03ca97547ae3361b827613803942452b6dd11c32ec71d269d4e02cb",
+    "no-mark.pptx": "c93bf0dc60415fd0728124a8afb23026374b1723081cf697e7e5e18d7821b679",
+    "no-mark.pdf": "7e5ea9ca5b57f9eb1adecc0f319876e1e3d4de86c9d5f9c1beb62459e7c7010e",
+    "mark-effective.pdf": "4afb121afa7347282f30957f685620310917e3c154ce2170e49fc6bac60bf5ba",
+    "default-materialized.pdf": "71ccd761bcb462a09c6e9b014c808b0f024e082bdbef7fce75689c7d93524f60"
+  },
+  "sourceSha256": {
+    "/Volumes/github/private/pptkit/scripts/research/oracles/native-mixed-no-mark.py": "5a35e730a66574526417b0a7635e961177580f52cbf264645f6245faa1e0a73c",
+    "scripts/research/prepare-mixed-no-mark.py": "25eb47958620dec05f4cdebfc33d32b88ebf33137a469477032e62f47c266f51"
+  },
+  "negativeRestoredMarksRejected": {
+    "1": true,
+    "2": true
+  },
+  "matchesEffectiveFontMarkProbe": true,
+  "bodyShiftAgainstMaterializedPoints": [
+    -0.96002197265625,
+    0.0,
+    0.0
+  ],
+  "nativeSaveReopenVerified": false,
+  "productionFixImplemented": false
+}

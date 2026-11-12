@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two existing merged-table anchor run edits in a two-slide mixed deck, independent physical-grid/non-text XML and payload checks, LibreOffice headless producer resave and slide PDF text inspection. Not interactive table editing, repair-dialog verification, PowerPoint, complete layout/native fidelity or full IMP-09.2.5 completion.",
+  "environment": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/table-save-native/run-hObU32",
+  "sourceSha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+  "editedSha256": "f8a30500894276b88d6d5912ad792b21a7fa972f9a7752ee5f7a90545586db9e",
+  "nativeSha256": "c996565a7b032a312961be991a88c95591ec85ca56817aaead3b44a6201723fc",
+  "saveReport": {
+    "mode": "edit",
+    "assurance": "scoped-preservation",
+    "losses": [],
+    "changes": [
+      {
+        "kind": "text",
+        "documentPath": "/slides/0/elements/5/rows/0/cells/0/content/0/runs/0/text",
+        "slideId": "source-slide-256",
+        "elementId": "source-slide-256-object-8",
+        "source": {
+          "part": "/ppt/slides/slide1.xml",
+          "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[3]/a:graphic[1]/a:graphicData[1]/a:tbl[1]/a:tr[1]/a:tc[1]",
+          "sourceObjectId": "8",
+          "elementIndex": 256
+        },
+        "text": {
+          "before": "Merged anchor control",
+          "after": "Anchor 123"
+        }
+      },
+      {
+        "kind": "text",
+        "documentPath": "/slides/0/elements/5/rows/1/cells/0/content/0/runs/0/text",
+        "slideId": "source-slide-256",
+        "elementId": "source-slide-256-object-8",
+        "source": {
+          "part": "/ppt/slides/slide1.xml",
+          "path": "/p:sld[1]/p:cSld[1]/p:spTree[1]/p:graphicFrame[3]/a:graphic[1]/a:graphicData[1]/a:tbl[1]/a:tr[2]/a:tc[3]",
+          "sourceObjectId": "8",
+          "elementIndex": 350
+        },
+        "text": {
+          "before": "Bottom right source",
+          "after": "Cell 456"
+        }
+      }
+    ],
+    "diagnostics": []
+  },
+  "independent": {
+    "oracle": "Python zipfile + ElementTree + PyMuPDF",
+    "changedPayloads": [
+      "ppt/slides/slide1.xml"
+    ],
+    "sourcePartSetRetained": true,
+    "allUnselectedPayloadsByteIdentical": true,
+    "candidateNonTextXmlStructureEqual": true,
+    "candidateTableGridsAndMergesEqual": true,
+    "sourceTables": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "1651000"
+          },
+          {
+            "w": "1651000"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "508000"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Cell control A"
+              },
+              {
+                "attributes": {},
+                "text": "Cell control B"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "889000"
+          },
+          {
+            "w": "889000"
+          },
+          {
+            "w": "1143000"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "gridSpan": "2",
+                  "rowSpan": "2"
+                },
+                "text": "Merged anchor control"
+              },
+              {
+                "attributes": {
+                  "hMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Top right control"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "vMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {
+                  "vMerge": "1",
+                  "hMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Bottom right source"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Last row source"
+              },
+              {
+                "attributes": {},
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Last cell control"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "candidateTables": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "1651000"
+          },
+          {
+            "w": "1651000"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "508000"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Cell control A"
+              },
+              {
+                "attributes": {},
+                "text": "Cell control B"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "889000"
+          },
+          {
+            "w": "889000"
+          },
+          {
+            "w": "1143000"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "gridSpan": "2",
+                  "rowSpan": "2"
+                },
+                "text": "Anchor 123"
+              },
+              {
+                "attributes": {
+                  "hMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Top right control"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "vMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {
+                  "vMerge": "1",
+                  "hMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Cell 456"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "381000"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Last row source"
+              },
+              {
+                "attributes": {},
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Last cell control"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nativeTables": [
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "1650960"
+          },
+          {
+            "w": "1650960"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "507960"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Cell control A"
+              },
+              {
+                "attributes": {},
+                "text": "Cell control B"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "columns": [
+          {
+            "w": "888840"
+          },
+          {
+            "w": "888840"
+          },
+          {
+            "w": "1143000"
+          }
+        ],
+        "rows": [
+          {
+            "attributes": {
+              "h": "380880"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "gridSpan": "2",
+                  "rowSpan": "2"
+                },
+                "text": "Anchor 123"
+              },
+              {
+                "attributes": {
+                  "hMerge": "1",
+                  "rowSpan": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Top right control"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "380880"
+            },
+            "cells": [
+              {
+                "attributes": {
+                  "vMerge": "1",
+                  "gridSpan": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {
+                  "vMerge": "1",
+                  "hMerge": "1"
+                },
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Cell 456"
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "h": "380880"
+            },
+            "cells": [
+              {
+                "attributes": {},
+                "text": "Last row source"
+              },
+              {
+                "attributes": {},
+                "text": ""
+              },
+              {
+                "attributes": {},
+                "text": "Last cell control"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nativeTableGridsAndMergesEqual": false,
+    "nativeMergeSemanticsEqual": true,
+    "nativeTableCount": 2,
+    "pdfPages": 2,
+    "pdfText": "Original shape text\nNested \nshape \ncontrol\nA\nB\n0\n1\n2\n3\n4\n5\n6\nUnchanged data\nCell control A\nCell control B\nAnchor 123\nTop right \ncontrol\nCell 456\nLast \nrow \nsource\nLast cell \ncontrol\n\nSecond slide control\n",
+    "unknownExtensionRetainedByPptkit": true,
+    "orphanRetainedByPptkit": true,
+    "nativeUnknownExtensionRetained": false,
+    "nativeOrphanRetained": false,
+    "nativeAddedParts": [
+      "docProps/custom.xml",
+      "ppt/charts/colors1.xml",
+      "ppt/charts/style1.xml",
+      "ppt/media/image1.png"
+    ],
+    "nativeRemovedParts": [
+      "orphan.bin",
+      "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx",
+      "ppt/media/shared.png",
+      "ppt/tableStyles.xml",
+      "ppt/viewProps.xml"
+    ]
+  },
+  "nativeComparison": {
+    "equal": false,
+    "differenceCount": 62,
+    "differences": [
+      {
+        "code": "payload-changed",
+        "part": "/[Content_Types].xml",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/_rels/.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/docProps/app.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/docProps/core.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-added",
+        "part": "/docProps/custom.xml"
+      },
+      {
+        "code": "part-removed",
+        "part": "/orphan.bin"
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/charts/_rels/chart1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/charts/chart1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-added",
+        "part": "/ppt/charts/colors1.xml"
+      },
+      {
+        "code": "part-added",
+        "part": "/ppt/charts/style1.xml"
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+      },
+      {
+        "code": "part-added",
+        "part": "/ppt/media/image1.png"
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/media/shared.png"
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesMasters/notesMaster1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/notesSlide1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/notesSlides/notesSlide2.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/presProps.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/presentation.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideLayouts/slideLayout1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slideMasters/slideMaster1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/_rels/slide2.xml.rels",
+        "byteOffset": 36
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/slide1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/slides/slide2.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/tableStyles.xml"
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/theme/theme1.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "payload-changed",
+        "part": "/ppt/theme/theme2.xml",
+        "byteOffset": 55
+      },
+      {
+        "code": "part-removed",
+        "part": "/ppt/viewProps.xml"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId3"
+      },
+      {
+        "code": "relationship-added",
+        "part": "/_rels/.rels",
+        "relationshipId": "rId4"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/charts/_rels/chart1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-added",
+        "part": "/ppt/charts/_rels/chart1.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+        "relationshipId": "rId3"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId3"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId4"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId5"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId6"
+      },
+      {
+        "code": "relationship-removed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId7"
+      },
+      {
+        "code": "relationship-removed",
+        "part": "/ppt/_rels/presentation.xml.rels",
+        "relationshipId": "rId8"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "relationshipId": "rId3"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "relationshipId": "rId4"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide1.xml.rels",
+        "relationshipId": "rId5"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide2.xml.rels",
+        "relationshipId": "rId1"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide2.xml.rels",
+        "relationshipId": "rId2"
+      },
+      {
+        "code": "relationship-changed",
+        "part": "/ppt/slides/_rels/slide2.xml.rels",
+        "relationshipId": "rId3"
+      }
+    ]
+  },
+  "logs": {
+    "nativeSave": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-save-native/run-hObU32/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-save-native/run-hObU32/native/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "pdf": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/table-save-native/run-hObU32/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/table-save-native/run-hObU32/pdf/edited.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

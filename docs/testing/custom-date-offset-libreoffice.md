@@ -1,0 +1,7 @@
+# Custom offset dates: LibreOfficeDev headless observation
+
+A synthetic source was built from a hash-verified PPTKit-created package with four custom properties: `date` and `filetime` values at offsets `+08:00` and `-05:30`, with the latter carrying milliseconds. PPTKit explicitly edited all four to UTC values; an unchanged branch is the control. Independent ZIP and byte checks found only the four approved value texts changed in the custom part, preserving the source tags and IDs.
+
+LibreOfficeDev **26.8.0.0.alpha0**, on macOS 26.5 arm64, headlessly resaved each branch three times. In the unchanged branch, the observed output timestamps corresponded to the source offsets at second precision, but the millisecond components were removed. The edited branch likewise lost its nonzero milliseconds. The application converted the two `date` entries to `filetime` and added `PresentationFormat` and `Slides`; subsequent resaves retained that inventory. This sample supports the observed offset conversion at second precision, not preservation of source offset notation, type or milliseconds.
+
+The [record](custom-date-offset-libreoffice-evidence.json) contains hashes, exact inventories and process logs. Check retained files with `python3 scripts/research/verify-custom-date-offset-libreoffice.py` and reproduce in the recorded environment with `python3 scripts/research/custom-date-offset-libreoffice.py`. Artifacts under `.tmp` are local, not a portable fixture corpus. PowerPoint, interactive property editing, repair prompts and other offsets remain untested.

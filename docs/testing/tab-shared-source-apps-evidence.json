@@ -1,0 +1,93 @@
+{
+  "scope": "Six 150-pt-frame, 120-pt-stop samples with equal authored text bodies and geometry. LibreOffice input removes explicit zero indent; font candidates and PDF export differ, so no single-cause attribution or native-edit claim.",
+  "powerpointEvidenceSha256": "cd3415956692faab44f7838f60216f84c8e794ae63ceec953333eb62ff112e62",
+  "libreofficeEvidenceSha256": "529570236b05e51a511fef5863a8988d335858bc36afc64c53650fa9cd1b8767",
+  "verifierSha256": "7468d441f2b3b1546555d5ff28caa8f5b2f8d1520c96e5cfac2e9d0fdc312bb0",
+  "cases": [
+    {
+      "align": "center",
+      "sample": 0,
+      "text": "PIWORD",
+      "powerpointLines": [
+        "PIWORD"
+      ],
+      "libreofficeLines": [
+        "PI",
+        "WORD"
+      ],
+      "sameLineGrouping": false
+    },
+    {
+      "align": "center",
+      "sample": 1,
+      "text": "PWIDEWORD",
+      "powerpointLines": [
+        "PWIDE",
+        "WORD"
+      ],
+      "libreofficeLines": [
+        "PWIDE",
+        "WORD"
+      ],
+      "sameLineGrouping": true
+    },
+    {
+      "align": "center",
+      "sample": 2,
+      "text": "PMIXEDWORD",
+      "powerpointLines": [
+        "PMIXED",
+        "WORD"
+      ],
+      "libreofficeLines": [
+        "PMIXED",
+        "WORD"
+      ],
+      "sameLineGrouping": true
+    },
+    {
+      "align": "decimal",
+      "sample": 0,
+      "text": "P1.2WORD",
+      "powerpointLines": [
+        "P1.2",
+        "WORD"
+      ],
+      "libreofficeLines": [
+        "P1.2",
+        "WORD"
+      ],
+      "sameLineGrouping": true
+    },
+    {
+      "align": "decimal",
+      "sample": 1,
+      "text": "P123.45WORD",
+      "powerpointLines": [
+        "P123.45",
+        "WORD"
+      ],
+      "libreofficeLines": [
+        "P",
+        "123.45",
+        "WORD"
+      ],
+      "sameLineGrouping": false
+    },
+    {
+      "align": "decimal",
+      "sample": 2,
+      "text": "P0.678WORD",
+      "powerpointLines": [
+        "P0.678",
+        "WORD"
+      ],
+      "libreofficeLines": [
+        "P",
+        "0.678",
+        "WORD"
+      ],
+      "sameLineGrouping": false
+    }
+  ]
+}

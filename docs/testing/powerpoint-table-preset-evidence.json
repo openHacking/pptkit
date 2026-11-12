@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint 16.104 for macOS",
+  "styleGallery": "Medium Style 2 – Accent 2",
+  "defined": {
+    "fixture": "tests/fixtures/table-native-preset-defined-powerpoint.pptx",
+    "sha256": "a1f3f25707f153147712e4a6ea0acddfbccdd44132ac8d22460deb1b01c2810f",
+    "reference": "{21E4AEA4-8DFA-4A89-87EB-49C32662AFE0}",
+    "definitions": [
+      {
+        "styleId": "{21E4AEA4-8DFA-4A89-87EB-49C32662AFE0}",
+        "styleName": "中度样式 2 - 强调 2"
+      }
+    ],
+    "rows": [
+      [
+        "Region",
+        "Total"
+      ],
+      [
+        "North",
+        "25"
+      ]
+    ]
+  },
+  "referenceOnly": {
+    "fixture": "tests/fixtures/table-native-preset-reference-powerpoint.pptx",
+    "sha256": "bc9ba07913138b632a94d6a6ee9fee2dd543dba25dd49f3d2f94d3558c4c53e6",
+    "reference": "{21E4AEA4-8DFA-4A89-87EB-49C32662AFE0}",
+    "definitions": [],
+    "rows": [
+      [
+        "Region",
+        "Total"
+      ],
+      [
+        "North",
+        "25"
+      ]
+    ]
+  },
+  "observations": [
+    "Selected Accent 2 in Table Design, saved and reopened with selection retained",
+    "Removed the registry definition in a copy; PowerPoint opened it, displayed the orange table and selected Accent 2 in the gallery"
+  ],
+  "limitations": [
+    "No color equivalence or behavior in other applications established",
+    "The defined sample is not assumed to be equivalent to a bare reference"
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T23:59:32.919Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/script-font-import-native/run-CYKJmg",
+  "profile": {
+    "projection": "content",
+    "textFontProfile": "script-families-v1",
+    "editSaveProfile": "text-runs-v3"
+  },
+  "hashes": [
+    {
+      "round": 0,
+      "sha256": "29e351606f4a45373d22e55ce0901406c866d7792b1c00901a0ba5d67e8bd7c6"
+    },
+    {
+      "round": 1,
+      "sha256": "411343af54c39717a70acccc92fd89efe4c3fa91c00bb031b79a32303335f5dc"
+    },
+    {
+      "round": 2,
+      "sha256": "aba30972860de07e3fbe92e5f634b877db466291d56e52d77f2131551ef2c98d"
+    },
+    {
+      "round": 3,
+      "sha256": "35e1a794cc564fce9d892947482295d7ebbeafb9a842951dbcae62d77080c380"
+    }
+  ],
+  "nativeSha256": "72876b0f1a675e7fb292806e7343c4150e377920837aba8e504da97748f33c80",
+  "logs": [
+    {
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/native/round-3.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/source-pdf/round-3.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/native/round-3.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-import-native/run-CYKJmg/saved-pdf/round-3.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "failures": [],
+  "independent": {
+    "sourceVerified": true,
+    "oracle": "Python ZIP/ElementTree actual font declarations, selected mutation, exact bytes outside scalar text and native/PDF observations",
+    "rounds": [
+      {
+        "round": 0,
+        "fontPropertiesChecked": 18,
+        "changedParts": [],
+        "scalarTextsChecked": 6,
+        "wrongFontRejectedByBothChecks": true
+      },
+      {
+        "round": 1,
+        "fontPropertiesChecked": 18,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "scalarTextsChecked": 6,
+        "wrongFontRejectedByBothChecks": true
+      },
+      {
+        "round": 2,
+        "fontPropertiesChecked": 18,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "scalarTextsChecked": 6,
+        "wrongFontRejectedByBothChecks": true
+      },
+      {
+        "round": 3,
+        "fontPropertiesChecked": 18,
+        "changedParts": [
+          "ppt/notesSlides/notesSlide1.xml",
+          "ppt/slides/slide1.xml"
+        ],
+        "scalarTextsChecked": 6,
+        "wrongFontRejectedByBothChecks": true
+      }
+    ],
+    "native": {
+      "status": "observed",
+      "resavedRunCount": 15,
+      "requestedFontNamesRetained": {
+        "Latin Face": true,
+        "Eastern Face": true,
+        "Complex Face": true
+      }
+    },
+    "pdf": [
+      {
+        "kind": "source-pdf",
+        "status": "observed",
+        "scalarLabelPresent": {
+          "owner1": true,
+          "owner2": true,
+          "owner3": true,
+          "owner4": true,
+          "owner5": true
+        },
+        "literalScriptTextPresent": {
+          "中文": true,
+          "العربية": true
+        },
+        "text": "Round3 owner1 中文العربية\nRound3 owner2 中文العربية\nRound3 owner3 中文العربية\nRound3 owner4 中文العربيةRound3 owner5 中文العربية\n",
+        "fonts": [
+          "DejaVuSans",
+          "LinuxLibertineG"
+        ],
+        "png": "source-pdf.png"
+      },
+      {
+        "kind": "saved-pdf",
+        "status": "observed",
+        "scalarLabelPresent": {
+          "owner1": true,
+          "owner2": true,
+          "owner3": true,
+          "owner4": true,
+          "owner5": true
+        },
+        "literalScriptTextPresent": {
+          "中文": true,
+          "العربية": true
+        },
+        "text": "Round3 owner1 中文العربية\nRound3 owner2 中文العربية\nRound3 owner3 中文العربية\nRound3 owner4 中文العربيةRound3 owner5 中文العربية\n",
+        "fonts": [
+          "DejaVuSans",
+          "LinuxLibertineG"
+        ],
+        "png": "saved-pdf.png"
+      }
+    ]
+  },
+  "scope": "Explicit source font-slot projection and three mixed-owner scalar preservation saves: independent actual source declarations and exact non-character byte masks. Native/PDF are observations only; fonts are synthetic and typography is not certified.",
+  "sourceFontWrites": "blocked",
+  "interactiveEditing": "untested"
+}

@@ -1,0 +1,151 @@
+{
+  "scope": "One source revision edit and unchanged control, three LibreOfficeDev headless resaves per branch; no interactive UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "d1535f0764e7e5c4c8c585d772368b447006b859b4aba47f453dfd5b10060729",
+  "sourceChangedParts": [
+    "docProps/core.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/input/control.pptx",
+      "sha256": "db6876b561b7e0b9f77542924167581d5d38e4e53b9223f6773c05a070720bf6",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/input/edited.pptx",
+      "sha256": "2b2b26457458194132a42df7ffe90589824c319e6a281cb16c18167b6377bf45",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "42",
+        "keywords": "alpha, beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/control.pptx",
+      "sha256": "c8be4792f4091eef169aa9fae3cf29f1c9d1f1707bf86ca910a4de8523ed62f7",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/edited.pptx",
+      "sha256": "f0a28d00c760668dd24f6e167516c49dfff13b150a7666201ec860a8074b2a1d",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "42",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/control.pptx",
+      "sha256": "cf0003994dc3eadda87996b03248f1b6a6ed3bab573423792ef6b8b7a047e315",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/edited.pptx",
+      "sha256": "79f1af4949771d87d3ffc33ae1fca295178b2f2e4742127d0f12199362d8c9bf",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "42",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-3/control.pptx",
+      "sha256": "8e76131ff36f5564158f352294a3cacb25d28adf9b2b11c8e9a0da6b9f596528",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "7",
+        "keywords": "alpha beta"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/core-revision-libreoffice/run-dt4e_wk3/round-3/edited.pptx",
+      "sha256": "f7e17bb89692f58b090b2a2e014e06e2e9c029ef3dc9acd510dea3184d1cf4b8",
+      "metadata": {
+        "title": "Original title",
+        "creator": "Sentinel Author",
+        "revision": "42",
+        "keywords": "alpha beta"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/core-revision-libreoffice/run-dt4e_wk3/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

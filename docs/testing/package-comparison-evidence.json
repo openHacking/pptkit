@@ -1,0 +1,1028 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reinspection of retained, SHA256-verified LibreOfficeDev producer artifacts. No new native application launch, interactive editing or fidelity assertion. Differences include producer rewrites/removals and are not all data loss.",
+  "beforeSha256": "b5ef8461fed5e5b98dcad5cb359b58addb0abae1f29d4afe0da42dd7ab34c6bd",
+  "afterSha256": "3ca7f92a6b8378be4bacb4edbdf7118f06792e2245155a48baa227da1c691625",
+  "profiles": {
+    "opc-payload-v1": {
+      "profile": "opc-payload-v1",
+      "equal": false,
+      "before": {
+        "parts": 52,
+        "relationships": 58,
+        "expandedBytes": 45295
+      },
+      "after": {
+        "parts": 30,
+        "relationships": 28,
+        "expandedBytes": 44533
+      },
+      "differenceCount": 102,
+      "differences": [
+        {
+          "code": "payload-changed",
+          "part": "/[Content_Types].xml",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/_rels/.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/docProps/app.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/docProps/core.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "part-added",
+          "part": "/docProps/custom.xml"
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesMasters/notesMaster1.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide1.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide2.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide3.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide4.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide5.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide6.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide7.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide8.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide9.xml"
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/presProps.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/presentation.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slideLayouts/slideLayout1.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slideMasters/slideMaster1.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide1.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide2.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide3.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide4.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide5.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide6.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide7.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide8.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/_rels/slide9.xml.rels",
+          "byteOffset": 36
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide1.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide2.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide3.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide4.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide5.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide6.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide7.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide8.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/slides/slide9.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/tableStyles.xml"
+        },
+        {
+          "code": "payload-changed",
+          "part": "/ppt/theme/theme1.xml",
+          "byteOffset": 55
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/theme/theme2.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/viewProps.xml"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId3"
+        },
+        {
+          "code": "relationship-added",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId4"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId10"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId11"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId13"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId14"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId15"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId3"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId4"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId5"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId6"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId7"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId8"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId9"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide2.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide3.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide4.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide5.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide6.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide7.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide8.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide9.xml.rels",
+          "relationshipId": "rId2"
+        }
+      ],
+      "truncated": false,
+      "workUnits": 73817
+    },
+    "opc-xml-v1": {
+      "profile": "opc-xml-v1",
+      "equal": false,
+      "before": {
+        "parts": 52,
+        "relationships": 58,
+        "expandedBytes": 45295
+      },
+      "after": {
+        "parts": 30,
+        "relationships": 28,
+        "expandedBytes": 44533
+      },
+      "differenceCount": 102,
+      "differences": [
+        {
+          "code": "xml-changed",
+          "part": "/[Content_Types].xml",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/_rels/.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/docProps/app.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/docProps/core.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "part-added",
+          "part": "/docProps/custom.xml"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesMasters/notesMaster1.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide1.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide2.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide3.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide4.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide5.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide6.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide7.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide8.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/notesSlides/notesSlide9.xml"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/presProps.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/presentation.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slideLayouts/slideLayout1.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slideMasters/slideMaster1.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide1.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide2.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide3.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide4.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide5.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide6.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide7.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide8.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/_rels/slide9.xml.rels",
+          "path": "$declaration/standalone"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide1.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide2.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide3.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide4.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide5.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide6.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide7.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide8.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/slides/slide9.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/tableStyles.xml"
+        },
+        {
+          "code": "xml-changed",
+          "part": "/ppt/theme/theme1.xml",
+          "path": "$element[1]"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/theme/theme2.xml"
+        },
+        {
+          "code": "part-removed",
+          "part": "/ppt/viewProps.xml"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId3"
+        },
+        {
+          "code": "relationship-added",
+          "part": "/_rels/.rels",
+          "relationshipId": "rId4"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesMasters/_rels/notesMaster1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide2.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide3.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide4.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide5.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide6.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide7.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide8.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/notesSlides/_rels/notesSlide9.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId10"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId11"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId13"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId14"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId15"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId3"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId4"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId5"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId6"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId7"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId8"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/_rels/presentation.xml.rels",
+          "relationshipId": "rId9"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "relationshipId": "rId1"
+        },
+        {
+          "code": "relationship-changed",
+          "part": "/ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide1.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide2.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide3.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide4.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide5.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide6.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide7.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide8.xml.rels",
+          "relationshipId": "rId2"
+        },
+        {
+          "code": "relationship-removed",
+          "part": "/ppt/slides/_rels/slide9.xml.rels",
+          "relationshipId": "rId2"
+        }
+      ],
+      "truncated": false,
+      "workUnits": 20089
+    }
+  },
+  "independentZipOracle": {
+    "reader": "Python stdlib zipfile, full decompressed payload equality",
+    "addedParts": 1,
+    "removedParts": 23,
+    "changedPayloads": 30,
+    "payloadProfileMatches": true
+  },
+  "sourceEvidence": "docs/testing/color-transform-import-evidence.json",
+  "producerApplicationFromSourceEvidence": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "artifactsDirectory": ".tmp/color-transform-native/run-n77lQy"
+}

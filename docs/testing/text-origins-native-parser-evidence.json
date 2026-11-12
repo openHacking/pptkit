@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "nativeEvidence": "/Volumes/github/private/pptkit/docs/testing/text-origins-native-evidence.json",
+  "nativeEvidenceSha256": "be5235db1c272f78525ae171949e998c18ab12e078eb9171529f8f088b4dac91",
+  "records": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/input.pptx",
+      "sha256": "361d2da63daaceda3cd04cb796fd51baa1829db265f1dcc15303704fdc0b4789",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/input.pptx.json",
+      "snapshotSha256": "56720509d4a346d14d4e532c9fb866e9e0acad86f4adff72656bb8b47cb4a94c",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-input.pptx",
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/fixed-input.pptx.json",
+      "snapshotSha256": "b7e94b4a0fd73b0c69d8cd315d7a12411ccdc42641b1bfe1f679f99629bd8970",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round1.pptx",
+      "sha256": "fab1638c44f25df1a9b71d7585b9d4f68eaee792caff79d10c71adfa45a76104",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/fixed-round1.pptx.json",
+      "snapshotSha256": "30cdf57aeabba3b5b5db7f1e79ef30ba70e4bc290cd68095893b483d6f98111b",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round2.pptx",
+      "sha256": "f010f35ca000ddfe1b9e8f155cacd3c20ca4ab2de319c3ccbc422cd88bc91d74",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/fixed-round2.pptx.json",
+      "snapshotSha256": "fc4fe1637836f4a271677b4c2f270b271493f591e17fa926a9bf74b6d07eb632",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/fixed-round3.pptx",
+      "sha256": "d492d3d2e3b831e9b96c94d2b2436506d32bad99ed8d5bea32bd3e2e53fa07f0",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/fixed-round3.pptx.json",
+      "snapshotSha256": "a05349241052b9525218ce097f2399ace22acc217e166db4dd6b49817685a521",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/list-control.pptx",
+      "sha256": "9757bd8f6310b91329e66916e9e8fc856ae80f7f410469aaa94d63d1941f0054",
+      "snapshotFile": "/Volumes/github/private/pptkit/.tmp/text-origins/native-QLLzu9/parser-vE9wKt/list-control.pptx.json",
+      "snapshotSha256": "e99f04dd31f7eb9bbec64b2d7e2c9299f16597f80315a6ba48b80b2f2db956bb",
+      "fullNodeEsmGlobalEqual": true,
+      "exactNoOp": true
+    }
+  ],
+  "total": {
+    "actualInputs": 6,
+    "consumerNoOps": 18
+  },
+  "scope": "Actual failed/fixed/native/control structural inspections and full reports plus exact source-only no-op. No complete master/artwork Core import or source style write authority."
+}

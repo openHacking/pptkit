@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-25T23:35:49.980Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "artifactsDirectory": ".tmp/script-font-native/run-noO21w",
+  "sourceSha256": "29e351606f4a45373d22e55ce0901406c866d7792b1c00901a0ba5d67e8bd7c6",
+  "savedSha256": "2fa1775b9b641c2ff84e59931a962d9055a4efdf097419bb9af40686f8cf8ed6",
+  "failures": [],
+  "logs": [
+    {
+      "stage": "resave",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/script-fonts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/native/script-fonts.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stage": "source-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/script-fonts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/source-pdf/script-fonts.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stage": "saved-pdf",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/native/script-fonts.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/script-font-native/run-noO21w/saved-pdf/script-fonts.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "independent": {
+    "sourceVerified": true,
+    "oracle": "Python ZIP/ElementTree authored run font slots, deliberate selected ea mutation and native/PDF observations",
+    "sourceRunsChecked": 6,
+    "wrongFamilyRejected": true,
+    "native": {
+      "status": "observed",
+      "sourceRunCount": 5,
+      "resavedRunCount": 15,
+      "runs": [
+        {
+          "text": "Latin",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "中文",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "العربية",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": null,
+            "cs": "Complex Face"
+          }
+        },
+        {
+          "text": "Latin",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "中文",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "العربية",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": null,
+            "cs": "Complex Face"
+          }
+        },
+        {
+          "text": "Latin",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "中文",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "العربية",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": null,
+            "cs": "Complex Face"
+          }
+        },
+        {
+          "text": "Latin",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "中文",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Eastern Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "العربية",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": null,
+            "cs": "Complex Face"
+          }
+        },
+        {
+          "text": "Latin",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Heading Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "中文",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": "Heading Face",
+            "cs": null
+          }
+        },
+        {
+          "text": "العربية",
+          "fonts": {
+            "latin": "Latin Face",
+            "ea": null,
+            "cs": "Latin Face"
+          }
+        }
+      ]
+    },
+    "pdf": [
+      {
+        "kind": "source-pdf",
+        "status": "observed",
+        "literalTextPresent": {
+          "Latin": true,
+          "中文": true,
+          "العربية": true
+        },
+        "text": "Latin 中文العربية\nLatin 中文العربية\nLatin 中文العربية\nLatin 中文العربيةLatin 中文العربية\n",
+        "spans": [
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          }
+        ],
+        "png": "source-pdf.png"
+      },
+      {
+        "kind": "saved-pdf",
+        "status": "observed",
+        "literalTextPresent": {
+          "Latin": true,
+          "中文": true,
+          "العربية": true
+        },
+        "text": "Latin 中文العربية\nLatin 中文العربية\nLatin 中文العربية\nLatin 中文العربيةLatin 中文العربية\n",
+        "spans": [
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "Latin 中文",
+            "font": "LinuxLibertineG",
+            "size": 18,
+            "color": "123456"
+          },
+          {
+            "text": "العربية",
+            "font": "DejaVuSans",
+            "size": 18,
+            "color": "123456"
+          }
+        ],
+        "png": "saved-pdf.png"
+      }
+    ]
+  },
+  "scope": "Independent author-to-XML font-slot oracle and deliberate mutation; named native resave run topology and PDF font/text observations only. No full typography/shaping/bidi/interactive or source semantic import claims.",
+  "interactiveEditing": "untested",
+  "multiFamilySemanticImport": "not-admitted"
+}

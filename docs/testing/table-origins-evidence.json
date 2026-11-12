@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T21:40:14.083Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/source.pptx",
+      "bytes": 20562,
+      "sha256": "24813d021ce0e0bd44b6e2f04a0146a629a2d52217f479a4856dc742226d1166"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/normalized.json",
+      "bytes": 125953,
+      "sha256": "1fba516f2e8cd6b5cc186cbfbb64f51f807d4db467dcf4075c728b9121242933"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/origins.json",
+      "bytes": 573867,
+      "sha256": "fcc337a4b9cb2aab66e8c2bf94c67ac1bbd662a0486556cf5ece2bfc0b3faf1a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/layout.json",
+      "bytes": 161407,
+      "sha256": "3ee791d63855c0b95a59079edf2fa0c1015a18cd574b1b29e9f8f5c805e23795"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/page-1.svg",
+      "bytes": 21332,
+      "sha256": "f9862311222d424a1ebbf5bd21f205473220ba2ac195facf4d6dcae102d4fb83"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/page-2.svg",
+      "bytes": 21332,
+      "sha256": "07b6cb488c0fca1cc3af9cdb35454d7fa9dd9b15a50a77223bbcb6d0258f4baa"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/page-3.svg",
+      "bytes": 3272,
+      "sha256": "78059a95f2c156c6dd819e653abf748a720afdc0267f3bc87aefbb2d8e12f65a"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/fixture.mjs",
+      "bytes": 3667,
+      "sha256": "90b225d9de2ece9be0320ad5b3108f1ebf48057c5088adaeff605d3427d4463c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/retained-native-source.pptx",
+      "bytes": 14490,
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/retained-chart-notes-source.pptx",
+      "bytes": 56464,
+      "sha256": "28d95f7a061abbbdff0af3ac5bf003622eeb226f7289163bcfff2cd718c34774"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/table-origins/run-BxpshR/browser-preview.png",
+      "bytes": 14945,
+      "sha256": "9b88deedf517c30c894799d3dad6397a816227642d6f1e7deb8b77baf0aacb87"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "tests/fixtures/table-origins.mjs",
+      "sha256": "90b225d9de2ece9be0320ad5b3108f1ebf48057c5088adaeff605d3427d4463c"
+    },
+    {
+      "file": "packages/core/src/normalization/table-style.ts",
+      "sha256": "3aa0e5d72590d21f9f57fae28a65f184a06121560a908c06de4d3dd90f7d4cbc"
+    },
+    {
+      "file": "packages/core/src/normalization/style-input-origins.ts",
+      "sha256": "413c045be91e365ab4027b06de794cdd9a604130abcdbfd43d0e25f084623528"
+    },
+    {
+      "file": "packages/core/src/normalization/style-origins.ts",
+      "sha256": "95bab3908952ab35200a5173a8e48a13d33fef229d5aaf1ece15d76dea7b05ce"
+    },
+    {
+      "file": "packages/core/src/normalization/normalize-styles.ts",
+      "sha256": "3be5fcf2b946ade586bc512078b5993f43a781eb8fc5fc21e02656a36e4dbc07"
+    },
+    {
+      "file": "packages/core/src/normalization/text-origins.ts",
+      "sha256": "6db24929149c52f979976e41388404d14ef05e1b3e86c06b5f994a5e9df03fd3"
+    },
+    {
+      "file": "packages/core/src/normalization/presentation-normalizer.ts",
+      "sha256": "0b393c1ec6bb4418f811f3ac2b3efda15a7d0468c4bd65b7080d94fcfdd7b95e"
+    },
+    {
+      "file": "packages/core/src/table/style-grid.ts",
+      "sha256": "f1b785b828ee8ac930aa68de511845d1b7f44c8f5d010a1e0c4f6120f1cd33b9"
+    },
+    {
+      "file": "packages/core/src/types/inheritance.ts",
+      "sha256": "a5e27b4b219dd82a97c0d24a2dc50be4d46a38d14b25759c00ba2aaa58744f30"
+    },
+    {
+      "file": "packages/core/test/table-origins.test.mjs",
+      "sha256": "0a24a99dbe1c1f9c94e81e96f4d6f6e3a6fdac2002d5f924c4bf8f10fa9e645a"
+    },
+    {
+      "file": "scripts/table-origins-parity.test.mjs",
+      "sha256": "bd670b1fb8948ebe219d2725ce0a504c28e944838157afeef40e41eb92f14c7b"
+    },
+    {
+      "file": "scripts/prepare-table-origins.mjs",
+      "sha256": "cc06f9679230efb4e8a96f085ff85a41fcb5a7f59123cd9e24527c3be71170e9"
+    }
+  ],
+  "browserVersion": "149.0.7827.55",
+  "originRecords": 2138,
+  "warnings": [
+    {
+      "code": "table-style-materialized",
+      "message": "Authoring table regions are exported as effective direct cell formatting; native table-style rules are not retained.",
+      "elementId": "table-0",
+      "slideId": "page-0"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "page-0",
+      "elementId": "table-0",
+      "path": "content"
+    },
+    {
+      "code": "table-style-materialized",
+      "message": "Authoring table regions are exported as effective direct cell formatting; native table-style rules are not retained.",
+      "elementId": "table-1",
+      "slideId": "page-1"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "page-1",
+      "elementId": "table-1",
+      "path": "content"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "plain",
+      "elementId": "plain-table",
+      "path": "content"
+    }
+  ],
+  "retainedNativeSourceSha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d",
+  "retainedChartNotes": {
+    "sha256": "28d95f7a061abbbdff0af3ac5bf003622eeb226f7289163bcfff2cd718c34774",
+    "ordinaryIrExact": true,
+    "originsExact": true
+  },
+  "scope": "Logical table cell formatting declarations through actual regional/preset/local merge selectors. Shared physical border decisions belong to Layout. Fresh output materializes rules and script maps with warnings; no source style writes or new native reusable-table admission.",
+  "nativeApplication": "No new application run. Prior native source is byte-exact; new source/XML/SVG is checked independently in browser tests."
+}

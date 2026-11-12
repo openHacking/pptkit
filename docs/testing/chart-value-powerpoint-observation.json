@@ -1,0 +1,35 @@
+{
+  "scope": "Named PowerPoint candidate observation; UI and screenshot are manual observations, not proven by XML checks.",
+  "application": "Microsoft PowerPoint 16.104, macOS",
+  "source": {
+    "path": ".tmp/chart-value-save-native/run-HhXG3b/source.pptx",
+    "sha256": "42a1e2cc81997738f97ad59ceb12c489aeb3815587633024f0c40724b5f4ba82",
+    "chart": {
+      "axisMinimum": "0",
+      "axisMaximum": "9",
+      "selectedCacheValue": "5"
+    }
+  },
+  "candidate": {
+    "path": ".tmp/chart-value-save-native/run-2afntf6a/candidate.pptx",
+    "sha256": "9a6c3b719a88ba54754d1518f92046a48bc503ee10aa834440b0c1d5b0a81d51",
+    "chart": {
+      "axisMinimum": "0",
+      "axisMaximum": "9",
+      "selectedCacheValue": "37.25"
+    }
+  },
+  "screenshot": {
+    "path": ".tmp/chart-value-save-native/run-2afntf6a/powerpoint-chart.png",
+    "sha256": "6452d2f3bc25621143112e3f2e85f545076c2fc774e9a69c458ea1206db5388c"
+  },
+  "observations": [
+    "The chart data edit command is disabled in the selected chart.",
+    "The selected bar exceeds the fixed 9-axis maximum and is visually clipped at the chart top."
+  ],
+  "limitations": [
+    "Excel was not found at /Applications/Microsoft Excel.app; the cause of the disabled command is not established.",
+    "No interactive data edit or native save/reopen was performed.",
+    "No automated pixel or independent XLSX recheck is implied by this observation."
+  ]
+}

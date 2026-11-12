@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two copied slides with per-page layout mappings and explicit indexes 0 and 4294967295; PowerPoint for Mac three successive Save As and reopen observations. No interactive placeholder edit or general compatibility claim.",
+  "environment": {
+    "application": "Microsoft PowerPoint 16.104",
+    "system": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64"
+  },
+  "observation": "Both pages and matching notes were visible at first open and every reopen; no repair prompt was observed.",
+  "independent": {
+    "oracle": "Python zipfile and ElementTree",
+    "rounds": [
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/input.pptx",
+        "sha256": "f0c5ef4971eb485bac1c937d5508619e2b80faca16c2c6d139a726744e777b36",
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "layout": "ppt/slideLayouts/slideLayout2.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-1",
+                "type": "title",
+                "index": "0",
+                "text": "Title A"
+              },
+              {
+                "name": "element-2",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body A"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-a",
+                "type": "title",
+                "index": "0",
+                "text": ""
+              },
+              {
+                "name": "body-a",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Notes A",
+            "notesBacklink": "ppt/slides/slide1.xml"
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "layout": "ppt/slideLayouts/slideLayout3.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-3",
+                "type": "title",
+                "index": "0",
+                "text": "Title B"
+              },
+              {
+                "name": "element-4",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body B"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-b",
+                "type": "title",
+                "index": "0",
+                "text": ""
+              },
+              {
+                "name": "body-b",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Notes B",
+            "notesBacklink": "ppt/slides/slide2.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round1.pptx",
+        "sha256": "369965a638c2aa6c5b080c26149f92e3a81230ffeb457e2bc688e3184858b17d",
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "layout": "ppt/slideLayouts/slideLayout2.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-1",
+                "type": "title",
+                "index": null,
+                "text": "Title A"
+              },
+              {
+                "name": "element-2",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body A"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-a",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-a",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Notes A",
+            "notesBacklink": "ppt/slides/slide1.xml"
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "layout": "ppt/slideLayouts/slideLayout3.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-3",
+                "type": "title",
+                "index": null,
+                "text": "Title B"
+              },
+              {
+                "name": "element-4",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body B"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-b",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-b",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Notes B",
+            "notesBacklink": "ppt/slides/slide2.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round2.pptx",
+        "sha256": "115d61197d6fddca70009c25d874432cd1ba5e1f470a0b1be1c57d2dcb3b4192",
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "layout": "ppt/slideLayouts/slideLayout2.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-1",
+                "type": "title",
+                "index": null,
+                "text": "Title A"
+              },
+              {
+                "name": "element-2",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body A"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-a",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-a",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Notes A",
+            "notesBacklink": "ppt/slides/slide1.xml"
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "layout": "ppt/slideLayouts/slideLayout3.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-3",
+                "type": "title",
+                "index": null,
+                "text": "Title B"
+              },
+              {
+                "name": "element-4",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body B"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-b",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-b",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Notes B",
+            "notesBacklink": "ppt/slides/slide2.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/index-round3.pptx",
+        "sha256": "8f106e14f901c5fa4bdf8ef72a7131effc3eae70c70c2000473c900439b24daa",
+        "pages": [
+          {
+            "part": "ppt/slides/slide1.xml",
+            "layout": "ppt/slideLayouts/slideLayout2.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-1",
+                "type": "title",
+                "index": null,
+                "text": "Title A"
+              },
+              {
+                "name": "element-2",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body A"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-a",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-a",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide1.xml",
+            "notesText": "Notes A",
+            "notesBacklink": "ppt/slides/slide1.xml"
+          },
+          {
+            "part": "ppt/slides/slide2.xml",
+            "layout": "ppt/slideLayouts/slideLayout3.xml",
+            "slidePlaceholders": [
+              {
+                "name": "element-3",
+                "type": "title",
+                "index": null,
+                "text": "Title B"
+              },
+              {
+                "name": "element-4",
+                "type": "body",
+                "index": "4294967295",
+                "text": "Body B"
+              }
+            ],
+            "layoutPlaceholders": [
+              {
+                "name": "heading-b",
+                "type": "title",
+                "index": null,
+                "text": ""
+              },
+              {
+                "name": "body-b",
+                "type": "body",
+                "index": "4294967295",
+                "text": ""
+              }
+            ],
+            "notes": "ppt/notesSlides/notesSlide2.xml",
+            "notesText": "Notes B",
+            "notesBacklink": "ppt/slides/slide2.xml"
+          }
+        ]
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/first-slide1-notes.png",
+      "sha256": "793970d7b631781bf9aa48cce9ef07f9d808bb49a5843239e1606623f574500f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/first-slide2-notes.png",
+      "sha256": "b4707e0fd27b5f02e9614806ca3498563e2aaa58dc693cd49ad1c6a6009efddf"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round1-slide1.png",
+      "sha256": "e0b66849cc3039a780d4c1b1f300a452af12fea4ceb5f5cc8aee75755f62c84e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round1-slide2.png",
+      "sha256": "bd53f761e1bd7d8200808fef51bce3eab6ae483cb7abcb335ee6e8792fd7b4fd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round2-slide1.png",
+      "sha256": "54b7ee069a603aec8b0ed344586c21ee63dba4ad467fc14f3d27ecf12688f066"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round2-slide2.png",
+      "sha256": "df87ad81531cc2ee10d74223137d60458ce81ed21a0dc6b6b3a4b3e9963bafca"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round3-slide1.png",
+      "sha256": "7f07d12f60e2caf941304e75831177a93142e4dd64b7fc4c3f69858de00360ec"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-placeholder-index-powerpoint/round3-slide2.png",
+      "sha256": "7579f4beb82683d9343760c940d51d689c611b21cdb9cf32a218efc5a4ec82f7"
+    }
+  ]
+}

@@ -1,0 +1,2007 @@
+{
+  "schemaVersion": 1,
+  "scope": "ZIP32, OPC/XML, structure/metadata/sections and explicit structural import with original-byte no-op session output; no drawing import or edit-save claim",
+  "producer": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "sourceEvidence": "docs/testing/libreoffice-evidence.json",
+  "artifactsDirectory": ".tmp/compatibility",
+  "fixtures": [
+    {
+      "fixture": "text",
+      "sha256": "68b3552fe0eb3d2f27eb8283280b78b07815963f6ec3420b9f355d45fe01cef9",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "68b3552fe0eb3d2f27eb8283280b78b07815963f6ec3420b9f355d45fe01cef9",
+        "sourceSlides": 2,
+        "projection": "structure"
+      },
+      "archiveEntries": 22,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit text"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "2"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId4",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "relationshipId": "rId5",
+          "id": 257,
+          "hidden": true,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml",
+          "notesPart": "/ppt/notesSlides/notesSlide2.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 21,
+      "relationships": 21,
+      "xmlParts": 22,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 584,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 973,
+          "elements": 7,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 823,
+          "elements": 10,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/theme/theme2.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2263,
+          "elements": 68,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide2.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 445,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 630,
+          "elements": 4,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 5197,
+          "elements": 165,
+          "maxDepth": 10
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1043,
+          "elements": 18,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 10559,
+          "elements": 344,
+          "maxDepth": 10
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/notesMasters/_rels/notesMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 275,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/notesMasters/notesMaster1.xml",
+          "root": "p:notesMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 7643,
+          "elements": 255,
+          "maxDepth": 10
+        },
+        {
+          "part": "ppt/notesSlides/_rels/notesSlide2.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 430,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/notesSlides/notesSlide2.xml",
+          "root": "p:notes",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1909,
+          "elements": 54,
+          "maxDepth": 10
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 2158,
+          "elements": 19,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "theme-layout",
+      "sha256": "c56dab6f536edda34ba749bd93a5ef716472a15fb6cfdf8f7384bd3210af916c",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "c56dab6f536edda34ba749bd93a5ef716472a15fb6cfdf8f7384bd3210af916c",
+        "sourceSlides": 2,
+        "projection": "structure"
+      },
+      "archiveEntries": 19,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit theme-layout"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "2"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout2.xml"
+        },
+        {
+          "part": "/ppt/slides/slide2.xml",
+          "relationshipId": "rId4",
+          "id": 257,
+          "hidden": true,
+          "layoutPart": "/ppt/slideLayouts/slideLayout2.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 18,
+      "relationships": 16,
+      "xmlParts": 19,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 592,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 822,
+          "elements": 6,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 752,
+          "elements": 8,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide2.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 2132,
+          "elements": 59,
+          "maxDepth": 10
+        },
+        {
+          "part": "ppt/slides/slide2.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1125,
+          "elements": 22,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 583,
+          "elements": 4,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1161,
+          "elements": 17,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout2.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 976,
+          "elements": 17,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout2.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 11142,
+          "elements": 372,
+          "maxDepth": 10
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 1899,
+          "elements": 17,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "geometry",
+      "sha256": "9666d79735a600faf7d4f9f018de3dda1a24a62da945467c5401b9c77646c258",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "9666d79735a600faf7d4f9f018de3dda1a24a62da945467c5401b9c77646c258",
+        "sourceSlides": 1,
+        "projection": "structure"
+      },
+      "archiveEntries": 15,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit geometry"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 14,
+      "relationships": 12,
+      "xmlParts": 15,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 588,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 689,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 721,
+          "elements": 7,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 7000,
+          "elements": 238,
+          "maxDepth": 12
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1211,
+          "elements": 20,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 1621,
+          "elements": 15,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "images",
+      "sha256": "0d2c8e2326637e7ddab270c2c63f55a1aad4f2acfa9a16dd99a982df2b6e8a5e",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "0d2c8e2326637e7ddab270c2c63f55a1aad4f2acfa9a16dd99a982df2b6e8a5e",
+        "sourceSlides": 1,
+        "projection": "structure"
+      },
+      "archiveEntries": 16,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit images"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 15,
+      "relationships": 16,
+      "xmlParts": 15,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 586,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 689,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 721,
+          "elements": 7,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 834,
+          "elements": 6,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 10544,
+          "elements": 384,
+          "maxDepth": 10
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1211,
+          "elements": 20,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 1621,
+          "elements": 15,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "table",
+      "sha256": "82b1534228eb443b4ced44c68acc59442426c79b686700d79eeb5e35067e9097",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "82b1534228eb443b4ced44c68acc59442426c79b686700d79eeb5e35067e9097",
+        "sourceSlides": 1,
+        "projection": "structure"
+      },
+      "archiveEntries": 15,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit table"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 14,
+      "relationships": 12,
+      "xmlParts": 15,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 585,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 689,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 721,
+          "elements": 7,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 9530,
+          "elements": 341,
+          "maxDepth": 15
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1211,
+          "elements": 20,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 1621,
+          "elements": 15,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "charts",
+      "sha256": "358223320e50130d03f15d1303501cc1fecd6e6cc425ea30a64db14c9e9e2668",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "358223320e50130d03f15d1303501cc1fecd6e6cc425ea30a64db14c9e9e2668",
+        "sourceSlides": 1,
+        "projection": "structure"
+      },
+      "archiveEntries": 28,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit charts"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 27,
+      "relationships": 22,
+      "xmlParts": 27,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 586,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 721,
+          "elements": 7,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 837,
+          "elements": 6,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 2945,
+          "elements": 68,
+          "maxDepth": 7
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1211,
+          "elements": 20,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 689,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/_rels/chart2.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 382,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/_rels/chart3.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 382,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/_rels/chart1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 382,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/colors1.xml",
+          "root": "cs:colorStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 355,
+          "elements": 7,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/chart2.xml",
+          "root": "c:chartSpace",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/chart",
+          "characters": 5155,
+          "elements": 214,
+          "maxDepth": 12
+        },
+        {
+          "part": "ppt/charts/style2.xml",
+          "root": "cs:chartStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 4213,
+          "elements": 166,
+          "maxDepth": 7
+        },
+        {
+          "part": "ppt/charts/chart3.xml",
+          "root": "c:chartSpace",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/chart",
+          "characters": 4733,
+          "elements": 207,
+          "maxDepth": 13
+        },
+        {
+          "part": "ppt/charts/colors2.xml",
+          "root": "cs:colorStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 355,
+          "elements": 7,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/charts/chart1.xml",
+          "root": "c:chartSpace",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/chart",
+          "characters": 4996,
+          "elements": 206,
+          "maxDepth": 12
+        },
+        {
+          "part": "ppt/charts/style1.xml",
+          "root": "cs:chartStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 4213,
+          "elements": 166,
+          "maxDepth": 7
+        },
+        {
+          "part": "ppt/charts/style3.xml",
+          "root": "cs:chartStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 4213,
+          "elements": 166,
+          "maxDepth": 7
+        },
+        {
+          "part": "ppt/charts/colors3.xml",
+          "root": "cs:colorStyle",
+          "namespaceUri": "http://schemas.microsoft.com/office/drawing/2012/chartStyle",
+          "characters": 355,
+          "elements": 7,
+          "maxDepth": 2
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 2614,
+          "elements": 24,
+          "maxDepth": 2
+        }
+      ]
+    },
+    {
+      "fixture": "missing-asset",
+      "sha256": "4c0c04b219b1b08ab9d467b962525a6786ac0e37243e964fec3ad10d1575ee84",
+      "noOpSession": {
+        "assurance": "original-bytes",
+        "sha256": "4c0c04b219b1b08ab9d467b962525a6786ac0e37243e964fec3ad10d1575ee84",
+        "sourceSlides": 1,
+        "projection": "structure"
+      },
+      "archiveEntries": 15,
+      "metadata": {
+        "core": {
+          "part": "/docProps/core.xml",
+          "relationshipId": "rId1",
+          "properties": [
+            {
+              "name": "creator",
+              "value": "PPTKit"
+            },
+            {
+              "name": "description",
+              "value": ""
+            },
+            {
+              "name": "language",
+              "value": "en-US"
+            },
+            {
+              "name": "lastModifiedBy",
+              "value": ""
+            },
+            {
+              "name": "revision",
+              "value": "1"
+            },
+            {
+              "name": "subject",
+              "value": ""
+            },
+            {
+              "name": "title",
+              "value": "PPTKit missing-asset"
+            }
+          ]
+        },
+        "extended": {
+          "part": "/docProps/app.xml",
+          "relationshipId": "rId2",
+          "properties": [
+            {
+              "name": "Template",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": ""
+              }
+            },
+            {
+              "name": "TotalTime",
+              "value": {
+                "status": "scalar",
+                "kind": "integer",
+                "value": "0"
+              }
+            },
+            {
+              "name": "Application",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+              }
+            },
+            {
+              "name": "AppVersion",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "15.0000"
+              }
+            }
+          ]
+        },
+        "custom": {
+          "part": "/docProps/custom.xml",
+          "relationshipId": "rId3",
+          "properties": [
+            {
+              "id": 2,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "PresentationFormat",
+              "valueType": "lpwstr",
+              "value": {
+                "status": "scalar",
+                "kind": "string",
+                "value": "On-screen Show (16:9)"
+              }
+            },
+            {
+              "id": 3,
+              "formatId": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+              "name": "Slides",
+              "valueType": "r8",
+              "value": {
+                "status": "scalar",
+                "kind": "real",
+                "value": "1"
+              }
+            }
+          ]
+        }
+      },
+      "presentationExtensions": [],
+      "slideSize": {
+        "widthEmu": 12192000,
+        "heightEmu": 6858000
+      },
+      "slides": [
+        {
+          "part": "/ppt/slides/slide1.xml",
+          "relationshipId": "rId3",
+          "id": 256,
+          "hidden": false,
+          "layoutPart": "/ppt/slideLayouts/slideLayout1.xml"
+        }
+      ],
+      "structureFindings": [],
+      "mainPart": "/ppt/presentation.xml",
+      "dialect": "transitional",
+      "documentKind": "presentation",
+      "macroEnabled": false,
+      "opcParts": 14,
+      "relationships": 12,
+      "xmlParts": 15,
+      "parts": [
+        {
+          "part": "_rels/.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 723,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/core.xml",
+          "root": "cp:coreProperties",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
+          "characters": 593,
+          "elements": 8,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/app.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties",
+          "characters": 453,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "docProps/custom.xml",
+          "root": "Properties",
+          "namespaceUri": "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties",
+          "characters": 493,
+          "elements": 5,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/_rels/presentation.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 689,
+          "elements": 5,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/presentation.xml",
+          "root": "p:presentation",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 721,
+          "elements": 7,
+          "maxDepth": 3
+        },
+        {
+          "part": "ppt/theme/theme1.xml",
+          "root": "a:theme",
+          "namespaceUri": "http://schemas.openxmlformats.org/drawingml/2006/main",
+          "characters": 2155,
+          "elements": 65,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slides/_rels/slide1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slides/slide1.xml",
+          "root": "p:sld",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1034,
+          "elements": 18,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/slideMasters/_rels/slideMaster1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 429,
+          "elements": 3,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideMasters/slideMaster1.xml",
+          "root": "p:sldMaster",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 1211,
+          "elements": 20,
+          "maxDepth": 6
+        },
+        {
+          "part": "ppt/presProps.xml",
+          "root": "p:presentationPr",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 343,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/_rels/slideLayout1.xml.rels",
+          "root": "Relationships",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/relationships",
+          "characters": 294,
+          "elements": 2,
+          "maxDepth": 2
+        },
+        {
+          "part": "ppt/slideLayouts/slideLayout1.xml",
+          "root": "p:sldLayout",
+          "namespaceUri": "http://schemas.openxmlformats.org/presentationml/2006/main",
+          "characters": 882,
+          "elements": 13,
+          "maxDepth": 6
+        },
+        {
+          "part": "[Content_Types].xml",
+          "root": "Types",
+          "namespaceUri": "http://schemas.openxmlformats.org/package/2006/content-types",
+          "characters": 1621,
+          "elements": 15,
+          "maxDepth": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1581 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "text-v1-candidate",
+      "feature": "Text box run",
+      "operation": "Source character edit",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "1e6b6c3326c1e6bf3df06cb248258225267b5c55354c7589168413bbc7d7f754",
+        "evidencePath": "docs/testing/text-edit-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/text-edit-native/run-OywVcp/source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/inspect-text-edit-save.mjs [soffice-executable]",
+      "result": "Named candidate changes only its selected payload; opaque extension remains.",
+      "limitations": "No complete reference or native interactive guarantee.",
+      "evidence": [
+        {
+          "path": "docs/testing/text-edit-save-evidence.json",
+          "sha256": "986dbf1a63557b7696d1030fcd7d6ed95708d35d20f7c072719b990ffc24d930",
+          "assertions": [
+            {
+              "pointer": "/independent/onlySelectedPayloadChanged",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/unknownExtensionRetainedByPptkit",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/candidateText/0",
+              "equals": "Edited preserved text 123 <&>"
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "direct",
+        "variant": "existing-run"
+      }
+    },
+    {
+      "id": "text-v1-libre",
+      "feature": "Text box run",
+      "operation": "Headless resave",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "1e6b6c3326c1e6bf3df06cb248258225267b5c55354c7589168413bbc7d7f754",
+        "evidencePath": "docs/testing/text-edit-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/text-edit-native/run-OywVcp/source.pptx"
+      },
+      "capability": "preserved",
+      "status": "partial",
+      "method": "automated",
+      "procedure": "node scripts/inspect-text-edit-save.mjs [soffice-executable]",
+      "result": "Edited/control text survives; producer removes opaque extension and orphan.",
+      "limitations": "No interactive editing, repair-dialog or full visual-fidelity claim.",
+      "evidence": [
+        {
+          "path": "docs/testing/text-edit-save-evidence.json",
+          "sha256": "986dbf1a63557b7696d1030fcd7d6ed95708d35d20f7c072719b990ffc24d930",
+          "assertions": [
+            {
+              "pointer": "/independent/nativeUnknownExtensionRetained",
+              "equals": false
+            },
+            {
+              "pointer": "/independent/nativeOrphanRetained",
+              "equals": false
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "direct",
+        "variant": "existing-run"
+      }
+    },
+    {
+      "id": "text-v2-shape",
+      "feature": "Shape text run",
+      "operation": "Source character edit",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "28e7d4654195b054b82337449bb93ebdd9b60c1c1697226842e6b10c78c709dc",
+        "evidencePath": "docs/testing/text-owner-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/text-owner-native/run-To3FGx/source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/inspect-text-owner-save.mjs [soffice-executable]",
+      "result": "Named mixed candidate retains other payloads exactly.",
+      "limitations": "Notes layout and native interaction remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/text-owner-save-evidence.json",
+          "sha256": "07f0b5d52f00a7cc0a62c1029b81a831d8064c4df20290cb1c92edd553d08d08",
+          "assertions": [
+            {
+              "pointer": "/independent/onlySelectedPayloadsChanged",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/allUnselectedPayloadsByteIdentical",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/candidateSlideText/0",
+              "equals": "Edited preserved shape 123 <&>"
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "text",
+        "owner": "shape",
+        "family": "direct",
+        "variant": "existing-run"
+      }
+    },
+    {
+      "id": "text-v2-notes",
+      "feature": "Notes body run",
+      "operation": "Source character edit",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "28e7d4654195b054b82337449bb93ebdd9b60c1c1697226842e6b10c78c709dc",
+        "evidencePath": "docs/testing/text-owner-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/text-owner-native/run-To3FGx/source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/inspect-text-owner-save.mjs [soffice-executable]",
+      "result": "Named mixed candidate retains other payloads exactly.",
+      "limitations": "Notes layout and native interaction remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/text-owner-save-evidence.json",
+          "sha256": "07f0b5d52f00a7cc0a62c1029b81a831d8064c4df20290cb1c92edd553d08d08",
+          "assertions": [
+            {
+              "pointer": "/independent/onlySelectedPayloadsChanged",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/allUnselectedPayloadsByteIdentical",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/candidateNotesText/0",
+              "equals": "Edited preserved notes 456 <&>"
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "text",
+        "owner": "notes-body",
+        "family": "direct",
+        "variant": "existing-run"
+      }
+    },
+    {
+      "id": "text-v3-table",
+      "feature": "Merged table anchor run",
+      "operation": "Source character edit",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+        "evidencePath": "docs/testing/table-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/table-save-native/run-hObU32/source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/inspect-table-save.mjs [soffice-executable]",
+      "result": "Named candidate retains grid, merges and unselected payloads.",
+      "limitations": "Native interactive editing and complete table fidelity remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/table-save-evidence.json",
+          "sha256": "e220b5bc94bce33c3aa2e1e93527fed13d9bab5c668f6739e1f3f0c6c314abaf",
+          "assertions": [
+            {
+              "pointer": "/independent/candidateTableGridsAndMergesEqual",
+              "equals": true
+            },
+            {
+              "pointer": "/independent/allUnselectedPayloadsByteIdentical",
+              "equals": true
+            },
+            {
+              "pointer": "/saveReport/changes/0/text/after",
+              "equals": "Anchor 123"
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      }
+    },
+    {
+      "id": "file-create",
+      "feature": "Node file publication",
+      "operation": "No-op create",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Node file adapter",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+        "evidencePath": "docs/testing/file-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/file-save-native-slice/copy.pptx"
+      },
+      "capability": "preserved",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "Original command not recorded; retained operations and checks are in the linked evidence.",
+      "result": "Named local publication retained exact source bytes and cleaned temporary files.",
+      "limitations": "No cross-process CAS, Windows, remote filesystem or ACL certification.",
+      "evidence": [
+        {
+          "path": "docs/testing/file-save-evidence.json",
+          "sha256": "1074b8dd1eaeebd1051401c41ab229bd385a7db7998ee0c6888e34fbbe6d1e23",
+          "assertions": [
+            {
+              "pointer": "/checks/createExactBytes",
+              "equals": true
+            },
+            {
+              "pointer": "/checks/temporaryNamesRemaining",
+              "equals": 0
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "file",
+        "owner": "document",
+        "family": "publication",
+        "variant": "create"
+      }
+    },
+    {
+      "id": "file-replace",
+      "feature": "Node file publication",
+      "operation": "No-op replace",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Node file adapter",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "9bec92ef5887411541f009961323ee7cabd5970b8b1d35c1dfa13823b04f4fb3",
+        "evidencePath": "docs/testing/file-save-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/file-save-native-slice/copy.pptx"
+      },
+      "capability": "preserved",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "Original command not recorded; retained operations and checks are in the linked evidence.",
+      "result": "Named local publication retained exact source bytes and cleaned temporary files.",
+      "limitations": "No cross-process CAS, Windows, remote filesystem or ACL certification.",
+      "evidence": [
+        {
+          "path": "docs/testing/file-save-evidence.json",
+          "sha256": "1074b8dd1eaeebd1051401c41ab229bd385a7db7998ee0c6888e34fbbe6d1e23",
+          "assertions": [
+            {
+              "pointer": "/checks/replaceExactBytes",
+              "equals": true
+            },
+            {
+              "pointer": "/checks/temporaryNamesRemaining",
+              "equals": 0
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "file",
+        "owner": "document",
+        "family": "publication",
+        "variant": "replace"
+      }
+    },
+    {
+      "id": "fade-libre",
+      "feature": "Fade transition",
+      "operation": "Headless resave",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "fresh export / three Fade records",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "3cddc5e06789b235432889777c47b13a7fc6ab31372c71705c923edd733c8da0",
+        "evidencePath": "docs/testing/slide-transition-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/transition-native/run-ICNA1E/source.pptx"
+      },
+      "capability": "preserved",
+      "status": "partial",
+      "method": "automated",
+      "procedure": "node scripts/inspect-slide-transitions.mjs [soffice-executable]",
+      "result": "Duration, click or advance differ on some slides.",
+      "limitations": "No actual playback or interactive editing evidence.",
+      "evidence": [
+        {
+          "path": "docs/testing/slide-transition-evidence.json",
+          "sha256": "e44b1d48dafa01aaf37d9a54fadb58708a0ea36ac3c8bc7fa8b194fea01a543d",
+          "assertions": [
+            {
+              "pointer": "/timingComparisons/0/automaticAdvanceRetained",
+              "equals": false
+            },
+            {
+              "pointer": "/timingComparisons/1/exactDurationRetained",
+              "equals": false
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "transition",
+        "owner": "slide",
+        "family": "fade",
+        "variant": "three-timing-records"
+      }
+    },
+    {
+      "id": "push-libre",
+      "feature": "Push transition",
+      "operation": "Headless resave",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "fresh export / left and right",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "8d9a633cb8ad41de533be68801085dcfae1469d22fbb20cf3041d5ab535d8504",
+        "evidencePath": "docs/testing/side-transition-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/transition-native/run-tMylUo/source.pptx"
+      },
+      "capability": "preserved",
+      "status": "partial",
+      "method": "automated",
+      "procedure": "node scripts/inspect-slide-transitions.mjs --all [soffice-executable]",
+      "result": "Left/right raw direction differs after resave.",
+      "limitations": "No actual slideshow direction or timing observation.",
+      "evidence": [
+        {
+          "path": "docs/testing/side-transition-evidence.json",
+          "sha256": "8d209c03164fd3f9c9ca28fa57a21b6823016d06ffefc26f9a9625de43c1796f",
+          "assertions": [
+            {
+              "pointer": "/timingComparisons/3/effectAndDirectionRetained",
+              "equals": false
+            },
+            {
+              "pointer": "/timingComparisons/3/direction",
+              "equals": "left"
+            },
+            {
+              "pointer": "/timingComparisons/4/direction",
+              "equals": "right"
+            },
+            {
+              "pointer": "/timingComparisons/4/effectAndDirectionRetained",
+              "equals": false
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "transition",
+        "owner": "slide",
+        "family": "push",
+        "variant": "left-and-right"
+      }
+    },
+    {
+      "id": "wipe-libre",
+      "feature": "Wipe transition",
+      "operation": "Headless resave",
+      "producer": {
+        "name": "repository-authored fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "fresh export / left",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "8d9a633cb8ad41de533be68801085dcfae1469d22fbb20cf3041d5ab535d8504",
+        "evidencePath": "docs/testing/side-transition-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": ".tmp/transition-native/run-tMylUo/source.pptx"
+      },
+      "capability": "preserved",
+      "status": "partial",
+      "method": "automated",
+      "procedure": "node scripts/inspect-slide-transitions.mjs --all [soffice-executable]",
+      "result": "Left raw direction is retained; click policy changes.",
+      "limitations": "No actual slideshow playback; this row does not generalize across other directions.",
+      "evidence": [
+        {
+          "path": "docs/testing/side-transition-evidence.json",
+          "sha256": "8d209c03164fd3f9c9ca28fa57a21b6823016d06ffefc26f9a9625de43c1796f",
+          "assertions": [
+            {
+              "pointer": "/timingComparisons/7/effectAndDirectionRetained",
+              "equals": true
+            },
+            {
+              "pointer": "/timingComparisons/7/clickPolicyRetained",
+              "equals": false
+            },
+            {
+              "pointer": "/timingComparisons/7/type",
+              "equals": "wipe"
+            },
+            {
+              "pointer": "/timingComparisons/7/direction",
+              "equals": "left"
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "transition",
+        "owner": "slide",
+        "family": "wipe",
+        "variant": "left"
+      }
+    },
+    {
+      "id": "timing-inventory",
+      "feature": "Native timing tree",
+      "operation": "Read-only inventory",
+      "producer": {
+        "name": "unrecorded",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "native timing inventory",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
+        "evidencePath": "docs/testing/native-timing-inventory-evidence.json",
+        "pointer": "/artifacts/0/sha256",
+        "localPath": ".tmp/animation-native/run-UKB5dV/source.pptx"
+      },
+      "capability": "unknown",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/inspect-native-timing-inventory.mjs source.pptx",
+      "result": "Named source inventory independently checked against raw XML.",
+      "limitations": "Input provenance and application playback are not established.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-timing-inventory-evidence.json",
+          "sha256": "7ec43cc114383d4367b0127abb5393232aa7e9fd86e853ccef3db3157c0b7f88",
+          "assertions": [
+            {
+              "pointer": "/artifacts/0/independent/verified",
+              "equals": true
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "timing",
+        "owner": "slide",
+        "family": "native-tree",
+        "variant": "inventory"
+      }
+    },
+    {
+      "id": "timing-powerpoint-playback",
+      "feature": "Native timing tree",
+      "operation": "Interactive playback",
+      "producer": {
+        "name": "unrecorded",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "native timing inventory",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
+        "evidencePath": "",
+        "pointer": "",
+        "localPath": ".tmp/animation-native/run-UKB5dV/source.pptx"
+      },
+      "capability": "unknown",
+      "status": "untested",
+      "method": "not-run",
+      "procedure": "No playback observation recorded for this fixture.",
+      "result": "Not tested.",
+      "limitations": "Inspection is not playback evidence.",
+      "evidence": [],
+      "subject": {
+        "object": "timing",
+        "owner": "slide",
+        "family": "native-tree",
+        "variant": "inventory"
+      }
+    },
+    {
+      "id": "text-v1-powerpoint-ui",
+      "feature": "Text box run",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Interactive text edit and resave",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "59549481df72cb849d8b1d54e248f9fe807ba03b1ac3a5acbffb1d3c464a6589",
+        "evidencePath": "docs/testing/native-v1-interactive-evidence.json",
+        "pointer": "/files/edited.pptx",
+        "localPath": ".tmp/text-edit-native/run-fstis57m/edited.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "In PowerPoint, append POWERPOINT UI 789 to selected text; save, then perform three distinct Save As, close and exact reopen rounds.",
+      "result": "Appended text survives three save/close/reopen rounds; the application removes the orphan part.",
+      "limitations": "First/final pixels match, but glyph origins differ up to 0.059 pt; other fixtures and opaque references remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v1-interactive-evidence.json",
+          "sha256": "84c82878ddc89baa56907e98f73c4b9bcf69e1ce70b45655ac2cd46e97643018",
+          "assertions": [
+            {
+              "pointer": "/powerPointResaveRemovedOrphan",
+              "equals": true
+            },
+            {
+              "pointer": "/powerPointResaveRetainedNamedOpaqueExtension",
+              "equals": true
+            },
+            {
+              "pointer": "/notesAndControlContentGeometryRetained",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v1-after-powerpoint",
+      "feature": "Text box run",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit after PowerPoint",
+      "producer": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "860ebb118012e10ef45582bb7ed0b07d2953fd425cf4305980adc9b9a1350c73",
+        "evidencePath": "docs/testing/native-v1-interactive-evidence.json",
+        "pointer": "/files/round3.pptx",
+        "localPath": ".tmp/text-edit-native/run-fstis57m/round3.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/prepare-native-v1-post-edit.mjs .tmp/text-edit-native/run-fstis57m",
+      "result": "The named post-native PPTKit candidate changes only the selected character atom and preserves all other package parts.",
+      "limitations": "The source already reflects PowerPoint removing the orphan; generalized reference safety remains open.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v1-interactive-evidence.json",
+          "sha256": "84c82878ddc89baa56907e98f73c4b9bcf69e1ce70b45655ac2cd46e97643018",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateChangedOnlySelectedText",
+              "equals": true
+            },
+            {
+              "pointer": "/notesAndControlContentGeometryRetained",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v1-post-powerpoint-reopen",
+      "feature": "Text box run",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Resave post-native PPTKit candidate",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "5e31058269770850bce7d5d01f7ab4b025dd28cb594b76972bfecc8b42b04efd",
+        "evidencePath": "docs/testing/native-v1-interactive-evidence.json",
+        "pointer": "/files/post-native-pptkit.pptx",
+        "localPath": ".tmp/text-edit-native/run-fstis57m/post-native-pptkit.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "manual",
+      "procedure": "Open the post-native candidate, then perform three distinct Save As, close, reopen and print the final copy.",
+      "result": "One named candidate retains selected/control content and full PDF records through three native save/close/reopen rounds.",
+      "limitations": "This does not establish fidelity for other files, versions, arbitrary references or restored orphan content.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v1-interactive-evidence.json",
+          "sha256": "84c82878ddc89baa56907e98f73c4b9bcf69e1ce70b45655ac2cd46e97643018",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateAndRound3FullPdfRecordsEqual",
+              "equals": true
+            },
+            {
+              "pointer": "/notesAndControlContentGeometryRetained",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-shape-ui",
+      "feature": "Shape text run",
+      "subject": {
+        "object": "text",
+        "owner": "shape",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Interactive text edit and resave",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e399bd80c9a007f9bfd3004ce1375255d2317e4b3ee8cce622b06d4387db4025",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/edited.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/edited.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Edit the selected shape and first notes paragraph in PowerPoint, save, and perform three distinct Save As, close and reopen rounds.",
+      "result": "Selected shape text survives three native save/close/reopen rounds with links and controls.",
+      "limitations": "First/final pixels agree but raw text/drawing records differ; PowerPoint removes an orphan.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/notesSlideRelationshipsAndControlsVerified",
+              "equals": true
+            },
+            {
+              "pointer": "/powerPointResaveRemovedOrphan",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-shape-post",
+      "feature": "Shape text run",
+      "subject": {
+        "object": "text",
+        "owner": "shape",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit after PowerPoint",
+      "producer": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "b6e06cf683987d07741e1b0d861704ae1dc6b9af9d3d4eda4c89dfa5e2214786",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/round3.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/round3.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/prepare-native-v2-post-edit.mjs .tmp/text-owner-native/run-0t7fofk9",
+      "result": "The named mixed candidate changes only the selected shape and notes atoms in two payloads.",
+      "limitations": "The input already lacks the orphan removed by PowerPoint; arbitrary reference safety remains unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateChangedOnlyTwoSelectedTextAtoms",
+              "equals": true
+            },
+            {
+              "pointer": "/linksChartWorkbookAndSharedImageVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-shape-reopen",
+      "feature": "Shape text run",
+      "subject": {
+        "object": "text",
+        "owner": "shape",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Resave post-native PPTKit candidate",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e2bd156d5a970d37793f1561f9aab2759d1f13d67ccb3cd1154ca294b1883d51",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/post-native-pptkit.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/post-native-pptkit.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "manual",
+      "procedure": "Open the named post-native candidate, save and reopen three distinct copies, and print slides and notes.",
+      "result": "Named candidate retains corresponding text through three native reopen rounds with equal initial/final PDF records.",
+      "limitations": "Notes still print across three pages; other files and hosts remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateAndRound3SlideAndNotesFullPdfRecordsEqual",
+              "equals": true
+            },
+            {
+              "pointer": "/notesSlideRelationshipsAndControlsVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-notes-ui",
+      "feature": "Notes body run",
+      "subject": {
+        "object": "text",
+        "owner": "notes-body",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Interactive text edit and resave",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e399bd80c9a007f9bfd3004ce1375255d2317e4b3ee8cce622b06d4387db4025",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/edited.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/edited.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Edit the selected shape and first notes paragraph in PowerPoint, save, and perform three distinct Save As, close and reopen rounds.",
+      "result": "Selected notes text remains associated with the first slide over three native save/close/reopen rounds.",
+      "limitations": "The notes print has three pages before and after; first page pixels differ between interactive and final output.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/notesSlideRelationshipsAndControlsVerified",
+              "equals": true
+            },
+            {
+              "pointer": "/powerPointResaveRemovedOrphan",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-notes-post",
+      "feature": "Notes body run",
+      "subject": {
+        "object": "text",
+        "owner": "notes-body",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit after PowerPoint",
+      "producer": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "b6e06cf683987d07741e1b0d861704ae1dc6b9af9d3d4eda4c89dfa5e2214786",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/round3.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/round3.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/prepare-native-v2-post-edit.mjs .tmp/text-owner-native/run-0t7fofk9",
+      "result": "The named mixed candidate changes only the selected shape and notes atoms in two payloads.",
+      "limitations": "The input already lacks the orphan removed by PowerPoint; arbitrary reference safety remains unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateChangedOnlyTwoSelectedTextAtoms",
+              "equals": true
+            },
+            {
+              "pointer": "/linksChartWorkbookAndSharedImageVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "text-v2-notes-reopen",
+      "feature": "Notes body run",
+      "subject": {
+        "object": "text",
+        "owner": "notes-body",
+        "family": "direct",
+        "variant": "existing-run"
+      },
+      "operation": "Resave post-native PPTKit candidate",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e2bd156d5a970d37793f1561f9aab2759d1f13d67ccb3cd1154ca294b1883d51",
+        "evidencePath": "docs/testing/native-v2-interactive-evidence.json",
+        "pointer": "/files/post-native-pptkit.pptx",
+        "localPath": ".tmp/text-owner-native/run-0t7fofk9/post-native-pptkit.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "manual",
+      "procedure": "Open the named post-native candidate, save and reopen three distinct copies, and print slides and notes.",
+      "result": "Named candidate retains corresponding text through three native reopen rounds with equal initial/final PDF records.",
+      "limitations": "Notes still print across three pages; other files and hosts remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v2-interactive-evidence.json",
+          "sha256": "766e3c3bd675c328c0f499da9160ae9ca67756e5da83febce837306daaf222db",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateAndRound3SlideAndNotesFullPdfRecordsEqual",
+              "equals": true
+            },
+            {
+              "pointer": "/notesSlideRelationshipsAndControlsVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-v3-post-native",
+      "feature": "Merged table anchor run",
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      },
+      "operation": "Interleaved source character edit",
+      "producer": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "c996565a7b032a312961be991a88c95591ec85ca56817aaead3b44a6201723fc",
+        "evidencePath": "docs/testing/table-interleaved-native-evidence.json",
+        "pointer": "/files/source.pptx",
+        "localPath": ".tmp/table-interleaved-native/run-CbmphZ/source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/prepare-table-interleaved-native.mjs source.pptx [soffice]",
+      "result": "Three candidate saves each change only two selected text atoms from the immediately preceding native output.",
+      "limitations": "Original native input already lost workbook, orphan and opaque extension.",
+      "evidence": [
+        {
+          "path": "docs/testing/table-interleaved-native-evidence.json",
+          "sha256": "aef913b1968f41612f2074b5a8b0dcd359915cb062c641ae48601de79b283ad0",
+          "assertions": [
+            {
+              "pointer": "/pptkitEachRoundOnlyTwoSelectedAtomsChanged",
+              "equals": true
+            },
+            {
+              "pointer": "/physicalMergeAndGridVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-v3-libre-interleaved",
+      "feature": "Merged table anchor run",
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      },
+      "operation": "Interleaved headless resave",
+      "producer": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "c996565a7b032a312961be991a88c95591ec85ca56817aaead3b44a6201723fc",
+        "evidencePath": "docs/testing/table-interleaved-native-evidence.json",
+        "pointer": "/files/source.pptx",
+        "localPath": ".tmp/table-interleaved-native/run-CbmphZ/source.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "automated",
+      "procedure": "node scripts/prepare-table-interleaved-native.mjs source.pptx [soffice]",
+      "result": "Headless resaves retain named table values and merge grid; each changes image dimensions.",
+      "limitations": "Unedited image shrinks by 360 EMU per dimension per resave; PowerPoint UI and complete appearance remain unverified.",
+      "evidence": [
+        {
+          "path": "docs/testing/table-interleaved-native-evidence.json",
+          "sha256": "aef913b1968f41612f2074b5a8b0dcd359915cb062c641ae48601de79b283ad0",
+          "assertions": [
+            {
+              "pointer": "/pptkitEachRoundOnlyTwoSelectedAtomsChanged",
+              "equals": true
+            },
+            {
+              "pointer": "/physicalMergeAndGridVerified",
+              "equals": true
+            },
+            {
+              "pointer": "/sourceNativeAlreadyLostWorkbookAndOrphan",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-v3-powerpoint-ui",
+      "feature": "Merged table anchor run",
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      },
+      "operation": "Interactive text edit and resave",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "f8a30500894276b88d6d5912ad792b21a7fa972f9a7752ee5f7a90545586db9e",
+        "evidencePath": "docs/testing/native-v3-interactive-evidence.json",
+        "pointer": "/files/edited.pptx",
+        "localPath": ".tmp/table-save-native/run-fm88km7y/edited.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Append UIA and UIB to the selected table anchors in PowerPoint, save, then perform three distinct Save As, close and reopen rounds.",
+      "result": "Both named table anchors survive three native save/close/reopen rounds and retain the grid/merge structure.",
+      "limitations": "PowerPoint removes the orphan and unknown cell attribute, rewrites continuation attributes, and first/final glyph positions differ.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v3-interactive-evidence.json",
+          "sha256": "272f538a292e01787c4236191f9158fa5348f042c2029fab498035160ada7414",
+          "assertions": [
+            {
+              "pointer": "/physicalGridAndMergeSemanticsVerified",
+              "equals": true
+            },
+            {
+              "pointer": "/powerPointResaveRemovedOrphanAndUnknownCellAttribute",
+              "equals": true
+            },
+            {
+              "pointer": "/powerPointRewroteMergeContinuationAttributes",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-v3-after-powerpoint",
+      "feature": "Merged table anchor run",
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit after PowerPoint",
+      "producer": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "000221d9d34c657a9a40e0151519b3d7b9f4be6ff2c1ccfd2923b159ad0f5d57",
+        "evidencePath": "docs/testing/native-v3-interactive-evidence.json",
+        "pointer": "/files/round3.pptx",
+        "localPath": ".tmp/table-save-native/run-fm88km7y/round3.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node scripts/prepare-native-v3-post-edit.mjs .tmp/table-save-native/run-fm88km7y",
+      "result": "PPTKit changes only two selected text atoms in one slide payload after native editing.",
+      "limitations": "The input already reflects application removal of the orphan and unknown attribute; broader reference safety remains open.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v3-interactive-evidence.json",
+          "sha256": "272f538a292e01787c4236191f9158fa5348f042c2029fab498035160ada7414",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateChangedOnlyTwoSelectedTextAtoms",
+              "equals": true
+            },
+            {
+              "pointer": "/physicalGridAndMergeSemanticsVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-v3-post-powerpoint-reopen",
+      "feature": "Merged table anchor run",
+      "subject": {
+        "object": "text",
+        "owner": "merged-table-anchor",
+        "family": "table",
+        "variant": "existing-run"
+      },
+      "operation": "Resave post-native PPTKit candidate",
+      "producer": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "text-runs-v3",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "31702e7be1dfda767744c6777065694d3fb236560ae1d1e99157ab50b8bc3d99",
+        "evidencePath": "docs/testing/native-v3-interactive-evidence.json",
+        "pointer": "/files/post-native-pptkit.pptx",
+        "localPath": ".tmp/table-save-native/run-fm88km7y/post-native-pptkit.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "manual",
+      "procedure": "Open the post-native candidate, then save and reopen three distinct copies and print the final copy.",
+      "result": "Named post-native candidate retains both physical anchors through three native save/close/reopen rounds with equal first/final PDF records.",
+      "limitations": "This does not certify table structure edits, other files, application versions or arbitrary implicit references.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-v3-interactive-evidence.json",
+          "sha256": "272f538a292e01787c4236191f9158fa5348f042c2029fab498035160ada7414",
+          "assertions": [
+            {
+              "pointer": "/postNativeCandidateAndRound3FullPdfRecordsEqual",
+              "equals": true
+            },
+            {
+              "pointer": "/physicalGridAndMergeSemanticsVerified",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connector-straight-move",
+      "feature": "Native connector target",
+      "subject": {
+        "object": "connector",
+        "owner": "slide",
+        "family": "straight",
+        "variant": "rectangle-cardinal-sites"
+      },
+      "operation": "drag target",
+      "producer": {
+        "name": "PPTKit generated fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PowerPoint macOS",
+        "version": "16.104.25121423"
+      },
+      "profile": "native-connector",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "236e395583f6dad2a3665c1133d92de3392c187e5c61858aedaee79a62f2e1ba",
+        "evidencePath": "docs/testing/native-connector-interactions-evidence.json",
+        "pointer": "/straightMove/sourceSha256",
+        "localPath": "tests/fixtures/native-connector-move-before.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "python3 scripts/research/verify-native-connector-move.py",
+      "result": "Target moves and both connection sites remain bound through one native reopen.",
+      "limitations": "Other shapes, angles, applications and further native rounds are untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-connector-interactions-evidence.json",
+          "sha256": "73439cf1ce4e83d1cd4033023b22e32ca090d8a38e0e2f1eebde3dbfb0382888",
+          "assertions": [
+            {
+              "pointer": "/straightMove/bindingsRetained",
+              "equals": true
+            },
+            {
+              "pointer": "/straightMove/nativeReopenRounds",
+              "equals": 1
+            },
+            {
+              "pointer": "/straightMove/outputSha256",
+              "equals": "81901be601596dd5f4ee47e2282e1191d6df0edbee34eb7afbe8cf0f4c73fbf2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connector-elbow-move",
+      "feature": "Native connector target",
+      "subject": {
+        "object": "connector",
+        "owner": "slide",
+        "family": "single-elbow",
+        "variant": "rectangle-cardinal-sites"
+      },
+      "operation": "drag target",
+      "producer": {
+        "name": "PPTKit generated fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PowerPoint macOS",
+        "version": "16.104.25121423"
+      },
+      "profile": "native-connector",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "76c7fb5ff261da2ec334417ebac7348a1c64049b86dedf8124b1b69459d71468",
+        "evidencePath": "docs/testing/native-connector-interactions-evidence.json",
+        "pointer": "/elbowMove/sourceSha256",
+        "localPath": "tests/fixtures/native-elbow-move-before.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "python3 scripts/research/verify-native-elbow-move.py",
+      "result": "PowerPoint reroutes the single elbow to a double elbow while retaining both bindings.",
+      "limitations": "One motion and one native reopen; other directions, routes and applications remain untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-connector-interactions-evidence.json",
+          "sha256": "73439cf1ce4e83d1cd4033023b22e32ca090d8a38e0e2f1eebde3dbfb0382888",
+          "assertions": [
+            {
+              "pointer": "/elbowMove/bindingsRetained",
+              "equals": true
+            },
+            {
+              "pointer": "/elbowMove/nativeReopenRounds",
+              "equals": 1
+            },
+            {
+              "pointer": "/elbowMove/beforePreset",
+              "equals": "bentConnector2"
+            },
+            {
+              "pointer": "/elbowMove/afterPreset",
+              "equals": "bentConnector3"
+            },
+            {
+              "pointer": "/elbowMove/outputSha256",
+              "equals": "86bc9d6b844362e33d726256da17489d658eeeb713705099fc950e642fd1ed95"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connector-straight-rotation",
+      "feature": "Native connector target",
+      "subject": {
+        "object": "connector",
+        "owner": "slide",
+        "family": "straight",
+        "variant": "rectangle-cardinal-sites"
+      },
+      "operation": "rotate target",
+      "producer": {
+        "name": "PPTKit generated fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "PowerPoint macOS",
+        "version": "16.104.25121423"
+      },
+      "profile": "native-connector",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "236e395583f6dad2a3665c1133d92de3392c187e5c61858aedaee79a62f2e1ba",
+        "evidencePath": "docs/testing/native-connector-interactions-evidence.json",
+        "pointer": "/straightRotation/sourceSha256",
+        "localPath": "tests/fixtures/native-connector-move-before.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "python3 scripts/research/verify-native-connector-rotate.py",
+      "result": "The attached endpoint follows one approximately 45.462-degree rotation through one native reopen.",
+      "limitations": "One rectangle and angle; broader transforms and applications remain untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-connector-interactions-evidence.json",
+          "sha256": "73439cf1ce4e83d1cd4033023b22e32ca090d8a38e0e2f1eebde3dbfb0382888",
+          "assertions": [
+            {
+              "pointer": "/straightRotation/bindingsRetained",
+              "equals": true
+            },
+            {
+              "pointer": "/straightRotation/nativeReopenRounds",
+              "equals": 1
+            },
+            {
+              "pointer": "/straightRotation/rotation60000ths",
+              "equals": 2727718
+            },
+            {
+              "pointer": "/straightRotation/outputSha256",
+              "equals": "d38cc889c4348928ad998eadbfa09e63f2b76a5adf2cf60b47ffd80289c5f272"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corpus-chart-column-libreoffice-macos-edit",
+      "feature": "Corpus column chart",
+      "subject": {
+        "object": "chart",
+        "owner": "slide",
+        "family": "bar",
+        "variant": "single-series-category"
+      },
+      "producer": {
+        "name": "PPTKit corpus fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOffice (macOS arm64)",
+        "version": "26.8.2.2 9dea406ab7695df6325b11b0e19fdca8db4b7276"
+      },
+      "profile": "PPTX native Data Table",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+        "evidencePath": "docs/testing/corpus-charts-libreoffice-interactive-evidence.json",
+        "pointer": "/input/sha256",
+        "localPath": ".tmp/fixtures/charts.pptx"
+      },
+      "method": "manual",
+      "procedure": "Open the corpus chart copy in Impress, edit category A in Data Table, save as PPTX, close and reopen.",
+      "operation": "Native data edit and read-only reopen",
+      "capability": "editable",
+      "status": "pass",
+      "result": "Category A changed from 2 to 1.5; the saved chart cache and reopened column agree.",
+      "limitations": "This verifies one edit and read-only reopen; workbook retention is a separate failed operation.",
+      "evidence": [
+        {
+          "path": "docs/testing/corpus-charts-libreoffice-interactive-evidence.json",
+          "sha256": "88aaabcd23cab2f768e187f7cd0d88ffffdb166528437a3c129374778910e82b",
+          "assertions": [
+            {
+              "pointer": "/packageChecks/bar/0",
+              "equals": "1.5"
+            },
+            {
+              "pointer": "/packageChecks/line/0",
+              "equals": "2"
+            },
+            {
+              "pointer": "/packageChecks/pie/0",
+              "equals": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corpus-chart-column-libreoffice-macos-workbook",
+      "feature": "Corpus column chart",
+      "subject": {
+        "object": "chart",
+        "owner": "slide",
+        "family": "bar",
+        "variant": "single-series-category"
+      },
+      "producer": {
+        "name": "PPTKit corpus fixture",
+        "version": "unrecorded"
+      },
+      "application": {
+        "name": "LibreOffice (macOS arm64)",
+        "version": "26.8.2.2 9dea406ab7695df6325b11b0e19fdca8db4b7276"
+      },
+      "profile": "PPTX native Data Table",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+        "evidencePath": "docs/testing/corpus-charts-libreoffice-interactive-evidence.json",
+        "pointer": "/input/sha256",
+        "localPath": ".tmp/fixtures/charts.pptx"
+      },
+      "method": "manual",
+      "procedure": "Open the corpus chart copy in Impress, edit category A in Data Table, save as PPTX, close and reopen.",
+      "operation": "Embedded workbook retention during native data edit",
+      "capability": "preserved",
+      "status": "fail",
+      "result": "The save removed all three embedded XLSX parts and their external-data declarations.",
+      "limitations": "The chart caches remain; neither PowerPoint nor Linux behavior follows from this result.",
+      "evidence": [
+        {
+          "path": "docs/testing/corpus-charts-libreoffice-interactive-evidence.json",
+          "sha256": "88aaabcd23cab2f768e187f7cd0d88ffffdb166528437a3c129374778910e82b",
+          "assertions": [
+            {
+              "pointer": "/packageChecks/xlsxBefore",
+              "equals": 3
+            },
+            {
+              "pointer": "/packageChecks/xlsxAfter",
+              "equals": 0
+            },
+            {
+              "pointer": "/packageChecks/externalDataAfter",
+              "equals": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

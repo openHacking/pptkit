@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T20:37:40.545Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/source.pptx",
+      "bytes": 14490,
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/normalized.json",
+      "bytes": 17987,
+      "sha256": "16f7ca3e38a30b84242f8d881f0c38c88ae98f3ca20341109da8ee3aec0d1cb3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/origins.json",
+      "bytes": 145497,
+      "sha256": "fe172c5c7c62f34e456c9e7f88eaa015c605899a1c09a83ce212772bbc0a69be"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/layout.json",
+      "bytes": 17988,
+      "sha256": "b5071753386a4acf01db43c0b72dead332be3410893286a46bad558a4a6cd15f"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/legacy-current.pptx",
+      "bytes": 26491,
+      "sha256": "afd8243a3f110125d22bb2aac62083aae752bd9a4b757594cad178c800a1dcf3"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/page-1.svg",
+      "bytes": 3284,
+      "sha256": "75fb172f9532da01a99837ed8d0a796f140eb5a4e4a63e6da15f7d01dce75337"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/page-2.svg",
+      "bytes": 792,
+      "sha256": "4cf186ed53348b70b39a021c91c84631c0977c5028c1af8320930931741fa1a6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/browser-preview.png",
+      "bytes": 4890,
+      "sha256": "712b6c44f0c65a2168e52adcf516bc5b87575d3d4ed578ee03c7317de75d850b"
+    }
+  ],
+  "sourceFile": "/Volumes/github/private/pptkit/.tmp/text-origins/run-kmASsB/source.pptx",
+  "warnings": [
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "first",
+      "elementId": "body",
+      "path": "content"
+    }
+  ],
+  "originRecords": 529,
+  "legacy": {
+    "originalFile": "/Volumes/github/private/pptkit/.tmp/multi-master/native-b85qrfu0/fixed.pptx",
+    "originalSha256": "943270e78b2fe373a20e2983c239b22211ee4c973bf9fa9d23f5b64fa0576e89",
+    "currentSha256": "afd8243a3f110125d22bb2aac62083aae752bd9a4b757594cad178c800a1dcf3",
+    "changes": [
+      {
+        "part": "ppt/slideLayouts/slideLayout2.xml",
+        "kind": "shared-placeholder-defaults",
+        "before": "9ab4b928c580cee0916d5def8fccd8dbc708036530958a64aa1c7096dcca8474",
+        "after": "2569acfda5b91f9b3677aa25e9be7b3ecedc9b7ce81dec9072005d999c2e5ee7"
+      },
+      {
+        "part": "ppt/slideLayouts/slideLayout3.xml",
+        "kind": "shared-placeholder-defaults",
+        "before": "844e5f13e404ceedbcf6b0ceeb89871fd23964a61b46229a669c4225599cb869",
+        "after": "ae977d70d91885cc5d9fa5f868f0f3a6182336ec3465585ea90e1ff49baa3d05"
+      },
+      {
+        "part": "ppt/slideLayouts/slideLayout4.xml",
+        "kind": "shared-placeholder-defaults",
+        "before": "6277234e7be12a2002bbb7f742ba43a9630feb6bbb027b93db5eecd85685faf2",
+        "after": "a9a51f65c2d0a9533e7bcc6d6d426b854e261dcf3b29b761ee05922a8c68d744"
+      },
+      {
+        "part": "ppt/slideLayouts/slideLayout5.xml",
+        "kind": "shared-placeholder-defaults",
+        "before": "cf4b38ea641ef09a793fa4533f821a5f61d93a6df635c025b50aeabdec404203",
+        "after": "3c5929d0f53b018dba63b3a472a8c05a20537c428700ece51723661e2009b588"
+      },
+      {
+        "part": "ppt/slides/slide1.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "9487b5a2189f83d628fb3435a252b8336d7f05f13a8537d7b58f24bc41721e21",
+        "after": "64340a7bf6cad630b92dab25d4c9e08c7324b48cc57fb1167b5e919e1374546d"
+      },
+      {
+        "part": "ppt/notesSlides/notesSlide1.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "19e20485a205380a960dafe50322c4bc8d816aa25159688bd4be37234af1294b",
+        "after": "43d63e0795cb9819c0ea65cae57d772ca9c6aef68c049e71ef8bcf906ce6221e"
+      },
+      {
+        "part": "ppt/slides/slide2.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "cb2744042d7c531b44b8240cbc16362deb19dfb85eebab329f7734b4a47c803a",
+        "after": "23501c0ef267273bd9aef018178bf18396f94e4f4c695d91423265bb105a6d65"
+      },
+      {
+        "part": "ppt/notesSlides/notesSlide2.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "19e20485a205380a960dafe50322c4bc8d816aa25159688bd4be37234af1294b",
+        "after": "43d63e0795cb9819c0ea65cae57d772ca9c6aef68c049e71ef8bcf906ce6221e"
+      },
+      {
+        "part": "ppt/slides/slide3.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "7ed91905cc3165ca9e5cc27800c41d40ea8b259291d22f025b03332218382150",
+        "after": "05bbb3a15788ac56af5d0c0a247e3578de9c8e4e0ed9808af4f6664010b13444"
+      },
+      {
+        "part": "ppt/notesSlides/notesSlide3.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "19e20485a205380a960dafe50322c4bc8d816aa25159688bd4be37234af1294b",
+        "after": "43d63e0795cb9819c0ea65cae57d772ca9c6aef68c049e71ef8bcf906ce6221e"
+      },
+      {
+        "part": "ppt/slides/slide4.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "804d24a2b337af01cc48618ee58d27aa90c8355285fba2676709a85f3cc576e9",
+        "after": "df2d11b30bf221058df314f60a18e86a8dd6dfc93d7004c032be9d3718f88ecc"
+      },
+      {
+        "part": "ppt/notesSlides/notesSlide4.xml",
+        "kind": "explicit-false-run-flags",
+        "before": "19e20485a205380a960dafe50322c4bc8d816aa25159688bd4be37234af1294b",
+        "after": "43d63e0795cb9819c0ea65cae57d772ca9c6aef68c049e71ef8bcf906ce6221e"
+      }
+    ]
+  },
+  "browserVersion": "149.0.7827.55",
+  "nativeReopen": "not performed",
+  "scope": "Public authoring candidate with text format sources, optional-font clear barriers, shared placeholder defaults and explicit false flags. Parent group-placeholder binding deliberately removed in this native candidate. No native application or live template-edit admission.",
+  "nativeFailureDelta": {
+    "originalFile": "/Volumes/github/private/pptkit/.tmp/text-origins/run-90YemX/source.pptx",
+    "originalSha256": "361d2da63daaceda3cd04cb796fd51baa1829db265f1dcc15303704fdc0b4789",
+    "changedPart": "ppt/slideLayouts/slideLayout2.xml",
+    "change": "Remove only the extra native placeholder identity from the shared layout object; every other payload is exact."
+  }
+}

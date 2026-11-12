@@ -39,6 +39,42 @@ test("layout resolves connector anchors", () => {
   assert.deepEqual(connector.box, { x: 110, y: 40, width: 190, height: 40 });
 });
 
+test("large connector routes resolve bounds without a JavaScript argument-count failure", () => {
+  const presentation = createPresentation({ size: { width: 500, height: 300 } });
+  const route = Array.from({ length: 150000 }, (_, index) => ({ x: index === 149999 ? -20 : index % 101, y: index === 80000 ? 200 : index % 51 }));
+  presentation.addSlide({ id: 'page', elements: [{ id: 'line', type: 'connector', start: { x: 10, y: 20 }, end: { x: 120, y: -30 }, route }] });
+  const normalized = normalizePresentation(presentation);
+  assert.deepEqual(normalized.slides[0].elements[0].box, { x: -20, y: -30, width: 140, height: 230 });
+  const result = resolveNormalizedLayout(normalized);
+  const connector = result.slides[0].elements[0];
+  assert.deepEqual(connector.box, { x: -20, y: -30, width: 140, height: 230 });
+  assert.equal(connector.route.length, route.length);
+  assert.deepEqual(connector.route[149999], { x: -20, y: 8 });
+  connector.route[0].x = 999;
+  assert.equal(normalized.slides[0].elements[0].route[0].x, 0);
+});
+
+test("large chart data derives its scale without spreading all values as arguments", () => {
+  const count = 150000, values = Array(count).fill(1);
+  values[4] = -12; values[count - 1] = 37;
+  const presentation = createPresentation();
+  presentation.addSlide({ elements: [{ id: 'chart', type: 'chart', chartType: 'line', box: { x: 0, y: 0, width: 400, height: 300 }, categories: Array(count).fill('category'), series: [{ name: 'values', values }] }] });
+  const chart = resolveLayout(presentation).slides[0].elements[0];
+  assert.ok(chart.chartLayout.valueScale.min <= -12);
+  assert.ok(chart.chartLayout.valueScale.max >= 37);
+  assert.equal(chart.categories.length, count);
+});
+
+test("chart extent retains sparse-array hole behavior for directly supplied normalized input", () => {
+  const presentation = createPresentation();
+  presentation.addSlide({ elements: [{ type: 'chart', chartType: 'line', box: { x: 0, y: 0, width: 400, height: 300 }, categories: ['A', 'B', 'C'], series: [{ name: 'values', values: [10, 100, 20] }] }] });
+  const normalized = normalizePresentation(presentation);
+  delete normalized.slides[0].elements[0].series[0].values[1];
+  const scale = resolveNormalizedLayout(normalized).slides[0].elements[0].chartLayout.valueScale;
+  assert.ok(Number.isFinite(scale.min) && Number.isFinite(scale.max));
+  assert.ok(scale.max >= 20 && scale.max < 100);
+});
+
 test("layout resolves contain and cover using asset dimensions", () => {
   const presentation = createPresentation();
   const asset = presentation.registerAsset({ kind: "image", source: { type: "url", value: "https://example.com/wide.png" }, width: 400, height: 200 });
@@ -177,4 +213,24 @@ test("automatic chart scales cover zero, negative, crossing-zero, decimal, and c
   assert.ok(decimal.valueScale.min <= -0.15 && decimal.valueScale.max >= 0.22);
   assert.ok(decimal.valueScale.ticks.includes(0));
   assert.ok(decimal.lines[0].points.every((point) => Number.isFinite(point.x) && Number.isFinite(point.y)));
+});
+
+test('image fitting retains unresolved inputs when floating-point geometry cannot represent the result', () => {
+  const p = createPresentation();
+  for (const [id,width,height] of [['overflow',1e308,1e-308], ['underflow',1e-308,1e308], ['wide',1e20,1], ['normal',2,1]]) p.registerAsset({ id, kind: 'image', source: { type: 'url', value: `https://example.invalid/${id}` }, width, height });
+  const slide=p.addSlide({id:'s'});
+  const cases=[
+    ['overflow-contain','overflow','contain',{x:0,y:0,width:10,height:10}],
+    ['underflow-cover','underflow','cover',{x:0,y:0,width:10,height:10}],
+    ['rounded-cover','wide','cover',{x:0,y:0,width:10,height:10}],
+    ['underflow-frame','wide','contain',{x:0,y:0,width:1e-308,height:10}],
+    ['overflow-center','normal','contain',{x:1.7e308,y:0,width:1e308,height:10}],
+    ['ordinary','normal','contain',{x:0,y:0,width:100,height:100}],
+  ];
+  for(const [id,assetId,fit,box] of cases)slide.addElement({id,type:'image',assetId,fit,box});
+  const images=resolveLayout(p).slides[0].elements;
+  for(const [i,[, ,fit,box]] of cases.entries()){
+    const result=images[i]; assert.ok(Object.values(result.box).every(Number.isFinite));
+    if(i<5){assert.equal(result.fit,fit);assert.deepEqual(result.box,box);} else {assert.equal(result.fit,'stretch');assert.deepEqual(result.box,{x:0,y:25,width:100,height:50});}
+  }
 });

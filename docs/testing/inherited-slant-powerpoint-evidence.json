@@ -1,0 +1,35 @@
+{
+  "scope": "One manually assembled placeholder chain with layout slant 0.4, master slant 0.8 and a local slant 1 rotation/flip control, one PowerPoint save and reopen. Fixed grid points at least 4 pt from edges, excluding the pointer halo and placeholder prompts, are compared against an independent polygon model; native UI provenance is observed, not authenticated. Edges, prompt text, other placeholder combinations, interactive edits and other versions remain unverified.",
+  "reopenRounds": 1,
+  "samples": {
+    "first": {
+      "outside": 2488,
+      "inside": 269,
+      "perShape": [
+        105,
+        20,
+        144
+      ],
+      "mismatches": 0
+    },
+    "reopen": {
+      "outside": 2488,
+      "inside": 269,
+      "perShape": [
+        105,
+        20,
+        144
+      ],
+      "mismatches": 0
+    }
+  },
+  "artifactDirectory": ".tmp/native-inherited-slant",
+  "sha256": {
+    "source.pptx": "3a4ac8e4450f947287d7232ebc2be1dadc5ea8161fca0067e220f7aa14f38095",
+    "native-round-1.pptx": "9a175e32705454f6a6c82703f0e87b1474aeff6c4a98477e3d3b0e660655b1d8",
+    "first.ax.txt": "ce4b3800062106ef94e7d95ba93735f2d2202b3426401bf76e1945ebb628e91f",
+    "first.jpg": "5aebd441422d3076ae03fe212043d5f97fe6b18d54f686809ece1385ff0b9aca",
+    "reopen.ax.txt": "c9bf140d8af43dbf54f2fba63f111612224381fbf70f67fdaf1cf52113bf81a8",
+    "reopen.jpg": "224500463af15bcb374879bfbcaff79cf3726faeac4c0cbea4906fe83bfd3be9"
+  }
+}

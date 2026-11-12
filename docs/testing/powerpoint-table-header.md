@@ -1,0 +1,13 @@
+# PowerPoint Header Row observation
+
+[Microsoft's accessibility guidance](https://support.microsoft.com/en-us/accessibility/powerpoint/powerpoint-use-table-headers) recommends enabling Header Row and supplying column headings. The [DrawingML contract](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.tableproperties.firstrow?view=openxml-3.0.1) defines `firstRow` as a first-row style toggle. This experiment checks the file that PowerPoint writes.
+
+PowerPoint 16.104 for macOS opens the generated two-column table with Header Row checked, even though the Core authoring source did not declare any per-cell header roles. Clearing the checkbox and saving omits `firstRow` while retaining both rows. Clicking Accessibility → Insert Header Row inserts a blank first row and enables Header Row again. Saving and reopening retains the three rows and the checked state. The independent XML inspection finds `firstRow="1"` and one additional row-ID extension, with no separate table-local header-scope extension.
+
+[Evidence and hashes](powerpoint-table-header-evidence.json) link both native saves. To reproduce, build the browser packages, run `node scripts/prepare-table-header-probe.mjs SOURCE.pptx`, and edit a copy. Capture OFF after clearing Header Row, and INSERTED after invoking Insert Header Row. Run `python3 scripts/research/verify-powerpoint-table-header.py SOURCE.pptx OFF.pptx INSERTED.pptx`.
+
+PPTKit retains the native toggle as `nativeFirstRowStyle`. It does not infer Core per-cell roles from this flag. The experiment did not run VoiceOver or establish behavior for merged headers, row-header associations, other PowerPoint builds or other apps.
+
+## Additional table style switches
+
+In a separate copy of the off-state sample, Table Design was used to turn on Total Row, First Column, Last Column and Banded Columns, and to turn off Banded Rows. Header Row was left off. [The recorded PowerPoint save/reopen](powerpoint-table-style-flags-evidence.json) confirmed all six checkbox values and an unchanged two-row grid. An independent XML check found `lastRow`, `firstCol`, `lastCol` and `bandCol` set to 1, with `firstRow` and `bandRow` omitted. The [native fixture](../../tests/fixtures/table-style-flags-powerpoint.pptx) is used for three fresh export/import rounds and byte-exact no-op checks. A fresh PPTKit export from this fixture was also opened in PowerPoint; the six checkboxes retained the same states after saving and reopening; the saved XML and cell text were checked independently. This observation does not establish visual style fidelity, native reuse of the original style definition or screen-reader behavior.

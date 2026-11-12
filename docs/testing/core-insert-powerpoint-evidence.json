@@ -1,0 +1,67 @@
+{
+  "scope": "One inserted core-metadata sample, PowerPoint three save-as and close/reopen observations; no metadata UI or editing. UI observations are not independently attested by ZIP hashes.",
+  "application": "Microsoft PowerPoint 16.104 (25121423)",
+  "oracleSha256": "27d95727fae48d35689b9cdaf78f17b2c35fbbb09ae84d884b598e0f8f201087",
+  "records": [
+    {
+      "file": ".tmp/core-insert-powerpoint/round1.pptx",
+      "sha256": "1ece5b242611e2e1adfad28f298aa8cccd166f8741215286965f0ae3db6f1bff",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "creator": "Sentinel Author",
+        "keywords": "alpha, beta",
+        "revision": "7"
+      },
+      "lastModifiedByPresent": false,
+      "modifiedPresent": false
+    },
+    {
+      "file": ".tmp/core-insert-powerpoint/saved1.pptx",
+      "sha256": "0aa5e5ed3add7bd436ed7d54bae1b4b1b49d138d21cd4fbb92bef4886d6137eb",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "creator": "Sentinel Author",
+        "keywords": "alpha, beta",
+        "revision": "7"
+      },
+      "lastModifiedByPresent": true,
+      "modifiedPresent": true
+    },
+    {
+      "file": ".tmp/core-insert-powerpoint/saved2.pptx",
+      "sha256": "460dc107c4a7d6a82d2e9b8b416f8ab40d9181af567cb4cf63fa7c478ff38faf",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "creator": "Sentinel Author",
+        "keywords": "alpha, beta",
+        "revision": "7"
+      },
+      "lastModifiedByPresent": true,
+      "modifiedPresent": true
+    },
+    {
+      "file": ".tmp/core-insert-powerpoint/saved3.pptx",
+      "sha256": "199ec82678ff28c865eb55e768996b78a9d9f35c42f2a2e2569ddbd5219c81bc",
+      "metadata": {
+        "title": "PPTKit Presentation",
+        "subject": "",
+        "description": "Inserted & 中文",
+        "language": "fr-FR",
+        "creator": "Sentinel Author",
+        "keywords": "alpha, beta",
+        "revision": "7"
+      },
+      "lastModifiedByPresent": true,
+      "modifiedPresent": true
+    }
+  ]
+}

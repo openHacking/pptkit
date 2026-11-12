@@ -1,0 +1,48 @@
+{
+  "scope": "One generated corpus table fixture, PowerPoint 16.104 build 16.104.25121423, macOS 26.5. UI observed open without a visible repair prompt, one edit of a vertically merged cell, save, close and reopen. Screenshot and accessibility state are observational evidence, not authenticated. Calibrated preview parity, other fixtures and platforms remain untested.",
+  "font": "PPTKit Fixture theme body, as reported by PowerPoint; actual substituted font not independently identified",
+  "sourceManifest": ".tmp/fixtures/manifest.json",
+  "input": {
+    "path": ".tmp/fixtures/table.pptx",
+    "sha256": "646c609a7dc34145dce54599078904a9c26f2ac86ba923c1e1433eeab5a5ef0f"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-table-powerpoint-interactive.pptx",
+    "sha256": "fe7814a0f710f2197cfdb152a125068b23d6d6f7458ab8ec1212bcbbcb2a824b"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-table",
+  "operation": "Replace Two with Edited in vertically merged cell Two rows; save, close and reopen once.",
+  "expectedTextBefore": [
+    "Merged heading",
+    "Two rows",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "expectedTextAfter": [
+    "Merged heading",
+    "Edited rows",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "mergeAttributes": {
+    "heading": {
+      "gridSpan": "3"
+    },
+    "verticalAnchor": {
+      "rowSpan": "2"
+    },
+    "verticalContinuation": {
+      "vMerge": "1"
+    }
+  },
+  "sha256": {
+    "first.png": "0775cff54f487ac86fb90a6c310300b4cff4ea963d526981bf16e924058586d1",
+    "first.ax.txt": "7ca92e1d83c69b449189cf3a97cd9f13e5020aa02383e4def1a7d807e3ec57bf",
+    "reopen.png": "f92aa60bb32829f67389421eb8ac69115d4b1bd819c6890268a5041006b32a87",
+    "reopen.ax.txt": "38e86214c7b6d9ce1dc56233e040508f32a8d4cc928efde197e09038ad935a60"
+  }
+}

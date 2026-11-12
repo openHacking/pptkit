@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint 16.104 for macOS",
+  "fixture": "tests/fixtures/reading-order-powerpoint-resave.pptx",
+  "procedure": [
+    "Open the PPTKit control",
+    "Show Review > Check Accessibility > Reading Order Pane",
+    "Select Blue rectangle and choose Move Up",
+    "Save, close, reopen, and show the pane again"
+  ],
+  "observedBefore": {
+    "pane": [
+      "Red rectangle",
+      "Blue rectangle"
+    ],
+    "frontAtOverlap": "Blue rectangle",
+    "frontEvidence": "first-open canvas not measured; inferred from verified shape tree"
+  },
+  "observedAfterReopen": {
+    "pane": [
+      "Blue rectangle",
+      "Red rectangle"
+    ],
+    "frontAtOverlap": "Red rectangle",
+    "frontEvidence": "visible canvas after Move Up and after reopen"
+  },
+  "source": {
+    "sha256": "95cd0f5a049b10ac2d4288ccd1c7c0995e2637709a69ea3d429f115c3872b7ca",
+    "shapeTree": [
+      {
+        "name": "Red rectangle",
+        "id": "2",
+        "description": "Red rectangle",
+        "boxEmu": [
+          1143000,
+          825500,
+          3429000,
+          2159000
+        ],
+        "fill": "D02020"
+      },
+      {
+        "name": "Blue rectangle",
+        "id": "3",
+        "description": "Blue rectangle",
+        "boxEmu": [
+          3111500,
+          1778000,
+          3429000,
+          2159000
+        ],
+        "fill": "2040D0"
+      }
+    ]
+  },
+  "saved": {
+    "sha256": "51e0767ce470fa38e1c20410156c1f7f851ac50e6543ba99f3d16c89d56efc66",
+    "shapeTree": [
+      {
+        "name": "Blue rectangle",
+        "id": "3",
+        "description": "Blue rectangle",
+        "boxEmu": [
+          3111500,
+          1778000,
+          3429000,
+          2159000
+        ],
+        "fill": "2040D0"
+      },
+      {
+        "name": "Red rectangle",
+        "id": "2",
+        "description": "Red rectangle",
+        "boxEmu": [
+          1143000,
+          825500,
+          3429000,
+          2159000
+        ],
+        "fill": "D02020"
+      }
+    ]
+  },
+  "limitations": [
+    "Two overlapping rectangles, one native save/reopen",
+    "Reading Order pane only; no screen reader was run",
+    "The inventory verifies named properties only, not equality of all package payloads"
+  ]
+}

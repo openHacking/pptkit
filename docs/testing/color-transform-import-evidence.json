@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-24T22:19:19.835Z",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "darwin 25.5.0 arm64",
+  "scope": "Nine named direct text-color samples: deterministic Parser projection, exact no-op, LibreOfficeDev headless producer save and independent PDF spans/rasters. Not PowerPoint, interactive editing, arbitrary color transforms or source edit-save.",
+  "artifactsDirectory": ".tmp/color-transform-native/run-n77lQy",
+  "sourceSha256": "b5ef8461fed5e5b98dcad5cb359b58addb0abae1f29d4afe0da42dd7ab34c6bd",
+  "freshSha256": "f57a73865a0384103a359dc2f36b036155860003e467eb2d04fbf938e299cc34",
+  "nativeSha256": "3ca7f92a6b8378be4bacb4edbdf7118f06792e2245155a48baa227da1c691625",
+  "noOpOriginalBytes": true,
+  "cases": [
+    {
+      "name": "luminance-half",
+      "base": "336699",
+      "transforms": "<a:lumMod val=\"50000\"/>",
+      "color": "1A334D",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "1A334D",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 0: luminance-half",
+            "color": "1A334D",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "becf873576364d32e0635143bb3d7b516c22510dfa5adb13ef82c691be9ed84b"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 0: luminance-half",
+            "color": "1A334D",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "becf873576364d32e0635143bb3d7b516c22510dfa5adb13ef82c691be9ed84b"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "luminance-offset",
+      "base": "336699",
+      "transforms": "<a:lumOff val=\"20000\"/>",
+      "color": "6699CC",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "6699CC",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 1: luminance-offset",
+            "color": "6699CC",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "31e31ad285191f7522dad8837b8b809a7f96d0d312c89cc0f3224fc036085a3b"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 1: luminance-offset",
+            "color": "6699CC",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "31e31ad285191f7522dad8837b8b809a7f96d0d312c89cc0f3224fc036085a3b"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "saturation-half",
+      "base": "336699",
+      "transforms": "<a:satMod val=\"50000\"/>",
+      "color": "4D6680",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "4D6680",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 2: saturation-half",
+            "color": "4D6680",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "7b0aa47906753dacb58a56482772dbe3325e6a373b18306135a4cede179fbc33"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 2: saturation-half",
+            "color": "4D6680",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "7b0aa47906753dacb58a56482772dbe3325e6a373b18306135a4cede179fbc33"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "black-tint-half",
+      "base": "000000",
+      "transforms": "<a:tint val=\"50000\"/>",
+      "color": "BCBCBC",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "BCBCBC",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 3: black-tint-half",
+            "color": "BCBCBC",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "fd0af1de28a12e432e9aa2c642a7d0445c8287e1cf0d30ce16da050e6378ede4"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 3: black-tint-half",
+            "color": "BCBCBC",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "fd0af1de28a12e432e9aa2c642a7d0445c8287e1cf0d30ce16da050e6378ede4"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "gray-shade-half",
+      "base": "808080",
+      "transforms": "<a:shade val=\"50000\"/>",
+      "color": "5C5C5C",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "5E5E5E",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": false,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 4: gray-shade-half",
+            "color": "5E5E5E",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "cd8ce645b323d8f493e037e010c6b0bae20a0cde20deab47ed5c14f84fd928b9"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 4: gray-shade-half",
+            "color": "5C5C5C",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "65be7d8e546345ad34d6a0eb97040b9c792b37b10db826ae15383164612eec6c"
+      },
+      "sameNativeRaster": false
+    },
+    {
+      "name": "ordered-hsl",
+      "base": "336699",
+      "transforms": "<a:lumMod val=\"50000\"/><a:lumOff val=\"20000\"/>",
+      "color": "336699",
+      "opacity": 1,
+      "nativeProjection": {
+        "color": "336699",
+        "opacity": 1
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 5: ordered-hsl",
+            "color": "336699",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "5bd17738ad49604c6a5a935810b7b1109d04d6bffbbc85c4583d722a474cf813"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 5: ordered-hsl",
+            "color": "336699",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "5bd17738ad49604c6a5a935810b7b1109d04d6bffbbc85c4583d722a474cf813"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "alpha-half",
+      "base": "000000",
+      "transforms": "<a:alpha val=\"50000\"/>",
+      "color": "000000",
+      "opacity": 0.5,
+      "nativeProjection": {
+        "color": "000000",
+        "opacity": 0.5
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 6: alpha-half",
+            "color": "000000",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "636158f4299d81ca1c1787f367b0ef619274afdc63fc87e6cfb580fe321ad51b"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 6: alpha-half",
+            "color": "000000",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "636158f4299d81ca1c1787f367b0ef619274afdc63fc87e6cfb580fe321ad51b"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "alpha-transparent",
+      "base": "000000",
+      "transforms": "<a:alpha val=\"0\"/>",
+      "color": "000000",
+      "opacity": 0,
+      "nativeProjection": {
+        "color": "000000",
+        "opacity": 0
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "1309b2ac5b6dc053a94b375572bb8e8ab3dbda9eb5c167b04f09f18adea815b5"
+      },
+      "projectionPdf": {
+        "spans": [],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "1309b2ac5b6dc053a94b375572bb8e8ab3dbda9eb5c167b04f09f18adea815b5"
+      },
+      "sameNativeRaster": true
+    },
+    {
+      "name": "alpha-composition",
+      "base": "000000",
+      "transforms": "<a:alpha val=\"50000\"/><a:alphaMod val=\"50000\"/><a:alphaOff val=\"10000\"/>",
+      "color": "000000",
+      "opacity": 0.35,
+      "nativeProjection": {
+        "color": "000000",
+        "opacity": 0.35
+      },
+      "nativeSelectedStyleAgrees": true,
+      "sourcePdf": {
+        "spans": [
+          {
+            "text": "Case 8: alpha-composition",
+            "color": "000000",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "9c87213a88015ef6d19064b74913f447e1e8245f2ffce4460c12fafae186e2d8"
+      },
+      "projectionPdf": {
+        "spans": [
+          {
+            "text": "Case 8: alpha-composition",
+            "color": "000000",
+            "alpha": 255
+          }
+        ],
+        "width": 961,
+        "height": 540,
+        "rasterSha256": "9c87213a88015ef6d19064b74913f447e1e8245f2ffce4460c12fafae186e2d8"
+      },
+      "sameNativeRaster": true
+    }
+  ],
+  "logs": {
+    "source": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/pdf/source.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "projection": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/projection.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/pdf/projection.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    "nativeSave": {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/source.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/color-transform-native/run-n77lQy/native/source.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  }
+}

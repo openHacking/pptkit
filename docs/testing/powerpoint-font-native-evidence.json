@@ -1,0 +1,6399 @@
+{
+  "status": "observed",
+  "recordedAt": "2026-10-26T02:08:02.967098+00:00",
+  "application": "Microsoft PowerPoint for Mac 16.104",
+  "applicationBuild": "16.104.25121423",
+  "sourceDirectory": ".tmp/real-font-native/run-mfnnLO",
+  "artifactsDirectory": ".tmp/powerpoint-font-probe",
+  "stages": [
+    {
+      "name": "source",
+      "pptxSha256": "3d22a498a8cacb9157725939552d20c7fe871a8e4f43c57ea079df1409b79bdc",
+      "pdfSha256": "246060103f62c78dea2de2862de177ed175b1233e1e9cf2e354f26138785fd39",
+      "declarations": [
+        {
+          "slidePart": "ppt/slides/slide1.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout1.xml",
+          "masterPart": "ppt/slideMasters/slideMaster1.xml",
+          "themePart": "ppt/theme/theme1.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide2.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout2.xml",
+          "masterPart": "ppt/slideMasters/slideMaster2.xml",
+          "themePart": "ppt/theme/theme2.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide3.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout3.xml",
+          "masterPart": "ppt/slideMasters/slideMaster3.xml",
+          "themePart": "ppt/theme/theme3.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Arial Hebrew"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide4.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout4.xml",
+          "masterPart": "ppt/slideMasters/slideMaster4.xml",
+          "themePart": "ppt/theme/theme4.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide5.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout5.xml",
+          "masterPart": "ppt/slideMasters/slideMaster5.xml",
+          "themePart": "ppt/theme/theme5.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide6.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout6.xml",
+          "masterPart": "ppt/slideMasters/slideMaster6.xml",
+          "themePart": "ppt/theme/theme6.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ja",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide7.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout7.xml",
+          "masterPart": "ppt/slideMasters/slideMaster7.xml",
+          "themePart": "ppt/theme/theme7.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ko",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide8.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout8.xml",
+          "masterPart": "ppt/slideMasters/slideMaster8.xml",
+          "themePart": "ppt/theme/theme8.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide9.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout9.xml",
+          "masterPart": "ppt/slideMasters/slideMaster9.xml",
+          "themePart": "ppt/theme/theme9.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide10.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout10.xml",
+          "masterPart": "ppt/slideMasters/slideMaster10.xml",
+          "themePart": "ppt/theme/theme10.xml",
+          "runs": [
+            {
+              "text": "ΩΣ",
+              "language": "el",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide11.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout11.xml",
+          "masterPart": "ppt/slideMasters/slideMaster11.xml",
+          "themePart": "ppt/theme/theme11.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide12.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout12.xml",
+          "masterPart": "ppt/slideMasters/slideMaster12.xml",
+          "themePart": "ppt/theme/theme12.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide13.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout13.xml",
+          "masterPart": "ppt/slideMasters/slideMaster13.xml",
+          "themePart": "ppt/theme/theme13.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide14.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout14.xml",
+          "masterPart": "ppt/slideMasters/slideMaster14.xml",
+          "themePart": "ppt/theme/theme14.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide15.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout15.xml",
+          "masterPart": "ppt/slideMasters/slideMaster15.xml",
+          "themePart": "ppt/theme/theme15.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide16.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout16.xml",
+          "masterPart": "ppt/slideMasters/slideMaster16.xml",
+          "themePart": "ppt/theme/theme16.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-lt"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide17.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout17.xml",
+          "masterPart": "ppt/slideMasters/slideMaster17.xml",
+          "themePart": "ppt/theme/theme17.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide18.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout18.xml",
+          "masterPart": "ppt/slideMasters/slideMaster18.xml",
+          "themePart": "ppt/theme/theme18.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "cs",
+                  "Arial Unicode MS"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide19.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout19.xml",
+          "masterPart": "ppt/slideMasters/slideMaster19.xml",
+          "themePart": "ppt/theme/theme19.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide20.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout20.xml",
+          "masterPart": "ppt/slideMasters/slideMaster20.xml",
+          "themePart": "ppt/theme/theme20.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Arial"
+                ],
+                [
+                  "cs",
+                  "Arial"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        }
+      ],
+      "pdf": [
+        {
+          "id": "direct-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ko",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-greek",
+          "fonts": [
+            "Georgia"
+          ],
+          "text": "ΩΣ",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "latin-only-tc",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "cross-slot-ea",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-ea-overrides",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-cs-overrides",
+          "fonts": [
+            "ArialUnicodeMS"
+          ],
+          "text": "שָׁ לוֹ ם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "bare-zh-empty",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "missing-glyph-latin",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        }
+      ]
+    },
+    {
+      "name": "round1",
+      "pptxSha256": "25948beaee232902f5cdb8d732a50d685ba62341145320551859bc4fb7227b1e",
+      "pdfSha256": "50f3fcd850406cf2ed4a07c108e17d127b3580be46ef7b5021ed4642d8ae85a4",
+      "declarations": [
+        {
+          "slidePart": "ppt/slides/slide1.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout1.xml",
+          "masterPart": "ppt/slideMasters/slideMaster1.xml",
+          "themePart": "ppt/theme/theme1.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide2.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout2.xml",
+          "masterPart": "ppt/slideMasters/slideMaster2.xml",
+          "themePart": "ppt/theme/theme2.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide3.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout3.xml",
+          "masterPart": "ppt/slideMasters/slideMaster3.xml",
+          "themePart": "ppt/theme/theme3.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Arial Hebrew"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide4.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout4.xml",
+          "masterPart": "ppt/slideMasters/slideMaster4.xml",
+          "themePart": "ppt/theme/theme4.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide5.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout5.xml",
+          "masterPart": "ppt/slideMasters/slideMaster5.xml",
+          "themePart": "ppt/theme/theme5.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide6.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout6.xml",
+          "masterPart": "ppt/slideMasters/slideMaster6.xml",
+          "themePart": "ppt/theme/theme6.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ja",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide7.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout7.xml",
+          "masterPart": "ppt/slideMasters/slideMaster7.xml",
+          "themePart": "ppt/theme/theme7.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ko",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide8.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout8.xml",
+          "masterPart": "ppt/slideMasters/slideMaster8.xml",
+          "themePart": "ppt/theme/theme8.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide9.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout9.xml",
+          "masterPart": "ppt/slideMasters/slideMaster9.xml",
+          "themePart": "ppt/theme/theme9.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide10.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout10.xml",
+          "masterPart": "ppt/slideMasters/slideMaster10.xml",
+          "themePart": "ppt/theme/theme10.xml",
+          "runs": [
+            {
+              "text": "ΩΣ",
+              "language": "el",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide11.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout11.xml",
+          "masterPart": "ppt/slideMasters/slideMaster11.xml",
+          "themePart": "ppt/theme/theme11.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide12.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout12.xml",
+          "masterPart": "ppt/slideMasters/slideMaster12.xml",
+          "themePart": "ppt/theme/theme12.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide13.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout13.xml",
+          "masterPart": "ppt/slideMasters/slideMaster13.xml",
+          "themePart": "ppt/theme/theme13.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide14.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout14.xml",
+          "masterPart": "ppt/slideMasters/slideMaster14.xml",
+          "themePart": "ppt/theme/theme14.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide15.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout15.xml",
+          "masterPart": "ppt/slideMasters/slideMaster15.xml",
+          "themePart": "ppt/theme/theme15.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide16.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout16.xml",
+          "masterPart": "ppt/slideMasters/slideMaster16.xml",
+          "themePart": "ppt/theme/theme16.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-lt"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide17.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout17.xml",
+          "masterPart": "ppt/slideMasters/slideMaster17.xml",
+          "themePart": "ppt/theme/theme17.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide18.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout18.xml",
+          "masterPart": "ppt/slideMasters/slideMaster18.xml",
+          "themePart": "ppt/theme/theme18.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "cs",
+                  "Arial Unicode MS"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide19.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout19.xml",
+          "masterPart": "ppt/slideMasters/slideMaster19.xml",
+          "themePart": "ppt/theme/theme19.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide20.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout20.xml",
+          "masterPart": "ppt/slideMasters/slideMaster20.xml",
+          "themePart": "ppt/theme/theme20.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Arial"
+                ],
+                [
+                  "cs",
+                  "Arial"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        }
+      ],
+      "declarationChanges": [],
+      "pdf": [
+        {
+          "id": "direct-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ko",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-greek",
+          "fonts": [
+            "Georgia"
+          ],
+          "text": "ΩΣ",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "latin-only-tc",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "cross-slot-ea",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-ea-overrides",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-cs-overrides",
+          "fonts": [
+            "ArialUnicodeMS"
+          ],
+          "text": "שָׁ לוֹ ם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "bare-zh-empty",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "missing-glyph-latin",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        }
+      ]
+    },
+    {
+      "name": "round2",
+      "pptxSha256": "ff1790d7f2a0ea4ced771e325305dce0b9c455c6659df46350350ca6fd3bcf8d",
+      "pdfSha256": "647fb29d52a7ada09c9c4b5ed892d82338bbc2a8ba28bcc63f6c4c6a4e40f5ef",
+      "declarations": [
+        {
+          "slidePart": "ppt/slides/slide1.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout1.xml",
+          "masterPart": "ppt/slideMasters/slideMaster1.xml",
+          "themePart": "ppt/theme/theme1.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide2.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout2.xml",
+          "masterPart": "ppt/slideMasters/slideMaster2.xml",
+          "themePart": "ppt/theme/theme2.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide3.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout3.xml",
+          "masterPart": "ppt/slideMasters/slideMaster3.xml",
+          "themePart": "ppt/theme/theme3.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Arial Hebrew"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide4.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout4.xml",
+          "masterPart": "ppt/slideMasters/slideMaster4.xml",
+          "themePart": "ppt/theme/theme4.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide5.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout5.xml",
+          "masterPart": "ppt/slideMasters/slideMaster5.xml",
+          "themePart": "ppt/theme/theme5.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide6.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout6.xml",
+          "masterPart": "ppt/slideMasters/slideMaster6.xml",
+          "themePart": "ppt/theme/theme6.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ja",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide7.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout7.xml",
+          "masterPart": "ppt/slideMasters/slideMaster7.xml",
+          "themePart": "ppt/theme/theme7.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ko",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide8.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout8.xml",
+          "masterPart": "ppt/slideMasters/slideMaster8.xml",
+          "themePart": "ppt/theme/theme8.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide9.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout9.xml",
+          "masterPart": "ppt/slideMasters/slideMaster9.xml",
+          "themePart": "ppt/theme/theme9.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide10.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout10.xml",
+          "masterPart": "ppt/slideMasters/slideMaster10.xml",
+          "themePart": "ppt/theme/theme10.xml",
+          "runs": [
+            {
+              "text": "ΩΣ",
+              "language": "el",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide11.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout11.xml",
+          "masterPart": "ppt/slideMasters/slideMaster11.xml",
+          "themePart": "ppt/theme/theme11.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide12.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout12.xml",
+          "masterPart": "ppt/slideMasters/slideMaster12.xml",
+          "themePart": "ppt/theme/theme12.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide13.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout13.xml",
+          "masterPart": "ppt/slideMasters/slideMaster13.xml",
+          "themePart": "ppt/theme/theme13.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide14.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout14.xml",
+          "masterPart": "ppt/slideMasters/slideMaster14.xml",
+          "themePart": "ppt/theme/theme14.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide15.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout15.xml",
+          "masterPart": "ppt/slideMasters/slideMaster15.xml",
+          "themePart": "ppt/theme/theme15.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide16.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout16.xml",
+          "masterPart": "ppt/slideMasters/slideMaster16.xml",
+          "themePart": "ppt/theme/theme16.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-lt"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide17.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout17.xml",
+          "masterPart": "ppt/slideMasters/slideMaster17.xml",
+          "themePart": "ppt/theme/theme17.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide18.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout18.xml",
+          "masterPart": "ppt/slideMasters/slideMaster18.xml",
+          "themePart": "ppt/theme/theme18.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "cs",
+                  "Arial Unicode MS"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide19.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout19.xml",
+          "masterPart": "ppt/slideMasters/slideMaster19.xml",
+          "themePart": "ppt/theme/theme19.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide20.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout20.xml",
+          "masterPart": "ppt/slideMasters/slideMaster20.xml",
+          "themePart": "ppt/theme/theme20.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Arial"
+                ],
+                [
+                  "cs",
+                  "Arial"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        }
+      ],
+      "declarationChanges": [],
+      "pdf": [
+        {
+          "id": "direct-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ko",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-greek",
+          "fonts": [
+            "Georgia"
+          ],
+          "text": "ΩΣ",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "latin-only-tc",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "cross-slot-ea",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-ea-overrides",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-cs-overrides",
+          "fonts": [
+            "ArialUnicodeMS"
+          ],
+          "text": "שָׁ לוֹ ם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "bare-zh-empty",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "missing-glyph-latin",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        }
+      ]
+    },
+    {
+      "name": "round3",
+      "pptxSha256": "ddf5fe09e2343503a8d467ff26649f333bffd6cc9dc9fa428457674a236bcb2a",
+      "pdfSha256": "9a1db0cd5b8e9c2161f2173a64a80de45ec4285efac0253467af7cccdaebbec0",
+      "declarations": [
+        {
+          "slidePart": "ppt/slides/slide1.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout1.xml",
+          "masterPart": "ppt/slideMasters/slideMaster1.xml",
+          "themePart": "ppt/theme/theme1.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide2.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout2.xml",
+          "masterPart": "ppt/slideMasters/slideMaster2.xml",
+          "themePart": "ppt/theme/theme2.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Geeza Pro"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide3.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout3.xml",
+          "masterPart": "ppt/slideMasters/slideMaster3.xml",
+          "themePart": "ppt/theme/theme3.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ],
+                [
+                  "cs",
+                  "Arial Hebrew"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide4.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout4.xml",
+          "masterPart": "ppt/slideMasters/slideMaster4.xml",
+          "themePart": "ppt/theme/theme4.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide5.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout5.xml",
+          "masterPart": "ppt/slideMasters/slideMaster5.xml",
+          "themePart": "ppt/theme/theme5.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide6.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout6.xml",
+          "masterPart": "ppt/slideMasters/slideMaster6.xml",
+          "themePart": "ppt/theme/theme6.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ja",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide7.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout7.xml",
+          "masterPart": "ppt/slideMasters/slideMaster7.xml",
+          "themePart": "ppt/theme/theme7.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "ko",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide8.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout8.xml",
+          "masterPart": "ppt/slideMasters/slideMaster8.xml",
+          "themePart": "ppt/theme/theme8.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide9.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout9.xml",
+          "masterPart": "ppt/slideMasters/slideMaster9.xml",
+          "themePart": "ppt/theme/theme9.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide10.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout10.xml",
+          "masterPart": "ppt/slideMasters/slideMaster10.xml",
+          "themePart": "ppt/theme/theme10.xml",
+          "runs": [
+            {
+              "text": "ΩΣ",
+              "language": "el",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide11.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout11.xml",
+          "masterPart": "ppt/slideMasters/slideMaster11.xml",
+          "themePart": "ppt/theme/theme11.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-CN",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide12.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout12.xml",
+          "masterPart": "ppt/slideMasters/slideMaster12.xml",
+          "themePart": "ppt/theme/theme12.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide13.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout13.xml",
+          "masterPart": "ppt/slideMasters/slideMaster13.xml",
+          "themePart": "ppt/theme/theme13.xml",
+          "runs": [
+            {
+              "text": "لا",
+              "language": "ar",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide14.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout14.xml",
+          "masterPart": "ppt/slideMasters/slideMaster14.xml",
+          "themePart": "ppt/theme/theme14.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide15.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout15.xml",
+          "masterPart": "ppt/slideMasters/slideMaster15.xml",
+          "themePart": "ppt/theme/theme15.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide16.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout16.xml",
+          "masterPart": "ppt/slideMasters/slideMaster16.xml",
+          "themePart": "ppt/theme/theme16.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-lt"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide17.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout17.xml",
+          "masterPart": "ppt/slideMasters/slideMaster17.xml",
+          "themePart": "ppt/theme/theme17.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "ea",
+                  "Hiragino Sans GB"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide18.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout18.xml",
+          "masterPart": "ppt/slideMasters/slideMaster18.xml",
+          "themePart": "ppt/theme/theme18.xml",
+          "runs": [
+            {
+              "text": "שָׁלוֹם",
+              "language": "he",
+              "slots": [
+                [
+                  "cs",
+                  "Arial Unicode MS"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [
+            [
+              [
+                "latin",
+                "+mn-lt"
+              ],
+              [
+                "ea",
+                "+mn-ea"
+              ],
+              [
+                "cs",
+                "+mn-cs"
+              ]
+            ]
+          ],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide19.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout19.xml",
+          "masterPart": "ppt/slideMasters/slideMaster19.xml",
+          "themePart": "ppt/theme/theme19.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh",
+              "slots": [
+                [
+                  "latin",
+                  "+mn-lt"
+                ],
+                [
+                  "ea",
+                  "+mn-ea"
+                ],
+                [
+                  "cs",
+                  "+mn-cs"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              ""
+            ],
+            [
+              "cs",
+              ""
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        },
+        {
+          "slidePart": "ppt/slides/slide20.xml",
+          "layoutPart": "ppt/slideLayouts/slideLayout20.xml",
+          "masterPart": "ppt/slideMasters/slideMaster20.xml",
+          "themePart": "ppt/theme/theme20.xml",
+          "runs": [
+            {
+              "text": "骨直令返",
+              "language": "zh-TW",
+              "slots": [
+                [
+                  "latin",
+                  "Arial"
+                ],
+                [
+                  "ea",
+                  "Arial"
+                ],
+                [
+                  "cs",
+                  "Arial"
+                ]
+              ]
+            }
+          ],
+          "localListFonts": [],
+          "themeGeneric": [
+            [
+              "latin",
+              "Arial"
+            ],
+            [
+              "ea",
+              "Arial Unicode MS"
+            ],
+            [
+              "cs",
+              "Arial Unicode MS"
+            ]
+          ],
+          "themeSupplemental": [
+            [
+              "Hans",
+              "Hiragino Sans GB"
+            ],
+            [
+              "Hant",
+              "Songti TC"
+            ],
+            [
+              "Jpan",
+              "Hiragino Mincho ProN"
+            ],
+            [
+              "Hang",
+              "Apple SD Gothic Neo"
+            ],
+            [
+              "Arab",
+              "Geeza Pro"
+            ],
+            [
+              "Hebr",
+              "Arial Hebrew"
+            ],
+            [
+              "Grek",
+              "Georgia"
+            ]
+          ]
+        }
+      ],
+      "declarationChanges": [],
+      "pdf": [
+        {
+          "id": "direct-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "direct-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ja",
+          "fonts": [
+            "HiraMinProN-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-ko",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-explicit-greek",
+          "fonts": [
+            "Georgia"
+          ],
+          "text": "ΩΣ",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-sc",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-tc",
+          "fonts": [
+            "STSongti-TC-Regular"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-arabic",
+          "fonts": [
+            "GeezaPro"
+          ],
+          "text": "لا",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "theme-empty-hebrew",
+          "fonts": [
+            "ArialHebrew"
+          ],
+          "text": "שָׁלוֹם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "latin-only-tc",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "cross-slot-ea",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-ea-overrides",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "local-cs-overrides",
+          "fonts": [
+            "ArialUnicodeMS"
+          ],
+          "text": "שָׁ לוֹ ם",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "bare-zh-empty",
+          "fonts": [
+            "HiraginoSansGB-W3"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        },
+        {
+          "id": "missing-glyph-latin",
+          "fonts": [
+            "MicrosoftYaHei"
+          ],
+          "text": "骨直令返",
+          "rasterMatchesInitial": true
+        }
+      ]
+    }
+  ],
+  "wrongFontControlRejected": true,
+  "limitations": [
+    "Named font declarations and raster equality only",
+    "No text/style/theme editing certification",
+    "No complete package byte preservation claim"
+  ]
+}

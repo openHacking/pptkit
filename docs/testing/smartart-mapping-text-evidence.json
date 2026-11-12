@@ -1,0 +1,271 @@
+{
+  "profile": "smartart-source-inventory-v1",
+  "repositoryCommit": "0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2",
+  "retainedDirectory": "/Volumes/github/private/pptkit/.tmp/smartart-text-transforms/0ea8f79d15a6",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "command": "node scripts/inspect-smartart-inventory.mjs /Volumes/github/private/pptkit/.tmp/smartart-text-transforms/0ea8f79d15a6 --preview --output /Volumes/github/private/pptkit/docs/testing/smartart-mapping-text-evidence.json",
+  "previewEnabled": true,
+  "cases": [
+    {
+      "name": "bnc870237.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/bnc870237.pptx",
+      "gitBlob": "245ef51f8036d1a7628ecfcda11acc3cc2f87074",
+      "sha256": "debdff6aa482beb06ef6475284fb3c8db0feb5c653370e299cb91ecb33c5c5ad",
+      "bytes": 40889,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/lProcess2"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 5,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 10,
+          "connections": 9,
+          "paragraphs": 7,
+          "textRuns": 1,
+          "references": {
+            "resolved": 28
+          },
+          "findings": 0,
+          "presentationMappings": 6,
+          "presentationAgreement": {
+            "same-target": 6
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 1,
+          "references": {
+            "resolved": 1
+          },
+          "independentPairAndShapeMapping": true
+        }
+      ],
+      "cachePreviews": [
+        {
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "reason": null,
+          "rawCacheChildren": 1
+        }
+      ],
+      "independentTextFrames": [
+        {
+          "elementIndex": 7,
+          "text": "Text",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 153.08787401574804,
+            "height": 120.49606299212599
+          },
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "name": "tdf149551_SmartArt_Gear.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/tdf149551_SmartArt_Gear.pptx",
+      "gitBlob": "cf549d4f72d2f15df30b08c131bd06e395e5a93c",
+      "sha256": "c1d2823c0928c852ae8cb78ca3cb1140197d91848199849e1888e28d24a6548d",
+      "bytes": 25487,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/gear1"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 5,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 24,
+          "connections": 30,
+          "paragraphs": 9,
+          "textRuns": 3,
+          "references": {
+            "resolved": 86
+          },
+          "findings": 0,
+          "presentationMappings": 14,
+          "presentationAgreement": {
+            "same-target": 14
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 6,
+          "references": {
+            "resolved": 6
+          },
+          "independentPairAndShapeMapping": true
+        }
+      ],
+      "cachePreviews": [
+        {
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "reason": null,
+          "rawCacheChildren": 6
+        }
+      ],
+      "independentTextFrames": [
+        {
+          "elementIndex": 121,
+          "text": "Three",
+          "box": {
+            "x": 153.08582677165353,
+            "y": 36.8503937007874,
+            "width": 62.36220472440945,
+            "height": 62.36220472440945
+          },
+          "rotation": 0
+        },
+        {
+          "elementIndex": 64,
+          "text": "Two",
+          "box": {
+            "x": 93.75700787401574,
+            "y": 119.4263779527559,
+            "width": 56.29543307086614,
+            "height": 55.9503937007874
+          },
+          "rotation": 0
+        },
+        {
+          "elementIndex": 7,
+          "text": "One",
+          "box": {
+            "x": 187.2644094488189,
+            "y": 164.0792125984252,
+            "width": 93.21763779527559,
+            "height": 80.13858267716536
+          },
+          "rotation": 0
+        }
+      ]
+    },
+    {
+      "name": "tdf149551_SmartArt_Pyramid.pptx",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/tdf149551_SmartArt_Pyramid.pptx",
+      "gitBlob": "fa1783f2110dec26ff73cc7eb447792c87da7623",
+      "sha256": "4248055695134f2b542d63a7bbc702df8b45d2f7c5f725b57c91588d2d367594",
+      "bytes": 24885,
+      "exactNoOp": true,
+      "independentZipXml": true,
+      "layouts": [
+        "urn:microsoft.com/office/officeart/2005/8/layout/pyramid1"
+      ],
+      "cacheStatuses": [
+        "located"
+      ],
+      "resourceParts": 5,
+      "imageParts": 0,
+      "dataGraphs": [
+        {
+          "part": "/ppt/diagrams/data1.xml",
+          "status": "inspected",
+          "points": 20,
+          "connections": 19,
+          "paragraphs": 9,
+          "textRuns": 3,
+          "references": {
+            "resolved": 60
+          },
+          "findings": 0,
+          "presentationMappings": 10,
+          "presentationAgreement": {
+            "same-target": 10
+          },
+          "independentIdentitiesReferencesAndText": true
+        }
+      ],
+      "cacheMappings": [
+        {
+          "dataPart": "/ppt/diagrams/data1.xml",
+          "cachePart": "/ppt/diagrams/drawing1.xml",
+          "status": "inspected",
+          "shapes": 3,
+          "references": {
+            "resolved": 3
+          },
+          "independentPairAndShapeMapping": true
+        }
+      ],
+      "cachePreviews": [
+        {
+          "status": "partial-cache",
+          "freshness": "unknown",
+          "reason": null,
+          "rawCacheChildren": 3
+        }
+      ],
+      "independentTextFrames": [
+        {
+          "elementIndex": 121,
+          "text": "3 a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z",
+          "box": {
+            "x": 79.37708661417322,
+            "y": 201.59251968503938,
+            "width": 294.8291338582677,
+            "height": 100.79629921259843
+          },
+          "rotation": 0
+        },
+        {
+          "elementIndex": 64,
+          "text": "2 a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z",
+          "box": {
+            "x": 128.51527559055117,
+            "y": 100.79622047244095,
+            "width": 196.55275590551182,
+            "height": 100.79629921259843
+          },
+          "rotation": 0
+        },
+        {
+          "elementIndex": 7,
+          "text": "1 a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z",
+          "box": {
+            "x": 151.1944094488189,
+            "y": 0,
+            "width": 151.1944094488189,
+            "height": 100.79629921259843
+          },
+          "rotation": 0
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Source inspection, exact no-op and optional bounded preview probes only; no native application opening/editing/playback or visual-fidelity certification.",
+    "Third-party source files remain local experiment inputs; redistribution/fixture licensing admission is pending.",
+    "These pinned Transitional source cases do not establish complete producer/dialect/family support or cache freshness."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "One generated parallelogram after an element-transform operation with 30-degree rotation and horizontal flip, opened in PowerPoint, selected and nudged right three times, saved, closed and reopened once. No repair prompt was observed. The shape and its text were visible on reopening. UI provenance is observational, not authenticated; no calibrated visual comparison was performed.",
+  "application": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "system": "macOS 26.5 (25F71)",
+  "artifacts": {
+    "source": { "path": "tests/fixtures/edit-transform-source.pptx", "sha256": "2d1dd881b995f99dd7b838d3804ff87e34a58286fa7c98a63711bda5786129e9" },
+    "saved": { "path": "tests/fixtures/edit-transform-powerpoint.pptx", "sha256": "5a998aad0f01ad357e722f323db0e3f32334af3f669b1bf319db24d1b2dfe129" },
+    "generator": { "path": "scripts/research/generate-edit-transform-native.mjs", "sha256": "c702f8b106bc96293a54cab0c24ed4f76b8cfee8ff0c8fd536bb4a6781f6671d" }
+  },
+  "observation": "Independent ZIP/XML inspection finds the target offset changed from x=1905000 to 1927302 EMU; y, extents, rotation 1800000, horizontal flip, shape text and reference text were retained.",
+  "limitations": "One shape and one edit/reopen. This does not establish visual equivalence, transform controls, native undo, source-preserving saves, other object types or application versions."
+}

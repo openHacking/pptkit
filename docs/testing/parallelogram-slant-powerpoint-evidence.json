@@ -1,0 +1,25 @@
+{
+  "scope": "One opaque red slide with slants 0, 0.4 and 1 including a rotation/flip, one PowerPoint save and reopen. Fixed grid points at least 4 pt from edges, excluding the pointer halo, are compared against an independent polygon model; native UI provenance is observed, not authenticated. Edges, text, other adjustments, interactive edits and other versions remain unverified.",
+  "reopenRounds": 1,
+  "samples": {
+    "first": {
+      "outside": 2439,
+      "inside": 549,
+      "mismatches": 0
+    },
+    "reopen": {
+      "outside": 2439,
+      "inside": 549,
+      "mismatches": 0
+    }
+  },
+  "artifactDirectory": ".tmp/native-parallelogram-slant",
+  "sha256": {
+    "source.pptx": "98e59a32879942b872c7313f65b911f3d015e9231332ebc8e59840ca68fa9af0",
+    "native-round-1.pptx": "c7b145170062bd6233cd447b5a517633bd2c5b0f3f5b943fbf243daeb9749074",
+    "first.ax.txt": "11580acd86c9e075343dd10cd4989639dfdb9868c4a8fb1b7a88cc102769f3f8",
+    "first.jpg": "fcd55eae3cf5d905ad0c2d916b7e0980aff3e9d21188816c2d29fe236b0e4781",
+    "reopen.ax.txt": "3f502ac53aa142f73c905aca74fb1296afdf02cec1c6403e2de29c6c80eed0c7",
+    "reopen.jpg": "a2d2ee5c8ee9123c94ec01e36bee7e100b01d53a9014e219b7c0331afaa977c8"
+  }
+}

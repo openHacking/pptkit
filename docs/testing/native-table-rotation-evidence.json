@@ -1,0 +1,47 @@
+{
+  "pymupdf": "1.28.0",
+  "mupdf": "1.29.0",
+  "observed": {
+    "browser": {
+      "lines": [],
+      "redPixels": 0,
+      "bluePixels": 0,
+      "redBounds": null,
+      "blueBounds": null
+    },
+    "native": {
+      "lines": [
+        {
+          "text": "Clockwise",
+          "angle": 90.0
+        },
+        {
+          "text": "Counter",
+          "angle": -90.0
+        }
+      ],
+      "redPixels": 230,
+      "bluePixels": 171,
+      "redBounds": [
+        99,
+        29,
+        110,
+        98
+      ],
+      "blueBounds": [
+        129,
+        116,
+        140,
+        170
+      ]
+    }
+  },
+  "sha256": {
+    "browser.svg": "084698590c4bda7ba576cc3bab7d0cb06f0e7b992f628aed531c8b0efba75a48",
+    "browser-warnings.json": "df69eb77a390ccdbac9d3ffea7ed701592ad7f6448d48c02169755856fd0dfe5",
+    "browser-mupdf.png": "28f111d762a607597a0b3508d98f7f71fb9df9aaa142f58f78fb59cf6ebaa31f",
+    "native.svg": "02dcd318da861dfa807993fd8d62f5d9662683fe2ae594732331c00f614637e8",
+    "native-warnings.json": "3c90dcff966c0badba8e35fff0ca56158369f4cde4c81dc6cc465bfe2af60c3c",
+    "native-mupdf.png": "99536a7b90dd132e89060127b041906ea6d6e33ffaa914727cc83a262478f347"
+  }
+}

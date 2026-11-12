@@ -1,0 +1,38 @@
+{
+  "scope": "Fresh corpus images sample; PowerPoint 16.104 build 16.104.25121423 on macOS 26.5. Cropped the left edge of image-stretch, saved, closed and reopened once; no repair prompt observed. UI evidence is observed, not authenticated. Not a calibrated visual comparison or general crop/format compatibility claim.",
+  "input": {
+    "path": ".tmp/corpus-powerpoint-fresh/images.pptx",
+    "sha256": "13f81c7d9c65ca846503cc1ce4a344eaed1eb73a24d42fad1b78fcd7dcd996f8",
+    "manifest": ".tmp/corpus-powerpoint-fresh/manifest.json"
+  },
+  "output": {
+    "path": "tests/fixtures/corpus-images-powerpoint-interactive.pptx",
+    "sha256": "9c5850a67505a26a12a99edd15ce3862b876e5274e13151406e0085de1bbc035"
+  },
+  "artifactDirectory": ".tmp/corpus-powerpoint-images",
+  "captures": {
+    "first.png": "f3195970d84a02e7461aa1e0dde1acaa64d5c8dce095dd85cee82666df69c5e1",
+    "first.ax.txt": "bf0e6fa40b4921c45a7852b6b0acc1c554cdacd8fdf9c3ec7ef0afa7f7ec5ed2",
+    "reopen.png": "76a4c12bd5ad4148651d7bd5cda01133126d31490f46aa048f7512a66c7e220f",
+    "reopen.ax.txt": "bf0e6fa40b4921c45a7852b6b0acc1c554cdacd8fdf9c3ec7ef0afa7f7ec5ed2"
+  },
+  "operation": "Drag the left crop handle of image-stretch inward, apply, save, close and reopen.",
+  "mediaSha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6",
+  "sourceCrop": null,
+  "savedCrop": {
+    "l": "18212"
+  },
+  "sourceFrameEMU": [
+    508000,
+    1016000,
+    2286000,
+    1397000
+  ],
+  "savedFrameEMU": [
+    924338,
+    1016000,
+    1869661,
+    1397000
+  ],
+  "observation": "PowerPoint renamed shared media and consolidated four image relationships into one; all four images continue to reference identical media bytes."
+}

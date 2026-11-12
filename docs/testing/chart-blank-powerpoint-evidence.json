@@ -1,0 +1,230 @@
+{
+  "scope": "PowerPoint first open and three sequential save/close/reopen rounds for one bar, one line and one pie chart with [4, blank, 0, 3]. Checks cache and embedded workbook through relationships plus AX point values on all pages; line screenshot visually shows a gap. No in-app data edit, other distributions or general Office parity claim. Capture hashes do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "331bf0fa8342ffdb56c71675c81d1b3c8e49ad3451195a918949ef46773a62c8",
+  "verifierSha256": "89d04bc65b86c66ac67ae42da587940ab163fafbd8a344071ce75e199196fd6f",
+  "packages": [
+    {
+      "sha256": "4943e32e045c6b487f0a52d228e785aa5c25c8b2ddb0a9204a128eb4972af605",
+      "charts": [
+        {
+          "kind": "bar",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        },
+        {
+          "kind": "line",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx"
+        },
+        {
+          "kind": "pie",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx"
+        }
+      ]
+    },
+    {
+      "sha256": "ee5b7921996e362bfc6ce9207c0e26396e1b4a6cfe7392c65f1b00d9066ba0e4",
+      "charts": [
+        {
+          "kind": "bar",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "kind": "line",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "kind": "pie",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        }
+      ]
+    },
+    {
+      "sha256": "6279eae714efc6c26e863d0bf388b25dd5543549455d7d5976b0b8ce630b05d6",
+      "charts": [
+        {
+          "kind": "bar",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "kind": "line",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "kind": "pie",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        }
+      ]
+    },
+    {
+      "sha256": "9289f9d7ab4c8a489271c956e38a3a681a50f3be0c99cf6cceab2ae5ee08709d",
+      "charts": [
+        {
+          "kind": "bar",
+          "chartPart": "ppt/charts/chart1.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____.xlsx"
+        },
+        {
+          "kind": "line",
+          "chartPart": "ppt/charts/chart2.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____1.xlsx"
+        },
+        {
+          "kind": "pie",
+          "chartPart": "ppt/charts/chart3.xml",
+          "workbookPart": "ppt/embeddings/Microsoft_Excel____2.xlsx"
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "kind": "bar",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "89bf2d8f17a5739da95396cdea33b34f11521aecf7d5a63d478586504a2c8636",
+      "screenshotSha256": "a62ddf9b2f2e53b25cde1c2db7649f1bfad25ecad6d53d756f36abc68a748fdc"
+    },
+    {
+      "phase": "first",
+      "kind": "line",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "9228acc1d30472004dc7d55ccc838673965b3b221320c427a2fe1f75f0fa2138",
+      "screenshotSha256": "a958c005516fd57ec106abf52dfb97a70919c630964ab1020e75cb4204da5099"
+    },
+    {
+      "phase": "first",
+      "kind": "pie",
+      "points": {
+        "A": "4 (57%)",
+        "ZERO": "0 (0%)",
+        "D": "3 (43%)"
+      },
+      "axSha256": "60d67f66bdbdb711174b0f2205b26feb3407079f06ec8c5e31d34eb69c5a41ea",
+      "screenshotSha256": "775cf29c8fbe5309c7d87b931b9fde73b29a044895b428dfa08cacfb008d8e92"
+    },
+    {
+      "phase": "reopen",
+      "kind": "bar",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "65f3fcba9b57d1af938833f406a91d19ae374a62b2c70ba7fb3575054661dfda",
+      "screenshotSha256": "db357ac9c75a72a866c023e419cbeabae1e41cea0bf1c9dd2611b79e7d9a15e7"
+    },
+    {
+      "phase": "reopen",
+      "kind": "line",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "e836a849d31fd48a31e9f554c1a23cce9642c6f07b6c39097c38151824665e33",
+      "screenshotSha256": "d1e2fdcadc5aaa1fa5f9650eeb2d3abe0c8c80530dedcd51900df53e2cdc4b7f"
+    },
+    {
+      "phase": "reopen",
+      "kind": "pie",
+      "points": {
+        "A": "4 (57%)",
+        "ZERO": "0 (0%)",
+        "D": "3 (43%)"
+      },
+      "axSha256": "df1cb67afee0f51823cbc8b5e485a14a4c83a6a10d37ee63e6edb0f960cf4197",
+      "screenshotSha256": "36d6b9106882470c6b4372ebc6d8cc86692e98475d0f35923a428f93848db5dc"
+    },
+    {
+      "phase": "round-2",
+      "kind": "bar",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "52f07a1f419f6cf8cd415bcf0c93cfcb874db3a679c6e181a90179bde952f9c0",
+      "screenshotSha256": "d44395875fd1c12ebdda818dae0f3676dc1423418ec7c0e6257bfcc0e381657d"
+    },
+    {
+      "phase": "round-2",
+      "kind": "line",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "acc1596011d32d52461de2e83206899327669d94f69da2644d30f5e5820e1ce1",
+      "screenshotSha256": "b02da3110270bdb21ca11709afe7f9cf552e5d71683bd8bbe21cecabcff14e51"
+    },
+    {
+      "phase": "round-2",
+      "kind": "pie",
+      "points": {
+        "A": "4 (57%)",
+        "ZERO": "0 (0%)",
+        "D": "3 (43%)"
+      },
+      "axSha256": "8acbd5b323e52bcd7ff89ea6942aaf7e79711db84f6c035a01f5129a28742d22",
+      "screenshotSha256": "1b13adbf1922f83301b55b5f33b47450eb170ab2a345c7dcbb3286062eb3eb51"
+    },
+    {
+      "phase": "round-3",
+      "kind": "bar",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "1730e64ea55b456dd7b8b2b348f2d9eac078c525661e378869f72a41f8e62b61",
+      "screenshotSha256": "8b62448b111bf92f9a9bf46cc66c5419d2158d79de1c9660b36bda05e9970246"
+    },
+    {
+      "phase": "round-3",
+      "kind": "line",
+      "points": {
+        "A": "4",
+        "BLANK": "",
+        "ZERO": "0",
+        "D": "3"
+      },
+      "axSha256": "385ecb9a058b16bd6b3d1c80a65f6bd6c6f218ecc8355c55454e41cc17870a60",
+      "screenshotSha256": "fb41ad13fa9e3dfc84950c133b91605e305ae19c6fd7140957b29ea1b42ed86b"
+    },
+    {
+      "phase": "round-3",
+      "kind": "pie",
+      "points": {
+        "A": "4 (57%)",
+        "ZERO": "0 (0%)",
+        "D": "3 (43%)"
+      },
+      "axSha256": "f1869bad60c7bf29375a46d9a345ac86b3ba6b878a48225e4c1057ac48ad171e",
+      "screenshotSha256": "279f8c6d0bce24fb518e377ff45b206b9f2c8a9f40389d8ee59f2da2d7facd3b"
+    }
+  ]
+}

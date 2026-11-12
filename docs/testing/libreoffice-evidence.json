@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "execution": "Native macOS headless runtime; separate UserInstallation profile",
+  "operations": [
+    "PPTX open/save to PPTX via Impress Office Open XML filter",
+    "Reopen saved PPTX and export PDF via impress_pdf_Export"
+  ],
+  "warnings": [
+    "Fontconfig emitted cachedir configuration warnings; installed-font parity was not verified"
+  ],
+  "artifactsDirectory": ".tmp/compatibility",
+  "fixtures": [
+    {
+      "fixture": "text",
+      "input": {
+        "sha256": "5430ce4c5e7c1bf81363da056f83bed7c8c0e460dbbdda9321155e7343dad8ee",
+        "bytes": 11501,
+        "slides": 2,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "68b3552fe0eb3d2f27eb8283280b78b07815963f6ec3420b9f355d45fe01cef9",
+        "bytes": 12800,
+        "slides": 2,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 27743,
+        "sha256": "cb21a0a72ec7e4d06c65ff9fa0c05d7308090c8d6a07d7cdb4b15f6a8faa439c"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "theme-layout",
+      "input": {
+        "sha256": "3dc639e4ed69a8a20a5aee96a8c4b4efa2544c8d0c820a785586fd90561309ca",
+        "bytes": 12337,
+        "slides": 2,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "c56dab6f536edda34ba749bd93a5ef716472a15fb6cfdf8f7384bd3210af916c",
+        "bytes": 9968,
+        "slides": 2,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 12443,
+        "sha256": "d529732aa7d89f85b2bc91bfc959f81cf87fc37a03a3979bb87e16ce900e1324"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "geometry",
+      "input": {
+        "sha256": "e7c4df39945e2d7497233f8b43c358cf87bd3df20b14b2b1f22543a19ad40732",
+        "bytes": 9859,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "9666d79735a600faf7d4f9f018de3dda1a24a62da945467c5401b9c77646c258",
+        "bytes": 7691,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 14292,
+        "sha256": "cce16b0985592db6e1c2f8a5a591e0964fa92053ede15261a7b18c53c2f3ccaa"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "images",
+      "input": {
+        "sha256": "223c870075c7d75c11650774e549b6c29f28aa3c3f9c21c1c74eb9c873f8af88",
+        "bytes": 10091,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "0d2c8e2326637e7ddab270c2c63f55a1aad4f2acfa9a16dd99a982df2b6e8a5e",
+        "bytes": 7798,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 16452,
+        "sha256": "ad5d77dee1a789704a45130227f88fc456ba2118d7de684b979846de6e326cb5"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "table",
+      "input": {
+        "sha256": "646c609a7dc34145dce54599078904a9c26f2ac86ba923c1e1433eeab5a5ef0f",
+        "bytes": 9655,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "82b1534228eb443b4ced44c68acc59442426c79b686700d79eeb5e35067e9097",
+        "bytes": 7347,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 17248,
+        "sha256": "6bc61a767f1dedb6330881daa6f877a3a1a2fd1029de8301f0655246df6c72ba"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "charts",
+      "input": {
+        "sha256": "b46ab87c35b8adf489f6c50b59589dd6471f3eb6e70488f7438cfdb6875ef391",
+        "bytes": 19045,
+        "slides": 1,
+        "charts": 3,
+        "workbooks": 3,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "358223320e50130d03f15d1303501cc1fecd6e6cc425ea30a64db14c9e9e2668",
+        "bytes": 15592,
+        "slides": 1,
+        "charts": 3,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 22850,
+        "sha256": "d94a528328037d262be2bfbc788becc62b085c5def17db29114a2999f66b87bf"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    },
+    {
+      "fixture": "missing-asset",
+      "input": {
+        "sha256": "32ec9612b21095db3a4b7935da21656183729900f11461e9b7ec2a0c83f8298e",
+        "bytes": 9028,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "saved": {
+        "sha256": "4c0c04b219b1b08ab9d467b962525a6786ac0e37243e964fec3ad10d1575ee84",
+        "bytes": 6663,
+        "slides": 1,
+        "charts": 0,
+        "workbooks": 0,
+        "allXmlParsed": true,
+        "zipCrcValid": true
+      },
+      "reopenedPdf": {
+        "bytes": 7337,
+        "sha256": "96c4ccc03072b1dff06ba8e1a59c0cc538a4fc70e32fb0ffba06d7893e1049bc"
+      },
+      "interactiveEditability": "untested",
+      "visualFidelity": "unreviewed",
+      "repairDialogs": "not observable in headless run"
+    }
+  ]
+}

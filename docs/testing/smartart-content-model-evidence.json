@@ -1,0 +1,430 @@
+{
+  "profile": "smartart-content-model-research-v1",
+  "application": {
+    "name": "Microsoft PowerPoint",
+    "version": "16.104",
+    "build": "16.104.25121423",
+    "platform": "macOS",
+    "osVersion": "26.5"
+  },
+  "sourceCommit": "0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2",
+  "retainedDirectory": "/Volumes/github/private/pptkit/.tmp/smartart-native-model-20261025",
+  "runtime": {
+    "node": "v22.19.0",
+    "python": "3.14.3"
+  },
+  "cases": [
+    {
+      "name": "smartart-accent-process.pptx",
+      "family": "process",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-accent-process.pptx",
+      "observation": {
+        "name": "smartart-accent-process.pptx",
+        "nativeSaved": true,
+        "openWithoutObservedRepair": true,
+        "smartArtRecognized": true,
+        "textEdited": true,
+        "nodeAdded": true,
+        "nodeReordered": true,
+        "automaticRelayoutObserved": true,
+        "reopenedVisible": true,
+        "deletion": "untested",
+        "themeChange": "untested",
+        "artifacts": [
+          "process-edited.png",
+          "process-edited.ax.txt",
+          "process-reopened.png",
+          "process-reopened.ax.txt"
+        ],
+        "steps": [
+          "Opened a local copy of the pinned process3 source.",
+          "Selected graphic; SmartArt Design showed Accent Process (重点流程).",
+          "In SmartArt text pane appended PPTKit Process to a; added PPTKit Added Process; moved added root up.",
+          "Saved with Cmd+S, closed and reopened; edited text and three top-level cards visible."
+        ]
+      },
+      "artifacts": [
+        {
+          "file": "process-edited.png",
+          "sha256": "3db83bcdb7136ebe98dea5192698f682dbb7ca01dcb6b97c26216009161b21b6",
+          "bytes": 129925
+        },
+        {
+          "file": "process-edited.ax.txt",
+          "sha256": "ba1886cbe025e755e61ac265a37e56c480d1a035dd7d1db36b6a9e8853d0f0a9",
+          "bytes": 8085
+        },
+        {
+          "file": "process-reopened.png",
+          "sha256": "c6913708a5e839449dd4da0eb210dff9e62d0171874dc65061bfd46d88900a86",
+          "bytes": 111570
+        },
+        {
+          "file": "process-reopened.ax.txt",
+          "sha256": "d3062578acc71dc2be8218c62d9389394486a8575173f302a6b7ccacfc8460e2",
+          "bytes": 6175
+        }
+      ],
+      "versions": [
+        {
+          "kind": "source",
+          "sha256": "17e6753da5141ca7cfc8f6771429b66b40b5b33269c3a61a2e4c7c6f29dae786",
+          "exactNoOp": true,
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+          "nodes": 4,
+          "assistants": 0,
+          "roots": [
+            "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}",
+            "{D371A627-A015-451F-8389-9118F71987E1}"
+          ],
+          "paragraphsBySourceId": {
+            "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}": {
+              "role": "content",
+              "paragraphs": [
+                "a"
+              ],
+              "children": [
+                "{C515AB2F-289B-42FD-8210-049BC5527592}"
+              ]
+            },
+            "{C515AB2F-289B-42FD-8210-049BC5527592}": {
+              "role": "content",
+              "paragraphs": [
+                "b"
+              ],
+              "children": []
+            },
+            "{D371A627-A015-451F-8389-9118F71987E1}": {
+              "role": "content",
+              "paragraphs": [
+                "cc"
+              ],
+              "children": [
+                "{7E3C9309-C119-4B47-A6CC-8827871EB22F}"
+              ]
+            },
+            "{7E3C9309-C119-4B47-A6CC-8827871EB22F}": {
+              "role": "content",
+              "paragraphs": [
+                "d"
+              ],
+              "children": []
+            }
+          },
+          "cacheShapes": 0,
+          "independentTopologyTextAndRoles": true
+        },
+        {
+          "kind": "native-saved",
+          "sha256": "4b652de76824dfd6a4e47bfb7f7ede44830709ccc3bb61d3dc0cb25e95fcec7d",
+          "exactNoOp": true,
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/process3",
+          "nodes": 5,
+          "assistants": 0,
+          "roots": [
+            "{D6FC5A54-B477-5746-9EDE-B2F9773B5258}",
+            "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}",
+            "{D371A627-A015-451F-8389-9118F71987E1}"
+          ],
+          "paragraphsBySourceId": {
+            "{D6FC5A54-B477-5746-9EDE-B2F9773B5258}": {
+              "role": "content",
+              "paragraphs": [
+                "PPTKit Added Process"
+              ],
+              "children": []
+            },
+            "{3D35CC81-3AA1-4486-9B26-9F5A52F48807}": {
+              "role": "content",
+              "paragraphs": [
+                "a PPTKit Process"
+              ],
+              "children": [
+                "{C515AB2F-289B-42FD-8210-049BC5527592}"
+              ]
+            },
+            "{C515AB2F-289B-42FD-8210-049BC5527592}": {
+              "role": "content",
+              "paragraphs": [
+                "b"
+              ],
+              "children": []
+            },
+            "{D371A627-A015-451F-8389-9118F71987E1}": {
+              "role": "content",
+              "paragraphs": [
+                "cc"
+              ],
+              "children": [
+                "{7E3C9309-C119-4B47-A6CC-8827871EB22F}"
+              ]
+            },
+            "{7E3C9309-C119-4B47-A6CC-8827871EB22F}": {
+              "role": "content",
+              "paragraphs": [
+                "d"
+              ],
+              "children": []
+            }
+          },
+          "cacheShapes": 8,
+          "independentTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "smartart-org-chart.pptx",
+      "family": "hierarchy",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-org-chart.pptx",
+      "observation": {
+        "name": "smartart-org-chart.pptx",
+        "nativeSaved": true,
+        "openWithoutObservedRepair": true,
+        "smartArtRecognized": true,
+        "textEdited": true,
+        "nodeAdded": true,
+        "nodeReordered": true,
+        "automaticRelayoutObserved": true,
+        "reopenedVisible": "untested",
+        "deletion": "untested",
+        "themeChange": "untested",
+        "artifacts": [
+          "hierarchy-opened.png",
+          "hierarchy-edited.png",
+          "hierarchy-edited.ax.txt"
+        ],
+        "steps": [
+          "Opened a local orgChart1 copy; saw two roots and a distinct assistant.",
+          "Selected graphic; SmartArt Design showed Organization Chart (组织结构图).",
+          "Appended PPTKit Hierarchy to Manager paragraph; added PPTKit Added Hierarchy as a child; moved the new node up.",
+          "Saved with Cmd+S; assistant remained separate and child text visible.",
+          "Mac locked during the subsequent reopen path selection; reopening was not observed."
+        ]
+      },
+      "artifacts": [
+        {
+          "file": "hierarchy-opened.png",
+          "sha256": "e578ceb7fb8658be76b026f60ecc858c68aaf555861c233a0a054d755acc298a",
+          "bytes": 127404
+        },
+        {
+          "file": "hierarchy-edited.png",
+          "sha256": "061b445fd5ba5647ed298f47eaac858fa3372b571a2710074f9af379dd7b2df2",
+          "bytes": 142684
+        },
+        {
+          "file": "hierarchy-edited.ax.txt",
+          "sha256": "6ee96ae4feb41b77f6cbc4307c8031204724e03e6faff2c71852ad082ea60a59",
+          "bytes": 8032
+        }
+      ],
+      "versions": [
+        {
+          "kind": "source",
+          "sha256": "7a457c32c73efed6244cf79e184994a2f2a0cb65901f6ce4f3dfcd22dbcf4ac1",
+          "exactNoOp": true,
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+          "nodes": 5,
+          "assistants": 1,
+          "roots": [
+            "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}",
+            "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}"
+          ],
+          "paragraphsBySourceId": {
+            "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}": {
+              "role": "content",
+              "paragraphs": [
+                "Manager",
+                "Second para"
+              ],
+              "children": [
+                "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}",
+                "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}",
+                "{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+              ]
+            },
+            "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}": {
+              "role": "content",
+              "paragraphs": [
+                "Employee"
+              ],
+              "children": []
+            },
+            "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}": {
+              "role": "content",
+              "paragraphs": [
+                "Employee2"
+              ],
+              "children": []
+            },
+            "{819F243A-D3B6-4E91-AF5E-691A813F59DF}": {
+              "role": "assistant",
+              "paragraphs": [
+                "Assistant"
+              ],
+              "children": []
+            },
+            "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}": {
+              "role": "content",
+              "paragraphs": [
+                "Manager2"
+              ],
+              "children": []
+            }
+          },
+          "cacheShapes": 0,
+          "independentTopologyTextAndRoles": true
+        },
+        {
+          "kind": "native-saved",
+          "sha256": "7c1194ac8662313621b9c151aff7f37bbb084c23ec21293f0518318de8d74c27",
+          "exactNoOp": true,
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/orgChart1",
+          "nodes": 6,
+          "assistants": 1,
+          "roots": [
+            "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}",
+            "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}"
+          ],
+          "paragraphsBySourceId": {
+            "{F79BF2BA-C12D-41F0-98AB-ECF0687C8930}": {
+              "role": "content",
+              "paragraphs": [
+                "Manager PPTKit Hierarchy",
+                "Second para"
+              ],
+              "children": [
+                "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}",
+                "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}",
+                "{0A85D344-918B-594C-AEBB-3CB564D2E071}",
+                "{819F243A-D3B6-4E91-AF5E-691A813F59DF}"
+              ]
+            },
+            "{4C56CC9F-0CFC-4191-B98C-D01C5D04FD77}": {
+              "role": "content",
+              "paragraphs": [
+                "Employee"
+              ],
+              "children": []
+            },
+            "{EE8A25CC-646E-4C3E-A390-0945F2BDB392}": {
+              "role": "content",
+              "paragraphs": [
+                "Employee2"
+              ],
+              "children": []
+            },
+            "{0A85D344-918B-594C-AEBB-3CB564D2E071}": {
+              "role": "content",
+              "paragraphs": [
+                "PPTKit Added Hierarchy"
+              ],
+              "children": []
+            },
+            "{819F243A-D3B6-4E91-AF5E-691A813F59DF}": {
+              "role": "assistant",
+              "paragraphs": [
+                "Assistant"
+              ],
+              "children": []
+            },
+            "{CD4A3225-006D-4542-B06E-2238A0DE6B7C}": {
+              "role": "content",
+              "paragraphs": [
+                "Manager2"
+              ],
+              "children": []
+            }
+          },
+          "cacheShapes": 10,
+          "independentTopologyTextAndRoles": true
+        }
+      ]
+    },
+    {
+      "name": "smartart-cycle.pptx",
+      "family": "cycle",
+      "source": "https://github.com/LibreOffice/core/blob/0ea8f79d15a62dfb5a0325640ed5771fc8b75ef2/sd/qa/unit/data/pptx/smartart-cycle.pptx",
+      "observation": {
+        "name": "smartart-cycle.pptx",
+        "nativeSaved": false,
+        "openWithoutObservedRepair": "untested",
+        "smartArtRecognized": "untested",
+        "textEdited": "untested",
+        "nodeAdded": "untested",
+        "nodeReordered": "untested",
+        "automaticRelayoutObserved": "untested",
+        "reopenedVisible": "untested",
+        "deletion": "untested",
+        "themeChange": "untested",
+        "artifacts": [],
+        "steps": [
+          "Pinned cycle2 source inspected independently; native UI not reached before Mac lock."
+        ]
+      },
+      "artifacts": [],
+      "versions": [
+        {
+          "kind": "source",
+          "sha256": "11b660611f00e297661a663a0904d7247fbbe173caa67ee36dbad68b1dfd9e0c",
+          "exactNoOp": true,
+          "layout": "urn:microsoft.com/office/officeart/2005/8/layout/cycle2",
+          "nodes": 5,
+          "assistants": 0,
+          "roots": [
+            "{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}",
+            "{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}",
+            "{6264B464-1F5E-4869-A663-E3C521582573}",
+            "{0C0A1E91-DF74-469A-868A-CAD295846B75}",
+            "{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}"
+          ],
+          "paragraphsBySourceId": {
+            "{AAD7BDE7-9A79-4F98-B41E-7F14689F73F1}": {
+              "role": "content",
+              "paragraphs": [
+                "a"
+              ],
+              "children": []
+            },
+            "{C6823B59-A4F0-4F9E-95A6-B044C7E275B4}": {
+              "role": "content",
+              "paragraphs": [
+                "b"
+              ],
+              "children": []
+            },
+            "{6264B464-1F5E-4869-A663-E3C521582573}": {
+              "role": "content",
+              "paragraphs": [
+                "c"
+              ],
+              "children": []
+            },
+            "{0C0A1E91-DF74-469A-868A-CAD295846B75}": {
+              "role": "content",
+              "paragraphs": [
+                "d"
+              ],
+              "children": []
+            },
+            "{73A57FAA-EE2A-4DD2-A41B-3783E2D754ED}": {
+              "role": "content",
+              "paragraphs": [
+                "e"
+              ],
+              "children": []
+            }
+          },
+          "cacheShapes": 0,
+          "independentTopologyTextAndRoles": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Candidate content model only; no public Core diagram model, layout engine, native authoring API or permitted diagram source writes.",
+    "Native UI fields are manual observations with retained screenshots/AX hashes; this verifier independently checks files and does not replay or certify UI actions.",
+    "Only the stated native operations/families were observed; unavailable operations remain untested. No general compatibility or visual-fidelity claim.",
+    "Source fixtures remain local pending redistribution/licensing admission; candidate ordinal IDs are projection-local, not stable authoring IDs."
+  ]
+}

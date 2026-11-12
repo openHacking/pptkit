@@ -1,0 +1,159 @@
+{
+  "scope": "One PPTKit source company edit and unchanged control, three LibreOfficeDev headless resaves per branch; no interactive UI or PowerPoint.",
+  "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "platform": "macOS-26.5-arm64-arm-64bit-Mach-O",
+  "runnerSha256": "f7e48eab9e6a54864e93afd999c25860f7946aa058f563397d1c5f0946413232",
+  "sourceChangedParts": [
+    "docProps/app.xml"
+  ],
+  "records": [
+    {
+      "round": 0,
+      "kind": "control",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/input/control.pptx",
+      "sha256": "c4f59d311b46e9cb30be6aee44b10074d1b5f7f95a78c88a8ee576e1b3cbc554",
+      "metadata": {
+        "company": "Old Company",
+        "application": "PPTKit",
+        "slides": "1",
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 0,
+      "kind": "edited",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/input/edited.pptx",
+      "sha256": "c92b529776a71da17064d84382b5bec4894f7b1782e2b26e8668f768ceb11299",
+      "metadata": {
+        "company": "New & 中文",
+        "application": "PPTKit",
+        "slides": "1",
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "control",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-1/control.pptx",
+      "sha256": "7b8b662d91a4933065666e624bbea6fc513cf2d508ea6852735b558f0cceaeac",
+      "metadata": {
+        "company": "Old Company",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-1/edited.pptx",
+      "sha256": "153bc2f879ac4e9b5defe1e19e673f1e5b97dd40427fa475051c86e7e9f85527",
+      "metadata": {
+        "company": "New & 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-2/control.pptx",
+      "sha256": "f49e40d616e02010a2adce21ba7538c83ce2cf9e02fa97f40486120ff5dccf73",
+      "metadata": {
+        "company": "Old Company",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-2/edited.pptx",
+      "sha256": "262a081759deb00af59472f38d0502d62588290d98e85793541c7545725225a8",
+      "metadata": {
+        "company": "New & 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-3/control.pptx",
+      "sha256": "9016465927d292e641c60d732ece2f96c92f729404c76d75bead23ccf9fa062b",
+      "metadata": {
+        "company": "Old Company",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "path": ".tmp/extended-company-libreoffice/run-wpdpgap6/round-3/edited.pptx",
+      "sha256": "328e0756295d2786cd8803baa40e7547f2fdb96271f4febffd688f9447f74a4e",
+      "metadata": {
+        "company": "New & 中文",
+        "application": "LibreOfficeDev/26.8.0.0.alpha0$MacOSX_AARCH64 LibreOffice_project/2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+        "slides": null,
+        "title": "Company control",
+        "revision": "7"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 1,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/input/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 2,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "control",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "round": 3,
+      "kind": "edited",
+      "exitCode": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/extended-company-libreoffice/run-wpdpgap6/round-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

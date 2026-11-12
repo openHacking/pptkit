@@ -1,0 +1,84 @@
+{
+  "producerSha256": "85ea7f7cc2286ee0c1400f74ae4ea1777285888e466d54af01ed0aa40790a878",
+  "fontSha256": "e03013e0baa5690a803c188da2214d920c3245b25ad78421ecc8ae86cd842ae9",
+  "observations": [
+    {
+      "engine": "chromium",
+      "version": "149.0.7827.55",
+      "changedPixels": 4139,
+      "darkPixels": 2871,
+      "overlay": [
+        127,
+        0,
+        128,
+        255
+      ],
+      "transparent": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "missingFont": "raster-font-unavailable",
+      "warnings": [
+        "svg-embedded-font-unverified",
+        "svg-system-font-dependency"
+      ],
+      "networkRequests": [],
+      "plainSha256": "9f0c8231233e77e5ac00ccc0914d6af4859ff70d26cfff82edd037a55f31e4a6",
+      "coveredSha256": "6c9e70349ace8821666ce14cafee87be0f7a70a552b83cac00d8ef69722eaf3b"
+    },
+    {
+      "engine": "firefox",
+      "version": "151.0",
+      "changedPixels": 4172,
+      "darkPixels": 2885,
+      "overlay": [
+        126,
+        0,
+        128,
+        255
+      ],
+      "transparent": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "missingFont": "raster-font-unavailable",
+      "warnings": [
+        "svg-embedded-font-unverified",
+        "svg-system-font-dependency"
+      ],
+      "networkRequests": [],
+      "plainSha256": "62fba0f3425ee5bf83b8186c0ce5b257fb9232df9a808fca4763de1f22f4f74b",
+      "coveredSha256": "f3aaf9bf787c1c00c362582d93ddc2322e49cba649258f2ca4cc10c414b11509"
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "changedPixels": 4217,
+      "darkPixels": 2876,
+      "overlay": [
+        128,
+        0,
+        128,
+        255
+      ],
+      "transparent": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "missingFont": "raster-font-unavailable",
+      "warnings": [
+        "svg-embedded-font-unverified",
+        "svg-system-font-dependency"
+      ],
+      "networkRequests": [],
+      "plainSha256": "0e6d80d3c4574a243535428d2b6c6ed00b5056acdea0308a15ab5425f80b38a8",
+      "coveredSha256": "dc5bb9c5ebd860f320ed3c6752364dbaef93d7dc58e06cce6a5eee1b07297b0e"
+    }
+  ]
+}

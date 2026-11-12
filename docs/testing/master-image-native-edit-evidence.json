@@ -1,0 +1,51 @@
+{
+  "scope": "PowerPoint 16.104 manual master image crop-handle edit, save, close, reopen and four-page slideshow; screenshot samples and title regions are not independent UI witnesses",
+  "directory": ".tmp/master-image-replacement-native-01",
+  "previousEvidenceSha256": "1521e0b14890ef62b07e64cedaed99a27f20e57ff3520f1f778b81bef147e3c6",
+  "editedPptxSha256": "0155c9a232242e581db8bada53f1f82f486bbd3f7c0a9318e2ca09f2f32a7e6c",
+  "screenshotSha256": [
+    "2fad211e277def993d4918c5afec4a0fc3254f5059eb644e9f53ca38b5501ceb",
+    "6dfbf9e86235217b48280ad2710a682c940cfdd7dce524030b2945d653614eb1",
+    "044f626af46924076a62aac7512076583b6a9a1585442f932d21b401ecc29df6",
+    "763d9af5ffdbee9ce6a37ac384d6d7e74dfe42cccd723e20927fc80e382ac063"
+  ],
+  "referenceOracleSha256": "2bdb8672ab68b046f78fb6ee9058b1d6a6ca66f1766b62b022a1ddd1405cf636",
+  "oracleSha256": "73324e468fe1f5aeaa9147fd28d0277cda869e65374ec161150ea3a76a59f927",
+  "parserReportSha256": "c687ce79138daf858eeb14e80c3f9309a466f4f0b252143dc9ad78b01d39ff68",
+  "parserScriptSha256": "07366ce53dde367891f66bc5a08362b573ee83b4bd124bf2770da3322fade575",
+  "observation": {
+    "masters": [
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster2.xml",
+      "ppt/slideMasters/slideMaster3.xml"
+    ],
+    "media": "ppt/media/image1.png",
+    "crop": {
+      "left": 20870
+    },
+    "sampledColors": [
+      [
+        "blue",
+        "red",
+        "blue"
+      ],
+      [
+        "blue",
+        "red",
+        "blue"
+      ],
+      [
+        "white",
+        "white",
+        "white"
+      ],
+      [
+        "green",
+        "green",
+        "green"
+      ]
+    ]
+  },
+  "negativeCasesRejected": 3
+}

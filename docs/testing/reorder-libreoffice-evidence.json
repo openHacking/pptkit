@@ -1,0 +1,1794 @@
+{
+  "schemaVersion": 1,
+  "scope": "One overlapping top-level and two nested group reorderings, two fresh PPTX exports and three LibreOfficeDev headless saves/reopens, with independent XML and PDF observations. No interactive, repair-dialog, assistive-technology or PowerPoint claim.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": ".tmp/reorder-libreoffice/run-sxWwZk",
+  "runnerSha256": "52a6aa23d8fd10e94ecb98201a814096191e1332b700b9c44e2892998b0761e6",
+  "oracleSha256": "ccc22968d645c11868a73d0f14198cb0a9aaa8e94cdffd709336fb8cbdfcd708",
+  "files": [
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/input/control.pptx",
+      "sha256": "6bfc1c45e562589d7c6cf236f698f9a3c6441afa1865d36f685fcb4a6f177e30"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/input/reordered.pptx",
+      "sha256": "59f28d732607515cbfadddd1a6504967f7b92edb2171bdedfabaec6292aa2d28"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-1/control.pptx",
+      "sha256": "f30217b08ddd5367a5f111c69fe0e79ff2b5d53c22f47c36459ee05f0c493a17"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-1/reordered.pptx",
+      "sha256": "a6de3db42550a5288dddb8cf034848f036044d1779af093e8186cfc610cd10bc"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-2/control.pptx",
+      "sha256": "214879366c0377b93ce7d9c9705704b8f73695739f7706bb74f5bf1f2cd9fb6a"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-2/reordered.pptx",
+      "sha256": "df30ec7b565977dce6a1b37081fb872a91d5850bd22030a44932c147df8b47ed"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-3/control.pptx",
+      "sha256": "57017210d1a791edfe5a78825374653731003fc6d9903a58fd4c91aac4a08943"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/round-3/reordered.pptx",
+      "sha256": "46c7aadab108be1a33d40438b0dbbd33f34f05d75869c9713740e5b2f0e2be6a"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-0/control.pdf",
+      "sha256": "3faa56bd50eb40819a7599ceba536b6d08b010207ef75899adb0d16cb3da8cd9"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-0/reordered.pdf",
+      "sha256": "dbb1dfb1a6b4aa4be6fa46bf0bfadc8fc8a323aeb4cac72a4c1ae0697a00f1cb"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-1/control.pdf",
+      "sha256": "b080ecc6db9d4102d58688329dd310b8c7a79aea7c79eab6ece827528db0e30f"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-1/reordered.pdf",
+      "sha256": "2a2cf88985814f2bc2e4196b964b2bcf811112a55216e59e8efdfa3ce096f0ac"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-2/control.pdf",
+      "sha256": "fb7b24273aeb2fbd367c3bfd32f687b48a32fcfaa5ce6f84d4ed6f88921c6a33"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-2/reordered.pdf",
+      "sha256": "a10829e6da6e7c2ee74a772225d431a45423a4200aeab5df7368ace99fbfbb52"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-3/control.pdf",
+      "sha256": "44b9b795b2cda8139c066c6525a65cae2b94e16769668c8349b8ccc80975c67a"
+    },
+    {
+      "file": ".tmp/reorder-libreoffice/run-sxWwZk/pdf-3/reordered.pdf",
+      "sha256": "2d7890ff5da05474d2cca9e20de4c9b85fafc13f9bb9184319a930ab4efd6b71"
+    }
+  ],
+  "logs": [
+    {
+      "phase": "round-1",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/control.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/input/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/reordered.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "round-2",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/control.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/reordered.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "round-3",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-3/control.pptx using filter : Impress Office Open XML\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-3/reordered.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "pdf-0",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/input/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-0/control.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/input/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-0/reordered.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "pdf-1",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-1/control.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-1/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-1/reordered.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "pdf-2",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-2/control.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-2/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-2/reordered.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "phase": "pdf-3",
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-3/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-3/control.pdf using filter : impress_pdf_Export\nconvert /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/round-3/reordered.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/reorder-libreoffice/run-sxWwZk/pdf-3/reordered.pdf using filter : impress_pdf_Export\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "independent": {
+    "method": "Python zipfile/ElementTree and PyMuPDF; source order and non-order properties asserted, subsequent producer orders observed",
+    "sourceDifferentParts": [
+      "ppt/slides/slide1.xml"
+    ],
+    "topLevelExtentsByRound": {
+      "control": {
+        "A": [
+          {
+            "cx": "762000",
+            "cy": "762000"
+          },
+          {
+            "cx": "761760",
+            "cy": "761760"
+          },
+          {
+            "cx": "761400",
+            "cy": "761400"
+          },
+          {
+            "cx": "761040",
+            "cy": "761040"
+          }
+        ],
+        "B": [
+          {
+            "cx": "762000",
+            "cy": "762000"
+          },
+          {
+            "cx": "761760",
+            "cy": "761760"
+          },
+          {
+            "cx": "761400",
+            "cy": "761400"
+          },
+          {
+            "cx": "761040",
+            "cy": "761040"
+          }
+        ]
+      },
+      "reordered": {
+        "A": [
+          {
+            "cx": "762000",
+            "cy": "762000"
+          },
+          {
+            "cx": "761760",
+            "cy": "761760"
+          },
+          {
+            "cx": "761400",
+            "cy": "761400"
+          },
+          {
+            "cx": "761040",
+            "cy": "761040"
+          }
+        ],
+        "B": [
+          {
+            "cx": "762000",
+            "cy": "762000"
+          },
+          {
+            "cx": "761760",
+            "cy": "761760"
+          },
+          {
+            "cx": "761400",
+            "cy": "761400"
+          },
+          {
+            "cx": "761040",
+            "cy": "761040"
+          }
+        ]
+      }
+    },
+    "rounds": [
+      {
+        "round": 0,
+        "control": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254000",
+                  "y": "254000"
+                },
+                "ext": {
+                  "cx": "762000",
+                  "cy": "762000"
+                }
+              },
+              "propertiesSha256": "3d4b9ec8b840605a593e0ff4463a31dd2ee05a0067d85661bb38324f45192a67",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635000",
+                  "y": "508000"
+                },
+                "ext": {
+                  "cx": "762000",
+                  "cy": "762000"
+                }
+              },
+              "propertiesSha256": "54939c95ff12241564d8223401d1cc349e0024b97e4c57c690d406df29c3b5da",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": "Outer",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2032000",
+                  "y": "254000"
+                },
+                "ext": {
+                  "cx": "2540000",
+                  "cy": "1524000"
+                },
+                "chOff": {
+                  "x": "0",
+                  "y": "0"
+                },
+                "chExt": {
+                  "cx": "2540000",
+                  "cy": "1524000"
+                }
+              },
+              "propertiesSha256": "06b3e1f97172a80c94efa604d6a247f1bbc3bf9f9385cb0817766e72a78a9f86",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "0",
+                      "y": "0"
+                    },
+                    "ext": {
+                      "cx": "762000",
+                      "cy": "762000"
+                    }
+                  },
+                  "propertiesSha256": "5934630a90e25b4d5b53b3f407189ac4cac178df5c94b28bd21940a2e61e81e3",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "381000",
+                      "y": "254000"
+                    },
+                    "ext": {
+                      "cx": "762000",
+                      "cy": "762000"
+                    }
+                  },
+                  "propertiesSha256": "b9c056888062ee658ea99fc967bdf1606edf5af1f20c650325bafc1aec9e48b6",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": "Inner",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "1270000",
+                      "y": "254000"
+                    },
+                    "ext": {
+                      "cx": "1143000",
+                      "cy": "1016000"
+                    },
+                    "chOff": {
+                      "x": "0",
+                      "y": "0"
+                    },
+                    "chExt": {
+                      "cx": "1143000",
+                      "cy": "1016000"
+                    }
+                  },
+                  "propertiesSha256": "128c9e16c161a08bb9c9cf42a1efbb7732d1c86670f8601fd5dd5d7197035e78",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "0",
+                          "y": "0"
+                        },
+                        "ext": {
+                          "cx": "762000",
+                          "cy": "762000"
+                        }
+                      },
+                      "propertiesSha256": "0ab7b3127e21b45b8213ceab361712150ac6d23c7b653f6497dc224ca07e00fc",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "254000",
+                          "y": "127000"
+                        },
+                        "ext": {
+                          "cx": "762000",
+                          "cy": "762000"
+                        }
+                      },
+                      "propertiesSha256": "79c5eb1ef3c31626aaff1488c1b4bc685ea66d731868b902a5432efb2ba3f286",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190500",
+                  "y": "2032000"
+                },
+                "ext": {
+                  "cx": "3810000",
+                  "cy": "381000"
+                }
+              },
+              "propertiesSha256": "88a76e6de79b2779a4022747eccc055fc45f9cf8cd67fc3d9cd4fee72b3a4826",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "reordered": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635000",
+                  "y": "508000"
+                },
+                "ext": {
+                  "cx": "762000",
+                  "cy": "762000"
+                }
+              },
+              "propertiesSha256": "54939c95ff12241564d8223401d1cc349e0024b97e4c57c690d406df29c3b5da",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254000",
+                  "y": "254000"
+                },
+                "ext": {
+                  "cx": "762000",
+                  "cy": "762000"
+                }
+              },
+              "propertiesSha256": "3d4b9ec8b840605a593e0ff4463a31dd2ee05a0067d85661bb38324f45192a67",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": "Outer",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2032000",
+                  "y": "254000"
+                },
+                "ext": {
+                  "cx": "2540000",
+                  "cy": "1524000"
+                },
+                "chOff": {
+                  "x": "0",
+                  "y": "0"
+                },
+                "chExt": {
+                  "cx": "2540000",
+                  "cy": "1524000"
+                }
+              },
+              "propertiesSha256": "06b3e1f97172a80c94efa604d6a247f1bbc3bf9f9385cb0817766e72a78a9f86",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "381000",
+                      "y": "254000"
+                    },
+                    "ext": {
+                      "cx": "762000",
+                      "cy": "762000"
+                    }
+                  },
+                  "propertiesSha256": "b9c056888062ee658ea99fc967bdf1606edf5af1f20c650325bafc1aec9e48b6",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "0",
+                      "y": "0"
+                    },
+                    "ext": {
+                      "cx": "762000",
+                      "cy": "762000"
+                    }
+                  },
+                  "propertiesSha256": "5934630a90e25b4d5b53b3f407189ac4cac178df5c94b28bd21940a2e61e81e3",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": "Inner",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "1270000",
+                      "y": "254000"
+                    },
+                    "ext": {
+                      "cx": "1143000",
+                      "cy": "1016000"
+                    },
+                    "chOff": {
+                      "x": "0",
+                      "y": "0"
+                    },
+                    "chExt": {
+                      "cx": "1143000",
+                      "cy": "1016000"
+                    }
+                  },
+                  "propertiesSha256": "128c9e16c161a08bb9c9cf42a1efbb7732d1c86670f8601fd5dd5d7197035e78",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "254000",
+                          "y": "127000"
+                        },
+                        "ext": {
+                          "cx": "762000",
+                          "cy": "762000"
+                        }
+                      },
+                      "propertiesSha256": "79c5eb1ef3c31626aaff1488c1b4bc685ea66d731868b902a5432efb2ba3f286",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "0",
+                          "y": "0"
+                        },
+                        "ext": {
+                          "cx": "762000",
+                          "cy": "762000"
+                        }
+                      },
+                      "propertiesSha256": "0ab7b3127e21b45b8213ceab361712150ac6d23c7b653f6497dc224ca07e00fc",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190500",
+                  "y": "2032000"
+                },
+                "ext": {
+                  "cx": "3810000",
+                  "cy": "381000"
+                }
+              },
+              "propertiesSha256": "88a76e6de79b2779a4022747eccc055fc45f9cf8cd67fc3d9cd4fee72b3a4826",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "withinRound": {
+          "status": "compared",
+          "changedPixels": 4460,
+          "totalPixels": 80400
+        },
+        "pdfText": [
+          "Reorder control text\n",
+          "Reorder control text\n"
+        ],
+        "controlVsInitial": {
+          "status": "compared",
+          "changedPixels": 0,
+          "totalPixels": 80400
+        },
+        "reorderedVsInitial": {
+          "status": "compared",
+          "changedPixels": 0,
+          "totalPixels": 80400
+        },
+        "controlIdentityTreeMatchesInitial": true,
+        "controlInventoryMatchesInitial": true,
+        "reorderedIdentityTreeMatchesInitial": true,
+        "reorderedInventoryMatchesInitial": true
+      },
+      {
+        "round": 1,
+        "control": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761760",
+                  "cy": "761760"
+                }
+              },
+              "propertiesSha256": "1625243880cd787b591f58a139967de5f9b789622a28da3175d0fc8ef4712210",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761760",
+                  "cy": "761760"
+                }
+              },
+              "propertiesSha256": "9911d31e35179cdb4220fb7d74b5f53c0017c433bcbea5b621c21489bc297c9c",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2286000",
+                  "cy": "1142640"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2286000",
+                  "cy": "1142640"
+                }
+              },
+              "propertiesSha256": "1b3d592960c52b724fb36484199dbbe3759f4761239af5b791caa1ca71495567",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761760",
+                      "cy": "761760"
+                    }
+                  },
+                  "propertiesSha256": "736d7685ea714d54368179906c4f835900f73a6c2df196bd3f3ff13b7be48e00",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761760",
+                      "cy": "761760"
+                    }
+                  },
+                  "propertiesSha256": "9ab02b03a26d337f57c4cf5a984e3b447f734ac1b5e2839d9bc2adef1f877e3e",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015920",
+                      "cy": "888840"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015920",
+                      "cy": "888840"
+                    }
+                  },
+                  "propertiesSha256": "f167acba2d03574c4dfb7cade46f6060147153c78b513280c75b480bbeebf391",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761760",
+                          "cy": "761760"
+                        }
+                      },
+                      "propertiesSha256": "f7b0fc092175069920718e4e380f6d4a954b69dc0b0af92f2564eab59843f168",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761760",
+                          "cy": "761760"
+                        }
+                      },
+                      "propertiesSha256": "afea5b60c2db7e70d641647176cbf61fc1a535b6df3472a73956d146c3e489e3",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3809520",
+                  "cy": "380520"
+                }
+              },
+              "propertiesSha256": "1733aee36a14cff9ff408a03d9cc835a5e173f675ec61f0d6b24b66f23b383b2",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "reordered": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761760",
+                  "cy": "761760"
+                }
+              },
+              "propertiesSha256": "9911d31e35179cdb4220fb7d74b5f53c0017c433bcbea5b621c21489bc297c9c",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761760",
+                  "cy": "761760"
+                }
+              },
+              "propertiesSha256": "1625243880cd787b591f58a139967de5f9b789622a28da3175d0fc8ef4712210",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2286000",
+                  "cy": "1142640"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2286000",
+                  "cy": "1142640"
+                }
+              },
+              "propertiesSha256": "1b3d592960c52b724fb36484199dbbe3759f4761239af5b791caa1ca71495567",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761760",
+                      "cy": "761760"
+                    }
+                  },
+                  "propertiesSha256": "9ab02b03a26d337f57c4cf5a984e3b447f734ac1b5e2839d9bc2adef1f877e3e",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761760",
+                      "cy": "761760"
+                    }
+                  },
+                  "propertiesSha256": "736d7685ea714d54368179906c4f835900f73a6c2df196bd3f3ff13b7be48e00",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015920",
+                      "cy": "888840"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015920",
+                      "cy": "888840"
+                    }
+                  },
+                  "propertiesSha256": "f167acba2d03574c4dfb7cade46f6060147153c78b513280c75b480bbeebf391",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761760",
+                          "cy": "761760"
+                        }
+                      },
+                      "propertiesSha256": "afea5b60c2db7e70d641647176cbf61fc1a535b6df3472a73956d146c3e489e3",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761760",
+                          "cy": "761760"
+                        }
+                      },
+                      "propertiesSha256": "f7b0fc092175069920718e4e380f6d4a954b69dc0b0af92f2564eab59843f168",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3809520",
+                  "cy": "380520"
+                }
+              },
+              "propertiesSha256": "1733aee36a14cff9ff408a03d9cc835a5e173f675ec61f0d6b24b66f23b383b2",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "withinRound": {
+          "status": "compared",
+          "changedPixels": 4632,
+          "totalPixels": 80400
+        },
+        "pdfText": [
+          "Reorder control text\n",
+          "Reorder control text\n"
+        ],
+        "controlVsInitial": {
+          "status": "compared",
+          "changedPixels": 889,
+          "totalPixels": 80400
+        },
+        "reorderedVsInitial": {
+          "status": "compared",
+          "changedPixels": 890,
+          "totalPixels": 80400
+        },
+        "controlIdentityTreeMatchesInitial": true,
+        "controlInventoryMatchesInitial": false,
+        "reorderedIdentityTreeMatchesInitial": true,
+        "reorderedInventoryMatchesInitial": false
+      },
+      {
+        "round": 2,
+        "control": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761400",
+                  "cy": "761400"
+                }
+              },
+              "propertiesSha256": "8ad90835ffbeefb08d7f74ac1e3f39aaf40cb5d7ac435b548625734f775d0d44",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761400",
+                  "cy": "761400"
+                }
+              },
+              "propertiesSha256": "4dd8ae6354255826aac92da8708a121afc0c90294c7030ca52f6df8444ec02d4",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2285640",
+                  "cy": "1142280"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2285640",
+                  "cy": "1142280"
+                }
+              },
+              "propertiesSha256": "32466b65167d0e5d96c0f338e17e062524a1571c28ca45e6178d988aa2b3f1b0",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761400",
+                      "cy": "761400"
+                    }
+                  },
+                  "propertiesSha256": "9b4a3d01a649955e113ee864596eb12d3a86455592fccb39c401f98fdceefa88",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761400",
+                      "cy": "761400"
+                    }
+                  },
+                  "propertiesSha256": "b2301635c2351a189fa18c1345203e56b8db442b3ca6fcbd98e2e40dc41373e6",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015560",
+                      "cy": "888480"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015560",
+                      "cy": "888480"
+                    }
+                  },
+                  "propertiesSha256": "2b3a557b9be3931b13d3cc6892a2e01db3aa34df340014b14a40b81eeaf7e815",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761400",
+                          "cy": "761400"
+                        }
+                      },
+                      "propertiesSha256": "566aa06e2970756845bcb03483e9131db2c0a55c381080721c7d9dd751c53854",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761400",
+                          "cy": "761400"
+                        }
+                      },
+                      "propertiesSha256": "904b8e2f8fa70ecab714a9aa6d579a9d9e5fa96ec22d1ba5a9de5ecad3af8925",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3809160",
+                  "cy": "380160"
+                }
+              },
+              "propertiesSha256": "16fc710d209071b15297b893978f1097a9d26ef73673b16802d7e37c04b23efb",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "reordered": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761400",
+                  "cy": "761400"
+                }
+              },
+              "propertiesSha256": "4dd8ae6354255826aac92da8708a121afc0c90294c7030ca52f6df8444ec02d4",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761400",
+                  "cy": "761400"
+                }
+              },
+              "propertiesSha256": "8ad90835ffbeefb08d7f74ac1e3f39aaf40cb5d7ac435b548625734f775d0d44",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2285640",
+                  "cy": "1142280"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2285640",
+                  "cy": "1142280"
+                }
+              },
+              "propertiesSha256": "32466b65167d0e5d96c0f338e17e062524a1571c28ca45e6178d988aa2b3f1b0",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761400",
+                      "cy": "761400"
+                    }
+                  },
+                  "propertiesSha256": "b2301635c2351a189fa18c1345203e56b8db442b3ca6fcbd98e2e40dc41373e6",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761400",
+                      "cy": "761400"
+                    }
+                  },
+                  "propertiesSha256": "9b4a3d01a649955e113ee864596eb12d3a86455592fccb39c401f98fdceefa88",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015560",
+                      "cy": "888480"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015560",
+                      "cy": "888480"
+                    }
+                  },
+                  "propertiesSha256": "2b3a557b9be3931b13d3cc6892a2e01db3aa34df340014b14a40b81eeaf7e815",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761400",
+                          "cy": "761400"
+                        }
+                      },
+                      "propertiesSha256": "904b8e2f8fa70ecab714a9aa6d579a9d9e5fa96ec22d1ba5a9de5ecad3af8925",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761400",
+                          "cy": "761400"
+                        }
+                      },
+                      "propertiesSha256": "566aa06e2970756845bcb03483e9131db2c0a55c381080721c7d9dd751c53854",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3809160",
+                  "cy": "380160"
+                }
+              },
+              "propertiesSha256": "16fc710d209071b15297b893978f1097a9d26ef73673b16802d7e37c04b23efb",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "withinRound": {
+          "status": "compared",
+          "changedPixels": 4460,
+          "totalPixels": 80400
+        },
+        "pdfText": [
+          "Reorder control text\n",
+          "Reorder control text\n"
+        ],
+        "controlVsInitial": {
+          "status": "compared",
+          "changedPixels": 431,
+          "totalPixels": 80400
+        },
+        "reorderedVsInitial": {
+          "status": "compared",
+          "changedPixels": 600,
+          "totalPixels": 80400
+        },
+        "controlIdentityTreeMatchesInitial": true,
+        "controlInventoryMatchesInitial": false,
+        "reorderedIdentityTreeMatchesInitial": true,
+        "reorderedInventoryMatchesInitial": false
+      },
+      {
+        "round": 3,
+        "control": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761040",
+                  "cy": "761040"
+                }
+              },
+              "propertiesSha256": "ab823cb2193516aa6a29576f236eb65176f16fdf76cd13673a7940605f6fea94",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761040",
+                  "cy": "761040"
+                }
+              },
+              "propertiesSha256": "7384e4e8b5869e5035edfa379e54a712fb52be0bd461dae4524d417f7095c250",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2285280",
+                  "cy": "1141920"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2285280",
+                  "cy": "1141920"
+                }
+              },
+              "propertiesSha256": "34beef643159934092a64a3fa1e8d8717df50a5977a0aa20f2dc3d5e4928eb4c",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761040",
+                      "cy": "761040"
+                    }
+                  },
+                  "propertiesSha256": "8c1f48870f239cbff6403b604e9a222f3223d5cfd2f323430f5919640904352b",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761040",
+                      "cy": "761040"
+                    }
+                  },
+                  "propertiesSha256": "693ead6a1a815d85d2c5cc625e8db552554e31e2b6e529a987e72695708fb4fb",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015200",
+                      "cy": "888120"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015200",
+                      "cy": "888120"
+                    }
+                  },
+                  "propertiesSha256": "578699e58c7259e8a352652e3f6cc1b068c99c5b2d2d89e8d9ab0eff8dcabf1d",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761040",
+                          "cy": "761040"
+                        }
+                      },
+                      "propertiesSha256": "54967ffb1d8ddb61eca641377e5972faa0168c33b13dd30531f7f0e155d216e3",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761040",
+                          "cy": "761040"
+                        }
+                      },
+                      "propertiesSha256": "08359aebb3a262bc46daf10022484f5678040fa33fd1b2f34641dd0fbc7082b3",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3808800",
+                  "cy": "379800"
+                }
+              },
+              "propertiesSha256": "7d85c2efc9e2fd895de31e2c50a6e34b46e6dd30fbd5b7272d41daa4c0b988e2",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "reordered": {
+          "objects": [
+            {
+              "kind": "sp",
+              "name": "B",
+              "description": "Description B",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "635040",
+                  "y": "507960"
+                },
+                "ext": {
+                  "cx": "761040",
+                  "cy": "761040"
+                }
+              },
+              "propertiesSha256": "7384e4e8b5869e5035edfa379e54a712fb52be0bd461dae4524d417f7095c250",
+              "children": []
+            },
+            {
+              "kind": "sp",
+              "name": "A",
+              "description": "Description A",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "254160",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "761040",
+                  "cy": "761040"
+                }
+              },
+              "propertiesSha256": "ab823cb2193516aa6a29576f236eb65176f16fdf76cd13673a7940605f6fea94",
+              "children": []
+            },
+            {
+              "kind": "grpSp",
+              "name": "Outer",
+              "description": null,
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "ext": {
+                  "cx": "2285280",
+                  "cy": "1141920"
+                },
+                "chOff": {
+                  "x": "2031840",
+                  "y": "254160"
+                },
+                "chExt": {
+                  "cx": "2285280",
+                  "cy": "1141920"
+                }
+              },
+              "propertiesSha256": "34beef643159934092a64a3fa1e8d8717df50a5977a0aa20f2dc3d5e4928eb4c",
+              "children": [
+                {
+                  "kind": "sp",
+                  "name": "D",
+                  "description": "Description D",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2413080",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "761040",
+                      "cy": "761040"
+                    }
+                  },
+                  "propertiesSha256": "693ead6a1a815d85d2c5cc625e8db552554e31e2b6e529a987e72695708fb4fb",
+                  "children": []
+                },
+                {
+                  "kind": "sp",
+                  "name": "C",
+                  "description": "Description C",
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "2031840",
+                      "y": "254160"
+                    },
+                    "ext": {
+                      "cx": "761040",
+                      "cy": "761040"
+                    }
+                  },
+                  "propertiesSha256": "8c1f48870f239cbff6403b604e9a222f3223d5cfd2f323430f5919640904352b",
+                  "children": []
+                },
+                {
+                  "kind": "grpSp",
+                  "name": "Inner",
+                  "description": null,
+                  "transform": {
+                    "attributes": {},
+                    "off": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "ext": {
+                      "cx": "1015200",
+                      "cy": "888120"
+                    },
+                    "chOff": {
+                      "x": "3301920",
+                      "y": "507960"
+                    },
+                    "chExt": {
+                      "cx": "1015200",
+                      "cy": "888120"
+                    }
+                  },
+                  "propertiesSha256": "578699e58c7259e8a352652e3f6cc1b068c99c5b2d2d89e8d9ab0eff8dcabf1d",
+                  "children": [
+                    {
+                      "kind": "sp",
+                      "name": "F",
+                      "description": "Description F",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3556080",
+                          "y": "635040"
+                        },
+                        "ext": {
+                          "cx": "761040",
+                          "cy": "761040"
+                        }
+                      },
+                      "propertiesSha256": "08359aebb3a262bc46daf10022484f5678040fa33fd1b2f34641dd0fbc7082b3",
+                      "children": []
+                    },
+                    {
+                      "kind": "sp",
+                      "name": "E",
+                      "description": "Description E",
+                      "transform": {
+                        "attributes": {},
+                        "off": {
+                          "x": "3301920",
+                          "y": "507960"
+                        },
+                        "ext": {
+                          "cx": "761040",
+                          "cy": "761040"
+                        }
+                      },
+                      "propertiesSha256": "54967ffb1d8ddb61eca641377e5972faa0168c33b13dd30531f7f0e155d216e3",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "kind": "sp",
+              "name": "Caption",
+              "description": "Caption",
+              "transform": {
+                "attributes": {},
+                "off": {
+                  "x": "190440",
+                  "y": "2031840"
+                },
+                "ext": {
+                  "cx": "3808800",
+                  "cy": "379800"
+                }
+              },
+              "propertiesSha256": "7d85c2efc9e2fd895de31e2c50a6e34b46e6dd30fbd5b7272d41daa4c0b988e2",
+              "children": []
+            }
+          ],
+          "text": "Reorder control text",
+          "notes": "Reorder control notes"
+        },
+        "withinRound": {
+          "status": "compared",
+          "changedPixels": 4632,
+          "totalPixels": 80400
+        },
+        "pdfText": [
+          "Reorder control text\n",
+          "Reorder control text\n"
+        ],
+        "controlVsInitial": {
+          "status": "compared",
+          "changedPixels": 948,
+          "totalPixels": 80400
+        },
+        "reorderedVsInitial": {
+          "status": "compared",
+          "changedPixels": 1007,
+          "totalPixels": 80400
+        },
+        "controlIdentityTreeMatchesInitial": true,
+        "controlInventoryMatchesInitial": false,
+        "reorderedIdentityTreeMatchesInitial": true,
+        "reorderedInventoryMatchesInitial": false
+      }
+    ]
+  }
+}

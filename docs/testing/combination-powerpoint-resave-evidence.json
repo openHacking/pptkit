@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint 16.104 for macOS",
+  "fixture": "tests/fixtures/combination-powerpoint-resave.pptx",
+  "sourceSha256": "4c499f3e966c0f8fd872204c3fce64ceac10776c3c5104871188557ca5aa95f2",
+  "steps": [
+    "Open source-edited duplicate",
+    "Save with Command+S",
+    "Close",
+    "Reopen the rewritten file"
+  ],
+  "visualObservation": {
+    "categories": [
+      "Jan",
+      "Feb",
+      "Mar"
+    ],
+    "leftRange": [
+      0,
+      10
+    ],
+    "rightRange": [
+      0,
+      1000
+    ],
+    "februaryColumn": 7,
+    "februaryLine": 400,
+    "categoryCentersAligned": true,
+    "repairDialogObserved": false
+  },
+  "saved": {
+    "sha256": "c731a7a64024a7c61163fd2fb3058cbd092d6908ee42047760b9722ff39804e1",
+    "axes": {
+      "1": {
+        "kind": "catAx",
+        "position": "b",
+        "cross": "2",
+        "deleted": false
+      },
+      "2": {
+        "kind": "valAx",
+        "position": "l",
+        "cross": "1",
+        "deleted": false,
+        "bounds": [
+          0,
+          10
+        ]
+      },
+      "3": {
+        "kind": "catAx",
+        "position": "b",
+        "cross": "4",
+        "deleted": true
+      },
+      "4": {
+        "kind": "valAx",
+        "position": "r",
+        "cross": "3",
+        "deleted": false,
+        "bounds": [
+          0,
+          1000
+        ]
+      }
+    },
+    "series": [
+      {
+        "kind": "barChart",
+        "axes": [
+          "1",
+          "2"
+        ],
+        "values": [
+          2,
+          7,
+          8
+        ]
+      },
+      {
+        "kind": "lineChart",
+        "axes": [
+          "3",
+          "4"
+        ],
+        "values": [
+          800,
+          400,
+          600
+        ]
+      }
+    ],
+    "embeddedWorkbooks": 1
+  },
+  "limitations": [
+    "One native save/reopen",
+    "Chart data was edited by PPTKit before opening; PowerPoint Edit Data was not exercised"
+  ]
+}

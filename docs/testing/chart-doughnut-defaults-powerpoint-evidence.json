@@ -1,0 +1,102 @@
+{
+  "scope": "Three controlled variants remove only doughnut geometry elements. After first-open captures and one save/close/reopen of a copy, the original was reopened and reprinted; that PDF matches the explicit zero-angle control for slide 1; slide 2 and 3 red paths reach the center when holeSize is absent. One saved/reopened copy writes zero for the missing hole size and angle. These observations do not establish other producers, later Office versions, empty val attributes or native data edits; captures do not independently prove provenance.",
+  "applicationVersion": "16.104",
+  "generatorSha256": "6a996814901b15619a139bc4a4d8ff8afb953291a3fd242c5ae07df907de7f89",
+  "verifierSha256": "0e34693ea37d2604223ddd840913d2789f1e31ad57e3a48c7fa014c7a3fc07bb",
+  "controlPdfSha256": "cb8398ba0b55bc3a272d2208fafd4159a23a71bff78a84d16a2da8f241baa064",
+  "pdfSha256": "d3ed79f5e984a73bc56298d9066ea253b6cfd90d16359ea600aee09a0a8d16df",
+  "packages": [
+    {
+      "phase": "source",
+      "sha256": "32c0dc26a95f60629d39edd2337daab251383a06ad289b8dbb6d5d9d1990bb4d",
+      "geometry": [
+        {
+          "firstSliceAngle": null,
+          "holeSize": 50
+        },
+        {
+          "firstSliceAngle": 90,
+          "holeSize": null
+        },
+        {
+          "firstSliceAngle": null,
+          "holeSize": null
+        }
+      ]
+    },
+    {
+      "phase": "saved",
+      "sha256": "58f8e653dcade3c6562e648e94dc6dee928a0f182d5563c410c2a40b759a5981",
+      "geometry": [
+        {
+          "firstSliceAngle": 0,
+          "holeSize": 50
+        },
+        {
+          "firstSliceAngle": 90,
+          "holeSize": 0
+        },
+        {
+          "firstSliceAngle": 0,
+          "holeSize": 0
+        }
+      ]
+    }
+  ],
+  "centerHits": [
+    {
+      "slide": 2,
+      "center": [
+        381.41690826416016,
+        304.9259948730469
+      ],
+      "nearestRedPathPointDistance": 7.62939453125e-06
+    },
+    {
+      "slide": 3,
+      "center": [
+        381.41690826416016,
+        304.9259948730469
+      ],
+      "nearestRedPathPointDistance": 7.62939453125e-06
+    }
+  ],
+  "captures": [
+    {
+      "phase": "first",
+      "slide": 1,
+      "axSha256": "260f765a5dcd239c36b74f0bd06e7210ef33671688f935dd2ba7ac9d7c3cdfbe",
+      "screenshotSha256": "7c18830b9970395d69a7046995ec75173e0c0f8a562d0537691682aaafae7473"
+    },
+    {
+      "phase": "first",
+      "slide": 2,
+      "axSha256": "1378f91fe980b209a4e4c672ffd563e9196bcfc52ef939e705fcbf0bb9383050",
+      "screenshotSha256": "b78d1a2ea2beba1eb1492b042e83385a759c33632240f9bbe7f670332b4e6994"
+    },
+    {
+      "phase": "first",
+      "slide": 3,
+      "axSha256": "91c69636ca4669f56caa699abe435e117f8054d3f13c934dd1451188bfeb3068",
+      "screenshotSha256": "ab634c3ac40d3c0c2d2498dd929ce25e878c6ac3f599288eed926e1b1e7f2ac7"
+    },
+    {
+      "phase": "reopen",
+      "slide": 1,
+      "axSha256": "507623391594615f0f0e92313f063055f261859199a881abd9237420ca8bd3fe",
+      "screenshotSha256": "e171b27571a52852ad67359fae9f35b84d6a1cd14dcca7e804176018bffb3188"
+    },
+    {
+      "phase": "reopen",
+      "slide": 2,
+      "axSha256": "6b42b88e01ea4f9ac5f77976f642848f7aaaf60a78b18ebc6a1ac0067573f56d",
+      "screenshotSha256": "33b73620211551158dfe877c92974d0e603183e030329fb62b635de213a852a9"
+    },
+    {
+      "phase": "reopen",
+      "slide": 3,
+      "axSha256": "b5d0d2975c1f260af9742161ce9c09b3cd670c0c06d8ae696d81a0c708b763cb",
+      "screenshotSha256": "d6ebe69c258796448a8ae4cba4a0e1b77ccb54ce784f5ce09a3d95c7b57dbe4b"
+    }
+  ]
+}

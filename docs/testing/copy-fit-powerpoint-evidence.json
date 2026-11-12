@@ -1,0 +1,661 @@
+{
+  "schemaVersion": 1,
+  "scope": "One source and one explicit-geometry fitted page; PowerPoint for Mac three successive Save As and reopen observations. Static connector, no link activation or interactive edit claim.",
+  "environment": {
+    "application": "Microsoft PowerPoint 16.104",
+    "system": "macOS-26.5-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64"
+  },
+  "observation": "Source page text was continuous; fitted input and each reopened file visibly wrapped text and overlapped the red shape. Third reopen displayed Fit notes. No repair prompt was observed.",
+  "sourceControl": {
+    "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/source-control.pptx",
+    "sha256": "7a8996a9f5e0e4c9ee5a8d5d762688b3289ce1cdd0c84e7c31bb39ca9879cd6c"
+  },
+  "independent": {
+    "oracle": "Python zipfile and ElementTree",
+    "rounds": [
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fitted-input.pptx",
+        "sha256": "4f5baafe8a10d906e673f8779deabc90220c85bfffb9fc25768742cadbf1dde3",
+        "slideText": "Geometry fit Left Right",
+        "notesText": "Fit notes",
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "698500"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "127000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "889000"
+              },
+              "ext": {
+                "cx": "381000",
+                "cy": "190500"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "508000",
+                "y": "984250"
+              },
+              "ext": {
+                "cx": "762000",
+                "cy": "127000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1397000",
+                "y": "857250"
+              },
+              "ext": {
+                "cx": "635000",
+                "cy": "254000"
+              },
+              "chOff": {
+                "x": "0",
+                "y": "0"
+              },
+              "chExt": {
+                "cx": "1270000",
+                "cy": "508000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "127000",
+                    "y": "63500"
+                  },
+                  "ext": {
+                    "cx": "508000",
+                    "cy": "254000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "1270000"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "254000"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              381000,
+              635000
+            ],
+            "rows": [
+              254000
+            ],
+            "children": []
+          }
+        ],
+        "slideRelationships": [
+          {
+            "type": "slideLayout",
+            "mode": "Internal",
+            "target": "ppt/slideLayouts/slideLayout1.xml"
+          },
+          {
+            "type": "notesSlide",
+            "mode": "Internal",
+            "target": "ppt/notesSlides/notesSlide1.xml"
+          }
+        ],
+        "notesRelationships": [
+          {
+            "type": "notesMaster",
+            "mode": "Internal",
+            "target": "ppt/notesMasters/notesMaster1.xml"
+          },
+          {
+            "type": "slide",
+            "mode": "Internal",
+            "target": "ppt/slides/slide1.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round1.pptx",
+        "sha256": "8949b6d974620d75cb22855bf3a8e0da5d0b3bc68d667276e59117c1ebf5f841",
+        "slideText": "Geometry fit Left Right",
+        "notesText": "Fit notes",
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "698500"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "127000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "889000"
+              },
+              "ext": {
+                "cx": "381000",
+                "cy": "190500"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "508000",
+                "y": "984250"
+              },
+              "ext": {
+                "cx": "762000",
+                "cy": "127000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1397000",
+                "y": "857250"
+              },
+              "ext": {
+                "cx": "635000",
+                "cy": "254000"
+              },
+              "chOff": {
+                "x": "0",
+                "y": "0"
+              },
+              "chExt": {
+                "cx": "1270000",
+                "cy": "508000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "127000",
+                    "y": "63500"
+                  },
+                  "ext": {
+                    "cx": "508000",
+                    "cy": "254000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "1270000"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "911860"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              381000,
+              635000
+            ],
+            "rows": [
+              254000
+            ],
+            "children": []
+          }
+        ],
+        "slideRelationships": [
+          {
+            "type": "notesSlide",
+            "mode": "Internal",
+            "target": "ppt/notesSlides/notesSlide1.xml"
+          },
+          {
+            "type": "slideLayout",
+            "mode": "Internal",
+            "target": "ppt/slideLayouts/slideLayout1.xml"
+          }
+        ],
+        "notesRelationships": [
+          {
+            "type": "slide",
+            "mode": "Internal",
+            "target": "ppt/slides/slide1.xml"
+          },
+          {
+            "type": "notesMaster",
+            "mode": "Internal",
+            "target": "ppt/notesMasters/notesMaster1.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round2.pptx",
+        "sha256": "89c39f0b86df80b192668d9dadd7d4118cb543fb2cdb804d5189e465d8a14912",
+        "slideText": "Geometry fit Left Right",
+        "notesText": "Fit notes",
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "698500"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "127000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "889000"
+              },
+              "ext": {
+                "cx": "381000",
+                "cy": "190500"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "508000",
+                "y": "984250"
+              },
+              "ext": {
+                "cx": "762000",
+                "cy": "127000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1397000",
+                "y": "857250"
+              },
+              "ext": {
+                "cx": "635000",
+                "cy": "254000"
+              },
+              "chOff": {
+                "x": "0",
+                "y": "0"
+              },
+              "chExt": {
+                "cx": "1270000",
+                "cy": "508000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "127000",
+                    "y": "63500"
+                  },
+                  "ext": {
+                    "cx": "508000",
+                    "cy": "254000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "1270000"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "911860"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              381000,
+              635000
+            ],
+            "rows": [
+              254000
+            ],
+            "children": []
+          }
+        ],
+        "slideRelationships": [
+          {
+            "type": "notesSlide",
+            "mode": "Internal",
+            "target": "ppt/notesSlides/notesSlide1.xml"
+          },
+          {
+            "type": "slideLayout",
+            "mode": "Internal",
+            "target": "ppt/slideLayouts/slideLayout1.xml"
+          }
+        ],
+        "notesRelationships": [
+          {
+            "type": "slide",
+            "mode": "Internal",
+            "target": "ppt/slides/slide1.xml"
+          },
+          {
+            "type": "notesMaster",
+            "mode": "Internal",
+            "target": "ppt/notesMasters/notesMaster1.xml"
+          }
+        ]
+      },
+      {
+        "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round3.pptx",
+        "sha256": "dff1a6b28ef6b49701eb3df638fd0b39b5272b6dede9d5a163a970966a84bcd0",
+        "slideText": "Geometry fit Left Right",
+        "notesText": "Fit notes",
+        "objects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "698500"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "127000"
+              }
+            },
+            "text": "Geometry fit",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-2",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "889000"
+              },
+              "ext": {
+                "cx": "381000",
+                "cy": "190500"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "geometry": {
+              "off": {
+                "x": "508000",
+                "y": "984250"
+              },
+              "ext": {
+                "cx": "762000",
+                "cy": "127000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": []
+          },
+          {
+            "kind": "grpSp",
+            "name": "element-4",
+            "geometry": {
+              "off": {
+                "x": "1397000",
+                "y": "857250"
+              },
+              "ext": {
+                "cx": "635000",
+                "cy": "254000"
+              },
+              "chOff": {
+                "x": "0",
+                "y": "0"
+              },
+              "chExt": {
+                "cx": "1270000",
+                "cy": "508000"
+              }
+            },
+            "text": "",
+            "grid": [],
+            "rows": [],
+            "children": [
+              {
+                "kind": "sp",
+                "name": "element-5",
+                "geometry": {
+                  "off": {
+                    "x": "127000",
+                    "y": "63500"
+                  },
+                  "ext": {
+                    "cx": "508000",
+                    "cy": "254000"
+                  }
+                },
+                "text": "",
+                "grid": [],
+                "rows": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "kind": "graphicFrame",
+            "name": "element-6",
+            "geometry": {
+              "off": {
+                "x": "127000",
+                "y": "1270000"
+              },
+              "ext": {
+                "cx": "1016000",
+                "cy": "911860"
+              }
+            },
+            "text": "Left Right",
+            "grid": [
+              381000,
+              635000
+            ],
+            "rows": [
+              254000
+            ],
+            "children": []
+          }
+        ],
+        "slideRelationships": [
+          {
+            "type": "notesSlide",
+            "mode": "Internal",
+            "target": "ppt/notesSlides/notesSlide1.xml"
+          },
+          {
+            "type": "slideLayout",
+            "mode": "Internal",
+            "target": "ppt/slideLayouts/slideLayout1.xml"
+          }
+        ],
+        "notesRelationships": [
+          {
+            "type": "slide",
+            "mode": "Internal",
+            "target": "ppt/slides/slide1.xml"
+          },
+          {
+            "type": "notesMaster",
+            "mode": "Internal",
+            "target": "ppt/notesMasters/notesMaster1.xml"
+          }
+        ]
+      }
+    ]
+  },
+  "screenshots": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/control-first.png",
+      "sha256": "a06698a4e40996415ab6ec5037b43996a7351bf9abc836194643049d68b3a32c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-first.png",
+      "sha256": "ade7757a1b62a3f2b4c0d4c42535b2f0ac13f30dafe56b2ad88126259fd2a676"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round1.png",
+      "sha256": "551610ba248ff67977440a589d0523f0230c6b24b61301a854e63afe05c7a4fd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round2.png",
+      "sha256": "6a2be612a9504c6ce37a00ce5e3746978420d0694cce369c1713507ee9cbc80c"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round3.png",
+      "sha256": "f6cf8d93fbec85cbf7b2d4027d548eb7e841589d9186d1a5919226e89ef29bc5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/copy-fit-powerpoint/fit-round3-notes.png",
+      "sha256": "f1f2a1c20cdc30338631e06a47dab5c7681f7383ef29c3a2938cb7cf3f6c47f2"
+    }
+  ]
+}

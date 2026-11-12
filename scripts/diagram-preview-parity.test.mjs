@@ -1,0 +1,97 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { readFile, mkdir } from "node:fs/promises";
+import { chromium } from "@playwright/test";
+import { importPptx, inspectPptx } from "../packages/pptx-parser/dist/index.js";
+import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
+import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js";
+import { diagramPreviewFixture, cacheTextTransform } from "../packages/pptx-parser/test/diagram-preview-fixture.mjs";
+import { transform } from "../packages/pptx-parser/test/content-fixture.mjs";
+import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
+
+const options = { projection: "content", diagramPreview: "cache", editSaveProfile: "text-runs-v3" };
+
+test("browser public bundles render cached geometry/text/images with independent screen bounds and no network", async t => {
+  const browser = await chromium.launch({ headless: true }); t.after(() => browser.close()); const page = await browser.newPage({ viewport: { width: 900, height: 650 } });
+  const requests = []; await page.route("**/*", route => { requests.push(route.request().url()); return route.abort(); });
+  const names = ["core", "layout", "pptx-parser", "svg-renderer"];
+  const imports = Object.fromEntries(await Promise.all(names.map(async pkg => [`@pptkit/${pkg}`, `data:text/javascript;base64,${(await readFile(new URL(`../packages/${pkg}/dist/browser/index.js`, import.meta.url))).toString("base64")}`])));
+  await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
+  await page.evaluate(async () => { globalThis.parser = await import("@pptkit/pptx-parser"); globalThis.renderer = await import("@pptkit/svg-renderer"); });
+  await mkdir(new URL("../.tmp/diagram-preview/", import.meta.url), { recursive: true });
+  for (const strict of [false, true]) {
+    const f = diagramPreviewFixture(strict);
+    f.setCache(f.cacheShape() + f.cacheShape("3", { text: "Image caption", xfrm: transform().replace('x="127000"', 'x="2286000"'), fill: '<a:blipFill><a:blip r:embed="cache-image"/><a:stretch><a:fillRect/></a:stretch></a:blipFill>' }));
+    const bytes = f.bytes(), s = await importPptx(bytes, options);
+    try {
+      const expected = await renderPresentationToSvg(s.document);
+      const actual = await page.evaluate(async ({ bytes, options }) => {
+        const s = await globalThis.parser.importPptx(Uint8Array.from(bytes), options);
+        try { return { previews: s.report.diagramPreviews, rendered: await globalThis.renderer.renderPresentationToSvg(s.document) }; } finally { s.dispose(); }
+      }, { bytes: [...bytes], options });
+      assert.deepEqual(actual.previews, s.report.diagramPreviews); assert.deepEqual(actual.rendered, expected);
+      await page.setContent(`<style>body{margin:0}</style>${actual.rendered.slides[0].svg}`);
+      const boxes = await page.evaluate(() => {
+        const shape = [...document.querySelectorAll('rect')].find(n => n.getAttribute('fill')?.toUpperCase() === '#228844');
+        const image = document.querySelector('image');
+        const box = n => { const b = n.getBoundingClientRect(); return { x: b.x, y: b.y, width: b.width, height: b.height }; };
+        return { shape: box(shape), image: box(image), embedded: image.getAttribute('href')?.startsWith('data:image/png;base64,') ?? image.getAttributeNS('http://www.w3.org/1999/xlink', 'href')?.startsWith('data:image/png;base64,') };
+      });
+      assert.deepEqual(boxes.shape, { x: 110, y: 70, width: 100, height: 50 });
+      assert.deepEqual(boxes.image, { x: 280, y: 70, width: 100, height: 50 }); assert.equal(boxes.embedded, true);
+      assert.equal(await page.getByText("Cached text", { exact: true }).isVisible(), true);
+      await page.screenshot({ path: new URL(`../.tmp/diagram-preview/${strict ? "strict" : "transitional"}.png`, import.meta.url).pathname });
+    } finally { s.dispose(); }
+  }
+  assert.deepEqual(requests, []);
+});
+
+test("cached approximations survive three unrelated source edits; fresh output remains ordinary shapes", async () => {
+  for (const strict of [false, true]) {
+    const f = diagramPreviewFixture(strict);
+    f.setCache(f.cacheShape("2", { xfrm: transform('rot="5400000"'), extra: cacheTextTransform('rot="-5400000"') }) + f.cacheShape("3", { text: "Image caption", xfrm: transform().replace('x="127000"', 'x="2286000"'), fill: '<a:blipFill><a:blip r:embed="cache-image"/><a:stretch><a:fillRect/></a:stretch></a:blipFill>' }));
+    let bytes = new Uint8Array(f.bytes());
+    for (let round = 0; round < 3; round++) {
+      const before = readGeneratedZip(bytes), s = await importPptx(bytes, options);
+      try {
+        const slide = s.document.slides[0], text = structuredClone(slide.elements[1]); text.content[0].runs[0].text = `Round ${round}`;
+        slide.removeElement(text.id); slide.insertElement(1, text);
+        const prepared = await s.prepareSave({ mode: "edit" }); assert.equal(prepared.status, "ready"); bytes = (await s.save(prepared.plan)).bytes;
+        const after = readGeneratedZip(bytes);
+        for (const [name, body] of before) if (name !== "deck/z.xml") assert.deepEqual(after.get(name), body, name);
+        const reopened = await importPptx(bytes, options);
+        try { assert.deepEqual(reopened.report.diagramPreviews, s.report.diagramPreviews); const text = reopened.document.slides[0].elements[0].children[0].children[0].children[1]; assert.equal(text.content[0].runs[0].text, "Cached text"); assert.equal(text.transform.rotation, 0); } finally { reopened.dispose(); }
+        const fresh = await generatePptx(s.document); assert.equal((await inspectPptx(fresh.bytes)).slides[0].diagrams, undefined);
+      } finally { s.dispose(); }
+    }
+  }
+});
+
+test("independent cached text keeps its own screen rectangle while shape rotation is compensated", async t => {
+  const browser = await chromium.launch({ headless: true }); t.after(() => browser.close());
+  const page = await browser.newPage({ viewport: { width: 900, height: 650 } }); await page.route("**/*", route => route.abort());
+  await mkdir(new URL("../.tmp/diagram-preview/", import.meta.url), { recursive: true });
+  for (const strict of [false, true]) for (const rich of [false, true]) {
+    const f = diagramPreviewFixture(strict);
+    let child = f.cacheShape("2", { text: "AB", xfrm: transform('rot="5400000"'), extra: cacheTextTransform('rot="-5400000"') });
+    if (rich) child = child.replace('</a:p>', '<a:r><a:rPr sz="1200"/><a:t> rich</a:t></a:r></a:p>');
+    f.setCache('<dsp:grpSp><dsp:nvGrpSpPr/><dsp:grpSpPr><a:xfrm><a:off x="127000" y="254000"/><a:ext cx="2540000" cy="1270000"/><a:chOff x="127000" y="254000"/><a:chExt cx="1270000" cy="635000"/></a:xfrm></dsp:grpSpPr>' + child + '</dsp:grpSp>');
+    const s = await importPptx(f.bytes(), options);
+    try {
+      await page.setContent(`<style>body{margin:0}</style>${(await renderPresentationToSvg(s.document)).slides[0].svg}`);
+      const actual = await page.evaluate(rich => {
+        const container = [...document.querySelectorAll('[data-pptkit-element-id]')].find(n => n.getAttribute('data-pptkit-element-id').endsWith('-text') && n.textContent === (rich ? 'AB rich' : 'AB'));
+        const text = container.localName === 'foreignObject' ? container : container.querySelector(rich ? 'foreignObject' : 'text');
+        const shape = [...document.querySelectorAll('rect')].find(n => n.getAttribute('fill')?.toUpperCase() === '#228844');
+        const b = n => { const r = n.getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; };
+        const baseline = rich ? null : new DOMPoint(Number(text.getAttribute('x')), Number(text.getAttribute('y'))).matrixTransform(text.getCTM());
+        return { text: b(text), shape: b(shape), baseline: baseline ? [baseline.x, baseline.y] : null, matrix: [text.getCTM().a, text.getCTM().b, text.getCTM().c, text.getCTM().d] };
+      }, rich);
+      if (rich) assert.deepEqual(actual.text, [150, 80, 160, 40]);
+      else { assert.equal(actual.baseline[0], 152); assert.ok(Math.abs(actual.baseline[1] - 114.8) < 1e-6); }
+      assert.deepEqual(actual.matrix, [2, 0, 0, 2]);
+      assert.deepEqual(actual.shape, [160, 20, 100, 200]);
+      await page.screenshot({ path: new URL(`../.tmp/diagram-preview/independent-${rich ? "rich" : "native"}-${strict ? "strict" : "transitional"}.png`, import.meta.url).pathname });
+    } finally { s.dispose(); }
+  }
+});

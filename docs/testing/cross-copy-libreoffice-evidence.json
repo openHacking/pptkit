@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two-page copied-slide fixture; LibreOfficeDev headless three successive saves and final PDF reopening. No interactive edit, repair-dialog, PowerPoint or full visual-fidelity claim.",
+  "environment": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64"
+  },
+  "directory": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P",
+  "fileHashes": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/input.pptx",
+      "sha256": "c2219a3293e1bfac70f81a900e542ed25806928f52fe16701a151ae54419ecbb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-1/input.pptx",
+      "sha256": "4f62edee8858c774e3441de64eec029d808e2b79d700be849e716f70222f8adb"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-2/input.pptx",
+      "sha256": "a7daf6dc4f103fbb2deb654a5b9ac74c17cb65c46ab3d100261beb00e547b64e"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-3/input.pptx",
+      "sha256": "924599f1db70109c06947899caea22834a12d2ded04a4f140363168a71874546"
+    }
+  ],
+  "pdf": {
+    "file": "/Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/pdf/input.pdf",
+    "sha256": "057dd37c872718f27112339298b641b8c582d404d9331a71ce512cd99d6bdfbd"
+  },
+  "independent": {
+    "oracle": "Python zipfile, ElementTree and PyMuPDF",
+    "rounds": [
+      {
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "notesText": [
+          "Control page notes",
+          "Copied page notes"
+        ],
+        "notesRelationships": {
+          "ppt/notesSlides/_rels/notesSlide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "slide",
+              "target": "../slides/slide1.xml"
+            }
+          ],
+          "ppt/notesSlides/_rels/notesSlide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "slide",
+              "target": "../slides/slide2.xml"
+            }
+          ]
+        },
+        "slideRelationships": {
+          "ppt/slides/_rels/slide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide1.xml"
+            }
+          ],
+          "ppt/slides/_rels/slide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide2.xml"
+            },
+            {
+              "id": "rId3",
+              "type": "slide",
+              "target": "slide2.xml"
+            },
+            {
+              "id": "rId4",
+              "type": "image",
+              "target": "../media/asset-1.png"
+            }
+          ]
+        },
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1016000",
+              "y": "571500"
+            },
+            "extent": {
+              "cx": "5080000",
+              "cy": "825500"
+            },
+            "clickId": "rId3",
+            "customGeometry": false
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270000",
+              "y": "1905000"
+            },
+            "extent": {
+              "cx": "3556000",
+              "cy": "1778000"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6731000",
+              "y": "2159000"
+            },
+            "extent": {
+              "cx": "2032000",
+              "cy": "1270000"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826000",
+              "y": "2794000"
+            },
+            "extent": {
+              "cx": "1905000",
+              "cy": "13"
+            },
+            "clickId": null,
+            "customGeometry": true
+          }
+        ],
+        "media": [
+          {
+            "name": "ppt/media/asset-1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "notesText": [
+          "Control page notes",
+          "Copied page notes"
+        ],
+        "notesRelationships": {
+          "ppt/notesSlides/_rels/notesSlide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ],
+          "ppt/notesSlides/_rels/notesSlide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ]
+        },
+        "slideRelationships": {
+          "ppt/slides/_rels/slide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "image",
+              "target": "../media/image1.png"
+            },
+            {
+              "id": "rId3",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId4",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide2.xml"
+            }
+          ],
+          "ppt/slides/_rels/slide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide1.xml"
+            }
+          ]
+        },
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1015920",
+              "y": "571680"
+            },
+            "extent": {
+              "cx": "5079600",
+              "cy": "825120"
+            },
+            "clickId": "rId1",
+            "customGeometry": false
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270080",
+              "y": "1905120"
+            },
+            "extent": {
+              "cx": "3555720",
+              "cy": "1777680"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6730920",
+              "y": "2158920"
+            },
+            "extent": {
+              "cx": "2031480",
+              "cy": "1269720"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826160",
+              "y": "2793960"
+            },
+            "extent": {
+              "cx": "1904760",
+              "cy": "360"
+            },
+            "clickId": null,
+            "customGeometry": true
+          }
+        ],
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "notesText": [
+          "Control page notes",
+          "Copied page notes"
+        ],
+        "notesRelationships": {
+          "ppt/notesSlides/_rels/notesSlide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ],
+          "ppt/notesSlides/_rels/notesSlide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ]
+        },
+        "slideRelationships": {
+          "ppt/slides/_rels/slide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "image",
+              "target": "../media/image1.png"
+            },
+            {
+              "id": "rId3",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId4",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide2.xml"
+            }
+          ],
+          "ppt/slides/_rels/slide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide1.xml"
+            }
+          ]
+        },
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1015920",
+              "y": "571680"
+            },
+            "extent": {
+              "cx": "5079240",
+              "cy": "824760"
+            },
+            "clickId": "rId1",
+            "customGeometry": false
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270080",
+              "y": "1905120"
+            },
+            "extent": {
+              "cx": "3555360",
+              "cy": "1777320"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6730920",
+              "y": "2158920"
+            },
+            "extent": {
+              "cx": "2031120",
+              "cy": "1269360"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826160",
+              "y": "2793960"
+            },
+            "extent": {
+              "cx": "1904400",
+              "cy": "360"
+            },
+            "clickId": null,
+            "customGeometry": true
+          }
+        ],
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      },
+      {
+        "slideText": [
+          "Control page",
+          "Copied page"
+        ],
+        "notesText": [
+          "Control page notes",
+          "Copied page notes"
+        ],
+        "notesRelationships": {
+          "ppt/notesSlides/_rels/notesSlide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ],
+          "ppt/notesSlides/_rels/notesSlide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "../slides/slide1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesMaster",
+              "target": "../notesMasters/notesMaster1.xml"
+            }
+          ]
+        },
+        "slideRelationships": {
+          "ppt/slides/_rels/slide2.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slide",
+              "target": "slide2.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "image",
+              "target": "../media/image1.png"
+            },
+            {
+              "id": "rId3",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId4",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide2.xml"
+            }
+          ],
+          "ppt/slides/_rels/slide1.xml.rels": [
+            {
+              "id": "rId1",
+              "type": "slideLayout",
+              "target": "../slideLayouts/slideLayout1.xml"
+            },
+            {
+              "id": "rId2",
+              "type": "notesSlide",
+              "target": "../notesSlides/notesSlide1.xml"
+            }
+          ]
+        },
+        "copiedPageObjects": [
+          {
+            "kind": "sp",
+            "name": "element-1",
+            "offset": {
+              "x": "1015920",
+              "y": "571680"
+            },
+            "extent": {
+              "cx": "5078880",
+              "cy": "824400"
+            },
+            "clickId": "rId1",
+            "customGeometry": false
+          },
+          {
+            "kind": "pic",
+            "name": "element-2",
+            "offset": {
+              "x": "1270080",
+              "y": "1905120"
+            },
+            "extent": {
+              "cx": "3555000",
+              "cy": "1776960"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-3",
+            "offset": {
+              "x": "6730920",
+              "y": "2158920"
+            },
+            "extent": {
+              "cx": "2030760",
+              "cy": "1269000"
+            },
+            "clickId": null,
+            "customGeometry": false
+          },
+          {
+            "kind": "sp",
+            "name": "element-4",
+            "offset": {
+              "x": "4826160",
+              "y": "2793960"
+            },
+            "extent": {
+              "cx": "1904040",
+              "cy": "360"
+            },
+            "clickId": null,
+            "customGeometry": true
+          }
+        ],
+        "media": [
+          {
+            "name": "ppt/media/image1.png",
+            "sha256": "45ca74602a2f7790a8eb2fad662cc73ee8ab42e78d5abfd0c66aa4d44725c9c6"
+          }
+        ]
+      }
+    ],
+    "finalGeometryDeltasEmu": {
+      "element-1": {
+        "offset": {
+          "x": -80,
+          "y": 180
+        },
+        "extent": {
+          "cx": -1120,
+          "cy": -1100
+        }
+      },
+      "element-2": {
+        "offset": {
+          "x": 80,
+          "y": 120
+        },
+        "extent": {
+          "cx": -1000,
+          "cy": -1040
+        }
+      },
+      "element-3": {
+        "offset": {
+          "x": -80,
+          "y": -80
+        },
+        "extent": {
+          "cx": -1240,
+          "cy": -1000
+        }
+      },
+      "element-4": {
+        "offset": {
+          "x": 160,
+          "y": -40
+        },
+        "extent": {
+          "cx": -960,
+          "cy": 347
+        }
+      }
+    },
+    "reopenedPdfPageText": [
+      "Control page\n",
+      "Copied page\n"
+    ]
+  },
+  "logs": [
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-1/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-1/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-2/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-2/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-3/input.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ],
+  "pdfLog": {
+    "stdout": "convert /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/round-3/input.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/cross-copy-libreoffice/run-FSMq2P/pdf/input.pdf using filter : impress_pdf_Export\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+  }
+}

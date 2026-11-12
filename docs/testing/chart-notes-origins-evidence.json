@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T21:20:02.303Z",
+  "directory": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G",
+  "artifacts": [
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/source.pptx",
+      "bytes": 56464,
+      "sha256": "28d95f7a061abbbdff0af3ac5bf003622eeb226f7289163bcfff2cd718c34774"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/normalized.json",
+      "bytes": 50832,
+      "sha256": "726ee2a60b34df7bfd985d260abd36f190571ca975c39c986460550826119f65"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/origins.json",
+      "bytes": 174816,
+      "sha256": "7ae677e4de1434626a5937d35acb9899aa5c37b3c2ef7627e4400a8a052992ab"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/layout.json",
+      "bytes": 70810,
+      "sha256": "848b8a4ce200435bdcec5b23c02828cbf791a659d73cd526adc0d05917b29046"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/page-1.svg",
+      "bytes": 13970,
+      "sha256": "b00e2a698350156e19ef4e192bbc229567811bb16aeb4cad47a23a04f9aa68bd"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/page-2.svg",
+      "bytes": 13970,
+      "sha256": "2fd11a797654297011ddf5ba7ae623c528020d9e282b6be6621c604ed81abfc5"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/page-3.svg",
+      "bytes": 13970,
+      "sha256": "76f9cd5816129599eec89870f2afe2a30a6983ef3ab863f580959b79b192a6ef"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/page-4.svg",
+      "bytes": 7134,
+      "sha256": "804c35ebce5ac041db5c78c2e51996607cd085f8d1ed1e91a2cc7a775ed205c6"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/retained-native-source.pptx",
+      "bytes": 14490,
+      "sha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d"
+    },
+    {
+      "file": "/Volumes/github/private/pptkit/.tmp/chart-notes-origins/run-LJku3G/browser-preview.png",
+      "bytes": 25841,
+      "sha256": "c1e2fa5f2b6500c9b0ca40221bd620b33d3b2f778b6b60e1a9620c9523781050"
+    }
+  ],
+  "dependencies": [
+    {
+      "file": "tests/fixtures/chart-notes-origins.mjs",
+      "sha256": "4ce7fcc233a8fb6400d6ea2e22625aca4c162c23ccf7d5354293c27d57fc971c"
+    },
+    {
+      "file": "packages/core/src/normalization/presentation-normalizer.ts",
+      "sha256": "e5a9befc04459b36c7eb8f69348acbc7571e7f6568ad0c5ce31b380441b34ef1"
+    },
+    {
+      "file": "packages/core/src/normalization/text-origins.ts",
+      "sha256": "0addc928a2dff0afed16a0979d0d0f67a3e590048c28e850f3b3bbcd79f92722"
+    },
+    {
+      "file": "packages/core/src/types/inheritance.ts",
+      "sha256": "9d5deeb9298e69335da593334fc017fa99e5f21357d25d525b477035eb6d6508"
+    },
+    {
+      "file": "packages/core/test/chart-notes-origins.test.mjs",
+      "sha256": "d1153169a8de9844ba5677c3a1a78f209a05a042b8a0a6ac7b50179d43378c17"
+    },
+    {
+      "file": "scripts/multi-master-parity.test.mjs",
+      "sha256": "defba971a0635ff1f331bac184609ccd86ee7412ff2e4894d6818963c4f194d2"
+    },
+    {
+      "file": "scripts/prepare-chart-notes-origins.mjs",
+      "sha256": "41b339248d343d524832db606be0dba42e01334162ed7a74e95d3dd17e5d4515"
+    }
+  ],
+  "browserVersion": "149.0.7827.55",
+  "originRecords": 726,
+  "chartCount": 11,
+  "notesTargets": [
+    "page-0",
+    "page-1",
+    "page-2",
+    "empty-notes"
+  ],
+  "warnings": [
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "page-0",
+      "path": "notes"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "page-1",
+      "path": "notes"
+    },
+    {
+      "code": "script-font-map-materialized",
+      "message": "Script font maps are materialized as current concrete text fonts. Native reusable script/language rules are not retained; text runs may split.",
+      "slideId": "page-2",
+      "path": "notes"
+    }
+  ],
+  "retainedNativeSourceSha256": "ef3d886dcf09d80e23b58cbbafb67cbb26be84fbb2a5c71797c2eb0a3219cd2d",
+  "nativeApplication": "No new application run; this slice changes origin metadata only. The retained two-page native source stays byte-exact. Chart/notes output is checked independently in browser XML tests; full native chart/theme admission remains open."
+}
