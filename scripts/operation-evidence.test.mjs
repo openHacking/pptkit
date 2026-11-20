@@ -120,3 +120,15 @@ test('mixed media and comments evidence is bound to distributed fixtures and reg
   const scripts = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')).scripts;
   assert.match(scripts['test:import'], /(?:^|\s)scripts\/text-save-parity\.test\.mjs(?:\s|$)/);
 });
+
+test('mixed picture evidence binds the distributed source and registered regression', async () => {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const data = JSON.parse(await readFile(path.join(root, 'docs/testing/operation-evidence.json'), 'utf8'));
+  const row = data.records.find(item => item.id === 'picture-v1-advanced-mixed-three-round'); assert.ok(row);
+  const evidence = JSON.parse(await readFile(path.join(root, row.fixture.evidencePath), 'utf8'));
+  assert.equal(row.method, 'automated'); assert.equal(row.status, 'pass'); assert.equal(evidence.nativeApplication, 'untested');
+  assert.equal(digest(await readFile(path.join(root, row.fixture.localPath))), row.fixture.sha256);
+  assert.equal(evidence.procedure, row.procedure);
+  const scripts = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')).scripts;
+  assert.match(scripts['test:import'], /(?:^|\s)scripts\/picture-save-parity\.test\.mjs(?:\s|$)/);
+});

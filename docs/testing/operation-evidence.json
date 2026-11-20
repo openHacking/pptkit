@@ -1923,6 +1923,67 @@
           ]
         }
       ]
+    },
+    {
+      "id": "picture-v1-advanced-mixed-three-round",
+      "feature": "Shared picture in mixed advanced deck",
+      "subject": {
+        "object": "image",
+        "owner": "slide-picture",
+        "family": "mixed-advanced",
+        "variant": "shared-media-retarget"
+      },
+      "operation": "Source picture replacement",
+      "producer": {
+        "name": "PPTKit repository-authored synthetic fixture",
+        "version": "0.1.0"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "0.1.0 workspace"
+      },
+      "profile": "replace-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e67a230d09d7dd223e597d66746b9ec7c1f968b1384b04d329ed30ff0cb42e93",
+        "evidencePath": "docs/testing/mixed-advanced-picture-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": "tests/fixtures/mixed-media-comments-source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test --test-name-pattern=\"mixed advanced deck picture\" scripts/picture-save-parity.test.mjs",
+      "result": "Three picture retargets preserve the shared audio poster, other slide, SmartArt, timing, media and comment sources; concurrent text edit blocks.",
+      "limitations": "Synthetic mixed sample; native playback, native picture editing and broader media/comment semantics remain untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/mixed-advanced-picture-evidence.json",
+          "sha256": "b69880344359deea2399ea20c4783b613f9929efd698b5d4d3d68ad6bc2c2e3f",
+          "assertions": [
+            {
+              "pointer": "/rounds",
+              "equals": 3
+            },
+            {
+              "pointer": "/firstRoundBrowserParity",
+              "equals": true
+            },
+            {
+              "pointer": "/concurrentTextBlocked",
+              "equals": true
+            },
+            {
+              "pointer": "/independentMediaCommentVerification",
+              "equals": true
+            },
+            {
+              "pointer": "/nativeApplication",
+              "equals": "untested"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

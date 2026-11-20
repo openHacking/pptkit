@@ -1,13 +1,107 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { chromium } from '@playwright/test';
 import { deflateSync } from 'node:zlib';
-import { importPptx, inspectOpcPackage } from '../packages/pptx-parser/dist/index.js';
+import { importPptx, inspectOpcPackage, inspectOpcClosure, inspectPptx, inspectPptxTiming, compareOpcPackages } from '../packages/pptx-parser/dist/index.js';
 import { imageFixture, encodeImages, picture, validGif as gif, gif as incompleteGif, jpegHeader, png } from '../packages/pptx-parser/test/image-fixture.mjs';
 import { rasterMetadata } from '../packages/pptx-parser/dist/import/image-metadata.js';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 import { indexedRows, filterRows } from '../tests/support/png-indexed-fixture.mjs';
+
+test('mixed advanced deck picture replacement preserves shared audio and comment sources over three rounds', async t => {
+  let source = await readFile('tests/fixtures/mixed-media-comments-source.pptx');
+  const evidence = JSON.parse(await readFile('docs/testing/mixed-advanced-picture-evidence.json', 'utf8'));
+  assert.equal(createHash('sha256').update(source).digest('hex'), evidence.sourceSha256);
+  assert.equal(evidence.rounds, 3); assert.deepEqual(evidence.formats, ['gif', 'png', 'gif']);
+  assert.equal(evidence.firstRoundBrowserParity, true); assert.equal(evidence.concurrentTextBlocked, true);
+  assert.equal(evidence.independentMediaCommentVerification, true); assert.equal(evidence.nativeApplication, 'untested');
+  const options = { projection: 'content', pictureEditSaveProfile: 'replace-v1' }, graph = await inspectOpcClosure(source, { roots: ['/'] });
+  const diagram = (await inspectPptx(source)).diagramInventory, timing = await inspectPptxTiming(source);
+  const directory = await mkdtemp(path.join(tmpdir(), 'pptkit-mixed-picture-')); t.after(() => rm(directory, { recursive: true, force: true }));
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile('packages/pptx-parser/dist/browser/global.js', 'utf8') });
+  const esm = await readFile('packages/pptx-parser/dist/browser/index.js');
+  const moduleUrl = `data:text/javascript;base64,${esm.toString('base64')}`;
+  for (let round = 1; round <= 3; round++) {
+    const before = readGeneratedZip(source), data = round === 2 ? png : gif, mime = round === 2 ? 'image/png' : 'image/gif';
+    const width = round === 2 ? 8 : 1, height = round === 2 ? 4 : 1;
+    const session = await importPptx(source, options);
+    try {
+      const slide = session.document.slides[0], picture = slide.elements.find(item => item.type === 'image' && item.name !== 'Synthetic audio');
+      const original = session.report.pictureSources.find(item => item.elementId === picture.id);
+      assert.ok(original); assert.equal(original.source.sourceObjectId, '5');
+      const asset = `mixed-replacement-${round}`;
+      session.document.registerAsset({ id: asset, kind: 'image', source: { type: 'bytes', value: data }, mimeType: mime, width, height });
+      slide.replaceElement(picture.id, { ...picture, assetId: asset });
+      if (round === 1) {
+        const text = slide.elements.find(item => item.type === 'text'), changed = structuredClone(text);
+        changed.content[0].runs[0].text = 'unsupported simultaneous text edit'; slide.replaceElement(text.id, changed);
+        const blocked = await session.prepareSave({ mode: 'edit' }); assert.equal(blocked.status, 'blocked'); assert.equal(blocked.report.assurance, 'none');
+        slide.replaceElement(text.id, text);
+      }
+      const prepared = await session.prepareSave({ mode: 'edit' }); assert.equal(prepared.status, 'ready', JSON.stringify(prepared.report));
+      const output = (await session.save(prepared.plan)).bytes, after = readGeneratedZip(output);
+      const relId = `pptkitImage${round}`, extension = round === 2 ? 'png' : 'gif', added = `ppt/media/pptkit-image-${round}.${extension}`;
+      assert.deepEqual(after.get(added), Buffer.from(data));
+      assert.deepEqual([...after.keys()].filter(name => !before.has(name)), [added]);
+      for (const [name, body] of before) {
+        if (name === 'ppt/slides/slide1.xml') {
+          const xml = body.toString(), anchor = `r:embed="${original.relationshipId}"`;
+          assert.ok(xml.includes(anchor)); assert.equal(after.get(name).toString(), xml.replace(anchor, `r:embed="${relId}"`));
+        } else if (name === 'ppt/slides/_rels/slide1.xml.rels') {
+          const inserted = `<Relationship Id="${relId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../../${added}"/>`;
+          assert.equal(after.get(name).toString(), body.toString().replace('</Relationships>', `${inserted}</Relationships>`));
+        } else if (name === '[Content_Types].xml') {
+          const inserted = `<Override PartName="/${added}" ContentType="${mime}"/>`;
+          assert.equal(after.get(name).toString(), body.toString().replace('</Types>', `${inserted}</Types>`));
+        } else assert.deepEqual(after.get(name), body, name);
+      }
+      const comparison = await compareOpcPackages(source, output);
+      assert.deepEqual(comparison.differences.map(d => [d.code, d.part]), [
+        ['payload-changed', '/[Content_Types].xml'], ['part-added', `/${added}`],
+        ['payload-changed', '/ppt/slides/_rels/slide1.xml.rels'], ['payload-changed', '/ppt/slides/slide1.xml'], ['relationship-added', '/ppt/slides/_rels/slide1.xml.rels'],
+      ]);
+      const currentGraph = await inspectOpcClosure(output, { roots: ['/'] });
+      assert.deepEqual(currentGraph.relationships.filter(rel => !rel.id.startsWith('pptkitImage')), graph.relationships);
+      assert.deepEqual(currentGraph.unreachedParts, graph.unreachedParts);
+      assert.deepEqual((await inspectPptx(output)).diagramInventory, diagram); assert.deepEqual(await inspectPptxTiming(output), timing);
+      const file = path.join(directory, `round-${round}.pptx`); await writeFile(file, output);
+      assert.match(execFileSync('python3', ['scripts/research/verify-mixed-media-comments.py', file], { encoding: 'utf8' }), /tone\.wav/);
+      const reopened = await importPptx(output, options);
+      try {
+        const sources = reopened.report.pictureSources;
+        assert.equal(sources.find(item => item.source.sourceObjectId === '5').mediaPart, `/${added}`);
+        assert.equal(sources.find(item => item.source.sourceObjectId === '100').mediaPart, '/ppt/media/shared.png');
+        assert.equal(sources.find(item => item.slideId !== sources[0].slideId).mediaPart, '/ppt/media/shared.png');
+      } finally { reopened.dispose(); }
+      if (round === 1) {
+        const results = await page.evaluate(async ({ moduleUrl, input, data, options }) => {
+          const esm = await import(moduleUrl), results = [];
+          for (const api of [esm, PPTKit]) {
+            const s = await api.importPptx(Uint8Array.from(input), options);
+            try {
+              const slide = s.document.slides[0], picture = slide.elements.find(item => item.type === 'image' && item.name !== 'Synthetic audio');
+              s.document.registerAsset({ id: 'mixed-replacement-1', kind: 'image', source: { type: 'bytes', value: Uint8Array.from(data) }, mimeType: 'image/gif', width: 1, height: 1 });
+              slide.replaceElement(picture.id, { ...picture, assetId: 'mixed-replacement-1' });
+              const plan = await s.prepareSave({ mode: 'edit' }); if (plan.status !== 'ready') throw Error(JSON.stringify(plan.report));
+              results.push([...((await s.save(plan.plan)).bytes)]);
+            } finally { s.dispose(); }
+          }
+          return results;
+        }, { moduleUrl, input: [...source], data: [...data], options });
+        for (const result of results) assert.deepEqual(Uint8Array.from(result), output);
+      }
+      source = output;
+    } finally { session.dispose(); }
+  }
+  assert.deepEqual(requests, []);
+});
 
 test('public picture save matches Node, browser ESM/global and independent source XML', async t => {
   const source = encodeImages(imageFixture(picture({ id: 2 }) + picture({ id: 3 }))), options = { projection: 'content', pictureEditSaveProfile: 'replace-v1' };

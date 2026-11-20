@@ -20,6 +20,8 @@ This profile preserves the existing visible frame and crop values; it does not c
 
 One [LibreOfficeDev 26.8 headless experiment](../testing/picture-save-libreoffice-evidence.json), reproducible with [the producer script](../../scripts/inspect-picture-save.mjs), opened and resaved an authored two-picture shared-media sample three times. The target and sibling PDF regions, rasterized at 2×, matched the first edited rendering after all three resaves, while LibreOffice changed their left crop values from 12500 to 12264 and 12736 respectively. This is observed behavior for that sample, not exact crop-attribute preservation. No interactive editing or repair-dialog observation was performed in that experiment. A separate [PowerPoint sample](../testing/picture-number-powerpoint.md) combines replacement with a starting-number change and records three reorder/save/reopen rounds; native interactive picture replacement and broader producer coverage remain unverified.
 
+A [mixed-source regression](../testing/mixed-advanced-picture-evidence.json) performs three picture retargets in a deck also containing synthetic SmartArt, timing, WAV and comments. The original shared image remains used by an audio poster and another slide; exact part changes, browser parity and independent media/comment checks are recorded. Native picture editing and playback are not inferred.
+
 See [session lifecycle and budgets](import-session.md) and [file adapter](file-save.md). The source inventory and this profile are distinct from [fresh image authoring replacement](asset-lifecycle.md).
 
 <!-- doc-test: docs/examples/picture-edit-save.ts -->

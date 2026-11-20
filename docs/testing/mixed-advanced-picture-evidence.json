@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "tests/fixtures/mixed-media-comments-source.pptx",
+  "sourceSha256": "e67a230d09d7dd223e597d66746b9ec7c1f968b1384b04d329ed30ff0cb42e93",
+  "producer": "PPTKit synthetic fixture with manually constructed advanced sources",
+  "application": "PPTKit 0.1.0 workspace",
+  "profile": "replace-v1",
+  "procedure": "node --test --test-name-pattern=\"mixed advanced deck picture\" scripts/picture-save-parity.test.mjs",
+  "rounds": 3,
+  "formats": [
+    "gif",
+    "png",
+    "gif"
+  ],
+  "firstRoundBrowserParity": true,
+  "concurrentTextBlocked": true,
+  "independentMediaCommentVerification": true,
+  "scope": "Replace one ordinary picture sharing source media with an audio poster and another slide, preserving comments, media, SmartArt and timing; validate exact package changes and three reopens.",
+  "nativeApplication": "untested"
+}
