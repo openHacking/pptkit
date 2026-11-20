@@ -43,6 +43,22 @@ test("PCM audio export matches browser global and Node without fetching", async 
   assert.deepEqual(Uint8Array.from(actual.bytes), expected.bytes); assert.deepEqual(actual.warnings, expected.warnings); assert.deepEqual(requests, []);
 });
 
+test("PCM audio projection matches browser and preserves native source bytes", async t => {
+  const bytes = await readFile(new URL('../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url));
+  const options = { projection: 'content', audioProjection: 'wave-pcm-v1' }, session = await importPptx(bytes, options);
+  t.after(() => session.dispose());
+  const expected = { document: normalizePresentation(session.document), sources: session.report.audioSources, rendered: await renderPresentationToSvg(session.document) };
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const pkg of ['core', 'layout', 'pptx-parser', 'svg-renderer']) await page.addScriptTag({ content: await readFile(new URL(`../packages/${pkg}/dist/browser/global.js`, import.meta.url), 'utf8') });
+  const actual = await page.evaluate(async ({ bytes, options }) => {
+    const s = await PPTKit.importPptx(Uint8Array.from(bytes), options);
+    try { const plan = await s.prepareSave({ mode: 'no-op' }); return { document: PPTKit.normalizePresentation(s.document), sources: s.report.audioSources, rendered: await PPTKit.renderPresentationToSvg(s.document), bytes: Array.from((await s.save(plan.plan)).bytes) }; } finally { s.dispose(); }
+  }, { bytes: [...bytes], options });
+  assert.deepEqual(actual.document, expected.document); assert.deepEqual(actual.sources, expected.sources); assert.deepEqual(actual.rendered, expected.rendered);
+  assert.deepEqual(Uint8Array.from(actual.bytes), new Uint8Array(bytes)); assert.deepEqual(requests, []);
+});
+
 test("browser audio source inventory agrees with Node and makes no requests", async t => {
   const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="office"/></p:ext></p:extLst></p:nvPr>');
   const f = imageFixture(xml), wav = Buffer.alloc(46);

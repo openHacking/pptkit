@@ -12,6 +12,7 @@ const MEDIA_EXT = "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}";
 /** Source inventory only: no audio assets, external loads, playback or edit bindings. */
 export function audioSources(context: Context, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>) {
   const result: ImportedAudioSource[] = [];
+  const byOwner = new WeakMap<XmlElement, readonly ImportedAudioSource[]>();
   const cache = new Map<string, Pick<ImportedAudioSource, "status" | "contentType" | "pcm" | "reason">>();
   let total = 0;
   const inspect = async (part: string, slideId: string, objectId: string, nvPr: XmlElement | undefined, paths: WeakMap<XmlElement, string>) => {
@@ -81,6 +82,7 @@ export function audioSources(context: Context, limits: Required<PptxSessionLimit
       const companionStatus = directPart && relatedPart ? directPart === relatedPart ? "same-part" : "different-part" : "unverified";
       result[index] = { ...item, companionStatus };
     }
+    byOwner.set(nvPr, result.slice(firstResult));
   };
-  return { result, inspect };
+  return { result, inspect, forOwner: (nvPr: XmlElement | undefined) => nvPr ? byOwner.get(nvPr) ?? [] : [] };
 }

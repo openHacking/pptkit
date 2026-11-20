@@ -325,6 +325,8 @@ export interface PptxImportOptions extends PptxInspectionOptions {
   pictureSourceProfile?: "embedded-v1";
   /** Content only. Inspect slide-local picture audio and companion Office media sources as bounded PCM WAVE. */
   audioSourceProfile?: "wave-pcm-v1";
+  /** Content only. Project supported embedded PCM WAVE as Core audio; no source edit-save. */
+  audioProjection?: "wave-pcm-v1";
   /** Content only. artwork-v10 adds shape patterns; artwork-v11 adds explicit bounded outer shadows. */
   masterArtwork?: "pictures-v1" | "artwork-v1" | "artwork-v2" | "artwork-v3" | "artwork-v4" | "artwork-v5" | "artwork-v6" | "artwork-v7" | "artwork-v8" | "artwork-v9" | "artwork-v10" | "artwork-v11";
   /** Content only. Resolve notesStyle/body-placeholder defaults and independent notes theme. */

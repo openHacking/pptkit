@@ -7,6 +7,8 @@ import { importPptxFile } from "../dist/node.js";
 import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { generatePptx } from '../../pptx-exporter/dist/index.js';
+import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
 
 function fixture(strict = false) {
   const media = id => picture({ id }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/></p:nvPr>');
@@ -19,6 +21,78 @@ function fixture(strict = false) {
   return f;
 }
 const options = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' };
+const projected = { projection: 'content', audioProjection: 'wave-pcm-v1' };
+
+test('native PCM audio projects to detached Core audio and fresh output retains its bytes', async () => {
+  const bytes = await readFile(new URL('../../../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url));
+  const session = await importPptx(bytes, projected);
+  try {
+    const element = session.document.slides[0].elements.find(x => x.type === 'audio');
+    assert.ok(element); assert.equal(session.document.assets.find(x => x.id === element.audioAssetId).kind, 'audio');
+    assert.equal(session.document.assets.find(x => x.id === element.posterAssetId).kind, 'image');
+    assert.equal(session.report.findings.find(x => x.feature === 'drawing.audio.projected-fields' && x.operation === 'import').tier, 'fallback');
+    assert.equal(session.report.findings.find(x => x.feature === 'drawing.audio.projected-fields' && x.operation === 'edit-save').tier, 'unsupported');
+    assert.match(session.report.diagnostics.find(x => x.code === 'media-playback-unmapped').message, /playback settings and timing/);
+    const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+    assert.equal((await session.prepareSave({ mode: 'edit' })).status, 'blocked');
+    const fresh = await generatePptx(session.document, { audioMode: 'wave-pcm-v1' });
+    const wave = readGeneratedZip(bytes).get('ppt/media/media1.wav'), output = readGeneratedZip(fresh.bytes);
+    assert.ok([...output].some(([name, data]) => name.endsWith('.wav') && data.equals(wave)));
+    let roundBytes = fresh.bytes;
+    for (let round = 0; round < 3; round++) {
+      const reopened = await importPptx(roundBytes, projected);
+      try {
+        assert.equal(reopened.document.slides[0].elements.filter(x => x.type === 'audio').length, 1);
+        assert.equal(reopened.report.audioSources.filter(x => x.companionStatus === 'same-part').length, 1);
+        const save = await reopened.prepareSave({ mode: 'no-op' }); assert.deepEqual((await reopened.save(save.plan)).bytes, roundBytes);
+        roundBytes = (await generatePptx(reopened.document, { audioMode: 'wave-pcm-v1' })).bytes;
+        assert.ok([...readGeneratedZip(roundBytes)].some(([name, data]) => name.endsWith('.wav') && data.equals(wave)));
+      } finally { reopened.dispose(); }
+    }
+    const changed = structuredClone(element); changed.box.x += 1; const slide = session.document.slides[0];
+    const index = slide.elements.findIndex(x => x.id === element.id); slide.removeElement(element.id); slide.insertElement(index, changed);
+    assert.equal((await session.prepareSave({ mode: 'no-op' })).status, 'blocked');
+  } finally { session.dispose(); }
+});
+
+test('shared embedded audio projects once with separate posters and a combined byte budget', async () => {
+  for (const strict of [false, true]) {
+    const f = fixture(strict), bytes = encodeImages(f), session = await importPptx(bytes, projected);
+    try {
+      const elements = session.document.slides[0].elements; assert.deepEqual(elements.map(x => x.type), ['audio', 'audio']);
+      assert.equal(elements[0].audioAssetId, elements[1].audioAssetId); assert.equal(elements[0].posterAssetId, elements[1].posterAssetId);
+      assert.equal(session.document.assets.filter(x => x.kind === 'audio').length, 1); assert.equal(session.document.assets.filter(x => x.kind === 'image').length, 1);
+      const total = f.parts['media/tone.wav'].length + f.parts['media/raster.bin'].length;
+      const ok = await importPptx(bytes, { ...projected, sessionLimits: { maxTotalImportedAssetBytes: total } }); ok.dispose();
+      await assert.rejects(importPptx(bytes, { ...projected, sessionLimits: { maxTotalImportedAssetBytes: total - 1 } }), { code: 'import-limit-exceeded' });
+    } finally { session.dispose(); }
+  }
+});
+
+test('unsupported, conflicting or unmapped sources do not fabricate Core audio', async () => {
+  for (const mode of ['external', 'damaged', 'conflict', 'different-companion', 'no-geometry', 'no-poster']) {
+    const f = fixture();
+    if (mode === 'external') f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), { ...f.rel('sound', 'audio', 'https://example.invalid/tone.wav'), TargetMode: 'External' }]);
+    if (mode === 'damaged') f.parts['media/tone.wav'][0] = 0;
+    if (mode === 'conflict') f.parts['deck/z.xml'] = f.parts['deck/z.xml'].replaceAll('<a:audioFile r:link="sound"/>', '<a:audioFile r:link="sound"/><a:videoFile r:link="sound"/>');
+    if (mode === 'different-companion') {
+      f.parts['media/other.wav'] = Buffer.from(f.parts['media/tone.wav']); f.mediaTypes['media/other.wav'] = 'audio/wav';
+      f.parts['deck/z.xml'] = f.parts['deck/z.xml'].replaceAll('<a:audioFile r:link="sound"/>', '<a:audioFile r:link="sound"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="office"/></p:ext></p:extLst>');
+      f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), f.rel('sound', 'audio', '../media/tone.wav'), { Id: 'office', Type: 'http://schemas.microsoft.com/office/2007/relationships/media', Target: '../media/other.wav' }]);
+    }
+    if (mode === 'no-geometry') f.parts['deck/z.xml'] = f.parts['deck/z.xml'].replaceAll(/<a:xfrm[^>]*>.*?<\/a:xfrm>/g, '');
+    if (mode === 'no-poster') f.parts['deck/z.xml'] = f.parts['deck/z.xml'].replaceAll('r:embed="image"', '');
+    const session = await importPptx(encodeImages(f), projected);
+    try {
+      const audio = session.document.slides[0].elements.filter(x => x.type === 'audio');
+      assert.equal(audio.length, mode === 'no-poster' ? 2 : 0, mode);
+      if (mode === 'no-poster') assert.ok(audio.every(x => x.posterAssetId === undefined));
+    } finally { session.dispose(); }
+  }
+  await assert.rejects(importPptx(encodeImages(fixture()), { ...projected, editSaveProfile: 'text-runs-v1' }), TypeError);
+  await assert.rejects(importPptx(encodeImages(fixture()), { ...projected, pictureSourceProfile: 'embedded-v1' }), TypeError);
+  await assert.rejects(importPptx(encodeImages(fixture()), { ...projected, projection: 'structure' }), TypeError);
+});
 
 test('PowerPoint-created PCM WAVE retains its native paired relationships and poster', async () => {
   const bytes = await readFile(new URL('../../../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url));
@@ -64,6 +138,9 @@ test('file adapter captures the opt-in source profile before I/O', async () => {
     const config = { ...options }, pending = importPptxFile(path, config); config.audioSourceProfile = undefined;
     const { session } = await pending;
     try { assert.equal(session.report.audioSources.length, 2); } finally { session.dispose(); }
+    const projection = { ...projected }, pendingProjection = importPptxFile(path, projection); projection.audioProjection = undefined;
+    const imported = await pendingProjection;
+    try { assert.equal(imported.session.document.slides[0].elements[0].type, 'audio'); } finally { imported.session.dispose(); }
   } finally { await rm(dir, { recursive: true, force: true }); }
 });
 

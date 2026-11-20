@@ -10,7 +10,7 @@ type Context = Awaited<ReturnType<typeof structureContext>>;
 type ImageFields = Pick<ImageElementInput, "type" | "assetId" | "fit" | "crop" | "opacity">;
 
 /** One source part owns one Core asset, including shared uses across slides/groups. */
-export function contentImages(document: PresentationDocument, context: Context, limits: Required<PptxSessionLimits>, identities: ImportSourceIdentity[], checkpoint: () => Promise<void>) {
+export function contentImages(document: PresentationDocument, context: Context, limits: Required<PptxSessionLimits>, identities: ImportSourceIdentity[], checkpoint: () => Promise<void>, chargeAsset?: (part: string, bytes: number) => void) {
   const assets = new Map<string, string>();
   const headers = new Map<string, Awaited<ReturnType<typeof rasterMetadata>>>();
   let totalBytes = 0;
@@ -65,10 +65,11 @@ export function contentImages(document: PresentationDocument, context: Context, 
       const payload = context.payload(part);
       const declared = payload.contentType.trim().toLowerCase();
       if (!["image/png", "image/apng", "image/jpeg", "image/gif"].includes(declared)) return omitted("Embedded image MIME/signature/dimensions are unsupported, malformed or mismatched; only matching PNG/JPEG/GIF headers with positive dimensions are projected.");
-      if (payload.bytes.byteLength > limits.maxImportedAssetBytes || totalBytes + payload.bytes.byteLength > limits.maxTotalImportedAssetBytes) throw new PptxImportError("import-limit-exceeded", "Mapped images exceed maxImportedAssetBytes or maxTotalImportedAssetBytes.", { part });
+      if (payload.bytes.byteLength > limits.maxImportedAssetBytes || (!chargeAsset && totalBytes + payload.bytes.byteLength > limits.maxTotalImportedAssetBytes)) throw new PptxImportError("import-limit-exceeded", "Mapped images exceed maxImportedAssetBytes or maxTotalImportedAssetBytes.", { part });
       if (!headers.has(part)) headers.set(part, await rasterMetadata(payload.bytes, checkpoint));
       const metadata = headers.get(part);
       if (!metadata || (declared !== metadata.mimeType && !(declared === "image/apng" && metadata.mimeType === "image/png"))) return omitted("Embedded image MIME/signature/dimensions are unsupported, malformed or mismatched; only matching PNG/JPEG/GIF headers with positive dimensions are projected.");
+      chargeAsset?.(part, payload.bytes.byteLength);
       totalBytes += payload.bytes.byteLength;
       assetId = `source-image-${assets.size + 1}`;
       document.registerAsset({ id: assetId, kind: "image", ...metadata, ...(declared === "image/apng" ? { mimeType: declared } : {}), source: { type: "bytes", value: payload.bytes } });

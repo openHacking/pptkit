@@ -12,6 +12,8 @@ With content projection, `mediaPreview: "placeholder-v1"` explicitly replaces an
 
 The separate opt-in [`audioSourceProfile: "wave-pcm-v1"`](audio-inspection.md) inventories supported slide-local audio source references and checks a bounded PCM WAVE subset without loading external links or projecting audio assets.
 
+The distinct opt-in [`audioProjection: "wave-pcm-v1"`](audio-inspection.md) can project supported embedded PCM audio and its poster into Core without mapping source playback settings or enabling source edits.
+
 ## Mapped subset
 
 The profile reads slide-local PresentationML shapes, embedded raster pictures, tables and nested groups in source drawing order. Strict and Transitional expanded namespaces are recognized independently of prefix spelling.

@@ -33,11 +33,11 @@ import type { MasterOwner } from "./project-structure.js";
 
 const shapes: Readonly<Record<string, ShapeKind>> = { rect: "rect", roundRect: "roundRect", ellipse: "ellipse", triangle: "triangle", diamond: "diamond", rightArrow: "arrow", chevron: "chevron", parallelogram: "parallelogram" };
 
-export async function projectContent(document: ManagedPresentationDocument, base: ImportReport, context: Awaited<ReturnType<typeof structureContext>>, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, options: OpcInspectionOptions, bindings?: TextRunBinding[], profile?: PptxImportOptions["editSaveProfile"], diagramPreviewMode?: PptxImportOptions["diagramPreview"], chartBindings?: ChartValueBinding[], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], masterOwners?: readonly MasterOwner[], masterShapes = false, masterText = false, masterTextTheme = false, masterPaintTheme = false, backgrounds = false, backgroundMatrix = false, backgroundGradient = false, shapeGradient = false, slideShapeGradient = false, shapePattern = false, shapeShadow = false, pictureSources?: ImportedPictureSource[], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], descriptionBindings?: DrawingDescriptionBinding[], descriptionAllowPresenceChange = false, drawingName = false, descriptionAndName = false, decorativeEnabled = false, decorativeOnly = false, chartSparseWrites = false, chartV3Writes = false, chartLabelBindings?: ChartLabelBinding[], chartSeriesNames = false, chartOrderBindings?: ChartSeriesOrderBinding[], researchColumnLegend = false, mediaPreviewMode?: PptxImportOptions["mediaPreview"], audioSourceProfile?: PptxImportOptions["audioSourceProfile"]): Promise<ImportReport> {
+export async function projectContent(document: ManagedPresentationDocument, base: ImportReport, context: Awaited<ReturnType<typeof structureContext>>, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, options: OpcInspectionOptions, bindings?: TextRunBinding[], profile?: PptxImportOptions["editSaveProfile"], diagramPreviewMode?: PptxImportOptions["diagramPreview"], chartBindings?: ChartValueBinding[], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], masterOwners?: readonly MasterOwner[], masterShapes = false, masterText = false, masterTextTheme = false, masterPaintTheme = false, backgrounds = false, backgroundMatrix = false, backgroundGradient = false, shapeGradient = false, slideShapeGradient = false, shapePattern = false, shapeShadow = false, pictureSources?: ImportedPictureSource[], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], descriptionBindings?: DrawingDescriptionBinding[], descriptionAllowPresenceChange = false, drawingName = false, descriptionAndName = false, decorativeEnabled = false, decorativeOnly = false, chartSparseWrites = false, chartV3Writes = false, chartLabelBindings?: ChartLabelBinding[], chartSeriesNames = false, chartOrderBindings?: ChartSeriesOrderBinding[], researchColumnLegend = false, mediaPreviewMode?: PptxImportOptions["mediaPreview"], audioSourceProfile?: PptxImportOptions["audioSourceProfile"], audioProjection?: PptxImportOptions["audioProjection"]): Promise<ImportReport> {
   const includeTextOwners = profile === "text-runs-v2" || profile === "text-runs-v3";
   const report = structuredClone(base);
   const diagramPreviews: ImportedDiagramPreview[] = [];
-  const audio = audioSourceProfile ? audioSources(context, limits, checkpoint) : undefined;
+  const audio = audioSourceProfile || audioProjection ? audioSources(context, limits, checkpoint) : undefined;
   let previewWork = 0;
   const previewCheckpoint = async () => {
     if (++previewWork > limits.maxDiagramPreviewWork) throw new PptxImportError("import-limit-exceeded", "Cached diagram traversal exceeds maxDiagramPreviewWork.");
@@ -46,7 +46,14 @@ export async function projectContent(document: ManagedPresentationDocument, base
   const findings = report.findings.map(f => f.feature === "source-part-content" ? { ...f, reason: "This part has no complete semantic mapping. Separately reported structure/content fields are the mapped subset." } : f.feature === "slide-order-and-visibility" ? { ...f, reason: "Source slide order and hidden state are mapped; drawing fields have separate capability findings." } : f);
   const identities = [...report.identities], diagnostics = report.diagnostics.filter(d => d.code !== "structural-projection-only");
   let slidePaintDependencies = 0;
-  const image = contentImages(document, context, limits, identities, checkpoint);
+  const projectedParts = new Set<string>(), audioAssets = new Map<string, string>();
+  let projectedBytes = 0;
+  const chargeAsset = audioProjection ? (part: string, size: number) => {
+    if (projectedParts.has(part)) return;
+    if (size > limits.maxImportedAssetBytes || projectedBytes + size > limits.maxTotalImportedAssetBytes) throw new PptxImportError("import-limit-exceeded", "Projected audio and images exceed imported asset byte limits.", { part });
+    projectedParts.add(part); projectedBytes += size;
+  } : undefined;
+  const image = contentImages(document, context, limits, identities, checkpoint, chargeAsset);
   const chart = contentCharts(context, limits, options, base.inspection.package.relationships, checkpoint, chartBindings !== undefined || chartLabelBindings !== undefined || chartOrderBindings !== undefined, chartSparseWrites, chartV3Writes, chartLabelBindings !== undefined, chartSeriesNames, chartOrderBindings !== undefined, researchColumnLegend);
   const inheritance = placeholderInheritance(context, base.inspection, limits, checkpoint);
   const slideIds = new Map(base.inspection.slides.map((source, index) => [source.part, document.slides[index]!.id]));
@@ -157,10 +164,10 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const at = { part, path, sourceObjectId: String(meta.sourceId) };
       const id = `${slide.id}-object-${meta.sourceId}`;
       const media = node.local === "pic" ? await pictureMedia(node) : undefined;
-      const reportMedia = (posterMapped: boolean, placeholder = false) => {
+      const reportMedia = (posterMapped: boolean, placeholder = false, projectedAudio = false) => {
         if (!media) return;
         const mediaAt = { ...at, path: pathByNode.get(media)! };
-        const reason = posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : placeholder ? "The media object has no mapped static poster; a static placeholder is shown without media identity, playback or timing." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
+        const reason = projectedAudio ? "The PCM audio and optional poster are projected, but source playback settings and timing are not projected or executed." : posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : placeholder ? "The media object has no mapped static poster; a static placeholder is shown without media identity, playback or timing." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
         capabilities("drawing.media", mediaAt, reason, false, posterMapped || placeholder ? id : undefined);
         finding("drawing.media.poster", "preview", posterMapped || placeholder ? "fallback" : "unsupported", mediaAt, reason, slide.id, posterMapped || placeholder ? id : undefined);
         diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, ...(posterMapped || placeholder ? { elementId: id } : {}), message: reason });
@@ -272,8 +279,32 @@ export async function projectContent(document: ManagedPresentationDocument, base
         input = { ...baseInput, ...result.fields };
         pendingConnections.push({ input, scope, source: at, connections: result.connections });
       } else if (node.local === "pic") {
+        const nv = r.one(node, r.p, container)!, nvPr = r.one(nv, r.p, "nvPr");
+        const sources = audio?.forOwner(nvPr) ?? [], direct = sources.filter(item => item.declaration !== "p14:media"), companion = sources.filter(item => item.declaration === "p14:media");
+        const declarations = nvPr ? children(nvPr).filter(item => (item.namespaceUri === r.a || item.namespaceUri === r.p) && ["audioFile", "wavAudioFile", "videoFile", "quickTimeFile", "audioCd"].includes(item.local)) : [];
+        const candidate = audioProjection && direct.length === 1 && direct[0]!.status === "wave-pcm" && direct[0]!.mediaPart && declarations.length === 1 && (companion.length === 0 || companion.length === 1 && companion[0]!.companionStatus === "same-part" && companion[0]!.status === "wave-pcm") && geometry.box.width > 0 && geometry.box.height > 0 ? direct[0] : undefined;
         const result = await image(node, properties, r, at);
-        if ("reason" in result) {
+        const posterSupported = !("reason" in result) && result.fields.fit === "stretch" && (result.fields.opacity === undefined || result.fields.opacity === 1);
+        if (audioProjection && sources.length && (!candidate || !("reason" in result) && !posterSupported)) finding("drawing.audio.projected-fields", "import", "unsupported", at, "Audio projection requires one unambiguous embedded PCM source, matching Office companion references, nonzero geometry and a representable poster.", slide.id);
+        if (candidate && ("reason" in result || posterSupported)) {
+          const mediaPart = candidate.mediaPart!, payload = context.payload(mediaPart);
+          let audioAssetId = audioAssets.get(mediaPart);
+          if (!audioAssetId) {
+            chargeAsset!(mediaPart, payload.bytes.byteLength);
+            audioAssetId = `source-audio-${audioAssets.size + 1}`;
+            document.registerAsset({ id: audioAssetId, kind: "audio", mimeType: payload.contentType, source: { type: "bytes", value: payload.bytes } });
+            audioAssets.set(mediaPart, audioAssetId); identities.push({ kind: "asset", id: audioAssetId, source: { part: mediaPart } });
+          }
+          identities.push({ kind: "asset", id: audioAssetId, source: candidate.source });
+          input = { ...baseInput, type: "audio", audioAssetId, ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          cachedPreview = true; mediaPlaceholder = true;
+          reportMedia(!("reason" in result), "reason" in result, true);
+          for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
+            const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
+            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster and geometry are projected; playback settings, timing, general export and source edit-save remain unsupported.", slide.id, id);
+          }
+          if ("reason" in result) finding("drawing.audio.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
+        } else if ("reason" in result) {
           if (!media || !mediaPreviewMode || !geometry.box.width || !geometry.box.height) return unsupported(result.reason);
           input = { ...baseInput, type: "shape", shape: "rect", style: { fill: { type: "solid", color: "F2F2F2" }, stroke: { paint: { type: "solid", color: "777777" }, width: 1, dash: "dash" } }, text: { content: "Media", frame: { verticalAlign: "middle" } } };
           cachedPreview = true; mediaPlaceholder = true;
