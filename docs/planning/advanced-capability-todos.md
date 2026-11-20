@@ -709,7 +709,7 @@
 | [ ] | IMP-09.2.6.1 数据绑定与允许操作 ADR / Parser、Core | 已有 [ADR0034 / existing-values-v1](../api/chart-value-save.md) 的有界实现与双层原子保存测试；默认权限不变，共享/别名/公式/外链阻止。完整依赖和原生闸门未闭合，保持未勾选。将现有 bar/line/pie 的系列/类别/点映射到源缓存、公式引用及内嵌 workbook 单元格，区分缺失点、空白和零。首批明确只允许既有数值修改；公式、外链、未知绑定、共享 chart/workbook 分别给阻止或显式分离策略；不隐式读取外部文件。 | IMP-06.2.5, AUT-06.2.3 |
 | [ ] | IMP-09.2.6.2 既有数值原子写回 / Parser | 已有 [ADR0034 / existing-values-v1](../api/chart-value-save.md) 的有界实现与双层原子保存测试；默认权限不变，共享/别名/公式/外链阻止。完整依赖和原生闸门未闭合，保持未勾选。同一候选同步缓存和已准入 workbook 区域，保持系列/类别身份、数字格式及未知 chart 扩展；仅一处写成功不得提交。覆盖多图共享、缺单元格、混合非法编辑、同值/改后还原、取消及注入写包失败；候选校验失败不推进会话基线。 | IMP-09.2.6.1, IMP-09.5.2 |
 | [ ] | IMP-09.2.6.3 系列与类别结构变更 / Parser、Core | 单独准入增删/重排系列和类别，同步公式区域、点索引、样式/标签及已支持引用。图表动画子目标/未知扩展无法维护时阻止；区分原位共享修改和显式复制分离，删除最后系列及重复名称有用例，失败原子回滚。 | IMP-09.2.6.2 |
-| [ ] | IMP-09.2.6.4 原生编辑与三轮回归 / QA、Parser | 已有[三轮独立 ZIP/XML 与 LibreOffice headless 证据](../testing/chart-value-save.md)：cache/XLSX 双层、控制图/系列与无关载荷通过；该原生版本保存后移除 XLSX，继续写入保持阻止。实际 Edit Data / PowerPoint UI 仍未验证，保持未勾选。用独立 workbook/缓存读取验证三轮保存的值、格式、身份、资源数量和无关对象；具名应用实际 Edit Data 后再保存重开。固定数值与结构变更分别登记，PowerPoint/LibreOffice 分列；缺环境保留 untested，fresh export 不能作为源保存证据。 | IMP-09.2.6.2；结构结论另需 IMP-09.2.6.3 |
+| [ ] | IMP-09.2.6.4 原生编辑与三轮回归 / QA、Parser | 已有[三轮独立 ZIP/XML 与 LibreOffice headless 证据](../testing/chart-value-save.md)：cache/XLSX 双层、控制图/系列与无关载荷通过；该原生版本保存后移除 XLSX，继续写入保持阻止。具名 PowerPoint 固定轴裁切风险现可由 Core 校验对线图/簇状柱形图给出定位警告，源保存后重新导入仍可检查；堆叠、部分源轴等不在此检查内。实际 Edit Data / PowerPoint UI 仍未验证，保持未勾选。用独立 workbook/缓存读取验证三轮保存的值、格式、身份、资源数量和无关对象；具名应用实际 Edit Data 后再保存重开。固定数值与结构变更分别登记，PowerPoint/LibreOffice 分列；缺环境保留 untested，fresh export 不能作为源保存证据。 | IMP-09.2.6.2；结构结论另需 IMP-09.2.6.3 |
 
 ### 时间线从研究到公开契约 — ADV-06.1
 

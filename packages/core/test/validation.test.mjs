@@ -363,6 +363,27 @@ test("validation reports invalid chart axes, legend, scale, and marker config", 
   assert.ok(diagnostics.some((item) => item.code === "pie-negative-value"));
 });
 
+test("fixed chart axes locate out-of-range values without blocking normalization", () => {
+  for (const chartType of ["bar", "line"]) {
+    const document = createPresentation();
+    const slide = document.addSlide({ id: "fixed-axis-slide" });
+    slide.addElement({ id: "fixed-axis-chart", type: "chart", chartType, box: { x: 0, y: 0, width: 300, height: 200 },
+      categories: ["below", "min", "max", "above", "blank"], series: [{ name: "values", values: [-1, 0, 9, 37.25, null] }],
+      axes: { value: { scale: { min: 0, max: 9, majorUnit: 1 } } } });
+    const warnings = validatePresentation(document).filter(d => d.code === "chart-value-outside-fixed-axis");
+    assert.deepEqual(warnings.map(d => [d.severity, d.slideId, d.elementId, d.path]), [
+      ["warning", "fixed-axis-slide", "fixed-axis-chart", "slides.0.elements.0.series.0.values.0"],
+      ["warning", "fixed-axis-slide", "fixed-axis-chart", "slides.0.elements.0.series.0.values.3"],
+    ]);
+    assert.deepEqual(normalizePresentation(document).slides[0].elements[0].series[0].values, [-1, 0, 9, 37.25, null]);
+  }
+  for (const [grouping, scale] of [["stacked", { min: 0, max: 9, majorUnit: 1 }], ["percentStacked", { min: 0, max: 9, majorUnit: 1 }], ["clustered", "auto"], ["clustered", { min: 9, max: 0, majorUnit: 1 }]]) {
+    const document = createPresentation();
+    document.addSlide().addElement({ type: "chart", chartType: "bar", grouping, box: { x: 0, y: 0, width: 300, height: 200 }, categories: ["A"], series: [{ name: "S", values: [37.25] }], axes: { value: { scale } } });
+    assert.equal(validatePresentation(document).filter(d => d.code === "chart-value-outside-fixed-axis").length, 0);
+  }
+});
+
 test("chart validation rejects sparse categories, series, values and pie colors without treating holes as zero", () => {
   const chart = (chartType, categories, series) => {
     const deck = createPresentation();

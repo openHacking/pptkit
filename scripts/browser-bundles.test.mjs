@@ -28,6 +28,27 @@ function javascriptDataUrl(source) {
   return `data:text/javascript;base64,${Buffer.from(source).toString("base64")}`;
 }
 
+test('fixed-axis value warnings agree in browser ESM and global consumers', async t => {
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile(bundlePath('core', 'global'), 'utf8') });
+  const url = javascriptDataUrl(await readFile(bundlePath('core', 'esm')));
+  const results = await page.evaluate(async moduleUrl => {
+    const esm = await import(moduleUrl), results = [];
+    for (const api of [esm, globalThis.PPTKit]) {
+      const deck = api.createPresentation();
+      deck.addSlide({ id: 's', elements: [{ id: 'c', type: 'chart', chartType: 'line', box: { x: 0, y: 0, width: 300, height: 200 }, categories: ['A', 'B'], series: [{ name: 'S', values: [9, 37.25] }], axes: { value: { scale: { min: 0, max: 9, majorUnit: 1 } } } }] });
+      results.push(api.validatePresentation(deck));
+    }
+    return results;
+  }, url);
+  assert.deepEqual(results[0], results[1]);
+  assert.equal(results[0].length, 1); assert.equal(results[0][0].code, 'chart-value-outside-fixed-axis');
+  assert.equal(results[0][0].severity, 'warning'); assert.match(results[0][0].path, /series\.0\.values\.1$/);
+  assert.deepEqual(requests, []);
+});
+
 test('document slide links agree across ESM and global bundles', async t => {
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage(), imports = {};

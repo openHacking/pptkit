@@ -269,7 +269,9 @@ test('duplicate series and category names retain positional data through fresh s
       chart.series.push({ name: 'duplicate', values: [10 + round, 20 + round, 30 + round] });
       page.replaceElement(old.id, chart);
       const preservation = await session.prepareSave({ mode: 'edit' }); assert.equal(preservation.status, 'blocked'); assert.equal(preservation.plan, undefined);
-      assert.deepEqual(validatePresentation(session.document), []);
+      const diagnostics = validatePresentation(session.document);
+      assert.ok(diagnostics.length > 0);
+      assert.ok(diagnostics.every(d => d.severity === 'warning' && d.code === 'chart-value-outside-fixed-axis'));
       bytes = (await generatePptx(session.document)).bytes;
       verifyData(readGeneratedZip(bytes), [chart]);
       const reopened = await importPptx(bytes, { projection: 'content' });

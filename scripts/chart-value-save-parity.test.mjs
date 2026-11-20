@@ -4,6 +4,7 @@ import { readFile, mkdtemp, writeFile, rm } from "node:fs/promises";
 import path from "node:path";
 import { tmpdir } from "node:os";
 import { chromium } from "@playwright/test";
+import { validatePresentation } from "../packages/core/dist/index.js";
 import { importPptx } from "../packages/pptx-parser/dist/index.js";
 import { importPptxFile } from "../packages/pptx-parser/dist/node.js";
 import { chartFixture, chartXml, series, workbook, encodeChart, frame } from "../packages/pptx-parser/test/chart-fixture.mjs";
@@ -11,6 +12,26 @@ import { shape, body } from "../packages/pptx-parser/test/content-fixture.mjs";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 import { replaceArchiveEntries } from "../packages/pptx-parser/dist/preservation/replace-archive-entries.js";
 const options = { projection: "content", chartEditSaveProfile: "existing-values-v1" };
+
+test("fixed-axis warning follows a preserved chart value through save and reimport", async () => {
+  const bytes = encodeChart(chartFixture({ xml: chartXml({ data: series({ refs: true }), external: true }), book: workbook() }));
+  const session = await importPptx(bytes, options);
+  let saved;
+  try {
+    const slide = session.document.slides[0], chart = structuredClone(slide.elements[0]);
+    assert.equal(validatePresentation(session.document).some(d => d.code === "chart-value-outside-fixed-axis"), false);
+    chart.series[0].values[1] = 37.25; slide.replaceElement(chart.id, chart);
+    const warning = validatePresentation(session.document).find(d => d.code === "chart-value-outside-fixed-axis");
+    assert.equal(warning?.severity, "warning"); assert.equal(warning?.elementId, chart.id); assert.match(warning.path, /series\.0\.values\.1$/);
+    const plan = await session.prepareSave({ mode: "edit" }); assert.equal(plan.status, "ready", JSON.stringify(plan.report));
+    saved = (await session.save(plan.plan)).bytes;
+  } finally { session.dispose(); }
+  const reopened = await importPptx(saved, options);
+  try {
+    assert.equal(reopened.document.slides[0].elements[0].series[0].values[1], 37.25);
+    assert.equal(validatePresentation(reopened.document).filter(d => d.code === "chart-value-outside-fixed-axis").length, 1);
+  } finally { reopened.dispose(); }
+});
 
 test('v6 order saves are blocked consistently in Node and browser entries', async t => {
   const browser = await chromium.launch({ headless: true }); t.after(() => browser.close());
