@@ -1,7 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { execFileSync } from "node:child_process";
 import { compileTiming, sampleTiming } from "./research/timing-model.mjs";
 const effect = (id, durationMs, extra = {}) => ({ id, kind: "effect", durationMs, ...extra });
+
+test("native media start samples and negative controls remain distinguishable", () => {
+  const output = execFileSync("python3", ["scripts/research/test_media_start.py"], { encoding: "utf8", env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" } });
+  assert.match(output, /Validated 5 negative controls/);
+});
 
 test("nested sequence/parallel obey independent hand-calculated timestamps and event order", () => {
   const input = { id: "root", kind: "sequence", delayMs: 5, children: [effect("a", 10), { id: "pair", kind: "parallel", delayMs: 2, children: [effect("b", 4), effect("c", 3, { delayMs: 5 })] }, effect("zero", 0), effect("last", 2)] };
