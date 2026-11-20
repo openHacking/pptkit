@@ -63,7 +63,7 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
   for (const slide of document.slides) {
     const videos = slide.elements.filter(element => element.type === "video").length;
     if (videos > 4096) reject("at most 4096 video objects per slide are supported.");
-    if (videos && (slide.eventTimeline !== undefined || slide.elements.some(element => element.type === "audio"))) reject("video cannot share a slide with audio or authored event timing.");
+    if (videos && slide.eventTimeline !== undefined) reject("video cannot share a slide with authored event timing.");
     for (const element of slide.elements) check(element, slide.id);
   }
   return resources;

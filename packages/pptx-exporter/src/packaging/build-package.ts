@@ -46,6 +46,7 @@ interface PartContextResult {
   chartParts: { id: number; chart: LayoutChartElement }[];
   audioTargets: { objectId: number; durationMs: number }[];
   videoTargets: { objectId: number; durationMs: number }[];
+  mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number }[];
 }
 
 function mediaFilename(value: string): string {
@@ -93,6 +94,7 @@ function createPartContext(options: {
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const audioTargets: { objectId: number; durationMs: number }[] = [];
   const videoTargets: { objectId: number; durationMs: number }[] = [];
+  const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
     theme: options.theme,
@@ -129,6 +131,7 @@ function createPartContext(options: {
       relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
       audioTargets.push({ objectId, durationMs: resource.durationMs });
+      mediaTargets.push({ kind: "audio", objectId, durationMs: resource.durationMs });
       return { audio, media, poster: image };
     },
     videoRelationship(assetId, posterAssetId, objectId) {
@@ -140,6 +143,7 @@ function createPartContext(options: {
       relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
       videoTargets.push({ objectId, durationMs: resource.durationMs });
+      mediaTargets.push({ kind: "video", objectId, durationMs: resource.durationMs });
       return { video, media, poster: image };
     },
     actionRelationship(action: ElementAction) {
@@ -168,7 +172,7 @@ function createPartContext(options: {
       chartParts.push({ id: chartId, chart });
     },
   };
-  return { context, relationships, chartParts, audioTargets, videoTargets };
+  return { context, relationships, chartParts, audioTargets, videoTargets, mediaTargets };
 }
 
 function elementsXml(elements: readonly LayoutElement[], context: ElementXmlContext): string[] {
@@ -417,8 +421,7 @@ export async function buildPackage(
         tags: slide.tags,
         customData: slide.customData,
         ...(slide.transition !== undefined ? { transition: slide.transition } : {}),
-        ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets } : {}),
-        ...(partContext.videoTargets.length ? { videoTiming: partContext.videoTargets } : {}),
+        ...(partContext.audioTargets.length && partContext.videoTargets.length ? { mixedMediaTiming: partContext.mediaTargets } : partContext.audioTargets.length ? { audioTiming: partContext.audioTargets } : partContext.videoTargets.length ? { videoTiming: partContext.videoTargets } : {}),
       })),
     });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });

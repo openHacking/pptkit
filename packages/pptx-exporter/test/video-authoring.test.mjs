@@ -107,7 +107,7 @@ test('authored video posters must resolve and never trigger video fetching', asy
 
 test('unsafe or unsupported MP4 exports fail before resolving any poster', async () => {
   const original = await sample(), mvhd = original.indexOf(Buffer.from('mvhd')); assert.ok(mvhd > 0);
-  for (const mode of ['wrong-mime', 'url', 'truncated', 'missing-movie', 'missing-data', 'fragmented', 'short-mvhd', 'version', 'zero-scale', 'zero-duration', 'unknown-duration', 'duplicate-mvhd', 'nested', 'hidden', 'too-large', 'mixed-audio']) {
+  for (const mode of ['wrong-mime', 'url', 'truncated', 'missing-movie', 'missing-data', 'fragmented', 'short-mvhd', 'version', 'zero-scale', 'zero-duration', 'unknown-duration', 'duplicate-mvhd', 'nested', 'hidden', 'too-large']) {
     let bytes = Buffer.from(original);
     if (mode === 'truncated') bytes = bytes.subarray(0, bytes.length - 1);
     if (mode === 'missing-movie') bytes.write('xxxx', 36);
@@ -123,8 +123,7 @@ test('unsafe or unsupported MP4 exports fail before resolving any poster', async
     p.registerAsset({ id: 'video', kind: 'video', mimeType: mode === 'wrong-mime' ? 'video/other' : 'video/mp4', source: mode === 'url' ? { type: 'url', value: 'https://example.invalid/movie.mp4' } : { type: 'bytes', value: bytes } });
     p.registerAsset({ id: 'poster', kind: 'image', source: { type: 'url', value: 'https://example.invalid/poster.png' } });
     const box = { x: 0, y: 0, width: 120, height: 60 }, video = { type: 'video', hidden: mode === 'hidden', videoAssetId: 'video', posterAssetId: 'poster', box };
-    let elements = mode === 'nested' ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : [video];
-    if (mode === 'mixed-audio') { p.registerAsset({ id: 'sound', kind: 'audio', source: { type: 'bytes', value: Uint8Array.of(1) } }); elements = [video, { type: 'audio', audioAssetId: 'sound', box }]; }
+    const elements = mode === 'nested' ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : [video];
     p.addSlide({ elements }); let calls = 0;
     await assert.rejects(generatePptx(p, { videoMode: 'iso-bmff-v1', ...(mode === 'too-large' ? { maxAssetBytes: original.length - 1 } : {}), resolveAsset: async () => { calls++; throw Error('unexpected'); } }), undefined, mode);
     assert.equal(calls, 0, mode);
