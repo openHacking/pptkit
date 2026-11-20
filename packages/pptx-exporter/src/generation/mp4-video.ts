@@ -1,5 +1,5 @@
 import { inspectIsoBmff } from "@pptkit/media-inspection";
-import type { NormalizedElement, NormalizedPresentation } from "@pptkit/core";
+import type { NormalizedAsset, NormalizedElement, NormalizedPresentation } from "@pptkit/core";
 import { decodeAssetBytes } from "../assets/load-bytes.js";
 
 export interface Mp4VideoResource { readonly data: Uint8Array; readonly durationMs: number }
@@ -39,7 +39,7 @@ function movieDuration(data: Uint8Array, maxBytes: number, signal?: AbortSignal)
 }
 
 /** Experimental profile: bounded visible top-level videos, no authored timing. */
-export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v1" | undefined, maxBytes: number | undefined, signal?: AbortSignal): ReadonlyMap<string, Mp4VideoResource> {
+export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v1" | undefined, maxBytes: number | undefined, signal?: AbortSignal, external?: Map<string, NormalizedAsset>, resolved?: ReadonlyMap<string, Uint8Array>): ReadonlyMap<string, Mp4VideoResource> {
   const assets = new Map(document.assets.map(asset => [asset.id, asset])), resources = new Map<string, Mp4VideoResource>();
   const reject = (reason: string): never => { throw new TypeError(`PPTX video export: ${reason}`); };
   const check = (element: NormalizedElement, slideId?: string, nested = false) => {
@@ -48,14 +48,18 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
     if (mode !== "iso-bmff-v1") return reject("requires videoMode iso-bmff-v1; video cannot be silently omitted.");
     if (!slideId || nested || element.hidden || element.action !== undefined || element.placeholderKey !== undefined || element.opacity !== 1 || !element.box.width || !element.box.height) return reject("only visible, nontransparent slide-local top-level video with nonzero geometry and no action or placeholder binding is supported.");
     const asset = assets.get(element.videoAssetId);
-    if (!asset || asset.kind !== "video" || asset.source.type !== "bytes") return reject("video requires a byte-backed asset; paths and links are not loaded.");
+    if (!asset || asset.kind !== "video") return reject("video requires a video asset.");
     if (asset.mimeType?.trim().toLowerCase() !== "video/mp4") return reject("a declared video/mp4 MIME type is required.");
     if (resources.has(asset.id)) return;
+    if (asset.source.type !== "bytes" && !resolved?.has(asset.id)) {
+      if (!external) return reject("video requires a byte-backed asset; paths and links are not loaded.");
+      external.set(asset.id, asset); return;
+    }
     const ceiling = Math.min(maxBytes ?? 64 * 1024 * 1024, 64 * 1024 * 1024);
-    const length = asset.source.value.length / 4 * 3 - (asset.source.value.endsWith("==") ? 2 : asset.source.value.endsWith("=") ? 1 : 0);
+    const length = asset.source.type === "bytes" ? asset.source.value.length / 4 * 3 - (asset.source.value.endsWith("==") ? 2 : asset.source.value.endsWith("=") ? 1 : 0) : resolved!.get(asset.id)!.byteLength;
     if (length > ceiling) throw new RangeError("Video exceeds the MP4 inspection or maxAssetBytes limit.");
     signal?.throwIfAborted();
-    const data = decodeAssetBytes(asset.source.value), durationMs = movieDuration(data, ceiling, signal);
+    const data = asset.source.type === "bytes" ? decodeAssetBytes(asset.source.value) : resolved!.get(asset.id)!, durationMs = movieDuration(data, ceiling, signal);
     resources.set(asset.id, { data, durationMs });
   };
   for (const layout of document.layouts) for (const element of layout.elements) check(element);

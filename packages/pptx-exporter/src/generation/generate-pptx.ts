@@ -13,13 +13,16 @@ import { emu } from "../ooxml/xml.js";
 import { listContinuationWarnings } from "./list-continuation-warnings.js";
 import { planWaveAudio } from "./wave-audio.js";
 import { planMp4Video } from "./mp4-video.js";
+import { captureImageInput } from "../assets/capture-image-input.js";
+import { withAbort } from "../assets/limits.js";
+import type { NormalizedAsset } from "@pptkit/core";
 
 export async function generatePptxWith(
   document: PresentationDocument,
   loadAsset: AssetLoader,
   options?: GeneratePptxOptions,
 ): Promise<GeneratePptxResult> {
-  const { signal, resolveAsset, maxAssetBytes, audioMode, videoMode, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
+  const { signal, resolveAsset, resolveMedia, maxAssetBytes, audioMode, videoMode, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
   signal?.throwIfAborted();
   if (firstSlideNumber !== undefined && (!Number.isSafeInteger(firstSlideNumber) || firstSlideNumber < 0 || firstSlideNumber > 9999)) throw new RangeError("firstSlideNumber must be an integer from 0 to 9999.");
   if (typeof deduplicateResolvedAssets !== "boolean") throw new TypeError("deduplicateResolvedAssets must be a boolean.");
@@ -34,13 +37,15 @@ export async function generatePptxWith(
   if (maxAssetBytes !== undefined && (!Number.isSafeInteger(maxAssetBytes) || maxAssetBytes <= 0)) throw new RangeError("maxAssetBytes must be a positive safe integer.");
   if (externalImageValidation !== undefined && externalImageValidation !== "signature") throw new TypeError("externalImageValidation must be signature when provided.");
   if (resolveAsset !== undefined && typeof resolveAsset !== "function") throw new TypeError("resolveAsset must be a function.");
+  if (resolveMedia !== undefined && typeof resolveMedia !== "function") throw new TypeError("resolveMedia must be a function.");
   if (audioMode !== undefined && audioMode !== "wave-pcm-v1") throw new TypeError("audioMode must be wave-pcm-v1 when provided.");
   if (videoMode !== undefined && videoMode !== "iso-bmff-v1") throw new TypeError("videoMode must be iso-bmff-v1 when provided.");
   const loadContext = { ...(signal ? { signal } : {}), ...(maxAssetBytes !== undefined ? { maxAssetBytes } : {}), ...(externalImageValidation ? { externalImageValidation } : {}) };
   const resolvedLoader = createAssetLoader(loadAsset, resolveAsset, signal, maxAssetBytes);
   const normalized = normalizePresentation(document);
-  const video = planMp4Video(normalized, videoMode, maxAssetBytes, signal);
-  const audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal);
+  const external = resolveMedia ? new Map<string, NormalizedAsset>() : undefined;
+  let video = planMp4Video(normalized, videoMode, maxAssetBytes, signal, external);
+  let audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal, external);
   // PresentationML ST_SlideSizeCoordinate bounds apply to the serialized
   // integer, not the pre-rounding Core value. Reject before any asset I/O.
   if ([normalized.size.width, normalized.size.height].some(value => {
@@ -51,6 +56,23 @@ export async function generatePptxWith(
   if (effectiveFirstSlideNumber !== undefined && effectiveFirstSlideNumber > 9999) throw new RangeError("The native first slide number must be from 0 to 9999.");
   const timelineWarnings = prepareEventTimelineOutput(normalized, eventTimelineMode);
   const layout = resolveNormalizedLayout(normalized, layoutOptions);
+  if (resolveMedia && external?.size) {
+    const maxBytes = Math.min(maxAssetBytes ?? 64 * 1024 * 1024, 64 * 1024 * 1024);
+    const context = Object.freeze({ maxBytes, ...(signal ? { signal } : {}) });
+    const resolved = new Map<string, Uint8Array>();
+    for (const [id, asset] of external) {
+      signal?.throwIfAborted();
+      const request = structuredClone(asset); Object.freeze(request.source); Object.freeze(request.accessibility); Object.freeze(request);
+      const result = await withAbort(Promise.resolve().then(() => resolveMedia(request, context)), signal);
+      signal?.throwIfAborted();
+      if (!result) throw new Error(`Media resolver returned no asset for ${id}.`);
+      const mime = result.mimeType?.trim().toLowerCase();
+      if (mime !== undefined && (asset.kind === "video" ? mime !== "video/mp4" : mime !== "audio/wav" && mime !== "audio/x-wav")) throw new TypeError(`Media resolver returned an incompatible MIME type for ${id}.`);
+      resolved.set(id, captureImageInput(result.bytes, "Media", maxBytes, signal, "maxBytes"));
+    }
+    video = planMp4Video(normalized, videoMode, maxAssetBytes, signal, undefined, resolved);
+    audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal, undefined, resolved);
+  }
   const warnings: ExportWarning[] = [
     ...timelineWarnings,
     ...normalized.slides.flatMap((slide, index) => slide.readingOrder?.length ? [{ code: "reading-order-not-exported", message: "PPTX does not retain authored independent reading order.", slideId: slide.id, path: `slides.${index}.readingOrder` }] : []),

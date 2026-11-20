@@ -24,7 +24,7 @@ import { generatePptxWith } from "./generation/generate-pptx.js";
 import { writeOutput } from "./output/write-output.js";
 import type { GeneratePptxOptions, GeneratePptxResult, WritePptxOptions, WritePptxResult } from "./types/export.js";
 
-export type { PptxAssetResolverRequest, PptxAssetResolver, PptxAssetResolverContext, ResolvedPptxAsset, ExportWarning, GeneratePptxOptions, GeneratePptxResult, WritePptxOptions, WritePptxResult } from "./types/export.js";
+export type { PptxAssetResolverRequest, PptxAssetResolver, PptxAssetResolverContext, PptxMediaResolver, ResolvedPptxAsset, ExportWarning, GeneratePptxOptions, GeneratePptxResult, WritePptxOptions, WritePptxResult } from "./types/export.js";
 
 export async function generatePptx(document: PresentationDocument, options?: GeneratePptxOptions): Promise<GeneratePptxResult> {
   return generatePptxWith(document, loadNodeAsset, options);

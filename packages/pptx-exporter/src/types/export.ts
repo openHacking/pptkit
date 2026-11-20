@@ -30,11 +30,13 @@ export interface ResolvedPptxAsset {
 export interface PptxAssetResolverContext { readonly signal?: AbortSignal }
 /** Undefined explicitly omits an asset; no implicit fallback loading follows. */
 export type PptxAssetResolver = (asset: PptxAssetResolverRequest, context: PptxAssetResolverContext) => ResolvedPptxAsset | undefined | Promise<ResolvedPptxAsset | undefined>;
+/** Explicitly obtains external audio/video bytes; no built-in fetch or path fallback. */
+export type PptxMediaResolver = (asset: PptxAssetResolverRequest, context: Readonly<{ signal?: AbortSignal; maxBytes: number }>) => { bytes: Uint8Array; mimeType?: string } | undefined | Promise<{ bytes: Uint8Array; mimeType?: string } | undefined>;
 
 export interface GeneratePptxOptions {
-  /** Experimental byte-backed PCM WAVE with visible top-level audio objects. */
+  /** Experimental PCM WAVE with visible top-level audio objects. */
   audioMode?: "wave-pcm-v1";
-  /** Experimental byte-backed MP4 framing and movie-header profile; codecs are not validated. */
+  /** Experimental MP4 framing and movie-header profile; codecs are not validated. */
   videoMode?: "iso-bmff-v1";
   layout?: LayoutOptions;
   /** Native presentation starting slide number (0–9999); independent of cached field refresh. */
@@ -60,6 +62,8 @@ export interface GeneratePptxOptions {
   /** Require supported PNG/JPEG/GIF signatures for built-in URL and Node path loads. */
   externalImageValidation?: "signature";
   resolveAsset?: PptxAssetResolver;
+  /** Resolve referenced path/URL audio and video only, under the corresponding media profile. */
+  resolveMedia?: PptxMediaResolver;
   signal?: AbortSignal;
   /** Optional positive byte cap per asset; includes default URL/path loading. */
   maxAssetBytes?: number;

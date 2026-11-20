@@ -5,6 +5,8 @@ import { chromium } from '@playwright/test';
 import { importPptx } from '../packages/pptx-parser/dist/index.js';
 import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js';
 import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
+import { createPresentation } from '../packages/core/dist/index.js';
+import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 
 test('video source projection and static preview match Node and browser without media fetches', async t => {
   const bytes = await readFile('tests/fixtures/h264-mp4-powerpoint.pptx');
@@ -71,4 +73,32 @@ test('mixed audio and video projection and re-export agree across Node and brows
     } finally { session.dispose(); }
   }, { data: [...bytes], importOptions, exportOptions });
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
+});
+
+test('external mixed media resolver agrees across Node and browser without implicit network', async t => {
+  const parts = readGeneratedZip(await readFile('tests/fixtures/pptkit-mixed-av.pptx'));
+  const media = { movie: [...parts.get('ppt/media/movie.mp4')], sound: [...parts.get('ppt/media/sound.wav')] };
+  const make = create => {
+    const p = create();
+    p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'url', value: 'https://example.invalid/movie.mp4' } });
+    p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'url', value: 'https://example.invalid/sound.wav' } });
+    p.addSlide({ elements: [{ type: 'video', videoAssetId: 'movie', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', box: { x: 50, y: 0, width: 40, height: 40 } }] });
+    return p;
+  };
+  const options = { videoMode: 'iso-bmff-v1', audioMode: 'wave-pcm-v1', maxAssetBytes: 100000 };
+  const expected = await generatePptx(make(createPresentation), { ...options, resolveMedia: asset => ({ bytes: Uint8Array.from(media[asset.id]) }) });
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ media, options }) => {
+    const p = PPTKit.createPresentation();
+    p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'url', value: 'https://example.invalid/movie.mp4' } });
+    p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'url', value: 'https://example.invalid/sound.wav' } });
+    p.addSlide({ elements: [{ type: 'video', videoAssetId: 'movie', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', box: { x: 50, y: 0, width: 40, height: 40 } }] });
+    const calls = []; const result = await PPTKit.generatePptx(p, { ...options, resolveMedia: (asset, context) => { calls.push([asset.id, context.maxBytes]); return { bytes: Uint8Array.from(media[asset.id]) }; } });
+    return { bytes: [...result.bytes], warnings: result.warnings, calls };
+  }, { media, options });
+  assert.deepEqual(actual.bytes, [...expected.bytes]); assert.deepEqual(actual.warnings, expected.warnings);
+  assert.deepEqual(actual.calls, [['movie', 100000], ['sound', 100000]]); assert.deepEqual(requests, []);
 });
