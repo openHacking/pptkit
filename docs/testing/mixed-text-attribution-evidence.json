@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "d6220bbcd1a7e5e48039d02a77f1fa4b212995574c93a6c60c1dc6d43f24b40f",
+  "fixture": "tests/fixtures/mixed-text-attribution-source.pptx",
+  "producer": "PPTKit repository-authored synthetic fixture",
+  "application": "PPTKit 0.1.0 workspace",
+  "profile": "text-runs-v1",
+  "procedure": "node --test --test-name-pattern=\"mixed text-save attribution\" scripts/text-save-parity.test.mjs",
+  "rounds": 3,
+  "blockedMixedEdit": true,
+  "detectedMutations": [
+    "resource",
+    "relationship",
+    "target"
+  ],
+  "scope": "Three unrelated text edits with independent ZIP payload checks, OPC comparison, reopen and blocked chart edit; mutations are injected after PPTKit save and do not represent application behavior.",
+  "nativeApplication": "untested"
+}

@@ -65,3 +65,17 @@ test('connector observation manifests match retained source and output bytes', a
     assert.equal(digest(await readFile(path.join(root, 'tests/fixtures', output))), manifest[key].outputSha256);
   }
 });
+
+test('mixed text attribution record binds its retained fixture and registered regression', async () => {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const data = JSON.parse(await readFile(path.join(root, 'docs/testing/operation-evidence.json'), 'utf8'));
+  const row = data.records.find(item => item.id === 'text-v1-mixed-three-round-attribution');
+  assert.ok(row); assert.equal(row.method, 'automated'); assert.equal(row.status, 'pass');
+  assert.equal(digest(await readFile(path.join(root, row.fixture.localPath))), row.fixture.sha256);
+  const manifest = JSON.parse(await readFile(path.join(root, row.fixture.evidencePath), 'utf8'));
+  assert.equal(manifest.sourceSha256, row.fixture.sha256); assert.equal(manifest.procedure, row.procedure);
+  assert.equal(manifest.nativeApplication, 'untested');
+  const scripts = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')).scripts;
+  assert.match(scripts.test, /pnpm test:import(?:\s|$)/);
+  assert.match(scripts['test:import'], /(?:^|\s)scripts\/text-save-parity\.test\.mjs(?:\s|$)/);
+});

@@ -1628,6 +1628,71 @@
           ]
         }
       ]
+    },
+    {
+      "id": "text-v1-mixed-three-round-attribution",
+      "feature": "Text box run in mixed deck",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "mixed-deck",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit",
+      "producer": {
+        "name": "PPTKit repository-authored fixture",
+        "version": "0.1.0"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "0.1.0 workspace"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "d6220bbcd1a7e5e48039d02a77f1fa4b212995574c93a6c60c1dc6d43f24b40f",
+        "evidencePath": "docs/testing/mixed-text-attribution-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": "tests/fixtures/mixed-text-attribution-source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test --test-name-pattern=\"mixed text-save attribution\" scripts/text-save-parity.test.mjs",
+      "result": "Three text edits/reopens preserve every other part; a mixed chart edit is blocked and retry succeeds.",
+      "limitations": "Synthetic fixture only; corruption is injected after saving and is not a native producer rewrite. Native application untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/mixed-text-attribution-evidence.json",
+          "sha256": "2434f951d16a5d001cdbb5a6228d92b2066311a976e2676d05e4896e0abbda20",
+          "assertions": [
+            {
+              "pointer": "/rounds",
+              "equals": 3
+            },
+            {
+              "pointer": "/blockedMixedEdit",
+              "equals": true
+            },
+            {
+              "pointer": "/detectedMutations/0",
+              "equals": "resource"
+            },
+            {
+              "pointer": "/detectedMutations/1",
+              "equals": "relationship"
+            },
+            {
+              "pointer": "/detectedMutations/2",
+              "equals": "target"
+            },
+            {
+              "pointer": "/nativeApplication",
+              "equals": "untested"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

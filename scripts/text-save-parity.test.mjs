@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { importPptx, compareOpcPackages, inspectOpcClosure } from "../packages/pptx-parser/dist/index.js";
@@ -96,4 +97,53 @@ test("one unsupported edit blocks the entire mixed plan and restoring it permits
     for (const [name, payload] of parts) if (name !== "ppt/slides/slide1.xml") assert.equal(digest(payload), digest(before.get(name)), name);
     assert.equal(result.report.changes.length, 1);
   } finally { session.dispose(); }
+});
+
+test("mixed text-save attribution detects resource, relationship and target corruption after three rounds", async () => {
+  let bytes = await readFile("tests/fixtures/mixed-text-attribution-source.pptx"), previousText = "Original text";
+  const evidence = JSON.parse(await readFile("docs/testing/mixed-text-attribution-evidence.json", "utf8"));
+  assert.equal(digest(bytes), evidence.sourceSha256);
+  assert.equal(evidence.rounds, 3); assert.deepEqual(evidence.detectedMutations, ["resource", "relationship", "target"]);
+  const slidePart = "ppt/slides/slide1.xml", relPart = "ppt/slides/_rels/slide1.xml.rels", imagePart = "ppt/media/shared.png";
+  for (let round = 1; round <= 3; round++) {
+    const before = readGeneratedZip(bytes), session = await importPptx(bytes, profile), value = `Round ${round}`;
+    try {
+      editFirst(session, value);
+      if (round === 1) {
+        const slide = session.document.slides[0], index = slide.elements.findIndex(e => e.type === "chart"), original = slide.elements[index];
+        const modified = structuredClone(original); modified.series[0].values[0] = 99; slide.replaceElement(original.id, modified);
+        const blocked = await session.prepareSave({ mode: "edit" }); assert.equal(blocked.status, "blocked"); assert.equal(blocked.report.assurance, "none");
+        slide.replaceElement(original.id, original);
+      }
+      const result = await saved(session), after = readGeneratedZip(result.bytes);
+      assert.deepEqual([...after.keys()].sort(), [...before.keys()].sort());
+      for (const [name, data] of before) {
+        if (name === slidePart) {
+          const original = data.toString(), anchor = `>${previousText}</a:t>`;
+          assert.ok(original.includes(anchor));
+          assert.equal(after.get(name).toString(), original.replace(anchor, `>${value}</a:t>`));
+        } else assert.deepEqual(after.get(name), data, name);
+      }
+      const comparison = await compareOpcPackages(bytes, result.bytes);
+      assert.deepEqual(comparison.differences.map(d => [d.code, d.part]), [["payload-changed", `/${slidePart}`]]);
+      const reopened = await importPptx(result.bytes, profile);
+      try { assert.equal(reopened.document.slides[0].elements.find(e => e.type === "text").content[0].runs[0].text, value); } finally { reopened.dispose(); }
+      previousText = value; bytes = result.bytes;
+    } finally { session.dispose(); }
+  }
+  const baseline = readGeneratedZip(bytes);
+  for (const [label, part, mutate, code] of [
+    ["resource", imagePart, body => { const changed = Buffer.from(body); changed[changed.length - 1] ^= 1; return changed; }, "payload-changed"],
+    ["relationship", relPart, body => Buffer.from(body.toString().replace('Target="../media/shared.png"', 'Target="../media/shadow.bin"')), "relationship-changed"],
+    ["target", slidePart, body => Buffer.from(body.toString().replace('<a:hlinkClick r:id="rId3"', '<a:hlinkClick r:id="rId2"')), "payload-changed"],
+  ]) {
+    const parts = new Map(baseline), original = parts.get(part), changed = mutate(original);
+    assert.ok(original && !original.equals(changed), `${label} mutation must change bytes`);
+    parts.set(part, changed);
+    const candidate = repack(parts), independent = readGeneratedZip(candidate);
+    assert.deepEqual([...baseline].filter(([name, data]) => !data.equals(independent.get(name))).map(([name]) => name), [part]);
+    const comparison = await compareOpcPackages(bytes, candidate);
+    assert.equal(comparison.equal, false, label);
+    assert.ok(comparison.differences.some(d => d.code === code && d.part === `/${part}` && (label !== "relationship" || d.relationshipId === "rId4")), `${label}: ${JSON.stringify(comparison.differences)}`);
+  }
 });
