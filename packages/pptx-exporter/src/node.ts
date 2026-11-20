@@ -20,6 +20,8 @@ export type { GifFrameInfo, GifInspection, GifInspectionOptions } from "./assets
 export { PptxExportError } from "./types/export.js";
 export { createHttpMediaResolver } from "./adapters/http-media-resolver.js";
 export type { HttpMediaResolverOptions } from "./adapters/http-media-resolver.js";
+export { createFileMediaResolver } from "./adapters/node-file-media-resolver.js";
+export type { FileMediaResolverOptions } from "./adapters/node-file-media-resolver.js";
 import type { PresentationDocument } from "@pptkit/core";
 import { loadNodeAsset } from "./assets/load-asset.node.js";
 import { generatePptxWith } from "./generation/generate-pptx.js";
