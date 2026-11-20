@@ -35,6 +35,7 @@ export interface ElementXmlContext {
   nativeConnector?(element: LayoutConnectorElement): NativeConnectorResult;
   imageRelationship(assetId: string): { base: string; svg?: string } | undefined;
   audioRelationship(assetId: string, posterAssetId: string | undefined, objectId: number): { audio: string; media: string; poster: string };
+  videoRelationship(assetId: string, posterAssetId: string | undefined, objectId: number): { video: string; media: string; poster: string };
   actionRelationship(action: ElementAction): string | undefined;
   nextChartId(): number;
   chartRelationship(chartId: number): string;
@@ -235,6 +236,14 @@ function audioXml(element: Extract<LayoutElement, { type: "audio" }>, context: E
   return `<p:pic>${props}<p:blipFill><a:blip r:embed="${relationships.poster}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
 }
 
+function videoXml(element: Extract<LayoutElement, { type: "video" }>, context: ElementXmlContext): string {
+  const id = context.objectId?.(element.id) ?? context.nextObjectId();
+  const relationships = context.videoRelationship(element.videoAssetId, element.posterAssetId, id);
+  context.warnings.push({ code: "video-playback-unverified", message: "MP4 framing and movie duration were inspected, but codec, track integrity and application playback are not verified.", elementId: element.id, assetId: element.videoAssetId, ...(context.slideId ? { slideId: context.slideId } : {}) });
+  const props = `<p:nvPicPr><p:cNvPr id="${id}" name="${escapeXml(element.name)}" descr="${escapeXml(accessibility(element))}"><a:hlinkClick r:id="" action="ppaction://media"/>${decorativeXml(element)}</p:cNvPr><p:cNvPicPr/><p:nvPr><a:videoFile r:link="${relationships.video}"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${relationships.media}"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>`;
+  return `<p:pic>${props}<p:blipFill><a:blip r:embed="${relationships.poster}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+}
+
 function shapeGeometry(shape: Extract<LayoutElement, { type: "shape" }>["shape"]): string {
   return { rect: "rect", roundRect: "roundRect", ellipse: "ellipse", triangle: "triangle", diamond: "diamond", arrow: "rightArrow", chevron: "chevron", parallelogram: "parallelogram" }[shape];
 }
@@ -402,6 +411,7 @@ export function elementXml(element: LayoutElement, context: ElementXmlContext, i
   if (element.type === "text") return textXml(element, context, inheritedOpacity);
   if (element.type === "image") return imageXml(element, context, inheritedOpacity);
   if (element.type === "audio") return audioXml(element, context);
+  if (element.type === "video") return videoXml(element, context);
   if (element.type === "shape") return shapeXml(element, context, inheritedOpacity);
   if (element.type === "connector") return connectorXml(element, context, inheritedOpacity);
   if (element.type === "group") return groupXml(element, context, inheritedOpacity);

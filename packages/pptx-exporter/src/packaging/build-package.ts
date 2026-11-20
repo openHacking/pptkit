@@ -37,6 +37,7 @@ import { relationshipsXml, rootRelationshipsXml } from "../ooxml/relationships.j
 import type { ExportWarning } from "../types/export.js";
 import type { AssetLoadContext, AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types/internal.js";
 import type { WaveAudioResource } from "../generation/wave-audio.js";
+import type { Mp4VideoResource } from "../generation/mp4-video.js";
 import { decodeAssetBytes } from "../assets/load-bytes.js";
 
 interface PartContextResult {
@@ -44,6 +45,7 @@ interface PartContextResult {
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
   audioTargets: { objectId: number; durationMs: number }[];
+  videoTargets: { objectId: number; durationMs: number }[];
 }
 
 function mediaFilename(value: string): string {
@@ -70,7 +72,9 @@ function createPartContext(options: {
   baseRelationships: Relationship[];
   media: ReadonlyMap<string, PackagedMedia>;
   audio?: ReadonlyMap<string, WaveAudioResource>;
+  video?: ReadonlyMap<string, Mp4VideoResource>;
   fallbackPoster?: PackagedMedia;
+  fallbackVideoPoster?: PackagedMedia;
   slideIndexes: ReadonlyMap<string, number>;
   placeholders?: NormalizedPlaceholderDefinition[];
   warnings: ExportWarning[];
@@ -88,6 +92,7 @@ function createPartContext(options: {
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const audioTargets: { objectId: number; durationMs: number }[] = [];
+  const videoTargets: { objectId: number; durationMs: number }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
     theme: options.theme,
@@ -126,6 +131,17 @@ function createPartContext(options: {
       audioTargets.push({ objectId, durationMs: resource.durationMs });
       return { audio, media, poster: image };
     },
+    videoRelationship(assetId, posterAssetId, objectId) {
+      const packaged = options.media.get(assetId), resource = options.video?.get(assetId);
+      const poster = posterAssetId === undefined ? options.fallbackVideoPoster : options.media.get(posterAssetId);
+      if (!packaged || !resource || !poster || !poster.loaded.mimeType.startsWith("image/")) throw new TypeError("PPTX video or its poster could not be packaged.");
+      const video = `rId${nextRelationship++}`, media = `rId${nextRelationship++}`, image = `rId${nextRelationship++}`;
+      relationships.push({ id: video, type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/video", target: `../media/${mediaFilename(packaged.name)}` });
+      relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
+      relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
+      videoTargets.push({ objectId, durationMs: resource.durationMs });
+      return { video, media, poster: image };
+    },
     actionRelationship(action: ElementAction) {
       const id = `rId${nextRelationship++}`;
       if (action.type === "url") {
@@ -152,7 +168,7 @@ function createPartContext(options: {
       chartParts.push({ id: chartId, chart });
     },
   };
-  return { context, relationships, chartParts, audioTargets };
+  return { context, relationships, chartParts, audioTargets, videoTargets };
 }
 
 function elementsXml(elements: readonly LayoutElement[], context: ElementXmlContext): string[] {
@@ -174,6 +190,7 @@ export async function buildPackage(
   firstSlideNumber?: number,
   jpegValidation?: "structure",
   audio: ReadonlyMap<string, WaveAudioResource> = new Map(),
+  video: ReadonlyMap<string, Mp4VideoResource> = new Map(),
 ): Promise<ZipPart[]> {
   const masters = layout.masters ?? [];
   const masterIndexes = new Map(masters.map((master, index) => [master.id, index]));
@@ -320,6 +337,11 @@ export async function buildPackage(
     const packaged = { name, loaded: { data: resource.data, mimeType: "audio/x-wav", extension: ".wav" } };
     media.set(id, packaged); parts.push({ name, data: resource.data });
   }
+  for (const [id, resource] of video) {
+    const name = `ppt/media/${mediaName(id, ".mp4")}`;
+    const packaged = { name, loaded: { data: resource.data, mimeType: "video/mp4", extension: ".mp4" } };
+    media.set(id, packaged); parts.push({ name, data: resource.data });
+  }
   let fallbackPoster: PackagedMedia | undefined;
   if (layout.slides.some(slide => slide.elements.some(element => element.type === "audio" && element.posterAssetId === undefined))) {
     const data = decodeAssetBytes("iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZElEQVR42mP4/OXb/4HEDKMOGHXAqAOGnQPiM4sHzgEgywfEATCLB8QB6JZTxQHYDMVmODFqaOYAYh1JdQcQg0cdMLwdMOCJkC7ZcMALoiFVFA+KymjQVMejLaJRB4w6YEg6AACOBIj3YosGvAAAAABJRU5ErkJggg==");
@@ -327,6 +349,14 @@ export async function buildPackage(
     fallbackPoster = { name, loaded: { data, mimeType: "image/png", extension: ".png" } };
     let key = "pptkit-audio-poster"; while (media.has(key)) key += "-";
     media.set(key, fallbackPoster); parts.push({ name, data });
+  }
+  let fallbackVideoPoster: PackagedMedia | undefined;
+  if (layout.slides.some(slide => slide.elements.some(element => element.type === "video" && element.posterAssetId === undefined))) {
+    const data = decodeAssetBytes("iVBORw0KGgoAAAANSUhEUgAAACAAAAASCAYAAAA6yNxSAAAARElEQVR42mN4/fr1/4HEDKMOGHYOCA0NHRgHgCyGYbo6ANliujoAm8V0cQA+i0eGAwY8CgZNIhw02XDQFESjdcGQdQAAbRsYlRxPJ3MAAAAASUVORK5CYII=");
+    const name = `ppt/media/${mediaName("pptkit-video-poster", ".png")}`;
+    fallbackVideoPoster = { name, loaded: { data, mimeType: "image/png", extension: ".png" } };
+    let key = "pptkit-video-poster"; while (media.has(key)) key += "-";
+    media.set(key, fallbackVideoPoster); parts.push({ name, data });
   }
 
   const slideIndexes = new Map(layout.slides.map((slide, index) => [slide.id, index]));
@@ -366,7 +396,9 @@ export async function buildPackage(
       ],
       media,
       audio,
+      video,
       ...(fallbackPoster ? { fallbackPoster } : {}),
+      ...(fallbackVideoPoster ? { fallbackVideoPoster } : {}),
       slideIndexes,
       ...(connectorMode === "native" ? { nativeElements: slide.elements } : {}),
       placeholders: slideLayout.placeholders,
@@ -386,6 +418,7 @@ export async function buildPackage(
         customData: slide.customData,
         ...(slide.transition !== undefined ? { transition: slide.transition } : {}),
         ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets } : {}),
+        ...(partContext.videoTargets.length ? { videoTiming: partContext.videoTargets[0]! } : {}),
       })),
     });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });

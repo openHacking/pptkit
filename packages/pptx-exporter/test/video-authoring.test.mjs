@@ -2,6 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation } from '@pptkit/core';
 import { generatePptx } from '../dist/index.js';
+import { importPptx } from '../../pptx-parser/dist/index.js';
+import { readFile } from 'node:fs/promises';
+import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
+
+async function sample() {
+  const bytes = await readFile(new URL('../../../tests/fixtures/h264-mp4-powerpoint.pptx', import.meta.url));
+  return readGeneratedZip(bytes).get('ppt/media/media1.mp4');
+}
+
+test('generated native-observation fixture remains reproducible', async () => {
+  const source = await readFile(new URL('../../../tests/fixtures/h264-mp4-powerpoint.pptx', import.meta.url));
+  const expected = await readFile(new URL('../../../tests/fixtures/h264-mp4-pptkit-generated.pptx', import.meta.url));
+  const s = await importPptx(source, { projection: 'content', videoProjection: 'iso-bmff-v1' });
+  try { assert.deepEqual(Buffer.from((await generatePptx(s.document, { videoMode: 'iso-bmff-v1' })).bytes), expected); }
+  finally { s.dispose(); }
+});
 
 test('PPTX rejects video before resolving any assets, including hidden nested video', async () => {
   for (const nested of [false, true]) {
@@ -11,7 +27,7 @@ test('PPTX rejects video before resolving any assets, including hidden nested vi
     const box = { x: 0, y: 0, width: 120, height: 60 }, video = { type: 'video', hidden: nested, videoAssetId: 'video', posterAssetId: 'poster', box };
     p.addSlide({ elements: nested ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : [video] });
     let calls = 0;
-    await assert.rejects(generatePptx(p, { resolveAsset: async () => { calls++; throw Error('unexpected'); } }), /video export is not supported/);
+    await assert.rejects(generatePptx(p, { resolveAsset: async () => { calls++; throw Error('unexpected'); } }), /requires videoMode iso-bmff-v1/);
     assert.equal(calls, 0);
   }
 });
@@ -22,4 +38,60 @@ test('unreferenced video assets are not passed to the image loader', async () =>
   p.addSlide({ elements: [] }); let calls = 0;
   await generatePptx(p, { resolveAsset: async () => { calls++; throw Error('unexpected'); } });
   assert.equal(calls, 0);
+});
+
+test('explicit MP4 export preserves video bytes, poster and native timing across slides', async () => {
+  const mp4 = await sample(), p = createPresentation();
+  p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: mp4 } });
+  for (const id of ['one', 'two']) p.addSlide({ id, elements: [{ type: 'video', id: `video-${id}`, videoAssetId: 'movie', box: { x: 10, y: 20, width: 120, height: 60 }, transform: { rotation: 90 } }] });
+  const output = await generatePptx(p, { videoMode: 'iso-bmff-v1' }), parts = readGeneratedZip(output.bytes);
+  assert.deepEqual(parts.get('ppt/media/movie.mp4'), mp4); assert.ok(parts.has('ppt/media/pptkit-video-poster.png'));
+  assert.equal([...parts.keys()].filter(name => name.endsWith('.mp4')).length, 1);
+  assert.equal(output.warnings.filter(w => w.code === 'video-playback-unverified').length, 2);
+  for (const index of [1, 2]) {
+    const xml = parts.get(`ppt/slides/slide${index}.xml`).toString(), rel = parts.get(`ppt/slides/_rels/slide${index}.xml.rels`).toString();
+    assert.match(xml, /<a:videoFile r:link="rId\d+"\/>/); assert.match(xml, /<p:video>/); assert.match(xml, /cmd="togglePause"/); assert.match(xml, /dur="2000"/); assert.match(xml, /rot="5400000"/);
+    assert.match(rel, /relationships\/video/); assert.match(rel, /2007\/relationships\/media/); assert.match(rel, /relationships\/image/);
+  }
+  const s = await importPptx(output.bytes, { projection: 'content', videoProjection: 'iso-bmff-v1' });
+  try {
+    const video = s.document.slides.map(slide => slide.elements.find(x => x.type === 'video'));
+    assert.equal(video[0].videoAssetId, video[1].videoAssetId); assert.ok(s.report.videoSources.filter(x => x.companionStatus === 'same-part').length === 2);
+    assert.equal(s.document.assets.find(x => x.id === video[0].videoAssetId).source.value, Buffer.from(mp4).toString('base64'));
+  } finally { s.dispose(); }
+});
+
+test('authored video posters must resolve and never trigger video fetching', async () => {
+  const p = createPresentation(); p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: await sample() } });
+  p.registerAsset({ id: 'poster', kind: 'image', source: { type: 'url', value: 'https://example.invalid/poster.png' } });
+  p.addSlide({ elements: [{ type: 'video', videoAssetId: 'movie', posterAssetId: 'poster', box: { x: 0, y: 0, width: 120, height: 60 } }] });
+  const calls = [];
+  await assert.rejects(generatePptx(p, { videoMode: 'iso-bmff-v1', resolveAsset: async asset => { calls.push(asset.id); return undefined; } }), /video or its poster could not be packaged/);
+  assert.deepEqual(calls, ['poster']);
+});
+
+test('unsafe or unsupported MP4 exports fail before resolving any poster', async () => {
+  const original = await sample(), mvhd = original.indexOf(Buffer.from('mvhd')); assert.ok(mvhd > 0);
+  for (const mode of ['wrong-mime', 'url', 'truncated', 'missing-movie', 'missing-data', 'fragmented', 'short-mvhd', 'version', 'zero-scale', 'zero-duration', 'unknown-duration', 'duplicate-mvhd', 'two-videos', 'nested', 'hidden', 'too-large', 'mixed-audio']) {
+    let bytes = Buffer.from(original);
+    if (mode === 'truncated') bytes = bytes.subarray(0, bytes.length - 1);
+    if (mode === 'missing-movie') bytes.write('xxxx', 36);
+    if (mode === 'missing-data') bytes.write('xxxx', 1207);
+    if (mode === 'fragmented') bytes.write('moof', 1199);
+    if (mode === 'short-mvhd') bytes.writeUInt32BE(28, mvhd - 4);
+    if (mode === 'version') bytes[mvhd + 4] = 1;
+    if (mode === 'zero-scale') bytes.writeUInt32BE(0, mvhd + 16);
+    if (mode === 'zero-duration') bytes.writeUInt32BE(0, mvhd + 20);
+    if (mode === 'unknown-duration') bytes.writeUInt32BE(0xffffffff, mvhd + 20);
+    if (mode === 'duplicate-mvhd') bytes.write('mvhd', bytes.indexOf(Buffer.from('trak')));
+    const p = createPresentation();
+    p.registerAsset({ id: 'video', kind: 'video', mimeType: mode === 'wrong-mime' ? 'video/other' : 'video/mp4', source: mode === 'url' ? { type: 'url', value: 'https://example.invalid/movie.mp4' } : { type: 'bytes', value: bytes } });
+    p.registerAsset({ id: 'poster', kind: 'image', source: { type: 'url', value: 'https://example.invalid/poster.png' } });
+    const box = { x: 0, y: 0, width: 120, height: 60 }, video = { type: 'video', hidden: mode === 'hidden', videoAssetId: 'video', posterAssetId: 'poster', box };
+    let elements = mode === 'nested' ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : mode === 'two-videos' ? [video, { ...video }] : [video];
+    if (mode === 'mixed-audio') { p.registerAsset({ id: 'sound', kind: 'audio', source: { type: 'bytes', value: Uint8Array.of(1) } }); elements = [video, { type: 'audio', audioAssetId: 'sound', box }]; }
+    p.addSlide({ elements }); let calls = 0;
+    await assert.rejects(generatePptx(p, { videoMode: 'iso-bmff-v1', ...(mode === 'too-large' ? { maxAssetBytes: original.length - 1 } : {}), resolveAsset: async () => { calls++; throw Error('unexpected'); } }), undefined, mode);
+    assert.equal(calls, 0, mode);
+  }
 });

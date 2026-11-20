@@ -26,6 +26,8 @@ class NativeMp4Test(unittest.TestCase):
     def test_sample_and_negative_controls(self):
         source = (ROOT / 'tests/fixtures/h264-mp4-powerpoint.pptx').read_bytes()
         self.assertEqual(oracle.verify(source)['objectId'], '4')
+        generated = (ROOT / 'tests/fixtures/h264-mp4-pptkit-generated.pptx').read_bytes()
+        self.assertEqual(oracle.verify(generated)['video'], '../media/source-video-1.mp4')
         for part, old, new in [
             ('ppt/slides/slide1.xml', b'<p:spTgt spid="4"', b'<p:spTgt spid="3"'),
             ('ppt/slides/_rels/slide1.xml.rels', b'../media/media1.mp4', b'../media/missing.mp4'),

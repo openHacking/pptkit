@@ -12,14 +12,14 @@ import type { AssetLoader } from "../types/internal.js";
 import { emu } from "../ooxml/xml.js";
 import { listContinuationWarnings } from "./list-continuation-warnings.js";
 import { planWaveAudio } from "./wave-audio.js";
-import { rejectVideoOutput } from "./video-preflight.js";
+import { planMp4Video } from "./mp4-video.js";
 
 export async function generatePptxWith(
   document: PresentationDocument,
   loadAsset: AssetLoader,
   options?: GeneratePptxOptions,
 ): Promise<GeneratePptxResult> {
-  const { signal, resolveAsset, maxAssetBytes, audioMode, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
+  const { signal, resolveAsset, maxAssetBytes, audioMode, videoMode, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
   signal?.throwIfAborted();
   if (firstSlideNumber !== undefined && (!Number.isSafeInteger(firstSlideNumber) || firstSlideNumber < 0 || firstSlideNumber > 9999)) throw new RangeError("firstSlideNumber must be an integer from 0 to 9999.");
   if (typeof deduplicateResolvedAssets !== "boolean") throw new TypeError("deduplicateResolvedAssets must be a boolean.");
@@ -35,10 +35,11 @@ export async function generatePptxWith(
   if (externalImageValidation !== undefined && externalImageValidation !== "signature") throw new TypeError("externalImageValidation must be signature when provided.");
   if (resolveAsset !== undefined && typeof resolveAsset !== "function") throw new TypeError("resolveAsset must be a function.");
   if (audioMode !== undefined && audioMode !== "wave-pcm-v1") throw new TypeError("audioMode must be wave-pcm-v1 when provided.");
+  if (videoMode !== undefined && videoMode !== "iso-bmff-v1") throw new TypeError("videoMode must be iso-bmff-v1 when provided.");
   const loadContext = { ...(signal ? { signal } : {}), ...(maxAssetBytes !== undefined ? { maxAssetBytes } : {}), ...(externalImageValidation ? { externalImageValidation } : {}) };
   const resolvedLoader = createAssetLoader(loadAsset, resolveAsset, signal, maxAssetBytes);
   const normalized = normalizePresentation(document);
-  rejectVideoOutput(normalized);
+  const video = planMp4Video(normalized, videoMode, maxAssetBytes, signal);
   const audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal);
   // PresentationML ST_SlideSizeCoordinate bounds apply to the serialized
   // integer, not the pre-rounding Core value. Reject before any asset I/O.
@@ -59,7 +60,7 @@ export async function generatePptxWith(
     ...(layout.analysis?.diagnostics ?? []).map(({ severity, bounds, available, ...warning }) => warning),
   ];
   const nativeInheritance = nativePlaceholderInheritance(document, layout, warnings, nativePlaceholderText);
-  const parts = await buildPackage(layout, warnings, resolvedLoader, loadContext, connectorMode, nativeInheritance, gifDiagnostics, jpegOrientationDiagnostics, pngDiagnostics, deduplicateResolvedAssets, jpegIccDiagnostics, effectiveFirstSlideNumber, jpegValidation, audio);
+  const parts = await buildPackage(layout, warnings, resolvedLoader, loadContext, connectorMode, nativeInheritance, gifDiagnostics, jpegOrientationDiagnostics, pngDiagnostics, deduplicateResolvedAssets, jpegIccDiagnostics, effectiveFirstSlideNumber, jpegValidation, audio, video);
   signal?.throwIfAborted();
   const bytes = createZip(parts);
   signal?.throwIfAborted();

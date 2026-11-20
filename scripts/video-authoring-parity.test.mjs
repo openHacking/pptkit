@@ -12,8 +12,9 @@ test('video source projection and static preview match Node and browser without 
   let expected;
   try {
     const rendered = await renderPresentationToSvg(node.document);
-    await assert.rejects(generatePptx(node.document), /video export is not supported/);
-    expected = { sources: node.report.videoSources, elements: node.document.slides[0].elements, rendered };
+    await assert.rejects(generatePptx(node.document), /requires videoMode iso-bmff-v1/);
+    const exported = await generatePptx(node.document, { videoMode: 'iso-bmff-v1' });
+    expected = { sources: node.report.videoSources, elements: node.document.slides[0].elements, rendered, exported: { bytes: [...exported.bytes], warnings: exported.warnings } };
   } finally { node.dispose(); }
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage(), requests = [];
@@ -24,9 +25,10 @@ test('video source projection and static preview match Node and browser without 
     try {
       const rendered = await PPTKit.renderPresentationToSvg(session.document);
       let error = ''; try { await PPTKit.generatePptx(session.document); } catch (e) { error = e.message; }
-      return { sources: session.report.videoSources, elements: session.document.slides[0].elements, rendered, error };
+      const exported = await PPTKit.generatePptx(session.document, { videoMode: 'iso-bmff-v1' });
+      return { sources: session.report.videoSources, elements: session.document.slides[0].elements, rendered, exported: { bytes: [...exported.bytes], warnings: exported.warnings }, error };
     } finally { session.dispose(); }
   }, [...bytes]);
   const { error, ...actualData } = actual;
-  assert.match(error, /video export is not supported/); assert.deepEqual(actualData, expected); assert.deepEqual(requests, []);
+  assert.match(error, /requires videoMode iso-bmff-v1/); assert.deepEqual(actualData, expected); assert.deepEqual(requests, []);
 });

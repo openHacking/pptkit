@@ -34,6 +34,8 @@ export type PptxAssetResolver = (asset: PptxAssetResolverRequest, context: PptxA
 export interface GeneratePptxOptions {
   /** Experimental byte-backed PCM WAVE with visible top-level audio objects. */
   audioMode?: "wave-pcm-v1";
+  /** Experimental byte-backed MP4 framing and movie-header profile; codecs are not validated. */
+  videoMode?: "iso-bmff-v1";
   layout?: LayoutOptions;
   /** Native presentation starting slide number (0–9999); independent of cached field refresh. */
   firstSlideNumber?: number;
