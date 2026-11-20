@@ -150,9 +150,46 @@ function validateChartAxes(context: Context, axes: Extract<PresentationElement, 
   }
 }
 
-function warnOutsideFixedAxis(context: Context, scale: ValueAxisScaleInput | undefined, value: unknown, path: string, ids: Partial<PresentationDiagnostic>): void {
-  if (scale && scale !== "auto" && isFiniteNumber(scale.min) && isFiniteNumber(scale.max) && scale.min < scale.max && isFiniteNumber(scale.majorUnit) && scale.majorUnit > 0 && isFiniteNumber(value) && (value < scale.min || value > scale.max)) {
-    add(context, { code: "chart-value-outside-fixed-axis", severity: "warning", message: "The value lies outside the fixed value-axis bounds and may be clipped in the chart.", path, ...ids });
+function warnOutsideFixedAxis(context: Context, scale: ValueAxisScaleInput | undefined, value: unknown, path: string, ids: Partial<PresentationDiagnostic>, stacked = false, percentage = false): void {
+  if (scale && scale !== "auto" && isFiniteNumber(scale.min) && isFiniteNumber(scale.max) && scale.min < scale.max && isFiniteNumber(scale.majorUnit) && scale.majorUnit > 0 && isFiniteNumber(value)) {
+    // Accumulated normalized fractions can stray a few ULPs past an exact bound.
+    const tolerance = (bound: number): number => percentage ? Math.max(1, Math.abs(bound), Math.abs(value)) * Number.EPSILON * 16 : 0;
+    if (!((value < scale.min && scale.min - value > tolerance(scale.min)) || (value > scale.max && value - scale.max > tolerance(scale.max)))) return;
+    add(context, { code: "chart-value-outside-fixed-axis", severity: "warning", message: stacked ? "The cumulative stack endpoint lies outside the fixed value-axis bounds and may be clipped in the chart." : "The value lies outside the fixed value-axis bounds and may be clipped in the chart.", path, ...ids });
+  }
+}
+
+function warnStackedValues(context: Context, chart: Extract<PresentationElement, { type: "chart"; chartType: "bar" | "area" }>, path: string, ids: Partial<PresentationDiagnostic>): void {
+  const scale = chart.axes?.value?.scale;
+  if (!scale || scale === "auto" || !isFiniteNumber(scale.min) || !isFiniteNumber(scale.max) || scale.min >= scale.max || !isFiniteNumber(scale.majorUnit) || scale.majorUnit <= 0) return;
+  for (let i = 0; i < chart.categories.length; i++) {
+    // A malformed column cannot yield a trustworthy cumulative position.
+    if (chart.series.some(series => !series || !Array.isArray(series.values) || !(i in series.values) || (series.values[i] !== null && !isFiniteNumber(series.values[i])))) continue;
+    const values = chart.series.map(series => series.values[i] ?? 0);
+    let maxPositive = 0, maxNegative = 0, maxAbsolute = 0;
+    if (chart.grouping === "percentStacked") for (const value of values) {
+      maxAbsolute = Math.max(maxAbsolute, Math.abs(value));
+      if (value > 0) maxPositive = Math.max(maxPositive, value);
+      if (value < 0) maxNegative = Math.max(maxNegative, -value);
+    }
+    let totalPositive = 0, totalNegative = 0, totalAbsolute = 0;
+    if (chart.grouping === "percentStacked") for (const value of values) {
+      if (value > 0) totalPositive += value / maxPositive;
+      if (value < 0) totalNegative += -value / maxNegative;
+      if (maxAbsolute !== 0) totalAbsolute += Math.abs(value / maxAbsolute);
+    }
+    let positive = 0, negative = 0, area = 0;
+    const endpoints: number[] = [];
+    for (const [seriesIndex, raw] of values.entries()) {
+      const value = chart.grouping !== "percentStacked" ? raw : chart.chartType === "area"
+        ? (totalAbsolute === 0 ? 0 : (raw / maxAbsolute) / totalAbsolute)
+        : raw > 0 ? (raw / maxPositive) / totalPositive * 100 : raw < 0 ? (raw / maxNegative) / totalNegative * 100 : 0;
+      const endpoint = chart.chartType === "area" ? (area += value) : value >= 0 ? (positive += value) : (negative += value);
+      if (!Number.isFinite(endpoint)) break;
+      endpoints[seriesIndex] = endpoint;
+    }
+    if (endpoints.length !== values.length) continue;
+    for (const [seriesIndex, endpoint] of endpoints.entries()) if (chart.series[seriesIndex]!.values[i] !== null) warnOutsideFixedAxis(context, scale, endpoint, `${path}.series.${seriesIndex}.values.${i}`, ids, true, chart.grouping === "percentStacked");
   }
 }
 
@@ -416,6 +453,7 @@ function validateElement(
       }
     }
     if (element.chartType !== "doughnut" && ((element as { holeSize?: unknown }).holeSize !== undefined || (element as { firstSliceAngle?: unknown }).firstSliceAngle !== undefined)) add(context, { code: "invalid-chart-geometry", message: "holeSize and firstSliceAngle are supported only for doughnut charts.", path, ...identity });
+    if ((element.chartType === "bar" || element.chartType === "area") && (element.grouping === "stacked" || element.grouping === "percentStacked") && (element.chartType !== "area" || element.blankDisplay === undefined || element.blankDisplay === "zero")) warnStackedValues(context, element, path, identity);
     if (element.chartType === "bar" && element.grouping === "stacked") for (let i = 0; i < element.categories.length; i++) {
       let positive = 0, negative = 0;
       for (const series of element.series) {

@@ -12,11 +12,29 @@ import { zip } from "../packages/pptx-parser/test/zip-fixture.mjs";
 import { chartFixture, chartXml, series, encodeChart } from "../packages/pptx-parser/test/chart-fixture.mjs";
 
 const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
-function deck(grouping="standard", blankDisplay, values=[[4,2,null,-2,3],[2,-3,3,4,1]]) {
+function deck(grouping="standard", blankDisplay, values=[[4,2,null,-2,3],[2,-3,3,4,1]], scale) {
   const p=createPresentation({id:'area'}), s=p.addSlide({id:'slide'});
-  s.addElement({id:'chart',type:'chart',chartType:'area',grouping,...(blankDisplay?{blankDisplay}:{}),box:{x:0,y:0,width:500,height:300},categories:['A','B','C','D','E'],series:values.map((value,i)=>({name:`S${i}`,values:value,color:i?'#0000FF':'#FF0000'})),axes:{value:{scale:grouping==='percentStacked'?{min:-1,max:1,majorUnit:.5}:{min:-10,max:10,majorUnit:5}}},legend:{visible:false}});return p;
+  s.addElement({id:'chart',type:'chart',chartType:'area',grouping,...(blankDisplay?{blankDisplay}:{}),box:{x:0,y:0,width:500,height:300},categories:['A','B','C','D','E'],series:values.map((value,i)=>({name:`S${i}`,values:value,color:i?'#0000FF':'#FF0000'})),axes:{value:{scale:scale ?? (grouping==='percentStacked'?{min:-1,max:1,majorUnit:.5}:{min:-10,max:10,majorUnit:5})}},legend:{visible:false}});return p;
 }
 function yvalue(y,plot,scale){return scale.min+(plot.y+plot.height-y)/plot.height*(scale.max-scale.min);}
+
+test('stacked area warnings match layout endpoints and survive fresh export and import', async () => {
+ for (const grouping of ['stacked', 'percentStacked']) {
+  const scale=grouping==='stacked'?{min:-1,max:5,majorUnit:1}:{min:-.1,max:.8,majorUnit:.1};
+  const p=deck(grouping,'zero',[[4,2,0,-2,3],[2,-3,3,4,1]],scale);
+  const chart=p.slides[0].elements[0];
+  const layout=resolveLayout(p).slides[0].elements[0].chartLayout;
+  const expected=[];
+  for (const [seriesIndex,area] of layout.areas.entries()) for (const [categoryIndex,point] of area.polygons[0].slice(0,5).entries()) {
+   const value=yvalue(point.y,layout.plotBox,layout.valueScale);
+   if(value < chart.axes.value.scale.min-1e-8 || value > chart.axes.value.scale.max+1e-8) expected.push(`series.${seriesIndex}.values.${categoryIndex}`);
+  }
+  const paths=doc=>validatePresentation(doc).filter(d=>d.code==='chart-value-outside-fixed-axis').map(d=>d.path.match(/series\.\d+\.values\.\d+$/)[0]).sort();
+  expected.sort(); assert.deepEqual(paths(p),expected); assert.ok(expected.length>0);
+  const session=await importPptx((await generatePptx(p)).bytes,{projection:'content'});
+  try { assert.deepEqual(paths(session.document),expected); } finally { session.dispose(); }
+ }
+});
 
 test('area gap, zero and signed stacked bands have the expected geometry',()=>{
  for(const [group,mode] of [['standard','gap'],['standard','zero'],['stacked','zero'],['percentStacked','zero']]){

@@ -377,7 +377,7 @@ test("fixed chart axes locate out-of-range values without blocking normalization
     ]);
     assert.deepEqual(normalizePresentation(document).slides[0].elements[0].series[0].values, [-1, 0, 9, 37.25, null]);
   }
-  for (const [grouping, scale] of [["stacked", { min: 0, max: 9, majorUnit: 1 }], ["percentStacked", { min: 0, max: 9, majorUnit: 1 }], ["clustered", "auto"], ["clustered", { min: 9, max: 0, majorUnit: 1 }]]) {
+  for (const [grouping, scale] of [["clustered", "auto"], ["clustered", { min: 9, max: 0, majorUnit: 1 }]]) {
     const document = createPresentation();
     document.addSlide().addElement({ type: "chart", chartType: "bar", grouping, box: { x: 0, y: 0, width: 300, height: 200 }, categories: ["A"], series: [{ name: "S", values: [37.25] }], axes: { value: { scale } } });
     assert.equal(validatePresentation(document).filter(d => d.code === "chart-value-outside-fixed-axis").length, 0);
@@ -388,7 +388,7 @@ test("fixed-axis warnings respect chart family, combo axis ownership and paired 
   const deck = createPresentation(), slide = deck.addSlide({ id: "axis-slide" });
   const box = { x: 0, y: 0, width: 300, height: 200 }, scale = (min, max) => ({ min, max, majorUnit: 1 });
   slide.addElement({ id: "area", type: "chart", chartType: "area", box, categories: ["A"], series: [{ name: "A", values: [12] }], axes: { value: { scale: scale(0, 10) } } });
-  slide.addElement({ id: "stacked", type: "chart", chartType: "area", grouping: "stacked", box, categories: ["A"], series: [{ name: "A", values: [12] }], axes: { value: { scale: scale(0, 10) } } });
+  slide.addElement({ id: "stacked", type: "chart", chartType: "area", grouping: "stacked", box, categories: ["A"], series: [{ name: "A", values: [8] }], axes: { value: { scale: scale(0, 10) } } });
   slide.addElement({ id: "combo", type: "chart", chartType: "combo", box, categories: ["A", "B"], series: [{ kind: "bar", name: "B", values: [11, 5] }, { kind: "line", name: "L", values: [11, 101] }], axes: { value: { scale: scale(0, 10) }, secondaryValue: { scale: scale(0, 100) } } });
   slide.addElement({ id: "scatter", type: "chart", chartType: "scatter", box, series: [{ name: "S", xValues: [11, 20, 5], yValues: [3, null, -1] }], axes: { x: { scale: scale(0, 10) }, y: { scale: scale(0, 10) } } });
   slide.addElement({ id: "bubble", type: "chart", chartType: "bubble", box, series: [{ name: "B", xValues: [11, 3], yValues: [12, 3], sizes: [1, 2] }], axes: { x: { scale: scale(0, 10) }, y: { scale: scale(0, 10) } } });
@@ -399,6 +399,33 @@ test("fixed-axis warnings respect chart family, combo axis ownership and paired 
   ]);
   assert.ok(warnings.every(d => d.severity === "warning" && d.slideId === "axis-slide"));
   assert.doesNotThrow(() => normalizePresentation(deck));
+});
+
+test("stacked fixed-axis warnings use cumulative endpoints and family-specific percentage scales", () => {
+  const deck = createPresentation(), slide = deck.addSlide({ id: "stack-slide" });
+  const box = { x: 0, y: 0, width: 300, height: 200 };
+  const add = (id, chartType, grouping, values, min, max) => slide.addElement({ id, type: "chart", chartType, grouping, box, categories: ["A"], series: values.map((value, i) => ({ name: `S${i}`, values: [value] })), axes: { value: { scale: { min, max, majorUnit: 0.1 } } } });
+  add("bar", "bar", "stacked", [4, 8, -3, -9], -10, 10);
+  add("area", "area", "stacked", [8, -3, 7], 0, 10);
+  add("bar-percent", "bar", "percentStacked", [4, 4, -3, -1], -80, 80);
+  add("area-percent", "area", "percentStacked", [4, -2, 2], -1, 0.4);
+  add("zero", "bar", "percentStacked", [0, null, 0], -1, 1);
+  add("huge", "bar", "percentStacked", [Number.MAX_VALUE, Number.MAX_VALUE], 0, 75);
+  add("rounded-bar", "bar", "percentStacked", [1, 1, 1, 1, 1, 1], 0, 100);
+  add("rounded-area", "area", "percentStacked", [1, 1, 1, 1, 1, 1], 0, 1);
+  add("outside-rounded", "bar", "percentStacked", [1, 1, 1, 1, 1, 1], 0, 100 - 1e-9);
+  add("wide-axis", "bar", "percentStacked", [1], -Number.MAX_VALUE, 90);
+  const warnings = validatePresentation(deck).filter(d => d.code === "chart-value-outside-fixed-axis");
+  assert.deepEqual(warnings.map(d => [d.elementId, d.path.match(/series\.\d+\.values\.\d+$/)[0]]), [
+    ["bar", "series.1.values.0"], ["bar", "series.3.values.0"], ["area", "series.2.values.0"],
+    ["bar-percent", "series.1.values.0"], ["bar-percent", "series.3.values.0"],
+    ["area-percent", "series.0.values.0"], ["area-percent", "series.2.values.0"], ["huge", "series.1.values.0"], ["outside-rounded", "series.5.values.0"], ["wide-axis", "series.0.values.0"],
+  ]);
+  assert.ok(warnings.every(d => d.severity === "warning" && d.slideId === "stack-slide" && d.message.includes("cumulative stack endpoint")));
+  assert.doesNotThrow(() => normalizePresentation(deck));
+  const malformed = createPresentation();
+  malformed.addSlide().addElement({ type: "chart", chartType: "bar", grouping: "stacked", box, categories: ["A"], series: [{ name: "A", values: [10] }, { name: "B", values: [undefined] }], axes: { value: { scale: { min: 0, max: 5, majorUnit: 1 } } } });
+  assert.equal(validatePresentation(malformed).filter(d => d.code === "chart-value-outside-fixed-axis").length, 0);
 });
 
 test("chart validation rejects sparse categories, series, values and pie colors without treating holes as zero", () => {
