@@ -69,6 +69,8 @@ static-image structure policies consume its public entry. Pixel decoding,
 general animation semantics and complete image validation remain outside its
 contract.
 
+Core owns format-independent audio and poster asset identities, immutable byte capture and reference/copy semantics. Layout carries the audio object without resolving playback. SVG renders only a static poster or placeholder; the PPTX writer currently rejects audio objects before asset I/O instead of silently discarding them. See [audio authoring](../api/audio-inspection.md#authoring-and-static-preview).
+
 ### `@pptkit/cli`
 
 Owns thin command-line orchestration, local regular-file capture and bounded/versioned report transport. Inspect/compare and create-only preservation save call public Parser APIs; JSON generation and preview use public Core, Exporter, Parser and Renderer APIs. No parsing or package-write implementation is duplicated. Broader authoring and edit commands must likewise use public package APIs. See [ADR0032](decisions/0032-read-only-cli-inspection.md) and the [save contract](../api/cli-save.md).

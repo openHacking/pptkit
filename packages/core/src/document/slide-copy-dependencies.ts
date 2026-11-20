@@ -32,7 +32,7 @@ export function collectSlideCopyDependencies(slide: PresentationSlideData, maxWo
   while (stack.length) {
     charge(); const entry = stack.pop()!, element = entry.element;
     if (!element || typeof element.id !== 'string' || !element.id || owned.has(element.id)) throw new TypeError('Slide element identities must be unique nonempty strings.');
-    if (!['text', 'shape', 'image', 'connector', 'group', 'table', 'chart'].includes(element.type)) throw new TypeError('Slide copy encountered an unsupported element type.');
+    if (!['text', 'shape', 'image', 'audio', 'connector', 'group', 'table', 'chart'].includes(element.type)) throw new TypeError('Slide copy encountered an unsupported element type.');
     ids.push(element.id); owned.add(element.id); elements.push(entry);
     if (element.type === 'group') {
       if (!Array.isArray(element.children)) throw new TypeError('Group children must be an array.');
@@ -68,6 +68,7 @@ export function collectSlideCopyDependencies(slide: PresentationSlideData, maxWo
     action(element.action, `${path}.action`);
     if (element.placeholderKey !== undefined) { charge(); if (typeof element.placeholderKey !== 'string' || !element.placeholderKey) throw new TypeError('Slide copy requires nonempty placeholder keys.'); placeholders.push({ key: element.placeholderKey, path: `${path}.placeholderKey` }); }
     if (element.type === 'image') { charge(); if (typeof element.assetId !== 'string' || !element.assetId) throw new TypeError('Slide copy requires nonempty image asset IDs.'); assets.push({ id: element.assetId, path: `${path}.assetId` }); }
+    else if (element.type === 'audio') for (const key of ['audioAssetId', 'posterAssetId'] as const) { const id = element[key]; if (key === 'posterAssetId' && id === undefined) continue; charge(); if (typeof id !== 'string' || !id) throw new TypeError('Slide copy requires nonempty audio and poster asset IDs.'); assets.push({ id, path: `${path}.${key}` }); }
     else if (element.type === 'connector') for (const key of ['start', 'end'] as const) {
       const endpoint = element[key]; if (!endpoint || typeof endpoint !== 'object') throw new TypeError('Slide copy requires valid connector endpoints.');
       if ('elementId' in endpoint) { charge(); if (typeof endpoint.elementId !== 'string' || !endpoint.elementId) throw new TypeError('Slide copy requires nonempty connector target IDs.'); connectors.push({ targetId: endpoint.elementId, path: `${path}.${key}`, slideOwned: owned.has(endpoint.elementId) }); }

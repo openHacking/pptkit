@@ -35,6 +35,12 @@ export async function generatePptxWith(
   const loadContext = { ...(signal ? { signal } : {}), ...(maxAssetBytes !== undefined ? { maxAssetBytes } : {}), ...(externalImageValidation ? { externalImageValidation } : {}) };
   const resolvedLoader = createAssetLoader(loadAsset, resolveAsset, signal, maxAssetBytes);
   const normalized = normalizePresentation(document);
+  const pendingElements = [...normalized.slides.flatMap(slide => slide.elements), ...normalized.layouts.flatMap(layout => layout.elements), ...(normalized.masters ?? []).flatMap(master => master.elements ?? [])];
+  while (pendingElements.length) {
+    const element = pendingElements.pop()!;
+    if (element.type === "audio") throw new TypeError("PPTX audio export is not implemented; audio cannot be silently omitted.");
+    if (element.type === "group") pendingElements.push(...element.children);
+  }
   // PresentationML ST_SlideSizeCoordinate bounds apply to the serialized
   // integer, not the pre-rounding Core value. Reject before any asset I/O.
   if ([normalized.size.width, normalized.size.height].some(value => {

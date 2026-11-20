@@ -3,6 +3,7 @@ import test from "node:test";
 import { readFile, mkdir } from "node:fs/promises";
 import { chromium } from "@playwright/test";
 import { importPptx, inspectPptx } from "../packages/pptx-parser/dist/index.js";
+import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js";
 import { diagramPreviewFixture, cacheTextTransform } from "../packages/pptx-parser/test/diagram-preview-fixture.mjs";
@@ -12,6 +13,20 @@ import { relationships } from "../packages/pptx-parser/test/opc-fixture.mjs";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 
 const options = { projection: "content", diagramPreview: "cache", editSaveProfile: "text-runs-v3" };
+
+test("audio authoring and static placeholder match public browser bundles", async t => {
+  const input = { type: 'audio', id: 'speaker', audioAssetId: 'audio', box: { x: 10, y: 20, width: 100, height: 60 } };
+  const build = core => { const p = core.createPresentation(); p.registerAsset({ id: 'audio', kind: 'audio', source: { type: 'bytes', value: Uint8Array.of(1, 2, 3) } }); p.addSlide({ id: 'slide', elements: [input] }); return p; };
+  const document = build({ createPresentation }), expected = { normalized: normalizePresentation(document), rendered: await renderPresentationToSvg(document) };
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage();
+  for (const pkg of ['core', 'layout', 'svg-renderer', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(new URL(`../packages/${pkg}/dist/browser/global.js`, import.meta.url), 'utf8') });
+  const actual = await page.evaluate(async input => {
+    const p = PPTKit.createPresentation(); p.registerAsset({ id: 'audio', kind: 'audio', source: { type: 'bytes', value: Uint8Array.of(1, 2, 3) } }); p.addSlide({ id: 'slide', elements: [input] });
+    let error; try { await PPTKit.generatePptx(p); } catch (e) { error = e.message; }
+    return { normalized: PPTKit.normalizePresentation(p), rendered: await PPTKit.renderPresentationToSvg(p), error };
+  }, input);
+  assert.deepEqual(actual.normalized, expected.normalized); assert.deepEqual(actual.rendered, expected.rendered); assert.match(actual.error, /audio export is not implemented/);
+});
 
 test("browser audio source inventory agrees with Node and makes no requests", async t => {
   const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="office"/></p:ext></p:extLst></p:nvPr>');

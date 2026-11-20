@@ -153,6 +153,19 @@ export interface NormalizedImageElement extends NormalizedElementBase {
   crop: ImageCrop;
 }
 
+/** Audio and its optional static poster are independently owned assets. */
+export interface AudioElementInput extends ElementBaseInput {
+  type: "audio";
+  audioAssetId: string;
+  posterAssetId?: string;
+}
+export interface AudioElement extends ElementBase, Omit<AudioElementInput, keyof ElementBaseInput> {}
+export interface NormalizedAudioElement extends NormalizedElementBase {
+  type: "audio";
+  audioAssetId: string;
+  posterAssetId?: string;
+}
+
 export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron" | "parallelogram";
 
 export interface ShapeElementInput extends ElementBaseInput {
@@ -652,6 +665,7 @@ export interface NormalizedPlaceholderDefinition {
 export type PresentationElementInput =
   | TextElementInput
   | ImageElementInput
+  | AudioElementInput
   | ShapeElementInput
   | ConnectorElementInput
   | GroupElementInput
@@ -661,6 +675,7 @@ export type PresentationElementInput =
 export type PresentationElement =
   | TextElement
   | ImageElement
+  | AudioElement
   | ShapeElement
   | ConnectorElement
   | GroupElement
@@ -670,6 +685,7 @@ export type PresentationElement =
 export type NormalizedElement =
   | NormalizedTextElement
   | NormalizedImageElement
+  | NormalizedAudioElement
   | NormalizedShapeElement
   | NormalizedConnectorElement
   | NormalizedGroupElement

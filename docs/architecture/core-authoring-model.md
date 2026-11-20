@@ -105,6 +105,8 @@ All public geometry uses points. Group children use the group's local `coordinat
 
 Local operation errors fail immediately: duplicate IDs, unknown IDs, conflicting asset registrations, and invalid collection indices throw from the mutating method.
 
+Audio objects refer to a separately registered audio asset and optional image poster asset. These identities participate in asset reference inventory, copy and cleanup; Core does not decode or play audio. [Audio authoring](../api/audio-inspection.md#authoring-and-static-preview) describes the current static-preview and export boundary.
+
 Cross-document semantic errors are exhaustive. `validatePresentation()` returns all diagnostics it can find, including invalid geometry and style ranges, missing assets/layouts/placeholders/slides, invalid connector references, malformed tables, and invalid theme values.
 
 `normalizePresentation()` runs validation first. When any error exists, it throws one `PresentationValidationError` whose `diagnostics` collection contains all errors. It never emits a partially normalized document.

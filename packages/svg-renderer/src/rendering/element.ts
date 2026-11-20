@@ -360,6 +360,14 @@ export async function renderElement(element: LayoutElement, context: RenderConte
 async function renderElementBody(element: LayoutElement, context: RenderContext): Promise<string> {
   checkRenderAbort(context.signal);
   if (element.hidden) return "";
+  if (element.type === "audio") {
+    context.warnings.push({ code: "audio-static-preview", message: "Audio playback is not available in static SVG; only the poster or a placeholder is rendered.", slideId: context.slideId, elementId: element.id, assetId: element.audioAssetId });
+    const image = { ...element, type: "image" as const, assetId: element.posterAssetId ?? "", fit: "stretch" as const, crop: { left: 0, top: 0, right: 0, bottom: 0 } };
+    if (element.posterAssetId !== undefined) return imageElement(image, context);
+    const { x, y, width, height } = element.box;
+    const body = `<g${transformAttribute(element.box, element.transform)} opacity="${element.opacity}"${accessibility(element)}><rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#F3F4F6" stroke="#9CA3AF" stroke-dasharray="6 4"/><path d="M${x + width * .3} ${y + height * .4} H${x + width * .4} L${x + width * .55} ${y + height * .25} V${y + height * .75} L${x + width * .4} ${y + height * .6} H${x + width * .3} Z" fill="#6B7280"/></g>`;
+    return actionWrapper(element, body, context);
+  }
   if (element.type === "image") return imageElement(element, context);
   if (element.type === "group") return groupElement(element, context);
   if (element.type === "text") {

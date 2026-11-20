@@ -38,7 +38,7 @@ const PLACEHOLDER_KINDS = new Set<string>(["title", "subtitle", "body", "image",
 interface Context {
   diagnostics: PresentationDiagnostic[];
   slideIds: Set<string>;
-  assetIds: Set<string>;
+  assetKinds: Map<string, PresentationAsset["kind"]>;
   globalElementIds: Set<string>;
   textStylePresetNames: Set<string>;
 }
@@ -292,7 +292,7 @@ function validateElement(
     validateTextStylePresetRef(context, element.textStylePreset, `${path}.textStylePreset`, identity);
     validateTextStylePresetReset(context, element.textStylePresetReset, `${path}.textStylePresetReset`, identity);
   } else if (element.type === "image") {
-    if (!context.assetIds.has(element.assetId)) add(context, { code: "missing-image-asset", message: `Image references missing asset "${element.assetId}".`, path: `${path}.assetId`, assetId: element.assetId, ...identity });
+    if (context.assetKinds.get(element.assetId) !== "image") add(context, { code: "missing-image-asset", message: `Image references missing or non-image asset "${element.assetId}".`, path: `${path}.assetId`, assetId: element.assetId, ...identity });
     const validFit = element.fit === undefined || ["stretch", "contain", "cover", "crop"].includes(element.fit);
     if (!validFit) add(context, { code: "invalid-image-fit", message: "Image fit must be stretch, contain, cover or crop.", path: `${path}.fit`, ...identity });
     const crop = { left: 0, top: 0, right: 0, bottom: 0, ...element.crop };
@@ -301,6 +301,9 @@ function validateElement(
     if (validFit && element.fit !== "crop" && [crop.left, crop.top, crop.right, crop.bottom].every(isValidOpacity) && crop.left + crop.right < 1 && crop.top + crop.bottom < 1 && [crop.left, crop.top, crop.right, crop.bottom].some(value => value > 0)) {
       add(context, { code: "image-crop-ignored", severity: "warning", message: "Authored crop fractions are used only with fit crop; other fit modes ignore or replace them.", path: `${path}.crop`, ...identity });
     }
+  } else if (element.type === "audio") {
+    if (context.assetKinds.get(element.audioAssetId) !== "audio") add(context, { code: "missing-audio-asset", message: `Audio references a missing or non-audio asset "${element.audioAssetId}".`, path: `${path}.audioAssetId`, assetId: element.audioAssetId, ...identity });
+    if (element.posterAssetId !== undefined && context.assetKinds.get(element.posterAssetId) !== "image") add(context, { code: "missing-audio-poster", message: `Audio poster references a missing or non-image asset "${element.posterAssetId}".`, path: `${path}.posterAssetId`, assetId: element.posterAssetId, ...identity });
   } else if (element.type === "shape") {
     if (!["rect", "roundRect", "ellipse", "triangle", "diamond", "arrow", "chevron", "parallelogram"].includes(element.shape)) add(context, { code: "invalid-shape-kind", message: "Shape kind is not supported.", path: `${path}.shape`, ...identity });
     if (element.slant !== undefined && (element.shape !== "parallelogram" || !isValidOpacity(element.slant))) add(context, { code: "invalid-shape-slant", message: "Slant is available only on parallelograms and must be between 0 and 1.", path: `${path}.slant`, ...identity });
@@ -564,6 +567,7 @@ function validateLayout(context: Context, layout: SlideLayoutDefinition, index: 
 function validateAsset(context: Context, asset: PresentationAsset, index: number): void {
   if (asset.source.type === "bytes" && (asset.source.encoding !== "base64" || !isCanonicalBase64(asset.source.value))) add(context, { code: "invalid-asset-bytes", message: "Byte asset source must contain canonical Base64.", path: `assets.${index}.source`, assetId: asset.id });
   if (typeof asset.source.value !== "string" || asset.source.value.trim() === "") add(context, { code: "invalid-asset-source", message: "Asset source value cannot be empty.", path: `assets.${index}.source.value`, assetId: asset.id });
+  if (asset.kind === "audio" && (asset.width !== undefined || asset.height !== undefined)) add(context, { code: "invalid-audio-dimensions", message: "Audio assets cannot have image dimensions.", path: `assets.${index}`, assetId: asset.id });
   for (const key of ["width", "height"] as const) {
     const value = asset[key];
     if (value !== undefined && (!isFiniteNumber(value) || value <= 0)) add(context, { code: "invalid-asset-dimension", message: `Asset ${key} must be positive.`, path: `assets.${index}.${key}`, assetId: asset.id });
@@ -573,9 +577,8 @@ function validateAsset(context: Context, asset: PresentationAsset, index: number
 export function validatePresentation(document: Pick<PresentationData, "slides" | "assets" | "textStylePresets" | "layouts" | "masters" | "theme" | "firstSlideNumber">): PresentationDiagnostic[] {
   const diagnostics: PresentationDiagnostic[] = [];
   const slideIds = new Set(document.slides.map((slide) => slide.id));
-  const assetIds = new Set(document.assets.map((asset) => asset.id));
   const textStylePresetNames = new Set(Object.keys(document.textStylePresets));
-  const context: Context = { diagnostics, slideIds, assetIds, globalElementIds: new Set(), textStylePresetNames };
+  const context: Context = { diagnostics, slideIds, assetKinds: new Map(document.assets.map(asset => [asset.id, asset.kind])), globalElementIds: new Set(), textStylePresetNames };
   if (document.firstSlideNumber !== undefined && (!Number.isSafeInteger(document.firstSlideNumber) || document.firstSlideNumber < 0)) add(context, { code: "invalid-first-slide-number", message: "First slide number must be a nonnegative safe integer.", path: "firstSlideNumber" });
 
   for (const id of duplicates(document.slides.map((slide) => slide.id))) add(context, { code: "duplicate-slide-id", message: `Duplicate slide id "${id}".`, path: "slides" });

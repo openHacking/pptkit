@@ -388,6 +388,7 @@ function chartXml(element: Extract<LayoutElement, { type: "chart" }>, context: E
 }
 
 export function elementXml(element: LayoutElement, context: ElementXmlContext, inheritedOpacity = 1): string {
+  if (element.type === "audio") throw new TypeError("PPTX audio export is not implemented; audio cannot be silently omitted.");
   if (element.hidden) return "";
   context = { ...context, elementId: element.id };
   if (element.type === "text") return textXml(element, context, inheritedOpacity);

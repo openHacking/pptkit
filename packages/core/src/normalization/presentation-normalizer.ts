@@ -351,6 +351,7 @@ function normalizeElement(
       crop: { left: 0, top: 0, right: 0, bottom: 0, ...(element.crop ?? {}) },
     };
   }
+  if (element.type === "audio") return { ...base, type: "audio", audioAssetId: element.audioAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }) };
   if (element.type === "shape") {
     const shapeTrace = owner ? new StyleTrace(childSource(owner, "style"), "defaults.shape.style") : undefined;
     const shapeStyle = normalizeShapeStyle(element.style, shapeTrace);
