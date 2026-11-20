@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "tests/fixtures/mixed-media-comments-source.pptx",
+  "sourceSha256": "e67a230d09d7dd223e597d66746b9ec7c1f968b1384b04d329ed30ff0cb42e93",
+  "basePath": "tests/fixtures/mixed-smartart-timing-source.pptx",
+  "baseSha256": "cb1c1cee592898cec11c07f1677bd8333f2fe07d96fdec7eb02c98070d51f919",
+  "producer": "PPTKit synthetic fixture with manually constructed legacy comment and audio declarations",
+  "application": "PPTKit 0.1.0 workspace",
+  "profile": "text-runs-v1",
+  "procedure": "node --test --test-name-pattern=\"mixed media and comments\" scripts/text-save-parity.test.mjs",
+  "rounds": 3,
+  "independentNegativeControls": 7,
+  "unsupportedMediaEditBlocked": true,
+  "scope": "Three unrelated text edits preserve a WAV source and legacy comment/author parts with their relationships alongside SmartArt, timing, chart and table. The media and comment declarations are synthetic and not native compatibility claims.",
+  "nativeApplication": "untested"
+}

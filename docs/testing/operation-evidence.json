@@ -1866,6 +1866,63 @@
           ]
         }
       ]
+    },
+    {
+      "id": "text-v1-media-comments-three-round",
+      "feature": "Text box run with media and comments",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "mixed-media-comments",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit",
+      "producer": {
+        "name": "PPTKit repository-authored synthetic fixture",
+        "version": "0.1.0"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "0.1.0 workspace"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "e67a230d09d7dd223e597d66746b9ec7c1f968b1384b04d329ed30ff0cb42e93",
+        "evidencePath": "docs/testing/mixed-media-comments-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": "tests/fixtures/mixed-media-comments-source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test --test-name-pattern=\"mixed media and comments\" scripts/text-save-parity.test.mjs",
+      "result": "Three text saves retain named WAV, comment/author parts and relationships; a concurrent media geometry edit blocks and retry succeeds.",
+      "limitations": "Hand-authored media/comments; no native playback, comment interaction, schema certification or other media formats are established.",
+      "evidence": [
+        {
+          "path": "docs/testing/mixed-media-comments-evidence.json",
+          "sha256": "835bb7707cf4bbbd0fe973d36ca15e020b0bdfff6c1d1a0bc177de4eeaa89c4f",
+          "assertions": [
+            {
+              "pointer": "/rounds",
+              "equals": 3
+            },
+            {
+              "pointer": "/independentNegativeControls",
+              "equals": 7
+            },
+            {
+              "pointer": "/unsupportedMediaEditBlocked",
+              "equals": true
+            },
+            {
+              "pointer": "/nativeApplication",
+              "equals": "untested"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

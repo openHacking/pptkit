@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { importPptx, compareOpcPackages, inspectOpcClosure, inspectPptx, inspectPptxTiming } from "../packages/pptx-parser/dist/index.js";
@@ -9,6 +10,7 @@ import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 import { zip } from "../packages/pptx-parser/test/zip-fixture.mjs";
 import { png } from "../packages/pptx-parser/test/image-fixture.mjs";
 import { mixedAdvancedFixture } from "./research/mixed-advanced-fixture.mjs";
+import { mixedMediaCommentsFixture } from "./research/mixed-media-comments-fixture.mjs";
 
 const profile = { projection: "content", editSaveProfile: "text-runs-v1" };
 const digest = bytes => createHash("sha256").update(bytes).digest("hex");
@@ -203,4 +205,43 @@ test("mixed SmartArt and timing remain source-owned over three text saves", asyn
     assert.equal(retried.get(part).toString(), unsafe.get(part).toString().replace(">Nested text</a:t>", ">Unaffected nested text</a:t>"));
     for (const [name, data] of unsafe) if (name !== part) assert.deepEqual(retried.get(name), data, name);
   } finally { session.dispose(); }
+});
+
+test("mixed media and comments survive three text saves with unsupported media edits blocked", async () => {
+  let bytes = await readFile("tests/fixtures/mixed-media-comments-source.pptx");
+  const base = await readFile("tests/fixtures/mixed-smartart-timing-source.pptx");
+  assert.deepEqual(bytes, Buffer.from(mixedMediaCommentsFixture(base)));
+  const evidence = JSON.parse(await readFile("docs/testing/mixed-media-comments-evidence.json", "utf8"));
+  assert.equal(digest(bytes), evidence.sourceSha256); assert.equal(digest(base), evidence.baseSha256);
+  assert.equal(evidence.rounds, 3); assert.equal(evidence.independentNegativeControls, 7); assert.equal(evidence.unsupportedMediaEditBlocked, true); assert.equal(evidence.nativeApplication, "untested");
+  assert.match(execFileSync("python3", ["scripts/research/verify-mixed-media-comments.py"], { encoding: "utf8" }), /tone\.wav/);
+  execFileSync("python3", ["scripts/research/test_mixed_media_comments.py"], { encoding: "utf8", stdio: "pipe" });
+  const initial = readGeneratedZip(bytes), diagram = (await inspectPptx(bytes)).diagramInventory, timing = await inspectPptxTiming(bytes);
+  const graph = await inspectOpcClosure(bytes, { roots: ["/"] });
+  for (const id of ["smAudio", "smComments", "smAuthors"]) assert.equal(graph.relationships.filter(rel => rel.id === id && rel.matchesEffectiveRelationship).length, 1, id);
+  let previous = "Original text";
+  for (let round = 1; round <= 3; round++) {
+    const before = readGeneratedZip(bytes), session = await importPptx(bytes, profile), next = `Media ${round}`;
+    try {
+      editFirst(session, next);
+      if (round === 1) {
+        const slide = session.document.slides[0], original = slide.elements.find(element => element.name === "Synthetic audio");
+        assert.ok(original); const edited = structuredClone(original); edited.box.x += 5; slide.replaceElement(original.id, edited);
+        const blocked = await session.prepareSave({ mode: "edit" }); assert.equal(blocked.status, "blocked"); assert.equal(blocked.report.assurance, "none");
+        slide.replaceElement(original.id, original);
+      }
+      const output = (await saved(session)).bytes, after = readGeneratedZip(output), slide = "ppt/slides/slide1.xml";
+      assert.deepEqual([...after.keys()].sort(), [...initial.keys()].sort());
+      for (const [name, data] of before) {
+        if (name === slide) { const xml = data.toString(), anchor = `>${previous}</a:t>`; assert.ok(xml.includes(anchor)); assert.equal(after.get(name).toString(), xml.replace(anchor, `>${next}</a:t>`)); }
+        else assert.deepEqual(after.get(name), data, name);
+      }
+      assert.deepEqual((await inspectPptx(output)).diagramInventory, diagram); assert.deepEqual(await inspectPptxTiming(output), timing);
+      const outputGraph = await inspectOpcClosure(output, { roots: ["/"] }); assert.deepEqual(outputGraph.relationships, graph.relationships); assert.deepEqual(outputGraph.unreachedParts, graph.unreachedParts);
+      assert.deepEqual((await compareOpcPackages(bytes, output)).differences.map(d => [d.code, d.part]), [["payload-changed", `/${slide}`]]);
+      const reopened = await importPptx(output, profile);
+      try { assert.equal(reopened.document.slides[0].elements.find(element => element.type === "text").content[0].runs[0].text, next); } finally { reopened.dispose(); }
+      bytes = output; previous = next;
+    } finally { session.dispose(); }
+  }
 });
