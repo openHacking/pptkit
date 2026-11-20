@@ -79,3 +79,18 @@ test('mixed text attribution record binds its retained fixture and registered re
   assert.match(scripts.test, /pnpm test:import(?:\s|$)/);
   assert.match(scripts['test:import'], /(?:^|\s)scripts\/text-save-parity\.test\.mjs(?:\s|$)/);
 });
+
+test('native notes and later PPTKit records use distinct retained baselines', async () => {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const data = JSON.parse(await readFile(path.join(root, 'docs/testing/operation-evidence.json'), 'utf8'));
+  const native = data.records.find(row => row.id === 'notes-native-powerpoint-corpus-edit');
+  const pptkit = data.records.find(row => row.id === 'notes-v2-after-powerpoint-three-round');
+  assert.ok(native && pptkit); assert.equal(native.method, 'manual'); assert.equal(pptkit.method, 'automated');
+  for (const row of [native, pptkit]) assert.equal(digest(await readFile(path.join(root, row.fixture.localPath))), row.fixture.sha256);
+  const nativeEvidence = JSON.parse(await readFile(path.join(root, native.fixture.evidencePath), 'utf8'));
+  const attribution = JSON.parse(await readFile(path.join(root, pptkit.fixture.evidencePath), 'utf8'));
+  assert.equal(nativeEvidence.output.sha256, pptkit.fixture.sha256);
+  assert.equal(attribution.nativeSourceSha256, native.fixture.sha256); assert.equal(attribution.procedure, pptkit.procedure);
+  const scripts = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8')).scripts;
+  assert.match(scripts['test:import'], /(?:^|\s)scripts\/text-owner-save-parity\.test\.mjs(?:\s|$)/);
+});

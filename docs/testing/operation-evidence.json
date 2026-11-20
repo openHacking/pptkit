@@ -1693,6 +1693,122 @@
           ]
         }
       ]
+    },
+    {
+      "id": "notes-native-powerpoint-corpus-edit",
+      "feature": "Notes in native text corpus",
+      "subject": {
+        "object": "text",
+        "owner": "speaker-notes",
+        "family": "direct",
+        "variant": "existing-run-native-corpus"
+      },
+      "operation": "Interactive notes edit",
+      "producer": {
+        "name": "PowerPoint",
+        "version": "16.104 (16.104.25121423)"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104 (16.104.25121423)"
+      },
+      "profile": "native notes pane",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49",
+        "evidencePath": "docs/testing/corpus-notes-edit-powerpoint-evidence.json",
+        "pointer": "/source/sha256",
+        "localPath": "tests/fixtures/corpus-text-powerpoint-interactive.pptx"
+      },
+      "capability": "editable",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Edit notes on hidden second slide; save, close and reopen in PowerPoint 16.104.",
+      "result": "Named notes text and slide/notes ownership survive one interactive save and reopen.",
+      "limitations": "One manual observation; UI provenance is not authenticated and other applications, versions and notes layouts are untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/corpus-notes-edit-powerpoint-evidence.json",
+          "sha256": "769907062e0780e4462e17cf7bebd285ad69e005ace17229926e4c416c896def",
+          "assertions": [
+            {
+              "pointer": "/application",
+              "equals": "Microsoft PowerPoint 16.104 (16.104.25121423)"
+            },
+            {
+              "pointer": "/output/sha256",
+              "equals": "fdaee82bbde450de3ad954fe5fd38a9f76700cd614ca60ff407a2eb9fdfb14e9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "notes-v2-after-powerpoint-three-round",
+      "feature": "Notes in native text corpus",
+      "subject": {
+        "object": "text",
+        "owner": "speaker-notes",
+        "family": "direct",
+        "variant": "existing-run-native-corpus"
+      },
+      "operation": "Source character edit after native save",
+      "producer": {
+        "name": "PowerPoint",
+        "version": "16.104 (16.104.25121423)"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "0.1.0 workspace"
+      },
+      "profile": "text-runs-v2",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "fdaee82bbde450de3ad954fe5fd38a9f76700cd614ca60ff407a2eb9fdfb14e9",
+        "evidencePath": "docs/testing/native-notes-attribution-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": "tests/fixtures/corpus-text-notes-powerpoint-interactive.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test --test-name-pattern=\"native notes rewrite\" scripts/text-owner-save-parity.test.mjs",
+      "result": "Three PPTKit edits and reopens change only the notes part, after an unsupported formatting change is blocked and restored.",
+      "limitations": "One previously native-saved fixture; no native application is run during this regression and broader notes semantics remain untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/native-notes-attribution-evidence.json",
+          "sha256": "70f0792d443b7d9da92a0da7dfe6d2e8483e6ad3befb6e7a2df6cd2ece7284a0",
+          "assertions": [
+            {
+              "pointer": "/pptkitRounds",
+              "equals": 3
+            },
+            {
+              "pointer": "/pptkitChangedPart",
+              "equals": "ppt/notesSlides/notesSlide2.xml"
+            },
+            {
+              "pointer": "/unsupportedFormattingBlocked",
+              "equals": true
+            },
+            {
+              "pointer": "/nativeSourceSha256",
+              "equals": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49"
+            }
+          ]
+        },
+        {
+          "path": "docs/testing/corpus-notes-edit-powerpoint-evidence.json",
+          "sha256": "769907062e0780e4462e17cf7bebd285ad69e005ace17229926e4c416c896def",
+          "assertions": [
+            {
+              "pointer": "/output/sha256",
+              "equals": "fdaee82bbde450de3ad954fe5fd38a9f76700cd614ca60ff407a2eb9fdfb14e9"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

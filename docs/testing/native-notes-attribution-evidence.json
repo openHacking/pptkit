@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "fdaee82bbde450de3ad954fe5fd38a9f76700cd614ca60ff407a2eb9fdfb14e9",
+  "sourcePath": "tests/fixtures/corpus-text-notes-powerpoint-interactive.pptx",
+  "nativeSourceSha256": "06a3d51e6837f861fce101fd5e2129c9b468c9eac83a339657d3abfc0176ef49",
+  "nativeApplication": "Microsoft PowerPoint 16.104 (16.104.25121423)",
+  "nativeChangedParts": [
+    "docProps/app.xml",
+    "docProps/core.xml",
+    "ppt/notesSlides/notesSlide2.xml",
+    "ppt/viewProps.xml"
+  ],
+  "pptkitApplication": "PPTKit 0.1.0 workspace",
+  "pptkitProfile": "text-runs-v2",
+  "pptkitRounds": 3,
+  "pptkitChangedPart": "ppt/notesSlides/notesSlide2.xml",
+  "unsupportedFormattingBlocked": true,
+  "procedure": "node --test --test-name-pattern=\"native notes rewrite\" scripts/text-owner-save-parity.test.mjs",
+  "scope": "PowerPoint before/after retained pair independently checked. PPTKit starts from native output, not native input; three subsequent notes edits only change the specified notes part. One synthetic blocked-format control is retried. No new native application execution or broad attribution is claimed."
+}
