@@ -9,6 +9,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { generatePptx } from '../../pptx-exporter/dist/index.js';
 import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
+import { createPresentation } from '@pptkit/core';
 
 function fixture(strict = false) {
   const media = id => picture({ id }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/></p:nvPr>');
@@ -195,6 +196,7 @@ test('WAVE and Office media declarations are independently inventoried with rela
         assert.equal(sources.length, 3); const item = sources[1];
         assert.equal(item.declaration, 'p14:media'); assert.equal(item.relationshipAttribute, mode === 'external' ? 'link' : 'embed');
         assert.equal(item.status, mode === 'embedded' || mode === 'different-part' ? 'wave-pcm' : mode === 'external' ? 'external' : 'unsupported');
+        assert.equal(item.externalTarget, mode === 'external' ? 'https://example.invalid/audio.wav' : undefined);
         assert.equal(item.companionStatus, mode === 'embedded' ? 'same-part' : mode === 'different-part' ? 'different-part' : 'unverified');
         assert.match(item.source.path, /media\[1\]$/);
       }
@@ -223,7 +225,10 @@ test('audio inventory reports external and unsupported audio without fetching or
     if (mode === 'damaged') f.parts['media/tone.wav'][0] = 0;
     if (mode === 'mime') f.mediaTypes['media/tone.wav'] = 'audio/mpeg';
     const session = await importPptx(encodeImages(f), options);
-    try { assert.deepEqual(session.report.audioSources.map(x => x.status), [mode === 'external' ? 'external' : 'unsupported', mode === 'external' ? 'external' : 'unsupported']); }
+    try {
+      assert.deepEqual(session.report.audioSources.map(x => x.status), [mode === 'external' ? 'external' : 'unsupported', mode === 'external' ? 'external' : 'unsupported']);
+      assert.deepEqual(session.report.audioSources.map(x => x.externalTarget), [mode === 'external' ? 'https://example.invalid/tone.wav' : undefined, mode === 'external' ? 'https://example.invalid/tone.wav' : undefined]);
+    }
     finally { session.dispose(); }
   }
   await assert.rejects(importPptx(encodeImages(fixture()), { ...options, sessionLimits: { maxImportedAssetBytes: 123 } }), { code: 'import-limit-exceeded' });
@@ -233,4 +238,19 @@ test('audio inventory reports external and unsupported audio without fetching or
   assert.equal(ordinary.report.audioSources, undefined); ordinary.dispose();
   await assert.rejects(importPptx(encodeImages(fixture()), { ...options, audioSourceProfile: 'other' }), TypeError);
   await assert.rejects(importPptx(encodeImages(fixture()), { ...options, projection: 'structure' }), TypeError);
+});
+
+test('an external inventory target can be explicitly authorized for fresh audio export', async () => {
+  const f = fixture(), target = 'https://example.invalid/tone.wav';
+  f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), { ...f.rel('sound', 'audio', target), TargetMode: 'External' }]);
+  const bytes = encodeImages(f), session = await importPptx(bytes, options);
+  try {
+    const source = session.report.audioSources[0]; assert.equal(source.status, 'external'); assert.equal(source.externalTarget, target);
+    const p = createPresentation(); p.registerAsset({ id: 'external', kind: 'audio', mimeType: 'audio/wav', source: { type: 'url', value: source.externalTarget } });
+    p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'external', box: { x: 0, y: 0, width: 40, height: 40 } }] });
+    await assert.rejects(generatePptx(p, { audioMode: 'wave-pcm-v1' }), /paths and links are not loaded/);
+    const requests = [], result = await generatePptx(p, { audioMode: 'wave-pcm-v1', resolveMedia: asset => { requests.push(asset.source.value); return { bytes: f.parts['media/tone.wav'] }; } });
+    assert.deepEqual(requests, [target]); assert.deepEqual(readGeneratedZip(result.bytes).get('ppt/media/external.wav'), f.parts['media/tone.wav']);
+    const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+  } finally { session.dispose(); }
 });

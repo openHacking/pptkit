@@ -79,6 +79,28 @@ test("browser audio source inventory agrees with Node and makes no requests", as
   assert.deepEqual(actual, session.report.audioSources); assert.equal(actual[0].status, 'wave-pcm'); assert.equal(actual[1].companionStatus, 'same-part'); assert.deepEqual(requests, []);
 });
 
+test("external audio targets match Node and browser without fetching", async t => {
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile(new URL('../packages/pptx-parser/dist/browser/global.js', import.meta.url), 'utf8') });
+  for (const strict of [false, true]) {
+    const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:link="office"/></p:ext></p:extLst></p:nvPr>');
+    const f = imageFixture(xml, strict);
+    f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), { ...f.rel('sound', 'audio', 'https://example.invalid/source.wav'), TargetMode: 'External' }, { Id: 'office', Type: 'http://schemas.microsoft.com/office/2007/relationships/media', Target: 'https://example.invalid/companion.wav', TargetMode: 'External' }]);
+    const bytes = encodeImages(f), options = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' }, session = await importPptx(bytes, options);
+    try {
+      assert.deepEqual(session.report.audioSources.map(x => x.externalTarget), ['https://example.invalid/source.wav', 'https://example.invalid/companion.wav']);
+      assert.equal(session.report.audioSources[1].companionStatus, 'unverified');
+      const actual = await page.evaluate(async ({ bytes, options }) => {
+        const s = await PPTKit.importPptx(Uint8Array.from(bytes), options);
+        try { const plan = await s.prepareSave({ mode: 'no-op' }); return { sources: s.report.audioSources, bytes: [...(await s.save(plan.plan)).bytes] }; } finally { s.dispose(); }
+      }, { bytes: [...bytes], options });
+      assert.deepEqual(actual.sources, session.report.audioSources); assert.deepEqual(actual.bytes, [...bytes]);
+    } finally { session.dispose(); }
+  }
+  assert.deepEqual(requests, []);
+});
+
 test("media placeholder browser rendering matches Node without network", async t => {
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage(), requests = [];

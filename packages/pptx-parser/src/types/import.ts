@@ -85,6 +85,8 @@ export interface ImportedAudioSource {
   readonly relationshipId?: string;
   readonly status: "wave-pcm" | "external" | "unsupported";
   readonly mediaPart?: string;
+  /** Unresolved relationship target for external references; never fetched. */
+  readonly externalTarget?: string;
   readonly contentType?: string;
   readonly reason?: string;
   readonly pcm?: { readonly channels: 1 | 2; readonly sampleRate: number; readonly bitsPerSample: 8 | 16; readonly frameCount: number; readonly durationSeconds: number };

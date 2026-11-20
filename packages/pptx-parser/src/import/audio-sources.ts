@@ -49,7 +49,7 @@ export function audioSources(context: Context, limits: Required<PptxSessionLimit
       if (!relation || relation.type !== expectedType || relation.fragment !== undefined || (relationshipAttribute === "embed" && relation.targetMode !== "Internal") || (declaration === "p14:media" && relationshipAttribute === "link" && relation.targetMode !== "External")) {
         result.push({ ...base, status: "unsupported", reason: "Missing, fragmented, wrong-type or wrong-mode audio relationship." }); continue;
       }
-      if (relation.targetMode === "External") { result.push({ ...base, status: "external", reason: "External audio is recorded but not fetched." }); continue; }
+      if (relation.targetMode === "External") { result.push({ ...base, status: "external", externalTarget: relation.target, reason: "External audio is recorded but not fetched." }); continue; }
       if (!relation.targetPart) { result.push({ ...base, status: "unsupported", reason: "Audio relationship has no internal target." }); continue; }
       const mediaPart = relation.targetPart;
       let info = cache.get(mediaPart);
