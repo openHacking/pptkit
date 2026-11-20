@@ -160,6 +160,8 @@ export interface AudioElementInput extends ElementBaseInput {
   posterAssetId?: string;
   /** Defaults to click-sequence; object-click targets this audio object. */
   playbackStart?: "click-sequence" | "object-click";
+  /** PowerPoint-style playback volume; defaults to high. */
+  playbackVolume?: "low" | "medium" | "high" | "mute";
 }
 export interface AudioElement extends ElementBase, Omit<AudioElementInput, keyof ElementBaseInput> {}
 export interface NormalizedAudioElement extends NormalizedElementBase {
@@ -167,6 +169,8 @@ export interface NormalizedAudioElement extends NormalizedElementBase {
   audioAssetId: string;
   posterAssetId?: string;
   playbackStart?: "click-sequence" | "object-click";
+  /** PowerPoint-style playback volume; defaults to high. */
+  playbackVolume?: "low" | "medium" | "high" | "mute";
 }
 
 /** Video bytes and the optional static poster are independently owned assets. */

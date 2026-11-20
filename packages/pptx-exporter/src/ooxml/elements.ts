@@ -34,7 +34,7 @@ export interface ElementXmlContext {
   objectId?(elementId: string): number;
   nativeConnector?(element: LayoutConnectorElement): NativeConnectorResult;
   imageRelationship(assetId: string): { base: string; svg?: string } | undefined;
-  audioRelationship(assetId: string, posterAssetId: string | undefined, objectId: number, playbackStart: "click-sequence" | "object-click" | undefined): { audio: string; media: string; poster: string };
+  audioRelationship(assetId: string, posterAssetId: string | undefined, objectId: number, playbackStart: "click-sequence" | "object-click" | undefined, playbackVolume: "low" | "medium" | "high" | "mute" | undefined): { audio: string; media: string; poster: string };
   videoRelationship(assetId: string, posterAssetId: string | undefined, objectId: number): { video: string; media: string; poster: string };
   actionRelationship(action: ElementAction): string | undefined;
   nextChartId(): number;
@@ -230,7 +230,7 @@ function imageXml(element: Extract<LayoutElement, { type: "image" }>, context: E
 
 function audioXml(element: Extract<LayoutElement, { type: "audio" }>, context: ElementXmlContext): string {
   const id = context.objectId?.(element.id) ?? context.nextObjectId();
-  const relationships = context.audioRelationship(element.audioAssetId, element.posterAssetId, id, element.playbackStart);
+  const relationships = context.audioRelationship(element.audioAssetId, element.posterAssetId, id, element.playbackStart, element.playbackVolume);
   context.warnings.push({ code: "audio-playback-unverified", message: "PCM WAVE bytes and a native media timing pattern were packaged; application playback and codec support are not verified.", elementId: element.id, assetId: element.audioAssetId, ...(context.slideId ? { slideId: context.slideId } : {}) });
   const props = `<p:nvPicPr><p:cNvPr id="${id}" name="${escapeXml(element.name)}" descr="${escapeXml(accessibility(element))}"><a:hlinkClick r:id="" action="ppaction://media"/>${decorativeXml(element)}</p:cNvPr><p:cNvPicPr/><p:nvPr><a:audioFile r:link="${relationships.audio}"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${relationships.media}"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>`;
   return `<p:pic>${props}<p:blipFill><a:blip r:embed="${relationships.poster}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;

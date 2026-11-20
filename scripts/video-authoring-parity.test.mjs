@@ -80,14 +80,14 @@ test('mixed audio and video projection and re-export agree across Node and brows
 test('authored object-click audio export agrees across Node and browser', async t => {
   const parts = readGeneratedZip(await readFile('tests/fixtures/pptkit-audio-start-object-click.pptx'));
   const wave = parts.get('ppt/media/sound.wav');
-  const make = create => { const p = create(); p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: wave } }); p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'object-click', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', box: { x: 50, y: 0, width: 40, height: 40 } }] }); return p; };
+  const make = create => { const p = create(); p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: wave } }); p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'object-click', playbackVolume: 'mute', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', playbackVolume: 'low', box: { x: 50, y: 0, width: 40, height: 40 } }] }); return p; };
   const expected = await generatePptx(make(createPresentation), { audioMode: 'wave-pcm-v1' });
   const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
   await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
   for (const name of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
   const actual = await page.evaluate(async wave => {
     const p = PPTKit.createPresentation(); p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: Uint8Array.from(wave) } });
-    p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'object-click', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', box: { x: 50, y: 0, width: 40, height: 40 } }] });
+    p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'object-click', playbackVolume: 'mute', box: { x: 0, y: 0, width: 40, height: 40 } }, { type: 'audio', audioAssetId: 'sound', playbackVolume: 'low', box: { x: 50, y: 0, width: 40, height: 40 } }] });
     const result = await PPTKit.generatePptx(p, { audioMode: 'wave-pcm-v1' }); return { bytes: [...result.bytes], warnings: result.warnings };
   }, [...wave]);
   assert.deepEqual(actual.bytes, [...expected.bytes]); assert.deepEqual(actual.warnings, expected.warnings); assert.deepEqual(requests, []);

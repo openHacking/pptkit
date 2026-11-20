@@ -18,7 +18,14 @@ function transitionXml(transition: SlideTransitionInput | undefined): string {
   return `<p:transition xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" mc:Ignorable="p14" p14:dur="${transition.durationMs}"${attributes}>${effect}</p:transition>`;
 }
 
-type MediaTiming = { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" };
+type MediaTiming = { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute" };
+
+function audioVolumeAttributes(volume: MediaTiming["playbackVolume"]): string {
+  if (volume === "low") return ' vol="20000"';
+  if (volume === "medium") return "";
+  if (volume === "mute") return ' mute="1"';
+  return ' vol="80000"';
+}
 
 /** Native mixed timeline with independently triggered audio objects. */
 function objectClickMediaTimingXml(timings: readonly MediaTiming[]): string {
@@ -35,7 +42,7 @@ function objectClickMediaTimingXml(timings: readonly MediaTiming[]): string {
   };
   const media = (item: MediaTiming) => {
     const end = item.kind === "audio" ? '<p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst>' : "";
-    return `<p:${item.kind}><p:cMediaNode vol="80000"><p:cTn id="${nextId++}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>${end}</p:cTn><p:tgtEl><p:spTgt spid="${item.objectId}"/></p:tgtEl></p:cMediaNode></p:${item.kind}>`;
+    return `<p:${item.kind}><p:cMediaNode${item.kind === "audio" ? audioVolumeAttributes(item.playbackVolume) : ' vol="80000"'}><p:cTn id="${nextId++}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>${end}</p:cTn><p:tgtEl><p:spTgt spid="${item.objectId}"/></p:tgtEl></p:cMediaNode></p:${item.kind}>`;
   };
   const videos = timings.filter(item => item.kind === "video"), audios = timings.filter(item => item.kind === "audio");
   let tail = videos.length ? media(videos[0]!) : "";
@@ -46,17 +53,17 @@ function objectClickMediaTimingXml(timings: readonly MediaTiming[]): string {
   return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>${mainSequence}${tail}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
 }
 
-function audioTimingXml(timings: readonly { objectId: number; durationMs: number }[] | undefined): string {
+function audioTimingXml(timings: readonly { objectId: number; durationMs: number; playbackVolume?: MediaTiming["playbackVolume"] }[] | undefined): string {
   if (!timings?.length) return "";
   const effects = timings.map(({ objectId, durationMs }, index) => {
     const first = 3 + index * 4;
     return `<p:par><p:cTn id="${first}" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 1}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 2}" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="clickEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="${first + 3}" dur="${durationMs}" fill="hold"/><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cBhvr></p:cmd></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>`;
   }).join("");
-  const media = timings.map(({ objectId }, index) => `<p:audio><p:cMediaNode vol="80000"><p:cTn id="${3 + timings.length * 4 + index}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cMediaNode></p:audio>`).join("");
+  const media = timings.map(({ objectId, playbackVolume }, index) => `<p:audio><p:cMediaNode${audioVolumeAttributes(playbackVolume)}><p:cTn id="${3 + timings.length * 4 + index}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cMediaNode></p:audio>`).join("");
   return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst><p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>${effects}</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>${media}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
 }
 
-function videoTimingXml(timings: readonly { objectId: number; durationMs: number; kind?: "audio" | "video" }[] | undefined): string {
+function videoTimingXml(timings: readonly { objectId: number; durationMs: number; kind?: "audio" | "video"; playbackVolume?: MediaTiming["playbackVolume"] }[] | undefined): string {
   if (!timings?.length) return "";
   const count = timings.length;
   const videos = timings.filter(item => item.kind !== "audio"), audios = timings.filter(item => item.kind === "audio");
@@ -70,11 +77,11 @@ function videoTimingXml(timings: readonly { objectId: number; durationMs: number
     return `<p:seq concurrent="1" nextAc="seek"><p:cTn id="${first}" restart="whenNotActive" fill="hold" evtFilter="cancelBubble" nodeType="interactiveSeq"><p:stCondLst><p:cond evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cond></p:stCondLst><p:endSync evt="end" delay="0"><p:rtn val="all"/></p:endSync><p:childTnLst><p:par><p:cTn id="${first + 1}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 2}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 3}" presetID="2" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="clickEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:cmd type="call" cmd="togglePause"><p:cBhvr><p:cTn id="${first + 4}" dur="1" fill="hold"/><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cBhvr></p:cmd></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn><p:nextCondLst><p:cond evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cond></p:nextCondLst></p:seq>`;
   }).join("");
   const remainingVideos = videos.slice(1).map(({ objectId }, index) => video(objectId, 4 + count * 4 + videos.length * 5 + index)).join("");
-  const audio = audios.map(({ objectId }, index) => `<p:audio><p:cMediaNode vol="80000"><p:cTn id="${3 + count * 4 + videos.length * 6 + index}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cMediaNode></p:audio>`).join("");
+  const audio = audios.map(({ objectId, playbackVolume }, index) => `<p:audio><p:cMediaNode${audioVolumeAttributes(playbackVolume)}><p:cTn id="${3 + count * 4 + videos.length * 6 + index}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst></p:cTn><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cMediaNode></p:audio>`).join("");
   return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst><p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>${effects}</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>${video(videos[0]!.objectId, 3 + count * 4)}${interactions}${remainingVideos}${audio}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
 }
 
-export function slideXml(elements: string[], background: NormalizedBackgroundPaint | undefined, hidden: boolean, metadata?: { section?: string; tags: string[]; customData: Record<string, unknown>; showInheritedShapes?: boolean; transition?: SlideTransitionInput; audioTiming?: readonly { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" }[]; videoTiming?: readonly { objectId: number; durationMs: number }[]; mixedMediaTiming?: readonly MediaTiming[] }): string {
+export function slideXml(elements: string[], background: NormalizedBackgroundPaint | undefined, hidden: boolean, metadata?: { section?: string; tags: string[]; customData: Record<string, unknown>; showInheritedShapes?: boolean; transition?: SlideTransitionInput; audioTiming?: readonly { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute" }[]; videoTiming?: readonly { objectId: number; durationMs: number }[]; mixedMediaTiming?: readonly MediaTiming[] }): string {
   const hasMetadata = metadata !== undefined && (metadata.section !== undefined || metadata.tags.length > 0 || Object.keys(metadata.customData).length > 0);
   const extension = hasMetadata ? `<p:extLst><p:ext uri="{7F4F1C93-4B18-4D30-91CE-PPTKIT000001}"><pptkit:slideData>${escapeXml(JSON.stringify({ ...(metadata.section !== undefined ? { section: metadata.section } : {}), tags: metadata.tags, customData: metadata.customData }))}</pptkit:slideData></p:ext></p:extLst>` : "";
   const allMedia = metadata?.mixedMediaTiming ?? metadata?.audioTiming?.map(item => ({ ...item, kind: "audio" as const }));
