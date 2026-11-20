@@ -38,7 +38,7 @@ function movieDuration(data: Uint8Array, maxBytes: number, signal?: AbortSignal)
   return durationMs;
 }
 
-/** Experimental profile: one visible top-level video per slide, no authored timing. */
+/** Experimental profile: bounded visible top-level videos, no authored timing. */
 export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v1" | undefined, maxBytes: number | undefined, signal?: AbortSignal): ReadonlyMap<string, Mp4VideoResource> {
   const assets = new Map(document.assets.map(asset => [asset.id, asset])), resources = new Map<string, Mp4VideoResource>();
   const reject = (reason: string): never => { throw new TypeError(`PPTX video export: ${reason}`); };
@@ -62,7 +62,8 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
   for (const master of document.masters ?? []) for (const element of master.elements ?? []) check(element);
   for (const slide of document.slides) {
     const videos = slide.elements.filter(element => element.type === "video").length;
-    if (videos > 1 || videos && (slide.eventTimeline !== undefined || slide.elements.some(element => element.type === "audio"))) reject("at most one video per slide is supported, without audio or authored event timing on that slide.");
+    if (videos > 4096) reject("at most 4096 video objects per slide are supported.");
+    if (videos && (slide.eventTimeline !== undefined || slide.elements.some(element => element.type === "audio"))) reject("video cannot share a slide with audio or authored event timing.");
     for (const element of slide.elements) check(element, slide.id);
   }
   return resources;

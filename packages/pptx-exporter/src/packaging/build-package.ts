@@ -418,7 +418,7 @@ export async function buildPackage(
         customData: slide.customData,
         ...(slide.transition !== undefined ? { transition: slide.transition } : {}),
         ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets } : {}),
-        ...(partContext.videoTargets.length ? { videoTiming: partContext.videoTargets[0]! } : {}),
+        ...(partContext.videoTargets.length ? { videoTiming: partContext.videoTargets } : {}),
       })),
     });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });

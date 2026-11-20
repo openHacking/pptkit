@@ -19,6 +19,41 @@ test('generated native-observation fixture remains reproducible', async () => {
   finally { s.dispose(); }
 });
 
+test('same-slide video supports independent timing targets and shared or distinct assets', async () => {
+  const movie = await sample(), short = Buffer.from(movie), mvhd = short.indexOf(Buffer.from('mvhd'));
+  short.writeUInt32BE(1000, mvhd + 20); // A distinct metadata fixture, not a validated shorter clip.
+  const p = createPresentation();
+  for (const [id, bytes] of [['shared', movie], ['other', short]]) p.registerAsset({ id, kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: bytes } });
+  p.addSlide({ elements: ['shared', 'shared', 'other'].map((videoAssetId, i) => ({ type: 'video', id: `v${i}`, videoAssetId, box: { x: i * 130, y: 20, width: 120, height: 60 } })) });
+  const output = await generatePptx(p, { videoMode: 'iso-bmff-v1' }), parts = readGeneratedZip(output.bytes), xml = parts.get('ppt/slides/slide1.xml').toString();
+  assert.deepEqual([...parts.keys()].filter(name => name.endsWith('.mp4')).sort(), ['ppt/media/other.mp4', 'ppt/media/shared.mp4']);
+  const ids = [...xml.matchAll(/<p:cTn id="(\d+)"/g)].map(match => match[1]); assert.equal(ids.length, new Set(ids).size);
+  const commands = [...xml.matchAll(/<p:cmd type="call" cmd="([^"]+)"><p:cBhvr><p:cTn id="\d+" dur="(\d+)" fill="hold"\/><p:tgtEl><p:spTgt spid="(\d+)"/g)].map(m => [m[1], m[2], m[3]]);
+  assert.deepEqual(commands, [['playFrom(0.0)', '2000', '2'], ['playFrom(0.0)', '2000', '3'], ['playFrom(0.0)', '1000', '4'], ['togglePause', '1', '2'], ['togglePause', '1', '3'], ['togglePause', '1', '4']]);
+  const imported = await importPptx(output.bytes, { projection: 'content', videoProjection: 'iso-bmff-v1' });
+  try {
+    const elements = imported.document.slides[0].elements.filter(x => x.type === 'video');
+    assert.equal(elements.length, 3); assert.equal(elements[0].videoAssetId, elements[1].videoAssetId); assert.notEqual(elements[0].videoAssetId, elements[2].videoAssetId);
+    const plan = await imported.prepareSave({ mode: 'no-op' }); assert.deepEqual((await imported.save(plan.plan)).bytes, output.bytes);
+    const second = await generatePptx(imported.document, { videoMode: 'iso-bmff-v1' });
+    const again = await importPptx(second.bytes, { projection: 'content', videoProjection: 'iso-bmff-v1' });
+    try { assert.equal(again.document.slides[0].elements.filter(x => x.type === 'video').length, 3); } finally { again.dispose(); }
+  } finally { imported.dispose(); }
+});
+
+test('retained two-video sample is reproducible', async () => {
+  const { spawnSync } = await import('node:child_process');
+  const { mkdtemp, readFile, rm } = await import('node:fs/promises');
+  const { fileURLToPath } = await import('node:url');
+  const { tmpdir } = await import('node:os'), { join } = await import('node:path');
+  const dir = await mkdtemp(join(tmpdir(), 'pptkit-video-'));
+  try {
+    const output = join(dir, 'multi.pptx'), script = new URL('../../../scripts/research/generate-multi-video.mjs', import.meta.url);
+    const result = spawnSync(process.execPath, [fileURLToPath(script), output], { encoding: 'utf8' }); assert.equal(result.status, 0, result.stderr);
+    assert.deepEqual(await readFile(output), await readFile(new URL('../../../tests/fixtures/h264-mp4-pptkit-multi.pptx', import.meta.url)));
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
 test('PPTX rejects video before resolving any assets, including hidden nested video', async () => {
   for (const nested of [false, true]) {
     const p = createPresentation();
@@ -72,7 +107,7 @@ test('authored video posters must resolve and never trigger video fetching', asy
 
 test('unsafe or unsupported MP4 exports fail before resolving any poster', async () => {
   const original = await sample(), mvhd = original.indexOf(Buffer.from('mvhd')); assert.ok(mvhd > 0);
-  for (const mode of ['wrong-mime', 'url', 'truncated', 'missing-movie', 'missing-data', 'fragmented', 'short-mvhd', 'version', 'zero-scale', 'zero-duration', 'unknown-duration', 'duplicate-mvhd', 'two-videos', 'nested', 'hidden', 'too-large', 'mixed-audio']) {
+  for (const mode of ['wrong-mime', 'url', 'truncated', 'missing-movie', 'missing-data', 'fragmented', 'short-mvhd', 'version', 'zero-scale', 'zero-duration', 'unknown-duration', 'duplicate-mvhd', 'nested', 'hidden', 'too-large', 'mixed-audio']) {
     let bytes = Buffer.from(original);
     if (mode === 'truncated') bytes = bytes.subarray(0, bytes.length - 1);
     if (mode === 'missing-movie') bytes.write('xxxx', 36);
@@ -88,10 +123,17 @@ test('unsafe or unsupported MP4 exports fail before resolving any poster', async
     p.registerAsset({ id: 'video', kind: 'video', mimeType: mode === 'wrong-mime' ? 'video/other' : 'video/mp4', source: mode === 'url' ? { type: 'url', value: 'https://example.invalid/movie.mp4' } : { type: 'bytes', value: bytes } });
     p.registerAsset({ id: 'poster', kind: 'image', source: { type: 'url', value: 'https://example.invalid/poster.png' } });
     const box = { x: 0, y: 0, width: 120, height: 60 }, video = { type: 'video', hidden: mode === 'hidden', videoAssetId: 'video', posterAssetId: 'poster', box };
-    let elements = mode === 'nested' ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : mode === 'two-videos' ? [video, { ...video }] : [video];
+    let elements = mode === 'nested' ? [{ type: 'group', box, coordinateSize: { width: 120, height: 60 }, children: [video] }] : [video];
     if (mode === 'mixed-audio') { p.registerAsset({ id: 'sound', kind: 'audio', source: { type: 'bytes', value: Uint8Array.of(1) } }); elements = [video, { type: 'audio', audioAssetId: 'sound', box }]; }
     p.addSlide({ elements }); let calls = 0;
     await assert.rejects(generatePptx(p, { videoMode: 'iso-bmff-v1', ...(mode === 'too-large' ? { maxAssetBytes: original.length - 1 } : {}), resolveAsset: async () => { calls++; throw Error('unexpected'); } }), undefined, mode);
     assert.equal(calls, 0, mode);
   }
+});
+
+test('same-slide video count is bounded before resolving any poster', async () => {
+  const p = createPresentation(); p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: await sample() } });
+  p.addSlide({ elements: Array.from({ length: 4097 }, () => ({ type: 'video', videoAssetId: 'movie', box: { x: 0, y: 0, width: 10, height: 10 } })) });
+  let calls = 0; await assert.rejects(generatePptx(p, { videoMode: 'iso-bmff-v1', resolveAsset: async () => { calls++; throw Error('unexpected'); } }), /4096 video objects/);
+  assert.equal(calls, 0);
 });
