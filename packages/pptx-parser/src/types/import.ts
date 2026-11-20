@@ -89,6 +89,23 @@ export interface ImportedAudioSource {
   readonly reason?: string;
   readonly pcm?: { readonly channels: 1 | 2; readonly sampleRate: number; readonly bitsPerSample: 8 | 16; readonly frameCount: number; readonly durationSeconds: number };
 }
+/** Read-only slide-local video and poster source references; no decoding or write permission. */
+export interface ImportedVideoSource {
+  readonly slideId: string;
+  readonly declaration: "videoFile" | "p14:media" | "poster";
+  readonly relationshipAttribute: "link" | "embed";
+  readonly companionStatus?: "same-part" | "different-part" | "unverified";
+  readonly source: PptxSourceLocation;
+  readonly sourceElementIndex: number;
+  readonly relationshipId?: string;
+  readonly status: "iso-bmff-framing" | "internal" | "external" | "unsupported";
+  readonly mediaPart?: string;
+  /** Unresolved relationship target for external references; never fetched. */
+  readonly externalTarget?: string;
+  readonly contentType?: string;
+  readonly reason?: string;
+  readonly framing?: { readonly majorBrand: string; readonly minorVersion: number; readonly compatibleBrands: readonly string[]; readonly boxCount: number };
+}
 /** Opt-in metadata eligibility; insertable does not guarantee a valid save plan. */
 export interface ImportedCoreMetadataSource {
   readonly field: "title" | "author" | "subject" | "description" | "language" | "revision" | "keywords" | "company" | "createdAt" | "modifiedAt";
@@ -131,6 +148,7 @@ export interface ImportReport {
   /** Opt-in slide-local projected picture references; no write permission. */
   readonly pictureSources?: readonly ImportedPictureSource[];
   readonly audioSources?: readonly ImportedAudioSource[];
+  readonly videoSources?: readonly ImportedVideoSource[];
   /** Explicit bounded notes-master text inheritance; not notes-page layout or write permission. */
   readonly notesTextProfile?: "master-style-v1";
   /** Explicit font content profile, independent of save permissions. */
@@ -325,6 +343,8 @@ export interface PptxImportOptions extends PptxInspectionOptions {
   pictureSourceProfile?: "embedded-v1";
   /** Content only. Inspect slide-local picture audio and companion Office media sources as bounded PCM WAVE. */
   audioSourceProfile?: "wave-pcm-v1";
+  /** Read-only inventory of videoFile, its Office companion, and poster source references. */
+  videoSourceProfile?: "iso-bmff-v1";
   /** Content only. Project supported embedded PCM WAVE as Core audio; no source edit-save. */
   audioProjection?: "wave-pcm-v1";
   /** Content only. artwork-v10 adds shape patterns; artwork-v11 adds explicit bounded outer shadows. */

@@ -69,7 +69,7 @@ static-image structure policies consume its public entry. Pixel decoding,
 general animation semantics and complete image validation remain outside its
 contract.
 
-The public ISO BMFF inventory reads bounded top-level box framing and file-type brands only; it does not infer a codec or authorize video projection or playback. See [its contract](../api/iso-bmff-inspection.md).
+The public ISO BMFF inventory reads bounded top-level box framing and file-type brands only; it does not infer a codec or authorize video projection or playback. Parser's optional [video source inventory](../api/video-source-inventory.md) retains direct, companion and poster relationship identities without fetching links or creating Core video assets. See [the framing contract](../api/iso-bmff-inspection.md).
 
 Core owns format-independent audio and poster asset identities, immutable byte capture and reference/copy semantics. Layout carries the audio object without resolving playback. SVG renders only a static poster or placeholder; the PPTX writer defaults to rejection and offers an explicit bounded PCM WAVE profile with native media relationships and timing. See [audio authoring](../api/audio-inspection.md#authoring-and-static-preview).
 
