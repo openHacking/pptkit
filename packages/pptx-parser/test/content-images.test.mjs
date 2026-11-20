@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
+import { readFile, mkdtemp, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { normalizePresentation, validatePresentation } from "@pptkit/core";
 import { importPptx } from "../dist/index.js";
+import { importPptxFile } from "../dist/node.js";
 import { picture, imageFixture, encodeImages, png, gif, jpegHeader } from "./image-fixture.mjs";
 import { shape, transform } from "./content-fixture.mjs";
 import { relationships } from "./opc-fixture.mjs";
@@ -10,6 +13,49 @@ import { relationships } from "./opc-fixture.mjs";
 const open = (f = imageFixture(), options = {}) => importPptx(encodeImages(f), { projection: "content", ...options });
 const first = s => normalizePresentation(s.document).slides[0].elements[0];
 const findings = s => s.report.findings.filter(f => f.operation === "import");
+
+test("opt-in media placeholders preserve source geometry and bytes without enabling edits", async () => {
+  for (const strict of [false, true]) for (const fields of [{ embed: null }, { preset: "ellipse" }]) {
+    const media = picture({ id: 2, ...fields }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="media"/></p:nvPr>');
+    const f = imageFixture(media + picture({ id: 3 }), strict), bytes = encodeImages(f);
+    const s = await importPptx(bytes, { projection: "content", mediaPreview: "placeholder-v1" });
+    try {
+      const [placeholder, ordinary] = s.document.slides[0].elements;
+      assert.equal(placeholder.type, "shape"); assert.equal(ordinary.type, "image");
+      assert.deepEqual(placeholder.box, { x: 10, y: 20, width: 100, height: 50 });
+      assert.equal(placeholder.text.content, "Media");
+      assert.equal(s.report.findings.find(x => x.feature === "drawing.media.placeholder").tier, "fallback");
+      assert.equal(s.report.findings.find(x => x.feature === "drawing.media.poster").tier, "fallback");
+      assert.equal(s.report.findings.find(x => x.feature === "drawing.media" && x.operation === "preview").tier, "unsupported");
+      assert.equal(s.report.diagnostics.find(x => x.code === "media-playback-unmapped").elementId, placeholder.id);
+      assert.equal((await s.prepareSave({ mode: "edit" })).status, "blocked");
+      const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+      assert.deepEqual(validatePresentation(s.document), []);
+      const modified = structuredClone(placeholder); modified.box.x += 1;
+      s.document.slides[0].removeElement(placeholder.id); s.document.slides[0].insertElement(0, modified);
+      assert.equal((await s.prepareSave({ mode: "no-op" })).status, "blocked");
+    } finally { s.dispose(); }
+  }
+  const absent = picture({ embed: null, xfrm: "" }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="media"/></p:nvPr>');
+  const s = await open(imageFixture(absent), { mediaPreview: "placeholder-v1" });
+  assert.equal(s.document.slides[0].elements.length, 0);
+  assert.equal(s.report.findings.find(x => x.feature === "drawing.media.poster").tier, "unsupported"); s.dispose();
+  await assert.rejects(open(imageFixture(), { mediaPreview: "placeholder-v1", editSaveProfile: "text-runs-v1" }), TypeError);
+  await assert.rejects(open(imageFixture(), { mediaPreview: "invalid" }), TypeError);
+  await assert.rejects(open(imageFixture(), { projection: "structure", mediaPreview: "placeholder-v1" }), TypeError);
+});
+
+test("file import captures the media placeholder option before asynchronous I/O", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "pptkit-media-preview-")), file = join(directory, "source.pptx");
+  try {
+    const xml = picture({ embed: null }).replace('<p:nvPr/>', '<p:nvPr><a:videoFile r:link="external"/></p:nvPr>');
+    await writeFile(file, encodeImages(imageFixture(xml)));
+    const options = { projection: "content", mediaPreview: "placeholder-v1" }, pending = importPptxFile(file, options);
+    options.mediaPreview = undefined;
+    const { session } = await pending;
+    try { assert.equal(session.document.slides[0].elements[0].type, "shape"); } finally { session.dispose(); }
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
 
 test("media pictures expose static poster fallback without claiming playback in both dialects", async () => {
   for (const strict of [false, true]) for (const kind of ["audioFile", "videoFile", "quickTimeFile", "audioCd", "wavAudioFile"]) {

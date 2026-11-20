@@ -324,6 +324,8 @@ export interface PptxImportOptions extends PptxInspectionOptions {
   textTargetSaveProfile?: "paragraph-stable-v1";
   /** Content only. Explicitly use cached drawing approximations of unknown freshness. */
   diagramPreview?: "cache";
+  /** Content only. Show a static placeholder for media without a mapped poster. */
+  mediaPreview?: "placeholder-v1";
   sessionLimits?: Partial<PptxSessionLimits>;
 }
 export interface ImportedPresentation {

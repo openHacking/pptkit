@@ -32,7 +32,7 @@ import type { MasterOwner } from "./project-structure.js";
 
 const shapes: Readonly<Record<string, ShapeKind>> = { rect: "rect", roundRect: "roundRect", ellipse: "ellipse", triangle: "triangle", diamond: "diamond", rightArrow: "arrow", chevron: "chevron", parallelogram: "parallelogram" };
 
-export async function projectContent(document: ManagedPresentationDocument, base: ImportReport, context: Awaited<ReturnType<typeof structureContext>>, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, options: OpcInspectionOptions, bindings?: TextRunBinding[], profile?: PptxImportOptions["editSaveProfile"], diagramPreviewMode?: PptxImportOptions["diagramPreview"], chartBindings?: ChartValueBinding[], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], masterOwners?: readonly MasterOwner[], masterShapes = false, masterText = false, masterTextTheme = false, masterPaintTheme = false, backgrounds = false, backgroundMatrix = false, backgroundGradient = false, shapeGradient = false, slideShapeGradient = false, shapePattern = false, shapeShadow = false, pictureSources?: ImportedPictureSource[], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], descriptionBindings?: DrawingDescriptionBinding[], descriptionAllowPresenceChange = false, drawingName = false, descriptionAndName = false, decorativeEnabled = false, decorativeOnly = false, chartSparseWrites = false, chartV3Writes = false, chartLabelBindings?: ChartLabelBinding[], chartSeriesNames = false, chartOrderBindings?: ChartSeriesOrderBinding[], researchColumnLegend = false): Promise<ImportReport> {
+export async function projectContent(document: ManagedPresentationDocument, base: ImportReport, context: Awaited<ReturnType<typeof structureContext>>, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, options: OpcInspectionOptions, bindings?: TextRunBinding[], profile?: PptxImportOptions["editSaveProfile"], diagramPreviewMode?: PptxImportOptions["diagramPreview"], chartBindings?: ChartValueBinding[], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], masterOwners?: readonly MasterOwner[], masterShapes = false, masterText = false, masterTextTheme = false, masterPaintTheme = false, backgrounds = false, backgroundMatrix = false, backgroundGradient = false, shapeGradient = false, slideShapeGradient = false, shapePattern = false, shapeShadow = false, pictureSources?: ImportedPictureSource[], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], descriptionBindings?: DrawingDescriptionBinding[], descriptionAllowPresenceChange = false, drawingName = false, descriptionAndName = false, decorativeEnabled = false, decorativeOnly = false, chartSparseWrites = false, chartV3Writes = false, chartLabelBindings?: ChartLabelBinding[], chartSeriesNames = false, chartOrderBindings?: ChartSeriesOrderBinding[], researchColumnLegend = false, mediaPreviewMode?: PptxImportOptions["mediaPreview"]): Promise<ImportReport> {
   const includeTextOwners = profile === "text-runs-v2" || profile === "text-runs-v3";
   const report = structuredClone(base);
   const diagramPreviews: ImportedDiagramPreview[] = [];
@@ -152,13 +152,13 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const at = { part, path, sourceObjectId: String(meta.sourceId) };
       const id = `${slide.id}-object-${meta.sourceId}`;
       const media = node.local === "pic" ? await pictureMedia(node) : undefined;
-      const reportMedia = (posterMapped: boolean) => {
+      const reportMedia = (posterMapped: boolean, placeholder = false) => {
         if (!media) return;
         const mediaAt = { ...at, path: pathByNode.get(media)! };
-        const reason = posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
-        capabilities("drawing.media", mediaAt, reason, false, posterMapped ? id : undefined);
-        finding("drawing.media.poster", "preview", posterMapped ? "fallback" : "unsupported", mediaAt, reason, slide.id, posterMapped ? id : undefined);
-        diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, ...(posterMapped ? { elementId: id } : {}), message: reason });
+        const reason = posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : placeholder ? "The media object has no mapped static poster; a static placeholder is shown without media identity, playback or timing." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
+        capabilities("drawing.media", mediaAt, reason, false, posterMapped || placeholder ? id : undefined);
+        finding("drawing.media.poster", "preview", posterMapped || placeholder ? "fallback" : "unsupported", mediaAt, reason, slide.id, posterMapped || placeholder ? id : undefined);
+        diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, ...(posterMapped || placeholder ? { elementId: id } : {}), message: reason });
       };
       const placeholder = placeholders.get(node);
       if (placeholder) {
@@ -195,6 +195,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
       let input: PresentationElementInput;
       let previewFallback = false;
       let cachedPreview = false;
+      let mediaPlaceholder = false;
       if (node.local === "graphicFrame") {
         const graphic = r.one(node, r.a, "graphic"), data = graphic ? r.one(graphic, r.a, "graphicData") : undefined;
         const uri = data ? attribute(data, "uri") : undefined;
@@ -267,25 +268,32 @@ export async function projectContent(document: ManagedPresentationDocument, base
         pendingConnections.push({ input, scope, source: at, connections: result.connections });
       } else if (node.local === "pic") {
         const result = await image(node, properties, r, at);
-        if ("reason" in result) return unsupported(result.reason);
-        input = { ...baseInput, ...result.fields };
-        if (pictureSources) {
-          if (pictureSources.length >= limits.maxReportFindings) throw new PptxImportError("import-limit-exceeded", "Picture source bindings exceed maxReportFindings.", at);
-          const raw = await context.sourceElement(part, result.source.blip);
-          if (raw.node.namespaceUri !== context.a || raw.node.local !== "blip" || attribute(raw.node, "embed", context.r) !== result.source.relationshipId) invalidStructure("Picture reference disagrees with its original source identity.", part);
-          let hasSvgExtension = false; const rawStack = [raw.node];
-          while (rawStack.length) {
-            await checkpoint(); const current = rawStack.pop()!;
-            if (current.namespaceUri === "http://schemas.microsoft.com/office/drawing/2016/SVG/main" && current.local === "svgBlip") hasSvgExtension = true;
-            for (const child of current.children) if (child.kind === "element") rawStack.push(child);
+        if ("reason" in result) {
+          if (!media || !mediaPreviewMode || !geometry.box.width || !geometry.box.height) return unsupported(result.reason);
+          input = { ...baseInput, type: "shape", shape: "rect", style: { fill: { type: "solid", color: "F2F2F2" }, stroke: { paint: { type: "solid", color: "777777" }, width: 1, dash: "dash" } }, text: { content: "Media", frame: { verticalAlign: "middle" } } };
+          cachedPreview = true; mediaPlaceholder = true;
+          reportMedia(false, true);
+          finding("drawing.media.placeholder", "preview", "fallback", at, `Static placeholder replaces an unmapped poster: ${result.reason}`, slide.id, id);
+        } else {
+          input = { ...baseInput, ...result.fields };
+          if (pictureSources) {
+            if (pictureSources.length >= limits.maxReportFindings) throw new PptxImportError("import-limit-exceeded", "Picture source bindings exceed maxReportFindings.", at);
+            const raw = await context.sourceElement(part, result.source.blip);
+            if (raw.node.namespaceUri !== context.a || raw.node.local !== "blip" || attribute(raw.node, "embed", context.r) !== result.source.relationshipId) invalidStructure("Picture reference disagrees with its original source identity.", part);
+            let hasSvgExtension = false; const rawStack = [raw.node];
+            while (rawStack.length) {
+              await checkpoint(); const current = rawStack.pop()!;
+              if (current.namespaceUri === "http://schemas.microsoft.com/office/drawing/2016/SVG/main" && current.local === "svgBlip") hasSvgExtension = true;
+              for (const child of current.children) if (child.kind === "element") rawStack.push(child);
+            }
+            pictureSources.push({ slideId: slide.id, elementId: id, assetId: result.fields.assetId, source: { ...at, elementIndex: raw.elementIndex, relationshipId: result.source.relationshipId }, sourceElementIndex: raw.elementIndex, relationshipId: result.source.relationshipId, mediaPart: result.source.mediaPart, hasSvgExtension, hasExternalLink: attribute(raw.node, "link", context.r) !== undefined });
           }
-          pictureSources.push({ slideId: slide.id, elementId: id, assetId: result.fields.assetId, source: { ...at, elementIndex: raw.elementIndex, relationshipId: result.source.relationshipId }, sourceElementIndex: raw.elementIndex, relationshipId: result.source.relationshipId, mediaPart: result.source.mediaPart, hasSvgExtension, hasExternalLink: attribute(raw.node, "link", context.r) !== undefined });
-        }
-        const nv = r.one(node, r.p, container)!, picPr = r.one(nv, r.p, "cNvPicPr");
-        if (picPr) r.known(picPr);
-        if (media) {
-          previewFallback = true;
-          reportMedia(true);
+          const nv = r.one(node, r.p, container)!, picPr = r.one(nv, r.p, "cNvPicPr");
+          if (picPr) r.known(picPr);
+          if (media) {
+            previewFallback = true;
+            reportMedia(true);
+          }
         }
       } else if (node.local === "grpSp") {
         const xfrm = r.one(properties, r.a, "xfrm")!, chOff = r.one(xfrm, r.a, "chOff"), chExt = r.one(xfrm, r.a, "chExt");
@@ -357,7 +365,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const nv = r.one(node, r.p, container)!;
       const nvPr = r.one(nv, r.p, "nvPr"); if (nvPr) r.known(nvPr);
       const groupPr = r.one(nv, r.p, "cNvGrpSpPr"); if (groupPr) r.known(groupPr);
-      const action = readAction(meta.cnv, at, id); if (action) input.action = action;
+      const action = readAction(meta.cnv, at, id); if (action && !mediaPlaceholder) input.action = action;
       if (descriptionBindings && !cachedPreview) {
         const properties: ('description' | 'name' | 'decorative')[] = decorativeOnly ? [] : descriptionAndName ? ['description', 'name'] : [drawingName ? 'name' : 'description'];
         if (decorativeEnabled) properties.push('decorative');

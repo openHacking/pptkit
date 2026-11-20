@@ -7,9 +7,37 @@ import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js";
 import { diagramPreviewFixture, cacheTextTransform } from "../packages/pptx-parser/test/diagram-preview-fixture.mjs";
 import { transform } from "../packages/pptx-parser/test/content-fixture.mjs";
+import { picture, imageFixture, encodeImages } from "../packages/pptx-parser/test/image-fixture.mjs";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 
 const options = { projection: "content", diagramPreview: "cache", editSaveProfile: "text-runs-v3" };
+
+test("media placeholder browser rendering matches Node without network", async t => {
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route("**/*", route => { requests.push(route.request().url()); return route.abort(); });
+  const names = ["core", "layout", "pptx-parser", "svg-renderer"];
+  const imports = Object.fromEntries(await Promise.all(names.map(async pkg => [`@pptkit/${pkg}`, `data:text/javascript;base64,${(await readFile(new URL(`../packages/${pkg}/dist/browser/index.js`, import.meta.url))).toString("base64")}`])));
+  await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
+  await page.evaluate(async () => { globalThis.parser = await import("@pptkit/pptx-parser"); globalThis.renderer = await import("@pptkit/svg-renderer"); });
+  for (const strict of [false, true]) {
+    const xml = picture({ embed: null }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="external"/></p:nvPr>');
+    const bytes = encodeImages(imageFixture(xml, strict)), options = { projection: "content", mediaPreview: "placeholder-v1" };
+    const s = await importPptx(bytes, options);
+    try {
+      const expected = await renderPresentationToSvg(s.document);
+      const actual = await page.evaluate(async ({ bytes, options }) => {
+        const session = await globalThis.parser.importPptx(Uint8Array.from(bytes), options);
+        try { return { rendered: await globalThis.renderer.renderPresentationToSvg(session.document), diagnostics: session.report.diagnostics }; } finally { session.dispose(); }
+      }, { bytes: [...bytes], options });
+      assert.deepEqual(actual.rendered, expected); assert.deepEqual(actual.diagnostics, s.report.diagnostics);
+      await page.setContent(actual.rendered.slides[0].svg);
+      assert.equal(await page.getByText("Media", { exact: true }).isVisible(), true);
+      assert.equal(await page.locator("image,video,audio").count(), 0);
+    } finally { s.dispose(); }
+  }
+  assert.deepEqual(requests, []);
+});
 
 test("browser public bundles render cached geometry/text/images with independent screen bounds and no network", async t => {
   const browser = await chromium.launch({ headless: true }); t.after(() => browser.close()); const page = await browser.newPage({ viewport: { width: 900, height: 650 } });
