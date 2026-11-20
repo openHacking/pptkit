@@ -99,8 +99,11 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const container = { spTree: "nvGrpSpPr", grpSp: "nvGrpSpPr", sp: "nvSpPr", pic: "nvPicPr", cxnSp: "nvCxnSpPr", graphicFrame: "nvGraphicFramePr" }[node.local];
       if (!container) continue;
       const nv = r.one(node, r.p, container), cnv = nv ? r.one(nv, r.p, "cNvPr") : undefined;
-      if (cnv) drawingIdentity(cnv);
-      if (node.local === "spTree" || node.local === "grpSp") for (const child of children(node)) drawingNodes.push(child);
+      if (cnv) {
+        const sourceId = drawingIdentity(cnv);
+        if (audio && node.local === "pic") await audio.inspect(part, slide.id, String(sourceId), nv ? r.one(nv, r.p, "nvPr") : undefined, pathByNode);
+      }
+      if (node.local === "spTree" || node.local === "grpSp") for (const child of children(node).reverse()) drawingNodes.push(child);
     }
     const capabilities = (feature: string, source: PptxSourceLocation, reason: string, mapped: boolean, id?: string, preview?: ImportFinding["tier"]) => {
       for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
@@ -153,10 +156,6 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const meta = metadata(node, container);
       const at = { part, path, sourceObjectId: String(meta.sourceId) };
       const id = `${slide.id}-object-${meta.sourceId}`;
-      if (audio && node.local === "pic") {
-        const nv = r.one(node, r.p, "nvPicPr");
-        await audio.inspect(part, slide.id, at.sourceObjectId, nv ? r.one(nv, r.p, "nvPr") : undefined, pathByNode);
-      }
       const media = node.local === "pic" ? await pictureMedia(node) : undefined;
       const reportMedia = (posterMapped: boolean, placeholder = false) => {
         if (!media) return;

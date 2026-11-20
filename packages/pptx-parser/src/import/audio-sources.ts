@@ -5,6 +5,9 @@ import { PptxImportError, type ImportedAudioSource, type PptxSessionLimits } fro
 import type { XmlElement } from "../xml/read-xml.js";
 
 type Context = Awaited<ReturnType<typeof structureContext>>;
+const MEDIA_NS = "http://schemas.microsoft.com/office/powerpoint/2010/main";
+const MEDIA_REL = "http://schemas.microsoft.com/office/2007/relationships/media";
+const MEDIA_EXT = "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}";
 
 /** Source inventory only: no audio assets, external loads, playback or edit bindings. */
 export function audioSources(context: Context, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>) {
@@ -13,16 +16,37 @@ export function audioSources(context: Context, limits: Required<PptxSessionLimit
   let total = 0;
   const inspect = async (part: string, slideId: string, objectId: string, nvPr: XmlElement | undefined, paths: WeakMap<XmlElement, string>) => {
     if (!nvPr) return;
-    for (const node of children(nvPr)) {
+    const firstResult = result.length;
+    const nodes = children(nvPr);
+    const declarations: { node: XmlElement; declaration: NonNullable<ImportedAudioSource["declaration"]>; relationshipAttribute: "link" | "embed" }[] = [];
+    let hasAudio = false;
+    for (const node of nodes) {
       await checkpoint();
-      if (node.namespaceUri !== context.a || node.local !== "audioFile") continue;
+      if (node.namespaceUri !== context.a) continue;
+      if (node.local === "audioFile") { hasAudio = true; declarations.push({ node, declaration: "audioFile", relationshipAttribute: "link" }); }
+      if (node.local === "wavAudioFile") { hasAudio = true; declarations.push({ node, declaration: "wavAudioFile", relationshipAttribute: "embed" }); }
+    }
+    if (hasAudio) for (const list of nodes) if (list.namespaceUri === context.p && list.local === "extLst") for (const ext of children(list)) {
+      await checkpoint();
+      if (ext.namespaceUri !== context.p || ext.local !== "ext" || attribute(ext, "uri")?.toUpperCase() !== MEDIA_EXT) continue;
+      for (const node of children(ext)) {
+        await checkpoint();
+        if (node.namespaceUri !== MEDIA_NS || node.local !== "media") continue;
+        const embed = attribute(node, "embed", context.r), link = attribute(node, "link", context.r);
+        if (embed !== undefined || link === undefined) declarations.push({ node, declaration: "p14:media", relationshipAttribute: "embed" });
+        if (link !== undefined) declarations.push({ node, declaration: "p14:media", relationshipAttribute: "link" });
+      }
+    }
+    for (const { node, declaration, relationshipAttribute } of declarations) {
+      await checkpoint();
       if (result.length >= limits.maxReportFindings) throw new PptxImportError("import-limit-exceeded", "Audio source inventory exceeds maxReportFindings.", { part });
-      const raw = await context.sourceElement(part, node), relationshipId = attribute(node, "link", context.r);
+      const raw = await context.sourceElement(part, node), relationshipId = attribute(node, relationshipAttribute, context.r);
       const source = { part, path: paths.get(node)!, sourceObjectId: objectId, elementIndex: raw.elementIndex, ...(relationshipId ? { relationshipId } : {}) };
-      const base = { slideId, source, sourceElementIndex: raw.elementIndex, ...(relationshipId ? { relationshipId } : {}) };
+      const base = { slideId, declaration, relationshipAttribute, source, sourceElementIndex: raw.elementIndex, ...(relationshipId ? { relationshipId } : {}) };
       const relation = context.findRelationship(part, relationshipId);
-      if (!relation || relation.type !== `${context.r}/audio` || relation.fragment !== undefined) {
-        result.push({ ...base, status: "unsupported", reason: "Missing, fragmented or non-audio relationship." }); continue;
+      const expectedType = declaration === "p14:media" ? MEDIA_REL : `${context.r}/audio`;
+      if (!relation || relation.type !== expectedType || relation.fragment !== undefined || (relationshipAttribute === "embed" && relation.targetMode !== "Internal") || (declaration === "p14:media" && relationshipAttribute === "link" && relation.targetMode !== "External")) {
+        result.push({ ...base, status: "unsupported", reason: "Missing, fragmented, wrong-type or wrong-mode audio relationship." }); continue;
       }
       if (relation.targetMode === "External") { result.push({ ...base, status: "external", reason: "External audio is recorded but not fetched." }); continue; }
       if (!relation.targetPart) { result.push({ ...base, status: "unsupported", reason: "Audio relationship has no internal target." }); continue; }
@@ -45,6 +69,17 @@ export function audioSources(context: Context, limits: Required<PptxSessionLimit
         cache.set(mediaPart, info);
       }
       result.push({ ...base, mediaPart, ...info });
+    }
+    const primary = result.slice(firstResult).filter(item => item.declaration !== "p14:media");
+    const direct = primary.length === 1 ? context.findRelationship(part, primary[0]!.relationshipId) : undefined;
+    const directPart = direct?.type === `${context.r}/audio` && direct.targetMode === "Internal" && direct.fragment === undefined ? direct.targetPart : undefined;
+    for (let index = firstResult; index < result.length; index++) {
+      const item = result[index]!;
+      if (item.declaration !== "p14:media") continue;
+      const related = context.findRelationship(part, item.relationshipId);
+      const relatedPart = item.relationshipAttribute === "embed" && related?.type === MEDIA_REL && related.targetMode === "Internal" && related.fragment === undefined ? related.targetPart : undefined;
+      const companionStatus = directPart && relatedPart ? directPart === relatedPart ? "same-part" : "different-part" : "unverified";
+      result[index] = { ...item, companionStatus };
     }
   };
   return { result, inspect };

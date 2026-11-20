@@ -49,6 +49,59 @@ test('file adapter captures the opt-in source profile before I/O', async () => {
   } finally { await rm(dir, { recursive: true, force: true }); }
 });
 
+test('inventory reaches pictures inside unsupported groups without fabricating geometry', async () => {
+  for (const strict of [false, true]) {
+    const f = fixture(strict), xml = f.parts['deck/z.xml'];
+    const first = picture({ id: 2 }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/></p:nvPr>');
+    const group = `<p:grpSp><p:nvGrpSpPr><p:cNvPr id="9" name="Unmapped group"/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>${first}</p:grpSp>`;
+    f.parts['deck/z.xml'] = xml.replace(first, group);
+    const bytes = encodeImages(f), session = await importPptx(bytes, options);
+    try {
+      assert.deepEqual(session.report.audioSources.map(x => x.source.sourceObjectId), ['2', '3']);
+      assert.equal(session.report.audioSources[0].status, 'wave-pcm');
+      assert.equal(session.document.slides[0].elements.length, 1);
+      const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+    } finally { session.dispose(); }
+  }
+});
+
+test('WAVE and Office media declarations are independently inventoried with relationship modes', async () => {
+  const guid = '{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}';
+  for (const strict of [false, true]) for (const mode of ['embedded', 'different-part', 'external', 'wrong-mode', 'wrong-type', 'wrong-uri']) {
+    const f = fixture(strict);
+    const ext = `<p:extLst><p:ext uri="${mode === 'wrong-uri' ? '{00000000-0000-0000-0000-000000000000}' : guid}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:${mode === 'external' ? 'link' : 'embed'}="office"/></p:ext></p:extLst>`;
+    f.parts['deck/z.xml'] = f.parts['deck/z.xml'].replace('<a:audioFile r:link="sound"/>', `<a:wavAudioFile r:embed="sound"/>${ext}`);
+    if (mode === 'different-part') { f.parts['media/other.wav'] = Buffer.from(f.parts['media/tone.wav']); f.mediaTypes['media/other.wav'] = 'audio/wav'; }
+    const rel = { Id: 'office', Type: mode === 'wrong-type' ? 'urn:wrong' : 'http://schemas.microsoft.com/office/2007/relationships/media', Target: mode === 'external' || mode === 'wrong-mode' ? 'https://example.invalid/audio.wav' : mode === 'different-part' ? '../media/other.wav' : '../media/tone.wav', ...(mode === 'external' || mode === 'wrong-mode' ? { TargetMode: 'External' } : {}) };
+    f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), f.rel('sound', 'audio', '../media/tone.wav'), rel]);
+    const session = await importPptx(encodeImages(f), options);
+    try {
+      const sources = session.report.audioSources;
+      assert.equal(sources[0].declaration, 'wavAudioFile'); assert.equal(sources[0].relationshipAttribute, 'embed'); assert.equal(sources[0].status, 'wave-pcm');
+      if (mode === 'wrong-uri') assert.equal(sources.length, 2);
+      else {
+        assert.equal(sources.length, 3); const item = sources[1];
+        assert.equal(item.declaration, 'p14:media'); assert.equal(item.relationshipAttribute, mode === 'external' ? 'link' : 'embed');
+        assert.equal(item.status, mode === 'embedded' || mode === 'different-part' ? 'wave-pcm' : mode === 'external' ? 'external' : 'unsupported');
+        assert.equal(item.companionStatus, mode === 'embedded' ? 'same-part' : mode === 'different-part' ? 'different-part' : 'unverified');
+        assert.match(item.source.path, /media\[1\]$/);
+      }
+    } finally { session.dispose(); }
+  }
+});
+
+test('video-only Office media and inactive audio choices do not become audio sources', async () => {
+  const guid = '{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}';
+  const f = fixture();
+  const ext = `<p:extLst><p:ext uri="${guid}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="office"/></p:ext></p:extLst>`;
+  f.parts['deck/z.xml'] = f.parts['deck/z.xml']
+    .replace('<a:audioFile r:link="sound"/>', `<a:videoFile r:link="sound"/>${ext}`)
+    .replace('<a:audioFile r:link="sound"/>', '<mc:AlternateContent><mc:Choice Requires="x"><a:audioFile r:link="sound"/></mc:Choice><mc:Fallback/></mc:AlternateContent>')
+    .replace('<p:sld ', '<p:sld xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x="urn:future" mc:Ignorable="x" ');
+  const session = await importPptx(encodeImages(f), options);
+  try { assert.deepEqual(session.report.audioSources, []); } finally { session.dispose(); }
+});
+
 test('audio inventory reports external and unsupported audio without fetching or guessing', async () => {
   for (const mode of ['external', 'missing', 'type', 'damaged', 'mime']) {
     const f = fixture();

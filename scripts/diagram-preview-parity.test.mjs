@@ -14,13 +14,13 @@ import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 const options = { projection: "content", diagramPreview: "cache", editSaveProfile: "text-runs-v3" };
 
 test("browser audio source inventory agrees with Node and makes no requests", async t => {
-  const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/></p:nvPr>');
+  const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="office"/></p:ext></p:extLst></p:nvPr>');
   const f = imageFixture(xml), wav = Buffer.alloc(46);
   wav.write('RIFF'); wav.writeUInt32LE(38, 4); wav.write('WAVEfmt ', 8); wav.writeUInt32LE(16, 16);
   wav.writeUInt16LE(1, 20); wav.writeUInt16LE(1, 22); wav.writeUInt32LE(8000, 24); wav.writeUInt32LE(8000, 28);
   wav.writeUInt16LE(1, 32); wav.writeUInt16LE(8, 34); wav.write('data', 36); wav.writeUInt32LE(2, 40);
   f.parts['media/tone.wav'] = wav; f.mediaTypes['media/tone.wav'] = 'audio/wav';
-  f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), f.rel('sound', 'audio', '../media/tone.wav')]);
+  f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), f.rel('sound', 'audio', '../media/tone.wav'), { Id: 'office', Type: 'http://schemas.microsoft.com/office/2007/relationships/media', Target: '../media/tone.wav' }]);
   const bytes = encodeImages(f), opts = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' }, session = await importPptx(bytes, opts);
   t.after(() => session.dispose());
   const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
@@ -30,7 +30,7 @@ test("browser audio source inventory agrees with Node and makes no requests", as
     const s = await globalThis.PPTKit.importPptx(Uint8Array.from(bytes), opts);
     try { return s.report.audioSources; } finally { s.dispose(); }
   }, { bytes: [...bytes], opts });
-  assert.deepEqual(actual, session.report.audioSources); assert.equal(actual[0].status, 'wave-pcm'); assert.deepEqual(requests, []);
+  assert.deepEqual(actual, session.report.audioSources); assert.equal(actual[0].status, 'wave-pcm'); assert.equal(actual[1].companionStatus, 'same-part'); assert.deepEqual(requests, []);
 });
 
 test("media placeholder browser rendering matches Node without network", async t => {
