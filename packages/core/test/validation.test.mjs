@@ -384,6 +384,23 @@ test("fixed chart axes locate out-of-range values without blocking normalization
   }
 });
 
+test("fixed-axis warnings respect chart family, combo axis ownership and paired coordinates", () => {
+  const deck = createPresentation(), slide = deck.addSlide({ id: "axis-slide" });
+  const box = { x: 0, y: 0, width: 300, height: 200 }, scale = (min, max) => ({ min, max, majorUnit: 1 });
+  slide.addElement({ id: "area", type: "chart", chartType: "area", box, categories: ["A"], series: [{ name: "A", values: [12] }], axes: { value: { scale: scale(0, 10) } } });
+  slide.addElement({ id: "stacked", type: "chart", chartType: "area", grouping: "stacked", box, categories: ["A"], series: [{ name: "A", values: [12] }], axes: { value: { scale: scale(0, 10) } } });
+  slide.addElement({ id: "combo", type: "chart", chartType: "combo", box, categories: ["A", "B"], series: [{ kind: "bar", name: "B", values: [11, 5] }, { kind: "line", name: "L", values: [11, 101] }], axes: { value: { scale: scale(0, 10) }, secondaryValue: { scale: scale(0, 100) } } });
+  slide.addElement({ id: "scatter", type: "chart", chartType: "scatter", box, series: [{ name: "S", xValues: [11, 20, 5], yValues: [3, null, -1] }], axes: { x: { scale: scale(0, 10) }, y: { scale: scale(0, 10) } } });
+  slide.addElement({ id: "bubble", type: "chart", chartType: "bubble", box, series: [{ name: "B", xValues: [11, 3], yValues: [12, 3], sizes: [1, 2] }], axes: { x: { scale: scale(0, 10) }, y: { scale: scale(0, 10) } } });
+  const warnings = validatePresentation(deck).filter(d => d.code === "chart-value-outside-fixed-axis");
+  assert.deepEqual(warnings.map(d => [d.elementId, d.path.replace(/^.*\.series\./, "series.")]), [
+    ["area", "series.0.values.0"], ["combo", "series.0.values.0"], ["combo", "series.1.values.1"],
+    ["scatter", "series.0.xValues.0"], ["scatter", "series.0.yValues.2"], ["bubble", "series.0.xValues.0"], ["bubble", "series.0.yValues.0"],
+  ]);
+  assert.ok(warnings.every(d => d.severity === "warning" && d.slideId === "axis-slide"));
+  assert.doesNotThrow(() => normalizePresentation(deck));
+});
+
 test("chart validation rejects sparse categories, series, values and pie colors without treating holes as zero", () => {
   const chart = (chartType, categories, series) => {
     const deck = createPresentation();

@@ -1,6 +1,6 @@
 # Validation and Canonical IR
 
-`validatePresentation` can report the warning `chart-value-outside-fixed-axis` for a finite line or clustered-bar value outside an explicit valid fixed value-axis range. Its path identifies the series value; boundary values are inside. The warning does not block normalization or change the chart. It does not evaluate stacked/percent-stacked, combo, other chart families, auto or unmapped axes, blanks, or pixel visibility; see the [chart evidence](../../testing/chart-value-save.md).
+`validatePresentation` can report the warning `chart-value-outside-fixed-axis` for finite values outside an explicit valid fixed axis. It covers line, clustered bar, standard area, combo bar/line on their respective primary/secondary axes, and scatter/bubble X/Y coordinates with a complete finite pair. Its path identifies the series coordinate or value; boundary values are inside. The warning does not block normalization or change the chart. Stacked/percent-stacked, auto or unmapped axes, blanks (including zero-display blanks), incomplete pairs, bubble radius and pixel visibility are not evaluated; see the [chart evidence](../../testing/chart-value-save.md).
 
 Validation is non-mutating and exhaustive. Normalization is the gate from ergonomic authoring state to detached, fully explicit Canonical Presentation IR v2.
 

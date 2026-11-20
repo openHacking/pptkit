@@ -39,13 +39,16 @@ test('fixed-axis value warnings agree in browser ESM and global consumers', asyn
     for (const api of [esm, globalThis.PPTKit]) {
       const deck = api.createPresentation();
       deck.addSlide({ id: 's', elements: [{ id: 'c', type: 'chart', chartType: 'line', box: { x: 0, y: 0, width: 300, height: 200 }, categories: ['A', 'B'], series: [{ name: 'S', values: [9, 37.25] }], axes: { value: { scale: { min: 0, max: 9, majorUnit: 1 } } } }] });
+      deck.slides[0].addElement({ id: 'xy', type: 'chart', chartType: 'scatter', box: { x: 0, y: 0, width: 300, height: 200 }, series: [{ name: 'S', xValues: [11], yValues: [2] }], axes: { x: { scale: { min: 0, max: 9, majorUnit: 1 } } } });
+      deck.slides[0].addElement({ id: 'combo', type: 'chart', chartType: 'combo', box: { x: 0, y: 0, width: 300, height: 200 }, categories: ['A'], series: [{ kind: 'bar', name: 'B', values: [5] }, { kind: 'line', name: 'L', values: [11] }], axes: { value: { scale: { min: 0, max: 9, majorUnit: 1 } }, secondaryValue: { scale: { min: 0, max: 10, majorUnit: 1 } } } });
       results.push(api.validatePresentation(deck));
     }
     return results;
   }, url);
   assert.deepEqual(results[0], results[1]);
-  assert.equal(results[0].length, 1); assert.equal(results[0][0].code, 'chart-value-outside-fixed-axis');
-  assert.equal(results[0][0].severity, 'warning'); assert.match(results[0][0].path, /series\.0\.values\.1$/);
+  assert.equal(results[0].length, 3); assert.ok(results[0].every(d => d.code === 'chart-value-outside-fixed-axis' && d.severity === 'warning'));
+  assert.deepEqual(results[0].map(d => d.elementId), ['c', 'xy', 'combo']);
+  assert.match(results[0][0].path, /series\.0\.values\.1$/); assert.match(results[0][1].path, /series\.0\.xValues\.0$/); assert.match(results[0][2].path, /series\.1\.values\.0$/);
   assert.deepEqual(requests, []);
 });
 

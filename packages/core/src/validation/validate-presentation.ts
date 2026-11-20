@@ -17,6 +17,7 @@ import type {
   NormalizedElementAccessibility,
   PresentationElement,
   TextContentInput,
+  ValueAxisScaleInput,
 } from "../types/element.js";
 import type { PresentationDiagnostic } from "../types/diagnostic.js";
 import type { Box } from "../types/geometry.js";
@@ -146,6 +147,12 @@ function validateChartAxes(context: Context, axes: Extract<PresentationElement, 
     if (!isFiniteNumber(scale.min) || !isFiniteNumber(scale.max) || scale.min >= scale.max || !isFiniteNumber(scale.majorUnit) || scale.majorUnit <= 0) {
       add(context, { code: "invalid-chart-scale", message: "A fixed value-axis scale requires finite min < max and majorUnit > 0.", path: `${path}.${valueKey}.scale`, ...ids });
     }
+  }
+}
+
+function warnOutsideFixedAxis(context: Context, scale: ValueAxisScaleInput | undefined, value: unknown, path: string, ids: Partial<PresentationDiagnostic>): void {
+  if (scale && scale !== "auto" && isFiniteNumber(scale.min) && isFiniteNumber(scale.max) && scale.min < scale.max && isFiniteNumber(scale.majorUnit) && scale.majorUnit > 0 && isFiniteNumber(value) && (value < scale.min || value > scale.max)) {
+    add(context, { code: "chart-value-outside-fixed-axis", severity: "warning", message: "The value lies outside the fixed value-axis bounds and may be clipped in the chart.", path, ...ids });
   }
 }
 
@@ -330,6 +337,16 @@ function validateElement(
         const scale = axis.scale;
         if (scale !== undefined && scale !== "auto" && (!isFiniteNumber(scale.min) || !isFiniteNumber(scale.max) || scale.min >= scale.max || !isFiniteNumber(scale.majorUnit) || scale.majorUnit <= 0)) add(context, { code: "invalid-chart-scale", message: "A fixed value-axis scale requires finite min < max and majorUnit > 0.", path: `${axisPath}.scale`, ...identity });
       }
+      if (Array.isArray(element.series)) for (const [seriesIndex, series] of element.series.entries()) {
+        if (!series || !Array.isArray(series.xValues) || !Array.isArray(series.yValues) || series.xValues.length !== series.yValues.length) continue;
+        for (let index = 0; index < series.xValues.length; index++) {
+          const x = series.xValues[index], y = series.yValues[index];
+          if (!isFiniteNumber(x) || !isFiniteNumber(y)) continue;
+          if (element.chartType === "bubble" && (!("sizes" in series) || !Array.isArray(series.sizes) || series.sizes.length !== series.xValues.length || !isFiniteNumber(series.sizes[index]) || series.sizes[index]! <= 0)) continue;
+          warnOutsideFixedAxis(context, element.axes?.x?.scale, x, `${path}.series.${seriesIndex}.xValues.${index}`, identity);
+          warnOutsideFixedAxis(context, element.axes?.y?.scale, y, `${path}.series.${seriesIndex}.yValues.${index}`, identity);
+        }
+      }
       if (element.title !== undefined && element.title.length === 0) add(context, { code: "invalid-chart-title", message: "Chart title must be a non-empty string.", path: `${path}.title`, ...identity });
       if (element.legend?.visible !== undefined && typeof element.legend.visible !== "boolean") add(context, { code: "invalid-chart-legend", message: "Legend visible must be boolean.", path: `${path}.legend.visible`, ...identity });
       if (element.legend?.position !== undefined && !CHART_LEGEND_POSITIONS.has(element.legend.position)) add(context, { code: "invalid-chart-legend", message: "Legend position must be right or bottom.", path: `${path}.legend.position`, ...identity });
@@ -349,9 +366,7 @@ function validateElement(
       }
       if (!sawBar || !sawLine || invalidOrder) add(context, { code: "invalid-combo-series-order", message: "Combo charts require one or more bar series followed by one or more line series.", path: `${path}.series`, ...identity });
     }
-    // Stacked/percent and secondary-axis charts need their own aggregation and
-    // axis semantics; do not imply a complete visibility analysis for them.
-    const fixedScale = (element.chartType === "line" || (element.chartType === "bar" && (element.grouping === undefined || element.grouping === "clustered"))) ? element.axes?.value?.scale : undefined;
+    // Stacked and percent-stacked charts require aggregation, not raw values.
     for (const [seriesIndex, series] of element.series.entries()) {
       if (series === undefined) {
         add(context, { code: "invalid-chart-series", message: "Chart series entries must be present.", path: `${path}.series.${seriesIndex}`, ...identity });
@@ -359,12 +374,11 @@ function validateElement(
       }
       if (series.name.length === 0) add(context, { code: "chart-series-name", message: "Chart series name must be a non-empty string.", path: `${path}.series.${seriesIndex}.name`, ...identity });
       if (series.values.length !== element.categories.length) add(context, { code: "chart-values-length", message: "Chart series values length must match categories length.", path: `${path}.series.${seriesIndex}.values`, ...identity });
+      const fixedScale = element.chartType === "line" || (element.chartType === "bar" && (element.grouping === undefined || element.grouping === "clustered")) || (element.chartType === "area" && (element.grouping === undefined || element.grouping === "standard")) ? element.axes?.value?.scale : element.chartType === "combo" && "kind" in series ? (series.kind === "bar" ? element.axes?.value?.scale : series.kind === "line" ? element.axes?.secondaryValue?.scale : undefined) : undefined;
       for (const [valueIndex, value] of series.values.entries()) {
         if (value !== null && !isFiniteNumber(value)) add(context, { code: "chart-values-finite", message: "Chart series values must be finite numbers or explicit null blanks.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
         if ((element.chartType === "pie" || element.chartType === "doughnut") && isFiniteNumber(value) && value < 0) add(context, { code: "pie-negative-value", message: "Pie and doughnut chart values must be non-negative.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
-        if (fixedScale && fixedScale !== "auto" && isFiniteNumber(fixedScale.min) && isFiniteNumber(fixedScale.max) && fixedScale.min < fixedScale.max && isFiniteNumber(fixedScale.majorUnit) && fixedScale.majorUnit > 0 && isFiniteNumber(value) && (value < fixedScale.min || value > fixedScale.max)) {
-          add(context, { code: "chart-value-outside-fixed-axis", severity: "warning", message: "The value lies outside the fixed value-axis bounds and may be clipped in the chart.", path: `${path}.series.${seriesIndex}.values.${valueIndex}`, ...identity });
-        }
+        warnOutsideFixedAxis(context, fixedScale, value, `${path}.series.${seriesIndex}.values.${valueIndex}`, identity);
       }
       if (series.color !== undefined && !isValidColor(series.color)) add(context, { code: "invalid-chart-color", message: "Chart series color must be a valid color.", path: `${path}.series.${seriesIndex}.color`, ...identity });
       const marker = (series as { marker?: ChartMarkerInput }).marker;

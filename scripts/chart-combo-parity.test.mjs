@@ -25,6 +25,19 @@ function author(element) {
   return deck;
 }
 
+test("combo fixed-axis warnings retain primary and secondary ownership after fresh export and import", async () => {
+  const input = structuredClone(specimen); input.series[0].values[0] = 11; input.series[1].values[0] = 1001;
+  const deck = author(input), before = validatePresentation(deck).filter(d => d.code === "chart-value-outside-fixed-axis");
+  assert.deepEqual(before.map(d => d.path.match(/series\.\d+\.values\.\d+$/)[0]), ["series.0.values.0", "series.1.values.0"]);
+  const bytes = (await generatePptx(deck)).bytes, session = await importPptx(bytes, { projection: "content" });
+  try {
+    const chart = session.document.slides[0].elements[0];
+    assert.equal(chart.axes.value.scale.max, 10); assert.equal(chart.axes.secondaryValue.scale.max, 1000);
+    const after = validatePresentation(session.document).filter(d => d.code === "chart-value-outside-fixed-axis");
+    assert.deepEqual(after.map(d => d.path.match(/series\.\d+\.values\.\d+$/)[0]), ["series.0.values.0", "series.1.values.0"]);
+  } finally { session.dispose(); }
+});
+
 test("combo chart rejects invalid series order and reports secondary axis errors at the authored path", () => {
   const reversed = structuredClone(specimen);
   reversed.series.reverse();
