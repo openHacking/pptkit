@@ -4,7 +4,7 @@ import { importPptx } from "../dist/index.js";
 import { picture, imageFixture, encodeImages } from "./image-fixture.mjs";
 import { relationships } from "./opc-fixture.mjs";
 import { importPptxFile } from "../dist/node.js";
-import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -19,6 +19,24 @@ function fixture(strict = false) {
   return f;
 }
 const options = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' };
+
+test('PowerPoint-created PCM WAVE retains its native paired relationships and poster', async () => {
+  const bytes = await readFile(new URL('../../../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url));
+  const session = await importPptx(bytes, options);
+  try {
+    const [audio, media] = session.report.audioSources;
+    assert.equal(session.report.audioSources.length, 2);
+    assert.equal(audio.declaration, 'audioFile'); assert.equal(audio.status, 'wave-pcm');
+    assert.equal(media.declaration, 'p14:media'); assert.equal(media.companionStatus, 'same-part');
+    assert.equal(audio.mediaPart, '/ppt/media/media1.wav'); assert.equal(audio.contentType, 'audio/x-wav');
+    assert.deepEqual(audio.pcm, { channels: 1, sampleRate: 8000, bitsPerSample: 16, frameCount: 8000, durationSeconds: 1 });
+    const diagnostic = session.report.diagnostics.find(x => x.code === 'media-playback-unmapped');
+    assert.equal(diagnostic.source.sourceObjectId, audio.source.sourceObjectId);
+    assert.equal(session.document.slides[0].elements.find(x => x.id === diagnostic.elementId).type, 'image');
+    const plan = await session.prepareSave({ mode: 'no-op' });
+    assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+  } finally { session.dispose(); }
+});
 
 test('audio source inventory identifies shared PCM and preserves original bytes', async () => {
   for (const strict of [false, true]) {

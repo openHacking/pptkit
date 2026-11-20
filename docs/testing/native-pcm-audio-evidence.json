@@ -1,0 +1,19 @@
+{
+  "scope": "One PCM WAV inserted and saved with PowerPoint for Mac; core creator fields anonymized afterward. Package inspection only; no audible playback, native reopen or general compatibility claim.",
+  "producer": "Microsoft PowerPoint for Mac 16.104",
+  "source": "tests/fixtures/pcm-wave-powerpoint.pptx",
+  "sha256": "7d651df477559be00e3300e477adf3f38baa05f70d4ab696228dd4a02f34569a",
+  "observation": {
+    "audioSha256": "af6d351ebb501dff7a6b053de2b357ef5f873c4962738d7a7fc5c4cd19b98bdc",
+    "audioBytes": 16044,
+    "channels": 1,
+    "bitsPerSample": 16,
+    "sampleRate": 8000,
+    "frames": 8000,
+    "contentType": "audio/x-wav",
+    "audioTarget": "../media/media1.wav",
+    "posterTarget": "../media/image1.png",
+    "timingTarget": "4",
+    "timingCommand": "playFrom(0.0)"
+  }
+}

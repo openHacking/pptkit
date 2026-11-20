@@ -1,0 +1,9 @@
+# PowerPoint PCM WAVE observation
+
+On PowerPoint for Mac 16.104, a new one-slide presentation was created and the audio insertion UI was used to embed a generated one-second, 8 kHz, mono, 16-bit PCM 440 Hz WAV. The presentation was saved as PPTX. The retained [sample](../../tests/fixtures/pcm-wave-powerpoint.pptx) is that save with only the creator and last-modifier values in `docProps/core.xml` replaced by `PPTKit fixture`; ZIP container bytes were rewritten. This is not an untouched native package. The synthetic tone can be regenerated with `python3 scripts/research/generate-pcm-tone.py <output.wav>`.
+
+An [independent verifier](../../scripts/research/verify-native-pcm-audio.py), using Python's ZIP, XML and WAVE libraries, checks the package and generates the [observation](native-pcm-audio-evidence.json). The original and embedded WAV have the same SHA-256 and 8,000 PCM frames. PowerPoint writes a direct `a:audioFile` audio relationship and `p14:media` relationship to the same WAV, a separate image relationship for the poster, and a timing tree with a `playFrom(0.0)` command and audio target pointing at the picture's object ID. The WAV content type is `audio/x-wav`.
+
+The Parser's `wave-pcm-v1` inventory identifies both relationships, their same-part status and frame metadata; the unmodified no-op save returns the exact retained sample bytes. Six deliberate changes to relationships, timing, content type or WAV bytes are rejected by `python3 scripts/research/test_native_pcm_audio.py`.
+
+This is one saved native sample and package-level observation. It does not establish audible playback, a reopen or resave cycle, browser playback, behavior of other encodings, or correctness of newly generated audio. It informs the authoring/export design without closing the audio implementation task.
