@@ -385,7 +385,7 @@ export async function buildPackage(
         tags: slide.tags,
         customData: slide.customData,
         ...(slide.transition !== undefined ? { transition: slide.transition } : {}),
-        ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets[0]! } : {}),
+        ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets } : {}),
       })),
     });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });

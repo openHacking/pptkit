@@ -32,7 +32,7 @@ export interface PptxAssetResolverContext { readonly signal?: AbortSignal }
 export type PptxAssetResolver = (asset: PptxAssetResolverRequest, context: PptxAssetResolverContext) => ResolvedPptxAsset | undefined | Promise<ResolvedPptxAsset | undefined>;
 
 export interface GeneratePptxOptions {
-  /** Experimental byte-backed PCM WAVE with one visible audio object per slide. */
+  /** Experimental byte-backed PCM WAVE with visible top-level audio objects. */
   audioMode?: "wave-pcm-v1";
   layout?: LayoutOptions;
   /** Native presentation starting slide number (0–9999); independent of cached field refresh. */

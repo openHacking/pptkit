@@ -31,7 +31,7 @@ export function planWaveAudio(document: NormalizedPresentation, mode: "wave-pcm-
   for (const master of document.masters ?? []) for (const element of master.elements ?? []) check(element);
   for (const slide of document.slides) {
     const count = slide.elements.filter(element => element.type === "audio").length;
-    if (count > 1) reject("at most one audio object per slide is currently supported.");
+    if (count > 4096) reject("at most 4096 audio objects per slide are supported.");
     if (count && slide.eventTimeline !== undefined) reject("audio and authored event timelines cannot be combined.");
     for (const element of slide.elements) check(element, slide.id);
   }
