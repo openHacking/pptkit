@@ -1809,6 +1809,63 @@
           ]
         }
       ]
+    },
+    {
+      "id": "text-v1-smartart-timing-three-round",
+      "feature": "Text box run with SmartArt and timing",
+      "subject": {
+        "object": "text",
+        "owner": "text-box",
+        "family": "mixed-advanced",
+        "variant": "existing-run"
+      },
+      "operation": "Source character edit",
+      "producer": {
+        "name": "PPTKit repository-authored synthetic fixture",
+        "version": "0.1.0"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "0.1.0 workspace"
+      },
+      "profile": "text-runs-v1",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "cb1c1cee592898cec11c07f1677bd8333f2fe07d96fdec7eb02c98070d51f919",
+        "evidencePath": "docs/testing/mixed-smartart-timing-evidence.json",
+        "pointer": "/sourceSha256",
+        "localPath": "tests/fixtures/mixed-smartart-timing-source.pptx"
+      },
+      "capability": "editable",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test --test-name-pattern=\"mixed SmartArt and timing\" scripts/text-save-parity.test.mjs",
+      "result": "Three text edits preserve the named SmartArt parts, timing tree and relationship graph; character-range target edit blocks, and unrelated edit succeeds after restore.",
+      "limitations": "Synthetic diagram and timing only; native validity, playback, SmartArt editing and unlisted mixed objects are untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/mixed-smartart-timing-evidence.json",
+          "sha256": "984c8290b9b1a533aef8bf85e42f0e8325518ab4da2f14d61bc9e3472ef364c6",
+          "assertions": [
+            {
+              "pointer": "/rounds",
+              "equals": 3
+            },
+            {
+              "pointer": "/rangeEditBlocked",
+              "equals": true
+            },
+            {
+              "pointer": "/unrelatedRetrySaved",
+              "equals": true
+            },
+            {
+              "pointer": "/nativeApplication",
+              "equals": "untested"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

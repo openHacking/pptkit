@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "sourcePath": "tests/fixtures/mixed-smartart-timing-source.pptx",
+  "sourceSha256": "cb1c1cee592898cec11c07f1677bd8333f2fe07d96fdec7eb02c98070d51f919",
+  "basePath": "tests/fixtures/mixed-text-attribution-source.pptx",
+  "baseSha256": "d6220bbcd1a7e5e48039d02a77f1fa4b212995574c93a6c60c1dc6d43f24b40f",
+  "producer": "PPTKit repository-authored synthetic fixture with hand-authored timing and diagram components",
+  "application": "PPTKit 0.1.0 workspace",
+  "profile": "text-runs-v1",
+  "procedure": "node --test --test-name-pattern=\"mixed SmartArt and timing\" scripts/text-save-parity.test.mjs",
+  "rounds": 3,
+  "diagramComponents": [
+    "data",
+    "layout",
+    "colors",
+    "style",
+    "cache"
+  ],
+  "timingTarget": "2",
+  "rangeEditBlocked": true,
+  "unrelatedRetrySaved": true,
+  "scope": "Same-slide SmartArt data/cache, timing, text, table, chart and shared images; exact untouched parts and graph through three text saves. The cache and timing are synthetic and not certified native semantics.",
+  "nativeApplication": "untested"
+}

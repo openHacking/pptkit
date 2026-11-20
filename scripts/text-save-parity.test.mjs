@@ -4,10 +4,11 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
-import { importPptx, compareOpcPackages, inspectOpcClosure } from "../packages/pptx-parser/dist/index.js";
+import { importPptx, compareOpcPackages, inspectOpcClosure, inspectPptx, inspectPptxTiming } from "../packages/pptx-parser/dist/index.js";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 import { zip } from "../packages/pptx-parser/test/zip-fixture.mjs";
 import { png } from "../packages/pptx-parser/test/image-fixture.mjs";
+import { mixedAdvancedFixture } from "./research/mixed-advanced-fixture.mjs";
 
 const profile = { projection: "content", editSaveProfile: "text-runs-v1" };
 const digest = bytes => createHash("sha256").update(bytes).digest("hex");
@@ -146,4 +147,60 @@ test("mixed text-save attribution detects resource, relationship and target corr
     assert.equal(comparison.equal, false, label);
     assert.ok(comparison.differences.some(d => d.code === code && d.part === `/${part}` && (label !== "relationship" || d.relationshipId === "rId4")), `${label}: ${JSON.stringify(comparison.differences)}`);
   }
+});
+
+test("mixed SmartArt and timing remain source-owned over three text saves", async () => {
+  let bytes = await readFile("tests/fixtures/mixed-smartart-timing-source.pptx");
+  const evidence = JSON.parse(await readFile("docs/testing/mixed-smartart-timing-evidence.json", "utf8"));
+  const base = await readFile("tests/fixtures/mixed-text-attribution-source.pptx");
+  assert.equal(digest(bytes), evidence.sourceSha256); assert.equal(digest(base), evidence.baseSha256);
+  assert.equal(evidence.rounds, 3); assert.deepEqual(evidence.diagramComponents, ["data", "layout", "colors", "style", "cache"]);
+  assert.equal(evidence.rangeEditBlocked, true); assert.equal(evidence.unrelatedRetrySaved, true); assert.equal(evidence.nativeApplication, "untested");
+  assert.deepEqual(bytes, Buffer.from(mixedAdvancedFixture(base)));
+  const initial = readGeneratedZip(bytes), baseline = await inspectPptx(bytes), timeline = await inspectPptxTiming(bytes);
+  assert.equal(baseline.slides[0].diagrams.length, 1);
+  assert.ok(baseline.slides[0].diagrams[0].components.every(c => c.status === "located"));
+  assert.equal(baseline.slides[0].diagrams[0].cache.status, "located");
+  assert.equal(baseline.diagramInventory.dataModels.length, 1); assert.equal(baseline.diagramInventory.cacheMappings.length, 1);
+  assert.ok(timeline.slides[0].nodes.some(node => node.drawingReference?.rawId === "2" && node.drawingReference.status === "located"));
+  const graph = await inspectOpcClosure(bytes, { roots: ["/"] }); let previous = "Original text";
+  for (let round = 1; round <= 3; round++) {
+    const before = readGeneratedZip(bytes), session = await importPptx(bytes, profile), next = `Advanced ${round}`;
+    try {
+      if (round === 1) { const plan = await session.prepareSave({ mode: "no-op" }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes)); }
+      editFirst(session, next);
+      const output = (await saved(session)).bytes, after = readGeneratedZip(output), slide = "ppt/slides/slide1.xml";
+      assert.deepEqual([...after.keys()].sort(), [...initial.keys()].sort());
+      for (const [name, data] of before) {
+        if (name === slide) {
+          const xml = data.toString(), anchor = `>${previous}</a:t>`; assert.ok(xml.includes(anchor));
+          assert.equal(after.get(name).toString(), xml.replace(anchor, `>${next}</a:t>`));
+        } else assert.deepEqual(after.get(name), data, name);
+      }
+      assert.deepEqual((await inspectPptx(output)).diagramInventory, baseline.diagramInventory);
+      assert.deepEqual(await inspectPptxTiming(output), timeline);
+      const afterGraph = await inspectOpcClosure(output, { roots: ["/"] });
+      assert.deepEqual(afterGraph.relationships, graph.relationships); assert.deepEqual(afterGraph.unreachedParts, graph.unreachedParts);
+      assert.deepEqual((await compareOpcPackages(bytes, output)).differences.map(d => [d.code, d.part]), [["payload-changed", `/${slide}`]]);
+      const reopened = await importPptx(output, profile);
+      try { assert.equal(reopened.document.slides[0].elements.find(e => e.type === "text").content[0].runs[0].text, next); } finally { reopened.dispose(); }
+      bytes = output; previous = next;
+    } finally { session.dispose(); }
+  }
+  const unsafe = new Map(initial), part = "ppt/slides/slide1.xml", xml = unsafe.get(part).toString();
+  assert.ok(xml.includes('<p:spTgt spid="2"/>'));
+  unsafe.set(part, Buffer.from(xml.replace('<p:spTgt spid="2"/>', '<p:spTgt spid="2"><p:txEl><p:charRg st="0" end="2"/></p:txEl></p:spTgt>')));
+  const session = await importPptx(repack(unsafe), profile);
+  try {
+    editFirst(session, "unsafe range edit");
+    const plan = await session.prepareSave({ mode: "edit" }); assert.equal(plan.status, "blocked");
+    assert.ok(plan.report.diagnostics.some(d => d.code === "save-text-range-reference"));
+    editFirst(session, "Original text");
+    const restored = await session.prepareSave({ mode: "no-op" }); assert.deepEqual((await session.save(restored.plan)).bytes, new Uint8Array(repack(unsafe)));
+    const slide = session.document.slides[0], group = structuredClone(slide.elements.find(element => element.type === "group"));
+    group.children[0].content[0].runs[0].text = "Unaffected nested text"; slide.replaceElement(group.id, group);
+    const retried = readGeneratedZip((await saved(session)).bytes);
+    assert.equal(retried.get(part).toString(), unsafe.get(part).toString().replace(">Nested text</a:t>", ">Unaffected nested text</a:t>"));
+    for (const [name, data] of unsafe) if (name !== part) assert.deepEqual(retried.get(name), data, name);
+  } finally { session.dispose(); }
 });
