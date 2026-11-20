@@ -6,6 +6,8 @@
 
 The separate [experimental picture save profile](picture-edit-save.md) opts into one bounded picture replacement and includes this inventory.
 
+When a successfully mapped slide picture has a direct `audioFile`, `videoFile`, `quickTimeFile`, `audioCd` or `wavAudioFile` declaration in its effective nonvisual properties, the image is only a static poster. The report adds a located `media-playback-unmapped` warning, `drawing.media` operation findings and a `drawing.media.poster` preview fallback; `drawing.image.mapped-fields` also marks preview as fallback. This does not project the media resource, fetch links, execute playback, or validate the media declaration. Other encodings, extension-only media markers, inherited artwork and media without a mappable poster remain outside this detection; original-byte no-op retains their source.
+
 ## Mapped subset
 
 The profile reads slide-local PresentationML shapes, embedded raster pictures, tables and nested groups in source drawing order. Strict and Transitional expanded namespaces are recognized independently of prefix spelling.

@@ -11,6 +11,28 @@ const open = (f = imageFixture(), options = {}) => importPptx(encodeImages(f), {
 const first = s => normalizePresentation(s.document).slides[0].elements[0];
 const findings = s => s.report.findings.filter(f => f.operation === "import");
 
+test("media pictures expose static poster fallback without claiming playback in both dialects", async () => {
+  for (const strict of [false, true]) for (const kind of ["audioFile", "videoFile", "quickTimeFile", "audioCd", "wavAudioFile"]) {
+    const media = picture({ id: 2 }).replace('<p:nvPr/>', `<p:nvPr><a:${kind} r:link="media"/></p:nvPr>`);
+    const f = imageFixture(media + picture({ id: 3 }), strict);
+    f.parts["deck/_rels/z.xml.rels"] = relationships([f.rel("layout", "slideLayout", "layout.xml"), f.rel("image", "image", "../media/raster.bin"), { ...f.rel("media", "audio", "https://example.invalid/media"), TargetMode: "External" }]);
+    const bytes = encodeImages(f), s = await importPptx(bytes, { projection: "content" });
+    try {
+      const [poster, ordinary] = s.document.slides[0].elements;
+      assert.equal(poster.type, "image"); assert.equal(ordinary.type, "image");
+      const diagnostic = s.report.diagnostics.filter(item => item.code === "media-playback-unmapped");
+      assert.equal(diagnostic.length, 1); assert.equal(diagnostic[0].elementId, poster.id); assert.match(diagnostic[0].source.path, new RegExp(`${kind}\\[1\\]$`));
+      const mediaRows = s.report.findings.filter(item => item.elementId === poster.id && item.feature === "drawing.media");
+      assert.equal(mediaRows.length, 7); assert.equal(mediaRows.find(item => item.operation === "preview").tier, "unsupported");
+      assert.equal(mediaRows.find(item => item.operation === "no-op-save").tier, "preserved");
+      assert.equal(s.report.findings.find(item => item.elementId === poster.id && item.feature === "drawing.media.poster").tier, "fallback");
+      assert.equal(s.report.findings.find(item => item.elementId === poster.id && item.feature === "drawing.image.mapped-fields" && item.operation === "preview").tier, "fallback");
+      assert.equal(s.report.findings.find(item => item.elementId === ordinary.id && item.feature === "drawing.image.mapped-fields" && item.operation === "preview").tier, "editable");
+      const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+    } finally { s.dispose(); }
+  }
+});
+
 test("embedded images import exact immutable bytes, cropped geometry, transforms and opacity in both dialects", async () => {
   for (const strict of [false, true]) {
     const f = imageFixture(picture({ crop: '<a:srcRect l="10000" r="20000" t="12500"/>', xfrm: transform('rot="2700000" flipH="true" flipV="1"'), nv: 'hidden="1"', effects: '<a:alphaModFix amt="65000"/>' }), strict);

@@ -8,10 +8,53 @@ import { createHash } from 'node:crypto';
 import { chromium } from '@playwright/test';
 import { deflateSync } from 'node:zlib';
 import { importPptx, inspectOpcPackage, inspectOpcClosure, inspectPptx, inspectPptxTiming, compareOpcPackages } from '../packages/pptx-parser/dist/index.js';
+import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js';
 import { imageFixture, encodeImages, picture, validGif as gif, gif as incompleteGif, jpegHeader, png } from '../packages/pptx-parser/test/image-fixture.mjs';
+import { relationships } from '../packages/pptx-parser/test/opc-fixture.mjs';
 import { rasterMetadata } from '../packages/pptx-parser/dist/import/image-metadata.js';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 import { indexedRows, filterRows } from '../tests/support/png-indexed-fixture.mjs';
+
+test('media poster fallback and playback diagnostics agree across Node and browser entries', async t => {
+  const source = await readFile('tests/fixtures/mixed-media-comments-source.pptx'), options = { projection: 'content' };
+  const node = await importPptx(source, options); let expected;
+  try {
+    const poster = node.document.slides[0].elements.find(item => item.name === 'Synthetic audio'); assert.equal(poster.type, 'image');
+    expected = { diagnostics: node.report.diagnostics.filter(d => d.code === 'media-playback-unmapped'), findings: node.report.findings.filter(f => f.elementId === poster.id && ['drawing.media', 'drawing.media.poster', 'drawing.image.mapped-fields'].includes(f.feature)) };
+    assert.equal(expected.diagnostics.length, 1); assert.equal(expected.findings.find(f => f.feature === 'drawing.media.poster').tier, 'fallback');
+    const svg = (await renderPresentationToSvg(node.document)).slides[0].svg;
+    assert.match(svg, /data:image\/png;base64,/); assert.doesNotMatch(svg, /<(?:audio|video)(?:\s|>)/i);
+    const noOp = await node.prepareSave({ mode: 'no-op' }); assert.deepEqual((await node.save(noOp.plan)).bytes, new Uint8Array(source));
+  } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile('packages/pptx-parser/dist/browser/global.js', 'utf8') });
+  const esm = await readFile('packages/pptx-parser/dist/browser/index.js');
+  const actual = await page.evaluate(async ({ moduleUrl, bytes, options }) => {
+    const module = await import(moduleUrl), results = [];
+    for (const api of [module, PPTKit]) {
+      const s = await api.importPptx(Uint8Array.from(bytes), options);
+      try {
+        const poster = s.document.slides[0].elements.find(item => item.name === 'Synthetic audio');
+        const plan = await s.prepareSave({ mode: 'no-op' });
+        results.push({ diagnostics: s.report.diagnostics.filter(d => d.code === 'media-playback-unmapped'), findings: s.report.findings.filter(f => f.elementId === poster.id && ['drawing.media', 'drawing.media.poster', 'drawing.image.mapped-fields'].includes(f.feature)), bytes: [...(await s.save(plan.plan)).bytes] });
+      } finally { s.dispose(); }
+    }
+    return results;
+  }, { moduleUrl: `data:text/javascript;base64,${esm.toString('base64')}`, bytes: [...source], options });
+  for (const result of actual) { assert.deepEqual(result.diagnostics, expected.diagnostics); assert.deepEqual(result.findings, expected.findings); assert.deepEqual(Uint8Array.from(result.bytes), new Uint8Array(source)); }
+  const f = imageFixture(picture().replace('<p:nvPr/>', '<p:nvPr><a:videoFile r:link="remoteMedia"/></p:nvPr>'));
+  f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), { ...f.rel('remoteMedia', 'video', 'https://example.invalid/video.mp4'), TargetMode: 'External' }]);
+  const external = encodeImages(f), externalNode = await importPptx(external, options);
+  let externalExpected; try { externalExpected = externalNode.report.diagnostics.filter(d => d.code === 'media-playback-unmapped'); } finally { externalNode.dispose(); }
+  const externalActual = await page.evaluate(async ({ moduleUrl, bytes, options }) => {
+    const esm = await import(moduleUrl), results = [];
+    for (const api of [esm, PPTKit]) { const s = await api.importPptx(Uint8Array.from(bytes), options); try { results.push(s.report.diagnostics.filter(d => d.code === 'media-playback-unmapped')); } finally { s.dispose(); } }
+    return results;
+  }, { moduleUrl: `data:text/javascript;base64,${esm.toString('base64')}`, bytes: [...external], options });
+  assert.equal(externalExpected.length, 1); for (const result of externalActual) assert.deepEqual(result, externalExpected);
+  assert.deepEqual(requests, []);
+});
 
 test('mixed advanced deck picture replacement preserves shared audio and comment sources over three rounds', async t => {
   let source = await readFile('tests/fixtures/mixed-media-comments-source.pptx');

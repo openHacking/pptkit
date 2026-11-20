@@ -259,6 +259,16 @@ export async function projectContent(document: ManagedPresentationDocument, base
         }
         const nv = r.one(node, r.p, container)!, picPr = r.one(nv, r.p, "cNvPicPr");
         if (picPr) r.known(picPr);
+        const nvPr = r.one(nv, r.p, "nvPr");
+        const media = nvPr && children(nvPr).find(child => (child.namespaceUri === r.a || child.namespaceUri === r.p) && ["audioFile", "videoFile", "quickTimeFile", "audioCd", "wavAudioFile"].includes(child.local));
+        if (media) {
+          const mediaAt = { ...at, path: pathByNode.get(media)! };
+          const reason = "The static image is a media poster only; media identity, playback and timing are not projected or executed.";
+          previewFallback = true;
+          capabilities("drawing.media", mediaAt, reason, false, id);
+          finding("drawing.media.poster", "preview", "fallback", mediaAt, reason, slide.id, id);
+          diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, elementId: id, message: reason });
+        }
       } else if (node.local === "grpSp") {
         const xfrm = r.one(properties, r.a, "xfrm")!, chOff = r.one(xfrm, r.a, "chOff"), chExt = r.one(xfrm, r.a, "chExt");
         if (!chOff || !chExt) return unsupported("Group child offset/extent is required for local coordinate mapping.");
