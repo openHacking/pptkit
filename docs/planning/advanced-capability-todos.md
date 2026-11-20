@@ -337,7 +337,7 @@
 | --- | --- | --- | --- |
 | [ ] | ADV-06.1.1 时间与顺序契约 | 已记录[ADR0013](../architecture/decisions/0013-finite-motion-time-research.md)及可执行有限时间树实验：整数毫秒、嵌套串并行/延迟、整数重复、零时长、hold/remove、绝对 seek、未知节点/循环/溢出拒绝；五组测试含 200 棵种子树独立区间核对。接续分数/无限重复、autoReverse、end/restart、组重复与事件契约，已有 [ADR0035 公开有限时间算术](../api/finite-timeline.md)，但不接入目标/效果或 authoring/IR；分数/无限与原生准入等完整任务保持未完成。 | — |
 | [ ] | ADV-06.1.2 目标与事件契约 | 已有[ADR0014](../architecture/decisions/0014-animation-target-event-research.md)及稳定页/对象身份、enter/with/after/页点击/对象点击的候选前台 gate 实验；五组测试覆盖错页/对象、提前/边界点击、同刻顺序、消费一次、快照及跨阶段容器预算。接续独立触发轨、原生点击完成/重入、段落/图表/SmartArt 子目标及复制删除映射；已有 [ADR0036 公开前台事件算术](../api/event-timeline.md)，但 authoring/IR/格式目标与 native API 尚未准入，完整任务保持未完成。 | ADV-06.1.1 |
-| [ ] | ADV-06.2.1 原生映射实验 | 已有[ADR0015 与原生实验](../architecture/decisions/0015-native-animation-mapping-experiment.md)：进入/旋转强调/退出/直线路径四个手写 timing 样本，独立 XML/目标/时长检查、headless 保存重开、三轮无关文字修改保留。记录 motion pathEditMode 和时间树条件/ID 的 producer 改写；尚未观察实际点击顺序、可见终态、坐标及交互设置，首批公开 API 未准入。继续原生播放/未知分支反例，完整任务保持未完成。 | ADV-06.1.2 |
+| [ ] | ADV-06.2.1 原生映射实验 | 已有[ADR0015 与原生实验](../architecture/decisions/0015-native-animation-mapping-experiment.md)：进入/旋转强调/退出/直线路径四个手写 timing 样本，独立 XML/目标/时长检查、headless 保存重开、三轮无关文字修改保留。记录 motion pathEditMode 和时间树条件/ID 的 producer 改写；PowerPoint 人工观察了部分点击、可见状态和四效果编辑重开，但缺录屏及完整终态、坐标与重入证据，LibreOffice GUI 未测，首批公开 API 未准入。继续原生播放/未知分支反例，完整任务保持未完成。 | ADV-06.1.2 |
 | [ ] | ADV-07.1.1 Appear 切片 | 整对象 appear 的创建/导入/导出，验证初始隐藏、点击出现、顺序和对象身份；静态输出首/终帧策略明确，原生实际播放留证。 | ADV-06.2.1 |
 | [ ] | ADV-07.1.2 Fade 切片 | 透明度起终值、时长和串并行行为，覆盖半透明对象/组、零时长与已有填充；原生与预览误差分别记录。 | ADV-07.1.1 |
 | [ ] | ADV-07.1.3 Disappear 切片 | 退出后的可见/命中/阅读状态、回放与重新进入页确定；同对象进入后退出有样本，不能仅删除导出对象模拟退出。 | ADV-07.1.1 |
@@ -671,9 +671,9 @@
 
 | TODO | 切片 / 责任 | 最小交付与失败用例 | 额外依赖 |
 | --- | --- | --- | --- |
-| [ ] | ADV-06.2.1.1 样本与观察协议 / 格式层、QA | 为 fade-in、spin、fade-out、直线路径逐项登记 fixture/hash、目标、时间单位、触发条件、预期初态/中间态/终态及坐标空间；列出 headless 改写与需实测的假设。目标应用/版本、操作步骤和录屏/逐帧取证方式明确，未知项不填写推断结果。 | — |
-| [ ] | ADV-06.2.1.2 实际播放与编辑验证 / QA、格式层 | 在具名原生应用实际放映并记录点击次数/顺序、可见状态、路径端点、结束/重入；修改时长及目标文字后保存重开再播放。保存重开、交互可编辑、实际播放分列结果；PowerPoint 与 LibreOffice 分列，缺环境标 untested。 | ADV-06.2.1.1 |
-| [ ] | ADV-06.2.1.3 未知 timing 与准入决策 / Parser、Core、QA | 已有 [ADR0038 只读清单](../api/native-timing-inventory.md)：未知/条件/子目标、MCE/raw-only、逐 part 候选、预算和三轮无关文字保留有独立证据；逐效果决策与实际播放仍未准入。增加未知行为/条件、同目标组合、悬空目标及未知分支共存反例，验证无关文字保存的保留和相关编辑的阻止边界。按效果写 accept/defer/reject ADR，列公开语义、原生差异和降级策略；部分效果成功不能放开整个时间树，预览仍由 ADV-08 验收。 | ADV-06.2.1.2 |
+| [x] | ADV-06.2.1.1 样本与观察协议 / 格式层、QA | [四效果观察协议](../testing/animation-playback-protocol.md)登记源包摘要、目标、时序声明、待验证状态与坐标假设、headless 改写及具名应用的录屏/编辑/重开步骤；实际播放和交互的完整验证另由 .1.2 验收。 | — |
+| [ ] | ADV-06.2.1.2 实际播放与编辑验证 / QA、格式层 | [PowerPoint 16.104 初步观察](../testing/animation-playback-protocol.md#preliminary-powerpoint-observation)记录四页右箭头触发，淡入触发前文字已可见；[四效果编辑重开](../testing/animation-playback-protocol.md#four-edited-effects-in-powerpoint)记录各时长及文字修改、完整时间树对照和原生重放，淡出终态与前后导航另有手动观察。未保存独立录屏，其他效果完整终态/重入及 LibreOffice GUI 未验。继续在具名原生应用实际放映并记录点击次数/顺序、可见状态、路径端点、结束/重入；修改时长及目标文字后保存重开再播放。保存重开、交互可编辑、实际播放分列结果；PowerPoint 与 LibreOffice 分列，缺环境标 untested。 | ADV-06.2.1.1 |
+| [ ] | ADV-06.2.1.3 未知 timing 与准入决策 / Parser、Core、QA | 已有 [ADR0038 只读清单](../api/native-timing-inventory.md)：未知/条件/子目标、MCE/raw-only、逐 part 候选、预算和三轮无关文字保留有独立证据；[组合反例](../../scripts/animation-mapping-parity.test.mjs)验证未知行为、未选分支、同目标整对象/字符范围及悬空引用共存时的诊断、阻止、旁路编辑和恢复重试。逐效果决策与实际播放仍未准入。继续扩展未知行为/条件与其他引用组合，验证无关文字保存的保留和相关编辑的阻止边界。按效果写 accept/defer/reject ADR，列公开语义、原生差异和降级策略；部分效果成功不能放开整个时间树，预览仍由 ADV-08 验收。 | ADV-06.2.1.2 |
 
 ### 操作兼容矩阵 — IMP-10.1.1
 
@@ -681,7 +681,7 @@
 
 | TODO | 切片 / 责任 | 最小交付与失败用例 | 额外依赖 |
 | --- | --- | --- | --- |
-| [ ] | IMP-10.1.1.1 数据契约与首批登记 / QA、工具层 | **局部进展**：[版本化证据目录](../testing/operation-evidence-guide.md)记录文字 V1/V2/V3、Node no-op 文件发布、Fade/Push/Wipe、timing 读取及未测试播放，分开 capability 与 status。完整 owner/家族/宿主覆盖、fixture 可分发和继承闸门仍开。版本化 schema 覆盖对象 owner/家族/布局/效果、操作、producer/application 版本、profile、fixture/hash、命令/人工步骤、结果/限制及证据链接。首批登记 no-op、文字 V1/V2/V3、Node 文件发布、Fade/Push/Wipe 和 timing 实验的已有范围；无证据项明确 untested。 | — |
+| [ ] | IMP-10.1.1.1 数据契约与首批登记 / QA、工具层 | **局部进展**：[版本化证据目录](../testing/operation-evidence-guide.md)记录文字 V1/V2/V3、Node no-op 文件发布、Fade/Push/Wipe、timing 读取及 PowerPoint 原始/编辑样本的部分人工播放观察，分开 capability 与 status；无录屏不作为效果准入。完整 owner/家族/宿主覆盖、fixture 可分发和继承闸门仍开。版本化 schema 覆盖对象 owner/家族/布局/效果、操作、producer/application 版本、profile、fixture/hash、命令/人工步骤、结果/限制及证据链接。首批登记 no-op、文字 V1/V2/V3、Node 文件发布、Fade/Push/Wipe 和 timing 实验的已有范围；无证据项明确 untested。 | — |
 | [ ] | IMP-10.1.1.2 校验与文档生成 / 工具层 | **局部进展**：验证 schema、重复键、枚举、证据路径/摘要、选定断言和 manifest 内 fixture 摘要，并从记录稳定生成表；缺失证据或损坏记录失败。本地可用时可选逐文件复核 fixture 字节；默认检查不依赖未分发文件，完整数据/闸门仍开。校验重复键、未知枚举、缺失/失效证据、fixture 摘要及 schema 版本；同一记录生成兼容表，稳定排序且可重复生成。拒绝将缺记录默认成 pass，拒绝把某一 producer/版本/profile 的结果扩展到其他组合；损坏记录须使检查失败。 | IMP-10.1.1.1 |
 | [ ] | IMP-10.1.1.3 差异归因与回归接线 / QA、Parser | 自动化记录连接独立比较与三轮保存，人工播放/编辑结果保留具名环境和证据，不伪装自动执行。用故意损坏资源/关系/目标的反例证明失败可见；源无关内容丢失、应用改写和能力不支持分别呈现。纳入相应 CI 检查并链接 IMP-10.4 混合样本。 | IMP-10.1.1.2 |
 

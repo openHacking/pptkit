@@ -23,3 +23,7 @@ Expanded paths can be large, so charge them before construction and keep indepen
 ## Verification
 
 See the [API contract and evidence](../../api/native-timing-inventory.md), eight Parser groups, two browser DOM parity groups, installed declaration/runtime consumers and optional Python ZIP/XML verification of two retained four-slide artifacts. No interactive native playback admission is granted. ADV-06.2.1.3 and ADV-06.1.2.3 remain open.
+
+An additional [cross-package regression](../../../scripts/animation-mapping-parity.test.mjs) combines a foreign behavior and an inactive MCE branch containing a character-range target. A mixed unrelated/target text edit is blocked, restoring the target permits retry, and the saved unrelated edit retains the entire target slide and every other unchanged package part byte-for-byte. This fixture is a preservation guard, not a claim that arbitrary unknown timing can be interpreted or safely edited. It runs in `test:import`; full effect admission and the remaining combinations stay open.
+
+A second fixture combines whole-object and character-range references to the same shape, a missing target ID and a foreign behavior. The inventory locates both references to the real owner and reports the missing ID. A mixed owner/bystander edit on the same slide is blocked; after restoring the owner, the bystander edit saves with exactly its expected character replacement and all other part bytes unchanged. This checks one explicitly constructed combination, not all possible opaque references or animation semantics.

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "scope": "Manual, preliminary observation of four hand-authored timing specimens in PowerPoint; not playback certification or a retained recording.",
+  "application": "Microsoft PowerPoint 16.104",
+  "environment": "macOS 26.5 (25F71)",
+  "sourceSha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
+  "editedSha256": "0c5d1906e945002c4b9f58dda1ca7a2271983b3f49b184dab69cd28cf478b3fb",
+  "method": "manual UI observation with transient screenshots; source and edited package fields checked separately by ZIP/XML oracle",
+  "recordingRetained": false,
+  "powerpointObserved": ["fade-in", "spin", "fade-out", "line-path"],
+  "limitations": "No retained video or calibrated playback timing; LibreOffice GUI untested; complete initial/terminal/re-entry behavior and native effect support not established.",
+  "detail": "docs/testing/animation-playback-protocol.md"
+}

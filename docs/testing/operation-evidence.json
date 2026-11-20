@@ -584,22 +584,74 @@
       "fixture": {
         "kind": "recorded-sha256",
         "sha256": "548fd061927d5d1a68173e87fe85c72f19dce977ae2aa5754a2644a560b2fb03",
-        "evidencePath": "",
-        "pointer": "",
+        "evidencePath": "docs/testing/animation-powerpoint-observation-evidence.json",
+        "pointer": "/sourceSha256",
         "localPath": ".tmp/animation-native/run-UKB5dV/source.pptx"
       },
       "capability": "unknown",
-      "status": "untested",
-      "method": "not-run",
-      "procedure": "No playback observation recorded for this fixture.",
-      "result": "Not tested.",
-      "limitations": "Inspection is not playback evidence.",
-      "evidence": [],
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Open the named source in PowerPoint 16.104; use right-arrow to trigger and advance each page, inspecting transient UI snapshots.",
+      "result": "Four effects were observed; fade-in text was visible before its trigger, spin rotated, fade-out disappeared and the line path moved right.",
+      "limitations": "No retained video or calibrated timing; complete re-entry, other fixtures and LibreOffice GUI are untested. This does not admit native effect support.",
+      "evidence": [
+        {
+          "path": "docs/testing/animation-powerpoint-observation-evidence.json",
+          "sha256": "3bc9b05632ea1269227fe2be979f453d6de428905aa4a1c528ac1364b319cd08",
+          "assertions": [
+            { "pointer": "/recordingRetained", "equals": false },
+            { "pointer": "/application", "equals": "Microsoft PowerPoint 16.104" }
+          ]
+        }
+      ],
       "subject": {
         "object": "timing",
         "owner": "slide",
         "family": "native-tree",
         "variant": "inventory"
+      }
+    },
+    {
+      "id": "timing-powerpoint-edited-playback",
+      "feature": "Edited native timing tree",
+      "operation": "Interactive playback after edit",
+      "producer": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "Microsoft PowerPoint",
+        "version": "16.104"
+      },
+      "profile": "four research specimens; duration and text edited",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "0c5d1906e945002c4b9f58dda1ca7a2271983b3f49b184dab69cd28cf478b3fb",
+        "evidencePath": "docs/testing/animation-powerpoint-observation-evidence.json",
+        "pointer": "/editedSha256",
+        "localPath": ".tmp/animation-native/run-UKB5dV/powerpoint-all-edits.pptx"
+      },
+      "capability": "unknown",
+      "status": "partial",
+      "method": "manual",
+      "procedure": "Edit each effect duration and target text in PowerPoint, save and close, reopen the named copy, and trigger each slide with right-arrow.",
+      "result": "All four edited targets and 2000 ms declarations were checked in XML; fade-in, rotation and path movement were observed, and a later check observed fade-out terminal and navigation states.",
+      "limitations": "UI observations have no retained recording or calibrated duration. Other effects' full re-entry, LibreOffice GUI and arbitrary timing trees are untested.",
+      "evidence": [
+        {
+          "path": "docs/testing/animation-powerpoint-observation-evidence.json",
+          "sha256": "3bc9b05632ea1269227fe2be979f453d6de428905aa4a1c528ac1364b319cd08",
+          "assertions": [
+            { "pointer": "/recordingRetained", "equals": false },
+            { "pointer": "/application", "equals": "Microsoft PowerPoint 16.104" }
+          ]
+        }
+      ],
+      "subject": {
+        "object": "timing",
+        "owner": "slide",
+        "family": "native-tree",
+        "variant": "four-edited-specimens"
       }
     },
     {
