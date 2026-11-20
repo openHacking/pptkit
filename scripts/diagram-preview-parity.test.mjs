@@ -8,9 +8,30 @@ import { renderPresentationToSvg } from "../packages/svg-renderer/dist/index.js"
 import { diagramPreviewFixture, cacheTextTransform } from "../packages/pptx-parser/test/diagram-preview-fixture.mjs";
 import { transform } from "../packages/pptx-parser/test/content-fixture.mjs";
 import { picture, imageFixture, encodeImages } from "../packages/pptx-parser/test/image-fixture.mjs";
+import { relationships } from "../packages/pptx-parser/test/opc-fixture.mjs";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 
 const options = { projection: "content", diagramPreview: "cache", editSaveProfile: "text-runs-v3" };
+
+test("browser audio source inventory agrees with Node and makes no requests", async t => {
+  const xml = picture().replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="sound"/></p:nvPr>');
+  const f = imageFixture(xml), wav = Buffer.alloc(46);
+  wav.write('RIFF'); wav.writeUInt32LE(38, 4); wav.write('WAVEfmt ', 8); wav.writeUInt32LE(16, 16);
+  wav.writeUInt16LE(1, 20); wav.writeUInt16LE(1, 22); wav.writeUInt32LE(8000, 24); wav.writeUInt32LE(8000, 28);
+  wav.writeUInt16LE(1, 32); wav.writeUInt16LE(8, 34); wav.write('data', 36); wav.writeUInt32LE(2, 40);
+  f.parts['media/tone.wav'] = wav; f.mediaTypes['media/tone.wav'] = 'audio/wav';
+  f.parts['deck/_rels/z.xml.rels'] = relationships([f.rel('layout', 'slideLayout', 'layout.xml'), f.rel('image', 'image', '../media/raster.bin'), f.rel('sound', 'audio', '../media/tone.wav')]);
+  const bytes = encodeImages(f), opts = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' }, session = await importPptx(bytes, opts);
+  t.after(() => session.dispose());
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile(new URL('../packages/pptx-parser/dist/browser/global.js', import.meta.url), 'utf8') });
+  const actual = await page.evaluate(async ({ bytes, opts }) => {
+    const s = await globalThis.PPTKit.importPptx(Uint8Array.from(bytes), opts);
+    try { return s.report.audioSources; } finally { s.dispose(); }
+  }, { bytes: [...bytes], opts });
+  assert.deepEqual(actual, session.report.audioSources); assert.equal(actual[0].status, 'wave-pcm'); assert.deepEqual(requests, []);
+});
 
 test("media placeholder browser rendering matches Node without network", async t => {
   const browser = await chromium.launch(); t.after(() => browser.close());

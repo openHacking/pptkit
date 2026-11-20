@@ -94,7 +94,7 @@ export type { PptxDiagramTextComparison } from "./types/smartart.js";
 export { describeImportCapabilities, DEFAULT_IMPORT_CAPABILITY_LIMITS } from "./import/capability-report.js";
 export type { ImportCapabilityLimits, ImportCapabilityOptions, ImportCapabilityReferences, ImportCapabilityAssessment, ImportCapabilitySubject, ImportCapabilityReport } from "./types/capability.js";
 
-export type { ImportedChartValueSource, ImportedChartLabelSource, ImportedChartSeriesNameSource, ImportedChartSeriesOrderSource, ImportedPictureSource, ImportedSlideVisibilitySource, ImportedCoreMetadataSource, ImportedCustomPropertySource } from "./types/import.js";
+export type { ImportedChartValueSource, ImportedChartLabelSource, ImportedChartSeriesNameSource, ImportedChartSeriesOrderSource, ImportedPictureSource, ImportedAudioSource, ImportedSlideVisibilitySource, ImportedCoreMetadataSource, ImportedCustomPropertySource } from "./types/import.js";
 
 export { inspectNativeTiming as inspectPptxTiming } from "./timing/read-timing.js";
 export type { PptxTimingInspectionLimits, PptxTimingInspectionOptions, PptxTimingView, PptxTimingAttribute, PptxTimingReference, PptxTimingNodeInfo, PptxTimingDrawingInfo, PptxTimingFinding, PptxSlideTimingInventory, PptxTimingInspection } from "./types/timing.js";

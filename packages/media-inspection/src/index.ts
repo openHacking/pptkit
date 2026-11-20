@@ -8,3 +8,5 @@ export { inspectGif, inspectGifImageData } from "./images/inspect-gif.js";
 export type { GifFrameInfo, GifInspection, GifInspectionOptions } from "./images/inspect-gif.js";
 export { inspectStaticImage } from "./images/inspect-static.js";
 export type { StaticImageInspection, StaticImageInspectionOptions } from "./images/inspect-static.js";
+export { inspectWavePcm } from "./audio/inspect-wave-pcm.js";
+export type { WavePcmInspection, WavePcmInspectionOptions } from "./audio/inspect-wave-pcm.js";

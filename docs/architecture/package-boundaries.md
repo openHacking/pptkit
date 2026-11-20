@@ -63,8 +63,8 @@ files or introduce a reverse dependency into SVG, Layout or Core.
 ### `@pptkit/media-inspection`
 
 Owns environment-neutral, bounded media structure checks shared by output
-adapters. It has no workspace, filesystem, network or format-writer dependency.
-The existing PPTX JPEG, PNG/APNG and GIF inspections and PDF's opt-in JPEG and
+adapters and the PPTX parser. It has no workspace, filesystem, network or format-writer dependency.
+The parser's opt-in PCM WAVE source inventory, the existing PPTX JPEG, PNG/APNG and GIF inspections and PDF's opt-in JPEG and
 static-image structure policies consume its public entry. Pixel decoding,
 general animation semantics and complete image validation remain outside its
 contract.

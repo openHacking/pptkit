@@ -73,6 +73,18 @@ export interface ImportedPictureSource {
   /** The original blip also has an external relationship; it is never fetched. */
   readonly hasExternalLink: boolean;
 }
+/** Read-only source inventory; audio bytes and playback are not projected. */
+export interface ImportedAudioSource {
+  readonly slideId: string;
+  readonly source: PptxSourceLocation;
+  readonly sourceElementIndex: number;
+  readonly relationshipId?: string;
+  readonly status: "wave-pcm" | "external" | "unsupported";
+  readonly mediaPart?: string;
+  readonly contentType?: string;
+  readonly reason?: string;
+  readonly pcm?: { readonly channels: 1 | 2; readonly sampleRate: number; readonly bitsPerSample: 8 | 16; readonly frameCount: number; readonly durationSeconds: number };
+}
 /** Opt-in metadata eligibility; insertable does not guarantee a valid save plan. */
 export interface ImportedCoreMetadataSource {
   readonly field: "title" | "author" | "subject" | "description" | "language" | "revision" | "keywords" | "company" | "createdAt" | "modifiedAt";
@@ -114,6 +126,7 @@ export interface ImportReport {
   readonly fieldTextProfile?: "slide-number-v1" | "date-and-number-v1" | "date-time-and-number-v1";
   /** Opt-in slide-local projected picture references; no write permission. */
   readonly pictureSources?: readonly ImportedPictureSource[];
+  readonly audioSources?: readonly ImportedAudioSource[];
   /** Explicit bounded notes-master text inheritance; not notes-page layout or write permission. */
   readonly notesTextProfile?: "master-style-v1";
   /** Explicit font content profile, independent of save permissions. */
@@ -306,6 +319,8 @@ export interface PptxImportOptions extends PptxInspectionOptions {
   pictureEditSaveProfile?: "replace-v1";
   /** Content only. Inventory projected slide-local picture reference identities. */
   pictureSourceProfile?: "embedded-v1";
+  /** Content only. Inspect slide-local direct audioFile sources as bounded PCM WAVE. */
+  audioSourceProfile?: "wave-pcm-v1";
   /** Content only. artwork-v10 adds shape patterns; artwork-v11 adds explicit bounded outer shadows. */
   masterArtwork?: "pictures-v1" | "artwork-v1" | "artwork-v2" | "artwork-v3" | "artwork-v4" | "artwork-v5" | "artwork-v6" | "artwork-v7" | "artwork-v8" | "artwork-v9" | "artwork-v10" | "artwork-v11";
   /** Content only. Resolve notesStyle/body-placeholder defaults and independent notes theme. */

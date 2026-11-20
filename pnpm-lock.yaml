@@ -219,6 +219,9 @@ importers:
       '@pptkit/core':
         specifier: workspace:*
         version: link:../core
+      '@pptkit/media-inspection':
+        specifier: workspace:*
+        version: link:../media-inspection
       fflate:
         specifier: ^0.8.3
         version: 0.8.3

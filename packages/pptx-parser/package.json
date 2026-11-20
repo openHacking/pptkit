@@ -28,9 +28,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@pptkit/core": "workspace:*",
+    "@pptkit/media-inspection": "workspace:*",
     "fflate": "^0.8.3",
-    "saxes": "6.0.0",
-    "@pptkit/core": "workspace:*"
+    "saxes": "6.0.0"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && node ../../scripts/build-browser-bundle.mjs @pptkit/pptx-parser",

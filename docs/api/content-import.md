@@ -10,6 +10,8 @@ When a slide picture has a direct `audioFile`, `videoFile`, `quickTimeFile`, `au
 
 With content projection, `mediaPreview: "placeholder-v1"` explicitly replaces an unmapped media poster with a neutral static shape when nonzero local or supported inherited geometry is available. The report identifies this as `drawing.media.placeholder` and marks the poster preview as fallback; playback remains unsupported. Missing geometry still omits the object. This derived shape is not a source-bound media object, and the option cannot be combined with edit-save profiles. Unchanged no-op save retains the original bytes.
 
+The separate opt-in [`audioSourceProfile: "wave-pcm-v1"`](audio-inspection.md) inventories supported slide-local audio source references and checks a bounded PCM WAVE subset without loading external links or projecting audio assets.
+
 ## Mapped subset
 
 The profile reads slide-local PresentationML shapes, embedded raster pictures, tables and nested groups in source drawing order. Strict and Transitional expanded namespaces are recognized independently of prefix spelling.
