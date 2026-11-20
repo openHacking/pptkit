@@ -158,12 +158,15 @@ export interface AudioElementInput extends ElementBaseInput {
   type: "audio";
   audioAssetId: string;
   posterAssetId?: string;
+  /** Defaults to click-sequence; object-click targets this audio object. */
+  playbackStart?: "click-sequence" | "object-click";
 }
 export interface AudioElement extends ElementBase, Omit<AudioElementInput, keyof ElementBaseInput> {}
 export interface NormalizedAudioElement extends NormalizedElementBase {
   type: "audio";
   audioAssetId: string;
   posterAssetId?: string;
+  playbackStart?: "click-sequence" | "object-click";
 }
 
 /** Video bytes and the optional static poster are independently owned assets. */

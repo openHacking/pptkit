@@ -302,6 +302,7 @@ function validateElement(
       add(context, { code: "image-crop-ignored", severity: "warning", message: "Authored crop fractions are used only with fit crop; other fit modes ignore or replace them.", path: `${path}.crop`, ...identity });
     }
   } else if (element.type === "audio") {
+    if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click") add(context, { code: "invalid-audio-playback-start", message: "Audio playbackStart must be click-sequence or object-click.", path: `${path}.playbackStart`, ...identity });
     if (context.assetKinds.get(element.audioAssetId) !== "audio") add(context, { code: "missing-audio-asset", message: `Audio references a missing or non-audio asset "${element.audioAssetId}".`, path: `${path}.audioAssetId`, assetId: element.audioAssetId, ...identity });
     if (element.posterAssetId !== undefined && context.assetKinds.get(element.posterAssetId) !== "image") add(context, { code: "missing-audio-poster", message: `Audio poster references a missing or non-image asset "${element.posterAssetId}".`, path: `${path}.posterAssetId`, assetId: element.posterAssetId, ...identity });
   } else if (element.type === "video") {

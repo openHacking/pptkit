@@ -13,6 +13,7 @@ export function planWaveAudio(document: NormalizedPresentation, mode: "wave-pcm-
     if (element.type === "group") { for (const child of element.children) check(child, slideId, true); return; }
     if (element.type !== "audio") return;
     if (mode !== "wave-pcm-v1") return reject("requires audioMode wave-pcm-v1; audio cannot be silently omitted.");
+    if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click") return reject("playbackStart must be click-sequence or object-click.");
     if (!slideId || nested || element.hidden || element.action !== undefined || element.placeholderKey !== undefined || element.opacity !== 1 || !element.box.width || !element.box.height) return reject("only visible, nontransparent slide-local top-level audio with nonzero geometry and no action or placeholder binding is supported.");
     const asset = assets.get(element.audioAssetId);
     if (!asset || asset.kind !== "audio") return reject("audio requires an audio asset.");

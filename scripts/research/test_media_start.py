@@ -12,6 +12,8 @@ spec.loader.exec_module(module)
 files = ['powerpoint-mixed-av.pptx', 'powerpoint-audio-start-auto.pptx', 'powerpoint-audio-start-object-click.pptx']
 samples = [(ROOT / 'tests/fixtures' / name).read_bytes() for name in files]
 module.verify(*samples)
+generated = (ROOT / 'tests/fixtures/pptkit-audio-start-object-click.pptx').read_bytes()
+assert module.inspect(generated) == module.inspect(samples[2])
 
 
 def mutate(data, part, old, new):

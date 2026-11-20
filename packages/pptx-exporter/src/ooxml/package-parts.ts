@@ -18,6 +18,34 @@ function transitionXml(transition: SlideTransitionInput | undefined): string {
   return `<p:transition xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" mc:Ignorable="p14" p14:dur="${transition.durationMs}"${attributes}>${effect}</p:transition>`;
 }
 
+type MediaTiming = { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" };
+
+/** Native mixed timeline with independently triggered audio objects. */
+function objectClickMediaTimingXml(timings: readonly MediaTiming[]): string {
+  const mainItems = timings.filter(item => item.playbackStart !== "object-click");
+  let nextId = mainItems.length ? 3 : 2;
+  const main = mainItems.map(({ objectId, durationMs }) => {
+    const first = nextId; nextId += 4;
+    return `<p:par><p:cTn id="${first}" fill="hold"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 1}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 2}" presetID="1" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="clickEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:cmd type="call" cmd="playFrom(0.0)"><p:cBhvr><p:cTn id="${first + 3}" dur="${durationMs}" fill="hold"/><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cBhvr></p:cmd></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par>`;
+  }).join("");
+  const interaction = (item: MediaTiming, pause: boolean) => {
+    const first = nextId; nextId += 5;
+    const { objectId, durationMs } = item;
+    return `<p:seq concurrent="1" nextAc="seek"><p:cTn id="${first}" restart="whenNotActive" fill="hold" evtFilter="cancelBubble" nodeType="interactiveSeq"><p:stCondLst><p:cond evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cond></p:stCondLst><p:endSync evt="end" delay="0"><p:rtn val="all"/></p:endSync><p:childTnLst><p:par><p:cTn id="${first + 1}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 2}" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:par><p:cTn id="${first + 3}" presetID="${pause ? 2 : 1}" presetClass="mediacall" presetSubtype="0" fill="hold" nodeType="clickEffect"><p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst><p:cmd type="call" cmd="${pause ? "togglePause" : "playFrom(0.0)"}"><p:cBhvr><p:cTn id="${first + 4}" dur="${pause ? 1 : durationMs}" fill="hold"/><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cBhvr></p:cmd></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn></p:par></p:childTnLst></p:cTn><p:nextCondLst><p:cond evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="${objectId}"/></p:tgtEl></p:cond></p:nextCondLst></p:seq>`;
+  };
+  const media = (item: MediaTiming) => {
+    const end = item.kind === "audio" ? '<p:endCondLst><p:cond evt="onStopAudio" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:endCondLst>' : "";
+    return `<p:${item.kind}><p:cMediaNode vol="80000"><p:cTn id="${nextId++}" fill="hold" display="0"><p:stCondLst><p:cond delay="indefinite"/></p:stCondLst>${end}</p:cTn><p:tgtEl><p:spTgt spid="${item.objectId}"/></p:tgtEl></p:cMediaNode></p:${item.kind}>`;
+  };
+  const videos = timings.filter(item => item.kind === "video"), audios = timings.filter(item => item.kind === "audio");
+  let tail = videos.length ? media(videos[0]!) : "";
+  for (const video of videos) tail += interaction(video, true);
+  for (const video of videos.slice(1)) tail += media(video);
+  for (const audio of audios) { if (audio.playbackStart === "object-click") tail += interaction(audio, false); tail += media(audio); }
+  const mainSequence = mainItems.length ? `<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>${main}</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>` : "";
+  return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst>${mainSequence}${tail}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
+}
+
 function audioTimingXml(timings: readonly { objectId: number; durationMs: number }[] | undefined): string {
   if (!timings?.length) return "";
   const effects = timings.map(({ objectId, durationMs }, index) => {
@@ -46,10 +74,12 @@ function videoTimingXml(timings: readonly { objectId: number; durationMs: number
   return `<p:timing><p:tnLst><p:par><p:cTn id="1" dur="indefinite" restart="never" nodeType="tmRoot"><p:childTnLst><p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>${effects}</p:childTnLst></p:cTn><p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst><p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>${video(videos[0]!.objectId, 3 + count * 4)}${interactions}${remainingVideos}${audio}</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>`;
 }
 
-export function slideXml(elements: string[], background: NormalizedBackgroundPaint | undefined, hidden: boolean, metadata?: { section?: string; tags: string[]; customData: Record<string, unknown>; showInheritedShapes?: boolean; transition?: SlideTransitionInput; audioTiming?: readonly { objectId: number; durationMs: number }[]; videoTiming?: readonly { objectId: number; durationMs: number }[]; mixedMediaTiming?: readonly { kind: "audio" | "video"; objectId: number; durationMs: number }[] }): string {
+export function slideXml(elements: string[], background: NormalizedBackgroundPaint | undefined, hidden: boolean, metadata?: { section?: string; tags: string[]; customData: Record<string, unknown>; showInheritedShapes?: boolean; transition?: SlideTransitionInput; audioTiming?: readonly { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" }[]; videoTiming?: readonly { objectId: number; durationMs: number }[]; mixedMediaTiming?: readonly MediaTiming[] }): string {
   const hasMetadata = metadata !== undefined && (metadata.section !== undefined || metadata.tags.length > 0 || Object.keys(metadata.customData).length > 0);
   const extension = hasMetadata ? `<p:extLst><p:ext uri="{7F4F1C93-4B18-4D30-91CE-PPTKIT000001}"><pptkit:slideData>${escapeXml(JSON.stringify({ ...(metadata.section !== undefined ? { section: metadata.section } : {}), tags: metadata.tags, customData: metadata.customData }))}</pptkit:slideData></p:ext></p:extLst>` : "";
-  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:pptkit="https://pptkit.dev/ooxml/2026/main"${hidden ? ' show="0"' : ""}${metadata?.showInheritedShapes === undefined ? "" : ` showMasterSp="${metadata.showInheritedShapes ? 1 : 0}"`}><p:cSld>${backgroundXml(background)}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr>${groupTransformXml()}</p:grpSpPr>${elements.join("")}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>${transitionXml(metadata?.transition)}${audioTimingXml(metadata?.audioTiming)}${videoTimingXml(metadata?.mixedMediaTiming ?? metadata?.videoTiming)}${extension}</p:sld>`;
+  const allMedia = metadata?.mixedMediaTiming ?? metadata?.audioTiming?.map(item => ({ ...item, kind: "audio" as const }));
+  const timing = allMedia?.some(item => item.playbackStart === "object-click") ? objectClickMediaTimingXml(allMedia) : audioTimingXml(metadata?.audioTiming) + videoTimingXml(metadata?.mixedMediaTiming ?? metadata?.videoTiming);
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:pptkit="https://pptkit.dev/ooxml/2026/main"${hidden ? ' show="0"' : ""}${metadata?.showInheritedShapes === undefined ? "" : ` showMasterSp="${metadata.showInheritedShapes ? 1 : 0}"`}><p:cSld>${backgroundXml(background)}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr>${groupTransformXml()}</p:grpSpPr>${elements.join("")}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>${transitionXml(metadata?.transition)}${timing}${extension}</p:sld>`;
 }
 
 export function presentationXml(layout: LayoutResult, firstSlideNumber?: number): string {

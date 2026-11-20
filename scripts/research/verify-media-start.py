@@ -8,13 +8,11 @@ import xml.etree.ElementTree as ET
 from zipfile import ZipFile
 
 NS = {'p': 'http://schemas.openxmlformats.org/presentationml/2006/main', 'a': 'http://schemas.openxmlformats.org/drawingml/2006/main', 'r': 'http://schemas.openxmlformats.org/officeDocument/2006/relationships', 'rel': 'http://schemas.openxmlformats.org/package/2006/relationships'}
-HASHES = {'ppt/media/media1.mp4': '6853306557b18631b94e76410bf4b51d41e10341467524a38d1e0fd29efa062a', 'ppt/media/media2.wav': 'af6d351ebb501dff7a6b053de2b357ef5f873c4962738d7a7fc5c4cd19b98bdc'}
+HASHES = {'video': '6853306557b18631b94e76410bf4b51d41e10341467524a38d1e0fd29efa062a', 'audio': 'af6d351ebb501dff7a6b053de2b357ef5f873c4962738d7a7fc5c4cd19b98bdc'}
 
 
 def inspect(data):
     with ZipFile(io.BytesIO(data)) as package:
-        for part, expected in HASHES.items():
-            assert hashlib.sha256(package.read(part)).hexdigest() == expected
         root = ET.fromstring(package.read('ppt/slides/slide1.xml'))
         rels = {r.get('Id'): r for r in ET.fromstring(package.read('ppt/slides/_rels/slide1.xml.rels')).findall('rel:Relationship', NS)}
         pictures = root.findall('.//p:pic', NS)
@@ -27,7 +25,7 @@ def inspect(data):
             relation = rels[declaration.get(f"{{{NS['r']}}}link")]
             assert relation.get('Type') == NS['r'] + '/' + kind and relation.get('TargetMode', 'Internal') == 'Internal'
             target = posixpath.normpath(posixpath.join('ppt/slides', relation.get('Target')))
-            assert hashlib.sha256(package.read(target)).hexdigest() == HASHES['ppt/media/media1.mp4' if kind == 'video' else 'ppt/media/media2.wav']
+            assert hashlib.sha256(package.read(target)).hexdigest() == HASHES[kind]
     timing = root.find('p:timing', NS)
     parents = {child: parent for parent in timing.iter() for child in parent}
     commands = timing.findall('.//p:cmd', NS)
