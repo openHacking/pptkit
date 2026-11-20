@@ -25,7 +25,22 @@ test("audio authoring and static placeholder match public browser bundles", asyn
     let error; try { await PPTKit.generatePptx(p); } catch (e) { error = e.message; }
     return { normalized: PPTKit.normalizePresentation(p), rendered: await PPTKit.renderPresentationToSvg(p), error };
   }, input);
-  assert.deepEqual(actual.normalized, expected.normalized); assert.deepEqual(actual.rendered, expected.rendered); assert.match(actual.error, /audio export is not implemented/);
+  assert.deepEqual(actual.normalized, expected.normalized); assert.deepEqual(actual.rendered, expected.rendered); assert.match(actual.error, /requires audioMode wave-pcm-v1/);
+});
+
+test("PCM audio export matches browser global and Node without fetching", async t => {
+  const wave = readGeneratedZip(await readFile(new URL('../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url))).get('ppt/media/media1.wav');
+  const input = { type: 'audio', id: 'speaker', audioAssetId: 'audio', box: { x: 10, y: 20, width: 64, height: 64 } };
+  const p = createPresentation(); p.registerAsset({ id: 'audio', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: wave } }); p.addSlide({ id: 'slide', elements: [input] });
+  const expected = await generatePptx(p, { audioMode: 'wave-pcm-v1' });
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const pkg of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(new URL(`../packages/${pkg}/dist/browser/global.js`, import.meta.url), 'utf8') });
+  const actual = await page.evaluate(async ({ input, wave }) => {
+    const p = PPTKit.createPresentation(); p.registerAsset({ id: 'audio', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: Uint8Array.from(wave) } }); p.addSlide({ id: 'slide', elements: [input] });
+    const result = await PPTKit.generatePptx(p, { audioMode: 'wave-pcm-v1' }); return { bytes: Array.from(result.bytes), warnings: result.warnings };
+  }, { input, wave: [...wave] });
+  assert.deepEqual(Uint8Array.from(actual.bytes), expected.bytes); assert.deepEqual(actual.warnings, expected.warnings); assert.deepEqual(requests, []);
 });
 
 test("browser audio source inventory agrees with Node and makes no requests", async t => {

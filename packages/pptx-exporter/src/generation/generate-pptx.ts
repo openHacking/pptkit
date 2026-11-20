@@ -11,13 +11,14 @@ import type { ExportWarning, GeneratePptxOptions, GeneratePptxResult } from "../
 import type { AssetLoader } from "../types/internal.js";
 import { emu } from "../ooxml/xml.js";
 import { listContinuationWarnings } from "./list-continuation-warnings.js";
+import { planWaveAudio } from "./wave-audio.js";
 
 export async function generatePptxWith(
   document: PresentationDocument,
   loadAsset: AssetLoader,
   options?: GeneratePptxOptions,
 ): Promise<GeneratePptxResult> {
-  const { signal, resolveAsset, maxAssetBytes, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
+  const { signal, resolveAsset, maxAssetBytes, audioMode, externalImageValidation, connectorMode = "path", nativePlaceholderText = "materialize", eventTimelineMode = "reject", gifDiagnostics = "off", pngDiagnostics = "off", jpegOrientationDiagnostics = "off", jpegIccDiagnostics = "off", jpegValidation, deduplicateResolvedAssets = false, firstSlideNumber, layout: layoutOptions } = options ?? {};
   signal?.throwIfAborted();
   if (firstSlideNumber !== undefined && (!Number.isSafeInteger(firstSlideNumber) || firstSlideNumber < 0 || firstSlideNumber > 9999)) throw new RangeError("firstSlideNumber must be an integer from 0 to 9999.");
   if (typeof deduplicateResolvedAssets !== "boolean") throw new TypeError("deduplicateResolvedAssets must be a boolean.");
@@ -32,15 +33,11 @@ export async function generatePptxWith(
   if (maxAssetBytes !== undefined && (!Number.isSafeInteger(maxAssetBytes) || maxAssetBytes <= 0)) throw new RangeError("maxAssetBytes must be a positive safe integer.");
   if (externalImageValidation !== undefined && externalImageValidation !== "signature") throw new TypeError("externalImageValidation must be signature when provided.");
   if (resolveAsset !== undefined && typeof resolveAsset !== "function") throw new TypeError("resolveAsset must be a function.");
+  if (audioMode !== undefined && audioMode !== "wave-pcm-v1") throw new TypeError("audioMode must be wave-pcm-v1 when provided.");
   const loadContext = { ...(signal ? { signal } : {}), ...(maxAssetBytes !== undefined ? { maxAssetBytes } : {}), ...(externalImageValidation ? { externalImageValidation } : {}) };
   const resolvedLoader = createAssetLoader(loadAsset, resolveAsset, signal, maxAssetBytes);
   const normalized = normalizePresentation(document);
-  const pendingElements = [...normalized.slides.flatMap(slide => slide.elements), ...normalized.layouts.flatMap(layout => layout.elements), ...(normalized.masters ?? []).flatMap(master => master.elements ?? [])];
-  while (pendingElements.length) {
-    const element = pendingElements.pop()!;
-    if (element.type === "audio") throw new TypeError("PPTX audio export is not implemented; audio cannot be silently omitted.");
-    if (element.type === "group") pendingElements.push(...element.children);
-  }
+  const audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal);
   // PresentationML ST_SlideSizeCoordinate bounds apply to the serialized
   // integer, not the pre-rounding Core value. Reject before any asset I/O.
   if ([normalized.size.width, normalized.size.height].some(value => {
@@ -60,7 +57,7 @@ export async function generatePptxWith(
     ...(layout.analysis?.diagnostics ?? []).map(({ severity, bounds, available, ...warning }) => warning),
   ];
   const nativeInheritance = nativePlaceholderInheritance(document, layout, warnings, nativePlaceholderText);
-  const parts = await buildPackage(layout, warnings, resolvedLoader, loadContext, connectorMode, nativeInheritance, gifDiagnostics, jpegOrientationDiagnostics, pngDiagnostics, deduplicateResolvedAssets, jpegIccDiagnostics, effectiveFirstSlideNumber, jpegValidation);
+  const parts = await buildPackage(layout, warnings, resolvedLoader, loadContext, connectorMode, nativeInheritance, gifDiagnostics, jpegOrientationDiagnostics, pngDiagnostics, deduplicateResolvedAssets, jpegIccDiagnostics, effectiveFirstSlideNumber, jpegValidation, audio);
   signal?.throwIfAborted();
   const bytes = createZip(parts);
   signal?.throwIfAborted();

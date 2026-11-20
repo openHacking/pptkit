@@ -34,6 +34,7 @@ export interface ElementXmlContext {
   objectId?(elementId: string): number;
   nativeConnector?(element: LayoutConnectorElement): NativeConnectorResult;
   imageRelationship(assetId: string): { base: string; svg?: string } | undefined;
+  audioRelationship(assetId: string, posterAssetId: string | undefined, objectId: number): { audio: string; media: string; poster: string };
   actionRelationship(action: ElementAction): string | undefined;
   nextChartId(): number;
   chartRelationship(chartId: number): string;
@@ -226,6 +227,14 @@ function imageXml(element: Extract<LayoutElement, { type: "image" }>, context: E
   return `<p:pic>${nonVisualProperties(element, context, "picture")}<p:blipFill><a:blip r:embed="${relationship.base}">${alpha}${svg}</a:blip>${crop}<a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
 }
 
+function audioXml(element: Extract<LayoutElement, { type: "audio" }>, context: ElementXmlContext): string {
+  const id = context.objectId?.(element.id) ?? context.nextObjectId();
+  const relationships = context.audioRelationship(element.audioAssetId, element.posterAssetId, id);
+  context.warnings.push({ code: "audio-playback-unverified", message: "PCM WAVE bytes and a native media timing pattern were packaged; application playback and codec support are not verified.", elementId: element.id, assetId: element.audioAssetId, ...(context.slideId ? { slideId: context.slideId } : {}) });
+  const props = `<p:nvPicPr><p:cNvPr id="${id}" name="${escapeXml(element.name)}" descr="${escapeXml(accessibility(element))}"><a:hlinkClick r:id="" action="ppaction://media"/>${decorativeXml(element)}</p:cNvPr><p:cNvPicPr/><p:nvPr><a:audioFile r:link="${relationships.audio}"/><p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="${relationships.media}"/></p:ext></p:extLst></p:nvPr></p:nvPicPr>`;
+  return `<p:pic>${props}<p:blipFill><a:blip r:embed="${relationships.poster}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr>${transformXml(element.box, element.transform)}<a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+}
+
 function shapeGeometry(shape: Extract<LayoutElement, { type: "shape" }>["shape"]): string {
   return { rect: "rect", roundRect: "roundRect", ellipse: "ellipse", triangle: "triangle", diamond: "diamond", arrow: "rightArrow", chevron: "chevron", parallelogram: "parallelogram" }[shape];
 }
@@ -388,11 +397,11 @@ function chartXml(element: Extract<LayoutElement, { type: "chart" }>, context: E
 }
 
 export function elementXml(element: LayoutElement, context: ElementXmlContext, inheritedOpacity = 1): string {
-  if (element.type === "audio") throw new TypeError("PPTX audio export is not implemented; audio cannot be silently omitted.");
   if (element.hidden) return "";
   context = { ...context, elementId: element.id };
   if (element.type === "text") return textXml(element, context, inheritedOpacity);
   if (element.type === "image") return imageXml(element, context, inheritedOpacity);
+  if (element.type === "audio") return audioXml(element, context);
   if (element.type === "shape") return shapeXml(element, context, inheritedOpacity);
   if (element.type === "connector") return connectorXml(element, context, inheritedOpacity);
   if (element.type === "group") return groupXml(element, context, inheritedOpacity);

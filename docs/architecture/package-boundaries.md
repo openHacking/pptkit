@@ -69,7 +69,7 @@ static-image structure policies consume its public entry. Pixel decoding,
 general animation semantics and complete image validation remain outside its
 contract.
 
-Core owns format-independent audio and poster asset identities, immutable byte capture and reference/copy semantics. Layout carries the audio object without resolving playback. SVG renders only a static poster or placeholder; the PPTX writer currently rejects audio objects before asset I/O instead of silently discarding them. See [audio authoring](../api/audio-inspection.md#authoring-and-static-preview).
+Core owns format-independent audio and poster asset identities, immutable byte capture and reference/copy semantics. Layout carries the audio object without resolving playback. SVG renders only a static poster or placeholder; the PPTX writer defaults to rejection and offers an explicit bounded PCM WAVE profile with native media relationships and timing. See [audio authoring](../api/audio-inspection.md#authoring-and-static-preview).
 
 ### `@pptkit/cli`
 

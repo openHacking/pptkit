@@ -36,11 +36,14 @@ import { scatterWorkbook } from "../ooxml/scatter-workbook.js";
 import { relationshipsXml, rootRelationshipsXml } from "../ooxml/relationships.js";
 import type { ExportWarning } from "../types/export.js";
 import type { AssetLoadContext, AssetLoader, PackagedMedia, Relationship, ZipPart } from "../types/internal.js";
+import type { WaveAudioResource } from "../generation/wave-audio.js";
+import { decodeAssetBytes } from "../assets/load-bytes.js";
 
 interface PartContextResult {
   context: ElementXmlContext;
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
+  audioTargets: { objectId: number; durationMs: number }[];
 }
 
 function mediaFilename(value: string): string {
@@ -66,6 +69,8 @@ function createPartContext(options: {
   textPath?: string;
   baseRelationships: Relationship[];
   media: ReadonlyMap<string, PackagedMedia>;
+  audio?: ReadonlyMap<string, WaveAudioResource>;
+  fallbackPoster?: PackagedMedia;
   slideIndexes: ReadonlyMap<string, number>;
   placeholders?: NormalizedPlaceholderDefinition[];
   warnings: ExportWarning[];
@@ -82,6 +87,7 @@ function createPartContext(options: {
   let nextRelationship = relationships.length + 1;
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
+  const audioTargets: { objectId: number; durationMs: number }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
     theme: options.theme,
@@ -109,6 +115,17 @@ function createPartContext(options: {
       relationships.push({ id: svg, type: REL.image, target: `../${packaged.svgName.slice(4)}` });
       return { base: id, svg };
     },
+    audioRelationship(assetId, posterAssetId, objectId) {
+      const packaged = options.media.get(assetId), resource = options.audio?.get(assetId);
+      const poster = posterAssetId === undefined ? options.fallbackPoster : options.media.get(posterAssetId);
+      if (!packaged || !resource || !poster || poster.loaded.mimeType.startsWith("audio/")) throw new TypeError("PPTX audio or its poster could not be packaged.");
+      const audio = `rId${nextRelationship++}`, media = `rId${nextRelationship++}`, image = `rId${nextRelationship++}`;
+      relationships.push({ id: audio, type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio", target: `../media/${mediaFilename(packaged.name)}` });
+      relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
+      relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
+      audioTargets.push({ objectId, durationMs: resource.durationMs });
+      return { audio, media, poster: image };
+    },
     actionRelationship(action: ElementAction) {
       const id = `rId${nextRelationship++}`;
       if (action.type === "url") {
@@ -135,7 +152,7 @@ function createPartContext(options: {
       chartParts.push({ id: chartId, chart });
     },
   };
-  return { context, relationships, chartParts };
+  return { context, relationships, chartParts, audioTargets };
 }
 
 function elementsXml(elements: readonly LayoutElement[], context: ElementXmlContext): string[] {
@@ -156,6 +173,7 @@ export async function buildPackage(
   jpegIccDiagnostics: "off" | "warn" = "off",
   firstSlideNumber?: number,
   jpegValidation?: "structure",
+  audio: ReadonlyMap<string, WaveAudioResource> = new Map(),
 ): Promise<ZipPart[]> {
   const masters = layout.masters ?? [];
   const masterIndexes = new Map(masters.map((master, index) => [master.id, index]));
@@ -297,6 +315,20 @@ export async function buildPackage(
     }
   }
 
+  for (const [id, resource] of audio) {
+    const name = `ppt/media/${mediaName(id, ".wav")}`;
+    const packaged = { name, loaded: { data: resource.data, mimeType: "audio/x-wav", extension: ".wav" } };
+    media.set(id, packaged); parts.push({ name, data: resource.data });
+  }
+  let fallbackPoster: PackagedMedia | undefined;
+  if (layout.slides.some(slide => slide.elements.some(element => element.type === "audio" && element.posterAssetId === undefined))) {
+    const data = decodeAssetBytes("iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZElEQVR42mP4/OXb/4HEDKMOGHXAqAOGnQPiM4sHzgEgywfEATCLB8QB6JZTxQHYDMVmODFqaOYAYh1JdQcQg0cdMLwdMOCJkC7ZcMALoiFVFA+KymjQVMejLaJRB4w6YEg6AACOBIj3YosGvAAAAABJRU5ErkJggg==");
+    const name = `ppt/media/${mediaName("pptkit-audio-poster", ".png")}`;
+    fallbackPoster = { name, loaded: { data, mimeType: "image/png", extension: ".png" } };
+    let key = "pptkit-audio-poster"; while (media.has(key)) key += "-";
+    media.set(key, fallbackPoster); parts.push({ name, data });
+  }
+
   const slideIndexes = new Map(layout.slides.map((slide, index) => [slide.id, index]));
   const layoutIndexes = new Map(layout.layouts.map((item, index) => [item.id, index]));
   const allChartParts: { id: number; chart: LayoutChartElement }[] = [];
@@ -333,6 +365,8 @@ export async function buildPackage(
         { id: "rId2", type: REL.notesSlide, target: `../notesSlides/notesSlide${index + 1}.xml` },
       ],
       media,
+      audio,
+      ...(fallbackPoster ? { fallbackPoster } : {}),
       slideIndexes,
       ...(connectorMode === "native" ? { nativeElements: slide.elements } : {}),
       placeholders: slideLayout.placeholders,
@@ -351,6 +385,7 @@ export async function buildPackage(
         tags: slide.tags,
         customData: slide.customData,
         ...(slide.transition !== undefined ? { transition: slide.transition } : {}),
+        ...(partContext.audioTargets.length ? { audioTiming: partContext.audioTargets[0]! } : {}),
       })),
     });
     parts.push({ name: `ppt/slides/_rels/slide${index + 1}.xml.rels`, data: encodeUtf8(relationshipsXml(partContext.relationships)) });
