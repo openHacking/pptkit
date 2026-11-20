@@ -40,6 +40,16 @@ test("ambiguous/non-content associations, absent/opaque text and fields never be
   const direct = diagramTextFixture(); direct.parts["deck/diagrams/cache.xml"] = direct.parts["deck/diagrams/cache.xml"].replace('modelId="2"', 'modelId="1"'); const s = (await inspect(direct)).textComparisons[0].shapes[0]; assert.equal(s.status, "equal"); assert.equal(s.presentationElementIndex, undefined);
 });
 
+test("non-XML whitespace outside cache text leaves does not produce guessed equality", async () => {
+  for (const strict of [false, true]) for (const anchor of ["<dsp:txBody>", "<a:p>", "<a:r>"]) {
+    const f = diagramTextFixture(strict);
+    f.parts["deck/diagrams/cache.xml"] = f.parts["deck/diagrams/cache.xml"].replace(anchor, `${anchor}\u00a0`);
+    const result = (await inspect(f)).textComparisons[0].shapes[0];
+    assert.equal(result.status, "unavailable", anchor);
+    assert.equal(result.sourceParagraphs, undefined);
+  }
+});
+
 test("partial graphs and MCE stay source-only; cache empty/missing and unassigned candidates do not invent comparisons", async () => {
   for (const change of [f => f.setText(["A"], ["A"], { sourceExtra: '<a:unknown/>' }), f => { f.parts["deck/diagrams/cache.xml"] = f.parts["deck/diagrams/cache.xml"].replace('<dsp:spTree>', '<dsp:spTree xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">'); }]) {
     const f = diagramTextFixture(); change(f); const r = (await inspect(f)).textComparisons[0]; assert.equal(r.status, "source-only"); assert.deepEqual(r.shapes, []);

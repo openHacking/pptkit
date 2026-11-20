@@ -37,6 +37,15 @@ test("Node, browser ESM/global agree with independent direct-paragraph DOM obser
     assert.deepEqual(s.sourceParagraphs, actual.independent.source); assert.deepEqual(s.cacheParagraphs, actual.independent.cache);
     assert.deepEqual([s.sourcePointElementIndex, s.presentationElementIndex, s.cacheElementIndex], [actual.independent.sourceIndex, actual.independent.presIndex, actual.independent.cacheIndex]);
   }
+  for (const part of ["deck/diagrams/data.xml", "deck/diagrams/cache.xml"]) {
+    const f = diagramTextFixture(), anchor = part.includes("data.xml") ? "<d:t>" : "<dsp:txBody>";
+    f.parts[part] = f.parts[part].replace(anchor, `${anchor}\u00a0`);
+    const bytes = f.bytes(), expected = (await inspectPptx(bytes, options)).diagramInventory;
+    const reports = await page.evaluate(async ({ bytes, options }) => Promise.all([globalThis.parser, globalThis.PPTKit].map(async api => (await api.inspectPptx(Uint8Array.from(bytes), options)).diagramInventory)), { bytes: [...bytes], options });
+    for (const report of reports) assert.deepEqual(report, expected);
+    if (part.includes("data.xml")) assert.equal(expected.textComparisons[0].status, "source-only");
+    else assert.equal(expected.textComparisons[0].shapes[0].status, "unavailable");
+  }
   assert.deepEqual(requests, []);
 });
 
@@ -57,6 +66,22 @@ test("three unrelated edit/save rounds retain differing data/cache payloads and 
       } finally { session.dispose(); }
     }
   }
+});
+
+test("opaque source characters survive unrelated source saves without a guessed comparison", async () => {
+  const f = diagramTextFixture(); f.parts["deck/diagrams/data.xml"] = f.parts["deck/diagrams/data.xml"].replace("<d:t>", "<d:t>\u00a0");
+  const bytes = f.bytes(), before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
+  try {
+    assert.equal(session.report.inspection.diagramInventory.dataModels[0].status, "partial");
+    assert.equal(session.report.inspection.diagramInventory.textComparisons[0].status, "source-only");
+    const noOp = await session.prepareSave({ mode: "no-op" }); assert.deepEqual((await session.save(noOp.plan)).bytes, new Uint8Array(bytes));
+    const slide = session.document.slides[0], index = slide.elements.findIndex(e => e.type === "text"), text = structuredClone(slide.elements[index]);
+    text.content[0].runs[0].text = "Unrelated"; slide.removeElement(text.id); slide.insertElement(index, text);
+    const prepared = await session.prepareSave({ mode: "edit" }); assert.equal(prepared.status, "ready");
+    const saved = (await session.save(prepared.plan)).bytes, after = readGeneratedZip(saved);
+    assert.deepEqual(after.get("deck/diagrams/data.xml"), before.get("deck/diagrams/data.xml"));
+    assert.equal((await inspectPptx(saved, options)).diagramInventory.textComparisons[0].status, "source-only");
+  } finally { session.dispose(); }
 });
 
 test("Node file import captures the comparison profile before filesystem awaits", async t => {

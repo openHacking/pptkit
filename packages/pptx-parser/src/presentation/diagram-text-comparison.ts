@@ -18,7 +18,7 @@ export async function compareDiagramText(c: Context, models: readonly PptxDiagra
     while (stack.length) { await checkpoint(part); const node = stack.pop()!; result.set(++ordinal, node); for (let i = node.children.length - 1; i >= 0; i--) { const child = node.children[i]!; if (child.kind === "element") stack.push(child); } }
     indices.set(part, result); return result;
   };
-  const hasOpaqueCharacters = (node: XmlElement) => node.children.some(child => (child.kind === "text" || child.kind === "cdata") && child.value.trim().length > 0);
+  const hasOpaqueCharacters = (node: XmlElement) => node.children.some(child => (child.kind === "text" || child.kind === "cdata") && /[^\t\r\n ]/.test(child.value));
   const readText = async (part: string, node: XmlElement | undefined, bodyNamespace: string, bodyLocal: string): Promise<TextResult> => {
     if (!node) return { reason: "Source XML identity is unavailable." };
     const bodies = children(node).filter(child => child.namespaceUri === bodyNamespace && child.local === bodyLocal);

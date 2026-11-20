@@ -6,6 +6,7 @@ import { diagramModelIdentity as identity } from "./diagram-model-id.js";
 
 type Context = Awaited<ReturnType<typeof structureContext>>;
 const trim = (value: string) => value.replace(/^[\t\r\n ]+|[\t\r\n ]+$/g, "");
+const hasOpaqueCharacters = (node: XmlElement) => node.children.some(child => (child.kind === "text" || child.kind === "cdata") && /[^\t\r\n ]/.test(child.value));
 function scalar(value: string | undefined, min: number, max: number): number | undefined {
   if (value === undefined || !/^[+-]?\d+$/.test(trim(value))) return undefined;
   const number = Number(value); return Number.isSafeInteger(number) && number >= min && number <= max ? number : undefined;
@@ -58,9 +59,11 @@ export async function readDiagramData(c: Context, part: string, containsMce: boo
   };
   const text = async (body: XmlElement): Promise<PptxDiagramTextParagraph[]> => {
     const result: PptxDiagramTextParagraph[] = [];
+    if (hasOpaqueCharacters(body)) { await note(body, "uninterpreted-structure", "Text body contains direct characters outside paragraphs; text is not inferred."); return result; }
     for (const para of children(body)) {
       await checkpoint();
       if (para.namespaceUri !== c.a || para.local !== "p") { if (!(para.namespaceUri === c.a && ["bodyPr", "lstStyle"].includes(para.local))) await note(para, "uninterpreted-structure", "Text-body child is outside direct paragraph text."); continue; }
+      if (hasOpaqueCharacters(para)) { await note(para, "uninterpreted-structure", "Paragraph contains direct characters outside runs; text is not inferred."); continue; }
       const pPr = await one(para, c.a, "pPr"), level = pPr ? attribute(pPr, "lvl") : undefined;
       if (level !== undefined && scalar(level, 0, 8) === undefined) await note(pPr!, "unrecognized-field", "Paragraph level is outside the source profile's range 0–8.", "lvl");
       const runs: { elementIndex: number; kind: "text" | "break" | "field"; text: string; fieldId?: string; fieldType?: string }[] = [];
@@ -68,6 +71,7 @@ export async function readDiagramData(c: Context, part: string, containsMce: boo
         await checkpoint();
         if (run.namespaceUri === c.a && ["pPr", "endParaRPr"].includes(run.local)) continue;
         if (run.namespaceUri !== c.a || !["r", "br", "fld"].includes(run.local)) { await note(run, "uninterpreted-structure", "Paragraph child is outside direct run/break/field text."); continue; }
+        if (hasOpaqueCharacters(run)) { await note(run, "uninterpreted-structure", "Run contains direct characters outside its text leaf; text is not inferred."); continue; }
         const leaf = run.local === "br" ? undefined : await one(run, c.a, "t");
         if (run.local !== "br" && (!leaf || children(leaf).length)) { await note(run, "uninterpreted-structure", "Text run/field lacks one scalar text leaf; text is not guessed."); continue; }
         const id = run.local === "fld" ? attribute(run, "id") : undefined, type = run.local === "fld" ? attribute(run, "type") : undefined;

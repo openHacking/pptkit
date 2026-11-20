@@ -29,6 +29,25 @@ test("source text retains paragraph/run/field/break identity, empty paragraphs a
   const malformed = await model(f); assert.equal(malformed.status, "partial"); assert.deepEqual(malformed.points[0].text[0].runs.map(r => r.kind), ["break", "field"]);
 });
 
+test("direct opaque characters in diagram text are diagnosed instead of discarded", async () => {
+  for (const strict of [false, true]) for (const [anchor, scope] of [["<d:t>", "body"], ["<a:p>", "paragraph"], ["<a:r>", "run"], ["<a:br/>", "break"], ["<a:fld id=\"field-1\" type=\"slidenum\">", "field"]]) {
+    const f = diagramDataFixture(strict);
+    const changed = scope === "break" ? f.richText.replace(anchor, "<a:br>\u00a0</a:br>") : f.richText.replace(anchor, `${anchor}\u00a0`);
+    f.setModel(f.point("1", "node", changed), "");
+    const result = await model(f);
+    assert.equal(result.status, "partial", scope);
+    assert.ok(result.findings.some(item => item.code === "uninterpreted-structure" && /direct characters/.test(item.reason)), scope);
+    const texts = result.points[0].text.flatMap(p => p.runs.map(r => r.text));
+    if (scope === "body" || scope === "paragraph") assert.deepEqual(texts, [], scope);
+    if (scope === "run") assert.ok(!texts.includes("A & B 😀"));
+    if (scope === "break") assert.ok(!texts.includes("\n"));
+    if (scope === "field") assert.ok(!texts.includes("7"));
+  }
+  const formatted = diagramDataFixture();
+  formatted.setModel(formatted.point("1", "node", formatted.richText.replace('<d:t>', '<d:t> \n\t').replace('<a:p>', '<a:p>\r\n ').replace('<a:r>', '<a:r>\t ')), "");
+  assert.equal((await model(formatted)).status, "inspected");
+});
+
 test("numeric aliases are resolved by value; recognized GUIDs and canonical collisions stay separate", async () => {
   const f = diagramDataFixture(), guid = "{ABCDEF01-2345-6789-ABCD-EF0123456789}";
   f.setModel(f.point("+01") + f.point(guid), f.connection("-2", "1", guid));
