@@ -33,6 +33,59 @@ test("media pictures expose static poster fallback without claiming playback in 
   }
 });
 
+test("media without a mapped poster remains source-only and reports its actual source", async () => {
+  for (const strict of [false, true]) for (const fields of [{ embed: null }, { xfrm: "" }, { preset: "ellipse" }]) {
+    const media = picture({ id: 2, ...fields }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="media"/></p:nvPr>');
+    const f = imageFixture(media + picture({ id: 3 }), strict), bytes = encodeImages(f), s = await importPptx(bytes, { projection: "content" });
+    try {
+      assert.equal(s.document.slides[0].elements.length, 1); assert.equal(s.document.slides[0].elements[0].name, "Picture 3");
+      const diagnostic = s.report.diagnostics.filter(item => item.code === "media-playback-unmapped");
+      assert.equal(diagnostic.length, 1); assert.equal(diagnostic[0].elementId, undefined);
+      assert.equal(diagnostic[0].source.sourceObjectId, "2"); assert.match(diagnostic[0].source.path, /audioFile\[1\]$/);
+      assert.match(diagnostic[0].message, /no mapped static poster/);
+      const poster = s.report.findings.find(item => item.feature === "drawing.media.poster");
+      assert.equal(poster.tier, "unsupported"); assert.equal(poster.elementId, undefined);
+      assert.equal(s.report.findings.find(item => item.feature === "drawing.media" && item.operation === "no-op-save").tier, "preserved");
+      const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+    } finally { s.dispose(); }
+  }
+});
+
+test("Office media extension is detected only at its specified nonvisual path and URI", async () => {
+  const guid = "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}";
+  for (const strict of [false, true]) for (const [uri, namespace, mapped, expected] of [
+    [guid, "http://schemas.microsoft.com/office/powerpoint/2010/main", true, true],
+    [guid.toLowerCase(), "http://schemas.microsoft.com/office/powerpoint/2010/main", false, true],
+    ["{00000000-0000-0000-0000-000000000000}", "http://schemas.microsoft.com/office/powerpoint/2010/main", true, false],
+    [guid, "urn:other", true, false],
+  ]) {
+    const ext = `<p:extLst><p:ext uri="${uri}"><m:media xmlns:m="${namespace}" r:embed="media"/></p:ext></p:extLst>`;
+    const xml = picture({ embed: mapped ? "image" : null }).replace('<p:nvPr/>', `<p:nvPr>${ext}</p:nvPr>`);
+    const s = await open(imageFixture(xml, strict));
+    try {
+      const diagnostics = s.report.diagnostics.filter(item => item.code === "media-playback-unmapped");
+      assert.equal(diagnostics.length, expected ? 1 : 0);
+      if (expected) {
+        assert.match(diagnostics[0].source.path, /media\[1\]$/);
+        const preview = s.report.findings.find(item => item.feature === "drawing.media.poster");
+        assert.equal(preview.tier, mapped ? "fallback" : "unsupported");
+      }
+    } finally { s.dispose(); }
+  }
+});
+
+test("inactive MCE media declarations do not classify an ordinary effective picture", async () => {
+  const xml = picture().replace('<p:nvPr/>', '<p:nvPr><mc:AlternateContent><mc:Choice Requires="x"><a:audioFile r:link="unused"/></mc:Choice><mc:Fallback/></mc:AlternateContent></p:nvPr>');
+  const f = imageFixture(xml);
+  f.parts["deck/z.xml"] = f.parts["deck/z.xml"].replace('<p:sld ', '<p:sld xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x="urn:future-media" mc:Ignorable="x" ');
+  const s = await open(f);
+  try {
+    assert.equal(s.report.diagnostics.filter(item => item.code === "media-playback-unmapped").length, 0);
+    assert.equal(s.report.findings.some(item => item.feature === "drawing.media"), false);
+    assert.equal(s.report.findings.find(item => item.feature === "drawing.image.mapped-fields" && item.operation === "preview").tier, "editable");
+  } finally { s.dispose(); }
+});
+
 test("embedded images import exact immutable bytes, cropped geometry, transforms and opacity in both dialects", async () => {
   for (const strict of [false, true]) {
     const f = imageFixture(picture({ crop: '<a:srcRect l="10000" r="20000" t="12500"/>', xfrm: transform('rot="2700000" flipH="true" flipV="1"'), nv: 'hidden="1"', effects: '<a:alphaModFix amt="65000"/>' }), strict);

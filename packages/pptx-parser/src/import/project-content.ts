@@ -127,6 +127,21 @@ export async function projectContent(document: ManagedPresentationDocument, base
       if (result.action?.type === "slide") finding("drawing.click-action.navigation", "preview", "fallback", at, "Standalone SVG retains slide-action metadata; consumer-controlled navigation is not implemented by the renderer.", slide.id, elementId);
       return result.action;
     };
+    const pictureMedia = async (node: XmlElement): Promise<XmlElement | undefined> => {
+      const nv = r.one(node, r.p, "nvPicPr"), nvPr = nv && r.one(nv, r.p, "nvPr");
+      if (!nvPr) return undefined;
+      const items = children(nvPr);
+      for (const item of items) {
+        await checkpoint();
+        if ((item.namespaceUri === r.a || item.namespaceUri === r.p) && ["audioFile", "videoFile", "quickTimeFile", "audioCd", "wavAudioFile"].includes(item.local)) return item;
+      }
+      for (const list of items) if (list.namespaceUri === r.p && list.local === "extLst") for (const ext of children(list)) {
+        await checkpoint();
+        if (ext.namespaceUri !== r.p || ext.local !== "ext" || attribute(ext, "uri")?.toUpperCase() !== "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}") continue;
+        for (const child of children(ext)) { await checkpoint(); if (child.namespaceUri === "http://schemas.microsoft.com/office/powerpoint/2010/main" && child.local === "media") return child; }
+      }
+      return undefined;
+    };
     const parse = async (node: XmlElement, origin: { x: number; y: number }, scope: string): Promise<PresentationElementInput | undefined> => {
       await checkpoint();
       const path = pathByNode.get(node)!;
@@ -136,6 +151,15 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const meta = metadata(node, container);
       const at = { part, path, sourceObjectId: String(meta.sourceId) };
       const id = `${slide.id}-object-${meta.sourceId}`;
+      const media = node.local === "pic" ? await pictureMedia(node) : undefined;
+      const reportMedia = (posterMapped: boolean) => {
+        if (!media) return;
+        const mediaAt = { ...at, path: pathByNode.get(media)! };
+        const reason = posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
+        capabilities("drawing.media", mediaAt, reason, false, posterMapped ? id : undefined);
+        finding("drawing.media.poster", "preview", posterMapped ? "fallback" : "unsupported", mediaAt, reason, slide.id, posterMapped ? id : undefined);
+        diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, ...(posterMapped ? { elementId: id } : {}), message: reason });
+      };
       const placeholder = placeholders.get(node);
       if (placeholder) {
         const nv = r.one(node, r.p, container)!, nvPr = r.one(nv, r.p, "nvPr")!, ph = r.one(nvPr, r.p, "ph")!;
@@ -148,7 +172,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
           `Placeholder ${parent.rule} ${JSON.stringify(parent.key)}: ${parent.status}; ${parent.candidateCount} candidates. ${parent.reason ?? "Matching identifies source ancestry only; styles and template rebinding remain pending."}`, slide.id, elementId);
       };
       owners.set(path, { sourceObjectId: at.sourceObjectId });
-      const unsupported = (reason: string) => { reportPlaceholder(); capabilities(`drawing.${node.local}`, at, reason, false); return undefined; };
+      const unsupported = (reason: string) => { reportMedia(false); reportPlaceholder(); capabilities(`drawing.${node.local}`, at, reason, false); return undefined; };
       const properties = node.local === "graphicFrame" ? node : r.one(node, r.p, node.local === "grpSp" ? "grpSpPr" : "spPr");
       r.known(node);
       if (!properties) return unsupported("Drawing properties are absent; inherited geometry is not synthesized.");
@@ -259,15 +283,9 @@ export async function projectContent(document: ManagedPresentationDocument, base
         }
         const nv = r.one(node, r.p, container)!, picPr = r.one(nv, r.p, "cNvPicPr");
         if (picPr) r.known(picPr);
-        const nvPr = r.one(nv, r.p, "nvPr");
-        const media = nvPr && children(nvPr).find(child => (child.namespaceUri === r.a || child.namespaceUri === r.p) && ["audioFile", "videoFile", "quickTimeFile", "audioCd", "wavAudioFile"].includes(child.local));
         if (media) {
-          const mediaAt = { ...at, path: pathByNode.get(media)! };
-          const reason = "The static image is a media poster only; media identity, playback and timing are not projected or executed.";
           previewFallback = true;
-          capabilities("drawing.media", mediaAt, reason, false, id);
-          finding("drawing.media.poster", "preview", "fallback", mediaAt, reason, slide.id, id);
-          diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, elementId: id, message: reason });
+          reportMedia(true);
         }
       } else if (node.local === "grpSp") {
         const xfrm = r.one(properties, r.a, "xfrm")!, chOff = r.one(xfrm, r.a, "chOff"), chExt = r.one(xfrm, r.a, "chExt");

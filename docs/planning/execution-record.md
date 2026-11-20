@@ -3239,3 +3239,7 @@ The [mixed-source picture regression](../testing/mixed-advanced-picture-evidence
 ## Media poster fallback diagnostics — ADV-04.3.1
 
 Content import now recognizes direct effective audio/video declarations on successfully mapped slide pictures. It still projects the embedded image, but reports media playback as unsupported, marks its static poster preview as fallback and emits a source/slide/object-located warning. Both dialects and five direct declaration names have tests, including an ordinary-picture control and exact no-op; a mixed audio fixture is checked across Node, browser ESM/global and static SVG, and an external video declaration is verified not to initiate browser requests. No media playback, extension-only media discovery, missing-poster fallback or native application support is implied. The adapter and parent task remain open.
+
+## Media without mapped poster — ADV-04.3.1
+
+The content projection now reports direct media declarations even when picture properties, geometry or an embedded poster cannot be mapped. It emits an unsupported poster finding and a located warning without inventing a Core object. The explicitly identified Office 2010 media extension is also recognized at its nonvisual-property path and GUID; unrelated extension URIs/namespaces and inactive MCE branches do not classify a picture as media. Strict/Transitional fixtures, no-op and Node/browser external-link controls cover these cases. This adds no missing-poster visual placeholder, media loading or playback; other extension forms remain unsupported.

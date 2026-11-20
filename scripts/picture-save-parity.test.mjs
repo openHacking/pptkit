@@ -53,6 +53,19 @@ test('media poster fallback and playback diagnostics agree across Node and brows
     return results;
   }, { moduleUrl: `data:text/javascript;base64,${esm.toString('base64')}`, bytes: [...external], options });
   assert.equal(externalExpected.length, 1); for (const result of externalActual) assert.deepEqual(result, externalExpected);
+  const ext = '<p:extLst><p:ext uri="{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}"><m:media xmlns:m="http://schemas.microsoft.com/office/powerpoint/2010/main" r:link="remoteMedia"/></p:ext></p:extLst>';
+  const missing = imageFixture(picture({ embed: null }).replace('<p:nvPr/>', `<p:nvPr>${ext}</p:nvPr>`));
+  missing.parts['deck/_rels/z.xml.rels'] = relationships([missing.rel('layout', 'slideLayout', 'layout.xml'), missing.rel('image', 'image', '../media/raster.bin'), { ...missing.rel('remoteMedia', 'video', 'https://example.invalid/no-poster.mp4'), TargetMode: 'External' }]);
+  const missingBytes = encodeImages(missing), missingNode = await importPptx(missingBytes, options);
+  let missingExpected;
+  try { missingExpected = { diagnostics: missingNode.report.diagnostics.filter(d => d.code === 'media-playback-unmapped'), poster: missingNode.report.findings.find(f => f.feature === 'drawing.media.poster') }; } finally { missingNode.dispose(); }
+  const missingActual = await page.evaluate(async ({ moduleUrl, bytes, options }) => {
+    const esm = await import(moduleUrl), results = [];
+    for (const api of [esm, PPTKit]) { const s = await api.importPptx(Uint8Array.from(bytes), options); try { results.push({ diagnostics: s.report.diagnostics.filter(d => d.code === 'media-playback-unmapped'), poster: s.report.findings.find(f => f.feature === 'drawing.media.poster') }); } finally { s.dispose(); } }
+    return results;
+  }, { moduleUrl: `data:text/javascript;base64,${esm.toString('base64')}`, bytes: [...missingBytes], options });
+  assert.equal(missingExpected.poster.tier, 'unsupported'); assert.equal(missingExpected.diagnostics[0].elementId, undefined);
+  for (const result of missingActual) assert.deepEqual(result, missingExpected);
   assert.deepEqual(requests, []);
 });
 
