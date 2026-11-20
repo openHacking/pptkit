@@ -72,6 +72,14 @@ export async function readDiagramData(c: Context, part: string, containsMce: boo
         if (run.namespaceUri === c.a && ["pPr", "endParaRPr"].includes(run.local)) continue;
         if (run.namespaceUri !== c.a || !["r", "br", "fld"].includes(run.local)) { await note(run, "uninterpreted-structure", "Paragraph child is outside direct run/break/field text."); continue; }
         if (hasOpaqueCharacters(run)) { await note(run, "uninterpreted-structure", "Run contains direct characters outside its text leaf; text is not inferred."); continue; }
+        let properties = 0, paragraphProperties = 0, unsupported = false;
+        for (const child of children(run)) {
+          await checkpoint();
+          if (child.namespaceUri === c.a && child.local === "rPr") { if (++properties > 1) unsupported = true; }
+          else if (child.namespaceUri === c.a && child.local === "pPr" && run.local === "fld") { if (++paragraphProperties > 1) unsupported = true; }
+          else if (child.namespaceUri !== c.a || child.local !== "t" || run.local === "br") unsupported = true;
+        }
+        if (unsupported) { await note(run, "uninterpreted-structure", "Run has unsupported or duplicate property children; text is not inferred."); continue; }
         const leaf = run.local === "br" ? undefined : await one(run, c.a, "t");
         if (run.local !== "br" && (!leaf || children(leaf).length)) { await note(run, "uninterpreted-structure", "Text run/field lacks one scalar text leaf; text is not guessed."); continue; }
         const id = run.local === "fld" ? attribute(run, "id") : undefined, type = run.local === "fld" ? attribute(run, "type") : undefined;

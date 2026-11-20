@@ -48,6 +48,26 @@ test("direct opaque characters in diagram text are diagnosed instead of discarde
   assert.equal((await model(formatted)).status, "inspected");
 });
 
+test("unknown or duplicated run children cannot silently become complete source text", async () => {
+  for (const strict of [false, true]) for (const [before, after, discarded] of [
+    ["<a:rPr b=\"1\"/>", "<a:rPr b=\"1\"/><a:future/>", "A & B 😀"],
+    ["<a:rPr b=\"1\"/>", "<a:rPr b=\"1\"/><a:rPr/>", "A & B 😀"],
+    ["<a:br/>", "<a:br><a:t>unexpected</a:t></a:br>", "\n"],
+    ["<a:fld id=\"field-1\" type=\"slidenum\">", "<a:fld id=\"field-1\" type=\"slidenum\"><a:future/>", "7"],
+    ["<a:fld id=\"field-1\" type=\"slidenum\">", "<a:fld id=\"field-1\" type=\"slidenum\"><a:pPr/><a:pPr/>", "7"],
+  ]) {
+    const f = diagramDataFixture(strict); f.setModel(f.point("1", "node", f.richText.replace(before, after)), "");
+    const result = await model(f);
+    assert.equal(result.status, "partial", after);
+    assert.ok(result.findings.some(item => item.code === "uninterpreted-structure" && item.reason.includes("Run")), after);
+    assert.ok(!result.points[0].text.flatMap(p => p.runs.map(r => r.text)).includes(discarded), after);
+    assert.equal(result.points[0].text.length, 2);
+  }
+  const valid = diagramDataFixture();
+  valid.setModel(valid.point("1", "node", valid.richText.replace('<a:fld id="field-1" type="slidenum"><a:rPr/>', '<a:fld id="field-1" type="slidenum"><a:rPr/><a:pPr/>')), "");
+  const result = await model(valid); assert.equal(result.status, "inspected"); assert.equal(result.points[0].text[0].runs[2].text, "7");
+});
+
 test("numeric aliases are resolved by value; recognized GUIDs and canonical collisions stay separate", async () => {
   const f = diagramDataFixture(), guid = "{ABCDEF01-2345-6789-ABCD-EF0123456789}";
   f.setModel(f.point("+01") + f.point(guid), f.connection("-2", "1", guid));

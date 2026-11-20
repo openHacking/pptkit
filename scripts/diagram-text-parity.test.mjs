@@ -37,9 +37,9 @@ test("Node, browser ESM/global agree with independent direct-paragraph DOM obser
     assert.deepEqual(s.sourceParagraphs, actual.independent.source); assert.deepEqual(s.cacheParagraphs, actual.independent.cache);
     assert.deepEqual([s.sourcePointElementIndex, s.presentationElementIndex, s.cacheElementIndex], [actual.independent.sourceIndex, actual.independent.presIndex, actual.independent.cacheIndex]);
   }
-  for (const part of ["deck/diagrams/data.xml", "deck/diagrams/cache.xml"]) {
-    const f = diagramTextFixture(), anchor = part.includes("data.xml") ? "<d:t>" : "<dsp:txBody>";
-    f.parts[part] = f.parts[part].replace(anchor, `${anchor}\u00a0`);
+  for (const [part, anchor, extra] of [["deck/diagrams/data.xml", "<d:t>", "\u00a0"], ["deck/diagrams/data.xml", "<a:r>", "<a:future/>"], ["deck/diagrams/cache.xml", "<dsp:txBody>", "\u00a0"]]) {
+    const f = diagramTextFixture();
+    f.parts[part] = f.parts[part].replace(anchor, `${anchor}${extra}`);
     const bytes = f.bytes(), expected = (await inspectPptx(bytes, options)).diagramInventory;
     const reports = await page.evaluate(async ({ bytes, options }) => Promise.all([globalThis.parser, globalThis.PPTKit].map(async api => (await api.inspectPptx(Uint8Array.from(bytes), options)).diagramInventory)), { bytes: [...bytes], options });
     for (const report of reports) assert.deepEqual(report, expected);
@@ -68,8 +68,9 @@ test("three unrelated edit/save rounds retain differing data/cache payloads and 
   }
 });
 
-test("opaque source characters survive unrelated source saves without a guessed comparison", async () => {
-  const f = diagramTextFixture(); f.parts["deck/diagrams/data.xml"] = f.parts["deck/diagrams/data.xml"].replace("<d:t>", "<d:t>\u00a0");
+test("opaque source text survives unrelated source saves without a guessed comparison", async () => {
+ for (const [anchor, extra] of [["<d:t>", "\u00a0"], ["<a:r>", "<a:future/>"]]) {
+  const f = diagramTextFixture(); f.parts["deck/diagrams/data.xml"] = f.parts["deck/diagrams/data.xml"].replace(anchor, `${anchor}${extra}`);
   const bytes = f.bytes(), before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
   try {
     assert.equal(session.report.inspection.diagramInventory.dataModels[0].status, "partial");
@@ -82,6 +83,7 @@ test("opaque source characters survive unrelated source saves without a guessed 
     assert.deepEqual(after.get("deck/diagrams/data.xml"), before.get("deck/diagrams/data.xml"));
     assert.equal((await inspectPptx(saved, options)).diagramInventory.textComparisons[0].status, "source-only");
   } finally { session.dispose(); }
+ }
 });
 
 test("Node file import captures the comparison profile before filesystem awaits", async t => {

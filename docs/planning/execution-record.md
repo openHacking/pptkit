@@ -3211,3 +3211,7 @@ The oracle regression now also runs against synthetic source/edited packages gen
 ## SmartArt direct text opaque characters — ADV-02.1.2.1
 
 The source graph now reports direct non-XML-whitespace characters inside text bodies, paragraphs, runs, fields and breaks as uninterpreted structure instead of silently discarding them. It omits the affected text scope, retaining other independently read content and source locations; a graph with this finding is partial. The optional source/cache comparison also rejects non-XML whitespace outside text leaves instead of treating characters such as NBSP as formatting indentation. Both dialects, XML indentation, source and cache boundaries, and browser ESM/global parity are covered. This does not admit graph editing, cache freshness or full rich-text interpretation; the task and its dependencies remain open.
+
+## SmartArt unsupported run children — ADV-02.1.2.1
+
+The direct source-text reader formerly ignored unknown run children and duplicate run-property containers while reporting the graph as inspected. It now reports the affected run as uninterpreted and omits that run rather than presenting incomplete text as complete; unaffected runs and paragraphs remain available. Both dialects cover text runs, fields, breaks and duplicate properties. Node/browser reports and unrelated save/reimport are checked against the source-only comparison boundary. This is a bounded source-reading correction; the task's inherited and native evidence gates remain open.
