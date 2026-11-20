@@ -23,6 +23,23 @@ function fixture(strict = false) {
 const options = { projection: 'content', audioSourceProfile: 'wave-pcm-v1' };
 const projected = { projection: 'content', audioProjection: 'wave-pcm-v1' };
 
+test('PowerPoint-saved shared audio projects twice without duplicating its asset', async () => {
+  const bytes = await readFile(new URL('../../../tests/fixtures/pcm-wave-pptkit-multi-powerpoint-save.pptx', import.meta.url));
+  const session = await importPptx(bytes, projected);
+  try {
+    const audio = session.document.slides[0].elements.filter(x => x.type === 'audio');
+    assert.equal(audio.length, 2);
+    assert.equal(audio[0].audioAssetId, audio[1].audioAssetId);
+    assert.equal(session.document.assets.filter(x => x.kind === 'audio').length, 1);
+    assert.equal(session.report.audioSources.filter(x => x.companionStatus === 'same-part').length, 2);
+    const plan = await session.prepareSave({ mode: 'no-op' });
+    assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+    const fresh = await generatePptx(session.document, { audioMode: 'wave-pcm-v1' });
+    const sourceWave = readGeneratedZip(bytes).get('ppt/media/media1.wav');
+    assert.ok([...readGeneratedZip(fresh.bytes)].some(([name, data]) => name.endsWith('.wav') && data.equals(sourceWave)));
+  } finally { session.dispose(); }
+});
+
 test('native PCM audio projects to detached Core audio and fresh output retains its bytes', async () => {
   const bytes = await readFile(new URL('../../../tests/fixtures/pcm-wave-powerpoint.pptx', import.meta.url));
   const session = await importPptx(bytes, projected);
