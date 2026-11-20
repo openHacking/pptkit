@@ -46,3 +46,29 @@ test('same-slide shared video re-export agrees across Node and browser', async t
   }, [...bytes]);
   assert.deepEqual(actual, expected); assert.deepEqual(requests, []);
 });
+
+test('mixed audio and video projection and re-export agree across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/pptkit-mixed-av.pptx');
+  const importOptions = { projection: 'content', videoProjection: 'iso-bmff-v1', audioProjection: 'wave-pcm-v1' };
+  const exportOptions = { videoMode: 'iso-bmff-v1', audioMode: 'wave-pcm-v1' };
+  const node = await importPptx(bytes, importOptions);
+  let expected;
+  try {
+    const result = await generatePptx(node.document, exportOptions);
+    const plan = await node.prepareSave({ mode: 'no-op' });
+    expected = { elements: node.document.slides[0].elements, audio: node.report.audioSources, video: node.report.videoSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await node.save(plan.plan)).bytes] };
+  } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ data, importOptions, exportOptions }) => {
+    const session = await PPTKit.importPptx(Uint8Array.from(data), importOptions);
+    try {
+      const result = await PPTKit.generatePptx(session.document, exportOptions);
+      const plan = await session.prepareSave({ mode: 'no-op' });
+      return { elements: session.document.slides[0].elements, audio: session.report.audioSources, video: session.report.videoSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await session.save(plan.plan)).bytes] };
+    } finally { session.dispose(); }
+  }, { data: [...bytes], importOptions, exportOptions });
+  assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
+});
