@@ -10,3 +10,5 @@ export { inspectStaticImage } from "./images/inspect-static.js";
 export type { StaticImageInspection, StaticImageInspectionOptions } from "./images/inspect-static.js";
 export { inspectWavePcm } from "./audio/inspect-wave-pcm.js";
 export type { WavePcmInspection, WavePcmInspectionOptions } from "./audio/inspect-wave-pcm.js";
+export { inspectIsoBmff } from "./video/inspect-iso-bmff.js";
+export type { IsoBmffBox, IsoBmffInspection, IsoBmffInspectionOptions } from "./video/inspect-iso-bmff.js";

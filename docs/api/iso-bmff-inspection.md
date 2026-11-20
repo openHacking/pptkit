@@ -1,0 +1,7 @@
+# ISO BMFF framing inspection
+
+`@pptkit/media-inspection` exports `inspectIsoBmff(bytes, options?)`, an environment-neutral, synchronous inventory of top-level box framing and the single `ftyp` declaration. It snapshots the supplied byte view and returns the major brand, minor version, compatible brands and frozen top-level type/offset/size/header-size records. The box framing supports ordinary 32-bit sizes, 64-bit extended sizes and a size of zero extending to the end of the input, following the equivalent atom framing described by [Apple](https://developer.apple.com/documentation/quicktime-file-format/atoms).
+
+The default maximum input is 64 MiB; `maxBytes` may be lowered, and `maxBoxes` defaults to 4096 and may be lowered. Compatible brands are separately capped at 4096. Invalid options or exceeded budgets throw `RangeError`; truncated, inconsistent or duplicate file-type framing throws `TypeError`. An abort signal is checked before copying and between boxes. The inspector performs no I/O, decoding, network access or mutations of caller bytes.
+
+This is a framing inventory, not a validator for MP4, codec, tracks, nested boxes, offsets, duration, poster, or playback. It intentionally accepts unknown top-level types and does not require `moov` or `mdat`. An `ftyp` brand alone is not a claim that input is a video or that any application can play it. The first [native H.264 sample](../testing/native-h264-video.md) provides separate, limited PowerPoint evidence; it does not broaden this API's guarantees.

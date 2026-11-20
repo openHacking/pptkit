@@ -14,6 +14,20 @@ const open = (f = imageFixture(), options = {}) => importPptx(encodeImages(f), {
 const first = s => normalizePresentation(s.document).slides[0].elements[0];
 const findings = s => s.report.findings.filter(f => f.operation === "import");
 
+test("native H.264 video remains a diagnosed static poster and preserves the source", async () => {
+  const bytes = await readFile(new URL("../../../tests/fixtures/h264-mp4-powerpoint.pptx", import.meta.url));
+  const session = await importPptx(bytes, { projection: "content" });
+  try {
+    const diagnostic = session.report.diagnostics.find(x => x.code === "media-playback-unmapped");
+    assert.equal(diagnostic.source.sourceObjectId, "4");
+    assert.match(diagnostic.message, /static image is a media poster only/);
+    assert.equal(session.document.slides[0].elements.find(x => x.id === diagnostic.elementId).type, "image");
+    const plan = await session.prepareSave({ mode: "no-op" });
+    assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+    assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
+  } finally { session.dispose(); }
+});
+
 test("opt-in media placeholders preserve source geometry and bytes without enabling edits", async () => {
   for (const strict of [false, true]) for (const fields of [{ embed: null }, { preset: "ellipse" }]) {
     const media = picture({ id: 2, ...fields }).replace('<p:nvPr/>', '<p:nvPr><a:audioFile r:link="media"/></p:nvPr>');
