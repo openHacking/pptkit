@@ -44,6 +44,9 @@ importers:
       '@pptkit/pptx-exporter':
         specifier: workspace:*
         version: link:../../packages/pptx-exporter
+      '@pptkit/pptx-parser':
+        specifier: workspace:*
+        version: link:../../packages/pptx-parser
       '@pptkit/svg-renderer':
         specifier: workspace:*
         version: link:../../packages/svg-renderer

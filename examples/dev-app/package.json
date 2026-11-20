@@ -7,6 +7,8 @@
   "scripts": {
     "build": "pnpm run build:client && pnpm run build:server",
     "build:client": "vite build",
+    "build:pages": "vite build --mode pages",
+    "dev:pages": "vite --mode pages",
     "build:deps": "pnpm --filter @pptkit/core --filter @pptkit/layout --filter @pptkit/pptx-exporter --filter @pptkit/svg-renderer build",
     "build:server": "tsc -b tsconfig.server.json",
     "dev": "pnpm run build:deps && node ./scripts/dev.mjs",
@@ -18,6 +20,7 @@
     "@pptkit/core": "workspace:*",
     "@pptkit/layout": "workspace:*",
     "@pptkit/pptx-exporter": "workspace:*",
+    "@pptkit/pptx-parser": "workspace:*",
     "@pptkit/svg-renderer": "workspace:*",
     "@radix-ui/react-scroll-area": "^1.2.14",
     "@radix-ui/react-separator": "^1.1.11",

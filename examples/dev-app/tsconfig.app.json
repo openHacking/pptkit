@@ -16,9 +16,10 @@
     "composite": true,
     "tsBuildInfoFile": "./tsconfig.app.tsbuildinfo"
   },
-  "include": ["src/client/**/*.ts", "src/client/**/*.tsx", "vite.config.ts", "test/**/*.ts", "test/**/*.tsx"],
+  "include": ["src/client/**/*.ts", "src/client/**/*.tsx", "playground/**/*.ts", "playground/**/*.tsx", "vite.config.ts", "test/**/*.ts", "test/**/*.tsx"],
   "references": [
     { "path": "./tsconfig.server.json" },
-    { "path": "../../packages/svg-renderer" }
+    { "path": "../../packages/svg-renderer" },
+    { "path": "../../packages/pptx-parser" }
   ]
 }

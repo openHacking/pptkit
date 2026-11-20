@@ -4,6 +4,8 @@ PPTKit is a developer-first TypeScript toolkit for building structured, editable
 
 > **Project status:** PPTKit is under active pre-release development. Preview packages are available on npm, and the public API may still change before a stable release.
 
+[Try PPTKit in your browser](https://openhacking.github.io/pptkit/) to explore example slides, edit the full feature deck, download editable PPTX, or inspect a local PowerPoint file.
+
 ## Features
 
 - Method-managed presentation and slide authoring with stable document-wide IDs.

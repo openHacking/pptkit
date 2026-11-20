@@ -2,6 +2,28 @@
 
 This directory contains runnable development examples for PPTKit.
 
+## Online playground
+
+The [PPTKit Playground](https://openhacking.github.io/pptkit/) opens the full feature
+deck. Edit its JSON and apply changes, preview any slide, or download SVG and editable
+PPTX. The catalog also includes targeted examples for text and notes, themes and
+layouts, shapes and connectors, image cropping, merged tables, standard and advanced
+charts, transitions, and missing-asset diagnostics. Play the transition deck in
+PowerPoint to see its fade.
+
+Open the bundled PowerPoint sample or a local `.pptx` up to 32 MiB. Files are read
+in the browser. Import shows a partial preview and inspection findings. The preserved
+download uses the parser's byte-identical no-op save. The text edit demonstrates a
+preservation save for one supported text run, subject to preflight.
+
+For local development, run `pnpm install`, `pnpm build:browser`, then
+`pnpm --filter @pptkit/dev-app dev:pages`. The production command
+`pnpm --filter @pptkit/dev-app build:pages` writes to `examples/dev-app/dist/playground`.
+GitHub Actions builds and tests that directory before publishing it to Pages from
+`main`. The Node.js examples below cover filesystem output. See the
+[CLI](../packages/cli/README.md) and [PDF renderer](../packages/pdf-renderer/README.md)
+for local inspection and PDF output.
+
 ## Report dashboard
 
 The [report dashboard](report-dashboard/dashboard.mjs) creates a fresh, editable one-slide PPTX with a chart and table, plus a static SVG preview. From the repository root, run `pnpm install`, `pnpm build`, then `pnpm --filter @pptkit-example/report-dashboard check` and `pnpm --filter @pptkit-example/report-dashboard start`. The last command writes `report-dashboard.pptx` and `report-dashboard.svg` in the example directory; existing files are not overwritten. If the second write fails, the first file may already exist. The sample prints validation and exporter/renderer warnings; inspect these before using the output. Preview appearance can differ from PowerPoint, and this example does not perform native application verification. Replace the illustrative data with actual results.
