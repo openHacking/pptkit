@@ -18,6 +18,8 @@ export { inspectApng } from "./assets/inspect-apng.js";
 export type { ApngFrameInfo, ApngInspection, ApngInspectionOptions } from "./assets/inspect-apng.js";
 export type { GifFrameInfo, GifInspection, GifInspectionOptions } from "./assets/inspect-gif.js";
 export { PptxExportError } from "./types/export.js";
+export { createHttpMediaResolver } from "./adapters/http-media-resolver.js";
+export type { HttpMediaResolverOptions } from "./adapters/http-media-resolver.js";
 import type { PresentationDocument } from "@pptkit/core";
 import { loadNodeAsset } from "./assets/load-asset.node.js";
 import { generatePptxWith } from "./generation/generate-pptx.js";

@@ -7,6 +7,8 @@ import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js'
 import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
 import { createPresentation } from '../packages/core/dist/index.js';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
+import { createServer } from 'node:http';
+import { once } from 'node:events';
 
 test('video source projection and static preview match Node and browser without media fetches', async t => {
   const bytes = await readFile('tests/fixtures/h264-mp4-powerpoint.pptx');
@@ -101,4 +103,35 @@ test('external mixed media resolver agrees across Node and browser without impli
   }, { media, options });
   assert.deepEqual(actual.bytes, [...expected.bytes]); assert.deepEqual(actual.warnings, expected.warnings);
   assert.deepEqual(actual.calls, [['movie', 100000], ['sound', 100000]]); assert.deepEqual(requests, []);
+});
+
+test('HTTP media adapter streams in Chromium and refuses opaque redirects', async t => {
+  const parts = readGeneratedZip(await readFile('tests/fixtures/pcm-wave-powerpoint.pptx'));
+  const wave = parts.get('ppt/media/media1.wav'), hits = [];
+  const server = createServer((req, res) => {
+    hits.push(req.url);
+    if (req.url === '/redirect') { res.writeHead(302, { location: '/sound' }); res.end(); return; }
+    if (req.url === '/sound') { res.writeHead(200, { 'content-type': 'audio/wav' }); res.write(wave.subarray(0, 100)); res.end(wave.subarray(100)); return; }
+    res.writeHead(200, { 'content-type': 'text/html' }); res.end('<!doctype html>');
+  });
+  server.listen(0, '127.0.0.1'); await once(server, 'listening');
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage();
+  await page.goto(base);
+  for (const name of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const result = await page.evaluate(async ({ base, limit }) => {
+    const make = path => { const p = PPTKit.createPresentation(); p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'url', value: base + path } }); p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', box: { x: 0, y: 0, width: 40, height: 40 } }] }); return p; };
+    const calls = [], resolveMedia = PPTKit.createHttpMediaResolver({ maxRedirects: 1, authorizeUrl: url => { calls.push(url); return true; } });
+    const options = { audioMode: 'wave-pcm-v1', maxAssetBytes: limit, resolveMedia };
+    const ok = await PPTKit.generatePptx(make('/sound'), options);
+    let redirectError = '', sizeError = '';
+    try { await PPTKit.generatePptx(make('/redirect'), options); } catch (e) { redirectError = e.message; }
+    try { await PPTKit.generatePptx(make('/sound'), { ...options, maxAssetBytes: limit - 1 }); } catch (e) { sizeError = e.message; }
+    return { bytes: [...ok.bytes], calls, redirectError, sizeError };
+  }, { base, limit: wave.length });
+  assert.deepEqual(readGeneratedZip(Uint8Array.from(result.bytes)).get('ppt/media/sound.wav'), wave);
+  assert.deepEqual(result.calls, [base + '/sound', base + '/redirect', base + '/sound']);
+  assert.match(result.redirectError, /not an accessible 200/); assert.match(result.sizeError, /maxBytes/);
+  assert.equal(hits.filter(path => path === '/sound').length, 2);
 });
