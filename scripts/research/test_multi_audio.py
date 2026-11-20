@@ -23,6 +23,12 @@ def mutate(source, part, old, new):
 
 
 class MultiAudioTest(unittest.TestCase):
+    def test_generated_and_powerpoint_saved_samples_retain_audio_topology(self):
+        generated = oracle.verify((ROOT / 'tests/fixtures/pcm-wave-pptkit-multi.pptx').read_bytes())
+        saved = oracle.verify((ROOT / 'tests/fixtures/pcm-wave-pptkit-multi-powerpoint-save.pptx').read_bytes())
+        self.assertEqual(saved['objects'], generated['objects'])
+        self.assertEqual(saved['timingIds'], generated['timingIds'])
+
     def test_oracle_rejects_broken_identity_and_relationships(self):
         source = (ROOT / 'tests/fixtures/pcm-wave-powerpoint-duplicate.pptx').read_bytes()
         self.assertEqual(oracle.verify(source)['objects'], ['2', '3'])
