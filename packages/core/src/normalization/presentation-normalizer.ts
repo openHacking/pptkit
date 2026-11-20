@@ -352,6 +352,7 @@ function normalizeElement(
     };
   }
   if (element.type === "audio") return { ...base, type: "audio", audioAssetId: element.audioAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }) };
+  if (element.type === "video") return { ...base, type: "video", videoAssetId: element.videoAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }) };
   if (element.type === "shape") {
     const shapeTrace = owner ? new StyleTrace(childSource(owner, "style"), "defaults.shape.style") : undefined;
     const shapeStyle = normalizeShapeStyle(element.style, shapeTrace);

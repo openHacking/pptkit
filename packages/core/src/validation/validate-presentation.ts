@@ -304,6 +304,9 @@ function validateElement(
   } else if (element.type === "audio") {
     if (context.assetKinds.get(element.audioAssetId) !== "audio") add(context, { code: "missing-audio-asset", message: `Audio references a missing or non-audio asset "${element.audioAssetId}".`, path: `${path}.audioAssetId`, assetId: element.audioAssetId, ...identity });
     if (element.posterAssetId !== undefined && context.assetKinds.get(element.posterAssetId) !== "image") add(context, { code: "missing-audio-poster", message: `Audio poster references a missing or non-image asset "${element.posterAssetId}".`, path: `${path}.posterAssetId`, assetId: element.posterAssetId, ...identity });
+  } else if (element.type === "video") {
+    if (context.assetKinds.get(element.videoAssetId) !== "video") add(context, { code: "missing-video-asset", message: `Video references a missing or non-video asset "${element.videoAssetId}".`, path: `${path}.videoAssetId`, assetId: element.videoAssetId, ...identity });
+    if (element.posterAssetId !== undefined && context.assetKinds.get(element.posterAssetId) !== "image") add(context, { code: "missing-video-poster", message: `Video poster references a missing or non-image asset "${element.posterAssetId}".`, path: `${path}.posterAssetId`, assetId: element.posterAssetId, ...identity });
   } else if (element.type === "shape") {
     if (!["rect", "roundRect", "ellipse", "triangle", "diamond", "arrow", "chevron", "parallelogram"].includes(element.shape)) add(context, { code: "invalid-shape-kind", message: "Shape kind is not supported.", path: `${path}.shape`, ...identity });
     if (element.slant !== undefined && (element.shape !== "parallelogram" || !isValidOpacity(element.slant))) add(context, { code: "invalid-shape-slant", message: "Slant is available only on parallelograms and must be between 0 and 1.", path: `${path}.slant`, ...identity });

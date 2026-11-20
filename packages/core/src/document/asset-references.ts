@@ -17,8 +17,8 @@ export function collectAssetReferences(slides: readonly PresentationSlide[], lay
         if (!references) { references = []; result.set(element.assetId, references); }
         references.push(Object.freeze({ assetId: element.assetId, elementId: element.id, path: `${elementPath}.assetId`, ...owner }));
       }
-      if (element.type === "audio") for (const key of ["audioAssetId", "posterAssetId"] as const) {
-        const assetId = element[key]; if (assetId === undefined) continue;
+      if (element.type === "audio" || element.type === "video") for (const [key, assetId] of [[element.type === "audio" ? "audioAssetId" : "videoAssetId", element.type === "audio" ? element.audioAssetId : element.videoAssetId], ["posterAssetId", element.posterAssetId]] as const) {
+        if (assetId === undefined) continue;
         let references = result.get(assetId);
         if (!references) { references = []; result.set(assetId, references); }
         references.push(Object.freeze({ assetId, elementId: element.id, path: `${elementPath}.${key}`, ...owner }));

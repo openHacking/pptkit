@@ -12,6 +12,7 @@ import type { AssetLoader } from "../types/internal.js";
 import { emu } from "../ooxml/xml.js";
 import { listContinuationWarnings } from "./list-continuation-warnings.js";
 import { planWaveAudio } from "./wave-audio.js";
+import { rejectVideoOutput } from "./video-preflight.js";
 
 export async function generatePptxWith(
   document: PresentationDocument,
@@ -37,6 +38,7 @@ export async function generatePptxWith(
   const loadContext = { ...(signal ? { signal } : {}), ...(maxAssetBytes !== undefined ? { maxAssetBytes } : {}), ...(externalImageValidation ? { externalImageValidation } : {}) };
   const resolvedLoader = createAssetLoader(loadAsset, resolveAsset, signal, maxAssetBytes);
   const normalized = normalizePresentation(document);
+  rejectVideoOutput(normalized);
   const audio = planWaveAudio(normalized, audioMode, maxAssetBytes, signal);
   // PresentationML ST_SlideSizeCoordinate bounds apply to the serialized
   // integer, not the pre-rounding Core value. Reject before any asset I/O.

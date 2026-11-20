@@ -107,6 +107,8 @@ Local operation errors fail immediately: duplicate IDs, unknown IDs, conflicting
 
 Audio objects refer to a separately registered audio asset and optional image poster asset. These identities participate in asset reference inventory, copy and cleanup; Core does not decode or play audio. [Audio authoring](../api/audio-inspection.md#authoring-and-static-preview) describes the current static-preview and export boundary.
 
+Video objects likewise own separate video and optional image-poster references, which participate in copy, cleanup and validation. Static preview and the explicit import boundary are described in [video authoring](../api/video-source-inventory.md#explicit-object-projection-and-authoring); PPTX video export currently rejects rather than omitting them.
+
 Cross-document semantic errors are exhaustive. `validatePresentation()` returns all diagnostics it can find, including invalid geometry and style ranges, missing assets/layouts/placeholders/slides, invalid connector references, malformed tables, and invalid theme values.
 
 `normalizePresentation()` runs validation first. When any error exists, it throws one `PresentationValidationError` whose `diagnostics` collection contains all errors. It never emits a partially normalized document.

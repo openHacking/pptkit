@@ -10,11 +10,34 @@ import { importPptxFile } from '../dist/node.js';
 const { unzipSync, zipSync, strFromU8, strToU8 } = createRequire(import.meta.url)('fflate');
 const fixture = () => readFile(new URL('../../../tests/fixtures/h264-mp4-powerpoint.pptx', import.meta.url));
 const options = { projection: 'content', videoSourceProfile: 'iso-bmff-v1' };
+const projected = { projection: 'content', videoProjection: 'iso-bmff-v1' };
 const slide = 'ppt/slides/slide1.xml', rels = 'ppt/slides/_rels/slide1.xml.rels';
 function edit(bytes, part, change) {
   const parts = unzipSync(bytes); parts[part] = strToU8(change(strFromU8(parts[part]))); return zipSync(parts);
 }
 function change(text, old, replacement) { assert.ok(text.includes(old)); return text.replace(old, replacement); }
+
+test('native video projects to detached video and poster assets without enabling source edits', async () => {
+  const bytes = await fixture(), parts = unzipSync(bytes), s = await importPptx(bytes, projected);
+  try {
+    const element = s.document.slides[0].elements.find(x => x.type === 'video'); assert.ok(element);
+    const video = s.document.assets.find(x => x.id === element.videoAssetId), poster = s.document.assets.find(x => x.id === element.posterAssetId);
+    assert.equal(video.kind, 'video'); assert.equal(poster.kind, 'image');
+    assert.deepEqual(Buffer.from(video.source.value, 'base64'), Buffer.from(parts['ppt/media/media1.mp4']));
+    assert.equal(s.report.videoSources.filter(x => x.companionStatus === 'same-part').length, 1);
+    assert.equal(s.report.findings.find(x => x.feature === 'drawing.video.projected-fields' && x.operation === 'edit-save').tier, 'unsupported');
+    assert.match(s.report.diagnostics.find(x => x.code === 'media-playback-unmapped').message, /video and optional poster are projected/);
+    const plan = await s.prepareSave({ mode: 'no-op' }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+    assert.equal((await s.prepareSave({ mode: 'edit' })).status, 'blocked');
+    const total = parts['ppt/media/media1.mp4'].length + parts['ppt/media/image1.png'].length;
+    const exact = await importPptx(bytes, { ...projected, sessionLimits: { maxTotalImportedAssetBytes: total } }); exact.dispose();
+    await assert.rejects(importPptx(bytes, { ...projected, sessionLimits: { maxTotalImportedAssetBytes: total - 1 } }), { code: 'import-limit-exceeded' });
+    s.document.replaceAsset(video.id, { kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: Uint8Array.of(1, 2, 3) } });
+    assert.equal((await s.prepareSave({ mode: 'no-op' })).status, 'blocked');
+  } finally { s.dispose(); }
+  await assert.rejects(importPptx(bytes, { ...projected, editSaveProfile: 'text-runs-v1' }), TypeError);
+  await assert.rejects(importPptx(bytes, { ...projected, pictureSourceProfile: 'embedded-v1' }), TypeError);
+});
 
 test('native video inventory locates separate video and poster sources without projecting playback', async () => {
   const bytes = await fixture(), s = await importPptx(bytes, options);
@@ -42,6 +65,31 @@ test('shared media is inventoried per object but charged once', async () => {
   try { assert.equal(s.report.videoSources.length, 6); assert.deepEqual(s.report.videoSources.filter(x => x.declaration === 'videoFile').map(x => x.source.sourceObjectId), ['4', '5']); } finally { s.dispose(); }
   await assert.rejects(importPptx(input, { ...options, sessionLimits: { maxImportedAssetBytes: mediaSize - 1 } }), { code: 'import-limit-exceeded' });
   await assert.rejects(importPptx(input, { ...options, sessionLimits: { maxTotalImportedAssetBytes: mediaSize - 1 } }), { code: 'import-limit-exceeded' });
+  const projectedSession = await importPptx(input, projected);
+  try {
+    const videos = projectedSession.document.slides[0].elements.filter(x => x.type === 'video');
+    assert.equal(videos.length, 2); assert.equal(videos[0].videoAssetId, videos[1].videoAssetId);
+    assert.equal(projectedSession.document.assets.filter(x => x.kind === 'video').length, 1);
+  } finally { projectedSession.dispose(); }
+});
+
+test('simultaneous audio and video projection shares one image and aggregate budget', async () => {
+  const parts = unzipSync(await fixture()), xml = strFromU8(parts[slide]);
+  const pic = xml.match(/<p:pic>.*?<\/p:pic>/u)[0];
+  const audio = pic.replace('id="4" name=', 'id="5" name=').replace('a:videoFile r:link="rId2"', 'a:audioFile r:link="rId8"').replace('r:embed="rId1"', 'r:embed="rId9"');
+  parts[slide] = strToU8(change(xml, pic, pic + audio));
+  const relXml = strFromU8(parts[rels]);
+  parts[rels] = strToU8(change(relXml, '</Relationships>', '<Relationship Id="rId8" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio" Target="../media/tone.wav"/><Relationship Id="rId9" Type="http://schemas.microsoft.com/office/2007/relationships/media" Target="../media/tone.wav"/></Relationships>'));
+  parts['[Content_Types].xml'] = strToU8(change(strFromU8(parts['[Content_Types].xml']), '</Types>', '<Default Extension="wav" ContentType="audio/wav"/></Types>'));
+  const wav = Buffer.alloc(124, 128); wav.write('RIFF'); wav.writeUInt32LE(116, 4); wav.write('WAVEfmt ', 8); wav.writeUInt32LE(16, 16); wav.writeUInt16LE(1, 20); wav.writeUInt16LE(1, 22); wav.writeUInt32LE(8000, 24); wav.writeUInt32LE(8000, 28); wav.writeUInt16LE(1, 32); wav.writeUInt16LE(8, 34); wav.write('data', 36); wav.writeUInt32LE(80, 40);
+  parts['ppt/media/tone.wav'] = wav;
+  const bytes = zipSync(parts), total = parts['ppt/media/media1.mp4'].length + parts['ppt/media/image1.png'].length + wav.length;
+  const opts = { ...projected, audioProjection: 'wave-pcm-v1' }, s = await importPptx(bytes, { ...opts, sessionLimits: { maxTotalImportedAssetBytes: total } });
+  try {
+    const media = s.document.slides[0].elements.filter(x => x.type === 'video' || x.type === 'audio');
+    assert.deepEqual(media.map(x => x.type), ['video', 'audio']); assert.equal(media[0].posterAssetId, media[1].posterAssetId);
+  } finally { s.dispose(); }
+  await assert.rejects(importPptx(bytes, { ...opts, sessionLimits: { maxTotalImportedAssetBytes: total - 1 } }), { code: 'import-limit-exceeded' });
 });
 
 test('video inventory reaches an unprojectable group and does not misclassify audio', async () => {
@@ -86,6 +134,13 @@ test('missing, external, mismatched and malformed video sources remain explicit'
       if (mode === 'wrong-mime' || mode === 'damaged') assert.equal(video.status, 'unsupported');
       if (mode === 'no-poster') assert.equal(poster.status, 'unsupported');
     } finally { s.dispose(); }
+    const projectedSession = await importPptx(bytes, projected);
+    try {
+      const videos = projectedSession.document.slides[0].elements.filter(x => x.type === 'video');
+      const supported = mode === 'no-poster' || mode === 'external-poster';
+      assert.equal(videos.length, supported ? 1 : 0, mode);
+      if (supported) assert.equal(videos[0].posterAssetId, undefined);
+    } finally { projectedSession.dispose(); }
   }
   await assert.rejects(importPptx(original, { projection: 'structure', videoSourceProfile: 'iso-bmff-v1' }), TypeError);
   await assert.rejects(importPptx(original, { projection: 'content', videoSourceProfile: 'unknown' }), TypeError);
@@ -97,5 +152,8 @@ test('file adapter captures the video inventory option before asynchronous I/O',
     const path = join(dir, 'sample.pptx'); await writeFile(path, await fixture());
     const config = { ...options }, pending = importPptxFile(path, config); config.videoSourceProfile = undefined;
     const { session } = await pending; try { assert.equal(session.report.videoSources.length, 3); } finally { session.dispose(); }
+    const projection = { ...projected }, pendingProjection = importPptxFile(path, projection); projection.videoProjection = undefined;
+    const imported = await pendingProjection;
+    try { assert.ok(imported.session.document.slides[0].elements.some(x => x.type === 'video')); } finally { imported.session.dispose(); }
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

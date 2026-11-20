@@ -204,8 +204,8 @@ export async function buildPackage(
     usedMediaNames.add(result.toLowerCase()); return result;
   };
   for (const asset of layout.assets) {
-    // Audio is not yet supported by the PPTX writer; never feed it to image loaders.
-    if (asset.kind === "audio") continue;
+    // Media resources have separate handling and must never enter image loaders.
+    if (asset.kind === "audio" || asset.kind === "video") continue;
     try {
       loadContext.signal?.throwIfAborted();
       const loaded = await loadAsset(asset, loadContext);

@@ -345,6 +345,8 @@ export interface PptxImportOptions extends PptxInspectionOptions {
   audioSourceProfile?: "wave-pcm-v1";
   /** Read-only inventory of videoFile, its Office companion, and poster source references. */
   videoSourceProfile?: "iso-bmff-v1";
+  /** Explicit partial video-object projection; does not validate codecs or playback. */
+  videoProjection?: "iso-bmff-v1";
   /** Content only. Project supported embedded PCM WAVE as Core audio; no source edit-save. */
   audioProjection?: "wave-pcm-v1";
   /** Content only. artwork-v10 adds shape patterns; artwork-v11 adds explicit bounded outer shadows. */

@@ -12,6 +12,7 @@ const MEDIA_EXT = "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}";
 /** Inventory effective source references without loading external data or projecting video. */
 export function videoSources(context: Context, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>) {
   const result: ImportedVideoSource[] = [];
+  const byPicture = new WeakMap<XmlElement, readonly ImportedVideoSource[]>();
   const cache = new Map<string, Pick<ImportedVideoSource, "status" | "contentType" | "framing" | "reason">>();
   let total = 0;
   const inspect = async (part: string, slideId: string, objectId: string, picture: XmlElement, paths: WeakMap<XmlElement, string>) => {
@@ -80,6 +81,7 @@ export function videoSources(context: Context, limits: Required<PptxSessionLimit
       const relatedPart = item.relationshipAttribute === "embed" && relation?.type === MEDIA_REL && relation.targetMode === "Internal" && relation.fragment === undefined ? relation.targetPart : undefined;
       result[index] = { ...item, companionStatus: primaryPart && relatedPart ? primaryPart === relatedPart ? "same-part" : "different-part" : "unverified" };
     }
+    byPicture.set(picture, result.slice(first));
   };
-  return { result, inspect };
+  return { result, inspect, forPicture: (picture: XmlElement) => byPicture.get(picture) ?? [] };
 }

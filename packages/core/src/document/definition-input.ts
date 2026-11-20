@@ -36,7 +36,7 @@ export function assertDefinitionElements(elements: readonly unknown[]): void {
   const stack = [...elements];
   while (stack.length) {
     const element = stack.pop() as Record<string, unknown> | null;
-    if (!element || typeof element !== "object" || !["text", "image", "audio", "shape", "connector", "group", "table", "chart"].includes(element.type as string)) throw new TypeError("Layout elements must use a supported element type.");
+    if (!element || typeof element !== "object" || !["text", "image", "audio", "video", "shape", "connector", "group", "table", "chart"].includes(element.type as string)) throw new TypeError("Layout elements must use a supported element type.");
     if (element.type === "group") {
       if (!Array.isArray(element.children)) throw new TypeError("Group children must be an array.");
       for (const child of element.children) stack.push(child);

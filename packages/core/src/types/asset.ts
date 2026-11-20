@@ -8,7 +8,7 @@ export type PresentationAssetSourceInput = PresentationAssetSource
 
 export interface PresentationAssetInput {
   id?: string;
-  kind: "image" | "audio";
+  kind: "image" | "audio" | "video";
   source: PresentationAssetSourceInput;
   mimeType?: string;
   width?: number;
@@ -27,7 +27,7 @@ export interface PresentationAsset extends Omit<PresentationAssetInput, "id" | "
 
 export interface NormalizedAsset {
   id: string;
-  kind: "image" | "audio";
+  kind: "image" | "audio" | "video";
   source: PresentationAssetSource;
   mimeType?: string;
   width?: number;

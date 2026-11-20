@@ -166,6 +166,19 @@ export interface NormalizedAudioElement extends NormalizedElementBase {
   posterAssetId?: string;
 }
 
+/** Video bytes and the optional static poster are independently owned assets. */
+export interface VideoElementInput extends ElementBaseInput {
+  type: "video";
+  videoAssetId: string;
+  posterAssetId?: string;
+}
+export interface VideoElement extends ElementBase, Omit<VideoElementInput, keyof ElementBaseInput> {}
+export interface NormalizedVideoElement extends NormalizedElementBase {
+  type: "video";
+  videoAssetId: string;
+  posterAssetId?: string;
+}
+
 export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron" | "parallelogram";
 
 export interface ShapeElementInput extends ElementBaseInput {
@@ -666,6 +679,7 @@ export type PresentationElementInput =
   | TextElementInput
   | ImageElementInput
   | AudioElementInput
+  | VideoElementInput
   | ShapeElementInput
   | ConnectorElementInput
   | GroupElementInput
@@ -676,6 +690,7 @@ export type PresentationElement =
   | TextElement
   | ImageElement
   | AudioElement
+  | VideoElement
   | ShapeElement
   | ConnectorElement
   | GroupElement
@@ -686,6 +701,7 @@ export type NormalizedElement =
   | NormalizedTextElement
   | NormalizedImageElement
   | NormalizedAudioElement
+  | NormalizedVideoElement
   | NormalizedShapeElement
   | NormalizedConnectorElement
   | NormalizedGroupElement
