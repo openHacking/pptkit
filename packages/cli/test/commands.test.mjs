@@ -2290,3 +2290,26 @@ test('contrast report distinguishes shared text occurrences and enforces an outp
   assert.equal(decode(bounded).error.code, 'output-limit-exceeded');
   assert.match(decode(bounded).error.message, /Contrast findings/);
 });
+
+test('CLI explicitly edits exact currency values with v6 manifests', async t => {
+  const bytes=await readFile(new URL('../../../tests/fixtures/custom-currency-source.pptx',import.meta.url)), f=await fixture(t,bytes);
+  const inspect=await runCliAsync(['inspect','source.pptx','--projection','content','--custom-property-values','--custom-property-currency','--json'],f.options);
+  assert.equal(inspect.exitCode,0,inspect.output);const candidates=decode(inspect).customPropertyEditCandidates;assert.equal(candidates.version,'pptkit-custom-property-edits-v6');
+  const target=candidates.targets.find(item=>item.expected.name==='Exact');assert.ok(target);assert.equal(target.expected.value,'1.25');assert.ok(!candidates.targets.some(item=>item.expected.name==='Inexact'));
+  const manifest={version:candidates.version,sourceSha256:candidates.sourceSha256,edits:[{...target,replacement:'0.5'}]};
+  await writeFile(path.join(f.directory,'currency.json'),JSON.stringify(manifest));
+  const args=['save','source.pptx','currency.pptx','--mode','edit','--custom-property-edits','currency.json','--json'];
+  const dry=await runCliAsync([...args,'--dry-run'],f.options);assert.equal(dry.exitCode,0,dry.output);await assert.rejects(readFile(path.join(f.directory,'currency.pptx')),{code:'ENOENT'});
+  const saved=await runCliAsync(args,f.options);assert.equal(saved.exitCode,0,saved.output);const output=await readFile(path.join(f.directory,'currency.pptx'));
+  const before=readGeneratedZip(bytes),after=readGeneratedZip(output);for(const [name,data] of before)if(name!=='docProps/custom.xml')assert.deepEqual(after.get(name),data,name);assert.match(after.get('docProps/custom.xml').toString(),/<vt:cy>0\.5000<\/vt:cy>/);
+  for(const edit of [{...target,replacement:'0.1'},{...target,replacement:'-1'},{...target,replacementName:'New'},{...target,replacement:'0.5',delete:true}]){await writeFile(path.join(f.directory,'bad-currency.json'),JSON.stringify({...manifest,edits:[edit]}));const rejected=await runCliAsync(['save','source.pptx','bad.pptx','--mode','edit','--custom-property-edits','bad-currency.json','--json'],f.options);assert.notEqual(rejected.exitCode,0,JSON.stringify(edit));await assert.rejects(readFile(path.join(f.directory,'bad.pptx')),{code:'ENOENT'});}
+  const mixed=await runCliAsync(['save','source.pptx','bad.pptx','--mode','edit','--custom-property-edits','currency.json','--first-slide-number','2','--json'],f.options);assert.equal(mixed.exitCode,3);await assert.rejects(readFile(path.join(f.directory,'bad.pptx')),{code:'ENOENT'});
+  const stale={...manifest,sourceSha256:'0'.repeat(64)};await writeFile(path.join(f.directory,'stale.json'),JSON.stringify(stale));const rejected=await runCliAsync(['save','source.pptx','bad.pptx','--mode','edit','--custom-property-edits','stale.json','--json'],f.options);assert.equal(rejected.exitCode,3);
+  for(const extra of [['--custom-property-currency'],['--custom-property-values','--custom-property-currency','--custom-property-names'],['--custom-property-values','--custom-property-currency','--metadata-values']]){const r=await runCliAsync(['inspect','source.pptx','--projection','content',...extra,'--json'],f.options);assert.equal(r.exitCode,2,r.output);}
+});
+
+for (const strict of [false,true]) test(`CLI currency edits survive three source-save rounds (strict=${strict})`,async t=>{
+ const data=metadataFixture(strict);data.add('custom',custom(2,'cy','1.2500','name="Exact"')+custom(3,'cy','0.1000','name="Opaque"'));const f=await fixture(t,encodeMetadata(data));let source='source.pptx';
+ for(const [i,value] of ['0.5','0.0625','2'].entries()){const inspected=await runCliAsync(['inspect',source,'--projection','content','--custom-property-values','--custom-property-currency','--json'],f.options);assert.equal(inspected.exitCode,0,inspected.output);const c=decode(inspected).customPropertyEditCandidates,target=c.targets.find(p=>p.expected.name==='Exact');await writeFile(path.join(f.directory,'edit.json'),JSON.stringify({version:c.version,sourceSha256:c.sourceSha256,edits:[{...target,replacement:value}]}));const output=`round-${i}.pptx`;const saved=await runCliAsync(['save',source,output,'--mode','edit','--custom-property-edits','edit.json','--json'],f.options);assert.equal(saved.exitCode,0,saved.output);source=output;}
+ const session=await importPptx(await readFile(path.join(f.directory,source)),{projection:'content',customCurrencyProjection:'exact-save-v2',customPropertySaveProfile:'scalar-v1'});try{assert.equal(session.document.metadata.customProperties[0].value,2);assert.equal(session.report.inspection.metadata.custom.properties[0].valueType,'cy');assert.equal(session.report.inspection.metadata.custom.properties[1].valueType,'cy');}finally{session.dispose();}
+});
