@@ -443,6 +443,34 @@ test('failed shared entries allow immediate retry from a failure observer', asyn
   assert.deepEqual(result, { calls: 2, failure: 'TypeError', remaining: 0 }); assert.deepEqual(requests, []);
 });
 
+test('explicit presentation lifetime keeps audio playing across slide changes and releases it on exit', async t => {
+  const { page, requests } = await setup(t);
+  const result = await page.evaluate(async () => {
+    // Four seconds of silent 8 kHz mono PCM; verify the actual browser media clock.
+    const samples = 32000, bytes = new Uint8Array(44 + samples * 2), data = new DataView(bytes.buffer);
+    for (const [offset, text] of [[0, 'RIFF'], [8, 'WAVE'], [12, 'fmt '], [36, 'data']]) for (let i = 0; i < text.length; i++) bytes[offset + i] = text.charCodeAt(i);
+    data.setUint32(4, bytes.length - 8, true); data.setUint32(16, 16, true); data.setUint16(20, 1, true); data.setUint16(22, 1, true); data.setUint32(24, 8000, true); data.setUint32(28, 16000, true); data.setUint16(32, 2, true); data.setUint16(34, 16, true); data.setUint32(40, samples * 2, true);
+    const create = URL.createObjectURL, revoke = URL.revokeObjectURL, live = new Set();
+    URL.createObjectURL = value => { const url = create.call(URL, value); live.add(url); return url; }; URL.revokeObjectURL = url => { live.delete(url); revoke.call(URL, url); };
+    const stage = document.createElement('div'), persistentHost = document.createElement('div'), slideHost = document.createElement('div'); document.body.append(stage); stage.append(persistentHost, slideHost);
+    const show = new AbortController(), pageOne = new AbortController(), opts = { kind: 'audio', contentType: 'audio/wav', muted: true }; let loads = 0, sharedSignal;
+    try {
+      const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: bytes.length, resolve: (_key, { signal }) => { loads++; sharedSignal = signal; return new Blob([bytes], { type: 'audio/wav' }); } });
+      const continuous = await pool.mount(persistentHost, 'score', { ...opts, signal: show.signal });
+      const slideAudio = await pool.mount(slideHost, 'score', { ...opts, signal: pageOne.signal });
+      const ready = c => new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); c.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+      await Promise.all([ready(continuous), ready(slideAudio)]); await Promise.all([continuous.play(), slideAudio.play()]);
+      await new Promise(resolve => setTimeout(resolve, 180)); const before = continuous.element.currentTime; pageOne.abort(); slideHost.replaceChildren();
+      const slideDisposed = slideAudio.state.status === 'disposed' && slideHost.children.length === 0, afterSlide = { urls: live.size, shared: !sharedSignal.aborted };
+      await new Promise(resolve => setTimeout(resolve, 220)); const advanced = continuous.element.currentTime > before + 0.08 && !continuous.element.paused;
+      const pageTwo = new AbortController(), second = await pool.mount(slideHost, 'score', { ...opts, signal: pageTwo.signal }); await ready(second); const independent = second.element.paused && !continuous.element.paused;
+      pageTwo.abort(); show.abort();
+      return { loads, slideDisposed, afterSlide, advanced, independent, final: { urls: live.size, aborted: sharedSignal.aborted, status: continuous.state.status, nodes: stage.querySelectorAll('audio').length } };
+    } finally { URL.createObjectURL = create; URL.revokeObjectURL = revoke; stage.remove(); }
+  });
+  assert.deepEqual(result, { loads: 1, slideDisposed: true, afterSlide: { urls: 1, shared: true }, advanced: true, independent: true, final: { urls: 0, aborted: true, status: 'disposed', nodes: 0 } }); assert.deepEqual(requests, []);
+});
+
 test('resolution events distinguish loading, failure, cancellation and mounted playback state', async t => {
   const { page, movie } = await setup(t);
   const result = await page.evaluate(async bytes => {

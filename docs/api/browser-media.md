@@ -62,6 +62,24 @@ const second = await pool.mount(secondHost, 'movie-v1', { kind: 'video', content
 
 The pool belongs to one browser window. Choose a key that uniquely represents the authorized content and version: the pool does not inspect source identity, verify MIME, enforce authorization or separate incompatible uses sharing a key. The loader must enforce actual transfer and decompression limits; `maxBytes` checks the returned Blob and is also passed to the loader. The pool does not itself fetch, share object URLs, move a playing element between slides, or keep playback running after an instance is disposed. Chromium tests cover concurrent mounts, independent playback, one-user and last-user cancellation, late results, invalid/oversized data, separate keys, retry and synchronous abort on mounting.
 
+## Explicit playback across slides
+
+For audio intentionally continuous across slides, mount it once in a connected host owned by the presentation rather than a slide, and give it a presentation lifetime. Mount ordinary slide-local media separately with a slide lifetime. Navigation remains application-owned: abort the old slide's lifetime on leave and abort the presentation lifetime when the show ends. Do not move or remove the persistent host while it plays, and do not also mount an unintended duplicate for each slide.
+
+```ts
+const presentationLifetime = new AbortController();
+const background = await pool.mount(presentationAudioHost, 'score-v1', {
+  kind: 'audio', contentType: 'audio/wav', signal: presentationLifetime.signal,
+});
+// From a user gesture: await background.play();
+
+// On entering a slide, create a separate AbortController for its local media.
+// On leaving that slide: slideLifetime.abort();
+// On ending the presentation: presentationLifetime.abort();
+```
+
+The shared pool is optional; a persistent `mountBrowserMedia` controller also works. Sharing bytes does not synchronize controllers or transfer playback between them. A Chromium test uses a muted, four-second PCM track and injected slide-leave signals: the persistent playhead advances across a slide change, each slide-local instance is disposed, and the final presentation abort releases both media nodes and object URLs. This is not a test of audible output, a full slideshow navigation implementation, or native PowerPoint cross-slide timing.
+
 ## Composing with the bounded HTTP resolver
 
 Applications that already use `@pptkit/pptx-exporter` can explicitly reuse its [HTTP media resolver](byte-assets.md#external-audio-and-video) without introducing an exporter dependency into the SVG renderer. Use the **same byte limit** for the stream and the returned Blob, and validate the response MIME according to the consumer's accepted formats:
