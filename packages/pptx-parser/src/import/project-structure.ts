@@ -103,7 +103,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
       const value = projected[index], unique = value && nameCounts.get(value.name) === 1;
       if (unique) mapped.push(value);
       finding("metadata.custom-property", "import", unique ? "editable" : "unsupported", { part: inspection.metadata.custom.part, path: "Properties/property", sourceObjectId: `${property.formatId}:${property.id}` }, unique ? "The typed source value maps to Core; source IDs and lexical form remain in inspection. This does not enable source-preserving edit save." : "This custom property remains in inspection and is not represented in the Core metadata projection; its type, value or decoded name may be unsupported or ambiguous.");
-      if (unique && currencyProjection?.[index]) finding("metadata.custom-property-currency", "export", "fallback", { part: inspection.metadata.custom.part, path: "Properties/property", sourceObjectId: `${property.formatId}:${property.id}` }, "Currency projects read-only to a real number; fresh export does not preserve its currency type or lexical form.");
+      if (unique && currencyProjection?.[index]) finding("metadata.custom-property-currency", "export", "fallback", { part: inspection.metadata.custom.part, path: "Properties/property", sourceObjectId: `${property.formatId}:${property.id}` }, "Currency projects to a real number; fresh export does not preserve its currency type or lexical form.");
     }
     metadata.customProperties = mapped;
   }

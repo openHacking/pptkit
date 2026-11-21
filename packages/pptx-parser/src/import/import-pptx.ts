@@ -10,9 +10,8 @@ import { structureContext } from "../presentation/structure-context.js";
 import { PackageInspectionError } from "../types/archive.js";
 import { PptxImportError, type ImportedPictureSource, type ImportedSlideVisibilitySource, type ImportedCoreMetadataSource, type ImportedPresentation, type PptxImportOptions, type PptxSessionLimits } from "../types/import.js";
 import { projectStructure } from "./project-structure.js";
-import { customNameCollisionKey, decodeLiteralEscapes, projectCurrencyProperty, projectCustomProperty } from "./project-custom-properties.js";
-import { children } from "../presentation/structure-xml.js";
-import { XMLNS } from "../compatibility/configuration.js";
+import { customNameCollisionKey, decodeLiteralEscapes, projectCustomProperty } from "./project-custom-properties.js";
+import { projectCurrencies } from "./currency-projection.js";
 import { createSession } from "./session.js";
 import { freezeReport } from "./state.js";
 import { projectContent } from "./project-content.js";
@@ -49,7 +48,7 @@ export function captureImportOptions(options: PptxImportOptions) {
   const mode = options.projection;
   if (mode !== "structure" && mode !== "content") throw new TypeError("importPptx requires explicit projection: structure or content.");
   const customCurrencyProjection = options.customCurrencyProjection;
-  if (customCurrencyProjection !== undefined && (customCurrencyProjection !== "exact-v1" || mode !== "content" || [options.editSaveProfile, options.descriptionEditSaveProfile, options.drawingNameSaveProfile, options.decorativeSaveProfile, options.slideVisibilitySaveProfile, options.metadataSaveProfile, options.customPropertySaveProfile, options.customPropertySourceProfile, options.firstSlideNumberSaveProfile, options.chartEditSaveProfile, options.pictureEditSaveProfile, options.pictureSourceProfile, options.masterArtwork, options.diagramPreview, options.mediaPreview, options.fieldTextProfile, options.textFontProfile, options.notesTextProfile, options.textTargetSaveProfile, options.audioSourceProfile, options.audioProjection, options.videoSourceProfile, options.videoProjection].some(value => value !== undefined))) throw new TypeError("Currency projection requires a read-only content import without other optional projection or save profiles.");
+  if (customCurrencyProjection !== undefined && ((customCurrencyProjection !== "exact-v1" && customCurrencyProjection !== "exact-save-v2") || mode !== "content" || (customCurrencyProjection === "exact-save-v2" ? options.customPropertySaveProfile !== "scalar-v1" : options.customPropertySaveProfile !== undefined) || [options.editSaveProfile, options.descriptionEditSaveProfile, options.drawingNameSaveProfile, options.decorativeSaveProfile, options.slideVisibilitySaveProfile, options.metadataSaveProfile, options.customPropertySourceProfile, options.firstSlideNumberSaveProfile, options.chartEditSaveProfile, options.pictureEditSaveProfile, options.pictureSourceProfile, options.masterArtwork, options.diagramPreview, options.mediaPreview, options.fieldTextProfile, options.textFontProfile, options.notesTextProfile, options.textTargetSaveProfile, options.audioSourceProfile, options.audioProjection, options.videoSourceProfile, options.videoProjection].some(value => value !== undefined))) throw new TypeError("Currency projection requires content import without other optional profiles; exact-save-v2 additionally requires scalar-v1.");
   const pictureSourceProfile = options.pictureSourceProfile;
   const audioSourceProfile = options.audioSourceProfile;
   const videoSourceProfile = options.videoSourceProfile;
@@ -121,24 +120,8 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
     const inspection = await readStructureFromContext(context);
     let work = 0;
     const checkpoint = async () => { abort(); if (++work % 64 === 0) { await new Promise<void>((resolve) => setTimeout(resolve, 0)); abort(); } };
-    let currencyValues: (import("@pptkit/core").CustomDocumentProperty | undefined)[] | undefined;
-    if (customCurrencyProjection && context.metadata.custom && context.customMetadataRoot) {
-      currencyValues = [];
-      const nodes = children(context.customMetadataRoot);
-      for (const [index, property] of context.metadata.custom.properties.entries()) {
-        await checkpoint();
-        const node = nodes[index];
-        const value = node && children(node)[0];
-        if (property.valueType !== "cy" || !value || value.attributes.some(attr => attr.namespaceUri !== XMLNS)) { currencyValues.push(undefined); continue; }
-        let text = "", invalid = false;
-        for (const child of value.children) {
-          await checkpoint();
-          if ((child.kind !== "text" && child.kind !== "cdata") || text.length + child.value.length > 1000000) { invalid = true; break; }
-          text += child.value;
-        }
-        currencyValues.push(invalid ? undefined : projectCurrencyProperty(property, text));
-      }
-    }
+    const currency = customCurrencyProjection ? await projectCurrencies(context, checkpoint) : undefined;
+    const currencyValues = currency?.values;
     const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues);
     const bindings: TextRunBinding[] | undefined = profile ? [] : undefined;
     const chartBindings: ChartValueBinding[] | undefined = chartEditSaveProfile ? [] : undefined;
@@ -247,7 +230,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
       slideVisibilitySources.push({ slideId, source: { part: slide.part, elementIndex: raw.elementIndex, path: "sld/@show", sourceObjectId: String(slide.id) }, status: bound ? "bound" : "unmapped", ...(!bound ? { reason: "Raw slide root and visibility do not match the effective slide projection." } : {}) });
       if (bound) slideVisibilityBindings.push({ slideId, part: slide.part, elementIndex: raw.elementIndex, namespace: context.p, ...(attribute ? { expected: attribute.value } : {}), baseline: slide.hidden });
     }
-    const customPropertySources = customPropertySourceProfile || customPropertySaveProfile ? await inspectCustomPropertySources(context, limits, checkpoint) : undefined;
+    const customPropertySources = customPropertySourceProfile || customPropertySaveProfile ? await inspectCustomPropertySources(context, limits, checkpoint, customCurrencyProjection === "exact-save-v2" ? currency?.lexical : undefined) : undefined;
     const customPropertyBindings: import("./analyze-text-edits.js").CustomPropertyBinding[] | undefined = customPropertySaveProfile ? [] : undefined;
     let customInsertionSource: import("./analyze-text-edits.js").CustomPropertyInsertionSource | undefined;
     if (customPropertyBindings && customPropertySources && context.metadata.custom) {
@@ -272,10 +255,10 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
       for (const [index, property] of context.metadata.custom.properties.entries()) {
         await checkpoint();
         const source = customPropertySources[index];
-        if (!source || source.status !== "bound" || source.valueElementIndex === undefined || source.source.elementIndex === undefined || !editableSources.has(source.source.sourceObjectId) || property.value.status !== "scalar") continue;
-        const mapped = projectCustomProperty(property), projectedIndex = mapped ? projectedIndexes.get(mapped.name) : undefined;
+        if (!source || source.status !== "bound" || source.valueElementIndex === undefined || source.source.elementIndex === undefined || !editableSources.has(source.source.sourceObjectId)) continue;
+        const mapped = projectCustomProperty(property) ?? (customCurrencyProjection === "exact-save-v2" ? currencyValues?.[index] : undefined), projectedIndex = mapped ? projectedIndexes.get(mapped.name) : undefined;
         if (!mapped || projectedIndex === undefined) continue;
-        customPropertyBindings.push({ index: projectedIndex, part: context.metadata.custom.part, propertyElementIndex: source.source.elementIndex, valueElementIndex: source.valueElementIndex, rootNamespace: context.rawXml.get(context.metadata.custom.part)!.namespaceUri, valueNamespace: context.entry.dialect === "strict" ? "http://purl.oclc.org/ooxml/officeDocument/docPropsVTypes" : "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes", local: property.valueType, baseline: mapped.value, lexical: property.value.value, ...(customPropertySaveProfile !== "scalar-v1" && !unknownReservedName ? { baselineName: mapped.name, lexicalName: property.name!, reservedNames } : {}), sourceObjectId: source.source.sourceObjectId! });
+        customPropertyBindings.push({ index: projectedIndex, part: context.metadata.custom.part, propertyElementIndex: source.source.elementIndex, valueElementIndex: source.valueElementIndex, rootNamespace: context.rawXml.get(context.metadata.custom.part)!.namespaceUri, valueNamespace: context.entry.dialect === "strict" ? "http://purl.oclc.org/ooxml/officeDocument/docPropsVTypes" : "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes", local: property.valueType, baseline: mapped.value, lexical: property.value.status === "scalar" ? property.value.value : currency!.lexical[index]!, ...(customPropertySaveProfile !== "scalar-v1" && !unknownReservedName ? { baselineName: mapped.name, lexicalName: property.name!, reservedNames } : {}), sourceObjectId: source.source.sourceObjectId! });
       }
     }
     if (customPropertySaveProfile === "create-and-append-v5" && !context.metadata.custom) {
@@ -306,6 +289,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
       bindings: bindings ?? [], ...((metadataLevel >= 16) ? { allowCoreRemovals: true } : {}), ...(metadataLevel >= 17 ? { allowCoreStringRemovals: true } : {}), ...(customPropertyBindings ? { customPropertyBindings } : {}), ...(["remove-v3", "append-and-remove-v4", "create-and-append-v5"].includes(customPropertySaveProfile ?? "") ? { allowCustomRemovals: true } : {}), ...(["append-and-remove-v4", "create-and-append-v5"].includes(customPropertySaveProfile ?? "") ? { allowCustomInsertions: true } : {}), ...(customInsertionSource ? { customInsertionSource } : {}), ...(metadataBindings ? { metadataBindings } : {}), ...((metadataLevel >= 5) ? { allowCoreInsertions: true } : {}), ...(slideVisibilityBindings ? { slideVisibilityBindings } : {}), ...(chartBindings ? { chartBindings } : {}), ...(chartLabelBindings ? { chartLabelBindings } : {}), ...(chartOrderBindings ? { chartOrderBindings } : {}), ...(diagramPreview ? { diagramPreview } : {}), ...(textFontProfile ? { textFontProfile } : {}), ...(notesTextProfile ? { notesTextProfile } : {}), guards: await textEditGuards(context, inspection, limits.maxReportFindings, checkpoint, profile !== "text-runs-v1", textTargetSaveProfile ? bindings : undefined),
       ...(firstNumberBinding ? { firstNumberBinding } : {}), ...(descriptionBindings ? { descriptionBindings, descriptionBatch: drawingNameSaveProfile !== undefined || decorativeSaveProfile !== undefined || descriptionEditSaveProfile === 'batch-v3' || descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5', descriptionMixed: descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5' } : {}),
       ...(pictureEditSaveProfile ? { pictureSources: pictureSources! } : {}), ...(fieldTextProfile ? { fieldTextProfile } : {}),
+      ...(customCurrencyProjection === "exact-save-v2" ? { currencySave: true } : {}),
       options: { ...(diagramTextComparison ? { diagramTextComparison } : {}), diagramLimits, limits: captured.limits, xmlLimits: captured.xmlLimits, zipLimits: captured.zipLimits },
     } : undefined;
     abort();

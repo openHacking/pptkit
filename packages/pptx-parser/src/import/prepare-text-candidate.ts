@@ -18,6 +18,7 @@ import { PptxImportError, type ImportDiagnostic, type PptxSessionLimits, type Pp
 import type { PptxInspectionOptions } from "../types/structure.js";
 import { equalState, snapshot } from "./state.js";
 import { projectStructure } from "./project-structure.js";
+import { projectCurrencies } from "./currency-projection.js";
 import { projectContent } from "./project-content.js";
 import { chartNumber } from "./chart-data.js";
 import type { ChartValueBinding } from "./chart-value-bindings.js";
@@ -56,7 +57,7 @@ export async function verifyTextSourceAncestry(elements: readonly XmlTextSourceE
 
 export async function prepareTextCandidate(
   source: Uint8Array, candidate: NormalizedPresentation, analysis: TextEditAnalysis,
-  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"],
+  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean,
 ): Promise<{ bytes: Uint8Array; validationBytes: number; validationWork: number } | { diagnostics: readonly ImportDiagnostic[] }> {
   try {
     await checkpoint();
@@ -370,7 +371,8 @@ export async function prepareTextCandidate(
         for (let i = 0; i < a.length; i++) { if (a[i] !== b[i]) throw new PptxImportError("save-candidate-invalid", "Created extended property payload differs from its plan."); if (i % 65536 === 65535) await checkpoint(); }
       }
     }
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint);
+    const currency = currencySave ? await projectCurrencies(context, checkpoint) : undefined;
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, undefined, false, currency?.values);
     const rebound: ChartValueBinding[] | undefined = analysis.chartValues.length ? [] : undefined;
     const reboundLabels: ChartLabelBinding[] | undefined = analysis.chartLabels?.length ? [] : undefined;
     const reboundOrders: ChartSeriesOrderBinding[] | undefined = analysis.chartOrders?.length ? [] : undefined;

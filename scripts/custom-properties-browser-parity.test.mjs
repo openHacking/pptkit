@@ -33,6 +33,20 @@ async function exercise(api) {
   } finally { session.dispose(); }
 }
 
+async function exerciseCurrencySave(api, input) {
+  let bytes = new Uint8Array(input); const rounds = [];
+  for (const value of [0.5, 0.0625, 2]) {
+    const session = await api.importPptx(bytes, { projection: 'content', customCurrencyProjection: 'exact-save-v2', customPropertySaveProfile: 'scalar-v1' });
+    try {
+      session.document.setMetadata({ ...session.document.metadata, customProperties: session.document.metadata.customProperties.map(p => p.name === 'Exact' ? { ...p, value } : p) });
+      const prepared = await session.prepareSave({ mode: 'edit' });
+      if (prepared.status !== 'ready') throw new Error(JSON.stringify(prepared.report));
+      bytes = (await session.save(prepared.plan)).bytes; rounds.push({ bytes: [...bytes], sources: session.report.customPropertySources });
+    } finally { session.dispose(); }
+  }
+  return rounds;
+}
+
 async function exerciseEscapedReservation(api, input) {
   const session = await api.importPptx(new Uint8Array(input), { projection: 'content', customPropertySaveProfile: 'append-and-remove-v4' });
   try {
@@ -302,6 +316,7 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   collisionSession.dispose();
   const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
   const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
+  const expectedCurrencySave = await exerciseCurrencySave({ importPptx }, currencyInput);
   const nodeCurrencySession = await importPptx(new Uint8Array(currencyInput), { projection: 'content', customCurrencyProjection: 'exact-v1' });
   const expectedCurrencyProjection = nodeCurrencySession.document.metadata.customProperties;
   nodeCurrencySession.dispose();
@@ -330,6 +345,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
       try { return { properties: session.document.metadata.customProperties, tiers: session.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) }; } finally { session.dispose(); }
     }, { format, input: collisionInput });
     assert.deepEqual(actualCollision, expectedCollision);
+    const actualCurrencySave = await page.evaluate(async ({ format, exercise, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
+    }, { format, exercise: exerciseCurrencySave.toString(), input: currencyInput });
+    assert.deepEqual(actualCurrencySave, expectedCurrencySave);
     const actualCurrencyProjection = await page.evaluate(async ({ format, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       const session = await api.importPptx(new Uint8Array(input), { projection: 'content', customCurrencyProjection: 'exact-v1' });

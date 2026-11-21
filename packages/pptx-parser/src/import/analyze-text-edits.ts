@@ -7,6 +7,7 @@ import type { ChartSeriesOrderProposal } from "./chart-series-order.js";
 import type { TextRunBinding } from "./text-run-bindings.js";
 import type { DrawingDescriptionBinding } from "./drawing-description-binding.js";
 import { sourceIntegerAccepts, sourceRealAccepts } from "./project-custom-properties.js";
+import { formatExactCurrency } from "../metadata/currency-text.js";
 
 export interface TextEditGuard {
   readonly part?: string;
@@ -169,8 +170,10 @@ export async function analyzeTextEdits(
       else customNames.push({ binding: customNameBinding, value: right.replace(/_x[0-9a-fA-F]{4}_/g, match => `_x005F_${match.slice(1)}`) });
     }
     else if (customBinding && Object.is(left, customBinding.baseline) && typeof right === typeof left && (typeof right === "string" || typeof right === "boolean" || typeof right === "number" && Number.isFinite(right))) {
-      const text = typeof right === "string" ? right.replace(/_x[0-9a-fA-F]{4}_/g, match => `_x005F_${match.slice(1)}`) : typeof right === "number" && Object.is(right, -0) ? "-0" : String(right);
-      if (typeof right === "number" && sourceIntegerAccepts(customBinding.local, right) === false) addDiagnostic({ code: "save-edit-unsupported", severity: "error", documentPath: path, message: "Custom integer exceeds its original source variant's supported range." });
+      const currencyText = customBinding.local === "cy" && typeof right === "number" ? formatExactCurrency(right) : undefined;
+      const text = currencyText ?? (typeof right === "string" ? right.replace(/_x[0-9a-fA-F]{4}_/g, match => `_x005F_${match.slice(1)}`) : typeof right === "number" && Object.is(right, -0) ? "-0" : String(right));
+      if (customBinding.local === "cy" && currencyText === undefined) addDiagnostic({ code: "save-edit-unsupported", severity: "error", documentPath: path, message: "Currency must be a nonnegative binary64 value exactly representable with four decimal places." });
+      else if (typeof right === "number" && sourceIntegerAccepts(customBinding.local, right) === false) addDiagnostic({ code: "save-edit-unsupported", severity: "error", documentPath: path, message: "Custom integer exceeds its original source variant's supported range." });
       else if (typeof right === "number" && sourceRealAccepts(customBinding.local, right) === false) addDiagnostic({ code: "save-edit-unsupported", severity: "error", documentPath: path, message: "Custom real value cannot be represented exactly in its original source variant." });
       else if (typeof right === "string" && /_x[0-9a-fA-F]{4}_x[0-9a-fA-F]{4}_/.test(right)) addDiagnostic({ code: "save-edit-unsupported", severity: "error", documentPath: path, message: "Overlapping custom-property escape-like sequences are unsupported." });
       else customEdits.push({ binding: customBinding, value: text });

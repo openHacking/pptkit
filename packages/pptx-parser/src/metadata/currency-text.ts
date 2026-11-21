@@ -34,3 +34,22 @@ export function assessPptxCurrencyNumber(value: string): PptxCurrencyNumberAsses
   const exact = power >= 0 ? units === (mantissa << BigInt(power)) * 10000n : (units << BigInt(-power)) === mantissa * 10000n;
   return exact ? Object.freeze({ status: "exact", value: number }) : Object.freeze({ status: "inexact" });
 }
+
+/** Encode only a nonnegative binary64 value exactly representable in four decimal places. */
+export function formatExactCurrency(value: number): string | undefined {
+  if (!Number.isFinite(value) || value < 0 || Object.is(value, -0)) return undefined;
+  const bytes = new DataView(new ArrayBuffer(8)); bytes.setFloat64(0, value, false);
+  const bits = bytes.getBigUint64(0, false), exponent = Number((bits >> 52n) & 2047n), fraction = bits & ((1n << 52n) - 1n);
+  const mantissa = exponent === 0 ? fraction : (1n << 52n) | fraction;
+  const power = exponent === 0 ? -1074 : exponent - 1075;
+  const scaled = mantissa * 10000n;
+  let units: bigint;
+  if (power >= 0) units = scaled << BigInt(power);
+  else {
+    const divisor = 1n << BigInt(-power);
+    if (scaled % divisor !== 0n) return undefined;
+    units = scaled / divisor;
+  }
+  const digits = units.toString().padStart(5, "0");
+  return `${digits.slice(0, -4)}.${digits.slice(-4)}`;
+}
