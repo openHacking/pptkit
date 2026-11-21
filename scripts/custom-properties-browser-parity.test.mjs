@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
 import { createPresentation } from '../packages/core/dist/index.js';
 import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
-import { importPptx, inspectPptxOpaqueCustomProperties } from '../packages/pptx-parser/dist/index.js';
+import { assessPptxCurrencyText, importPptx, inspectPptxOpaqueCustomProperties } from '../packages/pptx-parser/dist/index.js';
 import { metadataFixture, encodeMetadata, custom } from '../packages/pptx-parser/test/metadata-fixture.mjs';
 
 async function exercise(api) {
@@ -284,6 +284,8 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
   const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
   const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
+  const currencyTexts = ['1.2500', '.1000', '-12.5000', '9007199254740993.9999', '1.0000\u2028'];
+  const expectedCurrency = currencyTexts.map(assessPptxCurrencyText);
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage(), requests = [];
   await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
@@ -300,6 +302,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
       return api.inspectPptxOpaqueCustomProperties(new Uint8Array(input));
     }, { format, input: currencyInput });
     assert.deepEqual(actualOpaque, expectedOpaque);
+    const actualCurrency = await page.evaluate(async ({ format, texts }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return texts.map(api.assessPptxCurrencyText);
+    }, { format, texts: currencyTexts });
+    assert.deepEqual(actualCurrency, expectedCurrency);
     const actual = await page.evaluate(async ({ format, exercise }) => {
       const api = format === 'global' ? PPTKit : Object.assign({}, ...await Promise.all(['core', 'pptx-exporter', 'pptx-parser'].map(n => import('@pptkit/' + n))));
       return Function('api', `return (${exercise})(api)`)(api);

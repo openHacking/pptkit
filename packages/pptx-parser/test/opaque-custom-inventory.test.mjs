@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { inspectPptx, inspectPptxOpaqueCustomProperties } from '../dist/index.js';
+import { assessPptxCurrencyText, inspectPptx, inspectPptxOpaqueCustomProperties } from '../dist/index.js';
 import { metadataFixture, encodeMetadata, custom, MC } from './metadata-fixture.mjs';
 
 test('opaque source inventory exposes direct text without changing standard metadata inspection', async () => {
@@ -15,6 +15,20 @@ test('opaque source inventory exposes direct text without changing standard meta
   assert.ok(items.every(item => item.part === '/docProps/custom.xml' && Object.isFrozen(item.content)));
   assert.ok(Object.isFrozen(items));
   assert.ok(original.metadata.custom.properties.filter(item => item.valueType === 'cy').every(item => item.value.status === 'uninterpreted'));
+  assert.deepEqual(items.map(item => assessPptxCurrencyText(item.content.value).status), ['valid', 'valid', 'invalid']);
+});
+
+test('currency text assessment preserves exact decimal digits and rejects non-schema forms', () => {
+  for (const [text, canonical, units] of [
+    ['1.2500', '1.2500', '12500'], [' .1000\t', '0.1000', '1000'], ['0000.0000', '0.0000', '0'],
+    ['000123.0040', '123.0040', '1230040'], ['9007199254740993.9999', '9007199254740993.9999', '90071992547409939999'],
+  ]) {
+    const result = assessPptxCurrencyText(text);
+    assert.deepEqual(result, { status: 'valid', canonical, tenThousandths: units }); assert.ok(Object.isFrozen(result));
+  }
+  for (const text of ['-12.5000', '+1.0000', '1', '1.', '1.000', '1.00000', '1e0', '１.0000', '1.0000\u00a0', '1.0000\u2028', '1.0000x', '']) assert.deepEqual(assessPptxCurrencyText(text), { status: 'invalid' }, text);
+  assert.throws(() => assessPptxCurrencyText(1), TypeError);
+  assert.throws(() => assessPptxCurrencyText('0'.repeat(1000001)), RangeError);
 });
 
 test('both dialects preserve text, nested content and effective MCE branches separately', async () => {
