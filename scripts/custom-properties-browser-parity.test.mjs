@@ -6,6 +6,7 @@ import { createPresentation } from '../packages/core/dist/index.js';
 import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
 import { assessPptxCurrencyText, assessPptxCurrencyNumber, importPptx, inspectPptxOpaqueCustomProperties } from '../packages/pptx-parser/dist/index.js';
 import { metadataFixture, encodeMetadata, custom } from '../packages/pptx-parser/test/metadata-fixture.mjs';
+import { shape, body } from '../packages/pptx-parser/test/content-fixture.mjs';
 
 async function exercise(api) {
   const customProperties = [
@@ -31,6 +32,21 @@ async function exercise(api) {
     const changed = await session.save(edit.plan);
     return { bytes: [...generated.bytes], saved: [...saved.bytes], changed: [...changed.bytes], metadata, sources: session.report.customPropertySources, findings: session.report.findings.filter(f => f.feature === 'metadata.custom-property') };
   } finally { session.dispose(); }
+}
+
+async function exerciseMixedCurrency(api, input) {
+  let bytes = new Uint8Array(input); const rounds = [];
+  for (const [index, value] of [0.5, 0.0625, 2].entries()) {
+    const session = await api.importPptx(bytes, { projection: 'content', customCurrencyProjection: 'exact-save-v2', customPropertySaveProfile: 'scalar-v1', metadataSaveProfile: 'core-strings-v1', slideVisibilitySaveProfile: 'attribute-v1', editSaveProfile: 'text-runs-v3' });
+    try {
+      const slide = session.document.slides[0], original = slide.elements[0], changed = structuredClone(original);
+      changed.content[0].runs[0].text += '!'; slide.replaceElement(original.id, changed); slide.setHidden(!slide.hidden);
+      session.document.setMetadata({ ...session.document.metadata, title: `Changed ${index}`, customProperties: session.document.metadata.customProperties.map(p => p.name === 'Currency' ? { ...p, value } : p) });
+      const prepared = await session.prepareSave({ mode: 'edit' }); if (prepared.status !== 'ready') throw new Error(JSON.stringify(prepared.report));
+      bytes = (await session.save(prepared.plan)).bytes; rounds.push([...bytes]);
+    } finally { session.dispose(); }
+  }
+  return rounds;
 }
 
 async function exerciseCurrencySave(api, input) {
@@ -314,6 +330,9 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const collisionSession = await importPptx(new Uint8Array(collisionInput), { projection: 'content' });
   const expectedCollision = { properties: collisionSession.document.metadata.customProperties, tiers: collisionSession.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) };
   collisionSession.dispose();
+  const mixedCurrency = metadataFixture(); mixedCurrency.add('core', '<d:title>Original</d:title>'); mixedCurrency.add('custom', custom(2, 'cy', '1.2500', 'name="Currency"') + custom(3, 'cy', '0.1000', 'name="Opaque"'));
+  mixedCurrency.parts['deck/z.xml'] = mixedCurrency.p('sld', `<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name="Root"/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>${shape({ id: '2', txBox: true, text: body() })}</p:spTree></p:cSld>`, `xmlns:a="${mixedCurrency.A}" show="0"`);
+  const mixedCurrencyInput = [...encodeMetadata(mixedCurrency)], expectedMixedCurrency = await exerciseMixedCurrency({ importPptx }, mixedCurrencyInput);
   const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
   const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
   const expectedCurrencySave = await exerciseCurrencySave({ importPptx }, currencyInput);
@@ -345,6 +364,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
       try { return { properties: session.document.metadata.customProperties, tiers: session.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) }; } finally { session.dispose(); }
     }, { format, input: collisionInput });
     assert.deepEqual(actualCollision, expectedCollision);
+    const actualMixedCurrency = await page.evaluate(async ({ format, exercise, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
+    }, { format, exercise: exerciseMixedCurrency.toString(), input: mixedCurrencyInput });
+    assert.deepEqual(actualMixedCurrency, expectedMixedCurrency);
     const actualCurrencySave = await page.evaluate(async ({ format, exercise, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);

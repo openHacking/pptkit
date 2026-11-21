@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { metadataFixture, encodeMetadata, custom, MC } from './metadata-fixture.mjs';
+import { shape, body } from './content-fixture.mjs';
 import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
 const options = {projection:'content',customCurrencyProjection:'exact-save-v2',customPropertySaveProfile:'scalar-v1'};
 function fixture(strict=false, value='1.2500') { const f=metadataFixture(strict);f.add('custom',custom(2,'cy',value,'name="Currency"')+custom(3,'cy','0.1000','name="Opaque"')+custom(4,'lpwstr','control','name="Control"'));return encodeMetadata(f); }
@@ -38,7 +39,7 @@ test('currency edit source rejects MCE and mixed or attributed values',async()=>
  const s=await importPptx(encodeMetadata(g),options);try{assert.equal(s.report.customPropertySources[0].status,'unmapped');s.document.setMetadata({...s.document.metadata,customProperties:[{name:'Currency',type:'real',value:.5}]});assert.equal((await s.prepareSave({mode:'edit'})).status,'blocked');}finally{s.dispose();}
 });
 test('currency edit option requires its explicit scalar profile',async()=>{
- const bytes=fixture();for(const opts of [{projection:'content',customCurrencyProjection:'exact-save-v2'}, {...options, customPropertySaveProfile:'scalar-and-name-v2'}, {...options, metadataSaveProfile:'core-strings-v1'}]) await assert.rejects(importPptx(bytes,opts),TypeError);
+ const bytes=fixture();for(const opts of [{projection:'content',customCurrencyProjection:'exact-save-v2'}, {...options, customPropertySaveProfile:'scalar-and-name-v2'}, {...options, diagramPreview:'cache'}]) await assert.rejects(importPptx(bytes,opts),TypeError);
 });
 
 test('file import snapshots currency save options before filesystem IO',async()=>{
@@ -67,4 +68,22 @@ test('recorded LibreOffice comparison matches the exact PPTKit-edited input',asy
  assert.match(after.get('docProps/custom.xml').toString(),/<vt:cy>0\.5000<\/vt:cy>/);
  for(const kind of ['control','edited']){const records=evidence.records.filter(item=>item.kind===kind);assert.deepEqual(records.map(item=>item.round),[0,1,2,3]);assert.equal(records[0].currency_elements.length,3);assert.ok(records.slice(1).every(item=>item.currency_elements.length===0));assert.ok(records.every(item=>item.properties.some(p=>p.name==='Control'&&p.value==='before')));}
  assert.equal(evidence.records.find(item=>item.kind==='edited'&&item.round===0).properties.find(item=>item.name==='Exact').value,'0.5000');
+});
+
+for (const strict of [false,true]) test(`currency, text, metadata and visibility edits are atomic across three rounds (strict=${strict})`,async()=>{
+ const f=metadataFixture(strict);f.add('core','<d:title>Original</d:title>');f.add('custom',custom(2,'cy','1.2500','name="Currency"')+custom(3,'cy','0.1000','name="Opaque"'));
+ f.parts['deck/z.xml']=f.p('sld',`<p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name="Root"/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>${shape({id:'2',txBox:true,text:body()})}</p:spTree></p:cSld>`,`xmlns:a="${f.A}" show="0"`);
+ const mixed={...options,metadataSaveProfile:'core-strings-v1',slideVisibilitySaveProfile:'attribute-v1',editSaveProfile:'text-runs-v3'};let bytes=encodeMetadata(f);
+ for(const [index,value] of [.5,.0625,2].entries()){
+  const before=readGeneratedZip(bytes),session=await importPptx(bytes,mixed);
+  try{const slide=session.document.slides[0], original=slide.elements[0], changed=structuredClone(original);changed.content[0].runs[0].text+='!';slide.replaceElement(original.id,changed);slide.setHidden(!slide.hidden);const metadata=session.document.metadata;
+   session.document.setMetadata({...metadata,title:`Changed ${index}`,customProperties:metadata.customProperties.map(p=>p.name==='Currency'?{...p,value:.1}:p)});
+   const bad=await session.prepareSave({mode:'edit'});assert.equal(bad.status,'blocked');assert.equal(bad.plan,undefined);
+   session.document.setMetadata({...metadata,title:`Changed ${index}`,customProperties:metadata.customProperties.map(p=>p.name==='Currency'?{...p,value}:p)});
+   const invalid=structuredClone(changed);invalid.box.x++;slide.replaceElement(original.id,invalid);const blocked=await session.prepareSave({mode:'edit'});assert.equal(blocked.status,'blocked');assert.equal(blocked.plan,undefined);slide.replaceElement(original.id,changed);
+   const ready=await session.prepareSave({mode:'edit'});assert.equal(ready.status,'ready',JSON.stringify(ready.report));bytes=(await session.save(ready.plan)).bytes;
+   const after=readGeneratedZip(bytes);for(const [name,payload] of before)if(!['inventory/core.data','inventory/custom.data','deck/z.xml'].includes(name))assert.deepEqual(after.get(name),payload,name);assert.match(after.get('inventory/custom.data').toString(),/<v:cy>0\.1000<\/v:cy>/);
+  }finally{session.dispose();}
+  const reopened=await importPptx(bytes,mixed);try{assert.equal(reopened.document.metadata.title,`Changed ${index}`);assert.equal(reopened.document.metadata.customProperties[0].value,value);assert.equal(reopened.document.slides[0].hidden,index%2===1);assert.ok(reopened.document.slides[0].elements[0].content[0].runs[0].text.endsWith('!'.repeat(index+1)));}finally{reopened.dispose();}
+ }
 });
