@@ -647,6 +647,8 @@ const sourceCaptions: PptxCaptionInspection = await inspectPptxCaptionTracks(gen
 void sourceCaptions.tracks[0]?.language;
 const captionPictureView: 'effective-drawing' | 'raw-only' | undefined = sourceCaptions.tracks[0]?.pictureView;
 void captionPictureView;
+const captionIdStatus: 'missing' | 'empty' | 'unique' | 'repeated' | undefined = sourceCaptions.tracks[0]?.trackIdStatus;
+void captionIdStatus;
 const sourceTiming: PptxTimingInspection = await inspectPptxTiming(generated[0]!.bytes, { timingLimits: { maxRecords: 10000, maxTextCharacters: 1000000 } });
 const timingReference: PptxTimingReference | undefined = sourceTiming.slides[0]?.nodes[0]?.drawingReference;
 // @ts-expect-error Located source records do not authorize a Core mapping.

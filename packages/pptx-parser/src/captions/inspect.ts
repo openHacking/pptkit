@@ -32,6 +32,7 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
   const budget = limits(options.captionLimits), captured = snapshotOptions(options);
   const c = await structureContext(bytes, { limits: captured.limits, zipLimits: captured.zipLimits, xmlLimits: captured.xmlLimits, ...(captured.signal ? { signal: captured.signal } : {}) }, true);
   const structure = await readStructureFromContext(c), tracks: PptxCaptionTrackSource[] = [], cache = new Map<string, Pick<PptxCaptionTrackSource, 'status' | 'contentType' | 'byteLength'>>();
+  const trackIds = new WeakMap<Meta, Map<string, number>>(), identities: { index: number; group: Map<string, number> }[] = [];
   let workUnits = 0, textCharacters = 0, inspectedBytes = 0;
   const fail = (message: string): never => { throw new PackageInspectionError('package-limit-exceeded', message); };
   const step = async () => { if (++workUnits > budget.maxWorkUnits) fail('Caption inventory exceeds maxWorkUnits.'); await c.checkpoint(); };
@@ -63,8 +64,9 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
           const components: string[] = [];
           for (let current: Meta | undefined = item; current; current = current.parent) { await step(); components.push(text(`Q{${current.node.namespaceUri}}${current.node.local}[${current.ordinal}]`)); }
           const relationshipId = attribute(item.node, 'embed', c.r), trackId = attribute(item.node, 'id'), language = attribute(item.node, 'lang'), label = attribute(item.node, 'label');
+          if (trackId) { let group = trackIds.get(info!); if (!group) { group = new Map(); trackIds.set(info!, group); } group.set(trackId, (group.get(trackId) ?? 0) + 1); identities.push({ index: tracks.length, group }); }
           const identity = children(nvPic!.node).find(node => node.namespaceUri === c.p && node.local === 'cNvPr'), objectId = identity && attribute(identity, 'id');
-          const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, pictureView: pictures.has(picture!.index) ? 'effective-drawing' as const : 'raw-only' as const, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
+          const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, pictureView: pictures.has(picture!.index) ? 'effective-drawing' as const : 'raw-only' as const, trackInfoElementIndex: info!.index, trackIdStatus: trackId === undefined ? 'missing' as const : trackId === '' ? 'empty' as const : 'unique' as const, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
           const relation = c.findRelationship(slide.part, relationshipId);
           if (!relation || relation.type !== REL || relation.fragment !== undefined || (relation.targetMode === 'Internal' && !relation.targetPart)) tracks.push({ ...base, status: 'unsupported-relationship' });
           else if (relation.targetMode === 'External') tracks.push({ ...base, status: 'external', externalTarget: text(relation.target) });
@@ -91,6 +93,7 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
       for (let i = nested.length - 1; i >= 0; i--) stack.push(nested[i]!);
     }
   }
+  for (const identity of identities) { await step(); const track = tracks[identity.index]!; if ((identity.group.get(track.trackId!) ?? 0) > 1) tracks[identity.index] = { ...track, trackIdStatus: 'repeated' }; }
   c.abort();
   for (const track of tracks) { Object.freeze(track.source); Object.freeze(track); }
   return Object.freeze({ schemaVersion: 'pptkit-caption-source-v1', dialect: structure.dialect, view: 'raw-only', tracks: Object.freeze(tracks), workUnits, inspectedBytes });

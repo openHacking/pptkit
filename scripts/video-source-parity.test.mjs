@@ -81,5 +81,5 @@ test('caption source inventory matches Node, browser ESM and global without exte
     for (const bytes of samples) for (const api of [esm, globalThis.PPTKit]) out.push(await api.inspectPptxCaptionTracks(Uint8Array.from(bytes)));
     return out;
   }, { samples: samples.map(sample => [...sample]), url: `data:text/javascript;base64,${bundle.toString('base64')}` });
-  assert.deepEqual(actual, expected.flatMap(result => [result, result])); assert.equal(actual[2].tracks[0].status, 'external'); assert.equal(actual[4].tracks[0].pictureView, 'raw-only'); assert.equal(actual[6].tracks.length, 4); assert.deepEqual(requests, []);
+  assert.deepEqual(actual, expected.flatMap(result => [result, result])); assert.equal(actual[2].tracks[0].status, 'external'); assert.equal(actual[4].tracks[0].pictureView, 'raw-only'); assert.equal(actual[6].tracks.length, 4); assert.deepEqual(actual[6].tracks.slice(0, 2).map(track => track.trackIdStatus), ['repeated', 'repeated']); assert.deepEqual(requests, []);
 });

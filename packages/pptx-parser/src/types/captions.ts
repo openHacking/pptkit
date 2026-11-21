@@ -16,8 +16,12 @@ export interface PptxCaptionTrackSource {
   readonly source: PptxSourceLocation;
   /** Picture presence only; the extension and track remain source-only. */
   readonly pictureView: 'effective-drawing' | 'raw-only';
+  /** One-based raw source index of the enclosing tracksInfo node. */
+  readonly trackInfoElementIndex: number;
   readonly objectId?: string;
   readonly trackId?: string;
+  /** Exact lexical ID observations within that raw tracksInfo node. */
+  readonly trackIdStatus: 'missing' | 'empty' | 'unique' | 'repeated';
   readonly language?: string;
   readonly label?: string;
   readonly relationshipId?: string;

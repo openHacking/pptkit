@@ -14,6 +14,8 @@ test('caption source inventory identifies the observed per-video tracks without 
   assert.equal(result.schemaVersion, 'pptkit-caption-source-v1'); assert.equal(result.dialect, 'transitional'); assert.equal(result.view, 'raw-only');
   assert.deepEqual(result.tracks.map(x => [x.objectId, x.language, x.label, x.status]), [['2', 'en-us', '', 'vtt-header-only'], ['2', 'fr-fr', 'French test', 'vtt-header-only'], ['3', 'es-es', '', 'vtt-header-only']]);
   assert.deepEqual(result.tracks.map(x => x.pictureView), ['effective-drawing', 'effective-drawing', 'effective-drawing']);
+  assert.deepEqual(result.tracks.map(x => x.trackIdStatus), ['unique', 'unique', 'unique']);
+  assert.equal(result.tracks[0].trackInfoElementIndex, result.tracks[1].trackInfoElementIndex); assert.notEqual(result.tracks[0].trackInfoElementIndex, result.tracks[2].trackInfoElementIndex);
   assert.equal(result.inspectedBytes, result.tracks.reduce((sum, x) => sum + x.byteLength, 0));
   assert.ok(result.tracks.every(x => x.source.part === '/ppt/slides/slide1.xml' && x.source.elementIndex > 0 && x.source.path.includes('track[')));
   assert.ok(Object.isFrozen(result) && Object.isFrozen(result.tracks) && Object.isFrozen(result.tracks[0].source));
@@ -83,6 +85,7 @@ test('raw tracks inside opaque compatibility wrappers retain both branches and s
   });
   const result = await inspectPptxCaptionTracks(bytes);
   assert.deepEqual(result.tracks.map(x => x.language), ['en-us', 'en-us', 'fr-fr', 'es-es']);
+  assert.deepEqual(result.tracks.map(x => x.trackIdStatus), ['repeated', 'repeated', 'unique', 'unique']);
   assert.ok(result.tracks.every(x => x.pictureView === 'effective-drawing'));
   assert.ok(result.tracks[0].source.path.includes('Choice')); assert.ok(result.tracks[1].source.path.includes('Fallback'));
   assert.notEqual(result.tracks[0].source.elementIndex, result.tracks[1].source.elementIndex); assert.equal(result.tracks[0].targetPart, result.tracks[1].targetPart);
@@ -90,6 +93,19 @@ test('raw tracks inside opaque compatibility wrappers retain both branches and s
   await assert.rejects(inspectPptxCaptionTracks(bytes, { captionLimits: { maxWorkUnits: result.workUnits - 1 } }), error => error.code === 'package-limit-exceeded');
   const session = await importPptx(bytes, { projection: 'content' });
   try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, bytes); } finally { session.dispose(); }
+});
+
+test('track ID diagnostics are lexical and scoped to raw tracksInfo, including absent and empty IDs', async () => {
+  const first = '{363C0747-3BD1-5B48-835A-65A6D54310F7}', second = '{EF58514D-A54F-4848-8F28-F4B9E9C314C8}', third = '{E6F862C5-E4D2-9A4B-8589-74250C841365}';
+  const duplicate = await mutate(entries => { const key = 'ppt/slides/slide1.xml'; entries[key] = strToU8(strFromU8(entries[key]).replace(second, first).replace(third, first)); });
+  const result = await inspectPptxCaptionTracks(duplicate);
+  assert.deepEqual(result.tracks.map(x => x.trackIdStatus), ['repeated', 'repeated', 'unique']);
+  assert.equal(result.tracks[0].trackInfoElementIndex, result.tracks[1].trackInfoElementIndex); assert.notEqual(result.tracks[0].trackInfoElementIndex, result.tracks[2].trackInfoElementIndex);
+  const missing = await mutate(entries => { const key = 'ppt/slides/slide1.xml'; entries[key] = strToU8(strFromU8(entries[key]).replace(` id="${first}"`, '').replace(`id="${second}"`, 'id=""')); });
+  const absent = await inspectPptxCaptionTracks(missing); assert.deepEqual(absent.tracks.map(x => x.trackIdStatus), ['missing', 'empty', 'unique']);
+  assert.equal(absent.tracks[0].trackId, undefined); assert.equal(absent.tracks[1].trackId, '');
+  const lexical = await mutate(entries => { const key = 'ppt/slides/slide1.xml'; entries[key] = strToU8(strFromU8(entries[key]).replace(second, first.toLowerCase())); });
+  assert.deepEqual((await inspectPptxCaptionTracks(lexical)).tracks.map(x => x.trackIdStatus), ['unique', 'unique', 'unique']);
 });
 
 test('compatibility wrappers around media do not make unrelated track structures admissible', async () => {
