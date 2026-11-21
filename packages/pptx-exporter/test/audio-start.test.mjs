@@ -53,7 +53,7 @@ test('object-click audio coexists with sequence and video effects without timing
 
 test('invalid audio start is diagnosed and rejected before external resolution', async () => {
   const p = createPresentation(); p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'url', value: 'https://example.invalid/a.wav' } });
-  p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'automatic', box: { x: 0, y: 0, width: 40, height: 40 } }] });
+  p.addSlide({ elements: [{ type: 'audio', audioAssetId: 'sound', playbackStart: 'with-previous', box: { x: 0, y: 0, width: 40, height: 40 } }] });
   assert.ok(validatePresentation(p).some(x => x.code === 'invalid-audio-playback-start'));
   let calls = 0; await assert.rejects(generatePptx(p, { audioMode: 'wave-pcm-v1', resolveMedia() { calls++; } }), /Presentation validation failed/); assert.equal(calls, 0);
 });

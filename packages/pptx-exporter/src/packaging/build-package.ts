@@ -44,9 +44,9 @@ interface PartContextResult {
   context: ElementXmlContext;
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
-  audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
+  audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
   videoTargets: { objectId: number; durationMs: number }[];
-  mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
+  mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
 }
 
 function mediaFilename(value: string): string {
@@ -92,9 +92,9 @@ function createPartContext(options: {
   let nextRelationship = relationships.length + 1;
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
-  const audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
+  const audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
   const videoTargets: { objectId: number; durationMs: number }[] = [];
-  const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
+  const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
     theme: options.theme,

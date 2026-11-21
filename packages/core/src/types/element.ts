@@ -158,8 +158,8 @@ export interface AudioElementInput extends ElementBaseInput {
   type: "audio";
   audioAssetId: string;
   posterAssetId?: string;
-  /** Defaults to click-sequence; object-click targets this audio object. */
-  playbackStart?: "click-sequence" | "object-click";
+  /** Defaults to click-sequence; automatic follows the native main sequence. */
+  playbackStart?: "click-sequence" | "object-click" | "automatic";
   /** PowerPoint-style playback volume; defaults to high. */
   playbackVolume?: "low" | "medium" | "high" | "mute";
   /** Repeat until stopped; defaults to false. */
@@ -175,7 +175,7 @@ export interface NormalizedAudioElement extends NormalizedElementBase {
   type: "audio";
   audioAssetId: string;
   posterAssetId?: string;
-  playbackStart?: "click-sequence" | "object-click";
+  playbackStart?: "click-sequence" | "object-click" | "automatic";
   /** PowerPoint-style playback volume; defaults to high. */
   playbackVolume?: "low" | "medium" | "high" | "mute";
   /** Repeat until stopped; defaults to false. */

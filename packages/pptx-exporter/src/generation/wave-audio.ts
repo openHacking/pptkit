@@ -13,7 +13,7 @@ export function planWaveAudio(document: NormalizedPresentation, mode: "wave-pcm-
     if (element.type === "group") { for (const child of element.children) check(child, slideId, true); return; }
     if (element.type !== "audio") return;
     if (mode !== "wave-pcm-v1") return reject("requires audioMode wave-pcm-v1; audio cannot be silently omitted.");
-    if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click") return reject("playbackStart must be click-sequence or object-click.");
+    if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click" && element.playbackStart !== "automatic") return reject("playbackStart must be click-sequence, object-click, or automatic.");
     if (element.playbackVolume !== undefined && element.playbackVolume !== "low" && element.playbackVolume !== "medium" && element.playbackVolume !== "high" && element.playbackVolume !== "mute") return reject("playbackVolume must be low, medium, high, or mute.");
     if (element.loop !== undefined && typeof element.loop !== "boolean") return reject("loop must be a boolean.");
     if (element.rewindAfterPlayback !== undefined && typeof element.rewindAfterPlayback !== "boolean") return reject("rewindAfterPlayback must be a boolean.");

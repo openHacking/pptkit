@@ -1,0 +1,10 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { createPresentation } from "../../packages/core/dist/index.js";
+import { generatePptx } from "../../packages/pptx-exporter/dist/index.js";
+import { readGeneratedZip } from "../../tests/support/read-generated-zip.mjs";
+if (!process.argv[2]) throw new Error("Usage: node scripts/research/generate-audio-auto.mjs <output.pptx> [--single]");
+const parts = readGeneratedZip(await readFile(new URL("../../tests/fixtures/pptkit-mixed-av.pptx", import.meta.url)));
+const p = createPresentation(); p.registerAsset({ id: "sound", kind: "audio", mimeType: "audio/wav", source: { type: "bytes", value: parts.get("ppt/media/sound.wav") } });
+const count = process.argv[3] === "--single" ? 1 : 2;
+p.addSlide({ elements: Array.from({ length: count }, (_, i) => ({ id: `audio-${i}`, type: "audio", audioAssetId: "sound", playbackStart: "automatic", box: { x: 200 + i * 150, y: 100, width: 64, height: 64 } })) });
+await writeFile(process.argv[2], (await generatePptx(p, { audioMode: "wave-pcm-v1" })).bytes);
