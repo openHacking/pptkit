@@ -1,6 +1,7 @@
 import type { Box, NormalizedTransform, Point } from "@pptkit/core";
 import type { LayoutElement, LayoutResult, LayoutSlide } from "@pptkit/layout";
 import { shapePolygonPoints } from "./shape-polygon.js";
+import { dashLengths } from "./style.js";
 
 /** A transformed authoring frame, not an outline or a pixel-accurate painted region. */
 export interface SvgSelectionFrame {
@@ -24,6 +25,7 @@ export interface SvgConnectorStrokeGeometry {
   readonly points: readonly Readonly<Point>[];
   readonly transform: readonly [number, number, number, number, number, number];
   readonly width: number;
+  readonly dash?: readonly number[];
 }
 export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
 export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline }) | SvgSelectionConnector;
@@ -106,8 +108,10 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         const points = Object.freeze(rawPoints.map(point => apply(matrix, point.x, point.y)));
         if (!points.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
         const style = element.style;
-        const strokeGeometry = options.includeConnectorStrokeGeometry && style.paint.type === "solid" && style.paint.opacity > 0 && style.width > 0 && style.dash === "solid"
-          ? Object.freeze({ points: Object.freeze(rawPoints.map(point => Object.freeze({ ...point }))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: style.width })
+        const dash = dashLengths(style);
+        if (options.includeConnectorStrokeGeometry && dash && !Number.isFinite(dash.reduce((sum, value) => sum + value, 0))) throw new RangeError("Connector dash pattern exceeds finite hit-test range.");
+        const strokeGeometry = options.includeConnectorStrokeGeometry && style.paint.type === "solid" && style.paint.opacity > 0 && style.width > 0
+          ? Object.freeze({ points: Object.freeze(rawPoints.map(point => Object.freeze({ ...point }))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: style.width, ...(dash ? { dash: Object.freeze([...dash]) } : {}) })
           : undefined;
         frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points, ...(strokeGeometry ? { strokeGeometry } : {}) }));
       } else if (element.type !== "connector" && b.width > 0 && b.height > 0) {
@@ -153,13 +157,13 @@ export function getSvgSlideSelectionGeometry(layout: LayoutResult, slideIndex: n
   return collect(slideLayers(layout, slideIndex), true, options) as readonly SvgSelectionGeometry[];
 }
 
-/** Hit solid connector stroke bodies in paint order; arrows and other objects are excluded. */
+/** Hit connector stroke bodies in paint order; arrows and other objects are excluded. */
 export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionConnector | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
   for (let i = items.length - 1; i >= 0; i--) {
     const item = items[i]!;
     if (item.kind !== "connector" || !item.strokeGeometry) continue;
-    const { transform: [a, b, c, d, e, f], points, width } = item.strokeGeometry;
+    const { transform: [a, b, c, d, e, f], points, width, dash } = item.strokeGeometry;
     const scale = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
     if (!Number.isFinite(scale) || scale === 0) throw new RangeError("Connector transform is singular or nonfinite.");
     const aa = a / scale, bb = b / scale, cc = c / scale, dd = d / scale, determinant = aa * dd - bb * cc;
@@ -167,6 +171,8 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
     if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(determinant) || determinant === 0) throw new RangeError("Connector transform is singular or outside finite hit-test range.");
     const localX = (x * dd - y * cc) / determinant, localY = (y * aa - x * bb) / determinant;
     if (!Number.isFinite(localX) || !Number.isFinite(localY)) throw new RangeError("Connector hit-test exceeds finite range.");
+    const period = dash?.reduce((sum, value) => sum + value, 0) ?? 0;
+    let phase = 0;
     for (let j = 1; j < points.length; j++) {
       const p = points[j - 1]!, q = points[j]!;
       const dx = q.x - p.x, dy = q.y - p.y, length = Math.hypot(dx, dy), px = localX - p.x, py = localY - p.y;
@@ -174,7 +180,26 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
       const projection = length === 0 ? 0 : px * (dx / length) + py * (dy / length);
       if (!Number.isFinite(projection)) throw new RangeError("Connector geometry exceeds finite hit-test range.");
       const along = Math.max(0, Math.min(length, projection));
-      if (Math.hypot(px - (length === 0 ? 0 : dx / length) * along, py - (length === 0 ? 0 : dy / length) * along) <= width / 2) return item;
+      const ux = length === 0 ? 0 : dx / length, uy = length === 0 ? 0 : dy / length;
+      if (!dash) {
+        if (Math.hypot(px - ux * along, py - uy * along) <= width / 2) return item;
+      } else {
+        const shift = along % period, at = phase >= period - shift ? phase - (period - shift) : phase + shift;
+        let start = 0;
+        for (let k = 0; k < dash.length; k += 2) {
+          const end = start + dash[k]!;
+          for (const cycle of [-1, 0, 1]) {
+            const left = Math.max(-along, start - at + cycle * period), right = Math.min(length - along, end - at + cycle * period);
+            if (left <= right) {
+              const offset = Math.max(left, Math.min(right, 0)), position = along + offset;
+              if (Math.hypot(px - ux * position, py - uy * position) <= width / 2) return item;
+            }
+          }
+          start = end + dash[k + 1]!;
+        }
+        const advance = length % period;
+        phase = phase >= period - advance ? phase - (period - advance) : phase + advance;
+      }
     }
   }
   return undefined;

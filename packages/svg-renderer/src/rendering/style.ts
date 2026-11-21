@@ -21,12 +21,16 @@ export function paintAttributes(
   return `${kind}="${colorValue(paint.color, theme)}" ${kind}-opacity="${paint.opacity}"`;
 }
 
-export function dashArray(style: NormalizedStrokeStyle): string | undefined {
+export function dashLengths(style: NormalizedStrokeStyle): readonly number[] | undefined {
   const width = Math.max(style.width, 1);
-  if (style.dash === "dash") return `${4 * width} ${3 * width}`;
-  if (style.dash === "dot") return `${width} ${2 * width}`;
-  if (style.dash === "dashDot") return `${4 * width} ${2 * width} ${width} ${2 * width}`;
+  if (style.dash === "dash") return [4 * width, 3 * width];
+  if (style.dash === "dot") return [width, 2 * width];
+  if (style.dash === "dashDot") return [4 * width, 2 * width, width, 2 * width];
   return undefined;
+}
+
+export function dashArray(style: NormalizedStrokeStyle): string | undefined {
+  return dashLengths(style)?.join(" ");
 }
 
 export function strokeAttributes(style: NormalizedStrokeStyle, theme: NormalizedPresentationTheme): string {

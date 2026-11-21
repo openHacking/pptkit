@@ -5,6 +5,32 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('dashed connector strokes match Chromium across segments and transforms', async t => {
+  const doc = createPresentation();
+  const line = (id, y, dash, width) => ({ type: 'connector', id, start: { x: 10, y }, route: [{ x: 57, y }, { x: 57, y: y + 20 }], end: { x: 90, y: y + 20 }, style: { paint: { type: 'solid', color: '000000' }, width, dash } });
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 150 }, coordinateSize: { width: 100, height: 150 }, transform: { rotation: 19, flipV: true }, children: [line('dash', 10, 'dash', 3), line('dot', 55, 'dot', 0.6), line('dashDot', 100, 'dashDot', 2)] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg);
+  await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+    const failures = [];
+    for (const item of items) {
+      const path = document.querySelector(`[data-pptkit-element-id="${item.elementId}"] polyline`), matrix = path.getCTM();
+      const y0 = item.elementId === 'dash' ? 10 : item.elementId === 'dot' ? 55 : 100;
+      for (let y = y0 - 5.137; y < y0 + 25; y += 0.731) for (let x = 6.193; x < 95; x += 0.893) {
+        const point = new DOMPoint(x, y), transformed = point.matrixTransform(matrix);
+        const expected = path.isPointInStroke(point), actual = !!PPTKit.hitTestSvgConnectorStrokes([item], transformed);
+        if (expected !== actual) failures.push({ id: item.elementId, x, y, expected, actual });
+      }
+    }
+    return { count: items.length, failures: failures.slice(0, 8), total: failures.length };
+  }, layout);
+  assert.deepEqual(result, { count: 3, failures: [], total: 0 });
+});
+
 test('connector stroke hits match Chromium for transformed solid polylines', async t => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 23, flipH: true }, children: [

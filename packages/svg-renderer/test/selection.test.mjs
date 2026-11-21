@@ -209,12 +209,26 @@ test('solid connector stroke hit tests use local widths through nonuniform group
   assert.equal(hitTestSvgConnectorStrokes(items, { x: 200, y: 156 }), undefined);
   assert.equal(hitTestSvgConnectorStrokes(items, { x: 112, y: 150 }).elementId, 'line');
   assert.equal(hitTestSvgConnectorStrokes(items, { x: 109, y: 150 }), undefined);
-  assert.equal(hitTestSvgConnectorStrokes(items, { x: 200, y: 170 }), undefined);
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 150, y: 170 }).elementId, 'dashed');
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 220, y: 170 }), undefined);
   assert.ok(Object.isFrozen(items[0].strokeGeometry.points[0]));
   assert.throws(() => hitTestSvgConnectorStrokes(items, { x: NaN, y: 0 }), TypeError);
   const singular = structuredClone(items); singular[0].strokeGeometry.transform = [0, 0, 0, 0, 0, 0];
   assert.throws(() => hitTestSvgConnectorStrokes(singular, { x: 0, y: 0 }), RangeError);
   assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: 1 }), TypeError);
+});
+
+test('dash phase continues through bends and round caps extend into gaps', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'connector', id: 'line', start: { x: 0, y: 0 }, route: [{ x: 5, y: 0 }], end: { x: 5, y: 30 }, style: { paint: { type: 'solid', color: '000000' }, width: 2, dash: 'dash' } }] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeConnectorStrokeGeometry: true });
+  const hit = (x, y) => !!hitTestSvgConnectorStrokes(items, { x, y });
+  assert.equal(hit(5, 3.9), true);
+  assert.equal(hit(5, 4.1), false);
+  assert.equal(hit(5, 8.1), true);
+  assert.equal(hit(5, 10), true);
+  assert.deepEqual(items[0].strokeGeometry.dash, [8, 6]);
+  assert.ok(Object.isFrozen(items[0].strokeGeometry.dash));
 });
 
 test('zero-length connector segments remain selectable within the explicit tolerance', () => {
