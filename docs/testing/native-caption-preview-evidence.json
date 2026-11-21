@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint for Mac",
+  "version": "16.104",
+  "sourcePath": "tests/fixtures/powerpoint-caption-playback.pptx",
+  "sourceSha256": "15355832dc2918cbab2af26f026677b02c1a70fb1e671d33d292aa4e82a65880",
+  "sourceTrackPath": "tests/fixtures/caption-playback-source.vtt",
+  "trimStartMs": 2000,
+  "trimEndMs": 2000,
+  "mediaDurationMs": 12000,
+  "sourceTrackLanguage": "en-us",
+  "preview": {
+    "initialMenuSelection": "off",
+    "selectedTrack": "English (United States)",
+    "observations": [
+      { "displayedElapsedMs": 430, "caption": "TWO TO FOUR", "cueStartMs": 2000, "cueEndMs": 4000 },
+      { "displayedElapsedMs": 2400, "caption": "FOUR TO SIX", "cueStartMs": 4000, "cueEndMs": 6000 },
+      { "displayedElapsedMs": 4470, "caption": "SIX TO EIGHT", "cueStartMs": 6000, "cueEndMs": 8000 }
+    ],
+    "offSelectionHidText": true,
+    "selectedAfterSaveCloseReopenSameAppSession": true
+  },
+  "slideshow": {
+    "startSettingOnResearchCopy": "automatic",
+    "observedCaptions": ["TWO TO FOUR", "FOUR TO SIX", "EIGHT TO TEN"]
+  },
+  "savedResearchCopy": {
+    "path": ".tmp/native-captions/caption-playback-research-copy.pptx",
+    "sha256": "d55f49b48edaf64ceb63d3c507bc687ab6aad4690b6b3346b3f8851e7d1f4acf",
+    "changedParts": ["docProps/app.xml", "docProps/core.xml", "ppt/slides/slide1.xml", "ppt/viewProps.xml"]
+  },
+  "scope": "Manual observation on one sample; screenshots were viewed but not retained. Reopen was in the same application session. Selection persistence could be application state. No sound, cue-boundary precision, other producers or screen-reader behavior was independently verified."
+}

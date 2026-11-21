@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -59,6 +60,24 @@ test('native playback sample retains source-relative cue times and trim', () => 
   assert.deepEqual(video.trims, [{ st: '2000', end: '2000' }]);
   assert.match(video.tracks[0].text, /00:00:00\.000 --> 00:00:02\.000\nZERO TO TWO/);
   assert.match(video.tracks[0].text, /00:00:10\.000 --> 00:00:12\.000\nTEN TO TWELVE/);
+});
+
+test('caption playback observation is bound to the retained source and source-relative cues', async () => {
+  const evidence = JSON.parse(await readFile(join(root, 'docs/testing/native-caption-preview-evidence.json'), 'utf8'));
+  const bytes = await readFile(join(root, evidence.sourcePath)), track = await readFile(join(root, evidence.sourceTrackPath), 'utf8');
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), evidence.sourceSha256);
+  const [video] = inventory(join(root, evidence.sourcePath));
+  assert.deepEqual(video.trims, [{ st: String(evidence.trimStartMs), end: String(evidence.trimEndMs) }]);
+  assert.equal(video.tracks.length, 1); assert.equal(video.tracks[0].language, evidence.sourceTrackLanguage); assert.equal(video.tracks[0].text, `${track}\n`);
+  const timestamp = ms => `00:00:${String(Math.floor(ms / 1000)).padStart(2, '0')}.${String(ms % 1000).padStart(3, '0')}`;
+  for (const observation of evidence.preview.observations) {
+    const sourceTime = observation.displayedElapsedMs + evidence.trimStartMs;
+    assert.ok(sourceTime >= observation.cueStartMs && sourceTime < observation.cueEndMs);
+    assert.ok(track.includes(`${timestamp(observation.cueStartMs)} --> ${timestamp(observation.cueEndMs)}\n${observation.caption}`));
+  }
+  assert.equal(evidence.preview.initialMenuSelection, 'off'); assert.equal(evidence.preview.offSelectionHidText, true);
+  assert.equal(evidence.slideshow.startSettingOnResearchCopy, 'automatic'); assert.ok(evidence.slideshow.observedCaptions.every(caption => track.includes(caption)));
+  assert.match(evidence.scope, /screenshots were viewed but not retained/);
 });
 
 test('research inventory identifies damaged track content and relationships without loading external targets', async () => {
