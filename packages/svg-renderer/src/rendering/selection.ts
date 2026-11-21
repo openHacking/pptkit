@@ -131,9 +131,11 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
         const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
         const stroke = element.type === "shape" ? element.style.stroke : undefined;
-        const shapeStrokeGeometry = includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape === "rect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.dash === "solid"
-          ? Object.freeze({ points: Object.freeze([{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }, { x: b.x, y: b.y }].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width })
-          : undefined;
+        let shapeStrokeGeometry: SvgConnectorStrokeGeometry | undefined;
+        if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape !== "ellipse" && element.shape !== "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.dash === "solid") {
+          const raw = element.shape === "rect" ? [{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }] : shapePolygonPoints(b, element.shape, element.slant);
+          shapeStrokeGeometry = Object.freeze({ points: Object.freeze([...raw, raw[0]!].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width });
+        }
         frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}), ...(shapeStrokeGeometry ? { shapeStrokeGeometry } : {}) }));
       }
     }
@@ -221,7 +223,7 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
   return undefined;
 }
 
-/** Hit captured rectangular shape strokes, without testing their interiors. */
+/** Hit captured polygonal shape strokes, without testing their interiors. */
 export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], point: Point): Extract<SvgSelectionGeometry, { kind: "frame" }> | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
   for (let i = items.length - 1; i >= 0; i--) {

@@ -273,6 +273,19 @@ test('rectangular strokes include outer edges and corners through group scaling'
   }
 });
 
+test('polygonal shape strokes use actual preset edges and skip curved outlines', () => {
+  const doc = createPresentation();
+  const style = { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 4 } };
+  doc.addSlide({ elements: [shape('triangle', box(0, 0, 100, 100), { shape: 'triangle', style }), shape('ellipse', box(200, 0, 100, 100), { shape: 'ellipse', style }), shape('round', box(400, 0, 100, 100), { shape: 'roundRect', style })] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: -1 }).elementId, 'triangle');
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: 50 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 0, y: 0 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 250, y: 0 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 450, y: 0 }), undefined);
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 50, y: -1 }).elementId, 'triangle');
+});
+
 test('zero-length connector markers use SVG default tangent and remain selectable', () => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'connector', id: 'zero', start: { x: 50, y: 50 }, end: { x: 50, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: 'triangle', endArrow: 'triangle' } }] });
