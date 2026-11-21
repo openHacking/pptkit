@@ -282,6 +282,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const companyInsertionInput = [...encodeMetadata(companyInsertion)], expectedCompanyInsertion = await exerciseCompanyInsertion({ importPptx }, companyInsertionInput);
   const variants = metadataFixture(); variants.add('custom', custom(2, 'i1', '-128', 'name="Small"') + custom(3, 'ui2', '0', 'name="Unsigned"') + custom(4, 'r4', '1.25', 'name="Single"') + custom(5, 'bstr', 'original', 'name="Basic"') + custom(6, 'lpstr', 'original', 'name="Narrow"') + custom(7, 'date', '2020-02-03T04:05:06.120000+08:00', 'name="Date"') + custom(8, 'decimal', '1.25', 'name="Decimal"'));
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
+  const collision = metadataFixture(); collision.add('custom', custom(2, 'lpwstr', 'first', 'name="_x005F_x0041_"') + custom(3, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x005f_x0041_"'));
+  const collisionInput = [...encodeMetadata(collision)];
+  const collisionSession = await importPptx(new Uint8Array(collisionInput), { projection: 'content' });
+  const expectedCollision = { properties: collisionSession.document.metadata.customProperties, tiers: collisionSession.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) };
+  collisionSession.dispose();
   const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
   const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
   const nodeCurrencySession = await importPptx(new Uint8Array(currencyInput), { projection: 'content', customCurrencyProjection: 'exact-v1' });
@@ -301,6 +306,12 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
   for (const format of ['esm', 'global']) {
     if (format === 'global') for (const content of globals) await page.addScriptTag({ content });
+    const actualCollision = await page.evaluate(async ({ format, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      const session = await api.importPptx(new Uint8Array(input), { projection: 'content' });
+      try { return { properties: session.document.metadata.customProperties, tiers: session.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) }; } finally { session.dispose(); }
+    }, { format, input: collisionInput });
+    assert.deepEqual(actualCollision, expectedCollision);
     const actualCurrencyProjection = await page.evaluate(async ({ format, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       const session = await api.importPptx(new Uint8Array(input), { projection: 'content', customCurrencyProjection: 'exact-v1' });

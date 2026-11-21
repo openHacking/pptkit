@@ -1,4 +1,4 @@
-import { projectCustomProperty, sourceDateToUtc } from "./project-custom-properties.js";
+import { decodeLiteralEscapes, projectCustomProperty, sourceDateToUtc } from "./project-custom-properties.js";
 import { createPresentation, type PresentationMetadataInput } from "@pptkit/core";
 import type { PptxInspection } from "../types/structure.js";
 import { PptxImportError, type ImportFinding, type ImportReport, type ImportSourceIdentity, type ImportDiagnostic, type PptxSourceLocation } from "../types/import.js";
@@ -95,7 +95,8 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
       await checkpoint();
       const value = projectCustomProperty(property) ?? currencyProjection?.[projected.length];
       projected.push(value);
-      if (value) nameCounts.set(value.name, (nameCounts.get(value.name) ?? 0) + 1);
+      const decodedName = property.name === undefined ? undefined : decodeLiteralEscapes(property.name);
+      if (decodedName !== undefined) nameCounts.set(decodedName, (nameCounts.get(decodedName) ?? 0) + 1);
     }
     for (const [index, property] of inspection.metadata.custom.properties.entries()) {
       await checkpoint();
