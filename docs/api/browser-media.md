@@ -40,7 +40,7 @@ const media = await resolveAndMountBrowserMedia(container, {
 lifetime.abort();
 ```
 
-A supplied signal must belong to the container's browser window. After mounting, aborting it disposes that instance and publishes `disposed`; explicit `dispose()` detaches the abort listener. Distinct mounts keep separate URLs and lifetimes. The size check is made **after** the resolver returns a Blob: it is not a streaming/download budget. The resolver must enforce authorization, URL/redirect policy, decompression and actual transfer limits itself. The adapter never fetches an address on its own, cannot stop a resolver that ignores its signal, and does not share or cache fetched blobs. Chromium tests cover an explicit fetch resolver, failure and retry, settings mutation, size rejection, cancellation with a late result, abort during/after mounting, and twenty repeated mount/leave/cancel cycles with owned listeners and object URLs counted.
+A supplied signal must belong to the container's browser window. After mounting, aborting it disposes that instance and publishes `disposed`; explicit `dispose()` detaches the abort listener. Distinct mounts keep separate URLs and lifetimes. The size check is made **after** the resolver returns a Blob: it is not a streaming/download budget. The resolver must enforce authorization, URL/redirect policy, decompression and actual transfer limits itself. The adapter never directly fetches an address, cannot stop a resolver that ignores its signal, and does not share or cache fetched blobs. Browser media engines may themselves follow references inside formats they support; use an appropriate network sandbox or CSP when loading untrusted media. Chromium tests cover an explicit fetch resolver, failure and retry, settings mutation, size rejection, cancellation with a late result, abort during/after mounting, and twenty repeated mount/leave/cancel cycles with owned listeners and object URLs counted.
 
 ## Composing with the bounded HTTP resolver
 
@@ -69,3 +69,21 @@ const controller = await resolveAndMountBrowserMedia(container, {
 ```
 
 The HTTP resolver counts actual response bytes and asks the supplied policy before requests. Redirects default to zero; browsers can expose manual redirects as opaque, in which case they are rejected. Authorization and URL/DNS policy remain application responsibilities. A local-server Chromium test covers authorized playback, denied requests, streaming oversize, opaque redirect rejection and cancellation of an incomplete response. No HTTP request is made unless the caller invokes the HTTP resolver.
+
+## Mount a Layout media object
+
+`mountLayoutMedia(container, layout, options)` connects a **resolved** `LayoutResult` to the same explicit browser controller. It looks up exactly one slide by `slideId`, exactly one slide-local audio/video object by `elementId`, and exactly one matching asset. It returns those identities, the media kind, the authored `playbackStart` intent and the controller. The intent is informative: even `automatic` does not start playback. The consumer owns slide selection, user gestures, geometry, transforms, layering and placement of the supplied container; this method does not overlay or mutate an SVG. Layout/master-inherited media are not searched. A hidden element or an element inside a hidden group is rejected; an explicitly selected hidden slide may be mounted. Group contents are searched without treating their local boxes as screen coordinates.
+
+```ts
+import { mountLayoutMedia } from '@pptkit/svg-renderer/media';
+
+const mounted = await mountLayoutMedia(container, layout, {
+  slideId: 'slide-1', elementId: 'video-1', maxBytes: 4_000_000,
+  signal: lifetime.signal, onResolveState: state => reportLoading(state.status),
+});
+// Placement is application-owned; call mounted.controller.play() from a gesture.
+```
+
+Byte-backed Core assets are decoded from canonical Base64 with the caller's byte limit checked before decoding. A declared audio/video MIME is required unless the caller supplies `contentType`; a supplied MIME's base type must match an existing declaration. For path or URL sources there is no default loader: `resolveExternal(asset, { signal, maxBytes })` must be provided explicitly. The frozen request is detached from Layout, and the resolver owns authorization, stream/redirect budgets and MIME validation. The returned Blob is checked against `maxBytes`; it does not itself bound the resolver's transfer. Layout and option values are captured before asynchronous resolution. Audio `mute` maps to volume 0.8 with mute enabled; low, medium and high map to 0.2, 0.5 and 0.8. Video mute remains independent of its selected volume. Trim, loop and rewind use the same approximate browser semantics documented above.
+
+Missing or ambiguous IDs/assets, wrong asset kind, malformed/oversize bytes, unsupported source types and invalid settings fail rather than silently choosing a target. Slide, asset and element traversal have fixed 100,000-item ceilings and reject cycles or repeated object references. The adapter uses independent URLs even when objects reference the same asset; dispose each controller or abort its lifetime. Browser tests cover mixed audio/video, independent instances, explicit external resolution, no network, identity conflicts, hidden objects, source mutation, limits and cancellation. They do not validate browser/native timing equivalence or geometry alignment.

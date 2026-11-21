@@ -5,6 +5,8 @@ import { chromium } from '@playwright/test';
 import { createServer } from 'node:http';
 import { once } from 'node:events';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
+import { createPresentation } from '../packages/core/dist/index.js';
+import { resolveLayout } from '../packages/layout/dist/index.js';
 
 async function setup(t) {
   const browser = await chromium.launch(); t.after(() => browser.close());
@@ -393,4 +395,89 @@ test('authorized streaming HTTP resolver composes with playback, budgets and can
   assert.ok(hits.slice(1).every(x => x.cookie === null && x.referrer === null));
   for (let i = 0; i < 30 && !slowClosed; i++) await new Promise(resolve => setTimeout(resolve, 20));
   assert.equal(slowClosed, true);
+});
+
+async function mediaLayout() {
+  const parts = readGeneratedZip(await readFile('tests/fixtures/pptkit-mixed-av.pptx'));
+  const p = createPresentation();
+  p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: parts.get('ppt/media/movie.mp4') } });
+  p.registerAsset({ id: 'sound', kind: 'audio', mimeType: 'audio/wav', source: { type: 'bytes', value: parts.get('ppt/media/sound.wav') } });
+  p.addSlide({ id: 'page', elements: [
+    { type: 'video', id: 'video-a', videoAssetId: 'movie', playbackStart: 'automatic', playbackVolume: 'low', muted: true, trimStartMs: 150, trimEndMs: 50, box: { x: 0, y: 0, width: 40, height: 40 } },
+    { type: 'video', id: 'video-b', videoAssetId: 'movie', playbackStart: 'object-click', box: { x: 50, y: 0, width: 40, height: 40 } },
+    { type: 'audio', id: 'sound-a', audioAssetId: 'sound', playbackVolume: 'mute', loop: true, box: { x: 100, y: 0, width: 40, height: 40 } },
+  ] });
+  return resolveLayout(p);
+}
+
+test('layout bridge mounts explicit media identities with independent authored settings', async t => {
+  const { page, requests } = await setup(t), layout = await mediaLayout();
+  const result = await page.evaluate(async input => {
+    const host = document.createElement('div'); document.body.append(host); const snapshot = JSON.stringify(input);
+    const options = { slideId: 'page', elementId: 'video-a', maxBytes: 1000000 };
+    const pending = adapter.mountLayoutMedia(host, input, options); options.slideId = 'changed'; options.elementId = 'changed';
+    const first = await pending;
+    const second = await adapter.mountLayoutMedia(host, input, { slideId: 'page', elementId: 'video-b', maxBytes: 1000000 });
+    const audio = await adapter.mountLayoutMedia(host, input, { slideId: 'page', elementId: 'sound-a', maxBytes: 1000000 });
+    const ready = controller => new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+    await Promise.all([ready(first.controller), ready(second.controller), ready(audio.controller)]);
+    const before = { ids: [first.slideId, first.elementId, first.assetId, first.kind, first.playbackStart, second.playbackStart], first: [first.controller.element.volume, first.controller.element.muted, first.controller.element.currentTime], second: [second.controller.element.volume, second.controller.element.muted, second.controller.element.paused], audio: [audio.controller.element.volume, audio.controller.element.muted], untouched: JSON.stringify(input) === snapshot, children: host.children.length };
+    await first.controller.play(); const independent = !first.controller.element.paused && second.controller.element.paused && audio.controller.element.paused;
+    first.controller.dispose(); const afterOne = host.children.length; second.controller.dispose(); audio.controller.dispose();
+    return { before, independent, afterOne, remaining: host.children.length };
+  }, layout);
+  assert.deepEqual(result.before.ids, ['page', 'video-a', 'movie', 'video', 'automatic', 'object-click']);
+  assert.deepEqual(result.before.first, [0.2, true, 0.15]); assert.deepEqual(result.before.second, [0.8, false, true]); assert.deepEqual(result.before.audio, [0.8, true]);
+  assert.equal(result.before.untouched, true); assert.equal(result.before.children, 3); assert.equal(result.independent, true); assert.equal(result.afterOne, 2); assert.equal(result.remaining, 0); assert.deepEqual(requests, []);
+});
+
+test('layout bridge rejects invalid identity, hidden media, invalid sources and oversize before external loading', async t => {
+  const { page, requests } = await setup(t), layout = await mediaLayout();
+  const result = await page.evaluate(async input => {
+    const host = document.createElement('div'); document.body.append(host); let calls = 0;
+    const attempt = async (change, options = {}) => {
+      const candidate = structuredClone(input); change(candidate); try { const result = await adapter.mountLayoutMedia(host, candidate, { slideId: 'page', elementId: 'video-a', maxBytes: 1000000, resolveExternal() { calls++; throw Error('unexpected resolver'); }, ...options }); result.controller.dispose(); return 'ok'; } catch (error) { return error.name; }
+    };
+    const errors = [];
+    errors.push(await attempt(() => {}, { slideId: 'missing' }));
+    errors.push(await attempt(l => { l.slides[0].elements.push(structuredClone(l.slides[0].elements[0])); }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].hidden = true; }));
+    errors.push(await attempt(l => { l.assets[0].kind = 'audio'; }));
+    errors.push(await attempt(l => { l.assets[0].source = { type: 'bytes', value: 'AB==', encoding: 'base64' }; }));
+    errors.push(await attempt(l => { l.assets[0].source = { type: 'bytes', value: 'AAAA', encoding: 'bad' }; }));
+    errors.push(await attempt(() => {}, { maxBytes: 10 }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].muted = null; }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].playbackVolume = null; }));
+    errors.push(await attempt(() => {}, { contentType: 'video/webm' }));
+    errors.push(await attempt(() => {}, { contentType: 'video/' }));
+    errors.push(await attempt(l => { l.assets.push(structuredClone(l.assets[0])); }));
+    errors.push(await attempt(l => { l.slides.push(structuredClone(l.slides[0])); }));
+    errors.push(await attempt(l => { l.assets[0].source = { type: 'other', value: 'bad' }; }));
+    errors.push(await attempt(l => { const cycle = { type: 'group', id: 'cycle', hidden: false, children: [] }; cycle.children.push(cycle); l.slides[0].elements.push(cycle); }));
+    errors.push(await attempt(l => { l.slides[0].elements = Array(100001).fill(l.slides[0].elements[0]); }));
+    const hiddenSlide = await attempt(l => { l.slides[0].hidden = true; });
+    const nested = await attempt(l => { const video = l.slides[0].elements[0]; l.slides[0].elements[0] = { type: 'group', id: 'hidden-group', hidden: true, children: [video] }; });
+    const external = structuredClone(input); external.assets[0].source = { type: 'url', value: 'https://example.invalid/movie.mp4' };
+    let absent; try { await adapter.mountLayoutMedia(host, external, { slideId: 'page', elementId: 'video-a', maxBytes: 1000000 }); } catch (error) { absent = error.name; }
+    return { errors, hiddenSlide, nested, absent, calls, children: host.children.length };
+  }, layout);
+  assert.deepEqual(result.errors, ['TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'RangeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'TypeError', 'RangeError']);
+  assert.equal(result.hiddenSlide, 'ok'); assert.equal(result.nested, 'TypeError'); assert.equal(result.absent, 'TypeError'); assert.equal(result.calls, 0); assert.equal(result.children, 0); assert.deepEqual(requests, []);
+});
+
+test('layout bridge snapshots external source and settings, enforces budget and propagates cancellation', async t => {
+  const { page, requests, movie } = await setup(t), layout = await mediaLayout();
+  const result = await page.evaluate(async ({ input, bytes }) => {
+    input.assets[0].source = { type: 'url', value: 'https://example.invalid/movie.mp4' };
+    const host = document.createElement('div'); document.body.append(host); const lifetime = new AbortController(); let release, observed;
+    const options = { slideId: 'page', elementId: 'video-a', maxBytes: 1000000, signal: lifetime.signal, resolveExternal(asset, context) { observed = [asset.id, asset.source.value, context.maxBytes, context.signal === lifetime.signal, Object.isFrozen(asset), Object.isFrozen(asset.source), Object.isFrozen(context)]; return new Promise(resolve => { release = resolve; }); } };
+    const pending = adapter.mountLayoutMedia(host, input, options); await Promise.resolve();
+    input.assets[0].source.value = 'https://changed.invalid/'; input.slides[0].elements[0].playbackVolume = 'high'; options.elementId = 'changed';
+    release(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); const mounted = await pending;
+    const values = { observed, elementId: mounted.elementId, volume: mounted.controller.element.volume, muted: mounted.controller.element.muted };
+    lifetime.abort(); let oversize; try { await adapter.mountLayoutMedia(host, input, { slideId: 'page', elementId: 'video-a', maxBytes: 10, resolveExternal: () => new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }) }); } catch (e) { oversize = e.name; }
+    return { values, status: mounted.controller.state.status, oversize, children: host.children.length };
+  }, { input: layout, bytes: movie });
+  assert.deepEqual(result.values, { observed: ['movie', 'https://example.invalid/movie.mp4', 1000000, true, true, true, true], elementId: 'video-a', volume: 0.2, muted: true });
+  assert.equal(result.status, 'disposed'); assert.equal(result.oversize, 'RangeError'); assert.equal(result.children, 0); assert.deepEqual(requests, []);
 });
