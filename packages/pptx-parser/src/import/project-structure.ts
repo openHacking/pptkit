@@ -8,7 +8,7 @@ import type { structureContext } from "../presentation/structure-context.js";
 import { contentReader } from "./content-reader.js";
 
 export interface MasterOwner { kind: "master" | "layout" | "slide"; id: string; name: string; part: string; masterId?: string; layoutPart?: string; showMasterShapes?: boolean }
-export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false) {
+export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false, currencyProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[]) {
   const source = { part: inspection.mainPart, relationshipId: inspection.mainRelationshipId };
   if (inspection.kind !== "presentation" || inspection.macroEnabled) throw new PptxImportError("import-unsupported", "This import profile accepts non-macro presentation documents only, not templates or slideshows.", source);
   for (const part of inspection.package.parts) {
@@ -90,10 +90,10 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
   }
   if (inspection.metadata.custom) {
     const mapped: NonNullable<PresentationMetadataInput["customProperties"]>[number][] = [];
-    const projected = [], nameCounts = new Map<string, number>();
+    const projected: (NonNullable<PresentationMetadataInput["customProperties"]>[number] | undefined)[] = [], nameCounts = new Map<string, number>();
     for (const property of inspection.metadata.custom.properties) {
       await checkpoint();
-      const value = projectCustomProperty(property);
+      const value = projectCustomProperty(property) ?? currencyProjection?.[projected.length];
       projected.push(value);
       if (value) nameCounts.set(value.name, (nameCounts.get(value.name) ?? 0) + 1);
     }
@@ -102,6 +102,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
       const value = projected[index], unique = value && nameCounts.get(value.name) === 1;
       if (unique) mapped.push(value);
       finding("metadata.custom-property", "import", unique ? "editable" : "unsupported", { part: inspection.metadata.custom.part, path: "Properties/property", sourceObjectId: `${property.formatId}:${property.id}` }, unique ? "The typed source value maps to Core; source IDs and lexical form remain in inspection. This does not enable source-preserving edit save." : "This custom property remains in inspection and is not represented in the Core metadata projection; its type, value or decoded name may be unsupported or ambiguous.");
+      if (unique && currencyProjection?.[index]) finding("metadata.custom-property-currency", "export", "fallback", { part: inspection.metadata.custom.part, path: "Properties/property", sourceObjectId: `${property.formatId}:${property.id}` }, "Currency projects read-only to a real number; fresh export does not preserve its currency type or lexical form.");
     }
     metadata.customProperties = mapped;
   }

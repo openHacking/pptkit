@@ -10,7 +10,9 @@ import { structureContext } from "../presentation/structure-context.js";
 import { PackageInspectionError } from "../types/archive.js";
 import { PptxImportError, type ImportedPictureSource, type ImportedSlideVisibilitySource, type ImportedCoreMetadataSource, type ImportedPresentation, type PptxImportOptions, type PptxSessionLimits } from "../types/import.js";
 import { projectStructure } from "./project-structure.js";
-import { decodeLiteralEscapes, projectCustomProperty } from "./project-custom-properties.js";
+import { decodeLiteralEscapes, projectCurrencyProperty, projectCustomProperty } from "./project-custom-properties.js";
+import { children } from "../presentation/structure-xml.js";
+import { XMLNS } from "../compatibility/configuration.js";
 import { createSession } from "./session.js";
 import { freezeReport } from "./state.js";
 import { projectContent } from "./project-content.js";
@@ -46,6 +48,8 @@ export function captureImportOptions(options: PptxImportOptions) {
   if (!options || typeof options !== "object" || Array.isArray(options)) throw new TypeError("importPptx requires explicit projection: structure or content.");
   const mode = options.projection;
   if (mode !== "structure" && mode !== "content") throw new TypeError("importPptx requires explicit projection: structure or content.");
+  const customCurrencyProjection = options.customCurrencyProjection;
+  if (customCurrencyProjection !== undefined && (customCurrencyProjection !== "exact-v1" || mode !== "content" || [options.editSaveProfile, options.descriptionEditSaveProfile, options.drawingNameSaveProfile, options.decorativeSaveProfile, options.slideVisibilitySaveProfile, options.metadataSaveProfile, options.customPropertySaveProfile, options.customPropertySourceProfile, options.firstSlideNumberSaveProfile, options.chartEditSaveProfile, options.pictureEditSaveProfile, options.pictureSourceProfile, options.masterArtwork, options.diagramPreview, options.mediaPreview, options.fieldTextProfile, options.textFontProfile, options.notesTextProfile, options.textTargetSaveProfile, options.audioSourceProfile, options.audioProjection, options.videoSourceProfile, options.videoProjection].some(value => value !== undefined))) throw new TypeError("Currency projection requires a read-only content import without other optional projection or save profiles.");
   const pictureSourceProfile = options.pictureSourceProfile;
   const audioSourceProfile = options.audioSourceProfile;
   const videoSourceProfile = options.videoSourceProfile;
@@ -99,10 +103,10 @@ export function captureImportOptions(options: PptxImportOptions) {
   if (sessionLimits !== undefined && (!sessionLimits || typeof sessionLimits !== "object" || Array.isArray(sessionLimits))) throw new TypeError("Invalid session limits.");
   const limits = { ...DEFAULT_SESSION_LIMITS, ...sessionLimits };
   for (const [name, value] of Object.entries(limits)) if (!Number.isSafeInteger(value) || value <= 0) throw new RangeError(`Invalid session limit ${name}.`);
-  return { mode, profile, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile };
+  return { mode, profile, customCurrencyProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile };
 }
 export async function importPresentation(bytes: Uint8Array, options: PptxImportOptions): Promise<ImportedPresentation> {
-  const { mode, profile, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile } = captureImportOptions(options), signal = captured.signal;
+  const { mode, profile, customCurrencyProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile } = captureImportOptions(options), signal = captured.signal;
   const metadataLevel = metadataSaveProfile === undefined ? 0 : METADATA_SAVE_PROFILES.indexOf(metadataSaveProfile) + 1;
   if (!(bytes instanceof Uint8Array)) throw new TypeError("Import input must be Uint8Array.");
   const view = byteViewInfo(bytes);
@@ -117,7 +121,25 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
     const inspection = await readStructureFromContext(context);
     let work = 0;
     const checkpoint = async () => { abort(); if (++work % 64 === 0) { await new Promise<void>((resolve) => setTimeout(resolve, 0)); abort(); } };
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""));
+    let currencyValues: (import("@pptkit/core").CustomDocumentProperty | undefined)[] | undefined;
+    if (customCurrencyProjection && context.metadata.custom && context.customMetadataRoot) {
+      currencyValues = [];
+      const nodes = children(context.customMetadataRoot);
+      for (const [index, property] of context.metadata.custom.properties.entries()) {
+        await checkpoint();
+        const node = nodes[index];
+        const value = node && children(node)[0];
+        if (property.valueType !== "cy" || !value || value.attributes.some(attr => attr.namespaceUri !== XMLNS)) { currencyValues.push(undefined); continue; }
+        let text = "", invalid = false;
+        for (const child of value.children) {
+          await checkpoint();
+          if ((child.kind !== "text" && child.kind !== "cdata") || text.length + child.value.length > 1000000) { invalid = true; break; }
+          text += child.value;
+        }
+        currencyValues.push(invalid ? undefined : projectCurrencyProperty(property, text));
+      }
+    }
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues);
     const bindings: TextRunBinding[] | undefined = profile ? [] : undefined;
     const chartBindings: ChartValueBinding[] | undefined = chartEditSaveProfile ? [] : undefined;
     const chartLabelBindings: import("./chart-label-bindings.js").ChartLabelBinding[] | undefined = (chartEditSaveProfile === "existing-values-and-labels-v4" || chartEditSaveProfile === "existing-values-and-series-names-v5" || chartEditSaveProfile === "existing-series-order-v6") ? [] : undefined;

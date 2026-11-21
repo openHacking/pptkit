@@ -1,5 +1,6 @@
 import type { CustomDocumentProperty } from "@pptkit/core";
 import type { CustomPropertyInfo } from "../types/metadata.js";
+import { assessPptxCurrencyNumber } from "../metadata/currency-text.js";
 
 // Core's integer contract is int32. Intersect every source variant's range
 // with that contract so neither projection nor edits silently change its type.
@@ -69,6 +70,15 @@ export function decodeLiteralEscapes(input: string): string | undefined {
     output += `_${rest.slice(0, 6)}`;
     cursor = match.index + match[0].length + 6;
   }
+}
+
+/** Optional read-only projection; currency remains an opaque source value. */
+export function projectCurrencyProperty(property: CustomPropertyInfo, text: string): CustomDocumentProperty | undefined {
+  if (property.valueType !== "cy" || property.value.status !== "uninterpreted" || !property.name || property.linkTarget !== undefined) return undefined;
+  const name = decodeLiteralEscapes(property.name);
+  if (!name || text.length > 1000000) return undefined;
+  const value = assessPptxCurrencyNumber(text);
+  return value.status === "exact" ? { name, type: "real", value: value.value } : undefined;
 }
 
 /** Map only an explicitly typed source subset without interpreting opaque variants. */

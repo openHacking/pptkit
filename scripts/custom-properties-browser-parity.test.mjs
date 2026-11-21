@@ -284,6 +284,9 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
   const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
   const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
+  const nodeCurrencySession = await importPptx(new Uint8Array(currencyInput), { projection: 'content', customCurrencyProjection: 'exact-v1' });
+  const expectedCurrencyProjection = nodeCurrencySession.document.metadata.customProperties;
+  nodeCurrencySession.dispose();
   const currencyTexts = ['1.2500', '.1000', '-12.5000', '9007199254740993.9999', '1.0000\u2028'];
   const expectedCurrency = currencyTexts.map(assessPptxCurrencyText);
   const expectedCurrencyNumbers = currencyTexts.map(assessPptxCurrencyNumber);
@@ -298,6 +301,12 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
   for (const format of ['esm', 'global']) {
     if (format === 'global') for (const content of globals) await page.addScriptTag({ content });
+    const actualCurrencyProjection = await page.evaluate(async ({ format, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      const session = await api.importPptx(new Uint8Array(input), { projection: 'content', customCurrencyProjection: 'exact-v1' });
+      try { return session.document.metadata.customProperties; } finally { session.dispose(); }
+    }, { format, input: currencyInput });
+    assert.deepEqual(actualCurrencyProjection, expectedCurrencyProjection);
     const actualOpaque = await page.evaluate(async ({ format, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       return api.inspectPptxOpaqueCustomProperties(new Uint8Array(input));
