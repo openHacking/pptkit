@@ -501,10 +501,12 @@ test("packed packages work in an isolated npm consumer through every declared en
     imports["@pptkit/svg-renderer/media"] = dataModule(await readFile(path.join(installed, "svg-renderer/dist/browser/media.js"), "utf8"));
     await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
     const result = await page.evaluate(async ({ textFixtureBase64, graphFixtureBase64 }) => {
-      const { mountBrowserMedia } = await import("@pptkit/svg-renderer/media");
+      const { mountBrowserMedia, resolveAndMountBrowserMedia } = await import("@pptkit/svg-renderer/media");
       const mediaHost = globalThis.document.createElement("div"); globalThis.document.body.append(mediaHost);
       const media = mountBrowserMedia(mediaHost, { kind: "audio", source: new Blob(["fixture"], { type: "audio/wav" }), contentType: "audio/wav" });
       media.dispose(); if (media.state.status !== "disposed" || mediaHost.children.length) throw new Error("Installed media adapter cleanup failed");
+      const resolved = await resolveAndMountBrowserMedia(mediaHost, { kind: "audio", contentType: "audio/wav", maxBytes: 100, resolve: () => new Blob(["fixture"], { type: "audio/wav" }) });
+      resolved.dispose(); if (resolved.state.status !== "disposed" || mediaHost.children.length) throw new Error("Installed media resolver cleanup failed");
       const { createPresentation, planImageReplacement } = await import("@pptkit/core/browser");
       const imagePlan = planImageReplacement({ type: "image", assetId: "old", fit: "crop", crop: { left: 0.2 }, box: { x: 1, y: 2, width: 100, height: 100 } }, { id: "new", kind: "image", source: { type: "url", value: "local" }, width: 300, height: 200 }, { fit: "cover" });
       if (imagePlan.replacement.assetId !== "new" || imagePlan.replacement.fit !== "cover" || imagePlan.replacement.crop !== undefined || imagePlan.previous.crop.left !== 0.2) throw new Error("Installed image replacement planning failed");

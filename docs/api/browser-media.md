@@ -1,6 +1,6 @@
 # Explicit browser media adapter
 
-`@pptkit/svg-renderer/media` exports `mountBrowserMedia(container, options)`. This optional DOM entry mounts a single HTML audio or video element in a **connected** caller-owned container. It accepts an already acquired nonempty `Blob` and an explicit MIME/codec hint; it does not resolve asset IDs, read files, fetch URLs, start playback, create UI, or modify Core/Layout/standalone SVG output. An application is responsible for authorization and loading before calling it. The element is exposed for styling, placement and optional native controls; the caller must not replace its source or remove it while the controller is active.
+`@pptkit/svg-renderer/media` exports `mountBrowserMedia(container, options)`. This optional DOM entry mounts a single HTML audio or video element in a **connected** caller-owned container. It accepts an already acquired nonempty `Blob` and an explicit MIME/codec hint; it does not resolve asset IDs, read files, fetch URLs, start playback, create UI, or modify Core/Layout/standalone SVG output. `resolveAndMountBrowserMedia` additionally invokes an explicitly supplied resolver; only that caller-owned callback can load external resources. An application is responsible for authorization and loading before calling it. The element is exposed for styling, placement and optional native controls; the caller must not replace its source or remove it while the controller is active.
 
 ```ts
 import { mountBrowserMedia } from '@pptkit/svg-renderer/media';
@@ -24,3 +24,20 @@ Trim values are nonnegative source-relative milliseconds removed from the beginn
 Each mount creates its own object URL and element even when two mounts share a Blob. `dispose()` is idempotent: it pauses, removes owned listeners and element, clears its source, revokes its URL, publishes `disposed`, and rejects subsequent controller operations. Consumers must dispose on leave, cancellation, failed loads and unmount. Disposing one instance does not revoke another instance's URL; no cross-slide continuity is implied. This does not cancel a caller's earlier Blob acquisition.
 
 Browser tests exercise real Chromium video loading, playback, trim, independent mounts, cleanup, invalid duration, no network, plus controlled rejection and looping events. They do not establish codec support or playback behavior in other browsers, exact trim boundaries, subtitles or native PowerPoint equivalence.
+
+## Resolver and lifetime cancellation
+
+`resolveAndMountBrowserMedia(container, options)` accepts the same media settings except `source`, plus `resolve({ signal })` and a required positive integer `maxBytes`. It validates configuration before calling the resolver, snapshots the settings, and accepts only a nonempty Blob no larger than the limit. Resolver errors propagate; retry is a new explicit call. The signal passed to the resolver is frozen into its context. An abort rejects promptly even if the resolver ignores it, and a late resolution cannot mount an element or create a URL. An already-aborted signal prevents the resolver from running.
+
+```ts
+const lifetime = new AbortController();
+const media = await resolveAndMountBrowserMedia(container, {
+  kind: 'audio', contentType: 'audio/wav', maxBytes: 4_000_000,
+  signal: lifetime.signal,
+  resolve: ({ signal }) => loadAuthorizedMedia(signal), // application-owned policy
+});
+// On page exit, or to cancel a pending resolve:
+lifetime.abort();
+```
+
+A supplied signal must belong to the container's browser window. After mounting, aborting it disposes that instance and publishes `disposed`; explicit `dispose()` detaches the abort listener. Distinct mounts keep separate URLs and lifetimes. The size check is made **after** the resolver returns a Blob: it is not a streaming/download budget. The resolver must enforce authorization, URL/redirect policy, decompression and actual transfer limits itself. The adapter never fetches an address on its own, cannot stop a resolver that ignores its signal, and does not share or cache fetched blobs. Chromium tests cover an explicit fetch resolver, failure and retry, settings mutation, size rejection, cancellation with a late result, abort during/after mounting, and twenty repeated mount/leave/cancel cycles with owned listeners and object URLs counted.

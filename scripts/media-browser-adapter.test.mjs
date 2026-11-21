@@ -177,3 +177,140 @@ test('disposal is safe when media callbacks reenter disposal', async t => {
   });
   assert.deepEqual(result, { pauses: 1, disposedEvents: 1, status: 'disposed', children: 0 });
 });
+
+test('resolver cancellation wins over noncooperative late completion without mounting', async t => {
+  const { page, requests, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const originalCreate = URL.createObjectURL, originalRevoke = URL.revokeObjectURL, urls = new Set();
+    URL.createObjectURL = value => { const url = originalCreate.call(URL, value); urls.add(url); return url; };
+    URL.revokeObjectURL = url => { urls.delete(url); originalRevoke.call(URL, url); };
+    try {
+      const ac = new AbortController(); let finish, calls = 0, seenSignal;
+      const promise = adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: ac.signal,
+        resolve({ signal }) { calls++; seenSignal = signal === ac.signal; return new Promise(resolve => { finish = resolve; }); } });
+      await Promise.resolve(); ac.abort();
+      let error; try { await promise; } catch (e) { error = e.name; }
+      finish(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); await Promise.resolve(); await Promise.resolve();
+      return { error, calls, seenSignal, children: host.children.length, urls: urls.size };
+    } finally { URL.createObjectURL = originalCreate; URL.revokeObjectURL = originalRevoke; }
+  }, movie);
+  assert.deepEqual(result, { error: 'AbortError', calls: 1, seenSignal: true, children: 0, urls: 0 }); assert.deepEqual(requests, []);
+});
+
+test('resolver validates before side effects, retries after failure, and uses a snapshot of settings', async t => {
+  const { page, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }); let calls = 0;
+    const resolver = () => { calls++; return source; };
+    const errors = [];
+    for (const options of [
+      { kind: 'video', contentType: 'video/mp4', maxBytes: 0, resolve: resolver },
+      { kind: 'video', contentType: 'video/mp4', maxBytes: 1, volume: 3, resolve: resolver },
+      { kind: 'video', contentType: 'video/mp4', maxBytes: 1, resolve: resolver },
+      { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, resolve: () => { calls++; throw Error('failed'); } },
+    ]) { try { await adapter.resolveAndMountBrowserMedia(host, options); } catch (e) { errors.push(e.name); } }
+    let release;
+    const options = { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, muted: true, volume: 0.3, resolve: () => new Promise(resolve => { release = resolve; }) };
+    const pending = adapter.resolveAndMountBrowserMedia(host, options); await Promise.resolve();
+    options.muted = false; options.volume = 0.9; options.maxBytes = 1; release(source);
+    const controller = await pending; const values = { muted: controller.element.muted, volume: controller.element.volume, children: host.children.length };
+    controller.dispose(); return { errors, calls, values, remaining: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { errors: ['TypeError', 'TypeError', 'RangeError', 'Error'], calls: 2, values: { muted: true, volume: 0.3, children: 1 }, remaining: 0 });
+});
+
+test('lifetime signal removes only its own mounted instance and handles already-aborted signals', async t => {
+  const { page, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' });
+    const firstSignal = new AbortController(), secondSignal = new AbortController(); let calls = 0;
+    const options = signal => ({ kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, muted: true, signal, resolve: () => { calls++; return source; } });
+    const first = await adapter.resolveAndMountBrowserMedia(host, options(firstSignal.signal));
+    const second = await adapter.resolveAndMountBrowserMedia(host, options(secondSignal.signal));
+    const seen = []; first.subscribe(s => seen.push(s.status)); firstSignal.abort();
+    const after = { first: first.state.status, second: second.state.status, children: host.children.length, seen: seen.at(-1) };
+    let preaborted; try { await adapter.resolveAndMountBrowserMedia(host, options(firstSignal.signal)); } catch (e) { preaborted = e.name; }
+    second.dispose(); secondSignal.abort();
+    return { after, preaborted, calls, children: host.children.length };
+  }, movie);
+  assert.equal(result.after.first, 'disposed'); assert.notEqual(result.after.second, 'disposed'); assert.equal(result.after.children, 1); assert.equal(result.after.seen, 'disposed');
+  assert.equal(result.preaborted, 'AbortError'); assert.equal(result.calls, 2); assert.equal(result.children, 0);
+});
+
+test('an explicitly supplied resolver can fetch media and the adapter issues no additional requests', async t => {
+  const { page, requests } = await setup(t);
+  const archive = readGeneratedZip(await readFile('tests/fixtures/pptkit-mixed-av.pptx'));
+  const sound = [...archive.entries()].find(([name]) => name.endsWith('.wav'))[1];
+  const allowed = [];
+  await page.route('https://media.invalid/sound.wav', async route => { allowed.push(route.request().url()); await route.fulfill({ status: 200, contentType: 'audio/wav', headers: { 'access-control-allow-origin': '*' }, body: Buffer.from(sound) }); });
+  const result = await page.evaluate(async () => {
+    const host = document.createElement('div'); document.body.append(host); const ac = new AbortController();
+    const controller = await adapter.resolveAndMountBrowserMedia(host, { kind: 'audio', contentType: 'audio/wav', maxBytes: 1000000, signal: ac.signal, muted: true,
+      async resolve({ signal }) { const response = await fetch('https://media.invalid/sound.wav', { signal }); if (!response.ok) throw Error('fetch failed'); return response.blob(); } });
+    const ready = await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('timeout')), 5000); controller.subscribe(state => { if (state.status === 'ready') { clearTimeout(timer); resolve(true); } else if (state.status === 'error') { clearTimeout(timer); reject(Error(state.failure)); } }); });
+    await controller.play(); ac.abort(); return { ready, status: controller.state.status, children: host.children.length };
+  });
+  assert.deepEqual(result, { ready: true, status: 'disposed', children: 0 });
+  assert.deepEqual(allowed, ['https://media.invalid/sound.wav']); assert.deepEqual(requests, []);
+});
+
+test('aborting while mounting rolls back and an already aborted signal never calls the resolver', async t => {
+  const { page, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host); const signal = new AbortController();
+    const original = host.appendChild.bind(host); host.appendChild = node => { const value = original(node); signal.abort(); return value; };
+    const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }); let first, second, calls = 0;
+    try { adapter.mountBrowserMedia(host, { kind: 'video', source, contentType: 'video/mp4', signal: signal.signal }); } catch (e) { first = e.name; }
+    try { await adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: signal.signal, resolve() { calls++; return source; } }); } catch (e) { second = e.name; }
+    return { first, second, calls, children: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { first: 'AbortError', second: 'AbortError', calls: 0, children: 0 });
+});
+
+test('immediate abort skips resolver and listener ownership ends after disposal', async t => {
+  const { page, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host); const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' });
+    const first = new AbortController(); let calls = 0;
+    const cancelled = adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: first.signal, resolve: () => { calls++; return source; } });
+    first.abort(); let aborted; try { await cancelled; } catch (e) { aborted = e.name; } await Promise.resolve();
+    const second = new AbortController(), nativeAdd = second.signal.addEventListener.bind(second.signal), nativeRemove = second.signal.removeEventListener.bind(second.signal), active = new Set();
+    second.signal.addEventListener = (name, listener, options) => { if (name === 'abort') active.add(listener); return nativeAdd(name, listener, options); };
+    second.signal.removeEventListener = (name, listener, options) => { if (name === 'abort') active.delete(listener); return nativeRemove(name, listener, options); };
+    const c = await adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: second.signal, resolve: () => source });
+    const afterMount = active.size; c.dispose(); const afterDispose = active.size;
+    return { calls, aborted, afterMount, afterDispose, children: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { calls: 0, aborted: 'AbortError', afterMount: 1, afterDispose: 0, children: 0 });
+});
+
+test('repeated mount, leave and cancelled loads leave no media, owned listeners or URLs', async t => {
+  const { page, requests, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' });
+    const add = HTMLMediaElement.prototype.addEventListener, remove = HTMLMediaElement.prototype.removeEventListener;
+    const create = URL.createObjectURL, revoke = URL.revokeObjectURL, liveUrls = new Set(), owned = new Map(); let played = 0;
+    URL.createObjectURL = value => { const u = create.call(URL, value); liveUrls.add(u); return u; };
+    URL.revokeObjectURL = url => { liveUrls.delete(url); revoke.call(URL, url); };
+    HTMLMediaElement.prototype.addEventListener = function (name, fn, options) { const set = owned.get(this) ?? new Set(); set.add(fn); owned.set(this, set); return add.call(this, name, fn, options); };
+    HTMLMediaElement.prototype.removeEventListener = function (name, fn, options) { owned.get(this)?.delete(fn); return remove.call(this, name, fn, options); };
+    try {
+      for (let i = 0; i < 20; i++) {
+        const lifetime = new AbortController();
+        const controller = await adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: lifetime.signal, resolve: () => source });
+        if (!controller.element.paused || controller.state.status === 'playing') played++;
+        lifetime.abort();
+        let late; const loading = new AbortController();
+        const pending = adapter.resolveAndMountBrowserMedia(host, { kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, signal: loading.signal, resolve: () => new Promise(resolve => { late = resolve; }) });
+        await Promise.resolve(); loading.abort(); await pending.catch(() => {}); late(source);
+      }
+      await Promise.resolve(); await Promise.resolve();
+      return { children: host.children.length, liveUrls: liveUrls.size, listeners: [...owned.values()].reduce((sum, set) => sum + set.size, 0), played };
+    } finally { HTMLMediaElement.prototype.addEventListener = add; HTMLMediaElement.prototype.removeEventListener = remove; URL.createObjectURL = create; URL.revokeObjectURL = revoke; }
+  }, movie);
+  assert.deepEqual(result, { children: 0, liveUrls: 0, listeners: 0, played: 0 }); assert.deepEqual(requests, []);
+});
