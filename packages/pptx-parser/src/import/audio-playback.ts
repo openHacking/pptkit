@@ -24,7 +24,7 @@ export async function audioPlayback(root: XmlElement, p: string, checkpoint: () 
       const id = canonicalId(attribute(node, "id"));
       if (id !== undefined) timeIds.set(id, (timeIds.get(id) ?? 0) + 1);
     }
-    pending.push(...children(node));
+    for (const child of children(node)) pending.push(child);
   }
   const list = one(timings[0]!, "tnLst"), par = list && one(list, "par"), time = par && one(par, "cTn");
   if (!time || attribute(time, "nodeType") !== "tmRoot") return map;

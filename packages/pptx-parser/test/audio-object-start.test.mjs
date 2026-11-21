@@ -10,7 +10,7 @@ const sample = name => readFile(new URL(`../../../tests/fixtures/${name}.pptx`, 
 const starts = s => s.document.slides[0].elements.filter(x => x.type === "audio").map(x => x.playbackStart);
 
 test("native and generated independent clicks project by source identity", async () => {
-  for (const [name, expected] of [["powerpoint-single-audio-object-click", ["object-click"]], ["pptkit-single-audio-object-click", ["object-click"]], ["powerpoint-audio-start-object-click", [undefined, "object-click"]], ["pptkit-audio-start-object-click", [undefined, "object-click"]], ["pptkit-audio-trim", [undefined, "object-click", undefined, "object-click"]]]) {
+  for (const [name, expected] of [["powerpoint-single-audio-object-click", ["object-click"]], ["pptkit-single-audio-object-click", ["object-click"]], ["powerpoint-audio-start-object-click", [undefined, "object-click"]], ["pptkit-audio-start-object-click", [undefined, "object-click"]], ["pptkit-audio-trim", ["click-sequence", "object-click", "click-sequence", "object-click"]]]) {
     const bytes = await sample(name), s = await importPptx(bytes, options);
     try { assert.deepEqual(starts(s), expected, name); const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes)); assert.ok(s.report.diagnostics.some(x => x.code === "media-playback-unmapped")); }
     finally { s.dispose(); }

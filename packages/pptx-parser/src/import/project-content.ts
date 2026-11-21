@@ -16,6 +16,7 @@ import { audioSources } from "./audio-sources.js";
 import { audioTrim } from "./audio-trim.js";
 import { audioPlayback } from "./audio-playback.js";
 import { audioObjectStart } from "./audio-object-start.js";
+import { audioMainStart } from "./audio-main-start.js";
 import { videoSources } from "./video-sources.js";
 import { contentAction } from "./content-actions.js";
 import { connectorAttachment, contentConnector, type ContentConnection, type ContentDrawing } from "./content-connectors.js";
@@ -82,6 +83,8 @@ export async function projectContent(document: ManagedPresentationDocument, base
     const root = await context.root(part, "sld"), r = contentReader(part, context.p, context.a);
     const audioSettings = audioProjection ? await audioPlayback(root, context.p, checkpoint) : undefined;
     const audioStart = audioProjection ? await audioObjectStart(root, context.p, checkpoint) : undefined;
+    const audioMain = audioProjection ? await audioMainStart(root, context.p, checkpoint) : undefined;
+    const audioMainInputs = new Map<string, { target: string; duration?: number; trimUnsupported: boolean; playbackMapped: boolean }>();
     const placeholders = await inheritance.slide(part, sourceSlide.layoutPart);
     r.known(root); r.attr(root, "show");
     const common = r.one(root, r.p, "cSld"), tree = common ? r.one(common, r.p, "spTree") : undefined;
@@ -316,6 +319,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
           const startMapped = start?.status === "mapped" && trim.status !== "unsupported" && start.durationMs === duration;
           input = { ...baseInput, type: "audio", audioAssetId, ...(trim.status === "mapped" ? { trimStartMs: trim.trimStartMs, trimEndMs: trim.trimEndMs } : {}), ...(playback?.status === "mapped" ? playback.settings : {}), ...(startMapped ? { playbackStart: "object-click" as const } : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
           if (start && !startMapped) finding("drawing.audio.start", "import", "unsupported", at, "Ambiguous or unsupported object-click timing was not projected.", slide.id, id);
+          audioMainInputs.set(id, { target: at.sourceObjectId, ...(duration === undefined ? {} : { duration }), trimUnsupported: trim.status === "unsupported", playbackMapped: playback?.status === "mapped" });
           if (playback?.status === "unsupported") finding("drawing.audio.playback", "import", "unsupported", at, "Ambiguous or unsupported audio media timing settings were not projected.", slide.id, id);
           if (trim.status === "unsupported") finding("drawing.audio.trim", "import", "unsupported", at, "Audio trim cannot be projected as bounded integer milliseconds; playback uses the full source.", slide.id, id);
           cachedPreview = true; mediaPlaceholder = true;
@@ -490,6 +494,14 @@ export async function projectContent(document: ManagedPresentationDocument, base
           finding("drawing.connector.attachment", "import", "fallback", source, resolved.reason, slide.id, pending.input.id);
           diagnostics.push({ code: "connector-attachment-unmapped", severity: "warning", source, slideId: slide.id, elementId: pending.input.id!, message: resolved.reason });
         }
+      }
+      if (audioMain) {
+        const audioInputs = inputs.filter((input): input is Extract<PresentationElementInput, { type: "audio" }> => input.type === "audio" && input.playbackStart !== "object-click");
+        const compatible = audioInputs.length === audioMain.length && audioInputs.every((input, index) => {
+          const item = audioMainInputs.get(input.id!), effect = audioMain[index]!;
+          return item && !item.trimUnsupported && item.playbackMapped && item.target === effect.target && item.duration === effect.durationMs && (index === 0 || effect.start !== "automatic" || !audioInputs[index - 1]!.loop);
+        });
+        if (compatible) for (const [index, input] of audioInputs.entries()) input.playbackStart = audioMain[index]!.start;
       }
       for (const input of inputs) slide.addElement(input);
     }

@@ -91,7 +91,18 @@ test('native trimmed audio import and fresh export agree across Node and browser
   }, { data: [...bytes], importOptions, exportOptions });
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
   assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => [x.playbackVolume, x.loop, x.rewindAfterPlayback]), [['high', false, false], ['high', true, false], ['high', false, true], ['high', true, true]]);
-  assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => x.playbackStart), [undefined, 'object-click', undefined, 'object-click']);
+  assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => x.playbackStart), ['click-sequence', 'object-click', 'click-sequence', 'object-click']);
+});
+
+test('native automatic audio main sequence agrees across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/powerpoint-two-audio-auto.pptx'), options = { projection: 'content', audioProjection: 'wave-pcm-v1' };
+  const node = await importPptx(bytes, options); let expected;
+  try { const output = await generatePptx(node.document, { audioMode: 'wave-pcm-v1' }); expected = { elements: node.document.slides[0].elements, bytes: [...output.bytes], warnings: output.warnings }; } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ bytes, options }) => { const s = await PPTKit.importPptx(Uint8Array.from(bytes), options); try { const output = await PPTKit.generatePptx(s.document, { audioMode: 'wave-pcm-v1' }); return { elements: s.document.slides[0].elements, bytes: [...output.bytes], warnings: output.warnings }; } finally { s.dispose(); } }, { bytes: [...bytes], options });
+  assert.deepEqual(actual, expected); assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => x.playbackStart), ['automatic', 'automatic']); assert.deepEqual(requests, []);
 });
 
 test('authored object-click audio export agrees across Node and browser', async t => {

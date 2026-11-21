@@ -27,7 +27,7 @@ export async function audioObjectStart(root: XmlElement, p: string, checkpoint: 
       const bhvr = one(node, "cBhvr"), target = one(one(bhvr, "tgtEl"), "spTgt"), id = target && canonical(attribute(target, "spid"));
       if (id !== undefined) commands.set(id, (commands.get(id) ?? 0) + 1);
     }
-    pending.push(...children(node));
+    for (const child of children(node)) pending.push(child);
   }
   const list = one(timings[0], "tnLst"), par = one(list, "par"), top = one(par, "cTn");
   if (!top || attribute(top, "nodeType") !== "tmRoot") return result;
