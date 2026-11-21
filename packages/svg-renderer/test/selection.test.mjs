@@ -169,6 +169,34 @@ test('optional unpainted-shape exclusion is conservative for gradients, patterns
   assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedShapes: 1 }), TypeError);
 });
 
+test('optional unpainted-connector exclusion preserves possible SVG markers', () => {
+  const line = (id, style) => ({ type: 'connector', id, start: { x: 0, y: 50 }, end: { x: 100, y: 50 }, style });
+  const none = { type: 'none' }, clear = { type: 'solid', color: 'FF0000', opacity: 0 }, ink = { type: 'solid', color: 'FF0000' };
+  const doc = createPresentation({ masters: [{ id: 'master', name: 'Master', elements: [line('master-none', { paint: none })] }] });
+  doc.defineSlideLayout({ id: 'layout', name: 'Layout', masterId: 'master', elements: [line('layout-ink', { paint: ink })] });
+  doc.addSlide({ id: 'page', layoutId: 'layout', elements: [
+    shape('bottom', box(0, 0, 100, 100)),
+    { type: 'group', id: 'group', box: box(0, 0, 100, 100), coordinateSize: { width: 100, height: 100 }, children: [line('group-clear', { paint: clear })] },
+    line('none-arrow', { paint: none, endArrow: 'triangle' }),
+    line('zero-width', { paint: ink, width: 0 }),
+    line('clear', { paint: clear }),
+    line('clear-arrow', { paint: clear, endArrow: 'triangle' }),
+    line('zero-arrow', { paint: ink, width: 0, beginArrow: 'triangle' }),
+    line('faint', { paint: { ...clear, opacity: 0.000001 } }),
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const all = getSvgSlideSelectionGeometry(layout, 0);
+  const filtered = getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true });
+  assert.deepEqual(filtered.map(item => item.elementId), ['layout-ink', 'bottom', 'clear-arrow', 'zero-arrow', 'faint']);
+  assert.deepEqual(getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true, excludeUnpaintedShapes: true, excludeZeroOpacity: true }).map(item => item.elementId), ['layout-ink', 'clear-arrow', 'zero-arrow', 'faint']);
+  assert.deepEqual(getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: false }), all);
+  assert.equal(hitTestSvgSelectionGeometry(filtered, { x: 50, y: 50 }, 0).elementId, 'faint');
+  assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: 'true' }), TypeError);
+  layout.slides[0].elements.at(-1).style.paint.opacity = 0;
+  assert.equal(filtered.at(-1).elementId, 'faint');
+  assert.ok(!getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true }).some(item => item.elementId === 'faint'));
+});
+
 test('zero-length connector segments remain selectable within the explicit tolerance', () => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'connector', id: 'point', start: { x: 10, y: 20 }, end: { x: 10, y: 20 } }] });

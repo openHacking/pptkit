@@ -25,6 +25,15 @@ export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "f
 export interface SvgSelectionGeometryOptions {
   readonly excludeZeroOpacity?: boolean;
   readonly excludeUnpaintedShapes?: boolean;
+  readonly excludeUnpaintedConnectors?: boolean;
+}
+
+function hasNoConnectorPaint(element: Extract<LayoutElement, { type: "connector" }>): boolean {
+  const { paint, width, beginArrow, endArrow } = element.style;
+  if (paint.type === "none") return true;
+  // Markers use independent opaque paint in the SVG renderer; do not infer their
+  // visibility from the line's opacity or width.
+  return beginArrow === "none" && endArrow === "none" && (width === 0 || paint.opacity === 0);
 }
 
 function hasNoShapePaint(element: Extract<LayoutElement, { type: "shape" }>): boolean {
@@ -76,7 +85,7 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
     if (depth > 64) throw new RangeError("Selection geometry exceeds maximum group depth.");
     for (const element of elements) {
       if (++visited > 100000) throw new RangeError("Selection geometry exceeds maximum element count.");
-      if (element.hidden || (options.excludeZeroOpacity && element.opacity === 0) || (options.excludeUnpaintedShapes && element.type === "shape" && hasNoShapePaint(element))) continue;
+      if (element.hidden || (options.excludeZeroOpacity && element.opacity === 0) || (options.excludeUnpaintedShapes && element.type === "shape" && hasNoShapePaint(element)) || (options.excludeUnpaintedConnectors && element.type === "connector" && hasNoConnectorPaint(element))) continue;
       const b = element.box, matrix = multiply(parent, transform(b, element.transform));
       if (element.type === "group") {
         if (![element.coordinateSize.width, element.coordinateSize.height].every(v => Number.isFinite(v) && v > 0)) throw new TypeError("Selection geometry requires positive group coordinate dimensions.");
@@ -129,7 +138,7 @@ export function getSvgSlideSelectionFrames(layout: LayoutResult, slideIndex: num
 
 /** Include transformed connector polylines alongside frames in SVG paint order. */
 export function getSvgSlideSelectionGeometry(layout: LayoutResult, slideIndex: number, options?: SvgSelectionGeometryOptions): readonly SvgSelectionGeometry[] {
-  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
+  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean") || (options.excludeUnpaintedConnectors !== undefined && typeof options.excludeUnpaintedConnectors !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
   return collect(slideLayers(layout, slideIndex), true, options) as readonly SvgSelectionGeometry[];
 }
 

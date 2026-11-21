@@ -5,6 +5,34 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('unpainted connector filtering retains independently visible transparent-stroke markers', async t => {
+  const doc = createPresentation({ size: { width: 100, height: 100 } });
+  const connector = (id, y, style) => ({ type: 'connector', id, start: { x: 20, y }, end: { x: 80, y }, style });
+  doc.addSlide({ id: 'slide', elements: [
+    connector('none', 10, { paint: { type: 'none' }, width: 4, endArrow: 'triangle' }),
+    connector('clear', 30, { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 4 }),
+    connector('clear-arrow', 50, { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 4, endArrow: 'triangle' }),
+    connector('ink', 70, { paint: { type: 'solid', color: '000000' }, width: 4 }),
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage();
+  await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const actual = await page.evaluate(async ({ layout, svg }) => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true });
+    const image = new Image(); image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`; await image.decode();
+    const canvas = document.createElement('canvas'); canvas.width = 100; canvas.height = 100;
+    const context = canvas.getContext('2d'); context.drawImage(image, 0, 0, 100, 100);
+    const pixel = (x, y) => Array.from(context.getImageData(x, y, 1, 1).data);
+    return { items, noLine: pixel(40, 10), clearLine: pixel(40, 30), clearArrowLine: pixel(40, 50), arrow: pixel(75, 50), ink: pixel(40, 70) };
+  }, { layout, svg });
+  assert.deepEqual(actual.items, getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true }));
+  assert.deepEqual(actual.items.map(item => item.elementId), ['clear-arrow', 'ink']);
+  for (const pixel of [actual.noLine, actual.clearLine, actual.clearArrowLine]) assert.deepEqual(pixel.slice(0, 3), [255, 255, 255]);
+  for (const pixel of [actual.arrow, actual.ink]) assert.ok(pixel[0] < 30 && pixel[1] < 30 && pixel[2] < 30);
+});
+
 test('large layout diagnostic batch stays ordered in Chromium', async t => {
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage();
