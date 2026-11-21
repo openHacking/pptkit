@@ -94,7 +94,7 @@ test("ambiguous video timing blocks the whole mixed main sequence", async () => 
     s => s.replace('cmd="togglePause"', 'cmd="playFrom(0.0)"'),
     s => s.replace('presetID="2" presetClass="mediacall"', 'presetID="3" presetClass="mediacall"'),
     s => s.replace('dur="2000" fill="hold"', 'dur="1999" fill="hold"'),
-    s => s.replace('<p:video><p:cMediaNode vol="80000">', '<p:video><p:cMediaNode vol="50000">'),
+    s => s.replace('<p:video><p:cMediaNode vol="80000">', '<p:video><p:cMediaNode vol="60000">'),
     s => s.replace('<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="rId1"/>', '<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="rId1"><p14:trim st="1"/></p14:media>'),
     s => s.replace('evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="2"', 'evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="3"'),
   ];
@@ -185,8 +185,8 @@ test("independent video start is not guessed from damaged pause or media nodes",
   const changes = [
     s => s.replaceAll('cmd="togglePause"', 'cmd="stop"'),
     s => s.replace('evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="2"', 'evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="3"'),
-    s => s.replace('<p:video><p:cMediaNode vol="80000"><p:cTn id="28"', '<p:video><p:cMediaNode vol="50000"><p:cTn id="28"'),
-    s => s.replace('<p:cTn id="28" fill="hold" display="0"', '<p:cTn id="28" repeatCount="indefinite" fill="hold" display="0"'),
+    s => s.replace('<p:video><p:cMediaNode vol="80000"><p:cTn id="28"', '<p:video><p:cMediaNode vol="60000"><p:cTn id="28"'),
+    s => s.replace('<p:cTn id="28" fill="hold" display="0"', '<p:cTn id="28" repeatCount="2000" fill="hold" display="0"'),
     s => s.replace('restart="never" nodeType="tmRoot"', 'restart="always" nodeType="tmRoot"'),
     s => s.replace(/(<p:video><p:cMediaNode vol="80000"><p:cTn id="28".*?<\/p:video>)/, '$1$1'),
     s => s.replaceAll('cmd="togglePause"', 'cmd="togglePause" extra="1"'),
@@ -239,4 +239,30 @@ test("video object-click remains independent with a valid trim", async () => {
   p.addSlide({ elements: [{ type: "video", videoAssetId: "movie", playbackStart: "object-click", trimStartMs: 150, trimEndMs: 50, box: { x: 0, y: 0, width: 40, height: 40 } }] });
   let bytes = (await generatePptx(p, { videoMode: "iso-bmff-v1" })).bytes;
   for (let i = 0; i < 3; i++) { const s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" }); try { const [v] = s.document.slides[0].elements; assert.deepEqual([v.playbackStart, v.trimStartMs, v.trimEndMs], ["object-click", 150, 50]); bytes = (await generatePptx(s.document, { videoMode: "iso-bmff-v1" })).bytes; } finally { s.dispose(); } }
+});
+
+test("video settings preserve native mute and volume independently and survive fresh exports", async () => {
+  for (const [name, muted] of [["powerpoint-video-settings-low", false], ["powerpoint-video-settings-mute", true]]) {
+    const bytes = await sample(name), s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" });
+    try {
+      const videos = s.document.slides[0].elements.filter(x => x.type === "video");
+      assert.deepEqual(videos.map(x => [x.playbackVolume, x.muted, x.loop, x.rewindAfterPlayback, x.playbackStart]), [["low", muted, true, true, undefined], ["high", false, false, false, undefined]]);
+      const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+    } finally { s.dispose(); }
+  }
+  const parts = readGeneratedZip(await sample("pptkit-mixed-av")), p = createPresentation();
+  p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+  const expected = [["low", true, true, true, "object-click"], ["medium", false, false, false, "click-sequence"], ["high", false, false, true, "automatic"]];
+  p.addSlide({ elements: expected.map(([playbackVolume, muted, loop, rewindAfterPlayback, playbackStart], i) => ({ type: "video", videoAssetId: "movie", playbackVolume, muted, loop, rewindAfterPlayback, playbackStart, box: { x: 50 * i, y: 0, width: 40, height: 40 } })) });
+  let bytes = (await generatePptx(p, { videoMode: "iso-bmff-v1" })).bytes;
+  for (let i = 0; i < 3; i++) {
+    const s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" });
+    try {
+      assert.deepEqual(s.document.slides[0].elements.filter(x => x.type === "video").map(x => [x.playbackVolume, x.muted, x.loop, x.rewindAfterPlayback, x.playbackStart]), expected);
+      bytes = (await generatePptx(s.document, { videoMode: "iso-bmff-v1" })).bytes;
+    } finally { s.dispose(); }
+  }
+  const invalid = modify(bytes, s => s.replace('vol="20000" mute="1"', 'vol="12345" mute="1"'));
+  const s = await importPptx(invalid, { projection: "content", videoProjection: "iso-bmff-v1" });
+  try { const v = s.document.slides[0].elements.find(x => x.type === "video"); assert.equal(v.playbackVolume, undefined); assert.equal(v.playbackStart, undefined); } finally { s.dispose(); }
 });

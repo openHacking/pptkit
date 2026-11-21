@@ -47,8 +47,8 @@ test("automatic media uses native main sequence grouping and bounded delays", as
 });
 
 test("automatic after an indefinitely looping main effect is rejected", async () => {
-  await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), audio("automatic")]), options), /cannot follow looping audio/);
-  await assert.rejects(generatePptx(make([audio("automatic", { loop: true }), audio("object-click"), audio("automatic")]), options), /cannot follow looping audio/);
+  await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), audio("automatic")]), options), /cannot follow looping media/);
+  await assert.rejects(generatePptx(make([audio("automatic", { loop: true }), audio("object-click"), audio("automatic")]), options), /cannot follow looping media/);
   await generatePptx(make([audio("automatic", { loop: true }), audio("click-sequence")]), options);
 });
 
@@ -77,6 +77,6 @@ test("automatic video uses ordered native media calls with independent pauses", 
     const invalid = make([video("with-previous")]);
     assert.ok(validatePresentation(invalid).some(x => x.code === "invalid-video-playback-start"));
     await assert.rejects(generatePptx(invalid, options), /validation failed/i);
-    await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), video("automatic")]), options), /cannot follow looping audio/);
+    await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), video("automatic")]), options), /cannot follow looping media/);
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

@@ -2,7 +2,7 @@ import { attribute, children } from "../presentation/structure-xml.js";
 import type { XmlElement } from "../xml/read-xml.js";
 
 /** Validate direct video media nodes before interpreting an independent toggle as a start. */
-export async function videoObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, interactions: ReadonlyMap<string, { status: "mapped"; durationMs: number } | { status: "unsupported" }>): Promise<ReadonlySet<string>> {
+export async function videoObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, interactions: ReadonlyMap<string, { status: "mapped"; durationMs: number } | { status: "unsupported" }>, settings: ReadonlyMap<string, { status: "mapped" } | { status: "unsupported" }>): Promise<ReadonlySet<string>> {
   const select = (node: XmlElement | undefined, name: string) => node ? children(node).filter(x => x.namespaceUri === p && x.local === name) : [];
   const one = (node: XmlElement | undefined, name: string) => { const items = select(node, name); return items.length === 1 ? items[0] : undefined; };
   const number = (value: string | undefined) => value !== undefined && /^\d+$/u.test(value) && Number.isSafeInteger(Number(value)) && Number(value) <= 4294967295 ? String(Number(value)) : undefined;
@@ -24,7 +24,7 @@ export async function videoObjectStart(root: XmlElement, p: string, checkpoint: 
     const id = shape && number(attribute(shape, "spid")), timeId = t && number(attribute(t, "id"));
     if (id === undefined) continue;
     if (seen.has(id)) { result.delete(id); continue; } seen.add(id);
-    if (exact(video, "video", {}, ["cMediaNode"]) && exact(media, "cMediaNode", { vol: "80000" }, ["cTn", "tgtEl"]) && exact(t, "cTn", { id: "#", fill: "hold", display: "0" }, ["stCondLst"]) && timeId !== undefined && ids.get(timeId) === 1 && exact(start, "stCondLst", {}, ["cond"]) && exact(one(start, "cond"), "cond", { delay: "indefinite" }, []) && exact(target, "tgtEl", {}, ["spTgt"]) && exact(shape, "spTgt", { spid: "#" }, []) && interactions.get(id)?.status === "mapped") result.add(id);
+    if (exact(video, "video", {}, ["cMediaNode"]) && settings.get(id)?.status === "mapped" && exact(media, "cMediaNode", Object.fromEntries(media!.attributes.map(a => [a.local, a.value])), ["cTn", "tgtEl"]) && exact(t, "cTn", Object.fromEntries(t!.attributes.map(a => [a.local, a.value])), ["stCondLst"]) && timeId !== undefined && ids.get(timeId) === 1 && exact(start, "stCondLst", {}, ["cond"]) && exact(one(start, "cond"), "cond", { delay: "indefinite" }, []) && exact(target, "tgtEl", {}, ["spTgt"]) && exact(shape, "spTgt", { spid: "#" }, []) && interactions.get(id)?.status === "mapped") result.add(id);
   }
   return result;
 }

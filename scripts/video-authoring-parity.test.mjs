@@ -218,3 +218,16 @@ test('HTTP media adapter streams in Chromium and refuses opaque redirects', asyn
   assert.match(result.redirectError, /not an accessible 200/); assert.match(result.sizeError, /maxBytes/);
   assert.equal(hits.filter(path => path === '/sound').length, 2);
 });
+
+test('native video playback settings agree across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/powerpoint-video-settings-mute.pptx');
+  const options = { projection: 'content', videoProjection: 'iso-bmff-v1' };
+  const node = await importPptx(bytes, options); let expected;
+  try { expected = node.document.slides[0].elements; } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async data => { const s = await PPTKit.importPptx(Uint8Array.from(data), { projection: 'content', videoProjection: 'iso-bmff-v1' }); try { return s.document.slides[0].elements; } finally { s.dispose(); } }, [...bytes]);
+  assert.deepEqual(actual, expected); assert.deepEqual(requests, []);
+});

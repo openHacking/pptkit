@@ -17,6 +17,7 @@ import { audioTrim } from "./audio-trim.js";
 import { audioPlayback } from "./audio-playback.js";
 import { audioObjectStart } from "./audio-object-start.js";
 import { audioMainStart } from "./audio-main-start.js";
+import { videoPlayback } from "./video-playback.js";
 import { videoObjectStart } from "./video-object-start.js";
 import { plainVideoTimingSource } from "./video-timing-source.js";
 import { videoSources } from "./video-sources.js";
@@ -85,10 +86,11 @@ export async function projectContent(document: ManagedPresentationDocument, base
     const root = await context.root(part, "sld"), r = contentReader(part, context.p, context.a);
     const audioSettings = audioProjection ? await audioPlayback(root, context.p, checkpoint) : undefined;
     const audioStart = audioProjection ? await audioObjectStart(root, context.p, checkpoint) : undefined;
+    const videoSettings = videoProjection ? await videoPlayback(root, context.p, checkpoint) : undefined;
     const videoPauses = videoProjection ? await audioObjectStart(root, context.p, checkpoint, "video-pause") : undefined;
     const videoClicks = videoProjection ? await audioObjectStart(root, context.p, checkpoint, "video-object") : undefined;
-    const videoObjects = videoClicks ? await videoObjectStart(root, context.p, checkpoint, videoClicks) : undefined;
-    const audioMain = audioProjection || videoProjection ? await audioMainStart(root, context.p, checkpoint, videoPauses, videoObjects) : undefined;
+    const videoObjects = videoClicks ? await videoObjectStart(root, context.p, checkpoint, videoClicks, videoSettings!) : undefined;
+    const audioMain = audioProjection || videoProjection ? await audioMainStart(root, context.p, checkpoint, videoPauses, videoObjects, videoSettings) : undefined;
     const audioMainInputs = new Map<string, { target: string; duration?: number; trimUnsupported: boolean; playbackMapped: boolean }>();
     const videoMainInputs = new Map<string, { target: string; duration?: number; eligible: boolean }>();
     const placeholders = await inheritance.slide(part, sourceSlide.layoutPart);
@@ -349,14 +351,16 @@ export async function projectContent(document: ManagedPresentationDocument, base
             videoAssets.set(mediaPart, videoAssetId); identities.push({ kind: "asset", id: videoAssetId, source: { part: mediaPart } });
           }
           identities.push({ kind: "asset", id: videoAssetId, source: videoCandidate.source });
-          input = { ...baseInput, type: "video", videoAssetId, ...(videoTrim.status === "mapped" ? { trimStartMs: videoTrim.trimStartMs, trimEndMs: videoTrim.trimEndMs } : {}), ...(!baseInput.hidden && videoTrim.status !== "unsupported" && plainVideoTimingSource(nvPr, r.p, r.a, context.r, videoTrim.status === "mapped") && videoObjects?.has(at.sourceObjectId) ? { playbackStart: "object-click" as const } : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
-          videoMainInputs.set(id, { target: at.sourceObjectId, ...(videoCandidate.movieDurationMs === undefined ? {} : { duration: videoCandidate.movieDurationMs - (videoTrim.status === "mapped" ? videoTrim.trimStartMs + videoTrim.trimEndMs : 0) }), eligible: !baseInput.hidden && videoTrim.status !== "unsupported" && plainVideoTimingSource(nvPr, r.p, r.a, context.r, videoTrim.status === "mapped") });
+          const playback = videoSettings?.get(at.sourceObjectId);
+          input = { ...baseInput, type: "video", videoAssetId, ...(playback?.status === "mapped" ? playback.settings : {}), ...(videoTrim.status === "mapped" ? { trimStartMs: videoTrim.trimStartMs, trimEndMs: videoTrim.trimEndMs } : {}), ...(!baseInput.hidden && videoTrim.status !== "unsupported" && plainVideoTimingSource(nvPr, r.p, r.a, context.r, videoTrim.status === "mapped") && videoObjects?.has(at.sourceObjectId) ? { playbackStart: "object-click" as const } : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          videoMainInputs.set(id, { target: at.sourceObjectId, ...(videoCandidate.movieDurationMs === undefined ? {} : { duration: videoCandidate.movieDurationMs - (videoTrim.status === "mapped" ? videoTrim.trimStartMs + videoTrim.trimEndMs : 0) }), eligible: playback?.status === "mapped" && !baseInput.hidden && videoTrim.status !== "unsupported" && plainVideoTimingSource(nvPr, r.p, r.a, context.r, videoTrim.status === "mapped") });
+          if (playback?.status === "unsupported") finding("drawing.video.playback", "import", "unsupported", at, "Ambiguous or unsupported video media timing settings were not projected.", slide.id, id);
           if (videoTrim.status === "unsupported") finding("drawing.video.trim", "import", "unsupported", at, "Video trim cannot be projected as bounded integer milliseconds; playback uses the full source.", slide.id, id);
           cachedPreview = true; mediaPlaceholder = true;
           reportMedia(!("reason" in result), "reason" in result, "video");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
             const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
-            finding("drawing.video.projected-fields", operation, tier, at, "Video bytes, source identity, poster, geometry, supported trim and bounded object-click/main-sequence starts are projected; codec validation, other playback settings, general export and source edit-save remain unsupported.", slide.id, id);
+            finding("drawing.video.projected-fields", operation, tier, at, "Video bytes, source identity, poster, geometry, supported trim, media settings and bounded object-click/main-sequence starts are projected; codec validation, other playback settings, general export and source edit-save remain unsupported.", slide.id, id);
           }
           if ("reason" in result) finding("drawing.video.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
         } else if ("reason" in result) {
@@ -511,7 +515,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
         const mediaInputs = inputs.filter((input): input is Extract<PresentationElementInput, { type: "audio" | "video" }> => (input.type === "video" || input.type === "audio") && input.playbackStart !== "object-click");
         const compatible = mediaInputs.length === audioMain.length && mediaInputs.every((input, index) => {
           const effect = audioMain[index]!, previous = mediaInputs[index - 1];
-          if (previous?.type === "audio" && effect.start === "automatic" && previous.loop) return false;
+          if (previous && effect.start === "automatic" && previous.loop) return false;
           if (input.type === "video") { const item = videoMainInputs.get(input.id!); return item && item.eligible && item.target === effect.target && item.duration === effect.durationMs; }
           const item = audioMainInputs.get(input.id!);
           return item && !item.trimUnsupported && item.playbackMapped && item.target === effect.target && item.duration === effect.durationMs;

@@ -45,8 +45,8 @@ interface PartContextResult {
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
   audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
-  videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic" }[];
-  mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
+  videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high"; muted?: boolean; loop?: boolean; rewindAfterPlayback?: boolean }[];
+  mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; muted?: boolean; loop?: boolean; rewindAfterPlayback?: boolean }[];
 }
 
 function mediaFilename(value: string): string {
@@ -93,8 +93,8 @@ function createPartContext(options: {
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
-  const videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic" }[] = [];
-  const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
+  const videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high"; muted?: boolean; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
+  const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; muted?: boolean; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
     theme: options.theme,
@@ -134,7 +134,7 @@ function createPartContext(options: {
       mediaTargets.push({ kind: "audio", objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
       return { audio, media, poster: image };
     },
-    videoRelationship(assetId, posterAssetId, objectId, playbackStart, trimStartMs, trimEndMs) {
+    videoRelationship(assetId, posterAssetId, objectId, playbackStart, trimStartMs, trimEndMs, playbackVolume, muted, loop, rewindAfterPlayback) {
       const packaged = options.media.get(assetId), resource = options.video?.get(assetId);
       const poster = posterAssetId === undefined ? options.fallbackVideoPoster : options.media.get(posterAssetId);
       if (!packaged || !resource || !poster || !poster.loaded.mimeType.startsWith("image/")) throw new TypeError("PPTX video or its poster could not be packaged.");
@@ -142,8 +142,8 @@ function createPartContext(options: {
       relationships.push({ id: video, type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/video", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
-      videoTargets.push({ objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }) });
-      mediaTargets.push({ kind: "video", objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }) });
+      videoTargets.push({ objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(muted === undefined ? {} : { muted }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
+      mediaTargets.push({ kind: "video", objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(muted === undefined ? {} : { muted }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
       return { video, media, poster: image };
     },
     actionRelationship(action: ElementAction) {

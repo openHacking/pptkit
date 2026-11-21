@@ -44,3 +44,18 @@ test("video trim validates each shared use and rejects before external resolutio
     let calls = 0; await assert.rejects(generatePptx(make(elements, true), { videoMode: "iso-bmff-v1", resolveMedia() { calls++; return { bytes: movie }; } }), /trim must leave at least one millisecond/); assert.equal(calls, 1);
   }
 });
+
+test("video playback settings validate and preserve independent volume and mute", async () => {
+  for (const [key, values] of [["playbackVolume", ["mute", "invalid", null]], ["muted", [1, null]], ["loop", [1, null]], ["rewindAfterPlayback", [1, null]]]) for (const value of values) {
+    const p = make([video(undefined, undefined, { [key]: value })], true);
+    assert.ok(validatePresentation(p).some(x => x.code.startsWith("invalid-video-playback")));
+    let calls = 0; await assert.rejects(generatePptx(p, { videoMode: "iso-bmff-v1", resolveMedia() { calls++; } }), /validation failed/i); assert.equal(calls, 0);
+  }
+  assert.deepEqual((await generatePptx(make([video()]), { videoMode: "iso-bmff-v1" })).bytes, (await generatePptx(make([video(undefined, undefined, { playbackVolume: "high", muted: false, loop: false, rewindAfterPlayback: false })]), { videoMode: "iso-bmff-v1" })).bytes);
+  const p = make([video(undefined, undefined, { playbackVolume: "low", muted: true, loop: true, rewindAfterPlayback: true }), video(undefined, undefined, { playbackVolume: "medium" })]);
+  const result = await generatePptx(p, { videoMode: "iso-bmff-v1" });
+  const xml = new TextDecoder().decode(readGeneratedZip(result.bytes).get("ppt/slides/slide1.xml"));
+  assert.match(xml, /<p:video><p:cMediaNode vol="20000" mute="1"><p:cTn id="\d+" repeatCount="indefinite" fill="remove" display="0"/);
+  assert.match(xml, /<p:video><p:cMediaNode><p:cTn id="\d+" fill="hold" display="0"/);
+  await assert.rejects(generatePptx(make([video(undefined, undefined, { loop: true }), video(undefined, undefined, { playbackStart: "automatic" })]), { videoMode: "iso-bmff-v1" }), /cannot follow looping media/);
+});

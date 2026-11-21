@@ -194,6 +194,11 @@ export interface VideoElementInput extends ElementBaseInput {
   posterAssetId?: string;
   /** Defaults to click-sequence; automatic follows the native main sequence. */
   playbackStart?: "click-sequence" | "object-click" | "automatic";
+  /** Playback volume and mute are independent; defaults are high and unmuted. */
+  playbackVolume?: "low" | "medium" | "high";
+  muted?: boolean;
+  loop?: boolean;
+  rewindAfterPlayback?: boolean;
   /** Milliseconds removed from the beginning and end of the source. */
   trimStartMs?: number;
   trimEndMs?: number;
@@ -205,6 +210,11 @@ export interface NormalizedVideoElement extends NormalizedElementBase {
   posterAssetId?: string;
   /** Defaults to click-sequence; automatic follows the native main sequence. */
   playbackStart?: "click-sequence" | "object-click" | "automatic";
+  /** Playback volume and mute are independent; defaults are high and unmuted. */
+  playbackVolume?: "low" | "medium" | "high";
+  muted?: boolean;
+  loop?: boolean;
+  rewindAfterPlayback?: boolean;
   /** Milliseconds removed from the beginning and end of the source. */
   trimStartMs?: number;
   trimEndMs?: number;

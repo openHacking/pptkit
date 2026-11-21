@@ -4,7 +4,7 @@ import type { XmlElement } from "../xml/read-xml.js";
 export interface MainAudioEffect { readonly target: string; readonly durationMs: number; readonly start: "click-sequence" | "automatic" }
 
 /** Interpret only complete ordered native media calls, with verified optional video pause controls. */
-export async function audioMainStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, videoPauses?: ReadonlyMap<string, { status: "mapped"; durationMs: number } | { status: "unsupported" }>, videoObjects?: ReadonlySet<string>): Promise<readonly MainAudioEffect[] | undefined> {
+export async function audioMainStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, videoPauses?: ReadonlyMap<string, { status: "mapped"; durationMs: number } | { status: "unsupported" }>, videoObjects?: ReadonlySet<string>, videoSettings?: ReadonlyMap<string, { status: "mapped" } | { status: "unsupported" }>): Promise<readonly MainAudioEffect[] | undefined> {
   const select = (node: XmlElement | undefined, name: string) => node ? children(node).filter(x => x.namespaceUri === p && x.local === name) : [];
   const one = (node: XmlElement | undefined, name: string) => { const nodes = select(node, name); return nodes.length === 1 ? nodes[0] : undefined; };
   const canonical = (text: string | undefined) => { if (text === undefined || !/^\d+$/u.test(text)) return undefined; const n = Number(text); return Number.isSafeInteger(n) && n <= 4294967295 ? String(n) : undefined; };
@@ -34,7 +34,7 @@ export async function audioMainStart(root: XmlElement, p: string, checkpoint: ()
     await checkpoint();
     const media = one(video, "cMediaNode"), time = one(media, "cTn"), start = one(time, "stCondLst"), target = one(media, "tgtEl"), shape = one(target, "spTgt");
     const id = shape && canonical(attribute(shape, "spid"));
-    if (!exact(video, "video", {}, ["cMediaNode"]) || !exact(media, "cMediaNode", { vol: "80000" }, ["cTn", "tgtEl"]) || !timeNode(time, { fill: "hold", display: "0" }, ["stCondLst"]) || !exact(start, "stCondLst", {}, ["cond"]) || !exact(one(start, "cond"), "cond", { delay: "indefinite" }, []) || !exact(target, "tgtEl", {}, ["spTgt"]) || !exact(shape, "spTgt", { spid: "#" }, []) || id === undefined || videos.has(id) || videoPauses?.get(id)?.status !== "mapped" && !videoObjects?.has(id)) return undefined;
+    if (!exact(video, "video", {}, ["cMediaNode"]) || id === undefined || videoSettings?.get(id)?.status !== "mapped" || !exact(media, "cMediaNode", Object.fromEntries(media!.attributes.map(a => [a.local, a.value])), ["cTn", "tgtEl"]) || !timeNode(time, Object.fromEntries(time!.attributes.filter(a => a.local !== "id").map(a => [a.local, a.value])), ["stCondLst"]) || !exact(start, "stCondLst", {}, ["cond"]) || !exact(one(start, "cond"), "cond", { delay: "indefinite" }, []) || !exact(target, "tgtEl", {}, ["spTgt"]) || !exact(shape, "spTgt", { spid: "#" }, []) || id === undefined || videos.has(id) || videoPauses?.get(id)?.status !== "mapped" && !videoObjects?.has(id)) return undefined;
     if (!videoObjects?.has(id)) videos.add(id);
   }
   const sequences = select(timeline, "seq").filter(seq => { const node = one(seq, "cTn"); return node && attribute(node, "nodeType") === "mainSeq"; });

@@ -11,6 +11,8 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
   const check = (element: NormalizedElement, slideId?: string, nested = false) => {
     if (element.type === "group") { for (const child of element.children) check(child, slideId, true); return; }
     if (element.type !== "video") return;
+    if (element.playbackVolume !== undefined && !["low", "medium", "high"].includes(element.playbackVolume)) return reject("playbackVolume must be low, medium, or high.");
+    for (const key of ["muted", "loop", "rewindAfterPlayback"] as const) if (element[key] !== undefined && typeof element[key] !== "boolean") return reject(`${key} must be a boolean.`);
     if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click" && element.playbackStart !== "automatic") return reject("playbackStart must be click-sequence, object-click, or automatic.");
     for (const key of ["trimStartMs", "trimEndMs"] as const) if (element[key] !== undefined && (!Number.isSafeInteger(element[key]) || element[key]! < 0 || element[key]! > 2147483647)) return reject(`${key} must be a nonnegative integer no greater than 2147483647 milliseconds.`);
     if (mode !== "iso-bmff-v1") return reject("requires videoMode iso-bmff-v1; video cannot be silently omitted.");
