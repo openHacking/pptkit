@@ -5,6 +5,32 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('paint-aware selection passes through empty shape interiors in Chromium', async t => {
+  const doc = createPresentation({ size: { width: 100, height: 100 } });
+  doc.addSlide({ elements: [
+    { type: 'shape', id: 'back', shape: 'rect', box: { x: 0, y: 0, width: 100, height: 100 }, style: { fill: { type: 'solid', color: 'FF0000' }, stroke: { paint: { type: 'none' } } } },
+    { type: 'shape', id: 'outline', shape: 'ellipse', box: { x: 20, y: 20, width: 60, height: 60 }, style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 4 } } },
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(async ({ layout, svg }) => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeShapePaintSummary: true, includeShapeStrokeGeometry: true });
+    const image = new Image(); image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`; await image.decode();
+    const canvas = document.createElement('canvas'); canvas.width = canvas.height = 100;
+    const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0, 100, 100);
+    const data = ctx.getImageData(0, 0, 100, 100).data, failures = []; let checked = 0;
+    for (let y = 0; y < 100; y++) for (let x = 0; x < 100; x++) {
+      const r = data[(y * 100 + x) * 4]; if (r > 15 && r < 240) continue;
+      const expected = r <= 15 ? 'outline' : 'back', actual = PPTKit.hitTestSvgSelectionPaintAware(items, { x: x + .5, y: y + .5 })?.elementId;
+      checked++; if (actual !== expected) failures.push({ x, y, r, expected, actual });
+    }
+    return { checked, count: failures.length, examples: failures.slice(0, 5) };
+  }, { layout, svg });
+  assert.ok(result.checked > 9000);
+  assert.deepEqual({ count: result.count, examples: result.examples }, { count: 0, examples: [] });
+});
+
 test('ellipse stroke hits match Chromium away from boundaries under group transforms', async t => {
   const doc = createPresentation();
   const cases = [{ w: 50, h: 30, width: 2 }, { w: 80, h: 12, width: 6 }, { w: 30, h: 30, width: 10 }, { w: 20, h: 70, width: 12 }, { w: 100, h: 20, width: 19.8 }];

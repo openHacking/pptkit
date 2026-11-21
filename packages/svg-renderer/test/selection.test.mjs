@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation, normalizePresentation } from '@pptkit/core';
 import { resolveNormalizedLayout } from '@pptkit/layout';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgShapeStrokes, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgShapeStrokes, hitTestSvgSelectionOutlinesAndStrokes, hitTestSvgSelectionPaintAware } from '../dist/index.js';
 
 const box = (x, y, width, height) => ({ x, y, width, height });
 const shape = (id, b, extra = {}) => ({ type: 'shape', id, shape: 'rect', box: b, ...extra });
@@ -251,6 +251,31 @@ test('filled markers remain selectable with transparent lines and nested scaling
   assert.throws(() => hitTestSvgConnectorMarkers(items, { x: Infinity, y: 0 }), TypeError);
   const singular = structuredClone(items); singular[0].markerGeometry.transform = [0, 0, 0, 0, 0, 0];
   assert.throws(() => hitTestSvgConnectorMarkers(singular, { x: 0, y: 0 }), RangeError);
+});
+
+test('paint-aware selection passes through unfilled shape interiors and preserves conservative fallbacks', () => {
+  const none = { type: 'none' }, ink = { type: 'solid', color: '000000' };
+  const doc = createPresentation();
+  doc.addSlide({ elements: [
+    shape('back', box(0, 0, 100, 100), { style: { fill: ink } }),
+    shape('outline', box(20, 20, 60, 60), { style: { fill: none, stroke: { paint: ink, width: 4 } } }),
+    shape('clear', box(0, 0, 100, 100), { style: { fill: { type: 'solid', color: 'FF0000', opacity: 0 }, stroke: { paint: none } } }),
+    shape('clear-gradient', box(0, 0, 100, 100), { style: { fill: { type: 'linearGradient', angle: 0, stops: [{ position: 0, color: 'FF0000', opacity: 0 }, { position: 1, color: '0000FF', opacity: 0 }] }, stroke: { paint: none } } }),
+    shape('pattern', box(300, 0, 60, 60), { style: { fill: { type: 'pattern', pattern: 'cross', foreground: 'FF0000', background: '0000FF', foregroundOpacity: 1, backgroundOpacity: 0 }, stroke: { paint: none } } }),
+    shape('text', box(120, 0, 60, 60), { style: { fill: none, stroke: { paint: none } }, text: { content: 'Text' } }),
+    shape('wide', box(200, 0, 60, 30), { shape: 'roundRect', style: { fill: none, stroke: { paint: ink, width: 40 } } }),
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const items = getSvgSlideSelectionGeometry(layout, 0, { includeShapePaintSummary: true, includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgSelectionPaintAware(items, { x: 50, y: 50 }).elementId, 'back');
+  assert.equal(hitTestSvgSelectionPaintAware(items, { x: 19, y: 50 }).elementId, 'outline');
+  assert.equal(hitTestSvgSelectionPaintAware(items, { x: 140, y: 30 }).elementId, 'text');
+  assert.equal(hitTestSvgSelectionPaintAware(items, { x: 230, y: 15 }).elementId, 'wide');
+  assert.equal(hitTestSvgSelectionPaintAware(items, { x: 330, y: 30 }).elementId, 'pattern');
+  assert.equal(hitTestSvgSelectionPaintAware(getSvgSlideSelectionGeometry(layout, 0), { x: 50, y: 50 }).elementId, 'clear-gradient');
+  assert.ok(Object.isFrozen(items[1].shapePaint));
+  assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeShapePaintSummary: 1 }), TypeError);
+  assert.throws(() => hitTestSvgSelectionPaintAware([], { x: NaN, y: 0 }), TypeError);
 });
 
 test('rectangular strokes include outer edges and corners through group scaling', () => {
