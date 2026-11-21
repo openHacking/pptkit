@@ -1,4 +1,4 @@
-import type { Box, NormalizedTransform, Point } from "@pptkit/core";
+import type { ArrowType, Box, NormalizedTransform, Point } from "@pptkit/core";
 import type { LayoutElement, LayoutResult, LayoutSlide } from "@pptkit/layout";
 import { shapePolygonPoints } from "./shape-polygon.js";
 import { dashLengths } from "./style.js";
@@ -20,6 +20,14 @@ export interface SvgSelectionConnector {
   readonly owner: SvgSelectionOwner;
   readonly points: readonly Readonly<Point>[];
   readonly strokeGeometry?: SvgConnectorStrokeGeometry;
+  readonly markerGeometry?: SvgConnectorMarkerGeometry;
+}
+export interface SvgConnectorMarkerGeometry {
+  readonly points: readonly Readonly<Point>[];
+  readonly transform: readonly [number, number, number, number, number, number];
+  readonly width: number;
+  readonly beginArrow: ArrowType;
+  readonly endArrow: ArrowType;
 }
 export interface SvgConnectorStrokeGeometry {
   readonly points: readonly Readonly<Point>[];
@@ -113,7 +121,10 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         const strokeGeometry = options.includeConnectorStrokeGeometry && style.paint.type === "solid" && style.paint.opacity > 0 && style.width > 0
           ? Object.freeze({ points: Object.freeze(rawPoints.map(point => Object.freeze({ ...point }))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: style.width, ...(dash ? { dash: Object.freeze([...dash]) } : {}) })
           : undefined;
-        frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points, ...(strokeGeometry ? { strokeGeometry } : {}) }));
+        const markerGeometry = options.includeConnectorStrokeGeometry && style.paint.type !== "none" && style.width > 0 && (style.beginArrow !== "none" || style.endArrow !== "none")
+          ? Object.freeze({ points: Object.freeze(rawPoints.map(point => Object.freeze({ ...point }))), transform: Object.freeze([...matrix]) as SvgConnectorMarkerGeometry["transform"], width: style.width, beginArrow: style.beginArrow, endArrow: style.endArrow })
+          : undefined;
+        frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points, ...(strokeGeometry ? { strokeGeometry } : {}), ...(markerGeometry ? { markerGeometry } : {}) }));
       } else if (element.type !== "connector" && b.width > 0 && b.height > 0) {
         const corners = Object.freeze([apply(matrix, b.x, b.y), apply(matrix, b.x + b.width, b.y), apply(matrix, b.x + b.width, b.y + b.height), apply(matrix, b.x, b.y + b.height)]) as SvgSelectionFrame["corners"];
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
@@ -205,6 +216,51 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
   return undefined;
 }
 
+/** Hit filled SVG connector markers with a nonzero endpoint tangent. */
+export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionConnector | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  for (let i = items.length - 1; i >= 0; i--) {
+    const item = items[i]!;
+    if (item.kind !== "connector" || !item.markerGeometry) continue;
+    const { transform: [a, b, c, d, e, f], points, width, beginArrow, endArrow } = item.markerGeometry;
+    const scale = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
+    if (!Number.isFinite(scale) || scale === 0) throw new RangeError("Connector transform is singular or nonfinite.");
+    const aa = a / scale, bb = b / scale, cc = c / scale, dd = d / scale, det = aa * dd - bb * cc;
+    const x = (point.x - e) / scale, y = (point.y - f) / scale;
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(det) || det === 0) throw new RangeError("Connector transform is singular or outside finite hit-test range.");
+    const localX = (x * dd - y * cc) / det, localY = (y * aa - x * bb) / det;
+    if (!Number.isFinite(localX) || !Number.isFinite(localY)) throw new RangeError("Connector hit-test exceeds finite range.");
+    for (const [type, start] of [[beginArrow, true], [endArrow, false]] as const) {
+      if (type === "none" || type === "arrow") continue;
+      const endpoint = points[start ? 0 : points.length - 1]!;
+      let neighbor: Readonly<Point> | undefined;
+      for (let j = start ? 1 : points.length - 2; start ? j < points.length : j >= 0; j += start ? 1 : -1) {
+        const candidate = points[j]!;
+        if (candidate.x !== endpoint.x || candidate.y !== endpoint.y) { neighbor = candidate; break; }
+      }
+      if (!neighbor) continue;
+      // auto-start-reverse points both markers from their neighboring segment outward.
+      const dx = endpoint.x - neighbor.x, dy = endpoint.y - neighbor.y, length = Math.hypot(dx, dy);
+      if (!Number.isFinite(length) || length === 0) throw new RangeError("Connector marker tangent exceeds finite range.");
+      const px = localX - endpoint.x, py = localY - endpoint.y;
+      const mx = (px * (dx / length) + py * (dy / length)) / width + (start ? 1 : 9);
+      const my = (-px * (dy / length) + py * (dx / length)) / width + 5;
+      if (!Number.isFinite(mx) || !Number.isFinite(my)) throw new RangeError("Connector marker hit-test exceeds finite range.");
+      if (type === "oval") { if ((mx - 5) ** 2 + (my - 5) ** 2 <= 3.5 ** 2) return item; continue; }
+      const polygon = type === "diamond" ? [[1, 5], [5, 1], [9, 5], [5, 9]] : type === "stealth" ? [[1, 1], [9, 5], [1, 9], [4, 5]] : [[1, 1], [9, 5], [1, 9]];
+      let inside = false;
+      for (let j = 0, k = polygon.length - 1; j < polygon.length; k = j++) {
+        const [ax, ay] = polygon[j]!, [bx, by] = polygon[k]!;
+        const cross = (mx - ax!) * (by! - ay!) - (my - ay!) * (bx! - ax!);
+        if (Math.abs(cross) <= 1e-12 && mx >= Math.min(ax!, bx!) - 1e-12 && mx <= Math.max(ax!, bx!) + 1e-12 && my >= Math.min(ay!, by!) - 1e-12 && my <= Math.max(ay!, by!) + 1e-12) return item;
+        if ((ay! > my) !== (by! > my) && mx < (bx! - ax!) * (my - ay!) / (by! - ay!) + ax!) inside = !inside;
+      }
+      if (inside) return item;
+    }
+  }
+  return undefined;
+}
+
 /** Topmost frame containing a slide-space point; transparent areas inside frames still count. */
 export function hitTestSvgSelectionFrames<T extends SvgSelectionFrame>(frames: readonly T[], point: Point): T | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
@@ -245,7 +301,7 @@ export function hitTestSvgSelectionOutlinesAndStrokes(items: readonly SvgSelecti
   for (let i = items.length - 1; i >= 0; i--) {
     const item = items[i]!;
     if (item.kind === "connector") {
-      if (hitTestSvgConnectorStrokes([item], point)) return item;
+      if (hitTestSvgConnectorStrokes([item], point) || hitTestSvgConnectorMarkers([item], point)) return item;
     } else if (hitTestSvgSelectionFrames([item], point) && (!item.outline || insideOutline(item, point))) return item;
   }
   return undefined;

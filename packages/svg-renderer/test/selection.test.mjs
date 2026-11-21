@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation, normalizePresentation } from '@pptkit/core';
 import { resolveNormalizedLayout } from '@pptkit/layout';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
 
 const box = (x, y, width, height) => ({ x, y, width, height });
 const shape = (id, b, extra = {}) => ({ type: 'shape', id, shape: 'rect', box: b, ...extra });
@@ -233,6 +233,24 @@ test('combined outline and stroke hits preserve object and owner stacking', () =
   assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 150, y: 150 }), undefined);
   assert.equal(hitTestSvgSelectionOutlinesAndStrokes(getSvgSlideSelectionGeometry(layout, 0), { x: 20, y: 50 }).elementId, 'master-shape');
   assert.throws(() => hitTestSvgSelectionOutlinesAndStrokes([], { x: NaN, y: 0 }), TypeError);
+});
+
+test('filled markers remain selectable with transparent lines and nested scaling', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: box(100, 100, 200, 100), coordinateSize: { width: 100, height: 100 }, children: [
+    { type: 'connector', id: 'line', start: { x: 20, y: 50 }, end: { x: 80, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: 'triangle', endArrow: 'diamond' } },
+  ] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const items = getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 150, y: 150 }), undefined);
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 130, y: 150 }).elementId, 'line');
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 250, y: 150 }).elementId, 'line');
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 200, y: 150 }), undefined);
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 130, y: 150 }).elementId, 'line');
+  assert.ok(Object.isFrozen(items[0].markerGeometry.points[0]));
+  assert.throws(() => hitTestSvgConnectorMarkers(items, { x: Infinity, y: 0 }), TypeError);
+  const singular = structuredClone(items); singular[0].markerGeometry.transform = [0, 0, 0, 0, 0, 0];
+  assert.throws(() => hitTestSvgConnectorMarkers(singular, { x: 0, y: 0 }), RangeError);
 });
 
 test('dash phase continues through bends and round caps extend into gaps', () => {
