@@ -141,7 +141,7 @@ export function createSession(document: ManagedPresentationDocument, report: Imp
         const used = new Set(insertionSource.usedIds); let id = 2;
         for (const index of additionIndexes) {
           const property = candidate.metadata.customProperties[index]!;
-          if (property.type === "decimal") return blocked(mode, "save-edit-unsupported", "Exact decimal custom property insertion is not supported by source-preserving profiles.");
+          if (property.type === "decimal" && !editState?.decimalSave) return blocked(mode, "save-edit-unsupported", "Exact decimal custom property insertion is not supported by source-preserving profiles.");
           if (insertionSource.reservedNames.has(property.name)) return blocked(mode, "save-edit-unsupported", "A new custom property conflicts with an unprojected source name.");
           while (used.has(id) && id <= 2147483647) id++;
           if (id > 2147483647) return blocked(mode, "save-edit-unsupported", "No custom property ID is available.");

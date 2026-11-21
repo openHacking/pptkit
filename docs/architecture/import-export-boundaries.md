@@ -230,4 +230,4 @@ The separate `artwork-v1` profile adds a bounded plain-shape subset without chan
 
 `artwork-v6` uses the bounded DrawingML matrix interpreter to resolve eligible solid `bgRef` entries and placeholder color programs in the owning source scope. It does not retain a live matrix link or authorize source-preserving edits.
 
-Exact custom decimal values use the Core canonical decimal-string variant and fresh `vt:decimal` output; the Parser offers separate read-only and source-value-edit opt-ins while preserving its existing default real-number behavior. Source-save profiles do not insert this new type. See [ADR 0066](decisions/0066-exact-decimal-custom-properties.md).
+Exact custom decimal values use the Core canonical decimal-string variant and fresh `vt:decimal` output; the Parser offers separate read-only and source-value-edit opt-ins while preserving its existing default real-number behavior. An explicit structural-save opt-in also admits bounded decimal appends and custom-part creation; earlier profiles do not insert this new type. See [ADR 0066](decisions/0066-exact-decimal-custom-properties.md).

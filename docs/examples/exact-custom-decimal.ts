@@ -25,3 +25,15 @@ export async function changeBoundDecimal(bytes: Uint8Array, name: string, value:
     return (await session.save(prepared.plan)).bytes;
   } finally { session.dispose(); }
 }
+
+export async function appendDecimal(bytes: Uint8Array, name: string, value: string): Promise<Uint8Array> {
+  const session = await importPptx(bytes, { projection: "content", customDecimalProjection: "exact-save-v3", customPropertySaveProfile: "create-and-append-v5" });
+  try {
+    if (!session.document.setMetadata || session.report.customPropertyInsertion?.status !== "available") throw new Error("Custom property insertion is unavailable.");
+    const properties = session.document.metadata.customProperties ?? [];
+    session.document.setMetadata({ ...session.document.metadata, customProperties: [...properties, { name, type: "decimal", value }] });
+    const prepared = await session.prepareSave({ mode: "edit", customPropertyAdditions: [properties.length] });
+    if (prepared.status !== "ready") throw new Error("Decimal source insertion was rejected; inspect its report.");
+    return (await session.save(prepared.plan)).bytes;
+  } finally { session.dispose(); }
+}

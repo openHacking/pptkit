@@ -34,6 +34,15 @@ async function exercise(api) {
   } finally { session.dispose(); }
 }
 
+async function exerciseExactDecimalStructural(api, input) {
+  let bytes = new Uint8Array(input); const rounds = [];
+  for (let round = 0; round < 3; round++) {
+    const session = await api.importPptx(bytes, { projection: 'content', customDecimalProjection: 'exact-save-v3', customPropertySaveProfile: 'create-and-append-v5' });
+    try { const properties = session.document.metadata.customProperties ?? []; session.document.setMetadata({ ...session.document.metadata, customProperties: [...properties, { name: `Decimal ${round}`, type: 'decimal', value: round === 0 ? '0.1' : `${round}.25` }] }); const ready = await session.prepareSave({ mode: 'edit', customPropertyAdditions: [properties.length] }); if (ready.status !== 'ready') throw new Error(JSON.stringify(ready.report)); bytes = (await session.save(ready.plan)).bytes; rounds.push([...bytes]); } finally { session.dispose(); }
+  }
+  return rounds;
+}
+
 async function exerciseExactDecimalSave(api, input) {
   let bytes = new Uint8Array(input); const rounds = [];
   for (const value of ['0.1', '9007199254740993.0001', '-0.0000000000000000001']) {
@@ -347,6 +356,7 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const collisionSession = await importPptx(new Uint8Array(collisionInput), { projection: 'content' });
   const expectedCollision = { properties: collisionSession.document.metadata.customProperties, tiers: collisionSession.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) };
   collisionSession.dispose();
+  const decimalStructuralInput = [...encodeMetadata(metadataFixture())], expectedDecimalStructural = await exerciseExactDecimalStructural({ importPptx }, decimalStructuralInput);
   const decimalSave = metadataFixture(); decimalSave.add('custom', custom(2, 'decimal', ' +0001.2500 ', 'name="Decimal"') + custom(3, 'vector', '<v:lpstr>x</v:lpstr>', 'name="Opaque"'));
   const decimalSaveInput = [...encodeMetadata(decimalSave)], expectedDecimalSave = await exerciseExactDecimalSave({ importPptx }, decimalSaveInput);
   const mixedCurrency = metadataFixture(); mixedCurrency.add('core', '<d:title>Original</d:title>'); mixedCurrency.add('custom', custom(2, 'cy', '1.2500', 'name="Currency"') + custom(3, 'cy', '0.1000', 'name="Opaque"'));
@@ -388,6 +398,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
       return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
     }, { format, exercise: exerciseMixedCurrency.toString(), input: mixedCurrencyInput });
     assert.deepEqual(actualMixedCurrency, expectedMixedCurrency);
+    const actualDecimalStructural = await page.evaluate(async ({ format, exercise, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
+    }, { format, exercise: exerciseExactDecimalStructural.toString(), input: decimalStructuralInput });
+    assert.deepEqual(actualDecimalStructural, expectedDecimalStructural);
     const actualDecimalSave = await page.evaluate(async ({ format, exercise, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);

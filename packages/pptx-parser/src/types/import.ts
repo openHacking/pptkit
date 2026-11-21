@@ -325,10 +325,10 @@ export interface PptxSessionLimits {
   maxLivePlans: number;
 }
 export interface PptxImportOptions extends PptxInspectionOptions {
-  /** Explicit exact currency projection; exact-save-v2 additionally requires scalar-v1 source saves. */
+  /** Explicit exact currency projection; exact-save-v2 requires scalar-v1; exact-save-v3 requires append or create source saves. */
   customCurrencyProjection?: "exact-v1" | "exact-save-v2";
-  /** Explicit exact decimal projection; exact-save-v2 additionally requires scalar-v1 source saves. */
-  customDecimalProjection?: "exact-v1" | "exact-save-v2";
+  /** Explicit exact decimal projection; exact-save-v2 requires scalar-v1; exact-save-v3 requires append or create source saves. */
+  customDecimalProjection?: "exact-v1" | "exact-save-v2" | "exact-save-v3";
   /** Content only. Preserve existing directly bound drawing names; may be combined with description mixed-v5. */
   drawingNameSaveProfile?: "existing-v1";
   /** Content only. Preserve existing directly bound decorative values; may be combined with description mixed-v5. */
