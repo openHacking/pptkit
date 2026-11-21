@@ -327,8 +327,8 @@ export interface PptxSessionLimits {
 export interface PptxImportOptions extends PptxInspectionOptions {
   /** Explicit exact currency projection; exact-save-v2 additionally requires scalar-v1 source saves. */
   customCurrencyProjection?: "exact-v1" | "exact-save-v2";
-  /** Project exact decimal text as a Core decimal without enabling source edits. */
-  customDecimalProjection?: "exact-v1";
+  /** Explicit exact decimal projection; exact-save-v2 additionally requires scalar-v1 source saves. */
+  customDecimalProjection?: "exact-v1" | "exact-save-v2";
   /** Content only. Preserve existing directly bound drawing names; may be combined with description mixed-v5. */
   drawingNameSaveProfile?: "existing-v1";
   /** Content only. Preserve existing directly bound decorative values; may be combined with description mixed-v5. */

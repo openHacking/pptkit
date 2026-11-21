@@ -89,6 +89,13 @@ export function projectExactDecimalProperty(property: CustomPropertyInfo): Custo
   return { name, type: "decimal", value: match[1] === "-" && unsigned !== "0" ? `-${unsigned}` : unsigned };
 }
 
+/** Reuse the same bounded projection when validating a prepared candidate. */
+export async function projectExactDecimals(properties: readonly CustomPropertyInfo[], checkpoint: () => Promise<void>): Promise<(CustomDocumentProperty | undefined)[]> {
+  const result: (CustomDocumentProperty | undefined)[] = [];
+  for (const property of properties) { await checkpoint(); result.push(projectExactDecimalProperty(property)); }
+  return result;
+}
+
 /** Optional read-only projection; currency remains an opaque source value. */
 export function projectCurrencyProperty(property: CustomPropertyInfo, text: string): CustomDocumentProperty | undefined {
   if (property.valueType !== "cy" || property.value.status !== "uninterpreted" || !property.name || property.linkTarget !== undefined) return undefined;

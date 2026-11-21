@@ -83,7 +83,7 @@ Fresh export protects literal `_xHHHH_` sequences in custom-property names and s
 
 ## Source-preserving custom scalar edits
 
-Core also supports exact `decimal` custom properties represented by canonical decimal strings. Fresh PPTX output uses `vt:decimal`; explicit read-only import and limitations are documented in [ADR 0066](../architecture/decisions/0066-exact-decimal-custom-properties.md). Existing source-preserving insertion profiles do not accept this new type.
+Core also supports exact `decimal` custom properties represented by canonical decimal strings. Fresh PPTX output uses `vt:decimal`; explicit import and source-value save profiles are documented in [ADR 0066](../architecture/decisions/0066-exact-decimal-custom-properties.md). `exact-save-v2` requires `scalar-v1`, patches only uniquely bound decimal values, retains unchanged source lexical text and reprojects the candidate. Existing source-preserving insertion profiles do not accept this new type.
 
 Explicit opt-in currency source-value editing is documented in the [currency projection and save profile](opaque-custom-properties.md).
 

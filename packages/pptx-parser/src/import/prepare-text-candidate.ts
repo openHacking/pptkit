@@ -19,6 +19,7 @@ import type { PptxInspectionOptions } from "../types/structure.js";
 import { equalState, snapshot } from "./state.js";
 import { projectStructure } from "./project-structure.js";
 import { projectCurrencies } from "./currency-projection.js";
+import { projectExactDecimals } from "./project-custom-properties.js";
 import { projectContent } from "./project-content.js";
 import { chartNumber } from "./chart-data.js";
 import type { ChartValueBinding } from "./chart-value-bindings.js";
@@ -57,7 +58,7 @@ export async function verifyTextSourceAncestry(elements: readonly XmlTextSourceE
 
 export async function prepareTextCandidate(
   source: Uint8Array, candidate: NormalizedPresentation, analysis: TextEditAnalysis,
-  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean,
+  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean, decimalSave?: boolean,
 ): Promise<{ bytes: Uint8Array; validationBytes: number; validationWork: number } | { diagnostics: readonly ImportDiagnostic[] }> {
   try {
     await checkpoint();
@@ -372,7 +373,8 @@ export async function prepareTextCandidate(
       }
     }
     const currency = currencySave ? await projectCurrencies(context, checkpoint) : undefined;
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, undefined, false, currency?.values);
+    const decimal = decimalSave ? await projectExactDecimals(context.metadata.custom?.properties ?? [], checkpoint) : undefined;
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, undefined, false, currency?.values, decimal);
     const rebound: ChartValueBinding[] | undefined = analysis.chartValues.length ? [] : undefined;
     const reboundLabels: ChartLabelBinding[] | undefined = analysis.chartLabels?.length ? [] : undefined;
     const reboundOrders: ChartSeriesOrderBinding[] | undefined = analysis.chartOrders?.length ? [] : undefined;
