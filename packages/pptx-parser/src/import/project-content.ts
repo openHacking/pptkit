@@ -13,6 +13,7 @@ import { contentText, type ContentTextRun } from "./content-text.js";
 import { bindTextRuns, type TextRunBinding } from "./text-run-bindings.js";
 import { contentImages } from "./content-images.js";
 import { audioSources } from "./audio-sources.js";
+import { audioTrim } from "./audio-trim.js";
 import { videoSources } from "./video-sources.js";
 import { contentAction } from "./content-actions.js";
 import { connectorAttachment, contentConnector, type ContentConnection, type ContentDrawing } from "./content-connectors.js";
@@ -285,7 +286,11 @@ export async function projectContent(document: ManagedPresentationDocument, base
         const nv = r.one(node, r.p, container)!, nvPr = r.one(nv, r.p, "nvPr");
         const sources = audio?.forOwner(nvPr) ?? [], direct = sources.filter(item => item.declaration !== "p14:media"), companion = sources.filter(item => item.declaration === "p14:media");
         const declarations = nvPr ? children(nvPr).filter(item => (item.namespaceUri === r.a || item.namespaceUri === r.p) && ["audioFile", "wavAudioFile", "videoFile", "quickTimeFile", "audioCd"].includes(item.local)) : [];
-        const candidate = audioProjection && direct.length === 1 && direct[0]!.status === "wave-pcm" && direct[0]!.mediaPart && declarations.length === 1 && (companion.length === 0 || companion.length === 1 && companion[0]!.companionStatus === "same-part" && companion[0]!.status === "wave-pcm") && geometry.box.width > 0 && geometry.box.height > 0 ? direct[0] : undefined;
+        const primary = direct.length === 1 ? direct[0] : undefined;
+        const office = companion.length === 1 ? companion[0] : undefined;
+        const trim = audioTrim(nvPr, r.p, (primary?.status === "wave-pcm" ? primary : office)?.pcm?.durationSeconds);
+        const nativeTrimmed = primary?.declaration === "audioFile" && primary.status === "external" && primary.externalTarget === "NULL" && office?.relationshipAttribute === "embed" && office.status === "wave-pcm" && office.companionStatus === "unverified" && trim.status === "mapped" && (trim.trimStartMs > 0 || trim.trimEndMs > 0);
+        const candidate = audioProjection && declarations.length === 1 && geometry.box.width > 0 && geometry.box.height > 0 ? nativeTrimmed ? office : primary?.status === "wave-pcm" && primary.mediaPart && (companion.length === 0 || office?.companionStatus === "same-part" && office.status === "wave-pcm") ? primary : undefined : undefined;
         const videoSources = video?.forPicture(node) ?? [], videoDirect = videoSources.filter(item => item.declaration === "videoFile"), videoCompanion = videoSources.filter(item => item.declaration === "p14:media");
         const videoCandidate = videoProjection && videoDirect.length === 1 && videoDirect[0]!.status === "iso-bmff-framing" && videoDirect[0]!.mediaPart && declarations.length === 1 && (videoCompanion.length === 0 || videoCompanion.length === 1 && videoCompanion[0]!.companionStatus === "same-part" && videoCompanion[0]!.status === "iso-bmff-framing") && geometry.box.width > 0 && geometry.box.height > 0 ? videoDirect[0] : undefined;
         const result = await image(node, properties, r, at);
@@ -302,12 +307,13 @@ export async function projectContent(document: ManagedPresentationDocument, base
             audioAssets.set(mediaPart, audioAssetId); identities.push({ kind: "asset", id: audioAssetId, source: { part: mediaPart } });
           }
           identities.push({ kind: "asset", id: audioAssetId, source: candidate.source });
-          input = { ...baseInput, type: "audio", audioAssetId, ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          input = { ...baseInput, type: "audio", audioAssetId, ...(trim.status === "mapped" ? { trimStartMs: trim.trimStartMs, trimEndMs: trim.trimEndMs } : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          if (trim.status === "unsupported") finding("drawing.audio.trim", "import", "unsupported", at, "Audio trim cannot be projected as bounded integer milliseconds; playback uses the full source.", slide.id, id);
           cachedPreview = true; mediaPlaceholder = true;
           reportMedia(!("reason" in result), "reason" in result, "audio");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
             const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
-            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster and geometry are projected; playback settings, timing, general export and source edit-save remain unsupported.", slide.id, id);
+            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster, geometry and supported trim are projected; other playback settings, timing, general export and source edit-save remain unsupported.", slide.id, id);
           }
           if ("reason" in result) finding("drawing.audio.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
         } else if (videoCandidate && ("reason" in result || posterSupported)) {

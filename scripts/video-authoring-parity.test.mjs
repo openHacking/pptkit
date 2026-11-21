@@ -77,6 +77,21 @@ test('mixed audio and video projection and re-export agree across Node and brows
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
 });
 
+test('native trimmed audio import and fresh export agree across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/powerpoint-audio-trim.pptx');
+  const importOptions = { projection: 'content', audioProjection: 'wave-pcm-v1' }, exportOptions = { audioMode: 'wave-pcm-v1' };
+  const node = await importPptx(bytes, importOptions); let expected;
+  try { const result = await generatePptx(node.document, exportOptions); const plan = await node.prepareSave({ mode: 'no-op' }); expected = { elements: node.document.slides[0].elements, sources: node.report.audioSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await node.save(plan.plan)).bytes] }; } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ data, importOptions, exportOptions }) => {
+    const session = await PPTKit.importPptx(Uint8Array.from(data), importOptions);
+    try { const result = await PPTKit.generatePptx(session.document, exportOptions), plan = await session.prepareSave({ mode: 'no-op' }); return { elements: session.document.slides[0].elements, sources: session.report.audioSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await session.save(plan.plan)).bytes] }; } finally { session.dispose(); }
+  }, { data: [...bytes], importOptions, exportOptions });
+  assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
+});
+
 test('authored object-click audio export agrees across Node and browser', async t => {
   const parts = readGeneratedZip(await readFile('tests/fixtures/pptkit-audio-start-object-click.pptx'));
   const wave = parts.get('ppt/media/sound.wav');
