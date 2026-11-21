@@ -14,6 +14,7 @@ import { bindTextRuns, type TextRunBinding } from "./text-run-bindings.js";
 import { contentImages } from "./content-images.js";
 import { audioSources } from "./audio-sources.js";
 import { audioTrim } from "./audio-trim.js";
+import { audioPlayback } from "./audio-playback.js";
 import { videoSources } from "./video-sources.js";
 import { contentAction } from "./content-actions.js";
 import { connectorAttachment, contentConnector, type ContentConnection, type ContentDrawing } from "./content-connectors.js";
@@ -78,6 +79,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
     const slide = document.slides[index]!, sourceSlide = base.inspection.slides[index]!, part = sourceSlide.part;
     const diagramByIndex = new Map(sourceSlide.diagrams?.map(d => [d.elementIndex, d]));
     const root = await context.root(part, "sld"), r = contentReader(part, context.p, context.a);
+    const audioSettings = audioProjection ? await audioPlayback(root, context.p, checkpoint) : undefined;
     const placeholders = await inheritance.slide(part, sourceSlide.layoutPart);
     r.known(root); r.attr(root, "show");
     const common = r.one(root, r.p, "cSld"), tree = common ? r.one(common, r.p, "spTree") : undefined;
@@ -171,7 +173,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
       const reportMedia = (posterMapped: boolean, placeholder = false, projected?: "audio" | "video") => {
         if (!media) return;
         const mediaAt = { ...at, path: pathByNode.get(media)! };
-        const reason = projected ? `The ${projected === "audio" ? "PCM audio" : "video"} and optional poster are projected, but source playback settings and timing are not projected or executed.` : posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : placeholder ? "The media object has no mapped static poster; a static placeholder is shown without media identity, playback or timing." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
+        const reason = projected ? `The ${projected === "audio" ? "PCM audio" : "video"} and optional poster are projected, but some source playback settings and timing are not projected or executed.` : posterMapped ? "The static image is a media poster only; media identity, playback and timing are not projected or executed." : placeholder ? "The media object has no mapped static poster; a static placeholder is shown without media identity, playback or timing." : "The media object has no mapped static poster; media identity, playback and timing are not projected or executed.";
         capabilities("drawing.media", mediaAt, reason, false, posterMapped || placeholder ? id : undefined);
         finding("drawing.media.poster", "preview", posterMapped || placeholder ? "fallback" : "unsupported", mediaAt, reason, slide.id, posterMapped || placeholder ? id : undefined);
         diagnostics.push({ code: "media-playback-unmapped", severity: "warning", source: mediaAt, slideId: slide.id, ...(posterMapped || placeholder ? { elementId: id } : {}), message: reason });
@@ -307,13 +309,15 @@ export async function projectContent(document: ManagedPresentationDocument, base
             audioAssets.set(mediaPart, audioAssetId); identities.push({ kind: "asset", id: audioAssetId, source: { part: mediaPart } });
           }
           identities.push({ kind: "asset", id: audioAssetId, source: candidate.source });
-          input = { ...baseInput, type: "audio", audioAssetId, ...(trim.status === "mapped" ? { trimStartMs: trim.trimStartMs, trimEndMs: trim.trimEndMs } : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          const playback = audioSettings?.get(at.sourceObjectId);
+          input = { ...baseInput, type: "audio", audioAssetId, ...(trim.status === "mapped" ? { trimStartMs: trim.trimStartMs, trimEndMs: trim.trimEndMs } : {}), ...(playback?.status === "mapped" ? playback.settings : {}), ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          if (playback?.status === "unsupported") finding("drawing.audio.playback", "import", "unsupported", at, "Ambiguous or unsupported audio media timing settings were not projected.", slide.id, id);
           if (trim.status === "unsupported") finding("drawing.audio.trim", "import", "unsupported", at, "Audio trim cannot be projected as bounded integer milliseconds; playback uses the full source.", slide.id, id);
           cachedPreview = true; mediaPlaceholder = true;
           reportMedia(!("reason" in result), "reason" in result, "audio");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
             const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
-            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster, geometry and supported trim are projected; other playback settings, timing, general export and source edit-save remain unsupported.", slide.id, id);
+            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster, geometry, supported trim and media settings are projected; other playback timing, general export and source edit-save remain unsupported.", slide.id, id);
           }
           if ("reason" in result) finding("drawing.audio.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
         } else if (videoCandidate && ("reason" in result || posterSupported)) {

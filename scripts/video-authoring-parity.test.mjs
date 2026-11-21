@@ -90,6 +90,7 @@ test('native trimmed audio import and fresh export agree across Node and browser
     try { const result = await PPTKit.generatePptx(session.document, exportOptions), plan = await session.prepareSave({ mode: 'no-op' }); return { elements: session.document.slides[0].elements, sources: session.report.audioSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await session.save(plan.plan)).bytes] }; } finally { session.dispose(); }
   }, { data: [...bytes], importOptions, exportOptions });
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
+  assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => [x.playbackVolume, x.loop, x.rewindAfterPlayback]), [['high', false, false], ['high', true, false], ['high', false, true], ['high', true, true]]);
 });
 
 test('authored object-click audio export agrees across Node and browser', async t => {
