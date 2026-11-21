@@ -399,6 +399,25 @@ export class PresentationDocumentImpl implements ManagedPresentationDocument {
     this.sectionsValue = captured; this.slideRevision++;
   }
 
+  setSectionStructure(slideOrder: readonly string[], sections?: readonly PresentationSection[]): void {
+    const revision = this.slideRevision;
+    const byId = new Map(this.slideEntries.map(slide => [slide.id, slide]));
+    if (!Array.isArray(slideOrder) || slideOrder.length !== byId.size || slideOrder.length > 100000 || Reflect.ownKeys(slideOrder).length !== slideOrder.length + 1) throw new TypeError("Slide order must be a complete dense array.");
+    const seen = new Set<string>();
+    const next: PresentationSlideImpl[] = [];
+    for (let index = 0; index < byId.size; index++) {
+      if (!Object.hasOwn(slideOrder, index)) throw new TypeError("Slide order must be a complete dense array.");
+      const id = slideOrder[index], slide = byId.get(id!);
+      if (!slide || seen.has(id!)) throw new TypeError("Slide order must contain each existing slide exactly once.");
+      seen.add(id!); next.push(slide);
+    }
+    const captured = captureSections(sections, new Set(byId.keys()));
+    if (revision !== this.slideRevision) throw new Error("Slides or sections changed during section structure capture.");
+    for (let index = 0; index < next.length; index++) this.slideEntries[index] = next[index]!;
+    this.sectionsValue = captured;
+    this.slideRevision++;
+  }
+
   get slides(): readonly ManagedPresentationSlide[] {
     return Object.freeze([...this.slideEntries]);
   }

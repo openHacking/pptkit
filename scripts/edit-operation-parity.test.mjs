@@ -8,6 +8,24 @@ import { renderPresentationToSvg } from '../packages/svg-renderer/dist/index.js'
 import { inspectPptx } from '../packages/pptx-parser/dist/index.js';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 
+test('atomic section structure edits agree across Node and browser output', async t => {
+  async function exercise(api) {
+    const doc = api.createPresentation({ id: 'deck' });
+    for (const id of ['a', 'b', 'c']) doc.addSlide({ id });
+    doc.setSections([{ id: 'one', name: 'same', slideIds: ['a', 'b'] }, { id: 'two', name: 'same', slideIds: ['c'] }]);
+    doc.setSectionStructure(['c', 'a', 'b'], [{ id: 'two', name: 'same', slideIds: ['c', 'a'] }, { id: 'one', name: 'same', slideIds: ['b'] }]);
+    let rejected = false;
+    try { doc.setSectionStructure(['a', 'a', 'b'], []); } catch { rejected = true; }
+    return { order: doc.slides.map(s => s.id), sections: doc.sections, rejected, bytes: [...(await api.generatePptx(doc)).bytes] };
+  }
+  const expected = await exercise({ createPresentation, generatePptx });
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage();
+  for (const pkg of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${pkg}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(`(${exercise.toString()})(PPTKit)`);
+  assert.deepEqual(actual, expected); assert.equal(actual.rejected, true);
+});
+
 test('serialized edit batch and inverse agree across Node, browser and PPTX output', async t => {
   const operation = { schemaVersion: 'pptkit-edit-v1', documentId: 'deck', changes: [
     { type: 'slide-hidden', slideId: 'a', expected: false, value: true },

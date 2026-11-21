@@ -30,9 +30,12 @@ test("authored native sections preserve names, empty sections and numeric slide 
   session.dispose();
   deck.moveSlide("b", 0);
   assert.deepEqual((await inspectPptx((await generatePptx(deck)).bytes)).sectionList.sections.map(s => s.id), guids);
+  deck.setSectionStructure(["c", "b", "a"], [{ id: "last", name: "same &\n", slideIds: ["c", "b"] }, { id: "empty", slideIds: [] }, { id: "first", name: "same &\n", slideIds: ["a"] }]);
+  const moved = await inspectPptx((await generatePptx(deck)).bytes);
+  assert.deepEqual(moved.sectionList.sections.map(s => [s.id, s.slides.map(slide => slide.id)]), [[guids[3], [256, 257]], [guids[1], []], [guids[0], [258]]]);
   deck.addSlide({ id: "unassigned" });
   await assert.rejects(generatePptx(deck), /cover every slide/);
-  deck.removeSlide("unassigned"); deck.moveSlide("c", 1);
+  deck.removeSlide("unassigned"); deck.moveSlide("a", 1);
   await assert.rejects(generatePptx(deck), /cover every slide/);
 });
 

@@ -38,3 +38,51 @@ test("invalid replacement is atomic and never guesses membership by name", () =>
   assert.deepEqual(deck.sections, before);
   deck.addSlide({ id: "c" }); assert.deepEqual(deck.sections, before);
 });
+
+test("section creation, rename, boundary moves, merge and deletion use explicit identities", () => {
+  const deck = createPresentation({ id: "deck" });
+  for (const id of ["a", "b", "c", "d"]) deck.addSlide({ id });
+  deck.setSections([{ id: "left", name: "same", slideIds: ["a", "b"] }, { id: "right", name: "same", slideIds: ["c", "d"] }]);
+  deck.setSections([{ id: "left", name: "renamed", slideIds: ["a"] }, { id: "new", slideIds: ["b"] }, { id: "right", name: "same", slideIds: ["c", "d"] }]);
+  // Move c across the boundary and d to the front in one transaction.
+  deck.setSectionStructure(["d", "a", "b", "c"], [{ id: "right", name: "same", slideIds: ["d"] }, { id: "left", name: "renamed", slideIds: ["a", "b", "c"] }]);
+  assert.deepEqual(deck.slides.map(s => s.id), ["d", "a", "b", "c"]);
+  assert.deepEqual(deck.sections.map(s => [s.id, s.slideIds]), [["right", ["d"]], ["left", ["a", "b", "c"]]]);
+  // Deleting the left section unassigns its pages rather than deleting them.
+  deck.setSections([{ id: "right", name: "same", slideIds: ["d"] }]);
+  assert.deepEqual(deck.slides.map(s => s.id), ["d", "a", "b", "c"]);
+  deck.removeSlide("d"); assert.deepEqual(deck.sections[0].slideIds, []);
+  deck.applyEditOperation({ schemaVersion: "pptkit-edit-v1", documentId: "deck", changes: [{ type: "slide-order", expected: ["a", "b", "c"], value: ["c", "b", "a"] }] });
+  assert.deepEqual(deck.slides.map(s => s.id), ["c", "b", "a"]);
+});
+
+test("section structure replacement rejects invalid order or membership without partial mutation", () => {
+  const deck = createPresentation(); for (const id of ["a", "b", "c"]) deck.addSlide({ id });
+  deck.setSections([{ id: "one", slideIds: ["a", "b"] }, { id: "two", slideIds: ["c"] }]);
+  const before = () => ({ order: deck.slides.map(s => s.id), sections: deck.sections });
+  const original = before();
+  for (const [order, sections] of [
+    [["a", "b"], []], [["a", "b", "b"], []], [["a", "b", "missing"], []],
+    [["c", "b", "a"], [{ id: "one", slideIds: ["a", "a"] }]],
+    [["c", "b", "a"], [{ id: "one", slideIds: ["missing"] }]],
+  ]) {
+    assert.throws(() => deck.setSectionStructure(order, sections)); assert.deepEqual(before(), original);
+  }
+  const order = ["c", "b", "a"];
+  const reentrant = { get id() { deck.setSections([]); return "changed"; }, slideIds: [] };
+  assert.throws(() => deck.setSectionStructure(order, [reentrant]), /changed during section structure capture/);
+  assert.deepEqual(deck.slides.map(s => s.id), original.order);
+  assert.deepEqual(deck.sections, []);
+});
+
+test("copies do not guess section identities from equal names", () => {
+  const source = createPresentation(); source.addSlide({ id: "source", section: "label" });
+  source.setSections([{ id: "source-section", name: "same", slideIds: ["source"] }]);
+  const dest = createPresentation(); dest.addSlide({ id: "target" });
+  dest.setSections([{ id: "target-section", name: "same", slideIds: ["target"] }]);
+  const result = dest.copySlideFrom(source, "source", { layoutId: null, theme: "destination", geometry: "preserve", customData: "preserve", assets: { deduplicate: "content", external: "reject" } });
+  assert.equal(result.slide.section, "label");
+  assert.deepEqual(dest.sections.map(s => s.slideIds), [["target"]]);
+  dest.setSections([{ id: "target-section", name: "same", slideIds: ["target", result.slide.id] }]);
+  assert.deepEqual(dest.sections[0].slideIds, ["target", result.slide.id]);
+});

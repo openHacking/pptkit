@@ -313,6 +313,8 @@ export interface PresentationDocument {
 /** Editing capabilities of factory-created documents; legacy custom documents remain valid. */
 export interface ManagedPresentationDocument extends PresentationDocument {
   setSections(sections?: readonly PresentationSection[]): void;
+  /** Replace the complete slide order and section collection in one transaction. */
+  setSectionStructure(slideOrder: readonly string[], sections?: readonly PresentationSection[]): void;
   /** Atomically apply a serializable, value-checked edit batch and return its inverse. */
   applyEditOperation(operation: import("./edit-operation.js").PresentationEditOperation): import("./edit-operation.js").PresentationEditResult;
   /** Replace the complete metadata value with a validated, detached snapshot. */
