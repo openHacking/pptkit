@@ -97,17 +97,18 @@ export function mountBrowserMedia(container: HTMLElement, options: BrowserMediaO
   };
   const handlers: [keyof HTMLMediaElementEventMap, EventListener][] = [
     ['loadedmetadata', () => {
+      if (current.status === 'error' && current.failure !== 'permission' && current.failure !== 'playback') return;
       if (!Number.isFinite(element.duration) || element.duration <= 0 || element.duration * 1000 > Number.MAX_SAFE_INTEGER || start + trimEnd >= element.duration * 1000) { ++epoch; wantsPlayback = false; element.pause(); publish('error', 'invalid-duration'); return; }
       duration = element.duration * 1000;
       if (element.currentTime < start / 1000 || element.currentTime > (duration - trimEnd) / 1000) element.currentTime = start / 1000;
-      publish('ready');
+      if (current.status === 'error') publish('error', current.failure); else publish('ready');
     }],
     ['playing', () => { if (!element.paused) { wantsPlayback = true; if (current.status !== 'error') publish('playing'); } }],
-    ['pause', () => { if (!element.paused) return; if (!boundary && !element.ended) wantsPlayback = false; if (!boundary && current.status !== 'error' && current.status !== 'ended') publish('paused'); }],
+    ['pause', () => { if (!element.paused) return; if (!boundary && !element.ended) wantsPlayback = false; if (duration !== undefined && !boundary && current.status !== 'error' && current.status !== 'ended') publish('paused'); }],
     ['seeking', () => { if (duration !== undefined && element.currentTime * 1000 < start) element.currentTime = start / 1000; }],
     ['timeupdate', () => { if (end() !== undefined && element.currentTime * 1000 >= end()!) finish(); else if (current.status !== 'error' && current.status !== 'ended') publish(current.status); }],
     ['ended', finish],
-    ['error', () => { const code = element.error?.code; publish('error', code === 2 ? 'network' : code === 3 ? 'decode' : code === 4 ? 'unsupported' : 'playback'); }],
+    ['error', () => { ++epoch; wantsPlayback = false; const code = element.error?.code; publish('error', code === 2 ? 'network' : code === 3 ? 'decode' : code === 4 ? 'unsupported' : 'playback'); }],
   ];
   element.preload = 'metadata'; element.controls = options.controls ?? false; element.muted = options.muted ?? false; element.volume = options.volume ?? 0.8;
   for (const [name, handler] of handlers) element.addEventListener(name, handler);
@@ -121,7 +122,7 @@ export function mountBrowserMedia(container: HTMLElement, options: BrowserMediaO
     async play() {
       ensure();
       if (current.status === 'error' && current.failure !== 'permission' && current.failure !== 'playback') throw new TypeError('Media is in an error state.');
-      if (current.status === 'error') { publish('paused'); ensure(); }
+      if (current.status === 'error') { publish(duration === undefined ? 'loading' : 'paused'); ensure(); }
       const token = ++epoch; wantsPlayback = true;
       if (duration !== undefined && (element.currentTime * 1000 >= end()! || element.currentTime * 1000 < start)) element.currentTime = start / 1000;
       try { await element.play(); }

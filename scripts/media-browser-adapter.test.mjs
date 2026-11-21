@@ -70,6 +70,42 @@ test('capability is advisory, permission rejection can retry, and late failures 
   assert.deepEqual(result, { capability: 'unsupported', failure: 'permission', recovered: true, status: 'disposed', disposedError: true, children: 0 }); assert.deepEqual(requests, []);
 });
 
+test('native media failure wins over a late play rejection and stale metadata', async t => {
+  const { page, requests, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const c = adapter.mountBrowserMedia(host, { kind: 'video', source: new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }), contentType: 'video/mp4' });
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); c.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } }); });
+    let rejectPlay; c.element.play = () => new Promise((_, reject) => { rejectPlay = reject; });
+    const pending = c.play().catch(e => e.name);
+    Object.defineProperty(c.element, 'error', { configurable: true, value: { code: 3 } }); c.element.dispatchEvent(new Event('error'));
+    rejectPlay(new DOMException('late rejection', 'NotAllowedError')); const rejected = await pending;
+    c.element.dispatchEvent(new Event('loadedmetadata')); c.element.dispatchEvent(new Event('pause'));
+    let retry; try { await c.play(); } catch (e) { retry = e.name; }
+    const state = { status: c.state.status, failure: c.state.failure }; c.dispose();
+    return { rejected, retry, state, remaining: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { rejected: 'NotAllowedError', retry: 'TypeError', state: { status: 'error', failure: 'decode' }, remaining: 0 }); assert.deepEqual(requests, []);
+});
+
+test('permission failure survives metadata and retries stay loading until metadata is available', async t => {
+  const { page, requests, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const c = adapter.mountBrowserMedia(host, { kind: 'video', source: new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }), contentType: 'video/mp4' });
+    c.element.dispatchEvent(new Event('pause')); const initial = c.state.status;
+    c.element.play = () => Promise.reject(new DOMException('gesture', 'NotAllowedError'));
+    await c.play().catch(() => {}); const rejected = c.state.failure;
+    let resolvePlay; c.element.play = () => new Promise(resolve => { resolvePlay = resolve; });
+    const pending = c.play(); const retrying = c.state.status; resolvePlay(); await pending;
+    c.element.play = () => Promise.reject(new DOMException('gesture', 'NotAllowedError')); await c.play().catch(() => {});
+    Object.defineProperty(c.element, 'duration', { configurable: true, value: 12 }); c.element.dispatchEvent(new Event('loadedmetadata'));
+    const afterMetadata = { status: c.state.status, failure: c.state.failure, duration: c.state.durationMs }; c.dispose();
+    return { initial, rejected, retrying, afterMetadata };
+  }, movie);
+  assert.deepEqual(result, { initial: 'loading', rejected: 'permission', retrying: 'loading', afterMetadata: { status: 'error', failure: 'permission', duration: 12000 } }); assert.deepEqual(requests, []);
+});
+
 test('invalid inputs and invalid retained duration fail explicitly without leaked nodes', async t => {
   const { page, movie } = await setup(t);
   const result = await page.evaluate(async bytes => {
@@ -715,4 +751,20 @@ test('in-place media restores its poster on decode failure and cancelled resolut
     return { failure, fallback, aborted, restored: svg.outerHTML === before };
   }, { ...input, bytes: movie });
   assert.ok(['unsupported', 'decode'].includes(result.failure)); assert.equal(result.fallback, true); assert.equal(result.aborted, 'AbortError'); assert.equal(result.restored, true); assert.deepEqual(requests, []);
+});
+
+test('in-place poster remains restored when a pending play rejects after a decode error', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const host = document.createElement('div'); document.body.append(host); host.innerHTML = text; const svg = host.querySelector('svg'), before = svg.outerHTML;
+    const mounted = await adapter.mountLayoutMediaInPlace(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 });
+    const c = mounted.controller, poster = [...svg.querySelectorAll('[data-pptkit-element-id]')].find(n => n.getAttribute('data-pptkit-element-id') === 'video');
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); c.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+    let rejectPlay; c.element.play = () => new Promise((_, reject) => { rejectPlay = reject; }); const pending = c.play().catch(() => {});
+    Object.defineProperty(c.element, 'error', { configurable: true, value: { code: 3 } }); c.element.dispatchEvent(new Event('error'));
+    rejectPlay(new DOMException('late', 'NotAllowedError')); await pending; c.element.dispatchEvent(new Event('loadedmetadata'));
+    const after = { status: c.state.status, failure: c.state.failure, poster: getComputedStyle(poster).visibility, media: c.element.style.visibility }; c.dispose();
+    return { after, restored: svg.outerHTML === before };
+  }, input);
+  assert.deepEqual(result, { after: { status: 'error', failure: 'decode', poster: 'visible', media: 'hidden' }, restored: true }); assert.deepEqual(requests, []);
 });
