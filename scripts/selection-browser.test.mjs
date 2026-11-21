@@ -5,6 +5,31 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('ellipse stroke hits match Chromium away from boundaries under group transforms', async t => {
+  const doc = createPresentation();
+  const cases = [{ w: 50, h: 30, width: 2 }, { w: 80, h: 12, width: 6 }, { w: 30, h: 30, width: 10 }, { w: 20, h: 70, width: 12 }, { w: 100, h: 20, width: 19.8 }];
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 31, flipV: true }, children: cases.map((c, i) => ({ type: 'shape', id: `ellipse-${i}`, shape: 'ellipse', box: { x: 20, y: 20, width: c.w, height: c.h }, transform: { rotation: -17 }, style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: c.width } } })) }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+    const failures = []; let samples = 0, excluded = 0;
+    for (const item of items) {
+      const shape = document.querySelector(`[data-pptkit-element-id="${item.elementId}"] ellipse`), matrix = shape.getCTM();
+      for (let y = 5.137; y < 105; y += 1.031) for (let x = 5.193; x < 115; x += 1.093) {
+        const local = new DOMPoint(x, y), expected = shape.isPointInStroke(local);
+        if ([[.08, 0], [-.08, 0], [0, .08], [0, -.08]].some(([dx, dy]) => shape.isPointInStroke(new DOMPoint(x + dx, y + dy)) !== expected)) { excluded++; continue; }
+        const point = local.matrixTransform(matrix), actual = !!PPTKit.hitTestSvgShapeStrokes([item], point);
+        samples++; if (actual !== expected) failures.push({ id: item.elementId, x, y, expected, actual });
+      }
+    }
+    return { samples, excluded, count: failures.length, examples: failures.slice(0, 5) };
+  }, layout);
+  assert.ok(result.samples > 35000 && result.excluded > 0);
+  assert.deepEqual({ count: result.count, examples: result.examples }, { count: 0, examples: [] });
+});
+
 test('rounded rectangle strokes match Chromium away from boundaries for admitted widths', async t => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 31, flipV: true }, children: [2, 20, 29].map(width => ({ type: 'shape', id: `round-${width}`, shape: 'roundRect', box: { x: 20, y: 20, width: 50, height: 30 }, transform: { rotation: -17 }, style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width } } })) }] });

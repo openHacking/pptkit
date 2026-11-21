@@ -42,8 +42,9 @@ export interface SvgRoundedShapeStrokeGeometry {
   readonly transform: readonly [number, number, number, number, number, number];
   readonly width: number;
 }
+export type SvgCurvedShapeStrokeGeometry = SvgRoundedShapeStrokeGeometry | (Omit<SvgRoundedShapeStrokeGeometry, "kind"> & { readonly kind: "ellipse" });
 export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
-export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline; readonly shapeStrokeGeometry?: SvgConnectorStrokeGeometry | SvgRoundedShapeStrokeGeometry }) | SvgSelectionConnector;
+export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline; readonly shapeStrokeGeometry?: SvgConnectorStrokeGeometry | SvgCurvedShapeStrokeGeometry }) | SvgSelectionConnector;
 /** Optional coarse selection policies; these do not perform painted-pixel tests. */
 export interface SvgSelectionGeometryOptions {
   readonly excludeZeroOpacity?: boolean;
@@ -138,7 +139,7 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
         const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
         const stroke = element.type === "shape" ? element.style.stroke : undefined;
-        let shapeStrokeGeometry: SvgConnectorStrokeGeometry | SvgRoundedShapeStrokeGeometry | undefined;
+        let shapeStrokeGeometry: SvgConnectorStrokeGeometry | SvgCurvedShapeStrokeGeometry | undefined;
         if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape !== "ellipse" && element.shape !== "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0) {
           const raw = element.shape === "rect" ? [{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }] : shapePolygonPoints(b, element.shape, element.slant);
           const dash = dashLengths(stroke);
@@ -147,6 +148,9 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         }
         if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape === "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.width < Math.min(b.width, b.height) && stroke.dash === "solid") {
           shapeStrokeGeometry = Object.freeze({ kind: "rounded-rectangle", box: Object.freeze({ ...b }), radius: Math.min(b.width, b.height) * .08, transform: Object.freeze([...matrix]) as SvgRoundedShapeStrokeGeometry["transform"], width: stroke.width });
+        }
+        if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape === "ellipse" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.width < Math.min(b.width, b.height) && stroke.dash === "solid") {
+          shapeStrokeGeometry = Object.freeze({ kind: "ellipse", box: Object.freeze({ ...b }), radius: 0, transform: Object.freeze([...matrix]) as SvgCurvedShapeStrokeGeometry["transform"], width: stroke.width });
         }
         frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}), ...(shapeStrokeGeometry ? { shapeStrokeGeometry } : {}) }));
       }
@@ -242,13 +246,18 @@ export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], p
     const item = items[i]!;
     if (item.kind !== "frame" || !item.shapeStrokeGeometry) continue;
     if ("kind" in item.shapeStrokeGeometry) {
-      const { box, radius, width, transform: [a, b, c, d, e, f] } = item.shapeStrokeGeometry;
+      const { kind, box, radius, width, transform: [a, b, c, d, e, f] } = item.shapeStrokeGeometry;
       const scale = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
       if (!Number.isFinite(scale) || scale === 0) throw new RangeError("Shape transform is singular or nonfinite.");
       const aa = a / scale, bb = b / scale, cc = c / scale, dd = d / scale, det = aa * dd - bb * cc;
       const x = (point.x - e) / scale, y = (point.y - f) / scale;
       if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(det) || det === 0) throw new RangeError("Shape transform is singular or outside finite hit-test range.");
       const lx = (x * dd - y * cc) / det, ly = (y * aa - x * bb) / det;
+      if (kind === "ellipse") {
+        const distance = ellipseDistance(lx - (box.x + box.width / 2), ly - (box.y + box.height / 2), box.width / 2, box.height / 2);
+        if (distance <= width / 2) return item;
+        continue;
+      }
       const qx = Math.abs(lx - (box.x + box.width / 2)) - (box.width / 2 - radius);
       const qy = Math.abs(ly - (box.y + box.height / 2)) - (box.height / 2 - radius);
       const distance = Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - radius;
@@ -260,6 +269,40 @@ export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], p
     if (hitTestSvgConnectorStrokes([connector], point)) return item;
   }
   return undefined;
+}
+
+/** Euclidean distance to an ellipse via its closest-point Lagrange multiplier. */
+function ellipseDistance(x: number, y: number, rx: number, ry: number): number {
+  if (![x, y, rx, ry].every(Number.isFinite) || rx <= 0 || ry <= 0) throw new RangeError("Ellipse geometry exceeds finite hit-test range.");
+  const major = Math.max(rx, ry), minor = Math.min(rx, ry) / major;
+  const u = Math.abs(rx >= ry ? x : y) / major, v = Math.abs(rx >= ry ? y : x) / major;
+  const b2 = minor * minor;
+  if (![u, v, b2].every(Number.isFinite) || b2 === 0) throw new RangeError("Ellipse geometry exceeds finite hit-test range.");
+  let px: number, py: number;
+  // The inner multiplier approaches -b² at the major axis and cannot be
+  // represented for tiny nonzero v. The axis limit changes distance by at
+  // most v, avoiding unstable division while keeping a bounded error.
+  if (v <= minor * 1e-12) {
+    const difference = 1 - b2;
+    if (difference > 0 && u < difference) { px = u / difference; py = minor * Math.sqrt(Math.max(0, 1 - px * px)); }
+    else { px = 1; py = 0; }
+  } else if (u === 0) { px = 0; py = minor; }
+  else {
+    const value = (t: number): number => Math.hypot(u / (t + 1), minor * v / (t + b2));
+    const outside = Math.hypot(u, v / minor) >= 1;
+    let low = outside ? 0 : -b2, high = outside ? Math.max(1, u, v) : 0;
+    while (outside && value(high) > 1) { high *= 2; if (!Number.isFinite(high)) throw new RangeError("Ellipse geometry exceeds finite hit-test range."); }
+    for (let i = 0; i < 80; i++) {
+      const mid = low + (high - low) / 2;
+      if (mid === low || mid === high) break;
+      if (value(mid) > 1) low = mid; else high = mid;
+    }
+    const t = high;
+    px = u / (t + 1); py = b2 * v / (t + b2);
+  }
+  const result = Math.hypot(u - px, v - py) * major;
+  if (!Number.isFinite(result)) throw new RangeError("Ellipse geometry exceeds finite hit-test range.");
+  return result;
 }
 
 /** Hit supported SVG connector markers, including zero-length paths. */

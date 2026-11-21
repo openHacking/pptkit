@@ -292,9 +292,24 @@ test('polygonal and rounded shape strokes use actual preset edges', () => {
   assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: -1 }).elementId, 'triangle');
   assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: 50 }), undefined);
   assert.equal(hitTestSvgShapeStrokes(items, { x: 0, y: 0 }), undefined);
-  assert.equal(hitTestSvgShapeStrokes(items, { x: 250, y: 0 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 250, y: 0 }).elementId, 'ellipse');
   assert.equal(hitTestSvgShapeStrokes(items, { x: 450, y: 0 }).elementId, 'round');
   assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 50, y: -1 }).elementId, 'triangle');
+});
+
+test('ellipse stroke uses distance to its curve rather than radial scaling', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [shape('ellipse', box(0, 0, 100, 20), { shape: 'ellipse', style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 4 } } })] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: -1 }).elementId, 'ellipse');
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: 10 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 100.5, y: 10 }).elementId, 'ellipse');
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: -3 }), undefined);
+  const wide = createPresentation();
+  wide.addSlide({ elements: [shape('wide', box(0, 0, 100, 20), { shape: 'ellipse', style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 19.8 } } })] });
+  const wideItems = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(wide)), 0, { includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgShapeStrokes(wideItems, { x: 60, y: 10 }).elementId, 'wide');
+  assert.equal(hitTestSvgShapeStrokes(wideItems, { x: 60, y: 10 + 1e-14 }).elementId, 'wide');
 });
 
 test('rounded rectangle stroke handles interior, exterior and wide strokes', () => {
