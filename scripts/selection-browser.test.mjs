@@ -5,9 +5,9 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
-test('filled connector markers match Chromium pixels even with transparent strokes', async t => {
-  const doc = createPresentation({ size: { width: 200, height: 180 } });
-  doc.addSlide({ elements: ['triangle', 'diamond', 'stealth', 'oval'].map((type, i) => ({ type: 'connector', id: type, start: { x: 35, y: 25 + i * 40 }, end: { x: 165, y: 25 + i * 40 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: type, endArrow: type } })) });
+test('connector markers match Chromium pixels even with transparent strokes', async t => {
+  const doc = createPresentation({ size: { width: 200, height: 220 } });
+  doc.addSlide({ elements: ['triangle', 'diamond', 'stealth', 'oval', 'arrow'].map((type, i) => ({ type: 'connector', id: type, start: { x: 35, y: 25 + i * 40 }, end: { x: 165, y: 25 + i * 40 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: type, endArrow: type } })) });
   const layout = resolveNormalizedLayout(normalizePresentation(doc));
   const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
   const browser = await chromium.launch(); t.after(() => browser.close());
@@ -15,11 +15,11 @@ test('filled connector markers match Chromium pixels even with transparent strok
   const result = await page.evaluate(async ({ layout, svg }) => {
     const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
     const image = new Image(); image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`; await image.decode();
-    const canvas = document.createElement('canvas'); canvas.width = 200; canvas.height = 180;
-    const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0, 200, 180);
+    const canvas = document.createElement('canvas'); canvas.width = 200; canvas.height = 220;
+    const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0, 200, 220);
     const mismatches = []; let checked = 0;
     for (const item of items) {
-      const y0 = 25 + ['triangle', 'diamond', 'stealth', 'oval'].indexOf(item.elementId) * 40;
+      const y0 = 25 + ['triangle', 'diamond', 'stealth', 'oval', 'arrow'].indexOf(item.elementId) * 40;
       for (const left of [15, 145]) for (let x = left; x < left + 40; x++) for (let y = y0 - 12; y < y0 + 12; y++) {
         const pixel = ctx.getImageData(x, y, 1, 1).data[0];
         if (pixel > 15 && pixel < 240) continue;
@@ -36,7 +36,7 @@ test('filled connector markers match Chromium pixels even with transparent strok
 test('marker hits match Chromium through a rotated nonuniform group', async t => {
   const doc = createPresentation({ size: { width: 200, height: 180 } });
   doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 30, y: 25, width: 140, height: 120 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 25, flipH: true }, children: [
-    { type: 'connector', id: 'line', start: { x: 20, y: 50 }, end: { x: 80, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: 'stealth', endArrow: 'oval' } },
+    { type: 'connector', id: 'line', start: { x: 20, y: 50 }, end: { x: 80, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: 'arrow', endArrow: 'oval' } },
   ] }] });
   const layout = resolveNormalizedLayout(normalizePresentation(doc));
   const svg = (await renderLayoutToSvg(layout)).slides[0].svg;

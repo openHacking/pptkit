@@ -253,6 +253,16 @@ test('filled markers remain selectable with transparent lines and nested scaling
   assert.throws(() => hitTestSvgConnectorMarkers(singular, { x: 0, y: 0 }), RangeError);
 });
 
+test('open arrow marker uses a hollow, clipped mitered stroke', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'connector', id: 'arrow', start: { x: 20, y: 50 }, end: { x: 80, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, endArrow: 'arrow' } }] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 72, y: 46 }).elementId, 'arrow');
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 72, y: 50 }), undefined);
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 82.2, y: 50 }), undefined);
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 72, y: 46 }).elementId, 'arrow');
+});
+
 test('dash phase continues through bends and round caps extend into gaps', () => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'connector', id: 'line', start: { x: 0, y: 0 }, route: [{ x: 5, y: 0 }], end: { x: 5, y: 30 }, style: { paint: { type: 'solid', color: '000000' }, width: 2, dash: 'dash' } }] });

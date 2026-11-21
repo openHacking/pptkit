@@ -216,7 +216,7 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
   return undefined;
 }
 
-/** Hit filled SVG connector markers with a nonzero endpoint tangent. */
+/** Hit supported SVG connector markers with a nonzero endpoint tangent. */
 export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionConnector | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
   for (let i = items.length - 1; i >= 0; i--) {
@@ -231,7 +231,7 @@ export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[
     const localX = (x * dd - y * cc) / det, localY = (y * aa - x * bb) / det;
     if (!Number.isFinite(localX) || !Number.isFinite(localY)) throw new RangeError("Connector hit-test exceeds finite range.");
     for (const [type, start] of [[beginArrow, true], [endArrow, false]] as const) {
-      if (type === "none" || type === "arrow") continue;
+      if (type === "none") continue;
       const endpoint = points[start ? 0 : points.length - 1]!;
       let neighbor: Readonly<Point> | undefined;
       for (let j = start ? 1 : points.length - 2; start ? j < points.length : j >= 0; j += start ? 1 : -1) {
@@ -246,8 +246,12 @@ export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[
       const mx = (px * (dx / length) + py * (dy / length)) / width + (start ? 1 : 9);
       const my = (-px * (dy / length) + py * (dx / length)) / width + 5;
       if (!Number.isFinite(mx) || !Number.isFinite(my)) throw new RangeError("Connector marker hit-test exceeds finite range.");
+      if (mx < 0 || mx > 10 || my < 0 || my > 10) continue;
       if (type === "oval") { if ((mx - 5) ** 2 + (my - 5) ** 2 <= 3.5 ** 2) return item; continue; }
-      const polygon = type === "diamond" ? [[1, 5], [5, 1], [9, 5], [5, 9]] : type === "stealth" ? [[1, 1], [9, 5], [1, 9], [4, 5]] : [[1, 1], [9, 5], [1, 9]];
+      // The open arrow has a 1.5-unit butt-capped, miter-joined stroke.
+      const n = .75 / Math.sqrt(5), miter = .75 * Math.sqrt(5);
+      const polygon = type === "arrow" ? [[1 - n, 1 + 2 * n], [9 - miter, 5], [1 - n, 9 - 2 * n], [1 + n, 9 + 2 * n], [9 + miter, 5], [1 + n, 1 - 2 * n]]
+        : type === "diamond" ? [[1, 5], [5, 1], [9, 5], [5, 9]] : type === "stealth" ? [[1, 1], [9, 5], [1, 9], [4, 5]] : [[1, 1], [9, 5], [1, 9]];
       let inside = false;
       for (let j = 0, k = polygon.length - 1; j < polygon.length; k = j++) {
         const [ax, ay] = polygon[j]!, [bx, by] = polygon[k]!;
