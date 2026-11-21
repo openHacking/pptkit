@@ -3,3 +3,4 @@ export { mountBrowserMedia, resolveAndMountBrowserMedia } from './adapters/brows
 export type { BrowserMediaOptions, BrowserMediaResolveOptions, BrowserMediaResolveState, BrowserMediaState, BrowserMediaController, BrowserMediaFailure, BrowserMediaCapability } from './adapters/browser-media.js';
 export { mountLayoutMedia } from './adapters/layout-media.js';
 export type { BrowserMediaAssetRequest, BrowserLayoutMediaOptions, BrowserLayoutMedia } from './adapters/layout-media.js';
+export { mountLayoutMediaOverlay } from './adapters/layout-media-overlay.js';

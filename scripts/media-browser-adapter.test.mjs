@@ -7,6 +7,7 @@ import { once } from 'node:events';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 import { createPresentation } from '../packages/core/dist/index.js';
 import { resolveLayout } from '../packages/layout/dist/index.js';
+import { renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
 async function setup(t) {
   const browser = await chromium.launch(); t.after(() => browser.close());
@@ -480,4 +481,155 @@ test('layout bridge snapshots external source and settings, enforces budget and 
   }, { input: layout, bytes: movie });
   assert.deepEqual(result.values, { observed: ['movie', 'https://example.invalid/movie.mp4', 1000000, true, true, true, true], elementId: 'video-a', volume: 0.2, muted: true });
   assert.equal(result.status, 'disposed'); assert.equal(result.oversize, 'RangeError'); assert.equal(result.children, 0); assert.deepEqual(requests, []);
+});
+
+async function nestedMediaSlide() {
+  const parts = readGeneratedZip(await readFile('tests/fixtures/pptkit-mixed-av.pptx'));
+  const p = createPresentation({ size: { width: 1000.1, height: 562.6 } });
+  p.registerAsset({ id: 'movie', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: parts.get('ppt/media/movie.mp4') } });
+  p.addSlide({ id: 'overlay-slide', elements: [{ type: 'group', id: 'outer', box: { x: 100, y: 70, width: 400, height: 240 }, coordinateSize: { width: 200, height: 120 }, transform: { rotation: 22, flipH: true }, opacity: 0.7, children: [
+    { type: 'group', id: 'inner', box: { x: 30, y: 15, width: 120, height: 80 }, coordinateSize: { width: 60, height: 40 }, transform: { rotation: -15, flipV: true }, opacity: 0.8, children: [
+      { type: 'video', id: 'video', videoAssetId: 'movie', box: { x: 5, y: 10, width: 40, height: 20 }, transform: { rotation: 35, flipH: true }, opacity: 0.9, muted: true },
+    ] },
+  ] }] });
+  const layout = resolveLayout(p), rendered = await renderLayoutToSvg(layout);
+  return { layout, svg: rendered.slides[0].svg };
+}
+
+test('SVG media overlay follows nested Layout transforms at multiple viewport sizes', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text;
+    const svg = wrapper.querySelector('svg'); svg.style.width = '800px'; svg.style.height = '450px';
+    const snapshot = JSON.stringify(layout), mounted = await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 });
+    const original = svg.querySelector('rect[stroke-dasharray="6 4"]'), overlay = svg.querySelector('foreignObject');
+    const matrix = element => { const m = element.getScreenCTM(); return [m.a, m.b, m.c, m.d, m.e, m.f]; };
+    const bounds = element => { const b = element.getBBox(); return [b.x, b.y, b.width, b.height]; };
+    const first = { original: matrix(original), overlay: matrix(overlay), originalBox: bounds(original), overlayBox: bounds(overlay) };
+    svg.style.width = '500px'; svg.style.height = '300px'; const second = { original: matrix(original), overlay: matrix(overlay) };
+    const root = svg.querySelector('[data-pptkit-media-overlay="video"]');
+    const opacities = [...root.querySelectorAll('g')].map(x => x.getAttribute('opacity'));
+    const styles = [mounted.controller.element.style.width, mounted.controller.element.style.height, mounted.controller.element.style.objectFit];
+    const unchanged = JSON.stringify(layout) === snapshot, childrenBefore = svg.querySelectorAll('[data-pptkit-media-overlay]').length;
+    mounted.controller.dispose(); return { first, second, opacities, styles, unchanged, childrenBefore, childrenAfter: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, input);
+  for (const key of ['first', 'second']) for (let i = 0; i < 6; i++) assert.ok(Math.abs(result[key].original[i] - result[key].overlay[i]) < 1e-6, `${key} matrix ${i}`);
+  assert.deepEqual(result.first.originalBox, result.first.overlayBox); assert.deepEqual(result.opacities, ['0.7', '0.8', '0.9']);
+  assert.deepEqual(result.styles, ['100%', '100%', 'fill']); assert.equal(result.unchanged, true); assert.equal(result.childrenBefore, 1); assert.equal(result.childrenAfter, 0); assert.deepEqual(requests, []);
+});
+
+test('SVG overlay rejects mismatched slides and invalid geometry without leaving DOM or loading media', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout: source, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    const errors = []; let loads = 0;
+    const attempt = async (modify, attrs = {}) => {
+      const layout = structuredClone(source); modify(layout); svg.setAttribute('data-pptkit-slide-id', attrs.id ?? 'overlay-slide'); svg.setAttribute('viewBox', attrs.viewBox ?? '0 0 1000.1 562.6');
+      try { const result = await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000, resolveExternal() { loads++; throw Error('unexpected'); } }); result.controller.dispose(); return 'ok'; } catch (e) { return e.name; }
+    };
+    errors.push(await attempt(() => {}, { id: 'wrong' })); errors.push(await attempt(() => {}, { viewBox: '0 0 1000 562.6' }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].coordinateSize.width = 0; }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].coordinateSize.width = 1e-200; l.slides[0].elements[0].children[0].coordinateSize.width = 1e-200; }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].box.x = Number.MAX_VALUE; l.slides[0].elements[0].box.width = Number.MAX_VALUE; }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].children[0].children[0].box.width = 0; }));
+    errors.push(await attempt(l => { l.slides[0].elements[0].children[0].hidden = true; }));
+    errors.push(await attempt(l => { let child = l.slides[0].elements[0].children[0].children[0]; const template = l.slides[0].elements[0]; for (let i = 0; i < 257; i++) child = { ...template, id: `deep-${i}`, children: [child] }; l.slides[0].elements = [child]; }));
+    errors.push(await attempt(l => { l.assets = []; }));
+    errors.push(await attempt(l => { l.assets[0].source = { type: 'url', value: 'https://example.invalid/v.mp4' }; }));
+    return { errors, loads, overlays: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, input);
+  assert.deepEqual(result.errors, ['TypeError', 'TypeError', 'TypeError', 'RangeError', 'RangeError', 'TypeError', 'TypeError', 'RangeError', 'TypeError', 'Error']);
+  assert.equal(result.loads, 1); assert.equal(result.overlays, 0); assert.deepEqual(requests, []);
+});
+
+test('overlay cancels pending external loads and removes itself when the lifetime ends', async t => {
+  const { page, movie, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text, bytes }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    layout.assets[0].source = { type: 'url', value: 'https://example.invalid/v.mp4' };
+    const ac = new AbortController(); let complete;
+    const pending = adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000, signal: ac.signal, resolveExternal: () => new Promise(resolve => { complete = resolve; }) });
+    await Promise.resolve(); const during = svg.querySelectorAll('[data-pptkit-media-overlay]').length; ac.abort(); let error; try { await pending; } catch (e) { error = e.name; }
+    complete(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); await Promise.resolve();
+    const after = svg.querySelectorAll('[data-pptkit-media-overlay]').length;
+    const secondSignal = new AbortController(); const mounted = await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000, signal: secondSignal.signal, resolveExternal: () => new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }) });
+    const mountedCount = svg.querySelectorAll('[data-pptkit-media-overlay]').length; secondSignal.abort();
+    return { during, error, after, mountedCount, finalCount: svg.querySelectorAll('[data-pptkit-media-overlay]').length, status: mounted.controller.state.status };
+  }, { ...input, bytes: movie });
+  assert.deepEqual(result, { during: 1, error: 'AbortError', after: 0, mountedCount: 1, finalCount: 0, status: 'disposed' }); assert.deepEqual(requests, []);
+});
+
+test('overlay rejects duplicate pending or mounted identities and permits retry after disposal', async t => {
+  const { page, movie } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text, bytes }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    layout.assets[0].source = { type: 'url', value: 'https://example.invalid/v.mp4' }; let complete, calls = 0;
+    const options = { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000, resolveExternal: () => { calls++; return new Promise(resolve => { complete = resolve; }); } };
+    const first = adapter.mountLayoutMediaOverlay(svg, layout, options); await Promise.resolve();
+    let pendingError, mountedError; try { await adapter.mountLayoutMediaOverlay(svg, layout, options); } catch (e) { pendingError = e.name; }
+    complete(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); const mounted = await first;
+    try { await adapter.mountLayoutMediaOverlay(svg, layout, options); } catch (e) { mountedError = e.name; }
+    mounted.controller.dispose();
+    const retry = await adapter.mountLayoutMediaOverlay(svg, layout, { ...options, resolveExternal: () => new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }) });
+    const count = svg.querySelectorAll('[data-pptkit-media-overlay]').length; retry.controller.dispose();
+    return { pendingError, mountedError, calls, count, remaining: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, { ...input, bytes: movie });
+  assert.deepEqual(result, { pendingError: 'TypeError', mountedError: 'TypeError', calls: 1, count: 1, remaining: 0 });
+});
+
+test('SVG overlay displays an actual playing video over its static poster in Chromium', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const archive = readGeneratedZip(await readFile('tests/fixtures/powerpoint-caption-playback.pptx'));
+  input.layout.assets[0].source.value = Buffer.from([...archive.entries()].find(([name]) => name.endsWith('.mp4'))[1]).toString('base64');
+  const outer = input.layout.slides[0].elements[0], inner = outer.children[0], video = inner.children[0]; outer.opacity = 1; inner.opacity = 1; video.opacity = 1;
+  input.svg = (await renderLayoutToSvg(input.layout)).slides[0].svg;
+  const point = await page.evaluate(async ({ layout, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    svg.style.width = '800px'; svg.style.height = '450px';
+    const mounted = await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 });
+    window.activeMedia = mounted.controller;
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); mounted.controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+    await mounted.controller.play();
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('frame timeout')), 5000); mounted.controller.element.requestVideoFrameCallback(() => { clearTimeout(timer); resolve(); }); });
+    const fo = svg.querySelector('foreignObject'), box = fo.getBBox(), m = fo.getScreenCTM();
+    const pt = new DOMPoint(box.x + box.width / 2, box.y + box.height / 2).matrixTransform(m);
+    return { x: Math.round(pt.x), y: Math.round(pt.y) };
+  }, input);
+  const screenshot = await page.screenshot();
+  const pixel = await page.evaluate(async ({ bytes, point }) => {
+    const image = new Image(), url = URL.createObjectURL(new Blob([Uint8Array.from(bytes)], { type: 'image/png' }));
+    try { image.src = url; await image.decode(); const canvas = document.createElement('canvas'); canvas.width = image.width; canvas.height = image.height; const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0); return [...ctx.getImageData(point.x, point.y, 1, 1).data]; }
+    finally { URL.revokeObjectURL(url); window.activeMedia.dispose(); }
+  }, { bytes: [...screenshot], point });
+  assert.ok(pixel[2] > 200 && pixel[0] < 40 && pixel[1] < 40, `expected blue video pixel, got ${pixel}`); assert.deepEqual(requests, []);
+});
+
+test('overlay leaves the static poster visible while loading and on media decode failure', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const host = document.createElement('div'); document.body.append(host); host.innerHTML = text; const svg = host.querySelector('svg');
+    layout.assets[0].source.value = btoa('not a valid video');
+    const mounted = await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 });
+    const loading = mounted.controller.element.style.visibility;
+    const failure = await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('error timeout')), 5000); mounted.controller.subscribe(s => { if (s.status === 'error') { clearTimeout(timer); resolve(s.failure); } }); });
+    const hidden = mounted.controller.element.style.visibility, poster = svg.querySelector('rect[stroke-dasharray="6 4"]') !== null;
+    mounted.controller.dispose(); return { loading, failure, hidden, poster, overlays: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, input);
+  assert.equal(result.loading, 'hidden'); assert.ok(['unsupported', 'decode'].includes(result.failure)); assert.equal(result.hidden, 'hidden'); assert.equal(result.poster, true); assert.equal(result.overlays, 0); assert.deepEqual(requests, []);
+});
+
+test('overlay rolls back its mounted controller when later setup fails', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    const create = URL.createObjectURL, revoke = URL.revokeObjectURL, live = new Set();
+    URL.createObjectURL = value => { const url = create.call(URL, value); live.add(url); return url; };
+    URL.revokeObjectURL = url => { live.delete(url); revoke.call(URL, url); };
+    Object.defineProperty(HTMLMediaElement.prototype, 'style', { configurable: true, get() { throw Error('style unavailable'); } });
+    try {
+      let error; try { await adapter.mountLayoutMediaOverlay(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 }); } catch (e) { error = e.message; }
+      return { error, urls: live.size, overlays: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+    } finally { delete HTMLMediaElement.prototype.style; URL.createObjectURL = create; URL.revokeObjectURL = revoke; }
+  }, input);
+  assert.deepEqual(result, { error: 'style unavailable', urls: 0, overlays: 0 }); assert.deepEqual(requests, []);
 });

@@ -1,5 +1,6 @@
 import type { NormalizedAsset } from '@pptkit/core';
-import type { LayoutElement, LayoutResult } from '@pptkit/layout';
+import type { LayoutResult } from '@pptkit/layout';
+import { findLayoutMedia } from './find-layout-media.js';
 import { resolveAndMountBrowserMedia, type BrowserMediaController, type BrowserMediaResolveState } from './browser-media.js';
 
 export type BrowserMediaAssetRequest = Readonly<Omit<NormalizedAsset, 'source' | 'accessibility'>> & {
@@ -46,25 +47,7 @@ export async function mountLayoutMedia(container: HTMLElement, layout: LayoutRes
   const { slideId, elementId } = options;
   if (!Number.isSafeInteger(options.maxBytes) || options.maxBytes < 1) throw new TypeError('maxBytes must be a positive safe integer.');
   if (options.resolveExternal !== undefined && typeof options.resolveExternal !== 'function') throw new TypeError('resolveExternal must be a function.');
-  if (!layout || layout.status !== 'resolved' || !Array.isArray(layout.slides) || !Array.isArray(layout.assets)) throw new TypeError('A resolved Layout result is required.');
-  if (layout.slides.length > 100000 || layout.assets.length > 100000) throw new RangeError('Layout media search exceeds its work limit.');
-  const slides = layout.slides.filter(slide => slide.id === slideId);
-  if (slides.length !== 1) throw new TypeError('slideId must identify exactly one slide.');
-  const slide = slides[0]!;
-  if (!Array.isArray(slide.elements) || slide.elements.length > 100000) throw new RangeError('Slide media search exceeds its work limit.');
-  const stack = slide.elements.map(element => ({ element, hidden: false })), seen = new Set<LayoutElement>();
-  let target: LayoutElement | undefined, hidden = false, work = 0;
-  while (stack.length) {
-    if (++work > 100000) throw new RangeError('Slide media search exceeds its work limit.');
-    const item = stack.pop()!, element = item.element;
-    if (!element || typeof element !== 'object' || seen.has(element)) throw new TypeError('Slide element structure is invalid or cyclic.');
-    seen.add(element);
-    const invisible = item.hidden || element.hidden;
-    if (element.id === elementId) { if (target) throw new TypeError('elementId is ambiguous on this slide.'); target = element; hidden = invisible; }
-    if (element.type === 'group') { if (!Array.isArray(element.children)) throw new TypeError('Group children are invalid.'); if (work + stack.length + element.children.length > 100000) throw new RangeError('Slide media search exceeds its work limit.'); for (const child of element.children) stack.push({ element: child, hidden: invisible }); }
-  }
-  if (!target || (target.type !== 'audio' && target.type !== 'video')) throw new TypeError('elementId must identify an audio or video object on the slide.');
-  if (hidden) throw new TypeError('Hidden media or media in a hidden group cannot be mounted.');
+  const { target } = findLayoutMedia(layout, slideId, elementId);
   const kind = target.type, assetId = kind === 'audio' ? target.audioAssetId : target.videoAssetId;
   const assets = layout.assets.filter(asset => asset.id === assetId);
   if (assets.length !== 1 || assets[0]!.kind !== kind) throw new TypeError('Media asset is missing, ambiguous or has the wrong kind.');

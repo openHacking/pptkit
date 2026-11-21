@@ -501,7 +501,7 @@ test("packed packages work in an isolated npm consumer through every declared en
     imports["@pptkit/svg-renderer/media"] = dataModule(await readFile(path.join(installed, "svg-renderer/dist/browser/media.js"), "utf8"));
     await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
     const result = await page.evaluate(async ({ textFixtureBase64, graphFixtureBase64 }) => {
-      const { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia } = await import("@pptkit/svg-renderer/media");
+      const { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay } = await import("@pptkit/svg-renderer/media");
       const mediaHost = globalThis.document.createElement("div"); globalThis.document.body.append(mediaHost);
       const media = mountBrowserMedia(mediaHost, { kind: "audio", source: new Blob(["fixture"], { type: "audio/wav" }), contentType: "audio/wav" });
       media.dispose(); if (media.state.status !== "disposed" || mediaHost.children.length) throw new Error("Installed media adapter cleanup failed");
@@ -518,6 +518,11 @@ test("packed packages work in an isolated npm consumer through every declared en
       const mountedLayout = await mountLayoutMedia(mediaHost, resolveLayout(mediaDeck), { slideId: "media-slide", elementId: "media-object", maxBytes: 10 });
       if (mountedLayout.assetId !== "installed-sound") throw new Error("Installed layout media target failed");
       mountedLayout.controller.dispose(); if (mediaHost.children.length) throw new Error("Installed layout media cleanup failed");
+      const renderedMediaLayout = resolveLayout(mediaDeck), svgMedia = globalThis.document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svgMedia.setAttribute("data-pptkit-slide-id", "media-slide"); svgMedia.setAttribute("viewBox", `0 0 ${renderedMediaLayout.size.width} ${renderedMediaLayout.size.height}`); mediaHost.append(svgMedia);
+      const mountedOverlay = await mountLayoutMediaOverlay(svgMedia, renderedMediaLayout, { slideId: "media-slide", elementId: "media-object", maxBytes: 10 });
+      mountedOverlay.controller.dispose(); if (svgMedia.children.length) throw new Error("Installed media overlay cleanup failed"); svgMedia.remove();
+
       const visibleDeck = createPresentation();
       visibleDeck.registerAsset({ id: "old", kind: "image", source: { type: "url", value: "old" }, width: 400, height: 200 });
       visibleDeck.registerAsset({ id: "new", kind: "image", source: { type: "url", value: "new" }, width: 100, height: 300 });

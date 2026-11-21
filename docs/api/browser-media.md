@@ -87,3 +87,21 @@ const mounted = await mountLayoutMedia(container, layout, {
 Byte-backed Core assets are decoded from canonical Base64 with the caller's byte limit checked before decoding. A declared audio/video MIME is required unless the caller supplies `contentType`; a supplied MIME's base type must match an existing declaration. For path or URL sources there is no default loader: `resolveExternal(asset, { signal, maxBytes })` must be provided explicitly. The frozen request is detached from Layout, and the resolver owns authorization, stream/redirect budgets and MIME validation. The returned Blob is checked against `maxBytes`; it does not itself bound the resolver's transfer. Layout and option values are captured before asynchronous resolution. Audio `mute` maps to volume 0.8 with mute enabled; low, medium and high map to 0.2, 0.5 and 0.8. Video mute remains independent of its selected volume. Trim, loop and rewind use the same approximate browser semantics documented above.
 
 Missing or ambiguous IDs/assets, wrong asset kind, malformed/oversize bytes, unsupported source types and invalid settings fail rather than silently choosing a target. Slide, asset and element traversal have fixed 100,000-item ceilings and reject cycles or repeated object references. The adapter uses independent URLs even when objects reference the same asset; dispose each controller or abort its lifetime. Browser tests cover mixed audio/video, independent instances, explicit external resolution, no network, identity conflicts, hidden objects, source mutation, limits and cancellation. They do not validate browser/native timing equivalence or geometry alignment.
+
+## Explicit SVG overlay
+
+`mountLayoutMediaOverlay(svg, layout, options)` is an optional convenience for a **connected SVG slide produced from the same Layout result**. It checks the slide ID and viewBox, then appends an SVG `foreignObject` with the selected media object's box, rotation, flips, group coordinate scales and group/object opacity. The same SVG viewBox transforms both the poster and the overlay as the slide is resized. Media still does not start automatically. A second pending or mounted overlay for the same object is rejected; dispose or abort the first before retrying. Loading failure, cancellation or controller disposal removes the adapter-owned overlay. The media element remains hidden while metadata loads and on a media error, leaving the static poster visible; it becomes visible when ready or playing.
+
+```ts
+import { mountLayoutMediaOverlay } from '@pptkit/svg-renderer/media';
+
+const mounted = await mountLayoutMediaOverlay(svgSlide, layout, {
+  slideId: 'slide-1', elementId: 'video-1', maxBytes: 4_000_000,
+  signal: lifetime.signal, controls: true,
+});
+// In a user gesture, if appropriate: await mounted.controller.play();
+```
+
+The overlay is appended **above all existing SVG artwork**, not at the original drawing's z-order. The original static poster remains underneath: overlapping objects can be covered and translucent media can blend with that poster. Use this only where those differences are acceptable, or manage hiding/replacement and stacking in application code. The consumer must also provide accessible controls and labels and account for the SVG's `role="img"`, which can hide interactive descendants from assistive technology. This adapter does not alter the static renderer's accessibility tree or provide captions. Do not treat a live DOM with an overlay as a standalone static export.
+
+The supplied SVG must retain the renderer's `data-pptkit-slide-id` and matching `viewBox`; the caller is responsible for ensuring its artwork came from the same Layout snapshot. Hidden media/hidden groups, invalid geometry, nonfinite composed transforms and group nesting beyond 256 levels are rejected. Chromium tests compare the overlay's screen transform and box with the static poster under nested rotations, flips, opacity and resizing; a captured playing frame verifies a blue video pixel at the transformed position. Tests also cover loading fallback, cancellation, duplicate mounts and cleanup. Browser-specific `foreignObject`, pointer and assistive-technology behavior, exact native stacking and translucent-poster replacement remain unverified.

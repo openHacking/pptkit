@@ -144,7 +144,7 @@ function browserAnalysis(browserDocument: Document, fonts: readonly BrowserMeasu
 }
 void browserAnalysis;
 
-import { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, type BrowserLayoutMedia, type BrowserMediaState, type BrowserMediaResolveState } from "@pptkit/svg-renderer/media";
+import { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay, type BrowserLayoutMedia, type BrowserMediaState, type BrowserMediaResolveState } from "@pptkit/svg-renderer/media";
 function browserMedia(host: HTMLElement, source: Blob) {
   const controller = mountBrowserMedia(host, { kind: "video", source, contentType: "video/mp4", muted: true });
   const observe = (state: BrowserMediaState) => state.status;
@@ -158,6 +158,11 @@ function layoutMedia(host: HTMLElement, layout: ReturnType<typeof resolveLayout>
   return result;
 }
 void layoutMedia;
+function layoutMediaOverlay(svg: SVGSVGElement, layout: ReturnType<typeof resolveLayout>) {
+  const result: Promise<BrowserLayoutMedia> = mountLayoutMediaOverlay(svg, layout, { slideId: 'page', elementId: 'video', maxBytes: 1000 });
+  return result;
+}
+void layoutMediaOverlay;
 
 
 
