@@ -91,6 +91,7 @@ test('native trimmed audio import and fresh export agree across Node and browser
   }, { data: [...bytes], importOptions, exportOptions });
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
   assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => [x.playbackVolume, x.loop, x.rewindAfterPlayback]), [['high', false, false], ['high', true, false], ['high', false, true], ['high', true, true]]);
+  assert.deepEqual(actual.elements.filter(x => x.type === 'audio').map(x => x.playbackStart), [undefined, 'object-click', undefined, 'object-click']);
 });
 
 test('authored object-click audio export agrees across Node and browser', async t => {
