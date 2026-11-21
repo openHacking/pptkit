@@ -72,6 +72,8 @@ References: Microsoft [section extension placement](https://learn.microsoft.com/
 
 ## Document metadata profile
 
+For how inspected values map into Core during import, see the [metadata projection contract](metadata-projection.md).
+
 `metadata.core`, `metadata.extended` and `metadata.custom` are optional `MetadataPartInfo<T>` records with `part`, `relationshipId` and source-ordered `properties`. Each recognized metadata content type permits at most one part and must be linked from the package root by the matching internal whole-part relationship. Wrong types, duplicate links, orphan typed parts, fragments, external targets, wrong effective roots and mixed metadata dialects reject with `presentation-invalid`. Conventional `docProps` filenames are not required. MIME comparisons are case-insensitive; namespace and relationship identities are exact.
 
 - **Core:** all 15 properties are read by expanded XML name, not prefix. Duplicate/unknown properties, nested scalar elements and unrecognized attributes reject. `created`/`modified` require an `xsi:type` QName resolving to `dcterms:W3CDTF`, including namespace aliases and local rebinding. Ordinary core properties disallow `xml:lang`; keywords and their `value` children allow it. `keywordSegments` retains text/value boundaries, language inheritance and explicit empty language resets. The aggregate keyword `value` concatenates source text; it does not split a keyword list on punctuation. Structural import reports keyword language or segment information as unsupported by Core even when the keyword text is empty; the source inspection retains the annotation.
