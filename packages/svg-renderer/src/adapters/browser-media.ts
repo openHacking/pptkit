@@ -24,11 +24,14 @@ export interface BrowserMediaOptions {
   /** Aborting disposes a mounted instance; the caller owns the signal. */
   readonly signal?: AbortSignal;
 }
+export type BrowserMediaResolveState = Readonly<{ status: 'loading' | 'mounted' | 'cancelled' | 'failed' }>;
 export interface BrowserMediaResolveOptions extends Omit<BrowserMediaOptions, 'source'> {
   /** Explicit callback owns authorization, redirects, transport and actual stream budgets. */
   readonly resolve: (context: Readonly<{ signal: AbortSignal }>) => Blob | Promise<Blob>;
   /** Maximum resolved Blob size in bytes. */
   readonly maxBytes: number;
+  /** Optional observation of resolution; callback errors do not alter the operation. */
+  readonly onResolveState?: (state: BrowserMediaResolveState) => void;
 }
 export interface BrowserMediaController {
   readonly element: HTMLMediaElement;
@@ -143,21 +146,32 @@ export async function resolveAndMountBrowserMedia(container: HTMLElement, option
   const { view } = checkConfiguration(container, options);
   if (typeof options.resolve !== 'function') throw new TypeError('resolve must be a function.');
   if (!Number.isSafeInteger(options.maxBytes) || options.maxBytes < 1) throw new TypeError('maxBytes must be a positive safe integer.');
-  const { kind, contentType, trimStartMs, trimEndMs, volume, muted, loop, rewindAfterPlayback, controls, signal, resolve, maxBytes } = options;
+  if (options.onResolveState !== undefined && typeof options.onResolveState !== 'function') throw new TypeError('onResolveState must be a function.');
+  const { kind, contentType, trimStartMs, trimEndMs, volume, muted, loop, rewindAfterPlayback, controls, signal, resolve, maxBytes, onResolveState } = options;
   const internal = signal ?? new view.AbortController().signal;
-  if (internal.aborted) throw abortReason(internal);
-  const context = Object.freeze({ signal: internal });
-  let onAbort: (() => void) | undefined;
-  const aborted = new Promise<never>((_, reject) => {
-    onAbort = () => reject(abortReason(internal));
-    internal.addEventListener('abort', onAbort, { once: true });
-    if (internal.aborted) onAbort();
-  });
-  let source: Blob;
-  try { source = await Promise.race([Promise.resolve().then(() => { if (internal.aborted) throw abortReason(internal); return resolve(context); }), aborted]); }
-  finally { if (onAbort) internal.removeEventListener('abort', onAbort); }
-  if (internal.aborted) throw abortReason(internal);
-  if (!(source instanceof view.Blob) || !source.size) throw new TypeError('The media resolver must return a nonempty Blob.');
-  if (source.size > maxBytes) throw new RangeError('Resolved media exceeds maxBytes.');
-  return mountBrowserMedia(container, { kind, contentType, source, ...(trimStartMs === undefined ? {} : { trimStartMs }), ...(trimEndMs === undefined ? {} : { trimEndMs }), ...(volume === undefined ? {} : { volume }), ...(muted === undefined ? {} : { muted }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }), ...(controls === undefined ? {} : { controls }), ...(signal === undefined ? {} : { signal }) });
+  const notify = (status: BrowserMediaResolveState['status']) => { try { onResolveState?.(Object.freeze({ status })); } catch { /* Observers do not control resource ownership. */ } };
+  try {
+    if (internal.aborted) throw abortReason(internal);
+    notify('loading');
+    if (internal.aborted) throw abortReason(internal);
+    const context = Object.freeze({ signal: internal });
+    let onAbort: (() => void) | undefined;
+    const aborted = new Promise<never>((_, reject) => {
+      onAbort = () => reject(abortReason(internal));
+      internal.addEventListener('abort', onAbort, { once: true });
+      if (internal.aborted) onAbort();
+    });
+    let source: Blob;
+    try { source = await Promise.race([Promise.resolve().then(() => { if (internal.aborted) throw abortReason(internal); return resolve(context); }), aborted]); }
+    finally { if (onAbort) internal.removeEventListener('abort', onAbort); }
+    if (internal.aborted) throw abortReason(internal);
+    if (!(source instanceof view.Blob) || !source.size) throw new TypeError('The media resolver must return a nonempty Blob.');
+    if (source.size > maxBytes) throw new RangeError('Resolved media exceeds maxBytes.');
+    const controller = mountBrowserMedia(container, { kind, contentType, source, ...(trimStartMs === undefined ? {} : { trimStartMs }), ...(trimEndMs === undefined ? {} : { trimEndMs }), ...(volume === undefined ? {} : { volume }), ...(muted === undefined ? {} : { muted }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }), ...(controls === undefined ? {} : { controls }), ...(signal === undefined ? {} : { signal }) });
+    notify('mounted');
+    return controller;
+  } catch (error) {
+    notify(internal.aborted ? 'cancelled' : 'failed');
+    throw error;
+  }
 }

@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
+import { createServer } from 'node:http';
+import { once } from 'node:events';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 
 async function setup(t) {
@@ -313,4 +315,82 @@ test('repeated mount, leave and cancelled loads leave no media, owned listeners 
     } finally { HTMLMediaElement.prototype.addEventListener = add; HTMLMediaElement.prototype.removeEventListener = remove; URL.createObjectURL = create; URL.revokeObjectURL = revoke; }
   }, movie);
   assert.deepEqual(result, { children: 0, liveUrls: 0, listeners: 0, played: 0 }); assert.deepEqual(requests, []);
+});
+
+test('resolution events distinguish loading, failure, cancellation and mounted playback state', async t => {
+  const { page, movie } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host);
+    const source = new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' });
+    const make = (notify, resolve, signal) => ({ kind: 'video', contentType: 'video/mp4', maxBytes: 1000000, resolve, onResolveState: notify, ...(signal ? { signal } : {}) });
+    const successful = [], controller = await adapter.resolveAndMountBrowserMedia(host, make(state => { successful.push([state.status, Object.isFrozen(state)]); throw Error('observer'); }, () => source));
+    const playback = controller.state.status; controller.dispose();
+    const failure = []; let failureName;
+    try { await adapter.resolveAndMountBrowserMedia(host, make(s => failure.push(s.status), () => { throw new Error('resolver failed'); })); } catch (e) { failureName = e.message; }
+    const cancellation = [], ac = new AbortController(); let called = 0, cancellationName;
+    try { await adapter.resolveAndMountBrowserMedia(host, make(s => { cancellation.push(s.status); if (s.status === 'loading') ac.abort(); }, () => { called++; return source; }, ac.signal)); } catch (e) { cancellationName = e.name; }
+    const pre = []; try { await adapter.resolveAndMountBrowserMedia(host, make(s => pre.push(s.status), () => source, ac.signal)); } catch {}
+    const reentrant = [], ended = new AbortController();
+    const disposed = await adapter.resolveAndMountBrowserMedia(host, make(s => { reentrant.push(s.status); if (s.status === 'mounted') ended.abort(); }, () => source, ended.signal));
+    return { successful, playback, failure, failureName, cancellation, cancellationName, called, pre, reentrant, disposed: disposed.state.status, children: host.children.length };
+  }, movie);
+  assert.deepEqual(result.successful, [['loading', true], ['mounted', true]]); assert.equal(result.playback, 'loading');
+  assert.deepEqual(result.failure, ['loading', 'failed']); assert.equal(result.failureName, 'resolver failed');
+  assert.deepEqual(result.cancellation, ['loading', 'cancelled']); assert.equal(result.cancellationName, 'AbortError'); assert.equal(result.called, 0); assert.deepEqual(result.pre, ['cancelled']);
+  assert.deepEqual(result.reentrant, ['loading', 'mounted']); assert.equal(result.disposed, 'disposed'); assert.equal(result.children, 0);
+});
+
+test('authorized streaming HTTP resolver composes with playback, budgets and cancellation', { timeout: 15000 }, async t => {
+  const archive = readGeneratedZip(await readFile('tests/fixtures/pptkit-mixed-av.pptx'));
+  const wave = Buffer.from([...archive.entries()].find(([name]) => name.endsWith('.wav'))[1]);
+  const hits = []; let slowClosed = false;
+  const server = createServer((request, response) => {
+    hits.push({ path: request.url, cookie: request.headers.cookie ?? null, referrer: request.headers.referer ?? null });
+    if (request.url === '/') { response.writeHead(200, { 'content-type': 'text/html' }); response.end('<!doctype html>'); return; }
+    if (request.url === '/redirect') { response.writeHead(302, { location: '/sound' }); response.end(); return; }
+    if (request.url === '/slow') { response.writeHead(200, { 'content-type': 'audio/wav' }); response.write(wave.subarray(0, 100)); response.on('close', () => { slowClosed = true; }); return; }
+    if (request.url === '/sound') { response.writeHead(200, { 'content-type': 'audio/wav' }); response.write(wave.subarray(0, 100)); response.end(wave.subarray(100)); return; }
+    response.writeHead(404); response.end();
+  });
+  server.listen(0, '127.0.0.1'); await once(server, 'listening'); t.after(() => { server.closeAllConnections(); server.close(); });
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(); await page.goto(base);
+  for (const name of ['core', 'layout', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const source = await readFile('packages/svg-renderer/dist/browser/media.js', 'utf8');
+  const result = await page.evaluate(async ({ source, base, limit }) => {
+    const moduleUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+    const { resolveAndMountBrowserMedia } = await import(moduleUrl); URL.revokeObjectURL(moduleUrl);
+    const host = document.createElement('div'); document.body.append(host); const authorized = [];
+    const resolver = PPTKit.createHttpMediaResolver({ maxRedirects: 1, authorizeUrl(url) { authorized.push(url); return !url.endsWith('/denied'); } });
+    const mount = (path, maxBytes, signal, events) => resolveAndMountBrowserMedia(host, {
+      kind: 'audio', contentType: 'audio/wav', maxBytes, ...(signal ? { signal } : {}), muted: true,
+      onResolveState: state => events.push(state.status),
+      async resolve({ signal }) {
+        const asset = { id: 'sound', kind: 'audio', source: { type: 'url', value: base + path }, accessibility: { decorative: false } };
+        const result = await resolver(asset, { signal, maxBytes });
+        if (!result || result.mimeType && result.mimeType !== 'audio/wav') throw new TypeError('Unexpected media type');
+        return new Blob([result.bytes], { type: result.mimeType ?? 'audio/wav' });
+      },
+    });
+    const okEvents = [], controller = await mount('/sound', limit, undefined, okEvents);
+    await new Promise((resolve, reject) => { const timeout = setTimeout(() => reject(Error('metadata timeout')), 5000); controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timeout); resolve(); } else if (s.status === 'error') { clearTimeout(timeout); reject(Error(s.failure)); } }); });
+    await controller.play(); const played = !controller.element.paused; controller.dispose();
+    const errors = [], statuses = [];
+    for (const [path, max] of [['/denied', limit], ['/sound', limit - 1], ['/redirect', limit]]) {
+      const events = []; try { await mount(path, max, undefined, events); } catch (e) { errors.push(e.message); } statuses.push(events);
+    }
+    const ac = new AbortController(), cancelledEvents = []; let cancelled;
+    const pending = mount('/slow', limit, ac.signal, cancelledEvents); await new Promise(resolve => setTimeout(resolve, 150)); ac.abort();
+    try { await pending; } catch (e) { cancelled = e.name; }
+    return { played, okEvents, errors, statuses, cancelled, cancelledEvents, authorized, children: host.children.length };
+  }, { source, base, limit: wave.length });
+  assert.equal(result.played, true); assert.deepEqual(result.okEvents, ['loading', 'mounted']);
+  assert.match(result.errors[0], /not authorized/); assert.match(result.errors[1], /maxBytes/); assert.match(result.errors[2], /not an accessible 200/);
+  assert.deepEqual(result.statuses, [['loading', 'failed'], ['loading', 'failed'], ['loading', 'failed']]);
+  assert.equal(result.cancelled, 'AbortError'); assert.deepEqual(result.cancelledEvents, ['loading', 'cancelled']); assert.equal(result.children, 0);
+  assert.deepEqual(result.authorized, [base + '/sound', base + '/denied', base + '/sound', base + '/redirect', base + '/slow']);
+  assert.deepEqual(hits.map(x => x.path), ['/', '/sound', '/sound', '/redirect', '/slow']);
+  assert.ok(hits.slice(1).every(x => x.cookie === null && x.referrer === null));
+  for (let i = 0; i < 30 && !slowClosed; i++) await new Promise(resolve => setTimeout(resolve, 20));
+  assert.equal(slowClosed, true);
 });
