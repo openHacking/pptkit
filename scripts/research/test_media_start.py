@@ -44,3 +44,21 @@ for index, part, old, new in cases:
         continue
     raise AssertionError(f'accepted corrupted sample: {part}, {old!r}')
 print(f'Validated {len(cases)} negative controls')
+
+
+video_auto = (ROOT / 'tests/fixtures/powerpoint-video-start-auto.pptx').read_bytes()
+module.verify_video_auto(video_auto)
+video_cases = [
+    (slide, b'nodeType="afterEffect"', b'nodeType="clickEffect"'),
+    (slide, b'delay="2000"', b'delay="1999"'),
+    (slide, b'cmd="togglePause"', b'cmd="stop"'),
+    (slide, b'<p:cTn id="2"', b'<p:cTn id="1"'),
+    ('ppt/media/media1.mp4', b'ftyp', b'xxxx'),
+]
+for part, old, new in video_cases:
+    try:
+        module.verify_video_auto(mutate(video_auto, part, old, new))
+    except (AssertionError, KeyError, AttributeError, StopIteration, ValueError):
+        continue
+    raise AssertionError(f'accepted corrupted video sample: {part}, {old!r}')
+print(f'Validated video-auto source and {len(video_cases)} negative controls')

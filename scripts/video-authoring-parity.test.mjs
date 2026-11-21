@@ -51,7 +51,7 @@ test('same-slide shared video re-export agrees across Node and browser', async t
   assert.deepEqual(actual, expected); assert.deepEqual(requests, []);
 });
 
-for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-sequence']], ['powerpoint-audio-start-auto', ['click-sequence', 'automatic']]]) test(`mixed media ${fixture} projection and re-export agree across Node and browser`, async t => {
+for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-sequence']], ['powerpoint-audio-start-auto', ['click-sequence', 'automatic']], ['powerpoint-video-start-auto', [undefined, undefined]]]) test(`mixed media ${fixture} projection and re-export agree across Node and browser`, async t => {
   const bytes = await readFile(`tests/fixtures/${fixture}.pptx`);
   const importOptions = { projection: 'content', videoProjection: 'iso-bmff-v1', audioProjection: 'wave-pcm-v1' };
   const exportOptions = { videoMode: 'iso-bmff-v1', audioMode: 'wave-pcm-v1' };

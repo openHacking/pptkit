@@ -111,3 +111,15 @@ test("ambiguous video timing blocks the whole mixed main sequence", async () => 
   const s = await importPptx(zipSync(parts), mixedOptions);
   try { assert.deepEqual(starts(s), [undefined, undefined]); } finally { s.dispose(); }
 });
+
+
+test("native reordered automatic video remains unmapped instead of changing playback order", async () => {
+  const bytes = await sample("powerpoint-video-start-auto"), session = await importPptx(bytes, mixedOptions);
+  try {
+    assert.deepEqual(session.document.slides[0].elements.map(x => x.type), ["video", "video", "audio", "audio"]);
+    assert.deepEqual(starts(session), [undefined, undefined]);
+    assert.ok(session.report.diagnostics.some(x => x.code === "media-playback-unmapped"));
+    const plan = await session.prepareSave({ mode: "no-op" });
+    assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
+  } finally { session.dispose(); }
+});

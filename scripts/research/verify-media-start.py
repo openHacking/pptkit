@@ -67,6 +67,46 @@ def verify(baseline, automatic, object_click):
     assert inspect(object_click) == {'sequence': 'interactiveSeq', 'effect': 'clickEffect', 'delay': '0', 'sameGroupAsPrevious': False, 'trigger': 'onClick', 'triggerTarget': '5'}
 
 
+def verify_video_auto(data):
+    """Verify the specific PowerPoint menu edit, without inferring slideshow playback."""
+    with ZipFile(io.BytesIO(data)) as package:
+        root = ET.fromstring(package.read('ppt/slides/slide1.xml'))
+        rels = {r.get('Id'): r for r in ET.fromstring(package.read('ppt/slides/_rels/slide1.xml.rels')).findall('rel:Relationship', NS)}
+        pictures = root.findall('.//p:pic', NS)
+        assert [picture.find('p:nvPicPr/p:cNvPr', NS).get('id') for picture in pictures] == ['2', '3', '4', '5']
+        for picture, kind in zip(pictures, ['video', 'video', 'audio', 'audio']):
+            node = picture.find('p:nvPicPr/p:nvPr/a:' + kind + 'File', NS)
+            relation = rels[node.get(f"{{{NS['r']}}}link")]
+            assert relation.get('Type') == NS['r'] + '/' + kind and relation.get('TargetMode', 'Internal') == 'Internal'
+            target = posixpath.normpath(posixpath.join('ppt/slides', relation.get('Target')))
+            assert hashlib.sha256(package.read(target)).hexdigest() == HASHES[kind]
+    timing = root.find('p:timing', NS)
+    ids = [x.get('id') for x in timing.findall('.//p:cTn', NS)]
+    assert all(x is not None and x.isdigit() for x in ids) and len({int(x) for x in ids}) == len(ids)
+    main = timing.findall('.//p:cTn[@nodeType="mainSeq"]', NS)
+    assert len(main) == 1
+    groups = main[0].findall('p:childTnLst/p:par/p:cTn', NS)
+    actual = []
+    for group in groups:
+        assert [c.attrib for c in group.findall('p:stCondLst/p:cond', NS)] == [{'delay': 'indefinite'}]
+        row = []
+        for wrapper in group.findall('p:childTnLst/p:par/p:cTn', NS):
+            delay = wrapper.find('p:stCondLst/p:cond', NS).get('delay')
+            effects = [x for x in wrapper.findall('.//p:cTn', NS) if x.get('presetClass') == 'mediacall']
+            assert len(effects) == 1
+            effect = effects[0]; command = effect.find('p:childTnLst/p:cmd', NS)
+            assert command.get('cmd') == 'playFrom(0.0)'
+            target = command.find('p:cBhvr/p:tgtEl/p:spTgt', NS).get('spid')
+            duration = command.find('p:cBhvr/p:cTn', NS).get('dur')
+            row.append((target, effect.get('nodeType'), delay, duration))
+        actual.append(row)
+    assert actual == [[('3', 'clickEffect', '0', '2000')], [('4', 'clickEffect', '0', '1000'), ('5', 'afterEffect', '1000', '1000'), ('2', 'afterEffect', '2000', '2000')]]
+    pauses = timing.findall('.//p:cmd[@cmd="togglePause"]', NS)
+    assert sorted(x.find('p:cBhvr/p:tgtEl/p:spTgt', NS).get('spid') for x in pauses) == ['2', '3']
+    assert len(timing.findall('.//p:cmd', NS)) == 6
+    return actual
+
+
 if __name__ == '__main__':
     verify(*(open(path, 'rb').read() for path in sys.argv[1:]))
     print('Verified native sequence-click, automatic and object-click timing')
