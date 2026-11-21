@@ -144,6 +144,15 @@ function browserAnalysis(browserDocument: Document, fonts: readonly BrowserMeasu
 }
 void browserAnalysis;
 
+import { mountBrowserMedia, type BrowserMediaState } from "@pptkit/svg-renderer/media";
+function browserMedia(host: HTMLElement, source: Blob) {
+  const controller = mountBrowserMedia(host, { kind: "video", source, contentType: "video/mp4", muted: true });
+  const observe = (state: BrowserMediaState) => state.status;
+  const unsubscribe = controller.subscribe(observe);
+  unsubscribe(); controller.dispose();
+}
+void browserMedia;
+
 
 const composition: LayoutComposition[] = [{
   type: "stack", direction: "horizontal", container: { kind: "slide", id: document.slides[0]!.id },

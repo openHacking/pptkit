@@ -109,6 +109,14 @@ async function build(packageName) {
     }
   }
 
+  if (packageName === "@pptkit/svg-renderer") {
+    const adapter = await rollup({ input: path.join(packageRoot, "dist", "media.js") });
+    const adapterFile = path.join(outputDirectory, "media.js");
+    try { await adapter.write({ file: adapterFile, format: "es", plugins: [terser()] }); }
+    finally { await adapter.close(); }
+    await assertBrowserSafe(adapterFile);
+  }
+
   await Promise.all([assertBrowserSafe(esmFile), assertBrowserSafe(globalFile)]);
   console.log(`Built browser bundles for ${packageName}.`);
 }

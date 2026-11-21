@@ -51,7 +51,7 @@ Owns browser-oriented preview transformation over detached Layout state:
 - runtime-neutral asset URL resolution hooks and fidelity warnings
 
 The renderer has no filesystem, framework, editor, PPTX, OOXML, ZIP, or parser concerns.
-It depends only on public Core and Layout exports and never becomes authoritative state.
+It depends only on public Core and Layout exports and never becomes authoritative state. The separate opt-in [`/media` browser adapter](../api/browser-media.md) owns explicitly mounted HTML media, local Blob URLs, playback events and disposal; the static SVG entry does not import it or initiate playback.
 
 ### `@pptkit/pdf-renderer`
 

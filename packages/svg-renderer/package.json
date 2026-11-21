@@ -14,6 +14,10 @@
     "./browser": {
       "types": "./dist/index.d.ts",
       "default": "./dist/browser/index.js"
+    },
+    "./media": {
+      "types": "./dist/media.d.ts",
+      "default": "./dist/media.js"
     }
   },
   "files": [
