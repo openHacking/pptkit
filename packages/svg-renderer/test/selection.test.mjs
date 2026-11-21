@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation, normalizePresentation } from '@pptkit/core';
 import { resolveNormalizedLayout } from '@pptkit/layout';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines } from '../dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes } from '../dist/index.js';
 
 const box = (x, y, width, height) => ({ x, y, width, height });
 const shape = (id, b, extra = {}) => ({ type: 'shape', id, shape: 'rect', box: b, ...extra });
@@ -195,6 +195,26 @@ test('optional unpainted-connector exclusion preserves possible SVG markers', ()
   layout.slides[0].elements.at(-1).style.paint.opacity = 0;
   assert.equal(filtered.at(-1).elementId, 'faint');
   assert.ok(!getSvgSlideSelectionGeometry(layout, 0, { excludeUnpaintedConnectors: true }).some(item => item.elementId === 'faint'));
+});
+
+test('solid connector stroke hit tests use local widths through nonuniform group transforms', () => {
+  const doc = createPresentation();
+  const line = (id, y, extra = {}) => ({ type: 'connector', id, start: { x: 10, y }, end: { x: 90, y }, style: { paint: { type: 'solid', color: '000000' }, width: 10, ...extra } });
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: box(100, 100, 200, 100), coordinateSize: { width: 100, height: 100 }, children: [line('line', 50), line('dashed', 70, { dash: 'dash' }), line('clear', 80, { paint: { type: 'solid', color: '000000', opacity: 0 } })] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const ordinary = getSvgSlideSelectionGeometry(layout, 0);
+  assert.equal(hitTestSvgConnectorStrokes(ordinary, { x: 200, y: 150 }), undefined);
+  const items = getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 200, y: 154 }).elementId, 'line');
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 200, y: 156 }), undefined);
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 112, y: 150 }).elementId, 'line');
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 109, y: 150 }), undefined);
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 200, y: 170 }), undefined);
+  assert.ok(Object.isFrozen(items[0].strokeGeometry.points[0]));
+  assert.throws(() => hitTestSvgConnectorStrokes(items, { x: NaN, y: 0 }), TypeError);
+  const singular = structuredClone(items); singular[0].strokeGeometry.transform = [0, 0, 0, 0, 0, 0];
+  assert.throws(() => hitTestSvgConnectorStrokes(singular, { x: 0, y: 0 }), RangeError);
+  assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: 1 }), TypeError);
 });
 
 test('zero-length connector segments remain selectable within the explicit tolerance', () => {

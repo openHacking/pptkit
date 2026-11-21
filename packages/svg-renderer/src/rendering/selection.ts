@@ -18,6 +18,12 @@ export interface SvgSelectionConnector {
   readonly ancestorIds: readonly string[];
   readonly owner: SvgSelectionOwner;
   readonly points: readonly Readonly<Point>[];
+  readonly strokeGeometry?: SvgConnectorStrokeGeometry;
+}
+export interface SvgConnectorStrokeGeometry {
+  readonly points: readonly Readonly<Point>[];
+  readonly transform: readonly [number, number, number, number, number, number];
+  readonly width: number;
 }
 export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
 export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline }) | SvgSelectionConnector;
@@ -26,6 +32,7 @@ export interface SvgSelectionGeometryOptions {
   readonly excludeZeroOpacity?: boolean;
   readonly excludeUnpaintedShapes?: boolean;
   readonly excludeUnpaintedConnectors?: boolean;
+  readonly includeConnectorStrokeGeometry?: boolean;
 }
 
 function hasNoConnectorPaint(element: Extract<LayoutElement, { type: "connector" }>): boolean {
@@ -98,7 +105,11 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         const rawPoints = [element.start, ...element.route, element.end];
         const points = Object.freeze(rawPoints.map(point => apply(matrix, point.x, point.y)));
         if (!points.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
-        frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points }));
+        const style = element.style;
+        const strokeGeometry = options.includeConnectorStrokeGeometry && style.paint.type === "solid" && style.paint.opacity > 0 && style.width > 0 && style.dash === "solid"
+          ? Object.freeze({ points: Object.freeze(rawPoints.map(point => Object.freeze({ ...point }))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: style.width })
+          : undefined;
+        frames.push(Object.freeze({ kind: "connector", elementId: element.id, ancestorIds: Object.freeze([...ancestors]), owner, points, ...(strokeGeometry ? { strokeGeometry } : {}) }));
       } else if (element.type !== "connector" && b.width > 0 && b.height > 0) {
         const corners = Object.freeze([apply(matrix, b.x, b.y), apply(matrix, b.x + b.width, b.y), apply(matrix, b.x + b.width, b.y + b.height), apply(matrix, b.x, b.y + b.height)]) as SvgSelectionFrame["corners"];
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
@@ -138,8 +149,35 @@ export function getSvgSlideSelectionFrames(layout: LayoutResult, slideIndex: num
 
 /** Include transformed connector polylines alongside frames in SVG paint order. */
 export function getSvgSlideSelectionGeometry(layout: LayoutResult, slideIndex: number, options?: SvgSelectionGeometryOptions): readonly SvgSelectionGeometry[] {
-  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean") || (options.excludeUnpaintedConnectors !== undefined && typeof options.excludeUnpaintedConnectors !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
+  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean") || (options.excludeUnpaintedConnectors !== undefined && typeof options.excludeUnpaintedConnectors !== "boolean") || (options.includeConnectorStrokeGeometry !== undefined && typeof options.includeConnectorStrokeGeometry !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
   return collect(slideLayers(layout, slideIndex), true, options) as readonly SvgSelectionGeometry[];
+}
+
+/** Hit solid connector stroke bodies in paint order; arrows and other objects are excluded. */
+export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionConnector | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  for (let i = items.length - 1; i >= 0; i--) {
+    const item = items[i]!;
+    if (item.kind !== "connector" || !item.strokeGeometry) continue;
+    const { transform: [a, b, c, d, e, f], points, width } = item.strokeGeometry;
+    const scale = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
+    if (!Number.isFinite(scale) || scale === 0) throw new RangeError("Connector transform is singular or nonfinite.");
+    const aa = a / scale, bb = b / scale, cc = c / scale, dd = d / scale, determinant = aa * dd - bb * cc;
+    const x = (point.x - e) / scale, y = (point.y - f) / scale;
+    if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(determinant) || determinant === 0) throw new RangeError("Connector transform is singular or outside finite hit-test range.");
+    const localX = (x * dd - y * cc) / determinant, localY = (y * aa - x * bb) / determinant;
+    if (!Number.isFinite(localX) || !Number.isFinite(localY)) throw new RangeError("Connector hit-test exceeds finite range.");
+    for (let j = 1; j < points.length; j++) {
+      const p = points[j - 1]!, q = points[j]!;
+      const dx = q.x - p.x, dy = q.y - p.y, length = Math.hypot(dx, dy), px = localX - p.x, py = localY - p.y;
+      if (![length, px, py].every(Number.isFinite)) throw new RangeError("Connector geometry exceeds finite hit-test range.");
+      const projection = length === 0 ? 0 : px * (dx / length) + py * (dy / length);
+      if (!Number.isFinite(projection)) throw new RangeError("Connector geometry exceeds finite hit-test range.");
+      const along = Math.max(0, Math.min(length, projection));
+      if (Math.hypot(px - (length === 0 ? 0 : dx / length) * along, py - (length === 0 ? 0 : dy / length) * along) <= width / 2) return item;
+    }
+  }
+  return undefined;
 }
 
 /** Topmost frame containing a slide-space point; transparent areas inside frames still count. */

@@ -3,7 +3,34 @@ import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import { createPresentation, normalizePresentation } from '../packages/core/dist/index.js';
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
+
+test('connector stroke hits match Chromium for transformed solid polylines', async t => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 23, flipH: true }, children: [
+    { type: 'connector', id: 'line', start: { x: 10, y: 20 }, route: [{ x: 60, y: 20 }, { x: 60, y: 60 }], end: { x: 90, y: 60 }, style: { paint: { type: 'solid', color: '000000' }, width: 6 } },
+  ] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg);
+  await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const actual = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+    const path = document.querySelector('[data-pptkit-element-id="line"] polyline'), matrix = path.getCTM();
+    const samples = [];
+    for (let y = 3.37; y < 80; y += 3.71) for (let x = 2.31; x < 100; x += 3.83) {
+      const local = new DOMPoint(x, y), transformed = local.matrixTransform(matrix);
+      samples.push({ point: { x: transformed.x, y: transformed.y }, expected: path.isPointInStroke(local), browser: !!PPTKit.hitTestSvgConnectorStrokes(items, transformed) });
+    }
+    return { items, samples };
+  }, layout);
+  assert.deepEqual(actual.items, getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true }));
+  for (const { point, expected, browser: browserHit } of actual.samples) {
+    assert.equal(browserHit, expected);
+    assert.equal(!!hitTestSvgConnectorStrokes(actual.items, point), expected);
+  }
+});
 
 test('unpainted connector filtering retains independently visible transparent-stroke markers', async t => {
   const doc = createPresentation({ size: { width: 100, height: 100 } });
