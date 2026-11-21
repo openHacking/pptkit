@@ -501,7 +501,8 @@ test("packed packages work in an isolated npm consumer through every declared en
     imports["@pptkit/svg-renderer/media"] = dataModule(await readFile(path.join(installed, "svg-renderer/dist/browser/media.js"), "utf8"));
     await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
     const result = await page.evaluate(async ({ textFixtureBase64, graphFixtureBase64 }) => {
-      const { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay } = await import("@pptkit/svg-renderer/media");
+      const { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay, mountLayoutMediaInPlace } = await import("@pptkit/svg-renderer/media");
+      if (typeof mountLayoutMediaInPlace !== "function") throw new Error("Installed in-place media entry missing");
       const mediaHost = globalThis.document.createElement("div"); globalThis.document.body.append(mediaHost);
       const media = mountBrowserMedia(mediaHost, { kind: "audio", source: new Blob(["fixture"], { type: "audio/wav" }), contentType: "audio/wav" });
       media.dispose(); if (media.state.status !== "disposed" || mediaHost.children.length) throw new Error("Installed media adapter cleanup failed");

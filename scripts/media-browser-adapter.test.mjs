@@ -633,3 +633,86 @@ test('overlay rolls back its mounted controller when later setup fails', async t
   }, input);
   assert.deepEqual(result, { error: 'style unavailable', urls: 0, overlays: 0 }); assert.deepEqual(requests, []);
 });
+
+test('in-place media follows nested SVG frames and restores the exact original DOM', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg');
+    svg.style.width = '800px'; svg.style.height = '450px'; const before = svg.outerHTML;
+    const poster = [...svg.querySelectorAll('[data-pptkit-element-id]')].find(x => x.getAttribute('data-pptkit-element-id') === 'video');
+    const mounted = await adapter.mountLayoutMediaInPlace(svg, layout, { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 });
+    const root = svg.querySelector('[data-pptkit-media-overlay="video"]'), fo = root.querySelector('foreignObject');
+    const mat = element => { const m = element.getScreenCTM(); return [m.a, m.b, m.c, m.d, m.e, m.f]; };
+    const matrix = [mat(poster), mat(fo)], adjacent = poster.nextElementSibling === root;
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); mounted.controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+    const ready = { poster: poster.style.visibility, media: mounted.controller.element.style.visibility, label: mounted.controller.element.getAttribute('aria-label') };
+    mounted.controller.dispose(); return { matrix, adjacent, ready, restored: svg.outerHTML === before, overlays: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, input);
+  for (let i = 0; i < 6; i++) assert.ok(Math.abs(result.matrix[0][i] - result.matrix[1][i]) < 1e-6, `matrix ${i}`);
+  assert.equal(result.adjacent, true); assert.equal(result.ready.poster, 'hidden'); assert.equal(result.ready.media, 'visible'); assert.ok(result.ready.label); assert.equal(result.restored, true); assert.equal(result.overlays, 0); assert.deepEqual(requests, []);
+});
+
+test('in-place media preserves drawing order and avoids translucent poster bleed', async t => {
+  const { page, requests } = await setup(t), archive = readGeneratedZip(await readFile('tests/fixtures/powerpoint-caption-playback.pptx'));
+  const p = createPresentation({ size: { width: 400, height: 250 } });
+  p.registerAsset({ id: 'blue', kind: 'video', mimeType: 'video/mp4', source: { type: 'bytes', value: [...archive.entries()].find(([name]) => name.endsWith('.mp4'))[1] } });
+  p.addSlide({ id: 'layered', elements: [
+    { type: 'video', id: 'blue-video', videoAssetId: 'blue', muted: true, opacity: 0.5, box: { x: 40, y: 40, width: 200, height: 100 } },
+    { type: 'shape', id: 'red-shape', shape: 'rect', box: { x: 140, y: 40, width: 100, height: 100 }, style: { fill: { type: 'solid', color: 'FF0000' } } },
+  ] });
+  const layout = resolveLayout(p), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const points = await page.evaluate(async ({ layout, svg: text }) => {
+    const wrapper = document.createElement('div'); document.body.append(wrapper); wrapper.innerHTML = text; const svg = wrapper.querySelector('svg'); svg.style.width = '800px'; svg.style.height = '500px';
+    const mounted = await adapter.mountLayoutMediaInPlace(svg, layout, { slideId: 'layered', elementId: 'blue-video', maxBytes: 1000000 }); window.activeMedia = mounted.controller;
+    await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); mounted.controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+    await mounted.controller.play(); await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('frame timeout')), 5000); mounted.controller.element.requestVideoFrameCallback(() => { clearTimeout(timer); resolve(); }); });
+    const matrix = svg.getScreenCTM(), transform = (x, y) => { const pt = new DOMPoint(x, y).matrixTransform(matrix); return [Math.round(pt.x), Math.round(pt.y)]; };
+    return [transform(90, 90), transform(190, 90)];
+  }, { layout, svg });
+  const screenshot = await page.screenshot();
+  const pixels = await page.evaluate(async ({ bytes, points }) => {
+    const image = new Image(), url = URL.createObjectURL(new Blob([Uint8Array.from(bytes)], { type: 'image/png' }));
+    try { image.src = url; await image.decode(); const canvas = document.createElement('canvas'); canvas.width = image.width; canvas.height = image.height; const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0); return points.map(([x, y]) => [...ctx.getImageData(x, y, 1, 1).data]); }
+    finally { URL.revokeObjectURL(url); window.activeMedia.dispose(); }
+  }, { bytes: [...screenshot], points });
+  assert.ok(pixels[0][0] >= 120 && pixels[0][0] <= 135 && pixels[0][1] >= 120 && pixels[0][1] <= 135 && pixels[0][2] > 245, `unexpected transparent blue ${pixels[0]}`);
+  assert.ok(pixels[1][0] > 245 && pixels[1][1] < 10 && pixels[1][2] < 10, `upper artwork must remain red: ${pixels[1]}`); assert.deepEqual(requests, []);
+});
+
+test('in-place media rejects stale frames and cross-mode duplicates without loading', async t => {
+  const { page, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text }) => {
+    const host = document.createElement('div'); document.body.append(host); host.innerHTML = text; const svg = host.querySelector('svg');
+    const poster = [...svg.querySelectorAll('[data-pptkit-element-id]')].find(n => n.getAttribute('data-pptkit-element-id') === 'video');
+    const options = { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 }; const errors = [];
+    const attempt = async (value = layout) => { try { const mounted = await adapter.mountLayoutMediaInPlace(svg, value, options); mounted.controller.dispose(); return 'ok'; } catch (e) { return e.name; } };
+    const stale = structuredClone(layout); stale.slides[0].elements[0].children[0].children[0].box.width++; errors.push(await attempt(stale));
+    const action = structuredClone(layout); action.slides[0].elements[0].children[0].children[0].action = { type: 'url', url: 'https://example.invalid/' }; errors.push(await attempt(action));
+    poster.setAttribute('style', 'opacity: .5'); errors.push(await attempt()); poster.removeAttribute('style');
+    const duplicate = poster.cloneNode(true); poster.parentNode.appendChild(duplicate); errors.push(await attempt()); duplicate.remove();
+    const inPlace = await adapter.mountLayoutMediaInPlace(svg, layout, options);
+    try { await adapter.mountLayoutMediaOverlay(svg, layout, options); errors.push('ok'); } catch (e) { errors.push(e.name); } inPlace.controller.dispose();
+    const overlay = await adapter.mountLayoutMediaOverlay(svg, layout, options); errors.push(await attempt()); overlay.controller.dispose();
+    return { errors, overlays: svg.querySelectorAll('[data-pptkit-media-overlay]').length };
+  }, input);
+  assert.deepEqual(result, { errors: Array(6).fill('TypeError'), overlays: 0 }); assert.deepEqual(requests, []);
+});
+
+test('in-place media restores its poster on decode failure and cancelled resolution', async t => {
+  const { page, movie, requests } = await setup(t), input = await nestedMediaSlide();
+  const result = await page.evaluate(async ({ layout, svg: text, bytes }) => {
+    const host = document.createElement('div'); document.body.append(host); host.innerHTML = text; const svg = host.querySelector('svg'); const before = svg.outerHTML;
+    const options = { slideId: 'overlay-slide', elementId: 'video', maxBytes: 1000000 };
+    layout.assets[0].source.value = btoa('not valid video');
+    const mounted = await adapter.mountLayoutMediaInPlace(svg, layout, options);
+    const failure = await new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('error timeout')), 5000); mounted.controller.subscribe(s => { if (s.status === 'error') { clearTimeout(timer); resolve(s.failure); } }); });
+    const poster = [...svg.querySelectorAll('[data-pptkit-element-id]')].find(n => n.getAttribute('data-pptkit-element-id') === 'video');
+    const fallback = !poster.hasAttribute('style') && mounted.controller.element.style.visibility === 'hidden'; mounted.controller.dispose();
+    layout.assets[0].source = { type: 'url', value: 'https://example.invalid/v.mp4' }; const signal = new AbortController(); let complete;
+    const pending = adapter.mountLayoutMediaInPlace(svg, layout, { ...options, signal: signal.signal, resolveExternal: () => new Promise(resolve => { complete = resolve; }) });
+    await Promise.resolve(); signal.abort(); let aborted; try { await pending; } catch (e) { aborted = e.name; }
+    complete(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); await Promise.resolve();
+    return { failure, fallback, aborted, restored: svg.outerHTML === before };
+  }, { ...input, bytes: movie });
+  assert.ok(['unsupported', 'decode'].includes(result.failure)); assert.equal(result.fallback, true); assert.equal(result.aborted, 'AbortError'); assert.equal(result.restored, true); assert.deepEqual(requests, []);
+});

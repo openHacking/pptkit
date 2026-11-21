@@ -5,10 +5,10 @@ import { mountLayoutMedia, type BrowserLayoutMedia, type BrowserLayoutMediaOptio
 
 const SVG = 'http://www.w3.org/2000/svg', XHTML = 'http://www.w3.org/1999/xhtml';
 
-function validateGeometry(box: Box, transform: NormalizedTransform, opacity: number): void {
+export function validateGeometry(box: Box, transform: NormalizedTransform, opacity: number): void {
   if (!box || ![box.x, box.y, box.width, box.height].every(Number.isFinite) || box.width <= 0 || box.height <= 0 || !transform || !Number.isFinite(transform.rotation) || typeof transform.flipH !== 'boolean' || typeof transform.flipV !== 'boolean' || !Number.isFinite(opacity) || opacity < 0 || opacity > 1) throw new TypeError('Media overlay geometry, transform or opacity is invalid.');
 }
-function shapeTransform(box: Box, transform: NormalizedTransform): string {
+export function shapeTransform(box: Box, transform: NormalizedTransform): string {
   const cx = box.x + box.width / 2, cy = box.y + box.height / 2;
   return `translate(${cx} ${cy}) rotate(${transform.rotation}) scale(${transform.flipH ? -1 : 1} ${transform.flipV ? -1 : 1}) translate(${-cx} ${-cy})`;
 }
@@ -27,7 +27,7 @@ function shapeMatrix(box: Box, transform: NormalizedTransform): Matrix {
   if (!value.every(Number.isFinite)) throw new RangeError('Media overlay transform exceeds finite geometry.');
   return value;
 }
-function validateComposite(parents: readonly LayoutGroupElement[], box: Box, transform: NormalizedTransform): void {
+export function validateComposite(parents: readonly LayoutGroupElement[], box: Box, transform: NormalizedTransform): void {
   let matrix: Matrix = [1, 0, 0, 1, 0, 0];
   for (const parent of parents) {
     matrix = multiply(matrix, shapeMatrix(parent.box, parent.transform));
@@ -38,7 +38,7 @@ function validateComposite(parents: readonly LayoutGroupElement[], box: Box, tra
     if (![x, y, matrix[0] * x + matrix[2] * y + matrix[4], matrix[1] * x + matrix[3] * y + matrix[5]].every(Number.isFinite)) throw new RangeError('Media overlay bounds exceed finite geometry.');
   }
 }
-function groupTransform(group: LayoutGroupElement): string {
+export function groupTransform(group: LayoutGroupElement): string {
   const { box, coordinateSize, transform, opacity } = group;
   validateGeometry(box, transform, opacity);
   if (!coordinateSize || !Number.isFinite(coordinateSize.width) || !Number.isFinite(coordinateSize.height) || coordinateSize.width <= 0 || coordinateSize.height <= 0 || !Number.isFinite(box.width / coordinateSize.width) || !Number.isFinite(box.height / coordinateSize.height)) throw new TypeError('Media overlay group coordinates are invalid.');
@@ -49,7 +49,7 @@ function groupTransform(group: LayoutGroupElement): string {
 export async function mountLayoutMediaOverlay(svg: SVGSVGElement, layout: LayoutResult, options: BrowserLayoutMediaOptions): Promise<BrowserLayoutMedia> {
   if (!svg || svg.namespaceURI !== SVG || svg.localName !== 'svg' || !svg.isConnected || !svg.ownerDocument.defaultView) throw new TypeError('A connected SVG slide is required.');
   if (!options || typeof options.slideId !== 'string' || !options.slideId || typeof options.elementId !== 'string' || !options.elementId) throw new TypeError('slideId and elementId are required.');
-  if (Array.from(svg.children).some(child => child.getAttribute('data-pptkit-media-overlay') === options.elementId)) throw new TypeError('A media overlay for this object already exists.');
+  if (Array.from(svg.querySelectorAll('[data-pptkit-media-overlay]')).some(child => child.getAttribute('data-pptkit-media-overlay') === options.elementId)) throw new TypeError('A media overlay for this object already exists.');
   const { target, parents } = findLayoutMedia(layout, options.slideId, options.elementId);
   if (parents.length > 256) throw new RangeError('Media overlay exceeds the group depth limit.');
   if (!layout.size || !Number.isFinite(layout.size.width) || !Number.isFinite(layout.size.height) || layout.size.width <= 0 || layout.size.height <= 0 || svg.getAttribute('data-pptkit-slide-id') !== options.slideId || !svg.hasAttribute('viewBox')) throw new TypeError('SVG slide identity or size does not match the Layout result.');
