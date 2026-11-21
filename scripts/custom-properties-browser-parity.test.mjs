@@ -33,6 +33,17 @@ async function exercise(api) {
   } finally { session.dispose(); }
 }
 
+async function exerciseEscapedReservation(api, input) {
+  const session = await api.importPptx(new Uint8Array(input), { projection: 'content', customPropertySaveProfile: 'append-and-remove-v4' });
+  try {
+    const existing = session.document.metadata.customProperties;
+    session.document.setMetadata({ ...session.document.metadata, customProperties: [{ ...existing[0], name: 'Renamed', value: 'changed' }, { name: 'New', type: 'string', value: 'added' }] });
+    const prepared = await session.prepareSave({ mode: 'edit', customPropertyAdditions: [1] });
+    if (prepared.status !== 'ready') throw new Error(JSON.stringify(prepared.report));
+    return { bytes: [...(await session.save(prepared.plan)).bytes], sources: session.report.customPropertySources };
+  } finally { session.dispose(); }
+}
+
 async function exerciseCreation(api) {
   const doc = api.createPresentation({ metadata: { title: 'before' } });
   const generated = await api.generatePptx(doc); let bytes = generated.bytes;
@@ -282,6 +293,8 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const companyInsertionInput = [...encodeMetadata(companyInsertion)], expectedCompanyInsertion = await exerciseCompanyInsertion({ importPptx }, companyInsertionInput);
   const variants = metadataFixture(); variants.add('custom', custom(2, 'i1', '-128', 'name="Small"') + custom(3, 'ui2', '0', 'name="Unsigned"') + custom(4, 'r4', '1.25', 'name="Single"') + custom(5, 'bstr', 'original', 'name="Basic"') + custom(6, 'lpstr', 'original', 'name="Narrow"') + custom(7, 'date', '2020-02-03T04:05:06.120000+08:00', 'name="Date"') + custom(8, 'decimal', '1.25', 'name="Decimal"'));
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
+  const escapedReservation = metadataFixture(); escapedReservation.add('custom', custom(2, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x0041_"') + custom(3, 'lpwstr', 'old', 'name="B"'));
+  const escapedInput = [...encodeMetadata(escapedReservation)], expectedEscapedReservation = await exerciseEscapedReservation({ importPptx }, escapedInput);
   const collision = metadataFixture(); collision.add('custom', custom(2, 'lpwstr', 'first', 'name="_x005F_x0041_"') + custom(3, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x005f_x0041_"') + custom(4, 'lpwstr', 'a', 'name="A"') + custom(5, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x0041_"')); 
   const collisionInput = [...encodeMetadata(collision)];
   const collisionSession = await importPptx(new Uint8Array(collisionInput), { projection: 'content' });
@@ -306,6 +319,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
   for (const format of ['esm', 'global']) {
     if (format === 'global') for (const content of globals) await page.addScriptTag({ content });
+    const actualEscapedReservation = await page.evaluate(async ({ format, exercise, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
+    }, { format, exercise: exerciseEscapedReservation.toString(), input: escapedInput });
+    assert.deepEqual(actualEscapedReservation, expectedEscapedReservation);
     const actualCollision = await page.evaluate(async ({ format, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       const session = await api.importPptx(new Uint8Array(input), { projection: 'content' });

@@ -162,12 +162,12 @@ test('rename and value edit handle empty and CDATA scalar forms', async () => {
 
 test('rename rejects semantic collisions with opaque encoded names and unknown source name semantics', async () => {
   for (const strict of [false, true]) {
-    for (const [opaqueName, proposed] of [['_x005F_x0041_', '_x0041_'], ['_x0041_', 'Different']]) {
+    for (const [opaqueName, proposed] of [['_x005F_x0041_', '_x0041_'], ['_x005F_x005F_x0041_', 'Different']]) {
       const f = metadataFixture(strict);
       f.add('custom', custom(2, 'lpwstr', 'value', 'name="Editable"') + custom(3, 'vector', '<v:lpwstr>opaque</v:lpwstr>', `name="${opaqueName}"`));
       const bytes = encodeMetadata(f), opts = { projection: 'content', customPropertySaveProfile: 'scalar-and-name-v2' }, s = await importPptx(bytes, opts);
       try {
-        assert.equal(s.report.customPropertySources[0].nameEditable, opaqueName !== '_x0041_');
+        assert.equal(s.report.customPropertySources[0].nameEditable, opaqueName !== '_x005F_x005F_x0041_');
         s.document.setMetadata({ ...s.document.metadata, customProperties: [{ name: proposed, type: 'string', value: 'changed' }] });
         const blocked = await s.prepareSave({ mode: 'edit' }); assert.equal(blocked.status, 'blocked'); assert.equal(blocked.plan, undefined);
         s.document.setMetadata({ ...s.document.metadata, customProperties: [{ name: 'Editable', type: 'string', value: 'changed' }] });

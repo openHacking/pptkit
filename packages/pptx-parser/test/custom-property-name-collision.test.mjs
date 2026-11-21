@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { importPptx } from '../dist/index.js';
 import { metadataFixture, encodeMetadata, custom } from './metadata-fixture.mjs';
+import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
 
 for (const strict of [false, true]) for (const other of ['opaque', 'linked', 'scalar']) test(`decoded names include ${other} sources when detecting collisions (strict=${strict})`, async () => {
   const f = metadataFixture(strict);
@@ -52,4 +53,26 @@ test('UTF-16 surrogate escapes collide with the equivalent Unicode name', async 
   const f=metadataFixture(); f.add('custom', custom(2,'lpwstr','a','name="😀"') + custom(3,'vector','<v:lpstr>x</v:lpstr>','name="_xD83D__xDE00_"'));
   const session=await importPptx(encodeMetadata(f),{projection:'content'});
   try { assert.deepEqual(session.document.metadata.customProperties, []); } finally { session.dispose(); }
+});
+
+for (const strict of [false, true]) test(`simple escaped opaque names reserve their spelling without blocking unrelated edits (strict=${strict})`, async () => {
+  const f = metadataFixture(strict); f.add('custom', custom(2,'vector','<v:lpstr>x</v:lpstr>','name="_x0041_"') + custom(3,'lpwstr','old','name="B"'));
+  let bytes=encodeMetadata(f);
+  for (const [name,value,added] of [['C','first','D'],['E','second','F'],['G','third','H']]) {
+    const before=readGeneratedZip(bytes), session=await importPptx(bytes,{projection:'content',customPropertySaveProfile:'append-and-remove-v4'});
+    try {
+      assert.equal(session.report.customPropertyInsertion.status,'available');
+      assert.ok(session.report.customPropertySources.some(item=>item.projectedIndex===0 && item.nameEditable));
+      const previous=session.document.metadata.customProperties;
+      session.document.setMetadata({...session.document.metadata,customProperties:[{...previous[0],name:'A'},...previous.slice(1)]});
+      assert.equal((await session.prepareSave({mode:'edit'})).status,'blocked');
+      session.document.setMetadata({...session.document.metadata,customProperties:[{...previous[0],name,value},...previous.slice(1),{name:added,type:'string',value:'added'}]});
+      const prepared=await session.prepareSave({mode:'edit',customPropertyAdditions:[previous.length]});
+      assert.equal(prepared.status,'ready',JSON.stringify(prepared.report)); bytes=(await session.save(prepared.plan)).bytes;
+      const after=readGeneratedZip(bytes); for(const [part,payload] of before) if(part!=='inventory/custom.data') assert.deepEqual(after.get(part),payload,part);
+      assert.match(after.get('inventory/custom.data').toString(), /name="_x0041_"/);
+    } finally { session.dispose(); }
+  }
+  const reopened=await importPptx(bytes,{projection:'content'});
+  try {assert.deepEqual(reopened.document.metadata.customProperties.map(p=>p.name),['G','D','F','H']);} finally {reopened.dispose();}
 });

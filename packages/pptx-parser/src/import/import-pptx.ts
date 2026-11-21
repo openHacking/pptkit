@@ -10,7 +10,7 @@ import { structureContext } from "../presentation/structure-context.js";
 import { PackageInspectionError } from "../types/archive.js";
 import { PptxImportError, type ImportedPictureSource, type ImportedSlideVisibilitySource, type ImportedCoreMetadataSource, type ImportedPresentation, type PptxImportOptions, type PptxSessionLimits } from "../types/import.js";
 import { projectStructure } from "./project-structure.js";
-import { decodeLiteralEscapes, projectCurrencyProperty, projectCustomProperty } from "./project-custom-properties.js";
+import { customNameCollisionKey, decodeLiteralEscapes, projectCurrencyProperty, projectCustomProperty } from "./project-custom-properties.js";
 import { children } from "../presentation/structure-xml.js";
 import { XMLNS } from "../compatibility/configuration.js";
 import { createSession } from "./session.js";
@@ -259,7 +259,9 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
         await checkpoint();
         if (editableSources.has(`${property.formatId}:${property.id}`) || property.name === undefined) continue;
         const name = decodeLiteralEscapes(property.name);
-        if (name === undefined) unknownReservedName = true; else reservedNames.add(name);
+        if (name !== undefined) reservedNames.add(name);
+        else if (/_x[0-9a-fA-F]{4}_x[0-9a-fA-F]{4}_/.test(property.name)) unknownReservedName = true;
+        else reservedNames.add(customNameCollisionKey(property.name));
       }
       if (customPropertySaveProfile === "append-and-remove-v4" || customPropertySaveProfile === "create-and-append-v5") {
         const part = context.metadata.custom.part, root = context.rawXml.get(part), rawRoot = root ? await context.sourceElement(part, root) : undefined;

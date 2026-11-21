@@ -80,7 +80,7 @@ test('appends retain allocated identities across three reopens', async () => {
 
 test('unknown source names and compatibility processing disable insertion without changing the source', async () => {
   for (const type of ['unknown-name', 'compatibility']) {
-    const f = metadataFixture(), body = custom(2, 'vector', '<v:lpwstr>opaque</v:lpwstr>', `name="${type === 'unknown-name' ? '_x0041_' : 'Opaque'}"`), part = f.add('custom', body);
+    const f = metadataFixture(), body = custom(2, 'vector', '<v:lpwstr>opaque</v:lpwstr>', `name="${type === 'unknown-name' ? '_x005F_x005F_x0041_' : 'Opaque'}"`), part = f.add('custom', body);
     if (type === 'compatibility') f.parts[part] = f.properties('custom', body, `xmlns:mc="${MC}"`);
     const s = await importPptx(encodeMetadata(f), options);
     try {
