@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { assessPptxCurrencyText, inspectPptx, inspectPptxOpaqueCustomProperties } from '../dist/index.js';
+import { assessPptxCurrencyText, assessPptxCurrencyNumber, inspectPptx, inspectPptxOpaqueCustomProperties } from '../dist/index.js';
 import { metadataFixture, encodeMetadata, custom, MC } from './metadata-fixture.mjs';
 
 test('opaque source inventory exposes direct text without changing standard metadata inspection', async () => {
@@ -29,6 +29,28 @@ test('currency text assessment preserves exact decimal digits and rejects non-sc
   for (const text of ['-12.5000', '+1.0000', '1', '1.', '1.000', '1.00000', '1e0', '１.0000', '1.0000\u00a0', '1.0000\u2028', '1.0000x', '']) assert.deepEqual(assessPptxCurrencyText(text), { status: 'invalid' }, text);
   assert.throws(() => assessPptxCurrencyText(1), TypeError);
   assert.throws(() => assessPptxCurrencyText('0'.repeat(1000001)), RangeError);
+});
+
+test('currency number assessment refuses rounding and overflow', () => {
+  for (const [text, expected] of [
+    ['0.0000', { status: 'exact', value: 0 }], ['1.2500', { status: 'exact', value: 1.25 }],
+    ['.0625', { status: 'exact', value: .0625 }], ['0.1000', { status: 'inexact' }],
+    ['0.0001', { status: 'inexact' }], ['9007199254740992.0000', { status: 'exact', value: 9007199254740992 }],
+    ['9007199254740993.0000', { status: 'inexact' }], ['-1.0000', { status: 'invalid' }],
+    [`${'9'.repeat(310)}.0000`, { status: 'out-of-range' }],
+  ]) { const result = assessPptxCurrencyNumber(text); assert.deepEqual(result, expected, text); assert.ok(Object.isFrozen(result)); }
+  const maxFiniteInteger = ((2n ** 53n - 1n) << 971n).toString();
+  assert.deepEqual(assessPptxCurrencyNumber(`${maxFiniteInteger}.0000`), { status: 'exact', value: Number.MAX_VALUE });
+  assert.deepEqual(assessPptxCurrencyNumber(`${'9'.repeat(309)}.0000`), { status: 'out-of-range' });
+  // For these bounded integers, units/10000 has an exact binary64 form iff
+  // the factor 5^4 in 10000 divides units; no binary64 significand can overflow.
+  let state = 123456789;
+  for (let i = 0; i < 500; i++) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    const raw = state % 1000000000, units = i % 2 === 0 ? raw - raw % 625 : raw, text = `${Math.floor(units / 10000)}.${String(units % 10000).padStart(4, '0')}`;
+    assert.equal(assessPptxCurrencyNumber(text).status, units % 625 === 0 ? 'exact' : 'inexact', text);
+  }
+  assert.throws(() => assessPptxCurrencyNumber('0'.repeat(1000001)), RangeError);
 });
 
 test('both dialects preserve text, nested content and effective MCE branches separately', async () => {

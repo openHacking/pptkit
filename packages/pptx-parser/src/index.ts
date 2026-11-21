@@ -62,8 +62,8 @@ export type { PptxSectionInfo, PptxSectionListInfo, PptxExtensionInfo } from "./
 export type { PptxDocumentMetadata, MetadataPartInfo, CorePropertyInfo, MetadataKeywordSegment, ExtendedPropertyInfo, CustomPropertyInfo, MetadataPropertyValue, MetadataScalarKind } from "./types/metadata.js";
 export { inspectOpaqueCustomProperties as inspectPptxOpaqueCustomProperties } from "./metadata/opaque-custom-inventory.js";
 export type { OpaqueCustomPropertyValue } from "./metadata/opaque-custom-inventory.js";
-export { assessPptxCurrencyText } from "./metadata/currency-text.js";
-export type { PptxCurrencyTextAssessment } from "./metadata/currency-text.js";
+export { assessPptxCurrencyText, assessPptxCurrencyNumber } from "./metadata/currency-text.js";
+export type { PptxCurrencyTextAssessment, PptxCurrencyNumberAssessment } from "./metadata/currency-text.js";
 import type { PptxInspection, PptxInspectionOptions } from "./types/structure.js";
 import { readPresentationStructure } from "./presentation/read-structure.js";
 
