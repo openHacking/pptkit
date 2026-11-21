@@ -5,6 +5,21 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('ellipse stroke coordinate resolution guard agrees in Node and Chromium', async t => {
+  const doc = createPresentation(), major = 100000000;
+  doc.addSlide({ elements: [{ type: 'shape', id: 'ellipse', shape: 'ellipse', box: { x: -major, y: -1, width: 2 * major, height: 2 }, style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 2e-9 } } }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), items = getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+    try { PPTKit.hitTestSvgShapeStrokes(items, { x: 50000000, y: 1 }); return 'no error'; }
+    catch (error) { return `${error.name}: ${error.message}`; }
+  }, layout);
+  assert.throws(() => hitTestSvgSelectionOutlinesAndStrokes(items, { x: 50000000, y: 1 }), /coordinate resolution/);
+  assert.match(result, /^RangeError: .*coordinate resolution/);
+});
+
 test('paint-aware selection passes through empty shape interiors in Chromium', async t => {
   const doc = createPresentation({ size: { width: 100, height: 100 } });
   doc.addSlide({ elements: [

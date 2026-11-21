@@ -337,6 +337,22 @@ test('ellipse stroke uses distance to its curve rather than radial scaling', () 
   assert.equal(hitTestSvgShapeStrokes(wideItems, { x: 60, y: 10 + 1e-14 }).elementId, 'wide');
 });
 
+test('ellipse stroke distinguishes offsets along independent normals and rejects insufficient coordinate precision', () => {
+  for (const major of [1, 10, 1000, 1000000, 100000000]) {
+    const width = .2 / major, doc = createPresentation();
+    doc.addSlide({ elements: [shape('ellipse', box(-major, -1, 2 * major, 2), { shape: 'ellipse', style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width } } })] });
+    const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeShapeStrokeGeometry: true });
+    for (const angle of [0, 1e-9, .01, .5, 1, Math.PI / 2]) {
+      const c = Math.cos(angle), s = Math.sin(angle), length = Math.hypot(c / major, s), nx = c / major / length, ny = s / length;
+      for (const fraction of [.4, .6]) {
+        const point = { x: major * c + nx * width * fraction, y: s + ny * width * fraction };
+        if (major === 100000000) assert.throws(() => hitTestSvgShapeStrokes(items, point), /coordinate resolution/);
+        else assert.equal(!!hitTestSvgShapeStrokes(items, point), fraction < .5, `major=${major}, angle=${angle}, fraction=${fraction}`);
+      }
+    }
+  }
+});
+
 test('rounded rectangle stroke handles interior, exterior and wide strokes', () => {
   const make = width => {
     const doc = createPresentation();

@@ -261,6 +261,8 @@ export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], p
       if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(det) || det === 0) throw new RangeError("Shape transform is singular or outside finite hit-test range.");
       const lx = (x * dd - y * cc) / det, ly = (y * aa - x * bb) / det;
       if (kind === "ellipse") {
+        const coordinateScale = Math.max(Math.abs(lx), Math.abs(ly), Math.abs(box.x), Math.abs(box.y), box.width, box.height);
+        if (!Number.isFinite(coordinateScale) || width <= coordinateScale * Number.EPSILON * 8) throw new RangeError("Ellipse stroke width is below finite coordinate resolution.");
         const distance = ellipseDistance(lx - (box.x + box.width / 2), ly - (box.y + box.height / 2), box.width / 2, box.height / 2);
         if (distance <= width / 2) return item;
         continue;
