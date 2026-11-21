@@ -51,8 +51,8 @@ test('same-slide shared video re-export agrees across Node and browser', async t
   assert.deepEqual(actual, expected); assert.deepEqual(requests, []);
 });
 
-test('mixed audio and video projection and re-export agree across Node and browser', async t => {
-  const bytes = await readFile('tests/fixtures/pptkit-mixed-av.pptx');
+for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-sequence']], ['powerpoint-audio-start-auto', ['click-sequence', 'automatic']]]) test(`mixed media ${fixture} projection and re-export agree across Node and browser`, async t => {
+  const bytes = await readFile(`tests/fixtures/${fixture}.pptx`);
   const importOptions = { projection: 'content', videoProjection: 'iso-bmff-v1', audioProjection: 'wave-pcm-v1' };
   const exportOptions = { videoMode: 'iso-bmff-v1', audioMode: 'wave-pcm-v1' };
   const node = await importPptx(bytes, importOptions);
@@ -74,7 +74,7 @@ test('mixed audio and video projection and re-export agree across Node and brows
       return { elements: session.document.slides[0].elements, audio: session.report.audioSources, video: session.report.videoSources, bytes: [...result.bytes], warnings: result.warnings, original: [...(await session.save(plan.plan)).bytes] };
     } finally { session.dispose(); }
   }, { data: [...bytes], importOptions, exportOptions });
-  assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(requests, []);
+  assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(actual.elements.filter(x => x.type === "audio").map(x => x.playbackStart), starts); assert.deepEqual(requests, []);
 });
 
 test('native trimmed audio import and fresh export agree across Node and browser', async t => {

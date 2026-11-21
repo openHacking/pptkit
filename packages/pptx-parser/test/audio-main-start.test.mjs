@@ -53,3 +53,61 @@ test("unprojected main video prevents partial automatic timing projection", asyn
   const bytes = await sample("powerpoint-audio-start-auto"), s = await importPptx(bytes, options);
   try { assert.deepEqual(starts(s), [undefined, undefined]); assert.ok(s.report.diagnostics.some(x => x.code === "media-playback-unmapped")); } finally { s.dispose(); }
 });
+
+
+const mixedOptions = { ...options, videoProjection: "iso-bmff-v1" };
+async function makeMixed() {
+  const parts = readGeneratedZip(await sample("pptkit-mixed-av")), p = createPresentation();
+  p.registerAsset({ id: "sound", kind: "audio", mimeType: "audio/wav", source: { type: "bytes", value: parts.get("ppt/media/sound.wav") } });
+  p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+  p.addSlide({ elements: [
+    { type: "video", videoAssetId: "movie", box: { x: 0, y: 0, width: 40, height: 40 } },
+    { type: "audio", audioAssetId: "sound", playbackStart: "automatic", box: { x: 50, y: 0, width: 40, height: 40 } },
+    { type: "audio", audioAssetId: "sound", playbackStart: "object-click", box: { x: 100, y: 0, width: 40, height: 40 } },
+    { type: "video", videoAssetId: "movie", box: { x: 150, y: 0, width: 40, height: 40 } },
+    { type: "audio", audioAssetId: "sound", playbackStart: "automatic", box: { x: 200, y: 0, width: 40, height: 40 } },
+  ] });
+  return (await generatePptx(p, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+}
+
+test("complete mixed media sequences project audio starts across video effects", async () => {
+  let bytes = await sample("powerpoint-audio-start-auto");
+  for (let round = 0; round < 3; round++) {
+    const s = await importPptx(bytes, mixedOptions);
+    try {
+      assert.deepEqual(starts(s), ["click-sequence", "automatic"]);
+      const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+      bytes = (await generatePptx(s.document, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+    } finally { s.dispose(); }
+  }
+  bytes = await makeMixed();
+  for (let round = 0; round < 3; round++) {
+    const s = await importPptx(bytes, mixedOptions);
+    try { assert.deepEqual(starts(s), ["automatic", "object-click", "automatic"]); bytes = (await generatePptx(s.document, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes; }
+    finally { s.dispose(); }
+  }
+});
+
+test("ambiguous video timing blocks the whole mixed main sequence", async () => {
+  const original = await sample("powerpoint-audio-start-auto");
+  const changes = [
+    s => s.replace('cmd="togglePause"', 'cmd="playFrom(0.0)"'),
+    s => s.replace('presetID="2" presetClass="mediacall"', 'presetID="3" presetClass="mediacall"'),
+    s => s.replace('dur="2000" fill="hold"', 'dur="1999" fill="hold"'),
+    s => s.replace('<p:video><p:cMediaNode vol="80000">', '<p:video><p:cMediaNode vol="50000">'),
+    s => s.replace('<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="rId1"/>', '<p14:media xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" r:embed="rId1"><p14:trim st="1"/></p14:media>'),
+    s => s.replace('evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="2"', 'evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="3"'),
+  ];
+  for (const change of changes) {
+    const bytes = modify(original, change), s = await importPptx(bytes, mixedOptions);
+    try { assert.deepEqual(starts(s), [undefined, undefined]); const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, bytes); }
+    finally { s.dispose(); }
+  }
+  const independent = modify(await makeMixed(), xml => xml.replace('cmd="togglePause"', 'cmd="stop"'));
+  const mixed = await importPptx(independent, mixedOptions);
+  try { assert.deepEqual(starts(mixed), [undefined, "object-click", undefined]); } finally { mixed.dispose(); }
+  const parts = unzipSync(original), video = parts['ppt/media/media1.mp4'];
+  const index = Buffer.from(video).indexOf(Buffer.from('mvhd')); assert.ok(index > 0); video[index + 4] = 1;
+  const s = await importPptx(zipSync(parts), mixedOptions);
+  try { assert.deepEqual(starts(s), [undefined, undefined]); } finally { s.dispose(); }
+});

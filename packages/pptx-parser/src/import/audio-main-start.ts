@@ -3,8 +3,8 @@ import type { XmlElement } from "../xml/read-xml.js";
 
 export interface MainAudioEffect { readonly target: string; readonly durationMs: number; readonly start: "click-sequence" | "automatic" }
 
-/** Interpret only the complete, ordered native main media sequence emitted by the writer. */
-export async function audioMainStart(root: XmlElement, p: string, checkpoint: () => Promise<void>): Promise<readonly MainAudioEffect[] | undefined> {
+/** Interpret only complete ordered native media calls, with verified optional video pause controls. */
+export async function audioMainStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, videoPauses?: ReadonlyMap<string, { status: "mapped"; durationMs: number } | { status: "unsupported" }>): Promise<readonly MainAudioEffect[] | undefined> {
   const select = (node: XmlElement | undefined, name: string) => node ? children(node).filter(x => x.namespaceUri === p && x.local === name) : [];
   const one = (node: XmlElement | undefined, name: string) => { const nodes = select(node, name); return nodes.length === 1 ? nodes[0] : undefined; };
   const canonical = (text: string | undefined) => { if (text === undefined || !/^\d+$/u.test(text)) return undefined; const n = Number(text); return Number.isSafeInteger(n) && n <= 4294967295 ? String(n) : undefined; };
@@ -28,7 +28,15 @@ export async function audioMainStart(root: XmlElement, p: string, checkpoint: ()
   const list = one(timings[0], "tnLst"), rootPar = one(list, "par"), rootTime = one(rootPar, "cTn");
   if (!exact(timings[0], "timing", {}, ["tnLst"]) || !exact(list, "tnLst", {}, ["par"]) || !exact(rootPar, "par", {}, ["cTn"]) || !timeNode(rootTime, { dur: "indefinite", restart: "never", nodeType: "tmRoot" }, ["childTnLst"])) return undefined;
   const timeline = one(rootTime, "childTnLst");
-  if (!timeline || timeline.attributes.length || children(timeline).some(n => n.namespaceUri !== p || !["seq", "audio"].includes(n.local))) return undefined;
+  if (!timeline || timeline.attributes.length || children(timeline).some(n => n.namespaceUri !== p || !["seq", "audio", "video"].includes(n.local))) return undefined;
+  const videos = new Set<string>();
+  for (const video of select(timeline, "video")) {
+    await checkpoint();
+    const media = one(video, "cMediaNode"), time = one(media, "cTn"), start = one(time, "stCondLst"), target = one(media, "tgtEl"), shape = one(target, "spTgt");
+    const id = shape && canonical(attribute(shape, "spid"));
+    if (!exact(video, "video", {}, ["cMediaNode"]) || !exact(media, "cMediaNode", { vol: "80000" }, ["cTn", "tgtEl"]) || !timeNode(time, { fill: "hold", display: "0" }, ["stCondLst"]) || !exact(start, "stCondLst", {}, ["cond"]) || !exact(one(start, "cond"), "cond", { delay: "indefinite" }, []) || !exact(target, "tgtEl", {}, ["spTgt"]) || !exact(shape, "spTgt", { spid: "#" }, []) || id === undefined || videos.has(id) || videoPauses?.get(id)?.status !== "mapped") return undefined;
+    videos.add(id);
+  }
   const sequences = select(timeline, "seq").filter(seq => { const node = one(seq, "cTn"); return node && attribute(node, "nodeType") === "mainSeq"; });
   if (sequences.length !== 1) return undefined;
   const seq = sequences[0]!, main = one(seq, "cTn"), mainId = main && canonical(attribute(main, "id"));
@@ -59,9 +67,10 @@ export async function audioMainStart(root: XmlElement, p: string, checkpoint: ()
       const effects = one(effect, "childTnLst"), cmd = one(effects, "cmd"), bhvr = one(cmd, "cBhvr"), cmdTime = one(bhvr, "cTn"), targetEl = one(bhvr, "tgtEl"), shape = one(targetEl, "spTgt");
       if (!exact(effects, "childTnLst", {}, ["cmd"]) || !exact(cmd, "cmd", { type: "call", cmd: "playFrom(0.0)" }, ["cBhvr"]) || !exact(bhvr, "cBhvr", {}, ["cTn", "tgtEl"]) || !timeNode(cmdTime, { dur: "#", fill: "hold" }, []) || !exact(targetEl, "tgtEl", {}, ["spTgt"]) || !exact(shape, "spTgt", { spid: "#" }, [])) return undefined;
       const target = canonical(attribute(shape, "spid")), rawDuration = attribute(cmdTime!, "dur"), duration = Number(rawDuration);
-      if (target === undefined || commands.get(target) !== 1 || rawDuration === undefined || !/^\d+$/u.test(rawDuration) || !Number.isSafeInteger(duration) || duration < 1 || duration > 2147483647 || elapsed > 2147483647) return undefined;
+      if (target === undefined || commands.get(target) !== (videos.has(target) ? 2 : 1) || rawDuration === undefined || !/^\d+$/u.test(rawDuration) || !Number.isSafeInteger(duration) || duration < 1 || duration > 2147483647 || elapsed > 2147483647) return undefined;
       result.push({ target, durationMs: duration, start: kind === "afterEffect" ? "automatic" : "click-sequence" }); elapsed += duration;
     }
   }
+  if (videos.size && (result.filter(effect => videos.has(effect.target)).length !== videos.size || result.some(effect => videos.has(effect.target) && effect.start !== "click-sequence"))) return undefined;
   return result;
 }

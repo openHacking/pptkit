@@ -17,6 +17,7 @@ import { audioTrim } from "./audio-trim.js";
 import { audioPlayback } from "./audio-playback.js";
 import { audioObjectStart } from "./audio-object-start.js";
 import { audioMainStart } from "./audio-main-start.js";
+import { plainVideoTimingSource } from "./video-timing-source.js";
 import { videoSources } from "./video-sources.js";
 import { contentAction } from "./content-actions.js";
 import { connectorAttachment, contentConnector, type ContentConnection, type ContentDrawing } from "./content-connectors.js";
@@ -83,8 +84,10 @@ export async function projectContent(document: ManagedPresentationDocument, base
     const root = await context.root(part, "sld"), r = contentReader(part, context.p, context.a);
     const audioSettings = audioProjection ? await audioPlayback(root, context.p, checkpoint) : undefined;
     const audioStart = audioProjection ? await audioObjectStart(root, context.p, checkpoint) : undefined;
-    const audioMain = audioProjection ? await audioMainStart(root, context.p, checkpoint) : undefined;
+    const videoPauses = audioProjection && videoProjection ? await audioObjectStart(root, context.p, checkpoint, "video-pause") : undefined;
+    const audioMain = audioProjection ? await audioMainStart(root, context.p, checkpoint, videoPauses) : undefined;
     const audioMainInputs = new Map<string, { target: string; duration?: number; trimUnsupported: boolean; playbackMapped: boolean }>();
+    const videoMainInputs = new Map<string, { target: string; duration?: number; eligible: boolean }>();
     const placeholders = await inheritance.slide(part, sourceSlide.layoutPart);
     r.known(root); r.attr(root, "show");
     const common = r.one(root, r.p, "cSld"), tree = common ? r.one(common, r.p, "spTree") : undefined;
@@ -326,7 +329,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
           reportMedia(!("reason" in result), "reason" in result, "audio");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
             const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
-            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster, geometry, supported trim, media settings and object-click starts are projected; other playback timing, general export and source edit-save remain unsupported.", slide.id, id);
+            finding("drawing.audio.projected-fields", operation, tier, at, "Audio bytes, source identity, poster, geometry, supported trim, media settings and bounded object-click/main-sequence starts are projected; other playback timing, general export and source edit-save remain unsupported.", slide.id, id);
           }
           if ("reason" in result) finding("drawing.audio.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
         } else if (videoCandidate && ("reason" in result || posterSupported)) {
@@ -340,6 +343,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
           }
           identities.push({ kind: "asset", id: videoAssetId, source: videoCandidate.source });
           input = { ...baseInput, type: "video", videoAssetId, ...(!("reason" in result) ? { posterAssetId: result.fields.assetId } : {}) };
+          videoMainInputs.set(id, { target: at.sourceObjectId, ...(videoCandidate.movieDurationMs === undefined ? {} : { duration: videoCandidate.movieDurationMs }), eligible: !baseInput.hidden && plainVideoTimingSource(nvPr, r.p, r.a, context.r) });
           cachedPreview = true; mediaPlaceholder = true;
           reportMedia(!("reason" in result), "reason" in result, "video");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
@@ -496,12 +500,15 @@ export async function projectContent(document: ManagedPresentationDocument, base
         }
       }
       if (audioMain) {
-        const audioInputs = inputs.filter((input): input is Extract<PresentationElementInput, { type: "audio" }> => input.type === "audio" && input.playbackStart !== "object-click");
-        const compatible = audioInputs.length === audioMain.length && audioInputs.every((input, index) => {
-          const item = audioMainInputs.get(input.id!), effect = audioMain[index]!;
-          return item && !item.trimUnsupported && item.playbackMapped && item.target === effect.target && item.duration === effect.durationMs && (index === 0 || effect.start !== "automatic" || !audioInputs[index - 1]!.loop);
+        const mediaInputs = inputs.filter((input): input is Extract<PresentationElementInput, { type: "audio" | "video" }> => input.type === "video" || input.type === "audio" && input.playbackStart !== "object-click");
+        const compatible = mediaInputs.length === audioMain.length && mediaInputs.every((input, index) => {
+          const effect = audioMain[index]!, previous = mediaInputs[index - 1];
+          if (previous?.type === "audio" && effect.start === "automatic" && previous.loop) return false;
+          if (input.type === "video") { const item = videoMainInputs.get(input.id!); return item && item.eligible && item.target === effect.target && item.duration === effect.durationMs && effect.start === "click-sequence"; }
+          const item = audioMainInputs.get(input.id!);
+          return item && !item.trimUnsupported && item.playbackMapped && item.target === effect.target && item.duration === effect.durationMs;
         });
-        if (compatible) for (const [index, input] of audioInputs.entries()) input.playbackStart = audioMain[index]!.start;
+        if (compatible) for (const [index, input] of mediaInputs.entries()) if (input.type === "audio") input.playbackStart = audioMain[index]!.start;
       }
       for (const input of inputs) slide.addElement(input);
     }

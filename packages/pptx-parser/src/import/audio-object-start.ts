@@ -9,8 +9,8 @@ const shapeTarget = () => el("tgtEl", {}, [el("spTgt", { spid: "#target" })]);
 const cond = () => el("cond", { evt: "onClick", delay: "0" }, [shapeTarget()]);
 const delay = () => el("stCondLst", {}, [el("cond", { delay: "0" })]);
 
-/** Recognize the complete observed independent audio click sequence only. */
-export async function audioObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>): Promise<ReadonlyMap<string, Result>> {
+/** Recognize an observed independent audio play or video pause click sequence. */
+export async function audioObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, kind: "audio" | "video-pause" = "audio"): Promise<ReadonlyMap<string, Result>> {
   const selected = (node: XmlElement, local: string) => children(node).filter(x => x.namespaceUri === p && x.local === local);
   const one = (node: XmlElement | undefined, local: string) => { const list = node ? selected(node, local) : []; return list.length === 1 ? list[0] : undefined; };
   const canonical = (value: string | undefined) => {
@@ -53,12 +53,12 @@ export async function audioObjectStart(root: XmlElement, p: string, checkpoint: 
       const actualKids = children(node), expectedKids = spec.kids ?? [];
       return actualKids.length === expectedKids.length && actualKids.every((child, i) => matches(child, expectedKids[i]!));
     };
-    const command = el("cmd", { type: "call", cmd: "playFrom(0.0)" }, [el("cBhvr", {}, [tn({ dur: "#duration", fill: "hold" }, []), shapeTarget()])]);
-    const effect = tn({ presetID: "1", presetClass: "mediacall", presetSubtype: "0", fill: "hold", nodeType: "clickEffect" }, [delay(), el("childTnLst", {}, [command])]);
+    const command = el("cmd", { type: "call", cmd: kind === "audio" ? "playFrom(0.0)" : "togglePause" }, [el("cBhvr", {}, [tn({ dur: "#duration", fill: "hold" }, []), shapeTarget()])]);
+    const effect = tn({ presetID: kind === "audio" ? "1" : "2", presetClass: "mediacall", presetSubtype: "0", fill: "hold", nodeType: "clickEffect" }, [delay(), el("childTnLst", {}, [command])]);
     const layer = (child: Spec) => el("par", {}, [tn({ fill: "hold" }, [delay(), el("childTnLst", {}, [child])])]);
     const body = layer(layer(el("par", {}, [effect])));
     const expected = el("seq", { concurrent: "1", nextAc: "seek" }, [tn({ restart: "whenNotActive", fill: "hold", evtFilter: "cancelBubble", nodeType: "interactiveSeq" }, [el("stCondLst", {}, [cond()]), el("endSync", { evt: "end", delay: "0" }, [el("rtn", { val: "all" })]), el("childTnLst", {}, [body])]), el("nextCondLst", {}, [cond()])]);
-    result.set(target, matches(seq, expected) && commands.get(target) === 1 ? { status: "mapped", durationMs: duration } : { status: "unsupported" });
+    result.set(target, matches(seq, expected) && commands.get(target) === (kind === "audio" ? 1 : 2) && (kind === "audio" || duration === 1) ? { status: "mapped", durationMs: duration } : { status: "unsupported" });
   }
   return result;
 }
