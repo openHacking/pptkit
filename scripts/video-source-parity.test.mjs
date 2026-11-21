@@ -40,3 +40,22 @@ test('video source inventory and no-op bytes agree in Node and browser', async t
   assert.deepEqual(actual, expected.flatMap(sources => [{ sources, same: true }, { sources, same: true }]));
   assert.deepEqual(requests, []);
 });
+
+test('SRT-origin caption source no-op and unsupported findings agree in Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/powerpoint-caption-srt.pptx');
+  const options = { projection: 'content', videoProjection: 'iso-bmff-v1' };
+  const node = await importPptx(bytes, options); let expected;
+  try {
+    const plan = await node.prepareSave({ mode: 'no-op' });
+    expected = { videoSources: node.report.videoSources, findings: node.report.findings.filter(x => x.feature === 'source-part-content' && x.operation === 'import' && x.source.part.endsWith('.vtt')), bytes: [...(await node.save(plan.plan)).bytes] };
+  } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ data, options }) => {
+    const session = await PPTKit.importPptx(Uint8Array.from(data), options);
+    try { const plan = await session.prepareSave({ mode: 'no-op' }); return { videoSources: session.report.videoSources, findings: session.report.findings.filter(x => x.feature === 'source-part-content' && x.operation === 'import' && x.source.part.endsWith('.vtt')), bytes: [...(await session.save(plan.plan)).bytes] }; }
+    finally { session.dispose(); }
+  }, { data: [...bytes], options });
+  assert.deepEqual(actual, expected); assert.equal(actual.findings.length, 3); assert.deepEqual(actual.bytes, [...bytes]); assert.deepEqual(requests, []);
+});

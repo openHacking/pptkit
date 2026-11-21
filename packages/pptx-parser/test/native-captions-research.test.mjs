@@ -36,6 +36,31 @@ test('PowerPoint caption samples inventory zero, single and multiple tracks with
   }
 });
 
+test('SRT inserted on a second shared video is converted to a separate WebVTT track', async () => {
+  const before = inventory(join(root, 'tests/fixtures/powerpoint-caption-multi.pptx'));
+  const after = inventory(join(root, 'tests/fixtures/powerpoint-caption-srt.pptx'));
+  const source = await readFile(join(root, 'tests/fixtures/caption-spanish-source.srt'), 'utf8');
+  assert.match(source, /00:00:00,100 --> 00:00:00,900/);
+  assert.deepEqual(after.map(x => x.tracks.length), [2, 1]);
+  assert.deepEqual(after[0].tracks.map(({ id, language, label, text }) => ({ id, language, label, text })), before[0].tracks.map(({ id, language, label, text }) => ({ id, language, label, text })));
+  const track = after[1].tracks[0]; assert.equal(track.language, 'es-es'); assert.equal(track.contentType, 'text/vtt'); assert.equal(track.status, 'vtt-header-only');
+  assert.match(track.text, /00:00:00\.100 --> 00:00:00\.900\nPrimera frase/);
+  assert.match(track.text, /00:00:01\.000 --> 00:00:01\.800\nSegunda frase/);
+  const bytes = await sample('powerpoint-caption-srt'), entries = unzipSync(bytes), original = unzipSync(await sample('powerpoint-caption-multi'));
+  assert.equal(Object.keys(entries).filter(x => x.endsWith('.srt')).length, 0);
+  const videos = Object.keys(entries).filter(x => x.endsWith('.mp4')); assert.equal(videos.length, 1); assert.deepEqual(entries[videos[0]], original[videos[0]]);
+  const session = await importPptx(bytes, { projection: 'content', videoProjection: 'iso-bmff-v1' });
+  try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes)); }
+  finally { session.dispose(); }
+});
+
+test('native playback sample retains source-relative cue times and trim', () => {
+  const [video] = inventory(join(root, 'tests/fixtures/powerpoint-caption-playback.pptx'));
+  assert.deepEqual(video.trims, [{ st: '2000', end: '2000' }]);
+  assert.match(video.tracks[0].text, /00:00:00\.000 --> 00:00:02\.000\nZERO TO TWO/);
+  assert.match(video.tracks[0].text, /00:00:10\.000 --> 00:00:12\.000\nTEN TO TWELVE/);
+});
+
 test('research inventory identifies damaged track content and relationships without loading external targets', async () => {
   const original = await sample('powerpoint-caption-multi'), dir = await mkdtemp(join(tmpdir(), 'pptkit-caption-research-'));
   const cases = [
