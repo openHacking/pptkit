@@ -16,6 +16,8 @@ Keep tracks as source-owned, per-media-instance data. Raw bytes, relationship id
 
 The research inventory searches picture descendants for the observed track namespace and tests UTF-8 plus the WebVTT header; it is not an OPC security boundary, complete MCE inventory, WebVTT parser, validator, or production API. It reports malformed, missing, wrong-type and external relations rather than resolving them. More complete inventory needs explicit budgets, namespace/relationship rules, MCE handling and source locations using Parser infrastructure.
 
+A synthetic mixed package made from the retained PowerPoint SRT sample and a generated text object preserves all three tracks through three unrelated text saves, checked by exact part comparison, relationship graph and the independent research inspector. See [the regression](../../testing/native-captions.md#unrelated-text-preservation). This does not admit track edits or prove native playback.
+
 ## Outstanding admission criteria
 
 Determine default selection and disabled state with native playback and save/reopen evidence; observe seek, cue boundary, trim and looping against actual video and compare a second producer. Investigate SRT markup and encoding conversion beyond the one plain example, inspect audio and other extension forms, define language handling, broken/shared/duplicate tracks and explicit access to external sources. Only then choose a bounded VTT grammar and lossless handling of unsupported cue settings, and define actual source-relative time mapping. Test browser synchronization and accessible alternatives separately. ADV-04.4.1 and ADV-04.4.2 therefore remain open.

@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { importPptx, compareOpcPackages, inspectOpcClosure, inspectPptx, inspectPptxTiming } from "../packages/pptx-parser/dist/index.js";
@@ -244,4 +246,43 @@ test("mixed media and comments survive three text saves with unsupported media e
       bytes = output; previous = next;
     } finally { session.dispose(); }
   }
+});
+
+test("native caption tracks survive three unrelated text saves", async () => {
+  const native = await readFile("tests/fixtures/powerpoint-caption-srt.pptx"), parts = readGeneratedZip(native), slide = "ppt/slides/slide1.xml";
+  const donor = createPresentation(); donor.addSlide().addElement({ type: 'text', box: { x: 0, y: 0, width: 100, height: 30 }, content: 'Caption neighbor' });
+  const donorXml = readGeneratedZip((await generatePptx(donor)).bytes).get(slide).toString();
+  const shape = donorXml.match(/<p:sp>.*?<\/p:sp>/u)?.[0].replace(/<p:cNvPr id="\d+"/u, '<p:cNvPr id="999"'); assert.ok(shape);
+  const original = parts.get(slide).toString(); assert.equal(original.split('</p:spTree>').length, 2);
+  parts.set(slide, Buffer.from(original.replace('</p:spTree>', `${shape}</p:spTree>`))); let bytes = repack(parts), previous = 'Caption neighbor';
+  const temp = await mkdtemp(join(tmpdir(), 'pptkit-captions-'));
+  try {
+    const input = join(temp, 'input.pptx'); await writeFile(input, bytes);
+    const inspect = file => JSON.parse(execFileSync('python3', ['scripts/research/inspect-native-captions.py', file], { encoding: 'utf8' }));
+    const captions = inspect(input), tracks = captions.flatMap(item => item.tracks);
+    assert.deepEqual(captions.map(item => item.tracks.length), [2, 1]);
+    assert.deepEqual(tracks.map(track => track.language), ['en-us', 'fr-fr', 'es-es']); assert.ok(tracks.every(track => track.status === 'vtt-header-only'));
+    const corrupt = new Map(readGeneratedZip(bytes)); corrupt.set(tracks[0].part, Buffer.from('invalid header'));
+    const broken = join(temp, 'broken.pptx'); await writeFile(broken, repack(corrupt));
+    assert.equal(inspect(broken).flatMap(item => item.tracks)[0].status, 'invalid-vtt-header');
+    corrupt.delete(tracks[0].part); await writeFile(broken, repack(corrupt));
+    assert.equal(inspect(broken).flatMap(item => item.tracks)[0].status, 'missing-or-invalid-target');
+    const graph = await inspectOpcClosure(bytes, { roots: ['/'] });
+    for (let round = 1; round <= 3; round++) {
+      const before = readGeneratedZip(bytes), session = await importPptx(bytes, profile), next = `Caption edit ${round}`;
+      try {
+        editFirst(session, next); const output = (await saved(session)).bytes, after = readGeneratedZip(output);
+        assert.deepEqual([...after.keys()].sort(), [...before.keys()].sort());
+        for (const [name, data] of before) {
+          if (name === slide) assert.equal(after.get(name).toString(), data.toString().replace(`>${previous}</a:t>`, `>${next}</a:t>`));
+          else assert.deepEqual(after.get(name), data, name);
+        }
+        const path = join(temp, `round-${round}.pptx`); await writeFile(path, output); assert.deepEqual(inspect(path), captions);
+        const nextGraph = await inspectOpcClosure(output, { roots: ['/'] }); assert.deepEqual(nextGraph.relationships, graph.relationships); assert.deepEqual(nextGraph.unreachedParts, graph.unreachedParts);
+        assert.deepEqual((await compareOpcPackages(bytes, output)).differences.map(d => [d.code, d.part]), [['payload-changed', `/${slide}`]]);
+        const reopened = await importPptx(output, profile); try { assert.equal(reopened.document.slides[0].elements.find(element => element.type === 'text').content[0].runs[0].text, next); } finally { reopened.dispose(); }
+        bytes = output; previous = next;
+      } finally { session.dispose(); }
+    }
+  } finally { await rm(temp, { recursive: true, force: true }); }
 });
