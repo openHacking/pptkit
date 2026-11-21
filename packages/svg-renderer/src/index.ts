@@ -14,7 +14,7 @@ export type {
   SvgRenderWarning,
 } from "./types/public.js";
 export { SvgRenderLimitError, SvgRenderAbortError } from "./types/public.js";
-export { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgSelectionOutlinesAndStrokes } from "./rendering/selection.js";
+export { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgShapeStrokes, hitTestSvgSelectionOutlinesAndStrokes } from "./rendering/selection.js";
 export type { SvgSelectionFrame, SvgOwnedSelectionFrame, SvgSelectionOwner, SvgSelectionConnector, SvgSelectionGeometry, SvgSelectionGeometryOptions, SvgShapeOutline, SvgConnectorStrokeGeometry, SvgConnectorMarkerGeometry } from "./rendering/selection.js";
 export { createSvgViewportMapping, createSvgAffineMapping } from "./rendering/viewport.js";
 export type { SvgViewportMapping, SvgAffineMapping, SvgAffineMatrix } from "./rendering/viewport.js";

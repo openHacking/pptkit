@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation, normalizePresentation } from '@pptkit/core';
 import { resolveNormalizedLayout } from '@pptkit/layout';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgConnectorMarkers, hitTestSvgShapeStrokes, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
 
 const box = (x, y, width, height) => ({ x, y, width, height });
 const shape = (id, b, extra = {}) => ({ type: 'shape', id, shape: 'rect', box: b, ...extra });
@@ -251,6 +251,26 @@ test('filled markers remain selectable with transparent lines and nested scaling
   assert.throws(() => hitTestSvgConnectorMarkers(items, { x: Infinity, y: 0 }), TypeError);
   const singular = structuredClone(items); singular[0].markerGeometry.transform = [0, 0, 0, 0, 0, 0];
   assert.throws(() => hitTestSvgConnectorMarkers(singular, { x: 0, y: 0 }), RangeError);
+});
+
+test('rectangular strokes include outer edges and corners through group scaling', () => {
+  const doc = createPresentation();
+  const stroke = { paint: { type: 'solid', color: '000000' }, width: 4 };
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: box(100, 100, 200, 100), coordinateSize: { width: 100, height: 100 }, children: [shape('rect', box(20, 20, 40, 40), { style: { fill: { type: 'none' }, stroke } })] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const plain = getSvgSlideSelectionGeometry(layout, 0), items = getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgShapeStrokes(plain, { x: 139, y: 140 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 137, y: 140 }).elementId, 'rect');
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 135, y: 140 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 180, y: 140 }), undefined);
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 137, y: 140 }).elementId, 'rect');
+  assert.ok(Object.isFrozen(items[0].shapeStrokeGeometry.points[0]));
+  assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: 'true' }), TypeError);
+  for (const style of [{ ...stroke, dash: 'dash' }, { ...stroke, width: 0 }, { ...stroke, paint: { type: 'none' } }, { ...stroke, paint: { type: 'solid', color: '000000', opacity: 0 } }]) {
+    const candidate = createPresentation(); candidate.addSlide({ elements: [shape('unsupported', box(0, 0, 40, 40), { style: { fill: { type: 'none' }, stroke: style } })] });
+    const other = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(candidate)), 0, { includeShapeStrokeGeometry: true });
+    assert.equal(hitTestSvgShapeStrokes(other, { x: 0, y: 20 }), undefined);
+  }
 });
 
 test('zero-length connector markers use SVG default tangent and remain selectable', () => {

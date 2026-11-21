@@ -36,13 +36,14 @@ export interface SvgConnectorStrokeGeometry {
   readonly dash?: readonly number[];
 }
 export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
-export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline }) | SvgSelectionConnector;
+export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline; readonly shapeStrokeGeometry?: SvgConnectorStrokeGeometry }) | SvgSelectionConnector;
 /** Optional coarse selection policies; these do not perform painted-pixel tests. */
 export interface SvgSelectionGeometryOptions {
   readonly excludeZeroOpacity?: boolean;
   readonly excludeUnpaintedShapes?: boolean;
   readonly excludeUnpaintedConnectors?: boolean;
   readonly includeConnectorStrokeGeometry?: boolean;
+  readonly includeShapeStrokeGeometry?: boolean;
 }
 
 function hasNoConnectorPaint(element: Extract<LayoutElement, { type: "connector" }>): boolean {
@@ -129,7 +130,11 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         const corners = Object.freeze([apply(matrix, b.x, b.y), apply(matrix, b.x + b.width, b.y), apply(matrix, b.x + b.width, b.y + b.height), apply(matrix, b.x, b.y + b.height)]) as SvgSelectionFrame["corners"];
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
         const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
-        frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}) }));
+        const stroke = element.type === "shape" ? element.style.stroke : undefined;
+        const shapeStrokeGeometry = includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape === "rect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.dash === "solid"
+          ? Object.freeze({ points: Object.freeze([{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }, { x: b.x, y: b.y }].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width })
+          : undefined;
+        frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}), ...(shapeStrokeGeometry ? { shapeStrokeGeometry } : {}) }));
       }
     }
   };
@@ -164,7 +169,7 @@ export function getSvgSlideSelectionFrames(layout: LayoutResult, slideIndex: num
 
 /** Include transformed connector polylines alongside frames in SVG paint order. */
 export function getSvgSlideSelectionGeometry(layout: LayoutResult, slideIndex: number, options?: SvgSelectionGeometryOptions): readonly SvgSelectionGeometry[] {
-  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean") || (options.excludeUnpaintedConnectors !== undefined && typeof options.excludeUnpaintedConnectors !== "boolean") || (options.includeConnectorStrokeGeometry !== undefined && typeof options.includeConnectorStrokeGeometry !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
+  if (options !== undefined && (options === null || typeof options !== "object" || (options.excludeZeroOpacity !== undefined && typeof options.excludeZeroOpacity !== "boolean") || (options.excludeUnpaintedShapes !== undefined && typeof options.excludeUnpaintedShapes !== "boolean") || (options.excludeUnpaintedConnectors !== undefined && typeof options.excludeUnpaintedConnectors !== "boolean") || (options.includeConnectorStrokeGeometry !== undefined && typeof options.includeConnectorStrokeGeometry !== "boolean") || (options.includeShapeStrokeGeometry !== undefined && typeof options.includeShapeStrokeGeometry !== "boolean"))) throw new TypeError("Selection geometry options must be booleans.");
   return collect(slideLayers(layout, slideIndex), true, options) as readonly SvgSelectionGeometry[];
 }
 
@@ -212,6 +217,18 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
         phase = phase >= period - advance ? phase - (period - advance) : phase + advance;
       }
     }
+  }
+  return undefined;
+}
+
+/** Hit captured rectangular shape strokes, without testing their interiors. */
+export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], point: Point): Extract<SvgSelectionGeometry, { kind: "frame" }> | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  for (let i = items.length - 1; i >= 0; i--) {
+    const item = items[i]!;
+    if (item.kind !== "frame" || !item.shapeStrokeGeometry) continue;
+    const connector: SvgSelectionConnector = { kind: "connector", elementId: item.elementId, ancestorIds: item.ancestorIds, owner: item.owner, points: [], strokeGeometry: item.shapeStrokeGeometry };
+    if (hitTestSvgConnectorStrokes([connector], point)) return item;
   }
   return undefined;
 }
@@ -307,7 +324,7 @@ export function hitTestSvgSelectionOutlinesAndStrokes(items: readonly SvgSelecti
     const item = items[i]!;
     if (item.kind === "connector") {
       if (hitTestSvgConnectorStrokes([item], point) || hitTestSvgConnectorMarkers([item], point)) return item;
-    } else if (hitTestSvgSelectionFrames([item], point) && (!item.outline || insideOutline(item, point))) return item;
+    } else if ((hitTestSvgSelectionFrames([item], point) && (!item.outline || insideOutline(item, point))) || hitTestSvgShapeStrokes([item], point)) return item;
   }
   return undefined;
 }

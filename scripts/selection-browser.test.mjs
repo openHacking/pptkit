@@ -5,6 +5,28 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('rectangular shape strokes match Chromium under nested transforms', async t => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 31, flipV: true }, children: [
+    { type: 'shape', id: 'rect', shape: 'rect', box: { x: 20, y: 20, width: 40, height: 35 }, transform: { rotation: -17 }, style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 5 } } },
+  ] }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+    const rect = document.querySelector('[data-pptkit-element-id="rect"] rect'), matrix = rect.getCTM(), failures = []; let samples = 0;
+    for (let y = 15.137; y < 60; y += .731) for (let x = 15.193; x < 65; x += .893) {
+      const local = new DOMPoint(x, y), point = local.matrixTransform(matrix);
+      const expected = rect.isPointInStroke(local), actual = !!PPTKit.hitTestSvgShapeStrokes(items, point);
+      samples++; if (actual !== expected) failures.push({ x, y, expected, actual });
+    }
+    return { samples, count: failures.length, examples: failures.slice(0, 5) };
+  }, layout);
+  assert.ok(result.samples > 3000);
+  assert.deepEqual({ count: result.count, examples: result.examples }, { count: 0, examples: [] });
+});
+
 test('zero-length connector markers follow Chromium default orientation', async t => {
   const doc = createPresentation({ size: { width: 120, height: 180 } });
   const variants = [{ beginArrow: 'triangle' }, { endArrow: 'arrow' }, { beginArrow: 'diamond', endArrow: 'oval' }, { beginArrow: 'stealth', endArrow: 'triangle' }];
