@@ -258,6 +258,13 @@ export interface SlideLayoutDefinition {
   readonly placeholders: readonly PlaceholderDefinitionInput[];
 }
 
+/** Ordered, format-independent grouping of slides. IDs are Core identities, not native GUIDs. */
+export interface PresentationSection {
+  readonly id: string;
+  readonly name?: string;
+  readonly slideIds: readonly string[];
+}
+
 export interface PresentationInit {
   masters?: readonly SlideMasterInput[];
   /** Optional nonnegative starting slide number; undefined leaves the host default. */
@@ -270,6 +277,10 @@ export interface PresentationInit {
 }
 
 export interface PresentationDocument {
+  /** Optional ordered section collection; legacy documents may omit it. */
+  readonly sections?: readonly PresentationSection[] | undefined;
+  /** Atomically replace the explicit section collection when supported. */
+  setSections?(sections?: readonly PresentationSection[]): void;
   readonly firstSlideNumber?: number | undefined;
   /** Available on factory-managed documents; legacy custom documents may omit it. */
   setFirstSlideNumber?(value?: number): void;
@@ -301,6 +312,7 @@ export interface PresentationDocument {
 
 /** Editing capabilities of factory-created documents; legacy custom documents remain valid. */
 export interface ManagedPresentationDocument extends PresentationDocument {
+  setSections(sections?: readonly PresentationSection[]): void;
   /** Atomically apply a serializable, value-checked edit batch and return its inverse. */
   applyEditOperation(operation: import("./edit-operation.js").PresentationEditOperation): import("./edit-operation.js").PresentationEditResult;
   /** Replace the complete metadata value with a validated, detached snapshot. */
@@ -364,6 +376,7 @@ export interface NormalizedSlide {
 }
 
 export interface NormalizedPresentation {
+  sections?: PresentationSection[];
   firstSlideNumber?: number;
   masters?: NormalizedSlideMaster[];
   irVersion: 2;
@@ -378,4 +391,4 @@ export interface NormalizedPresentation {
 
 /** Read-only authoring data consumed by pure validation/normalization and edit planning. */
 export type PresentationSlideData = Pick<PresentationSlide, "id" | "showInheritedShapes" | "layoutId" | "background" | "elements" | "notes" | "transition" | "eventTimeline" | "readingOrder" | "hidden" | "section" | "tags" | "customData">;
-export type PresentationData = Pick<PresentationDocument, "id" | "metadata" | "size" | "theme" | "textStylePresets" | "assets" | "layouts" | "masters" | "firstSlideNumber"> & { readonly slides: readonly PresentationSlideData[] };
+export type PresentationData = Pick<PresentationDocument, "id" | "metadata" | "size" | "theme" | "textStylePresets" | "assets" | "layouts" | "masters" | "firstSlideNumber" | "sections"> & { readonly slides: readonly PresentationSlideData[] };

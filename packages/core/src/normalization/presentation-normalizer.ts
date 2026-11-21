@@ -1,3 +1,4 @@
+import { captureSections } from "../document/sections.js";
 import { bubbleDataIssue } from "../chart/bubble-data.js";
 import { assertCustomDocumentProperties, isCanonicalUtcDate } from "../document/custom-document-properties.js";
 import { snapshotScatterData } from "../chart/scatter-data.js";
@@ -684,7 +685,9 @@ export class PresentationNormalizer {
       recordOrigins({ kind: "layout", id: DEFAULT_LAYOUT_ID }, theme, layoutBackgrounds.get(DEFAULT_LAYOUT_ID), sink);
     }
     const layouts = new Map(normalizedLayouts.map((layout) => [layout.id, layout]));
+    const sections = captureSections(document.sections, new Set(document.slides.map(slide => slide.id)));
     return {
+      ...(sections === undefined ? {} : { sections: sections.map(section => ({ ...section, slideIds: [...section.slideIds] })) }),
       irVersion: 2,
       id: document.id,
       ...(document.firstSlideNumber === undefined ? {} : { firstSlideNumber: document.firstSlideNumber }),

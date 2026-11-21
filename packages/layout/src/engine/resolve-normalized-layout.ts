@@ -113,6 +113,7 @@ export function resolveNormalizedLayout(normalized: NormalizedPresentation, opti
     placeholders: structuredClone(layout.placeholders),
   }));
   const result: LayoutResult = {
+    ...(normalized.sections === undefined ? {} : { sections: structuredClone(normalized.sections) }),
     ...(options.tablePagination !== undefined ? { pagination: { fragments: pagination.fragments } } : {}),
     size: structuredClone(normalized.size),
     ...(normalized.firstSlideNumber === undefined ? {} : { firstSlideNumber: normalized.firstSlideNumber }),

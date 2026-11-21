@@ -121,10 +121,41 @@ export function slideXml(elements: string[], background: NormalizedBackgroundPai
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:pptkit="https://pptkit.dev/ooxml/2026/main"${hidden ? ' show="0"' : ""}${metadata?.showInheritedShapes === undefined ? "" : ` showMasterSp="${metadata.showInheritedShapes ? 1 : 0}"`}><p:cSld>${backgroundXml(background)}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr>${groupTransformXml()}</p:grpSpPr>${elements.join("")}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>${transitionXml(metadata?.transition)}${timing}${extension}</p:sld>`;
 }
 
+function nativeSectionsXml(layout: LayoutResult): string {
+  if (!layout.sections?.length) return "";
+  const slideIds = layout.slides.map(slide => slide.id);
+  const numbers = new Map(slideIds.map((id, index) => [id, 256 + index]));
+  const assigned = layout.sections.flatMap(section => section.slideIds);
+  if (numbers.size !== slideIds.length || assigned.length !== slideIds.length || assigned.some((id, index) => id !== slideIds[index])) {
+    throw new Error("Native sections must cover every slide exactly once in presentation order");
+  }
+  const guids = new Set<string>();
+  const sections = layout.sections.map(section => {
+    let first = 0xcbf29ce484222325n;
+    let second = 0x84222325cbf29ce4n;
+    const mask = 0xffffffffffffffffn;
+    for (const byte of new TextEncoder().encode(section.id)) {
+      first = ((first ^ BigInt(byte)) * 0x100000001b3n) & mask;
+      second = ((second ^ BigInt(byte)) * 0x100000001b3n) & mask;
+    }
+    const digits = (first.toString(16).padStart(16, "0") + second.toString(16).padStart(16, "0")).toUpperCase().split("");
+    digits[12] = "8";
+    digits[16] = ((parseInt(digits[16]!, 16) & 3) | 8).toString(16).toUpperCase();
+    const value = digits.join("");
+    const guid = `{${value.slice(0, 8)}-${value.slice(8, 12)}-${value.slice(12, 16)}-${value.slice(16, 20)}-${value.slice(20)}}`;
+    if (guids.has(guid)) throw new Error("Native section GUID collision");
+    guids.add(guid);
+    const name = section.name === undefined ? "" : ` name="${escapeXml(section.name).replace(/\t/g, "&#9;").replace(/\n/g, "&#10;").replace(/\r/g, "&#13;")}"`;
+    const members = section.slideIds.map(id => `<p14:sldId id="${numbers.get(id)}"/>`).join("");
+    return `<p14:section id="${guid}"${name}><p14:sldIdLst>${members}</p14:sldIdLst></p14:section>`;
+  }).join("");
+  return `<p:extLst><p:ext uri="{521415D9-36F7-43E2-AB2F-B90AF26B5E84}"><p14:sectionLst xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main">${sections}</p14:sectionLst></p:ext></p:extLst>`;
+}
+
 export function presentationXml(layout: LayoutResult, firstSlideNumber?: number): string {
   // PowerPoint repairs cross-kind master/layout ID collisions. Keep the legacy
   // default master, then place explicit masters beyond the whole layout range.
-  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" saveSubsetFonts="1" autoCompressPictures="0"${firstSlideNumber === undefined ? "" : ` firstSlideNum="${firstSlideNumber}"`}><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/>${(layout.masters ?? []).map((_, i) => `<p:sldMasterId id="${2147483649 + layout.layouts.length + i}" r:id="rId${layout.slideCount + 7 + i}"/>`).join("")}</p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="rId${layout.slideCount + 2}"/></p:notesMasterIdLst><p:sldIdLst>${layout.slides.map((_, index) => `<p:sldId id="${256 + index}" r:id="rId${index + 2}"/>`).join("")}</p:sldIdLst><p:sldSz cx="${emu(layout.size.width)}" cy="${emu(layout.size.height)}"/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="${escapeXml(layout.metadata.language)}"/></a:defPPr><a:lvl1pPr marL="0" algn="l" defTabSz="914400" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1"><a:defRPr sz="1800"/></a:lvl1pPr></p:defaultTextStyle></p:presentation>`;
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" saveSubsetFonts="1" autoCompressPictures="0"${firstSlideNumber === undefined ? "" : ` firstSlideNum="${firstSlideNumber}"`}><p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId1"/>${(layout.masters ?? []).map((_, i) => `<p:sldMasterId id="${2147483649 + layout.layouts.length + i}" r:id="rId${layout.slideCount + 7 + i}"/>`).join("")}</p:sldMasterIdLst><p:notesMasterIdLst><p:notesMasterId r:id="rId${layout.slideCount + 2}"/></p:notesMasterIdLst><p:sldIdLst>${layout.slides.map((_, index) => `<p:sldId id="${256 + index}" r:id="rId${index + 2}"/>`).join("")}</p:sldIdLst><p:sldSz cx="${emu(layout.size.width)}" cy="${emu(layout.size.height)}"/><p:notesSz cx="6858000" cy="9144000"/><p:defaultTextStyle><a:defPPr><a:defRPr lang="${escapeXml(layout.metadata.language)}"/></a:defPPr><a:lvl1pPr marL="0" algn="l" defTabSz="914400" rtl="0" eaLnBrk="1" latinLnBrk="0" hangingPunct="1"><a:defRPr sz="1800"/></a:lvl1pPr></p:defaultTextStyle>${nativeSectionsXml(layout)}</p:presentation>`;
 }
 
 export function contentTypesXml(media: ReadonlyMap<string, PackagedMedia>, slideCount: number, layoutCount: number, chartCount = 0, extraMasters = 0, customProperties = false): string {

@@ -11,6 +11,31 @@ import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 import { structureFixture, encodeStructure } from "../packages/pptx-parser/test/structure-fixture.mjs";
 import { withSections } from "../packages/pptx-parser/test/sections-fixture.mjs";
 
+test("authored native sections preserve names, empty sections and numeric slide membership", async () => {
+  const deck = createPresentation();
+  deck.addSlide({ id: "a", section: "legacy" }); deck.addSlide({ id: "b" }); deck.addSlide({ id: "c" });
+  deck.setSections([{ id: "first", name: "same &\n", slideIds: ["a", "b"] }, { id: "empty", slideIds: [] }, { id: "blank", name: "", slideIds: [] }, { id: "last", name: "same &\n", slideIds: ["c"] }]);
+  const output = await generatePptx(deck);
+  const parsed = await inspectPptx(output.bytes);
+  assert.deepEqual(parsed.sectionList.sections.map(s => [s.name, s.slides.map(slide => slide.id)]), [["same &\n", [256, 257]], [undefined, []], ["", []], ["same &\n", [258]]]);
+  const guids = parsed.sectionList.sections.map(s => s.id);
+  assert.equal(new Set(guids).size, 4);
+  const xml = readGeneratedZip(output.bytes).get("ppt/presentation.xml").toString();
+  assert.match(xml, /same &amp;&#10;/);
+  const session = await importPptx(output.bytes, { projection: "content" });
+  const noOp = await session.prepareSave({ mode: "no-op" });
+  assert.equal(noOp.status, "ready"); assert.deepEqual((await session.save(noOp.plan)).bytes, output.bytes);
+  session.document.setSections([{ id: "local", slideIds: session.document.slides.map(s => s.id) }]);
+  assert.equal((await session.prepareSave({ mode: "no-op" })).status, "blocked");
+  session.dispose();
+  deck.moveSlide("b", 0);
+  assert.deepEqual((await inspectPptx((await generatePptx(deck)).bytes)).sectionList.sections.map(s => s.id), guids);
+  deck.addSlide({ id: "unassigned" });
+  await assert.rejects(generatePptx(deck), /cover every slide/);
+  deck.removeSlide("unassigned"); deck.moveSlide("c", 1);
+  await assert.rejects(generatePptx(deck), /cover every slide/);
+});
+
 // Fresh export compares effective colors/fonts; exact no-op byte checks below retain
 // the separate guarantee for source theme references and their relationships.
 function effectiveStyleField(key, value, theme) {

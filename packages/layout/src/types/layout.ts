@@ -21,6 +21,7 @@ import type {
   SlideReadingOrder,
   Point,
   PresentationSize,
+  PresentationSection,
   JsonValue,
 } from "@pptkit/core";
 import type { LayoutAnalysis } from "./analysis.js";
@@ -160,6 +161,7 @@ export interface LayoutSlide {
 }
 
 export interface LayoutResult {
+  sections?: PresentationSection[];
   firstSlideNumber?: number;
   masters?: LayoutSlideMaster[];
   pagination?: LayoutPagination;

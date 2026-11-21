@@ -1,3 +1,4 @@
+import { captureSections } from "./sections.js";
 import { captureSlideReadingOrder, reconcileSlideReadingOrder, remapSlideReadingOrder } from "../accessibility/reading-order.js";
 import { assertCustomDocumentProperties, isCanonicalUtcDate } from "./custom-document-properties.js";
 import { slideRebindData, stageLayoutRebind } from "./layout-rebind.js";
@@ -17,6 +18,7 @@ import type {
   PresentationInit,
   PresentationDocument,
   PresentationMetadataInput,
+  PresentationSection,
   PresentationSlide,
   PresentationSlideInput,
   SlideLayoutDefinition,
@@ -94,6 +96,7 @@ function captureCopyMapping(value: unknown): Readonly<Record<string, string>> {
 
 export class PresentationDocumentImpl implements ManagedPresentationDocument {
   readonly id: string;
+  private sectionsValue: readonly PresentationSection[] | undefined;
   private firstSlideNumberValue: number | undefined = undefined;
   private metadataValue: Readonly<PresentationMetadataInput>;
   private readonly sizeValue: Readonly<PresentationSize>;
@@ -384,6 +387,18 @@ export class PresentationDocumentImpl implements ManagedPresentationDocument {
     return this.textStylePresetsValue;
   }
 
+  get sections(): readonly PresentationSection[] | undefined {
+    if (!this.sectionsValue) return undefined;
+    const positions = new Map(this.slideEntries.map((slide, index) => [slide.id, index]));
+    return Object.freeze(this.sectionsValue.map(section => Object.freeze({ ...section, slideIds: Object.freeze([...section.slideIds].sort((a, b) => positions.get(a)! - positions.get(b)!)) })));
+  }
+
+  setSections(sections?: readonly PresentationSection[]): void {
+    const revision = this.slideRevision, captured = captureSections(sections, this.slideIds);
+    if (revision !== this.slideRevision) throw new Error("Slides or sections changed during section capture.");
+    this.sectionsValue = captured; this.slideRevision++;
+  }
+
   get slides(): readonly ManagedPresentationSlide[] {
     return Object.freeze([...this.slideEntries]);
   }
@@ -444,6 +459,7 @@ export class PresentationDocumentImpl implements ManagedPresentationDocument {
     if (index < 0) throw new Error(`Unknown slide id "${slideId}".`);
     const [slide] = this.slideEntries.splice(index, 1);
     this.slideIds.delete(slideId);
+    if (this.sectionsValue) this.sectionsValue = Object.freeze(this.sectionsValue.map(section => Object.freeze({ ...section, slideIds: Object.freeze(section.slideIds.filter(id => id !== slideId)) })));
     this.slideRevision++;
     slide!.releaseElements();
     return slide!;
@@ -462,7 +478,7 @@ export class PresentationDocumentImpl implements ManagedPresentationDocument {
     const elements = copied.elements;
     const notes = source.notes === undefined ? undefined : deepClone(source.notes);
     remapTextActions(notes, slideIds);
-    return this.commitStagedSlide(targetIndex, this.stageSlide(targetIndex, {
+    const duplicate = this.commitStagedSlide(targetIndex, this.stageSlide(targetIndex, {
       id,
       ...(source.showInheritedShapes !== undefined ? { showInheritedShapes: source.showInheritedShapes } : {}),
       ...(source.layoutId !== undefined ? { layoutId: source.layoutId } : {}),
@@ -477,6 +493,8 @@ export class PresentationDocumentImpl implements ManagedPresentationDocument {
       tags: [...source.tags],
       customData: deepClone(source.customData),
     }, state));
+    if (this.sectionsValue) this.sectionsValue = Object.freeze(this.sectionsValue.map(section => section.slideIds.includes(slideId) ? Object.freeze({ ...section, slideIds: Object.freeze([...section.slideIds, duplicate.id]) }) : section));
+    return duplicate;
   }
 
   registerAsset(input: PresentationAssetInput, options?: AssetRegistrationOptions): PresentationAsset {

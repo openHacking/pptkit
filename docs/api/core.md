@@ -136,3 +136,8 @@ Use Core when code needs to describe presentation intent. Use [`@pptkit/layout`]
 
 
 Table structure changes use [editTable](table-editing.md), returning a frozen candidate and anchor mapping for explicit `replaceElement` commit.
+# Native sections
+
+Managed presentations expose `setSections(sections)` and a read-only `sections` snapshot. Each section has a unique, document-local `id`, optional `name`, and `slideIds`. Names can be absent, empty, or repeated; sections can be empty. Replacing the collection is atomic and does not delete slides. Slide membership is explicit and independent of the legacy slide `section` label. Duplicate slides inherit membership, removed slides are removed from their section, and reordering retains membership. Newly added or cross-document copied slides are unassigned. Pass `undefined` to clear the collection.
+
+Fresh PPTX export requires a nonempty collection to cover all slides exactly once in contiguous presentation order. Import currently exposes native sections through inspection and projects member names to labels, but does not populate this collection. See [ADR 0067](../architecture/decisions/0067-native-section-authoring.md).
