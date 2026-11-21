@@ -20,7 +20,8 @@ export type CustomDocumentProperty =
   | { name: string; type: "string"; value: string }
   | { name: string; type: "boolean"; value: boolean }
   | { name: string; type: "integer" | "real"; value: number }
-  | { name: string; type: "date"; value: string };
+  | { name: string; type: "date"; value: string }
+  | { name: string; type: "decimal"; value: string };
 
 export interface PresentationMetadataInput {
   title?: string;

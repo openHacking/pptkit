@@ -229,3 +229,5 @@ The separate `artwork-v1` profile adds a bounded plain-shape subset without chan
 `artwork-v5` also projects supported explicit solid slide/layout/master backgrounds into their respective owners. Source ordering and local background precedence are retained, while unsupported background declarations remain reported fallbacks and source-preserving editing remains separate.
 
 `artwork-v6` uses the bounded DrawingML matrix interpreter to resolve eligible solid `bgRef` entries and placeholder color programs in the owning source scope. It does not retain a live matrix link or authorize source-preserving edits.
+
+Exact custom decimal values use the Core canonical decimal-string variant and fresh `vt:decimal` output; the Parser offers a separate read-only opt-in projection while preserving its existing default real-number behavior. Source-save profiles do not insert this new type. See [ADR 0066](decisions/0066-exact-decimal-custom-properties.md).

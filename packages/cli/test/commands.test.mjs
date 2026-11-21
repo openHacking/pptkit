@@ -2330,3 +2330,8 @@ for(const strict of [false,true])test(`CLI currency, text, metadata and visibili
   const session=await importPptx(bytes,{projection:'content',customCurrencyProjection:'exact-save-v2',customPropertySaveProfile:'scalar-v1'});try{assert.equal(session.document.metadata.title,`Title ${round}`);assert.equal(session.document.metadata.customProperties[0].value,Number(value));assert.equal(session.document.slides[0].hidden,round%2===1);assert.equal(session.document.slides[0].elements[0].content[0].runs[0].text,`Text ${round}`);}finally{session.dispose();}input=output;original=bytes;
  }
 });
+
+test('CLI authoring writes exact decimal custom properties without binary rounding',async t=>{
+ const f=await fixture(t),value='9007199254740993.0001',input={version:'pptkit-authoring-v1',presentation:{metadata:{customProperties:[{name:'Exact',type:'decimal',value}]}},slides:[]};
+ await writeFile(path.join(f.directory,'exact.json'),JSON.stringify(input));const result=await runCliAsync(['generate','exact.json','exact.pptx','--json'],f.options);assert.equal(result.exitCode,0,result.output);const bytes=await readFile(path.join(f.directory,'exact.pptx'));assert.ok(readGeneratedZip(bytes).get('docProps/custom.xml').toString().includes(`<vt:decimal>${value}</vt:decimal>`));const session=await importPptx(bytes,{projection:'content',customDecimalProjection:'exact-v1'});try{assert.equal(session.document.metadata.customProperties[0].value,value);}finally{session.dispose();}
+});

@@ -293,7 +293,7 @@ export async function prepareTextCandidate(
         if (budget > limits.maxPreparedOutputBytes || budget > limits.maxSaveValidationWork - descriptionValidationWork) throw new PptxImportError("save-limit-exceeded", "Custom insertion exceeds the bounded serialization budget.");
         const name = await escape(property.name, true), text = await escape(value, false);
         if (name === undefined || text === undefined) return { diagnostics: [{ code: "save-edit-unsupported", severity: "error", source: { part }, message: "Custom insertion contains unsupported XML characters or overlapping escape-like sequences." }] };
-        const type = { string: "lpwstr", boolean: "bool", integer: "i4", real: "r8", date: "filetime" }[property.type];
+        const type = { string: "lpwstr", boolean: "bool", integer: "i4", real: "r8", date: "filetime", decimal: "decimal" }[property.type];
         child += `<cp:property xmlns:cp="${source.rootNamespace}" xmlns:vt="${source.valueNamespace}" fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="${item.id}" name="${name}"><vt:${type}>${text}</vt:${type}></cp:property>`;
       }
       const parsed = await readXml(current, { ...(options.xmlLimits ? { limits: options.xmlLimits } : {}), ...(options.signal ? { signal: options.signal } : {}), partName: part }, true);

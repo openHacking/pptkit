@@ -264,7 +264,7 @@ export function customPropertiesXml(metadata: NormalizedPresentationMetadata): s
   const body = properties.map((property, index) => {
     const overlappingEscape = /_x[0-9a-fA-F]{4}_x[0-9a-fA-F]{4}_/;
     if (overlappingEscape.test(property.name) || property.type === "string" && overlappingEscape.test(property.value)) throw new RangeError("Overlapping OOXML escape-like sequences are not supported for custom properties.");
-    const type = { string: "lpwstr", boolean: "bool", integer: "i4", real: "r8", date: "filetime" }[property.type];
+    const type = { string: "lpwstr", boolean: "bool", integer: "i4", real: "r8", date: "filetime", decimal: "decimal" }[property.type];
     const value = property.type === "boolean" ? (property.value ? "true" : "false") : property.type === "real" && Object.is(property.value, -0) ? "-0" : String(property.value);
     const protect = (text: string) => text.replace(/_x[0-9a-fA-F]{4}_/g, match => `_x005F_${match.slice(1)}`);
     return `<property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}" pid="${index + 2}" name="${escapeXml(protect(property.name)).replace(/\t/g, "&#9;").replace(/\n/g, "&#10;").replace(/\r/g, "&#13;")}"><vt:${type}>${escapeXml(property.type === "string" ? protect(value) : value).replace(/\r/g, "&#13;")}</vt:${type}></property>`;

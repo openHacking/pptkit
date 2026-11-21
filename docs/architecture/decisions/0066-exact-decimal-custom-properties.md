@@ -1,0 +1,13 @@
+# ADR 0066: Exact decimal custom properties
+
+## Decision
+
+Add a format-independent `decimal` custom-property variant to Core. Its value is a canonical decimal string, not a JavaScript number, currency amount or unit: optional minus, integer digits without leading zeroes, and an optional nonempty fractional part with no trailing zeroes. Zero is `0`; negative zero, signs on positive values and exponent notation are excluded. Input is limited to 10,000 UTF-16 code units. Core validates, snapshots and normalizes this value without numeric conversion. Arithmetic, scale significance, currencies, rounding and units remain outside the model.
+
+Fresh PPTX export maps this variant to `vt:decimal` using the exact canonical text. Existing string, boolean, integer, real and date mappings remain unchanged. Adding a member to the public TypeScript discriminated union can require exhaustive consumer switches to handle `decimal`, even though existing inputs and runtime behavior continue to work.
+
+Parser retains its existing default projection, where only the existing binary64-exact decimal subset becomes a Core real. `customDecimalProjection: "exact-v1"` is a separate content-import opt-in: supported source decimal text is canonicalized with string operations and mapped to Core decimal without rounding. Source lexical text and identity remain in inspection; a no-op save retains original bytes. The opt-in currently excludes preservation edit profiles and does not claim source-edit support. Existing source-preserving insertion profiles explicitly reject the new type until source identity and candidate reprojection are implemented for it. A [typed public example](../../examples/exact-custom-decimal.ts) shows authoring and explicit import.
+
+## Consequences and evidence
+
+A value such as `9007199254740993.0001` survives Core, fresh export and explicit import without binary64 conversion. Canonicalization preserves numeric value but intentionally drops source signs on positive values, insignificant zeroes and surrounding XML whitespace; it is not lexical preservation. A bounded source value outside the opt-in limit remains in inspection. Strict and Transitional fixtures, fresh output, no-op, invalid values, Node file capture and browser parity are covered by [tests](../../../packages/pptx-parser/test/custom-property-exact-decimal.test.mjs). Previous [LibreOfficeDev](../../testing/custom-decimal-libreoffice.md) and [PowerPoint](../../testing/custom-decimal-powerpoint.md) observations dropped the decimal sample on resave; this decision does not claim cross-application retention or native interactive editing.

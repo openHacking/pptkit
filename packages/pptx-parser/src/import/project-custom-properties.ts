@@ -77,6 +77,18 @@ export function customNameCollisionKey(input: string): string {
   return input.replace(/_x([0-9a-fA-F]{4})_/g, (_match, hex: string) => String.fromCharCode(Number.parseInt(hex, 16)));
 }
 
+/** Project bounded decimal text without ever passing through binary floating point. */
+export function projectExactDecimalProperty(property: CustomPropertyInfo): CustomDocumentProperty | undefined {
+  if (property.valueType !== "decimal" || property.value.status !== "scalar" || !property.name || property.linkTarget !== undefined) return undefined;
+  const name = decodeLiteralEscapes(property.name), text = property.value.value;
+  if (!name || text.length > 10000) return undefined;
+  const match = /^[\x20\t\r\n]*([+-]?)(?:(\d+)(?:\.(\d*))?|\.(\d+))[\x20\t\r\n]*$/.exec(text);
+  if (!match || match[0].length !== text.length) return undefined;
+  const integer = (match[2] ?? "0").replace(/^0+/, "") || "0", fraction = (match[3] ?? match[4] ?? "").replace(/0+$/, "");
+  const unsigned = integer + (fraction ? `.${fraction}` : "");
+  return { name, type: "decimal", value: match[1] === "-" && unsigned !== "0" ? `-${unsigned}` : unsigned };
+}
+
 /** Optional read-only projection; currency remains an opaque source value. */
 export function projectCurrencyProperty(property: CustomPropertyInfo, text: string): CustomDocumentProperty | undefined {
   if (property.valueType !== "cy" || property.value.status !== "uninterpreted" || !property.name || property.linkTarget !== undefined) return undefined;

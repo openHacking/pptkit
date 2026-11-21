@@ -5,6 +5,13 @@ export function isCanonicalUtcDate(value: unknown): value is string {
   return typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
 }
 
+/** Exact, canonical decimal text; bounded without any floating-point conversion. */
+export function isCanonicalDecimal(value: unknown): value is string {
+  if (typeof value !== "string" || value.length > 10000 || value === "-0") return false;
+  const match = /^-?(?:0|[1-9]\d*)(?:\.\d*[1-9])?$/.exec(value);
+  return match !== null && match[0].length === value.length;
+}
+
 /** Reject ambiguous names and values before storing authoring state. */
 export function assertCustomDocumentProperties(input: unknown): asserts input is readonly CustomDocumentProperty[] {
   if (!Array.isArray(input) || Reflect.ownKeys(input).length !== input.length + 1) throw new TypeError("customProperties must be a dense array.");
@@ -15,6 +22,6 @@ export function assertCustomDocumentProperties(input: unknown): asserts input is
     if (typeof name !== "string" || name.length === 0 || names.has(name)) throw new TypeError("Custom property names must be nonempty and unique.");
     names.add(name);
     const date = isCanonicalUtcDate(value);
-    if (!(type === "string" && typeof value === "string" || type === "boolean" && typeof value === "boolean" || type === "integer" && typeof value === "number" && Number.isInteger(value) && value >= -2147483648 && value <= 2147483647 || type === "real" && typeof value === "number" && Number.isFinite(value) || type === "date" && date)) throw new TypeError("Invalid custom property type or value.");
+    if (!(type === "string" && typeof value === "string" || type === "boolean" && typeof value === "boolean" || type === "integer" && typeof value === "number" && Number.isInteger(value) && value >= -2147483648 && value <= 2147483647 || type === "real" && typeof value === "number" && Number.isFinite(value) || type === "date" && date || type === "decimal" && isCanonicalDecimal(value))) throw new TypeError("Invalid custom property type or value.");
   }
 }

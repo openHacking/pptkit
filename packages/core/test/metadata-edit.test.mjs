@@ -51,3 +51,10 @@ test('core date fields are canonical, detached and never inferred',()=>{
  for(const value of ['2021-02-29T00:00:00.000Z','2020-01-01T00:00:00Z','2020-01-01T00:00:00.000+00:00','bad',null,123]) {assert.throws(()=>deck.setMetadata({...deck.metadata,createdAt:value}),TypeError);assert.throws(()=>createPresentation({metadata:{createdAt:value}}),TypeError);assert.equal(deck.metadata.createdAt,'2020-02-29T23:59:59.123Z');}
  deck.setMetadata({});assert.equal(normalizePresentation(deck).metadata.createdAt,undefined);assert.equal(normalizePresentation(deck).metadata.modifiedAt,undefined);
 });
+
+test('exact decimal custom properties are canonical, bounded and atomic',()=>{
+ const values=['0','0.1','-0.1','9007199254740993.0001','-12345678901234567890.123456789'];
+ const doc=createPresentation({metadata:{customProperties:values.map((value,i)=>({name:`D${i}`,type:'decimal',value}))}});
+ assert.deepEqual(normalizePresentation(doc).metadata.customProperties.map(p=>p.value),values);
+ for(const value of ['-0','01','1.0','1.','+1','.1','1e3','-0.0','0\n','0\u2028','0'.repeat(10001),12]){assert.throws(()=>doc.setMetadata({customProperties:[{name:'D',type:'decimal',value}]}),TypeError);assert.deepEqual(doc.metadata.customProperties.map(p=>p.value),values);}
+});

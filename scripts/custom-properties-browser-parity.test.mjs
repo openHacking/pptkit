@@ -34,6 +34,13 @@ async function exercise(api) {
   } finally { session.dispose(); }
 }
 
+async function exerciseExactDecimal(api) {
+  const customProperties = [{ name: 'Exact', type: 'decimal', value: '0.1' }, { name: 'Wide', type: 'decimal', value: '9007199254740993.0001' }, { name: 'Negative', type: 'decimal', value: '-0.0001' }];
+  const generated = await api.generatePptx(api.createPresentation({ metadata: { customProperties } }));
+  const session = await api.importPptx(generated.bytes, { projection: 'content', customDecimalProjection: 'exact-v1' });
+  try { const prepared = await session.prepareSave({ mode: 'no-op' }); if (prepared.status !== 'ready') throw new Error('no-op blocked'); return { bytes: [...generated.bytes], saved: [...(await session.save(prepared.plan)).bytes], properties: session.document.metadata.customProperties }; } finally { session.dispose(); }
+}
+
 async function exerciseMixedCurrency(api, input) {
   let bytes = new Uint8Array(input); const rounds = [];
   for (const [index, value] of [0.5, 0.0625, 2].entries()) {
@@ -299,6 +306,7 @@ async function exerciseIntegerVariants(api, input) {
 
 test('custom property authoring and import agree across Node, browser ESM and global bundles', async t => {
   const expected = await exercise({ createPresentation, generatePptx, importPptx });
+  const expectedExactDecimal = await exerciseExactDecimal({ createPresentation, generatePptx, importPptx });
   const expectedCreation = await exerciseCreation({ createPresentation, generatePptx, importPptx });
   const expectedRevision = await exerciseRevision({ createPresentation, generatePptx, importPptx });
   const expectedKeywords = await exerciseKeywords({ createPresentation, generatePptx, importPptx });
@@ -369,6 +377,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
       return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
     }, { format, exercise: exerciseMixedCurrency.toString(), input: mixedCurrencyInput });
     assert.deepEqual(actualMixedCurrency, expectedMixedCurrency);
+    const actualExactDecimal = await page.evaluate(async ({ format, exercise }) => {
+      const api = format === 'global' ? PPTKit : Object.assign({}, ...await Promise.all(['core', 'pptx-exporter', 'pptx-parser'].map(name => import('@pptkit/' + name))));
+      return Function('api', `return (${exercise})(api)`)(api);
+    }, { format, exercise: exerciseExactDecimal.toString() });
+    assert.deepEqual(actualExactDecimal, expectedExactDecimal);
     const actualCurrencySave = await page.evaluate(async ({ format, exercise, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
       return Function('api', 'input', `return (${exercise})(api, input)`)(api, input);
