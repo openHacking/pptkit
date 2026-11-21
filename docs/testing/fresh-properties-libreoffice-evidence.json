@@ -1,0 +1,554 @@
+{
+  "scope": "Fresh PPTKit public authoring and modification, absent/empty part controls and paired LibreOfficeDev headless resaves; no UI or native authoring.",
+  "producer": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "records": [
+    {
+      "kind": "control",
+      "round": 0,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/control.pptx",
+      "sha256": "65cfbf1edbc1d282afc0c8b343bb7828b15c27ad7ee70cafb8cca7cef29e5c13",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Empty",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Flag",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "false"
+        },
+        {
+          "name": "Count",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "i4",
+          "value": "-2147483648"
+        },
+        {
+          "name": "Real",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Date",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2020-01-02T03:04:05.000Z"
+        },
+        {
+          "name": "Decimal",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "decimal",
+          "value": "9007199254740993.0001"
+        },
+        {
+          "name": "Control",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "before"
+        }
+      ]
+    },
+    {
+      "kind": "control",
+      "round": 1,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/control-1/control.pptx",
+      "sha256": "fa5209abe85dfe2016ebc880dffdaf1dc32dbb79ce727a2844de1684ff2ec2a0",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Empty",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Flag",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "0"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "9",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "control",
+      "round": 2,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/control-2/control.pptx",
+      "sha256": "5985c1aa3edd887bcf78afe5cd5984276f959b98b3f7d9eb1431cffe8fe48f8d",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Empty",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Flag",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "0"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "9",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "control",
+      "round": 3,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/control-3/control.pptx",
+      "sha256": "5985c1aa3edd887bcf78afe5cd5984276f959b98b3f7d9eb1431cffe8fe48f8d",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "-2147483648"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2020-01-02T03:04:05Z"
+        },
+        {
+          "name": "Empty",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": ""
+        },
+        {
+          "name": "Flag",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "0"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1.25"
+        },
+        {
+          "name": "Slides",
+          "pid": "9",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 0,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/edited.pptx",
+      "sha256": "9bdfc6b99f1ed41960377b79f198d11d7e72f336820f3df749f219fdda7327a0",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Flag",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "true"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "i4",
+          "value": "2147483647"
+        },
+        {
+          "name": "Real",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Date",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2021-02-03T04:05:06.000Z"
+        },
+        {
+          "name": "Decimal",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "decimal",
+          "value": "9007199254740994.0001"
+        },
+        {
+          "name": "Control",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "after"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 1,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-1/edited.pptx",
+      "sha256": "fa052210c4904b8ec01d6b2783530b73e3bc488c6e3bc29b27599eb19c7814b2",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "after"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "2147483647"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2021-02-03T04:05:06Z"
+        },
+        {
+          "name": "Flag",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "1"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Slides",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 2,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-2/edited.pptx",
+      "sha256": "1e2c2930ab7765e19b91270500c29dbbba9eb6250fb6b628a25f8c659ddf67ad",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "after"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "2147483647"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2021-02-03T04:05:06Z"
+        },
+        {
+          "name": "Flag",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "1"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Slides",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 3,
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-3/edited.pptx",
+      "sha256": "1e2c2930ab7765e19b91270500c29dbbba9eb6250fb6b628a25f8c659ddf67ad",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "pid": "2",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "after"
+        },
+        {
+          "name": "Count",
+          "pid": "3",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "2147483647"
+        },
+        {
+          "name": "Date",
+          "pid": "4",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "filetime",
+          "value": "2021-02-03T04:05:06Z"
+        },
+        {
+          "name": "Flag",
+          "pid": "5",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "bool",
+          "value": "1"
+        },
+        {
+          "name": "PresentationFormat",
+          "pid": "6",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Real",
+          "pid": "7",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "0.125"
+        },
+        {
+          "name": "Slides",
+          "pid": "8",
+          "fmtid": "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}",
+          "type": "r8",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "auxiliaries": [
+    {
+      "kind": "empty",
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/empty.pptx",
+      "sha256": "a7019caf0540503c28a61afd7912e13bad3eee2f26b7fcda88afed25eff15e15",
+      "part_present": true,
+      "custom_relationships": 1,
+      "properties": []
+    },
+    {
+      "kind": "absent",
+      "path": ".tmp/fresh-properties-libreoffice/run-h35gf_3y/absent.pptx",
+      "sha256": "c156c9a696a268bae0d176c10fc161d948a705c59528bdb38aa10f2ca70d167e",
+      "part_present": false,
+      "custom_relationships": 0,
+      "properties": []
+    }
+  ],
+  "logs": [
+    {
+      "kind": "control",
+      "round": 1,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "control",
+      "round": 2,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "control",
+      "round": 3,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/control-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 1,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 2,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 3,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/fresh-properties-libreoffice/run-h35gf_3y/edited-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

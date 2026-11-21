@@ -83,6 +83,8 @@ Fresh export protects literal `_xHHHH_` sequences in custom-property names and s
 
 ## Source-preserving custom scalar edits
 
+The [fresh-property application comparison](../testing/fresh-properties-libreoffice.md) independently checks authored types, identities, absent/empty semantics and observed LibreOfficeDev rewrites over three resaves.
+
 Core also supports exact `decimal` custom properties represented by canonical decimal strings. Fresh PPTX output uses `vt:decimal`; explicit import and source-value save profiles are documented in [ADR 0066](../architecture/decisions/0066-exact-decimal-custom-properties.md). `exact-save-v2` requires `scalar-v1`, patches only uniquely bound decimal values, retains unchanged source lexical text and reprojects the candidate. Explicit `exact-save-v3` with `append-and-remove-v4` or `create-and-append-v5` permits exact decimal appends, including custom-part creation, and compatible renames/removals. The profiles without this opt-in continue to reject decimal insertion. An [explicit combined currency and decimal profile](opaque-custom-properties.md) can edit both types in the same source transaction.
 
 Explicit opt-in currency source-value editing is documented in the [currency projection and save profile](opaque-custom-properties.md).

@@ -1,5 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { createPresentation } from "../packages/core/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
 import { inspectPptx, importPptx } from "../packages/pptx-parser/dist/index.js";
@@ -104,4 +106,13 @@ test("overlapping literal escapes fail closed when application resaves cannot pr
   for (const property of [{ name: '_x005F_x0041_', type: 'string', value: 'safe' }, { name: 'safe', type: 'string', value: '_x005F_x0041_' }]) {
     await assert.rejects(generatePptx(createPresentation({ metadata: { customProperties: [property] } })), { name: 'RangeError', message: 'Overlapping OOXML escape-like sequences are not supported for custom properties.' });
   }
+});
+
+test('fresh authoring evidence matches public API outputs and retained application inventories', async()=>{
+ const evidence=JSON.parse(await readFile(new URL('../docs/testing/fresh-properties-libreoffice-evidence.json',import.meta.url),'utf8')),hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+ const properties=[{name:'Empty',type:'string',value:''},{name:'Flag',type:'boolean',value:false},{name:'Count',type:'integer',value:-2147483648},{name:'Real',type:'real',value:1.25},{name:'Date',type:'date',value:'2020-01-02T03:04:05.000Z'},{name:'Decimal',type:'decimal',value:'9007199254740993.0001'},{name:'Control',type:'string',value:'before'}];
+ const doc=createPresentation({metadata:{customProperties:properties}});doc.addSlide({id:'fresh-properties'});assert.equal(hash((await generatePptx(doc)).bytes),evidence.records.find(r=>r.kind==='control'&&r.round===0).sha256);
+ const updated=[{name:'Flag',type:'boolean',value:true},{name:'Count',type:'integer',value:2147483647},{name:'Real',type:'real',value:.125},{name:'Date',type:'date',value:'2021-02-03T04:05:06.000Z'},{name:'Decimal',type:'decimal',value:'9007199254740994.0001'},{name:'Control',type:'string',value:'after'}];doc.setMetadata({...doc.metadata,customProperties:updated});assert.equal(hash((await generatePptx(doc)).bytes),evidence.records.find(r=>r.kind==='edited'&&r.round===0).sha256);
+ doc.setMetadata({...doc.metadata,customProperties:[]});assert.equal(hash((await generatePptx(doc)).bytes),evidence.auxiliaries.find(r=>r.kind==='empty').sha256);const metadata={...doc.metadata};delete metadata.customProperties;doc.setMetadata(metadata);assert.equal(hash((await generatePptx(doc)).bytes),evidence.auxiliaries.find(r=>r.kind==='absent').sha256);
+ for(const kind of ['control','edited']){const records=evidence.records.filter(r=>r.kind===kind);assert.deepEqual(records.map(r=>r.round),[0,1,2,3]);for(const r of records){const names=r.properties.map(p=>p.name);assert.equal(new Set(names).size,names.length);}assert.ok(records.slice(1).every(r=>!r.properties.some(p=>p.name==='Decimal')));assert.ok(records.slice(1).every(r=>r.properties.find(p=>p.name==='Control')?.value===(kind==='control'?'before':'after')));}
 });
