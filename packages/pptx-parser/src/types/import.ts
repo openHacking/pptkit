@@ -106,6 +106,8 @@ export interface ImportedVideoSource {
   readonly externalTarget?: string;
   readonly contentType?: string;
   readonly reason?: string;
+  /** Bounded movie-header clock, when available; not track duration or playback validation. */
+  readonly movieDurationMs?: number;
   readonly framing?: { readonly majorBrand: string; readonly minorVersion: number; readonly compatibleBrands: readonly string[]; readonly boxCount: number };
 }
 /** Opt-in metadata eligibility; insertable does not guarantee a valid save plan. */

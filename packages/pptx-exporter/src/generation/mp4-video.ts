@@ -1,42 +1,8 @@
-import { inspectIsoBmff } from "@pptkit/media-inspection";
+import { inspectMp4MovieDuration } from "@pptkit/media-inspection";
 import type { NormalizedAsset, NormalizedElement, NormalizedPresentation } from "@pptkit/core";
 import { decodeAssetBytes } from "../assets/load-bytes.js";
 
 export interface Mp4VideoResource { readonly data: Uint8Array; readonly durationMs: number }
-
-/** Read the v0 movie-header clock only; this does not validate tracks or codecs. */
-function movieDuration(data: Uint8Array, maxBytes: number, signal?: AbortSignal): number {
-  const framing = inspectIsoBmff(data, { maxBytes, ...(signal ? { signal } : {}) });
-  const movies = framing.boxes.filter(box => box.type === "moov"), media = framing.boxes.filter(box => box.type === "mdat");
-  if (movies.length !== 1 || media.length !== 1 || media[0]!.size <= media[0]!.headerSize || framing.boxes.some(box => box.type === "moof")) throw new TypeError("MP4 requires one movie box and one nonempty media-data box without fragments.");
-  const movie = movies[0]!, view = new DataView(data.buffer, data.byteOffset, data.byteLength), end = movie.offset + movie.size;
-  let at = movie.offset + movie.headerSize, count = 0, durationMs: number | undefined;
-  while (at < end) {
-    signal?.throwIfAborted();
-    if (++count > 4096) throw new RangeError("MP4 movie box child limit exceeded.");
-    if (end - at < 8) throw new TypeError("MP4 movie box has a truncated child header.");
-    const shortSize = view.getUint32(at), type = String.fromCharCode(...data.subarray(at + 4, at + 8));
-    let size = shortSize, header = 8;
-    if (shortSize === 0) size = end - at;
-    else if (shortSize === 1) {
-      if (end - at < 16 || view.getUint32(at + 8) !== 0) throw new TypeError("MP4 movie box has an invalid extended child size.");
-      header = 16; size = view.getUint32(at + 12);
-    }
-    if (size < header || size > end - at) throw new TypeError("MP4 movie box has an invalid child size.");
-    if (type === "mvhd") {
-      if (durationMs !== undefined || size - header < 100) throw new TypeError("MP4 needs one complete version-zero movie header.");
-      const start = at + header;
-      if (view.getUint32(start) !== 0) throw new TypeError("Only version-zero MP4 movie headers with zero flags are supported.");
-      const scale = view.getUint32(start + 12), duration = view.getUint32(start + 16);
-      if (!scale || !duration || duration === 0xffffffff) throw new TypeError("MP4 movie duration must be known and nonzero.");
-      durationMs = Math.round(duration * 1000 / scale);
-      if (!Number.isSafeInteger(durationMs) || durationMs < 1 || durationMs > 2147483647) throw new TypeError("MP4 movie duration must round to 1–2147483647 milliseconds.");
-    }
-    at += size;
-  }
-  if (durationMs === undefined) throw new TypeError("MP4 movie header is missing.");
-  return durationMs;
-}
 
 /** Experimental profile: bounded visible top-level videos, no authored timing. */
 export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v1" | undefined, maxBytes: number | undefined, signal?: AbortSignal, external?: Map<string, NormalizedAsset>, resolved?: ReadonlyMap<string, Uint8Array>): ReadonlyMap<string, Mp4VideoResource> {
@@ -59,7 +25,7 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
     const length = asset.source.type === "bytes" ? asset.source.value.length / 4 * 3 - (asset.source.value.endsWith("==") ? 2 : asset.source.value.endsWith("=") ? 1 : 0) : resolved!.get(asset.id)!.byteLength;
     if (length > ceiling) throw new RangeError("Video exceeds the MP4 inspection or maxAssetBytes limit.");
     signal?.throwIfAborted();
-    const data = asset.source.type === "bytes" ? decodeAssetBytes(asset.source.value) : resolved!.get(asset.id)!, durationMs = movieDuration(data, ceiling, signal);
+    const data = asset.source.type === "bytes" ? decodeAssetBytes(asset.source.value) : resolved!.get(asset.id)!, durationMs = inspectMp4MovieDuration(data, { maxBytes: ceiling, ...(signal ? { signal } : {}) });
     resources.set(asset.id, { data, durationMs });
   };
   for (const layout of document.layouts) for (const element of layout.elements) check(element);

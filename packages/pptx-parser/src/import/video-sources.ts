@@ -1,4 +1,4 @@
-import { inspectIsoBmff } from "@pptkit/media-inspection";
+import { inspectIsoBmff, inspectMp4MovieDuration } from "@pptkit/media-inspection";
 import { attribute, children } from "../presentation/structure-xml.js";
 import type { structureContext } from "../presentation/structure-context.js";
 import { PptxImportError, type ImportedVideoSource, type PptxSessionLimits } from "../types/import.js";
@@ -13,7 +13,7 @@ const MEDIA_EXT = "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}";
 export function videoSources(context: Context, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>) {
   const result: ImportedVideoSource[] = [];
   const byPicture = new WeakMap<XmlElement, readonly ImportedVideoSource[]>();
-  const cache = new Map<string, Pick<ImportedVideoSource, "status" | "contentType" | "framing" | "reason">>();
+  const cache = new Map<string, Pick<ImportedVideoSource, "status" | "contentType" | "framing" | "movieDurationMs" | "reason">>();
   let total = 0;
   const inspect = async (part: string, slideId: string, objectId: string, picture: XmlElement, paths: WeakMap<XmlElement, string>) => {
     const named = (node: XmlElement, ns: string, name: string) => children(node).filter(child => child.namespaceUri === ns && child.local === name);
@@ -60,7 +60,10 @@ export function videoSources(context: Context, limits: Required<PptxSessionLimit
         else {
           try {
             const framing = inspectIsoBmff(payload.bytes, { maxBytes: Math.min(limits.maxImportedAssetBytes, 64 * 1024 * 1024) });
-            info = { status: "iso-bmff-framing", contentType, framing: { majorBrand: framing.majorBrand, minorVersion: framing.minorVersion, compatibleBrands: framing.compatibleBrands, boxCount: framing.boxes.length } };
+            let movieDurationMs: number | undefined;
+            try { movieDurationMs = inspectMp4MovieDuration(payload.bytes, { maxBytes: Math.min(limits.maxImportedAssetBytes, 64 * 1024 * 1024) }); }
+            catch (error) { if (!(error instanceof TypeError || error instanceof RangeError)) throw error; }
+            info = { status: "iso-bmff-framing", contentType, ...(movieDurationMs === undefined ? {} : { movieDurationMs }), framing: { majorBrand: framing.majorBrand, minorVersion: framing.minorVersion, compatibleBrands: framing.compatibleBrands, boxCount: framing.boxes.length } };
           } catch (error) {
             if (!(error instanceof TypeError || error instanceof RangeError)) throw error;
             info = { status: "unsupported", contentType, reason: error.message };

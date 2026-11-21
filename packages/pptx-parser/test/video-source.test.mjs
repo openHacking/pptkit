@@ -45,6 +45,7 @@ test('native video inventory locates separate video and poster sources without p
     const [video, media, poster] = s.report.videoSources;
     assert.deepEqual(s.report.videoSources.map(x => x.declaration), ['videoFile', 'p14:media', 'poster']);
     assert.equal(video.status, 'iso-bmff-framing'); assert.equal(video.mediaPart, '/ppt/media/media1.mp4');
+    assert.equal(video.movieDurationMs, 2000); assert.equal(media.movieDurationMs, 2000); assert.equal(poster.movieDurationMs, undefined);
     assert.equal(video.source.sourceObjectId, '4'); assert.match(video.source.path, /videoFile\[1\]$/);
     assert.deepEqual(video.framing, { majorBrand: 'isom', minorVersion: 512, compatibleBrands: ['isom', 'iso2', 'avc1', 'mp41'], boxCount: 4 });
     assert.ok(Object.isFrozen(video.framing.compatibleBrands));
@@ -156,4 +157,17 @@ test('file adapter captures the video inventory option before asynchronous I/O',
     const imported = await pendingProjection;
     try { assert.ok(imported.session.document.slides[0].elements.some(x => x.type === 'video')); } finally { imported.session.dispose(); }
   } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+
+test('unsupported movie clock leaves framing and projection intact', async () => {
+  const parts = unzipSync(await fixture()), video = parts['ppt/media/media1.mp4'];
+  const tag = Buffer.from(video).indexOf(Buffer.from('mvhd')); assert.ok(tag > 0);
+  video[tag + 4] = 1;
+  const s = await importPptx(zipSync(parts), projected);
+  try {
+    const source = s.report.videoSources.find(x => x.declaration === 'videoFile');
+    assert.equal(source.status, 'iso-bmff-framing'); assert.equal(source.movieDurationMs, undefined);
+    assert.ok(s.document.slides[0].elements.some(x => x.type === 'video'));
+  } finally { s.dispose(); }
 });
