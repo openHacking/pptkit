@@ -60,6 +60,8 @@ export async function inspectMarkupCompatibility(bytes: Uint8Array, options: Mar
 export type { PptxInspection, PptxSize, PptxPartReference, PptxSlideInfo, PptxMasterInfo, PptxStructureFinding } from "./types/structure.js";
 export type { PptxSectionInfo, PptxSectionListInfo, PptxExtensionInfo } from "./types/structure.js";
 export type { PptxDocumentMetadata, MetadataPartInfo, CorePropertyInfo, MetadataKeywordSegment, ExtendedPropertyInfo, CustomPropertyInfo, MetadataPropertyValue, MetadataScalarKind } from "./types/metadata.js";
+export { inspectOpaqueCustomProperties as inspectPptxOpaqueCustomProperties } from "./metadata/opaque-custom-inventory.js";
+export type { OpaqueCustomPropertyValue } from "./metadata/opaque-custom-inventory.js";
 import type { PptxInspection, PptxInspectionOptions } from "./types/structure.js";
 import { readPresentationStructure } from "./presentation/read-structure.js";
 

@@ -110,5 +110,5 @@ export async function structureContext(bytes: Uint8Array, options?: PptxInspecti
   };
   const inspected = await readMetadata(source, entry.dialect === "strict", checkpoint, signal);
   reports.push(...inspected.reports);
-  return { entry, p, r, a, root, sourceElement, rawXml: source.xml, reference, relationship, findRelationship, payload, optionalTarget, relationships, target, reports, checkpoint, abort, metadata: inspected.metadata, diagramLimits, diagramTextComparison };
+  return { entry, p, r, a, root, sourceElement, rawXml: source.xml, reference, relationship, findRelationship, payload, optionalTarget, relationships, target, reports, checkpoint, abort, metadata: inspected.metadata, customMetadataRoot: inspected.customRoot, diagramLimits, diagramTextComparison };
 }

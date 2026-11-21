@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
 import { createPresentation } from '../packages/core/dist/index.js';
 import { generatePptx } from '../packages/pptx-exporter/dist/index.js';
-import { importPptx } from '../packages/pptx-parser/dist/index.js';
+import { importPptx, inspectPptxOpaqueCustomProperties } from '../packages/pptx-parser/dist/index.js';
 import { metadataFixture, encodeMetadata, custom } from '../packages/pptx-parser/test/metadata-fixture.mjs';
 
 async function exercise(api) {
@@ -282,6 +282,8 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const companyInsertionInput = [...encodeMetadata(companyInsertion)], expectedCompanyInsertion = await exerciseCompanyInsertion({ importPptx }, companyInsertionInput);
   const variants = metadataFixture(); variants.add('custom', custom(2, 'i1', '-128', 'name="Small"') + custom(3, 'ui2', '0', 'name="Unsigned"') + custom(4, 'r4', '1.25', 'name="Single"') + custom(5, 'bstr', 'original', 'name="Basic"') + custom(6, 'lpstr', 'original', 'name="Narrow"') + custom(7, 'date', '2020-02-03T04:05:06.120000+08:00', 'name="Date"') + custom(8, 'decimal', '1.25', 'name="Decimal"'));
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
+  const currencyInput = [...await readFile('tests/fixtures/custom-currency-source.pptx')];
+  const expectedOpaque = await inspectPptxOpaqueCustomProperties(new Uint8Array(currencyInput));
   const browser = await chromium.launch(); t.after(() => browser.close());
   const page = await browser.newPage(), requests = [];
   await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
@@ -293,6 +295,11 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   await page.setContent(`<script type="importmap">${JSON.stringify({ imports })}</script>`);
   for (const format of ['esm', 'global']) {
     if (format === 'global') for (const content of globals) await page.addScriptTag({ content });
+    const actualOpaque = await page.evaluate(async ({ format, input }) => {
+      const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');
+      return api.inspectPptxOpaqueCustomProperties(new Uint8Array(input));
+    }, { format, input: currencyInput });
+    assert.deepEqual(actualOpaque, expectedOpaque);
     const actual = await page.evaluate(async ({ format, exercise }) => {
       const api = format === 'global' ? PPTKit : Object.assign({}, ...await Promise.all(['core', 'pptx-exporter', 'pptx-parser'].map(n => import('@pptkit/' + n))));
       return Function('api', `return (${exercise})(api)`)(api);

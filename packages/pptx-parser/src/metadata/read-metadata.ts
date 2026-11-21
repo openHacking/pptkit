@@ -13,6 +13,7 @@ const T = "http://schemas.openxmlformats.org/officeDocument/2006", S = "http://p
 const CORE_REL = "http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties";
 export async function readMetadata(source: { inspection: OpcPackageInspection; xml: ReadonlyMap<string, XmlElement> }, strict: boolean, checkpoint: () => Promise<void>, signal?: AbortSignal) {
   const metadata: { -readonly [K in keyof PptxDocumentMetadata]: PptxDocumentMetadata[K] } = {};
+  let customRoot: XmlElement | undefined;
   const reports: { part: string; report: MarkupCompatibilityReport }[] = [];
   const base = strict ? S : T, vt = `${base}/docPropsVTypes`;
   const specs = [
@@ -41,7 +42,7 @@ export async function readMetadata(source: { inspection: OpcPackageInspection; x
     const ref = { part: name, relationshipId: relation!.id };
     if (spec.key === "core") metadata.core = { ...ref, properties: await coreProperties(root!, name, checkpoint) };
     else if (spec.key === "extended") metadata.extended = { ...ref, properties: extendedProperties(root!, vt, name) };
-    else metadata.custom = { ...ref, properties: await customProperties(root!, vt, name, checkpoint) };
+    else { customRoot = root!; metadata.custom = { ...ref, properties: await customProperties(root!, vt, name, checkpoint) }; }
   }
-  return { metadata, reports };
+  return { metadata, reports, customRoot };
 }
