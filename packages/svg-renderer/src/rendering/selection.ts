@@ -132,9 +132,11 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
         const stroke = element.type === "shape" ? element.style.stroke : undefined;
         let shapeStrokeGeometry: SvgConnectorStrokeGeometry | undefined;
-        if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape !== "ellipse" && element.shape !== "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.dash === "solid") {
+        if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape !== "ellipse" && element.shape !== "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0) {
           const raw = element.shape === "rect" ? [{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }] : shapePolygonPoints(b, element.shape, element.slant);
-          shapeStrokeGeometry = Object.freeze({ points: Object.freeze([...raw, raw[0]!].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width });
+          const dash = dashLengths(stroke);
+          if (dash && !Number.isFinite(dash.reduce((sum, value) => sum + value, 0))) throw new RangeError("Shape dash pattern exceeds finite hit-test range.");
+          shapeStrokeGeometry = Object.freeze({ points: Object.freeze([...raw, raw[0]!].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width, ...(dash ? { dash: Object.freeze([...dash]) } : {}) });
         }
         frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}), ...(shapeStrokeGeometry ? { shapeStrokeGeometry } : {}) }));
       }

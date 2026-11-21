@@ -266,11 +266,22 @@ test('rectangular strokes include outer edges and corners through group scaling'
   assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 137, y: 140 }).elementId, 'rect');
   assert.ok(Object.isFrozen(items[0].shapeStrokeGeometry.points[0]));
   assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: 'true' }), TypeError);
-  for (const style of [{ ...stroke, dash: 'dash' }, { ...stroke, width: 0 }, { ...stroke, paint: { type: 'none' } }, { ...stroke, paint: { type: 'solid', color: '000000', opacity: 0 } }]) {
+  for (const style of [{ ...stroke, width: 0 }, { ...stroke, paint: { type: 'none' } }, { ...stroke, paint: { type: 'solid', color: '000000', opacity: 0 } }]) {
     const candidate = createPresentation(); candidate.addSlide({ elements: [shape('unsupported', box(0, 0, 40, 40), { style: { fill: { type: 'none' }, stroke: style } })] });
     const other = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(candidate)), 0, { includeShapeStrokeGeometry: true });
     assert.equal(hitTestSvgShapeStrokes(other, { x: 0, y: 20 }), undefined);
   }
+});
+
+test('dashed rectangular strokes preserve gaps and phase around corners', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [shape('rect', box(0, 0, 20, 20), { style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 2, dash: 'dash' } } })] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeShapeStrokeGeometry: true });
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 4, y: 0 }).elementId, 'rect');
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 11, y: 0 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 20, y: 0 }).elementId, 'rect');
+  assert.deepEqual(items[0].shapeStrokeGeometry.dash, [8, 6]);
+  assert.ok(Object.isFrozen(items[0].shapeStrokeGeometry.dash));
 });
 
 test('polygonal shape strokes use actual preset edges and skip curved outlines', () => {

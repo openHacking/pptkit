@@ -5,6 +5,30 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('dashed polygon and rectangle strokes match Chromium through closed seams', async t => {
+  const kinds = ['rect', 'triangle', 'diamond', 'arrow', 'chevron', 'parallelogram'];
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'group', id: 'group', box: { x: 100, y: 100, width: 200, height: 100 }, coordinateSize: { width: 100, height: 100 }, transform: { rotation: 31, flipV: true }, children: kinds.flatMap((kind, i) => ['dash', 'dot', 'dashDot'].map((dash, j) => ({ type: 'shape', id: `${kind}-${dash}`, shape: kind, box: { x: 20, y: 20, width: 40 + i, height: 35 + j }, transform: { rotation: -17 }, ...(kind === 'parallelogram' ? { slant: .35 } : {}), style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 3, dash } } }))) }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeShapeStrokeGeometry: true });
+    const failures = []; let samples = 0;
+    for (const item of items) {
+      const shape = document.querySelector(`[data-pptkit-element-id="${item.elementId}"]`).querySelector('rect,polygon'), matrix = shape.getCTM();
+      for (let y = 15.137; y < 63; y += .831) for (let x = 15.193; x < 70; x += .993) {
+        const local = new DOMPoint(x, y), point = local.matrixTransform(matrix);
+        const expected = shape.isPointInStroke(local), actual = !!PPTKit.hitTestSvgShapeStrokes([item], point);
+        samples++; if (actual !== expected) failures.push({ id: item.elementId, x, y, expected, actual });
+      }
+    }
+    return { samples, count: failures.length, examples: failures.slice(0, 8) };
+  }, layout);
+  assert.ok(result.samples > 50000);
+  assert.deepEqual({ count: result.count, examples: result.examples }, { count: 0, examples: [] });
+});
+
 test('polygon shape strokes match Chromium under nested transforms', async t => {
   const kinds = ['triangle', 'diamond', 'arrow', 'chevron', 'parallelogram'];
   const doc = createPresentation();
