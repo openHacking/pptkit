@@ -1,0 +1,78 @@
+{
+  "producer": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "source_sha256": "ed0311a7ff6b7c99700983cee465f9c4520515393bc8af1d73c98296cde28d09",
+  "retained_first_round_path": "tests/fixtures/libreoffice-caption-roundtrip.pptx",
+  "retained_first_round_sha256": "9d540eb2cc0bb1898a45c52a5626e20f8b80da618f241bfa40db313d1b2d4049",
+  "source": {
+    "part_count": 25,
+    "media_parts": [
+      "ppt/media/image1.png",
+      "ppt/media/media1.mp4",
+      "ppt/media/track1.vtt",
+      "ppt/media/track2.vtt"
+    ],
+    "original_video_parts": [
+      "ppt/media/media1.mp4"
+    ],
+    "vtt_parts": [
+      "ppt/media/track1.vtt",
+      "ppt/media/track2.vtt"
+    ],
+    "track_relationship_parts": [
+      "ppt/slides/_rels/slide1.xml.rels"
+    ],
+    "tracks_info_parts": [
+      "ppt/slides/slide1.xml"
+    ],
+    "english_cue_parts": [
+      "ppt/media/track1.vtt"
+    ],
+    "french_cue_parts": [
+      "ppt/media/track2.vtt"
+    ],
+    "indefinite_repeat_parts": [
+      "ppt/slides/slide1.xml"
+    ],
+    "timing_parts": [
+      "ppt/slides/slide1.xml"
+    ]
+  },
+  "rounds": [
+    {
+      "part_count": 15,
+      "media_parts": [],
+      "original_video_parts": [],
+      "vtt_parts": [],
+      "track_relationship_parts": [],
+      "tracks_info_parts": [],
+      "english_cue_parts": [],
+      "french_cue_parts": [],
+      "indefinite_repeat_parts": [],
+      "timing_parts": []
+    },
+    {
+      "part_count": 15,
+      "media_parts": [],
+      "original_video_parts": [],
+      "vtt_parts": [],
+      "track_relationship_parts": [],
+      "tracks_info_parts": [],
+      "english_cue_parts": [],
+      "french_cue_parts": [],
+      "indefinite_repeat_parts": [],
+      "timing_parts": []
+    },
+    {
+      "part_count": 15,
+      "media_parts": [],
+      "original_video_parts": [],
+      "vtt_parts": [],
+      "track_relationship_parts": [],
+      "tracks_info_parts": [],
+      "english_cue_parts": [],
+      "french_cue_parts": [],
+      "indefinite_repeat_parts": [],
+      "timing_parts": []
+    }
+  ]
+}

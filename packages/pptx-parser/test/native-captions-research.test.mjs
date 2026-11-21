@@ -14,6 +14,25 @@ const { zipSync, unzipSync, strFromU8, strToU8 } = createRequire(import.meta.url
 const sample = name => readFile(join(root, `tests/fixtures/${name}.pptx`));
 const inventory = file => JSON.parse(execFileSync('python3', [join(root, 'scripts/research/inspect-native-captions.py'), file], { encoding: 'utf8' }));
 
+test('LibreOffice resave evidence records loss without conflating it with PPTKit no-op', async () => {
+  const evidence = JSON.parse(await readFile(join(root, 'docs/testing/libreoffice-caption-roundtrip-evidence.json'), 'utf8'));
+  const original = await sample('powerpoint-caption-loop-multitrack');
+  assert.equal(createHash('sha256').update(original).digest('hex'), evidence.source_sha256);
+  assert.equal(evidence.source.vtt_parts.length, 2);
+  assert.equal(evidence.rounds.length, 3);
+  for (const round of evidence.rounds) {
+    for (const key of ['media_parts', 'original_video_parts', 'vtt_parts', 'track_relationship_parts', 'tracks_info_parts', 'english_cue_parts', 'french_cue_parts', 'indefinite_repeat_parts', 'timing_parts']) assert.deepEqual(round[key], []);
+  }
+  const bytes = await sample('libreoffice-caption-roundtrip'), entries = unzipSync(bytes);
+  assert.equal(createHash('sha256').update(bytes).digest('hex'), evidence.retained_first_round_sha256);
+  assert.equal(Object.keys(entries).filter(name => name.startsWith('ppt/media/')).length, 0);
+  const combined = Object.values(entries).map(strFromU8).join('\n');
+  for (const marker of ['/track', 'tracksInfo', 'FR QUATRE SIX', 'TWO TO FOUR', 'indefinite', '<p:timing']) assert.equal(combined.includes(marker), false);
+  const session = await importPptx(bytes, { projection: 'content' });
+  try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes)); }
+  finally { session.dispose(); }
+});
+
 test('PowerPoint caption samples inventory zero, single and multiple tracks without inferring a default', async () => {
   const empty = inventory(join(root, 'tests/fixtures/pptkit-video-trim.pptx'));
   assert.deepEqual(empty.map(x => x.tracks.length), [0, 0]);

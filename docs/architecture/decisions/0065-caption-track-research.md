@@ -22,7 +22,7 @@ A synthetic mixed package made from the retained PowerPoint SRT sample and a gen
 
 ## Outstanding admission criteria
 
-Determine default selection across fresh application sessions and persisted versus application-owned state; observe cue boundaries and looping against actual video and compare a second producer. Investigate SRT markup and encoding conversion beyond the one plain example, inspect audio and other extension forms, define language handling, broken/shared/duplicate tracks and explicit access to external sources. Only then choose a bounded VTT grammar and lossless handling of unsupported cue settings, and define actual source-relative time mapping. Test browser synchronization and accessible alternatives separately. ADV-04.4.1 and ADV-04.4.2 therefore remain open.
+Determine default selection across fresh application sessions and persisted versus application-owned state; observe cue boundaries and looping against actual video and compare a second producer. A [LibreOfficeDev headless resave](../../testing/native-captions.md#libreofficedev-resave-comparison) removed the video and both tracks from one PowerPoint sample; it does not provide an independently authored caption sample or playback evidence. Investigate SRT markup and encoding conversion beyond the one plain example, inspect audio and other extension forms, define language handling, broken/shared/duplicate tracks and explicit access to external sources. Only then choose a bounded VTT grammar and lossless handling of unsupported cue settings, and define actual source-relative time mapping. Test browser synchronization and accessible alternatives separately. ADV-04.4.1 and ADV-04.4.2 therefore remain open.
 
 ## Alternatives
 
