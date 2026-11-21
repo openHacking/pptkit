@@ -51,7 +51,7 @@ test('same-slide shared video re-export agrees across Node and browser', async t
   assert.deepEqual(actual, expected); assert.deepEqual(requests, []);
 });
 
-for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-sequence']], ['powerpoint-audio-start-auto', ['click-sequence', 'automatic']], ['powerpoint-video-start-auto', [undefined, undefined]]]) test(`mixed media ${fixture} projection and re-export agree across Node and browser`, async t => {
+for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-sequence']], ['powerpoint-audio-start-auto', ['click-sequence', 'automatic']], ['powerpoint-video-start-auto', [undefined, undefined]], ['powerpoint-video-object-click', ['click-sequence', 'click-sequence']]]) test(`mixed media ${fixture} projection and re-export agree across Node and browser`, async t => {
   const bytes = await readFile(`tests/fixtures/${fixture}.pptx`);
   const importOptions = { projection: 'content', videoProjection: 'iso-bmff-v1', audioProjection: 'wave-pcm-v1' };
   const exportOptions = { videoMode: 'iso-bmff-v1', audioMode: 'wave-pcm-v1' };
@@ -92,6 +92,17 @@ test('automatic video import and fresh export agree across Node and browser', as
   assert.deepEqual(actual, expected);
   assert.deepEqual(actual.elements.filter(x => x.type === 'video').map(x => x.playbackStart), ['automatic', 'automatic']);
   assert.deepEqual(requests, []);
+});
+
+test('independent video click import and fresh export agree across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/pptkit-video-object-click.pptx'), options = { projection: 'content', videoProjection: 'iso-bmff-v1' };
+  const node = await importPptx(bytes, options); let expected;
+  try { const output = await generatePptx(node.document, { videoMode: 'iso-bmff-v1' }); expected = { elements: node.document.slides[0].elements, bytes: [...output.bytes], warnings: output.warnings }; } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ bytes, options }) => { const s = await PPTKit.importPptx(Uint8Array.from(bytes), options); try { const output = await PPTKit.generatePptx(s.document, { videoMode: 'iso-bmff-v1' }); return { elements: s.document.slides[0].elements, bytes: [...output.bytes], warnings: output.warnings }; } finally { s.dispose(); } }, { bytes: [...bytes], options });
+  assert.deepEqual(actual, expected); assert.deepEqual(actual.elements.map(x => x.playbackStart), ['object-click', 'click-sequence']); assert.deepEqual(requests, []);
 });
 
 test('native trimmed audio import and fresh export agree across Node and browser', async t => {

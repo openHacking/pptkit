@@ -66,3 +66,21 @@ test('explicit click-sequence retains the default output bytes', async () => {
   };
   assert.deepEqual((await generatePptx(make('click-sequence'), { audioMode: 'wave-pcm-v1' })).bytes, (await generatePptx(make(undefined), { audioMode: 'wave-pcm-v1' })).bytes);
 });
+
+
+test('native and generated independent video clicks use distinct pause targets', async () => {
+  const dir = await mkdtemp(join(tmpdir(), 'pptkit-video-click-'));
+  try {
+    const cases = [
+      ['powerpoint-video-object-click.pptx', { main: ['3', '4', '5'], videos: ['3', '2'], objects: [], audio: ['4', '5'], video: ['3', '2'] }],
+      ['pptkit-video-object-click.pptx', { main: ['3'], videos: ['3', '2'], objects: [], audio: [], video: ['3', '2'] }],
+      ['pptkit-video-object-only.pptx', { main: [], videos: ['2'], objects: [], audio: [], video: ['2'] }],
+    ];
+    for (const [name, expected] of cases) execFileSync('python3', [join(root, 'scripts/research/verify-object-click-audio.py'), join(root, 'tests/fixtures', name), JSON.stringify(expected)], { cwd: root });
+    for (const [argument, name] of [[undefined, 'pptkit-video-object-click.pptx'], ['--single', 'pptkit-video-object-only.pptx']]) {
+      const path = join(dir, 'out.pptx');
+      execFileSync(process.execPath, [join(root, 'scripts/research/generate-video-click.mjs'), path, ...(argument ? [argument] : [])], { cwd: root });
+      assert.deepEqual(await readFile(path), await readFile(join(root, 'tests/fixtures', name)));
+    }
+  } finally { await rm(dir, { recursive: true, force: true }); }
+});

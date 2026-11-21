@@ -35,7 +35,7 @@ export interface ElementXmlContext {
   nativeConnector?(element: LayoutConnectorElement): NativeConnectorResult;
   imageRelationship(assetId: string): { base: string; svg?: string } | undefined;
   audioRelationship(assetId: string, posterAssetId: string | undefined, objectId: number, playbackStart: "click-sequence" | "object-click" | "automatic" | undefined, playbackVolume: "low" | "medium" | "high" | "mute" | undefined, loop: boolean | undefined, rewindAfterPlayback: boolean | undefined, trimStartMs: number | undefined, trimEndMs: number | undefined): { audio: string; media: string; poster: string };
-  videoRelationship(assetId: string, posterAssetId: string | undefined, objectId: number, playbackStart: "click-sequence" | "automatic" | undefined): { video: string; media: string; poster: string };
+  videoRelationship(assetId: string, posterAssetId: string | undefined, objectId: number, playbackStart: "click-sequence" | "object-click" | "automatic" | undefined): { video: string; media: string; poster: string };
   actionRelationship(action: ElementAction): string | undefined;
   nextChartId(): number;
   chartRelationship(chartId: number): string;

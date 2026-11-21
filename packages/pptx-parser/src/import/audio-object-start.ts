@@ -10,7 +10,7 @@ const cond = () => el("cond", { evt: "onClick", delay: "0" }, [shapeTarget()]);
 const delay = () => el("stCondLst", {}, [el("cond", { delay: "0" })]);
 
 /** Recognize an observed independent audio play or video pause click sequence. */
-export async function audioObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, kind: "audio" | "video-pause" = "audio"): Promise<ReadonlyMap<string, Result>> {
+export async function audioObjectStart(root: XmlElement, p: string, checkpoint: () => Promise<void>, kind: "audio" | "video-pause" | "video-object" = "audio"): Promise<ReadonlyMap<string, Result>> {
   const selected = (node: XmlElement, local: string) => children(node).filter(x => x.namespaceUri === p && x.local === local);
   const one = (node: XmlElement | undefined, local: string) => { const list = node ? selected(node, local) : []; return list.length === 1 ? list[0] : undefined; };
   const canonical = (value: string | undefined) => {
@@ -58,7 +58,7 @@ export async function audioObjectStart(root: XmlElement, p: string, checkpoint: 
     const layer = (child: Spec) => el("par", {}, [tn({ fill: "hold" }, [delay(), el("childTnLst", {}, [child])])]);
     const body = layer(layer(el("par", {}, [effect])));
     const expected = el("seq", { concurrent: "1", nextAc: "seek" }, [tn({ restart: "whenNotActive", fill: "hold", evtFilter: "cancelBubble", nodeType: "interactiveSeq" }, [el("stCondLst", {}, [cond()]), el("endSync", { evt: "end", delay: "0" }, [el("rtn", { val: "all" })]), el("childTnLst", {}, [body])]), el("nextCondLst", {}, [cond()])]);
-    result.set(target, matches(seq, expected) && commands.get(target) === (kind === "audio" ? 1 : 2) && (kind === "audio" || duration === 1) ? { status: "mapped", durationMs: duration } : { status: "unsupported" });
+    result.set(target, matches(seq, expected) && commands.get(target) === (kind === "video-pause" ? 2 : 1) && (kind === "audio" || duration === 1) ? { status: "mapped", durationMs: duration } : { status: "unsupported" });
   }
   return result;
 }

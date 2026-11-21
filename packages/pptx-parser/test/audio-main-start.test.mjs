@@ -150,3 +150,49 @@ test("ordered automatic video starts survive video-only and mixed fresh exports"
     }
   }
 });
+
+
+test("native and generated independent video clicks preserve mixed start modes", async () => {
+  const native = await sample("powerpoint-video-object-click"), session = await importPptx(native, mixedOptions);
+  try {
+    assert.deepEqual(session.document.slides[0].elements.map(x => x.playbackStart), ["object-click", "click-sequence", "click-sequence", "click-sequence"]);
+    const plan = await session.prepareSave({ mode: "no-op" }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(native));
+  } finally { session.dispose(); }
+  const parts = readGeneratedZip(await sample("pptkit-mixed-av"));
+  for (const mixed of [false, true]) {
+    const p = createPresentation();
+    p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+    p.registerAsset({ id: "sound", kind: "audio", mimeType: "audio/wav", source: { type: "bytes", value: parts.get("ppt/media/sound.wav") } });
+    p.addSlide({ elements: [
+      { type: "video", videoAssetId: "movie", playbackStart: "object-click", box: { x: 0, y: 0, width: 40, height: 40 } },
+      ...(mixed ? [{ type: "audio", audioAssetId: "sound", playbackStart: "automatic", box: { x: 50, y: 0, width: 40, height: 40 } }, { type: "video", videoAssetId: "movie", playbackStart: "click-sequence", box: { x: 100, y: 0, width: 40, height: 40 } }] : []),
+      { type: "video", videoAssetId: "movie", playbackStart: "object-click", box: { x: 150, y: 0, width: 40, height: 40 } },
+    ] });
+    let bytes = (await generatePptx(p, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+    for (let round = 0; round < 3; round++) {
+      const s = await importPptx(bytes, mixed ? mixedOptions : { projection: "content", videoProjection: "iso-bmff-v1" });
+      try {
+        assert.deepEqual(s.document.slides[0].elements.filter(x => x.type === "video").map(x => x.playbackStart), mixed ? ["object-click", "click-sequence", "object-click"] : ["object-click", "object-click"]);
+        if (mixed) assert.deepEqual(starts(s), ["automatic"]);
+        bytes = (await generatePptx(s.document, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+      } finally { s.dispose(); }
+    }
+  }
+});
+
+test("independent video start is not guessed from damaged pause or media nodes", async () => {
+  const native = await sample("powerpoint-video-object-click");
+  const changes = [
+    s => s.replaceAll('cmd="togglePause"', 'cmd="stop"'),
+    s => s.replace('evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="2"', 'evt="onClick" delay="0"><p:tgtEl><p:spTgt spid="3"'),
+    s => s.replace('<p:video><p:cMediaNode vol="80000"><p:cTn id="28"', '<p:video><p:cMediaNode vol="50000"><p:cTn id="28"'),
+    s => s.replace('<p:cTn id="28" fill="hold" display="0"', '<p:cTn id="28" repeatCount="indefinite" fill="hold" display="0"'),
+    s => s.replace('restart="never" nodeType="tmRoot"', 'restart="always" nodeType="tmRoot"'),
+    s => s.replace(/(<p:video><p:cMediaNode vol="80000"><p:cTn id="28".*?<\/p:video>)/, '$1$1'),
+    s => s.replaceAll('cmd="togglePause"', 'cmd="togglePause" extra="1"'),
+  ];
+  for (const change of changes) {
+    const bytes = modify(native, change), s = await importPptx(bytes, mixedOptions);
+    try { assert.equal(s.document.slides[0].elements.find(x => x.type === "video").playbackStart, undefined); } finally { s.dispose(); }
+  }
+});

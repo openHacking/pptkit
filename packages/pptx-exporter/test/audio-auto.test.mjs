@@ -74,7 +74,7 @@ test("automatic video uses ordered native media calls with independent pauses", 
     verify(generated, [group([auto(2, 0, 2000), auto(3, 2000, 2000)], true)]);
     const base = make([video(undefined)]), clickVideo = make([video("click-sequence")]);
     assert.deepEqual((await generatePptx(base, options)).bytes, (await generatePptx(clickVideo, options)).bytes);
-    const invalid = make([video("object-click")]);
+    const invalid = make([video("with-previous")]);
     assert.ok(validatePresentation(invalid).some(x => x.code === "invalid-video-playback-start"));
     await assert.rejects(generatePptx(invalid, options), /validation failed/i);
     await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), video("automatic")]), options), /cannot follow looping audio/);

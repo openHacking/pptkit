@@ -45,7 +45,7 @@ interface PartContextResult {
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
   audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
-  videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "automatic" }[];
+  videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic" }[];
   mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
 }
 
@@ -93,7 +93,7 @@ function createPartContext(options: {
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
-  const videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "automatic" }[] = [];
+  const videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic" }[] = [];
   const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {

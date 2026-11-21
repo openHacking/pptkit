@@ -193,7 +193,7 @@ export interface VideoElementInput extends ElementBaseInput {
   videoAssetId: string;
   posterAssetId?: string;
   /** Defaults to click-sequence; automatic follows the native main sequence. */
-  playbackStart?: "click-sequence" | "automatic";
+  playbackStart?: "click-sequence" | "object-click" | "automatic";
 }
 export interface VideoElement extends ElementBase, Omit<VideoElementInput, keyof ElementBaseInput> {}
 export interface NormalizedVideoElement extends NormalizedElementBase {
@@ -201,7 +201,7 @@ export interface NormalizedVideoElement extends NormalizedElementBase {
   videoAssetId: string;
   posterAssetId?: string;
   /** Defaults to click-sequence; automatic follows the native main sequence. */
-  playbackStart?: "click-sequence" | "automatic";
+  playbackStart?: "click-sequence" | "object-click" | "automatic";
 }
 
 export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron" | "parallelogram";
