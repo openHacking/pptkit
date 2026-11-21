@@ -2,7 +2,7 @@ import { attribute, children } from "../presentation/structure-xml.js";
 import type { XmlElement } from "../xml/read-xml.js";
 
 /** Reject video metadata that could change the timing represented by the movie clock. */
-export function plainVideoTimingSource(nvPr: XmlElement | undefined, p: string, a: string, r: string): boolean {
+export function plainVideoTimingSource(nvPr: XmlElement | undefined, p: string, a: string, r: string, allowTrim = false): boolean {
   const attrs = (node: XmlElement) => node.attributes.filter(x => x.namespaceUri !== "http://www.w3.org/2000/xmlns/");
   if (!nvPr || attrs(nvPr).length || nvPr.children.some(x => (x.kind === "text" || x.kind === "cdata") && x.value.trim())) return false;
   const nodes = children(nvPr);
@@ -17,5 +17,7 @@ export function plainVideoTimingSource(nvPr: XmlElement | undefined, p: string, 
   const ext = extensions[0]!, media = children(ext);
   if (ext.namespaceUri !== p || ext.local !== "ext" || attrs(ext).length !== 1 || attribute(ext, "uri")?.toUpperCase() !== "{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}" || media.length !== 1 || ext.children.some(x => (x.kind === "text" || x.kind === "cdata") && x.value.trim())) return false;
   const item = media[0]!;
-  return item.namespaceUri === "http://schemas.microsoft.com/office/powerpoint/2010/main" && item.local === "media" && attrs(item).length === 1 && attrs(item)[0]!.namespaceUri === r && attrs(item)[0]!.local === "embed" && children(item).length === 0 && !item.children.some(x => (x.kind === "text" || x.kind === "cdata") && x.value.trim());
+  const contents = children(item);
+  const trimValid = contents.length === 0 || allowTrim && contents.length === 1 && contents[0]!.namespaceUri === "http://schemas.microsoft.com/office/powerpoint/2010/main" && contents[0]!.local === "trim";
+  return item.namespaceUri === "http://schemas.microsoft.com/office/powerpoint/2010/main" && item.local === "media" && attrs(item).length === 1 && attrs(item)[0]!.namespaceUri === r && attrs(item)[0]!.local === "embed" && trimValid && !item.children.some(x => (x.kind === "text" || x.kind === "cdata") && x.value.trim());
 }

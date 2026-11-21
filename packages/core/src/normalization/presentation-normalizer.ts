@@ -352,7 +352,7 @@ function normalizeElement(
     };
   }
   if (element.type === "audio") return { ...base, type: "audio", audioAssetId: element.audioAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }), ...(element.playbackStart === undefined ? {} : { playbackStart: element.playbackStart }), ...(element.playbackVolume === undefined ? {} : { playbackVolume: element.playbackVolume }), ...(element.loop === undefined ? {} : { loop: element.loop }), ...(element.rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback: element.rewindAfterPlayback }), ...(element.trimStartMs === undefined ? {} : { trimStartMs: element.trimStartMs }), ...(element.trimEndMs === undefined ? {} : { trimEndMs: element.trimEndMs }) };
-  if (element.type === "video") return { ...base, type: "video", videoAssetId: element.videoAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }), ...(element.playbackStart === undefined ? {} : { playbackStart: element.playbackStart }) };
+  if (element.type === "video") return { ...base, type: "video", videoAssetId: element.videoAssetId, ...(element.posterAssetId === undefined ? {} : { posterAssetId: element.posterAssetId }), ...(element.playbackStart === undefined ? {} : { playbackStart: element.playbackStart }), ...(element.trimStartMs === undefined ? {} : { trimStartMs: element.trimStartMs }), ...(element.trimEndMs === undefined ? {} : { trimEndMs: element.trimEndMs }) };
   if (element.type === "shape") {
     const shapeTrace = owner ? new StyleTrace(childSource(owner, "style"), "defaults.shape.style") : undefined;
     const shapeStyle = normalizeShapeStyle(element.style, shapeTrace);

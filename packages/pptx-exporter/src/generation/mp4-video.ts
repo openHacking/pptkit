@@ -12,12 +12,15 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
     if (element.type === "group") { for (const child of element.children) check(child, slideId, true); return; }
     if (element.type !== "video") return;
     if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click" && element.playbackStart !== "automatic") return reject("playbackStart must be click-sequence, object-click, or automatic.");
+    for (const key of ["trimStartMs", "trimEndMs"] as const) if (element[key] !== undefined && (!Number.isSafeInteger(element[key]) || element[key]! < 0 || element[key]! > 2147483647)) return reject(`${key} must be a nonnegative integer no greater than 2147483647 milliseconds.`);
     if (mode !== "iso-bmff-v1") return reject("requires videoMode iso-bmff-v1; video cannot be silently omitted.");
     if (!slideId || nested || element.hidden || element.action !== undefined || element.placeholderKey !== undefined || element.opacity !== 1 || !element.box.width || !element.box.height) return reject("only visible, nontransparent slide-local top-level video with nonzero geometry and no action or placeholder binding is supported.");
     const asset = assets.get(element.videoAssetId);
     if (!asset || asset.kind !== "video") return reject("video requires a video asset.");
     if (asset.mimeType?.trim().toLowerCase() !== "video/mp4") return reject("a declared video/mp4 MIME type is required.");
-    if (resources.has(asset.id)) return;
+    const validateDuration = (durationMs: number) => { if ((element.trimStartMs ?? 0) + (element.trimEndMs ?? 0) >= durationMs) return reject("video trim must leave at least one millisecond of the rounded movie duration."); };
+    const existing = resources.get(asset.id);
+    if (existing) { validateDuration(existing.durationMs); return; }
     if (asset.source.type !== "bytes" && !resolved?.has(asset.id)) {
       if (!external) return reject("video requires a byte-backed asset; paths and links are not loaded.");
       external.set(asset.id, asset); return;
@@ -27,6 +30,7 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
     if (length > ceiling) throw new RangeError("Video exceeds the MP4 inspection or maxAssetBytes limit.");
     signal?.throwIfAborted();
     const data = asset.source.type === "bytes" ? decodeAssetBytes(asset.source.value) : resolved!.get(asset.id)!, durationMs = inspectMp4MovieDuration(data, { maxBytes: ceiling, ...(signal ? { signal } : {}) });
+    validateDuration(durationMs);
     resources.set(asset.id, { data, durationMs });
   };
   for (const layout of document.layouts) for (const element of layout.elements) check(element);

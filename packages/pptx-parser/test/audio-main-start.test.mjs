@@ -196,3 +196,47 @@ test("independent video start is not guessed from damaged pause or media nodes",
     try { assert.equal(s.document.slides[0].elements.find(x => x.type === "video").playbackStart, undefined); } finally { s.dispose(); }
   }
 });
+
+
+test("native and generated video trim projects shared bytes and source-relative offsets", async () => {
+  for (const name of ["powerpoint-video-trim", "pptkit-video-trim"]) {
+    let bytes = await sample(name);
+    for (let round = 0; round < 3; round++) {
+      const s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" });
+      try {
+        const videos = s.document.slides[0].elements.filter(x => x.type === "video");
+        assert.equal(videos.length, 2); assert.equal(videos[0].videoAssetId, videos[1].videoAssetId);
+        assert.deepEqual(videos.map(x => [x.trimStartMs, x.trimEndMs, x.playbackStart]), [[150, 50, "automatic"], [undefined, undefined, "automatic"]]);
+        const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+        bytes = (await generatePptx(s.document, { videoMode: "iso-bmff-v1" })).bytes;
+      } finally { s.dispose(); }
+    }
+  }
+});
+
+test("invalid video trim does not infer timing or trust external sentinel", async () => {
+  const generated = await sample("pptkit-video-trim");
+  const changes = [
+    s => s.replace('st="150" end="50"', 'st="150.5" end="50"'),
+    s => s.replace('st="150" end="50"', 'st="1950" end="50"'),
+    s => s.replace('st="150" end="50"', 'st="150" end="50" extra="1"'),
+    s => s.replace('delay="1800"', 'delay="1801"'),
+    s => s.replace('dur="1800"', 'dur="1801"'),
+  ];
+  for (const change of changes) {
+    const bytes = modify(generated, change), s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" });
+    try { assert.deepEqual(s.document.slides[0].elements.filter(x => x.type === "video").map(x => x.playbackStart), [undefined, undefined]); const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, bytes); } finally { s.dispose(); }
+  }
+  const native = await sample("powerpoint-video-trim"), damaged = modify(native, s => s.replace('st="150" end="50"', 'st="150.5" end="50"'));
+  const session = await importPptx(damaged, { projection: "content", videoProjection: "iso-bmff-v1" });
+  try { assert.equal(session.document.slides[0].elements.filter(x => x.type === "video").length, 1); assert.ok(session.report.videoSources.some(x => x.externalTarget === "NULL")); } finally { session.dispose(); }
+});
+
+
+test("video object-click remains independent with a valid trim", async () => {
+  const parts = readGeneratedZip(await sample("pptkit-mixed-av")), p = createPresentation();
+  p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+  p.addSlide({ elements: [{ type: "video", videoAssetId: "movie", playbackStart: "object-click", trimStartMs: 150, trimEndMs: 50, box: { x: 0, y: 0, width: 40, height: 40 } }] });
+  let bytes = (await generatePptx(p, { videoMode: "iso-bmff-v1" })).bytes;
+  for (let i = 0; i < 3; i++) { const s = await importPptx(bytes, { projection: "content", videoProjection: "iso-bmff-v1" }); try { const [v] = s.document.slides[0].elements; assert.deepEqual([v.playbackStart, v.trimStartMs, v.trimEndMs], ["object-click", 150, 50]); bytes = (await generatePptx(s.document, { videoMode: "iso-bmff-v1" })).bytes; } finally { s.dispose(); } }
+});
