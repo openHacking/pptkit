@@ -3,7 +3,35 @@ import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import { createPresentation, normalizePresentation } from '../packages/core/dist/index.js';
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
+
+test('combined outline and connector stroke hits follow SVG paint order', async t => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [
+    { type: 'shape', id: 'back', shape: 'rect', box: { x: 0, y: 0, width: 100, height: 100 } },
+    { type: 'connector', id: 'line', start: { x: 0, y: 50 }, end: { x: 100, y: 50 }, style: { paint: { type: 'solid', color: '000000' }, width: 2, dash: 'dash' } },
+    { type: 'shape', id: 'ellipse', shape: 'ellipse', box: { x: 40, y: 40, width: 20, height: 20 } },
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg);
+  await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+    const paths = ['back', 'line', 'ellipse'].map(id => document.querySelector(`[data-pptkit-element-id="${id}"]`).querySelector('rect,polyline,ellipse'));
+    const samples = [];
+    for (let x = 0.37; x < 100; x += 1.31) for (let y = 40.17; y < 61; y += 1.37) {
+      const p = new DOMPoint(x, y), expected = paths[2].isPointInFill(p) ? 'ellipse' : paths[1].isPointInStroke(p) ? 'line' : paths[0].isPointInFill(p) ? 'back' : null;
+      samples.push({ point: { x, y }, expected, actual: PPTKit.hitTestSvgSelectionOutlinesAndStrokes(items, p)?.elementId ?? null });
+    }
+    return { items, samples };
+  }, layout);
+  for (const { point, expected, actual } of result.samples) {
+    assert.equal(actual, expected);
+    assert.equal(hitTestSvgSelectionOutlinesAndStrokes(result.items, point)?.elementId ?? null, expected);
+  }
+});
 
 test('dashed connector strokes match Chromium across segments and transforms', async t => {
   const doc = createPresentation();

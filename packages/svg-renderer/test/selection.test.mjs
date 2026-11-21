@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPresentation, normalizePresentation } from '@pptkit/core';
 import { resolveNormalizedLayout } from '@pptkit/layout';
-import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes } from '../dist/index.js';
+import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgSelectionFrames, hitTestSvgSelectionGeometry, hitTestSvgSelectionOutlines, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes } from '../dist/index.js';
 
 const box = (x, y, width, height) => ({ x, y, width, height });
 const shape = (id, b, extra = {}) => ({ type: 'shape', id, shape: 'rect', box: b, ...extra });
@@ -216,6 +216,23 @@ test('solid connector stroke hit tests use local widths through nonuniform group
   const singular = structuredClone(items); singular[0].strokeGeometry.transform = [0, 0, 0, 0, 0, 0];
   assert.throws(() => hitTestSvgConnectorStrokes(singular, { x: 0, y: 0 }), RangeError);
   assert.throws(() => getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: 1 }), TypeError);
+});
+
+test('combined outline and stroke hits preserve object and owner stacking', () => {
+  const doc = createPresentation({ masters: [{ id: 'master', name: 'Master', elements: [shape('master-shape', box(0, 0, 100, 100))] }] });
+  doc.defineSlideLayout({ id: 'layout', name: 'Layout', masterId: 'master' });
+  doc.addSlide({ id: 'page', layoutId: 'layout', elements: [
+    { type: 'connector', id: 'line', start: { x: 0, y: 50 }, end: { x: 100, y: 50 }, style: { paint: { type: 'solid', color: '000000' }, width: 2, dash: 'dash' } },
+    { type: 'shape', id: 'ellipse', shape: 'ellipse', box: box(40, 40, 20, 20) },
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const items = getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 50, y: 50 }).elementId, 'ellipse');
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 20, y: 50 }).elementId, 'line');
+  assert.deepEqual(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 11, y: 50 }).owner, { type: 'master', id: 'master' });
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 150, y: 150 }), undefined);
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(getSvgSlideSelectionGeometry(layout, 0), { x: 20, y: 50 }).elementId, 'master-shape');
+  assert.throws(() => hitTestSvgSelectionOutlinesAndStrokes([], { x: NaN, y: 0 }), TypeError);
 });
 
 test('dash phase continues through bends and round caps extend into gaps', () => {

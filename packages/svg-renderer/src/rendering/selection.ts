@@ -239,6 +239,18 @@ export function hitTestSvgSelectionOutlines(items: readonly SvgSelectionGeometry
   return hitGeometry(items, point, connectorTolerance, true);
 }
 
+/** Hit shape interiors and captured connector strokes together in paint order. */
+export function hitTestSvgSelectionOutlinesAndStrokes(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionGeometry | undefined {
+  if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
+  for (let i = items.length - 1; i >= 0; i--) {
+    const item = items[i]!;
+    if (item.kind === "connector") {
+      if (hitTestSvgConnectorStrokes([item], point)) return item;
+    } else if (hitTestSvgSelectionFrames([item], point) && (!item.outline || insideOutline(item, point))) return item;
+  }
+  return undefined;
+}
+
 function hitGeometry(items: readonly SvgSelectionGeometry[], point: Point, connectorTolerance: number, useOutlines: boolean): SvgSelectionGeometry | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
   if (!Number.isFinite(connectorTolerance) || connectorTolerance < 0) throw new RangeError("Connector tolerance must be finite and nonnegative.");
