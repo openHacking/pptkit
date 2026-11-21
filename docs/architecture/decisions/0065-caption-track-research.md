@@ -1,0 +1,23 @@
+# ADR0065: Caption track research and admission boundary
+
+Status: research decision, 2026-11-21. This does not admit caption creation, semantic import, fresh export or browser playback.
+
+## Evidence
+
+In PowerPoint for Mac 16.104, two WebVTT files were inserted on the first of two video instances sharing an MP4. The first instance was trimmed by 150 ms at the start and 50 ms at the end. After saving and reopening, the caption editor listed English (United States) and a French (France) track with the label `French test`. The other video has no track entry. The single-track and two-track packages, original-byte no-op and independent ZIP/XML inspection are described in [native caption observations](../../testing/native-captions.md).
+
+The observed video `p14:media` contains an extension with `p173:tracksInfo displayLoc="media"`, a `trackLst`, and ordered `track` elements with GUID-like `id`, `label`, `lang` and `r:embed`. Each relationship has the Office 2017 track relationship type and targets a separate package part of content type `text/vtt`. The saved tracks contain the same cue timecodes as the inputs, including one cue beginning before the trim start. This shows no storage-time offset in this experiment; it does not establish rendering or seek-time offset. The observed XML has no explicit default-track flag; order and language must not be interpreted as a default. Separate media instances can share the MP4 while having different track lists.
+
+## Decision
+
+Keep tracks as source-owned, per-media-instance data. Raw bytes, relationship identity, language spelling, label, order and unknown extensions require preservation until separately admitted. An unchanged source save retains the original package. Current Parser reports the track parts as unsupported; a fresh export of projected content does not preserve tracks and is not a caption round trip. Do not infer a default track, display state or playback timing from this sample. External targets must not be fetched implicitly. Do not introduce generic Core subtitle fields or claim WebVTT cue editing based solely on file extension or a header.
+
+The research inventory searches picture descendants for the observed track namespace and tests UTF-8 plus the WebVTT header; it is not an OPC security boundary, complete MCE inventory, WebVTT parser, validator, or production API. It reports malformed, missing, wrong-type and external relations rather than resolving them. More complete inventory needs explicit budgets, namespace/relationship rules, MCE handling and source locations using Parser infrastructure.
+
+## Outstanding admission criteria
+
+Determine default selection and disabled state with native playback and save/reopen evidence; observe seek, cue boundary, trim and looping against actual video and compare a second producer. Establish whether imported SRT is preserved or converted, inspect audio and other extension forms, define language handling, broken/shared/duplicate tracks and explicit access to external sources. Only then choose a bounded VTT grammar and lossless handling of unsupported cue settings, and define actual source-relative time mapping. Test browser synchronization and accessible alternatives separately. ADV-04.4.1 and ADV-04.4.2 therefore remain open.
+
+## Alternatives
+
+Inferring a default from the first track would invent behavior not evidenced by XML. Normalizing all tracks to cues now could discard unknown WebVTT syntax, metadata and bytes. Exposing the research helper as the public API would bypass existing OPC limits and MCE policy. Preserving source bytes and explicitly reporting unsupported projection keeps those options available without overstating capability.
