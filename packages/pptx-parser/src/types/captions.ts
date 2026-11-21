@@ -14,6 +14,8 @@ export interface PptxCaptionInspectionOptions extends PptxInspectionOptions {
 export interface PptxCaptionTrackSource {
   readonly slideId: number;
   readonly source: PptxSourceLocation;
+  /** Picture presence only; the extension and track remain source-only. */
+  readonly pictureView: 'effective-drawing' | 'raw-only';
   readonly objectId?: string;
   readonly trackId?: string;
   readonly language?: string;

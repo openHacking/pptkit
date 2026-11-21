@@ -645,6 +645,8 @@ import { inspectPptxTiming, type PptxTimingInspection, type PptxTimingReference 
 import { inspectPptxCaptionTracks, type PptxCaptionInspection } from "@pptkit/pptx-parser";
 const sourceCaptions: PptxCaptionInspection = await inspectPptxCaptionTracks(generated[0]!.bytes, { captionLimits: { maxTracks: 10 } });
 void sourceCaptions.tracks[0]?.language;
+const captionPictureView: 'effective-drawing' | 'raw-only' | undefined = sourceCaptions.tracks[0]?.pictureView;
+void captionPictureView;
 const sourceTiming: PptxTimingInspection = await inspectPptxTiming(generated[0]!.bytes, { timingLimits: { maxRecords: 10000, maxTextCharacters: 1000000 } });
 const timingReference: PptxTimingReference | undefined = sourceTiming.slides[0]?.nodes[0]?.drawingReference;
 // @ts-expect-error Located source records do not authorize a Core mapping.

@@ -37,6 +37,15 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
   const text = (value: string): string => { textCharacters += value.length; if (textCharacters > budget.maxTextCharacters) fail('Caption inventory exceeds maxTextCharacters.'); return value; };
   const is = (meta: Meta | undefined, ns: string, local: string) => meta?.node.namespaceUri === ns && meta.node.local === local;
   for (const slide of structure.slides) {
+    const effective = await c.root(slide.part, 'sld', 'presentationml.slide'), cSld = children(effective).find(node => node.namespaceUri === c.p && node.local === 'cSld');
+    const tree = cSld && children(cSld).find(node => node.namespaceUri === c.p && node.local === 'spTree'), pictures = new Set<number>();
+    const drawings = tree ? children(tree) : [];
+    while (drawings.length) {
+      await step(); const node = drawings.pop()!;
+      if (node.namespaceUri !== c.p) continue;
+      if (node.local === 'pic') pictures.add((await c.sourceElement(slide.part, node)).elementIndex);
+      else if (node.local === 'grpSp') for (const child of children(node)) { await step(); drawings.push(child); }
+    }
     const raw = c.rawXml.get(slide.part)!; let index = 0;
     const stack: Meta[] = [{ node: raw, index: 0, ordinal: 1 }];
     while (stack.length) {
@@ -48,7 +57,7 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
         for (let current: Meta | undefined = item; current; current = current.parent) { await step(); components.push(text(`Q{${current.node.namespaceUri}}${current.node.local}[${current.ordinal}]`)); }
         const relationshipId = attribute(item.node, 'embed', c.r), trackId = attribute(item.node, 'id'), language = attribute(item.node, 'lang'), label = attribute(item.node, 'label');
         const identity = children(nvPic!.node).find(node => node.namespaceUri === c.p && node.local === 'cNvPr'), objectId = identity && attribute(identity, 'id');
-        const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
+        const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, pictureView: pictures.has(picture!.index) ? 'effective-drawing' as const : 'raw-only' as const, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
         const relation = c.findRelationship(slide.part, relationshipId);
         if (!relation || relation.type !== REL || relation.fragment !== undefined || (relation.targetMode === 'Internal' && !relation.targetPart)) tracks.push({ ...base, status: 'unsupported-relationship' });
         else if (relation.targetMode === 'External') tracks.push({ ...base, status: 'external', externalTarget: text(relation.target) });

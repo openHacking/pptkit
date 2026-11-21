@@ -13,6 +13,7 @@ test('caption source inventory identifies the observed per-video tracks without 
   const bytes = await source(), result = await inspectPptxCaptionTracks(bytes);
   assert.equal(result.schemaVersion, 'pptkit-caption-source-v1'); assert.equal(result.dialect, 'transitional'); assert.equal(result.view, 'raw-only');
   assert.deepEqual(result.tracks.map(x => [x.objectId, x.language, x.label, x.status]), [['2', 'en-us', '', 'vtt-header-only'], ['2', 'fr-fr', 'French test', 'vtt-header-only'], ['3', 'es-es', '', 'vtt-header-only']]);
+  assert.deepEqual(result.tracks.map(x => x.pictureView), ['effective-drawing', 'effective-drawing', 'effective-drawing']);
   assert.equal(result.inspectedBytes, result.tracks.reduce((sum, x) => sum + x.byteLength, 0));
   assert.ok(result.tracks.every(x => x.source.part === '/ppt/slides/slide1.xml' && x.source.elementIndex > 0 && x.source.path.includes('track[')));
   assert.ok(Object.isFrozen(result) && Object.isFrozen(result.tracks) && Object.isFrozen(result.tracks[0].source));
@@ -54,6 +55,22 @@ test('raw source inventory includes but does not activate an inactive MCE choice
   });
   const result = await inspectPptxCaptionTracks(bytes);
   assert.deepEqual(result.tracks.map(x => x.objectId), ['2', '2', '3']); assert.ok(result.tracks[0].source.path.includes('AlternateContent'));
+  assert.deepEqual(result.tracks.map(x => x.pictureView), ['raw-only', 'raw-only', 'effective-drawing']);
   const session = await importPptx(bytes, { projection: 'content' });
   try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, bytes); } finally { session.dispose(); }
+  const entries = unzipSync(bytes), key = 'ppt/slides/slide1.xml'; entries[key] = strToU8(strFromU8(entries[key]).replace('Requires="f"', 'Requires="p"'));
+  const selected = await inspectPptxCaptionTracks(zipSync(entries)); assert.deepEqual(selected.tracks.map(x => x.pictureView), ['effective-drawing', 'effective-drawing', 'effective-drawing']);
+  assert.deepEqual(selected.tracks.map(x => x.source), result.tracks.map(x => x.source));
+});
+
+test('picture status uses raw source identity rather than duplicate object IDs', async () => {
+  const bytes = await mutate(entries => {
+    const key = 'ppt/slides/slide1.xml', xml = strFromU8(entries[key]), picture = xml.match(/<p:pic>.*?<\/p:pic>/u)?.[0]; assert.ok(picture);
+    entries[key] = strToU8(xml.replace(picture, picture + picture));
+  });
+  const result = await inspectPptxCaptionTracks(bytes);
+  assert.deepEqual(result.tracks.map(x => x.objectId), ['2', '2', '2', '2', '3']);
+  assert.ok(result.tracks.every(x => x.pictureView === 'effective-drawing'));
+  assert.notEqual(result.tracks[0].source.elementIndex, result.tracks[2].source.elementIndex);
+  assert.equal(result.tracks[0].targetPart, result.tracks[2].targetPart);
 });
