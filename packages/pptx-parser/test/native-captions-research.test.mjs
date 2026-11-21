@@ -20,11 +20,13 @@ test('LibreOffice resave evidence records loss without conflating it with PPTKit
   assert.equal(createHash('sha256').update(original).digest('hex'), evidence.source_sha256);
   assert.equal(evidence.source.vtt_parts.length, 2);
   assert.equal(evidence.rounds.length, 3);
+  assert.equal(evidence.all_rounds_missing_original_video_tracks_and_timing, true);
   for (const round of evidence.rounds) {
     for (const key of ['media_parts', 'original_video_parts', 'vtt_parts', 'track_relationship_parts', 'tracks_info_parts', 'english_cue_parts', 'french_cue_parts', 'indefinite_repeat_parts', 'timing_parts']) assert.deepEqual(round[key], []);
   }
   const bytes = await sample('libreoffice-caption-roundtrip'), entries = unzipSync(bytes);
   assert.equal(createHash('sha256').update(bytes).digest('hex'), evidence.retained_first_round_sha256);
+  assert.equal(evidence.pptkit_no_op_byte_identical, true);
   assert.equal(Object.keys(entries).filter(name => name.startsWith('ppt/media/')).length, 0);
   const combined = Object.values(entries).map(strFromU8).join('\n');
   for (const marker of ['/track', 'tracksInfo', 'FR QUATRE SIX', 'TWO TO FOUR', 'indefinite', '<p:timing']) assert.equal(combined.includes(marker), false);

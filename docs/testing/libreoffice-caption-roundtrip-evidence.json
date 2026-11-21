@@ -3,6 +3,8 @@
   "source_sha256": "ed0311a7ff6b7c99700983cee465f9c4520515393bc8af1d73c98296cde28d09",
   "retained_first_round_path": "tests/fixtures/libreoffice-caption-roundtrip.pptx",
   "retained_first_round_sha256": "9d540eb2cc0bb1898a45c52a5626e20f8b80da618f241bfa40db313d1b2d4049",
+  "pptkit_no_op_byte_identical": true,
+  "all_rounds_missing_original_video_tracks_and_timing": true,
   "source": {
     "part_count": 25,
     "media_parts": [

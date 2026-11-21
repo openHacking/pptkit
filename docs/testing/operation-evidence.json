@@ -1984,6 +1984,124 @@
           ]
         }
       ]
+    },
+    {
+      "id": "captions-libreoffice-headless-loss",
+      "feature": "Video captions and timing",
+      "subject": {
+        "object": "video",
+        "owner": "slide-picture",
+        "family": "powerpoint-multitrack",
+        "variant": "trimmed-loop"
+      },
+      "operation": "Headless resave",
+      "producer": {
+        "name": "PowerPoint for Mac",
+        "version": "16.104"
+      },
+      "application": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "profile": "headless-pptx",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "ed0311a7ff6b7c99700983cee465f9c4520515393bc8af1d73c98296cde28d09",
+        "evidencePath": "docs/testing/libreoffice-caption-roundtrip-evidence.json",
+        "pointer": "/source_sha256",
+        "localPath": "tests/fixtures/powerpoint-caption-loop-multitrack.pptx"
+      },
+      "capability": "unsupported",
+      "status": "fail",
+      "method": "automated",
+      "procedure": "python3 scripts/research/probe-libreoffice-captions.py",
+      "result": "The first resave removed the video, both subtitle tracks and timing; two later resaves remained stripped.",
+      "limitations": "One PowerPoint source and one development build; no playback or general LibreOffice compatibility claim.",
+      "evidence": [
+        {
+          "path": "docs/testing/libreoffice-caption-roundtrip-evidence.json",
+          "sha256": "ed5ccbc558e8649f16de0392a3cc8224859afa99c696003a8f019ad003d0b693",
+          "assertions": [
+            {
+              "pointer": "/source/part_count",
+              "equals": 25
+            },
+            {
+              "pointer": "/source/vtt_parts/0",
+              "equals": "ppt/media/track1.vtt"
+            },
+            {
+              "pointer": "/source/vtt_parts/1",
+              "equals": "ppt/media/track2.vtt"
+            },
+            {
+              "pointer": "/rounds/0/part_count",
+              "equals": 15
+            },
+            {
+              "pointer": "/rounds/1/part_count",
+              "equals": 15
+            },
+            {
+              "pointer": "/rounds/2/part_count",
+              "equals": 15
+            },
+            {
+              "pointer": "/all_rounds_missing_original_video_tracks_and_timing",
+              "equals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "captions-after-libreoffice-pptkit-noop",
+      "feature": "Video captions and timing",
+      "subject": {
+        "object": "video",
+        "owner": "slide-picture",
+        "family": "powerpoint-multitrack",
+        "variant": "trimmed-loop"
+      },
+      "operation": "No-op save",
+      "producer": {
+        "name": "LibreOfficeDev",
+        "version": "26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5"
+      },
+      "application": {
+        "name": "PPTKit",
+        "version": "unrecorded"
+      },
+      "profile": "content-no-op",
+      "fixture": {
+        "kind": "recorded-sha256",
+        "sha256": "9d540eb2cc0bb1898a45c52a5626e20f8b80da618f241bfa40db313d1b2d4049",
+        "evidencePath": "docs/testing/libreoffice-caption-roundtrip-evidence.json",
+        "pointer": "/retained_first_round_sha256",
+        "localPath": "tests/fixtures/libreoffice-caption-roundtrip.pptx"
+      },
+      "capability": "preserved",
+      "status": "pass",
+      "method": "automated",
+      "procedure": "node --test packages/pptx-parser/test/native-captions-research.test.mjs",
+      "result": "No-op preserves the retained LibreOffice output byte for byte; it contains no original video or subtitles.",
+      "limitations": "The retained output is a separate first conversion; no-op cannot recover previously removed content.",
+      "evidence": [
+        {
+          "path": "docs/testing/libreoffice-caption-roundtrip-evidence.json",
+          "sha256": "ed5ccbc558e8649f16de0392a3cc8224859afa99c696003a8f019ad003d0b693",
+          "assertions": [
+            {
+              "pointer": "/pptkit_no_op_byte_identical",
+              "equals": true
+            },
+            {
+              "pointer": "/retained_first_round_path",
+              "equals": "tests/fixtures/libreoffice-caption-roundtrip.pptx"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

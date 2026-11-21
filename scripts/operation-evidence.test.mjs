@@ -95,6 +95,23 @@ test('native notes and later PPTKit records use distinct retained baselines', as
   assert.match(scripts['test:import'], /(?:^|\s)scripts\/text-owner-save-parity\.test\.mjs(?:\s|$)/);
 });
 
+test('caption loss and later no-op use separately verified producer baselines', async () => {
+  const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const data = JSON.parse(await readFile(path.join(root, 'docs/testing/operation-evidence.json'), 'utf8'));
+  const native = data.records.find(row => row.id === 'captions-libreoffice-headless-loss');
+  const pptkit = data.records.find(row => row.id === 'captions-after-libreoffice-pptkit-noop');
+  assert.ok(native && pptkit);
+  assert.deepEqual([native.capability, native.status, pptkit.capability, pptkit.status], ['unsupported', 'fail', 'preserved', 'pass']);
+  for (const row of [native, pptkit]) assert.equal(digest(await readFile(path.join(root, row.fixture.localPath))), row.fixture.sha256);
+  const evidence = JSON.parse(await readFile(path.join(root, native.fixture.evidencePath), 'utf8'));
+  assert.equal(native.fixture.sha256, evidence.source_sha256);
+  assert.equal(pptkit.fixture.sha256, evidence.retained_first_round_sha256);
+  assert.notEqual(native.fixture.sha256, pptkit.fixture.sha256);
+  assert.equal(pptkit.fixture.localPath, evidence.retained_first_round_path);
+  const parser = JSON.parse(await readFile(path.join(root, 'packages/pptx-parser/package.json'), 'utf8'));
+  assert.match(parser.scripts.test, /node --test test\/\*\.test\.mjs/);
+});
+
 test('mixed SmartArt and timing evidence is bound to distributed fixtures and regression', async () => {
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const data = JSON.parse(await readFile(path.join(root, 'docs/testing/operation-evidence.json'), 'utf8'));
