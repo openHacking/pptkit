@@ -122,7 +122,7 @@ function createPartContext(options: {
       relationships.push({ id: svg, type: REL.image, target: `../${packaged.svgName.slice(4)}` });
       return { base: id, svg };
     },
-    audioRelationship(assetId, posterAssetId, objectId, playbackStart, playbackVolume, loop, rewindAfterPlayback) {
+    audioRelationship(assetId, posterAssetId, objectId, playbackStart, playbackVolume, loop, rewindAfterPlayback, trimStartMs, trimEndMs) {
       const packaged = options.media.get(assetId), resource = options.audio?.get(assetId);
       const poster = posterAssetId === undefined ? options.fallbackPoster : options.media.get(posterAssetId);
       if (!packaged || !resource || !poster || poster.loaded.mimeType.startsWith("audio/")) throw new TypeError("PPTX audio or its poster could not be packaged.");
@@ -130,8 +130,8 @@ function createPartContext(options: {
       relationships.push({ id: audio, type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
-      audioTargets.push({ objectId, durationMs: resource.durationMs, ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
-      mediaTargets.push({ kind: "audio", objectId, durationMs: resource.durationMs, ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
+      audioTargets.push({ objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
+      mediaTargets.push({ kind: "audio", objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
       return { audio, media, poster: image };
     },
     videoRelationship(assetId, posterAssetId, objectId) {

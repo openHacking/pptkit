@@ -166,6 +166,9 @@ export interface AudioElementInput extends ElementBaseInput {
   loop?: boolean;
   /** Return to the beginning after playback; defaults to false. */
   rewindAfterPlayback?: boolean;
+  /** Milliseconds removed from the beginning and end of the source. */
+  trimStartMs?: number;
+  trimEndMs?: number;
 }
 export interface AudioElement extends ElementBase, Omit<AudioElementInput, keyof ElementBaseInput> {}
 export interface NormalizedAudioElement extends NormalizedElementBase {
@@ -179,6 +182,9 @@ export interface NormalizedAudioElement extends NormalizedElementBase {
   loop?: boolean;
   /** Return to the beginning after playback; defaults to false. */
   rewindAfterPlayback?: boolean;
+  /** Milliseconds removed from the beginning and end of the source. */
+  trimStartMs?: number;
+  trimEndMs?: number;
 }
 
 /** Video bytes and the optional static poster are independently owned assets. */
