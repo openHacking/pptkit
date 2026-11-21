@@ -80,6 +80,31 @@ test('caption playback observation is bound to the retained source and source-re
   assert.match(evidence.scope, /screenshots were viewed but not retained/);
 });
 
+test('multitrack preview observations refer to retained per-instance captions and source cues', async () => {
+  const evidence = JSON.parse(await readFile(join(root, 'docs/testing/native-caption-multitrack-evidence.json'), 'utf8'));
+  const bytes = await readFile(join(root, evidence.sourcePath)); assert.equal(createHash('sha256').update(bytes).digest('hex'), evidence.sourceSha256);
+  const inventoryResult = inventory(join(root, evidence.sourcePath)), entries = unzipSync(bytes);
+  assert.equal(Object.keys(entries).filter(name => name.endsWith('.mp4')).length, 1);
+  const slideXml = strFromU8(entries['ppt/slides/slide1.xml']), relXml = strFromU8(entries['ppt/slides/_rels/slide1.xml.rels']);
+  assert.equal([...slideXml.matchAll(/<p14:media\b[^>]*r:embed="rId2"/gu)].length, 2);
+  assert.match(relXml, /Id="rId2"[^>]*Target="\.\.\/media\/media1\.mp4"/u);
+  const timestamp = ms => `00:00:${String(Math.floor(ms / 1000)).padStart(2, '0')}.${String(ms % 1000).padStart(3, '0')}`;
+  for (const instance of evidence.instances) {
+    const item = inventoryResult.find(result => result.objectId === instance.objectId); assert.ok(item);
+    assert.deepEqual(item.tracks.map(track => track.language), instance.trackLanguages);
+    assert.equal(Number(item.trims[0]?.st ?? 0), instance.trimStartMs);
+    for (const observation of instance.observations) {
+      const sourceTime = observation.displayedElapsedMs + instance.trimStartMs, track = item.tracks.find(value => value.language === observation.language); assert.ok(track);
+      assert.ok(sourceTime >= observation.cueStartMs && sourceTime < observation.cueEndMs);
+      assert.ok(track.text.includes(`${timestamp(observation.cueStartMs)} --> ${timestamp(observation.cueEndMs)}\n${observation.caption}`));
+    }
+  }
+  assert.deepEqual(evidence.menuObservations.firstAvailable, ['off', 'en-us', 'fr-fr']);
+  assert.deepEqual(evidence.menuObservations.secondAvailable, ['off', 'es-es']);
+  assert.equal(inventoryResult[0].tracks[1].label, evidence.menuObservations.firstFrenchLabel);
+  assert.match(evidence.scope, /screenshots were viewed but not retained/);
+});
+
 test('research inventory identifies damaged track content and relationships without loading external targets', async () => {
   const original = await sample('powerpoint-caption-multi'), dir = await mkdtemp(join(tmpdir(), 'pptkit-caption-research-'));
   const cases = [

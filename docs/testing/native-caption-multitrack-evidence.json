@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint for Mac",
+  "version": "16.104",
+  "sourcePath": "tests/fixtures/powerpoint-caption-srt.pptx",
+  "sourceSha256": "f3d91ac9284ae774ade74a7d397d012067581e794cb2ee82765e78b8fbcfc097",
+  "observationMode": "editing preview in an existing application session",
+  "instances": [
+    {
+      "objectId": "2",
+      "trimStartMs": 150,
+      "trackLanguages": ["en-us", "fr-fr"],
+      "observations": [
+        { "language": "fr-fr", "displayedElapsedMs": 450, "caption": "Première légende", "cueStartMs": 100, "cueEndMs": 900 },
+        { "language": "en-us", "displayedElapsedMs": 480, "caption": "First caption", "cueStartMs": 100, "cueEndMs": 900 }
+      ]
+    },
+    {
+      "objectId": "3",
+      "trimStartMs": 0,
+      "trackLanguages": ["es-es"],
+      "observations": [
+        { "language": "es-es", "displayedElapsedMs": 410, "caption": "Primera frase", "cueStartMs": 100, "cueEndMs": 900 }
+      ]
+    }
+  ],
+  "menuObservations": {
+    "firstAvailable": ["off", "en-us", "fr-fr"],
+    "firstFrenchLabel": "French test",
+    "secondAvailable": ["off", "es-es"],
+    "firstInitialSelection": "en-us",
+    "secondInitialSelection": "off",
+    "firstSelectionAfterVisitingSecond": "off"
+  },
+  "scope": "Manual observation in one existing application session; screenshots were viewed but not retained. The menu selections may reflect transient player or application state. No fresh-process default, long-term persistence, slideshow language switching, cue-boundary precision, audible output or assistive-technology behavior was established."
+}
