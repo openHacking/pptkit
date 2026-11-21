@@ -223,6 +223,22 @@ async function exerciseDefaultRemoval(api, input) {
   const r=await api.importPptx(bytes,{projection:'content'});try{return {rounds,metadata:r.document.metadata};}finally{r.dispose();}
 }
 
+async function exerciseMixedDefaultAndCustom(api, input) {
+  let bytes = new Uint8Array(input); const rounds = [], fields = ['title', 'author', 'language', 'revision'];
+  const defaults = { title: 'PPTKit Presentation', author: 'PPTKit', language: 'en-US', revision: 1 };
+  for (let round = 0; round < 3; round++) {
+    const session = await api.importPptx(bytes, { projection: 'content', metadataSaveProfile: 'metadata-default-remove-v17', customPropertySaveProfile: 'create-and-append-v5' });
+    try {
+      session.document.setMetadata({ ...session.document.metadata, ...(round === 1 ? defaults : { title: undefined, author: undefined, language: undefined, revision: undefined }), customProperties: [{ name: 'Count', type: 'integer', value: 40 + round }] });
+      const edit = round === 0 ? { coreMetadataRemovals: fields, customPropertyAdditions: [0] } : round === 1 ? { coreMetadataInsertions: fields } : { coreMetadataRemovals: fields };
+      const plan = await session.prepareSave({ mode: 'edit', ...edit }); if (plan.status !== 'ready') throw new Error(JSON.stringify(plan.report));
+      bytes = (await session.save(plan.plan)).bytes; rounds.push([...bytes]);
+    } finally { session.dispose(); }
+  }
+  const reopened = await api.importPptx(bytes, { projection: 'content' });
+  try { return { rounds, metadata: reopened.document.metadata }; } finally { reopened.dispose(); }
+}
+
 async function exerciseIntegerVariants(api, input) {
   let bytes = new Uint8Array(input); const rounds = [];
   for (const [small, unsigned, single, basic, date] of [[127, 65535, 2.5, '中文 & _x0041_', '2021-02-03T04:05:06.000Z'], [-128, 0, 1.25, '', '2022-02-03T04:05:06.123Z'], [0, 1, -0, 'final', '2023-02-03T04:05:06.000Z']]) {
@@ -261,6 +277,7 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const keywordRemovalFixture=metadataFixture();keywordRemovalFixture.add('core','<c:keywords>one</c:keywords>');const keywordRemovalInput=[...encodeMetadata(keywordRemovalFixture)],expectedKeywordRemoval=await exerciseKeywordRemoval({importPptx},keywordRemovalInput);
   const revisionRemovalFixture=metadataFixture();revisionRemovalFixture.add('core','<c:revision>1</c:revision>');const revisionRemovalInput=[...encodeMetadata(revisionRemovalFixture)],expectedRevisionRemoval=await exerciseRevisionRemoval({importPptx},revisionRemovalInput);
   const defaultRemovalFixture=metadataFixture();defaultRemovalFixture.add('core','<d:title>Title</d:title><d:creator>Author</d:creator><d:language>fr-FR</d:language><c:revision>7</c:revision>');const defaultRemovalInput=[...encodeMetadata(defaultRemovalFixture)],expectedDefaultRemoval=await exerciseDefaultRemoval({importPptx},defaultRemovalInput);
+  const expectedMixedDefaultAndCustom = await exerciseMixedDefaultAndCustom({ importPptx }, defaultRemovalInput);
   const companyInsertion = metadataFixture(); companyInsertion.add('extended', '<Manager>Sentinel</Manager>');
   const companyInsertionInput = [...encodeMetadata(companyInsertion)], expectedCompanyInsertion = await exerciseCompanyInsertion({ importPptx }, companyInsertionInput);
   const variants = metadataFixture(); variants.add('custom', custom(2, 'i1', '-128', 'name="Small"') + custom(3, 'ui2', '0', 'name="Unsigned"') + custom(4, 'r4', '1.25', 'name="Single"') + custom(5, 'bstr', 'original', 'name="Basic"') + custom(6, 'lpstr', 'original', 'name="Narrow"') + custom(7, 'date', '2020-02-03T04:05:06.120000+08:00', 'name="Date"') + custom(8, 'decimal', '1.25', 'name="Decimal"'));
@@ -340,6 +357,8 @@ test('custom property authoring and import agree across Node, browser ESM and gl
     const actualRevisionRemoval=await page.evaluate(async ({format,exercise,input})=>{const api=format==='global'?PPTKit:await import('@pptkit/pptx-parser');return Function('api','input',`return (${exercise})(api,input)`)(api,input);},{format,exercise:exerciseRevisionRemoval.toString(),input:revisionRemovalInput});
     assert.deepEqual(actualRevisionRemoval,expectedRevisionRemoval);
     const actualDefaultRemoval=await page.evaluate(async ({format,exercise,input})=>{const api=format==='global'?PPTKit:await import('@pptkit/pptx-parser');return Function('api','input',`return (${exercise})(api,input)`)(api,input);},{format,exercise:exerciseDefaultRemoval.toString(),input:defaultRemovalInput});
+    const actualMixedDefaultAndCustom = await page.evaluate(async ({format, exercise, input}) => { const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser'); return Function('api', 'input', `return (${exercise})(api,input)`)(api, input); }, { format, exercise: exerciseMixedDefaultAndCustom.toString(), input: defaultRemovalInput });
+    assert.deepEqual(actualMixedDefaultAndCustom, expectedMixedDefaultAndCustom);
     assert.deepEqual(actualDefaultRemoval,expectedDefaultRemoval);
     const actualCompanyInsertion = await page.evaluate(async ({ format, exercise, input }) => {
       const api = format === 'global' ? PPTKit : await import('@pptkit/pptx-parser');

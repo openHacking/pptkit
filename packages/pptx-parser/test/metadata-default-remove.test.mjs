@@ -24,3 +24,39 @@ test('old profile, unbound targets, overlapping requests and invalid modes are r
 test('removal respects abort, stale plans and work limits',async()=>{
  const f=metadataFixture();f.add('core','<d:title>Title</d:title>');const bytes=encodeMetadata(f),s=await importPptx(bytes,config);try{s.document.setMetadata({...s.document.metadata,title:undefined});const controller=new AbortController();controller.abort();await assert.rejects(s.prepareSave({mode:'edit',coreMetadataRemovals:['title'],signal:controller.signal}),{code:'operation-aborted'});const p=await s.prepareSave({mode:'edit',coreMetadataRemovals:['title']});assert.equal(p.status,'ready');s.document.setMetadata({...s.document.metadata,title:'Changed'});await assert.rejects(s.save(p.plan),{code:'save-snapshot-stale'});}finally{s.dispose();}const limited=await importPptx(bytes,{...config,sessionLimits:{maxSaveAnalysisWork:1}});try{limited.document.setMetadata({...limited.document.metadata,title:undefined});await assert.rejects(limited.prepareSave({mode:'edit',coreMetadataRemovals:['title']}),{code:'save-limit-exceeded'});}finally{limited.dispose();}
 });
+
+test('default removal and custom-property creation remain atomic over three reopens', async () => {
+  for (const strict of [false, true]) {
+    const f = metadataFixture(strict);
+    f.add('core', '<d:title>Original</d:title><d:creator>Author</d:creator><d:language>fr-FR</d:language><c:revision>7</c:revision><!--sentinel--><d:subject>Control</d:subject>');
+    f.parts['opaque.bin'] = new Uint8Array([0, 1, 2, 255]); f.metadataTypes['opaque.bin'] = 'application/octet-stream';
+    let bytes = encodeMetadata(f);
+    const options = { ...config, customPropertySaveProfile: 'create-and-append-v5' };
+    for (let round = 0; round < 3; round++) {
+      const before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
+      try {
+        const property = { name: 'Count', type: 'integer', value: 40 + round };
+        session.document.setMetadata({ ...session.document.metadata, ...(round === 1 ? defaults : { title: undefined, author: undefined, language: undefined, revision: undefined }), customProperties: [property] });
+        const edit = round === 0 ? { coreMetadataRemovals: fields, customPropertyAdditions: [0] } : round === 1 ? { coreMetadataInsertions: fields } : { coreMetadataRemovals: fields };
+        if (round === 0) {
+          const blocked = await session.prepareSave({ mode: 'edit', ...edit, customPropertyAdditions: [] });
+          assert.equal(blocked.status, 'blocked'); assert.equal(blocked.plan, undefined);
+        }
+        const plan = await session.prepareSave({ mode: 'edit', ...edit }); assert.equal(plan.status, 'ready', JSON.stringify(plan.report));
+        bytes = (await session.save(plan.plan)).bytes;
+        const after = readGeneratedZip(bytes);
+        const changed = round === 0 ? ['inventory/core.data', '_rels/.rels', '[Content_Types].xml'] : ['inventory/core.data', 'pptkit-custom-properties-1.xml'];
+        for (const [name, payload] of before) if (!changed.includes(name)) assert.deepEqual(after.get(name), payload, name);
+        assert.match(after.get('inventory/core.data').toString(), /<!--sentinel-->/);
+        assert.ok(after.has('pptkit-custom-properties-1.xml'));
+        assert.match(after.get('pptkit-custom-properties-1.xml').toString(), new RegExp(`>${40 + round}</`));
+      } finally { session.dispose(); }
+      const reopened = await importPptx(bytes, options);
+      try {
+        for (const field of fields) assert.equal(reopened.document.metadata[field], round === 1 ? defaults[field] : undefined);
+        assert.equal(reopened.document.metadata.subject, 'Control');
+        assert.deepEqual(reopened.document.metadata.customProperties, [{ name: 'Count', type: 'integer', value: 40 + round }]);
+      } finally { reopened.dispose(); }
+    }
+  }
+});
