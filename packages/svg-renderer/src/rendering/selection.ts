@@ -35,8 +35,15 @@ export interface SvgConnectorStrokeGeometry {
   readonly width: number;
   readonly dash?: readonly number[];
 }
+export interface SvgRoundedShapeStrokeGeometry {
+  readonly kind: "rounded-rectangle";
+  readonly box: Readonly<Box>;
+  readonly radius: number;
+  readonly transform: readonly [number, number, number, number, number, number];
+  readonly width: number;
+}
 export type SvgShapeOutline = { readonly type: "ellipse" } | { readonly type: "rounded-rectangle"; readonly radiusX: number; readonly radiusY: number } | { readonly type: "polygon"; readonly points: readonly Readonly<Point>[] };
-export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline; readonly shapeStrokeGeometry?: SvgConnectorStrokeGeometry }) | SvgSelectionConnector;
+export type SvgSelectionGeometry = (SvgOwnedSelectionFrame & { readonly kind: "frame"; readonly outline?: SvgShapeOutline; readonly shapeStrokeGeometry?: SvgConnectorStrokeGeometry | SvgRoundedShapeStrokeGeometry }) | SvgSelectionConnector;
 /** Optional coarse selection policies; these do not perform painted-pixel tests. */
 export interface SvgSelectionGeometryOptions {
   readonly excludeZeroOpacity?: boolean;
@@ -131,12 +138,15 @@ function collect(layers: readonly { elements: readonly LayoutElement[]; owner?: 
         if (!corners.every(p => Number.isFinite(p.x) && Number.isFinite(p.y))) throw new TypeError("Selection geometry overflowed.");
         const outline = includeConnectors && element.type === "shape" ? shapeOutline(element) : undefined;
         const stroke = element.type === "shape" ? element.style.stroke : undefined;
-        let shapeStrokeGeometry: SvgConnectorStrokeGeometry | undefined;
+        let shapeStrokeGeometry: SvgConnectorStrokeGeometry | SvgRoundedShapeStrokeGeometry | undefined;
         if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape !== "ellipse" && element.shape !== "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0) {
           const raw = element.shape === "rect" ? [{ x: b.x, y: b.y }, { x: b.x + b.width, y: b.y }, { x: b.x + b.width, y: b.y + b.height }, { x: b.x, y: b.y + b.height }] : shapePolygonPoints(b, element.shape, element.slant);
           const dash = dashLengths(stroke);
           if (dash && !Number.isFinite(dash.reduce((sum, value) => sum + value, 0))) throw new RangeError("Shape dash pattern exceeds finite hit-test range.");
           shapeStrokeGeometry = Object.freeze({ points: Object.freeze([...raw, raw[0]!].map(point => Object.freeze(point))), transform: Object.freeze([...matrix]) as SvgConnectorStrokeGeometry["transform"], width: stroke.width, ...(dash ? { dash: Object.freeze([...dash]) } : {}) });
+        }
+        if (includeConnectors && options.includeShapeStrokeGeometry && element.type === "shape" && element.shape === "roundRect" && stroke && stroke.paint.type === "solid" && stroke.paint.opacity > 0 && stroke.width > 0 && stroke.width < Math.min(b.width, b.height) && stroke.dash === "solid") {
+          shapeStrokeGeometry = Object.freeze({ kind: "rounded-rectangle", box: Object.freeze({ ...b }), radius: Math.min(b.width, b.height) * .08, transform: Object.freeze([...matrix]) as SvgRoundedShapeStrokeGeometry["transform"], width: stroke.width });
         }
         frames.push(Object.freeze({ elementId: element.id, ancestorIds: Object.freeze([...ancestors]), corners, ...(owner ? { owner } : {}), ...(includeConnectors ? { kind: "frame" as const } : {}), ...(outline ? { outline } : {}), ...(shapeStrokeGeometry ? { shapeStrokeGeometry } : {}) }));
       }
@@ -231,6 +241,21 @@ export function hitTestSvgShapeStrokes(items: readonly SvgSelectionGeometry[], p
   for (let i = items.length - 1; i >= 0; i--) {
     const item = items[i]!;
     if (item.kind !== "frame" || !item.shapeStrokeGeometry) continue;
+    if ("kind" in item.shapeStrokeGeometry) {
+      const { box, radius, width, transform: [a, b, c, d, e, f] } = item.shapeStrokeGeometry;
+      const scale = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
+      if (!Number.isFinite(scale) || scale === 0) throw new RangeError("Shape transform is singular or nonfinite.");
+      const aa = a / scale, bb = b / scale, cc = c / scale, dd = d / scale, det = aa * dd - bb * cc;
+      const x = (point.x - e) / scale, y = (point.y - f) / scale;
+      if (!Number.isFinite(x) || !Number.isFinite(y) || !Number.isFinite(det) || det === 0) throw new RangeError("Shape transform is singular or outside finite hit-test range.");
+      const lx = (x * dd - y * cc) / det, ly = (y * aa - x * bb) / det;
+      const qx = Math.abs(lx - (box.x + box.width / 2)) - (box.width / 2 - radius);
+      const qy = Math.abs(ly - (box.y + box.height / 2)) - (box.height / 2 - radius);
+      const distance = Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - radius;
+      if (!Number.isFinite(distance)) throw new RangeError("Shape hit-test exceeds finite range.");
+      if (Math.abs(distance) <= width / 2) return item;
+      continue;
+    }
     const connector: SvgSelectionConnector = { kind: "connector", elementId: item.elementId, ancestorIds: item.ancestorIds, owner: item.owner, points: [], strokeGeometry: item.shapeStrokeGeometry };
     if (hitTestSvgConnectorStrokes([connector], point)) return item;
   }

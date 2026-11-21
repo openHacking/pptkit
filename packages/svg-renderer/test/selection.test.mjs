@@ -284,7 +284,7 @@ test('dashed rectangular strokes preserve gaps and phase around corners', () => 
   assert.ok(Object.isFrozen(items[0].shapeStrokeGeometry.dash));
 });
 
-test('polygonal shape strokes use actual preset edges and skip curved outlines', () => {
+test('polygonal and rounded shape strokes use actual preset edges', () => {
   const doc = createPresentation();
   const style = { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width: 4 } };
   doc.addSlide({ elements: [shape('triangle', box(0, 0, 100, 100), { shape: 'triangle', style }), shape('ellipse', box(200, 0, 100, 100), { shape: 'ellipse', style }), shape('round', box(400, 0, 100, 100), { shape: 'roundRect', style })] });
@@ -293,8 +293,24 @@ test('polygonal shape strokes use actual preset edges and skip curved outlines',
   assert.equal(hitTestSvgShapeStrokes(items, { x: 50, y: 50 }), undefined);
   assert.equal(hitTestSvgShapeStrokes(items, { x: 0, y: 0 }), undefined);
   assert.equal(hitTestSvgShapeStrokes(items, { x: 250, y: 0 }), undefined);
-  assert.equal(hitTestSvgShapeStrokes(items, { x: 450, y: 0 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(items, { x: 450, y: 0 }).elementId, 'round');
   assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 50, y: -1 }).elementId, 'triangle');
+});
+
+test('rounded rectangle stroke handles interior, exterior and wide strokes', () => {
+  const make = width => {
+    const doc = createPresentation();
+    doc.addSlide({ elements: [shape('round', box(0, 0, 100, 50), { shape: 'roundRect', style: { fill: { type: 'none' }, stroke: { paint: { type: 'solid', color: '000000' }, width } } })] });
+    return getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeShapeStrokeGeometry: true });
+  };
+  const narrow = make(4), wide = make(60);
+  assert.equal(hitTestSvgShapeStrokes(narrow, { x: 50, y: -1 }).elementId, 'round');
+  assert.equal(hitTestSvgShapeStrokes(narrow, { x: 50, y: 25 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(narrow, { x: -2, y: -2 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(wide, { x: 50, y: 25 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(wide, { x: -15, y: 25 }), undefined);
+  assert.equal(hitTestSvgShapeStrokes(make(50), { x: 50, y: 0 }), undefined);
+  assert.ok(Object.isFrozen(narrow[0].shapeStrokeGeometry.box));
 });
 
 test('zero-length connector markers use SVG default tangent and remain selectable', () => {
