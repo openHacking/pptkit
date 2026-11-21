@@ -67,7 +67,9 @@ test('caption source inventory matches Node, browser ESM and global without exte
   parts[rels] = strToU8(strFromU8(parts[rels]).replace('Target="../media/track1.vtt"', 'Target="https://example.invalid/track.vtt" TargetMode="External"'));
   const inactive = unzipSync(bytes), slide = 'ppt/slides/slide1.xml';
   inactive[slide] = strToU8(strFromU8(inactive[slide]).replace('<p:pic>', '<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:f="urn:unsupported"><mc:Choice Requires="f"><p:pic>').replace('</p:pic>', '</p:pic></mc:Choice><mc:Fallback/></mc:AlternateContent>'));
-  const samples = [bytes, zipSync(parts), zipSync(inactive)], expected = await Promise.all(samples.map(sample => inspectPptxCaptionTracks(sample)));
+  const wrapped = unzipSync(bytes), xml = strFromU8(wrapped[slide]), track = xml.match(/<p173:track id="\{363C0747[^>]*\/>/u)?.[0]; assert.ok(track);
+  wrapped[slide] = strToU8(xml.replace(track, `<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:f="urn:unsupported"><mc:Choice Requires="f">${track}</mc:Choice><mc:Fallback>${track}</mc:Fallback></mc:AlternateContent>`));
+  const samples = [bytes, zipSync(parts), zipSync(inactive), zipSync(wrapped)], expected = await Promise.all(samples.map(sample => inspectPptxCaptionTracks(sample)));
   const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
   await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
   const core = await readFile('packages/core/dist/browser/index.js');
@@ -79,5 +81,5 @@ test('caption source inventory matches Node, browser ESM and global without exte
     for (const bytes of samples) for (const api of [esm, globalThis.PPTKit]) out.push(await api.inspectPptxCaptionTracks(Uint8Array.from(bytes)));
     return out;
   }, { samples: samples.map(sample => [...sample]), url: `data:text/javascript;base64,${bundle.toString('base64')}` });
-  assert.deepEqual(actual, expected.flatMap(result => [result, result])); assert.equal(actual[2].tracks[0].status, 'external'); assert.equal(actual[4].tracks[0].pictureView, 'raw-only'); assert.deepEqual(requests, []);
+  assert.deepEqual(actual, expected.flatMap(result => [result, result])); assert.equal(actual[2].tracks[0].status, 'external'); assert.equal(actual[4].tracks[0].pictureView, 'raw-only'); assert.equal(actual[6].tracks.length, 4); assert.deepEqual(requests, []);
 });

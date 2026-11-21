@@ -8,6 +8,7 @@ import type { XmlElement } from '../xml/read-xml.js';
 
 const P14 = 'http://schemas.microsoft.com/office/powerpoint/2010/main';
 const P173 = 'http://schemas.microsoft.com/office/powerpoint/2017/3/main';
+const MCE = 'http://schemas.openxmlformats.org/markup-compatibility/2006';
 const REL = 'http://schemas.microsoft.com/office/2017/04/relationships/track';
 const MEDIA = '{DAA4B4D4-6D71-4841-9C94-3DE7FCFB9230}';
 const TRACKS = '{3AFAAA56-56D3-431D-BCD4-E75A35582382}';
@@ -36,6 +37,11 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
   const step = async () => { if (++workUnits > budget.maxWorkUnits) fail('Caption inventory exceeds maxWorkUnits.'); await c.checkpoint(); };
   const text = (value: string): string => { textCharacters += value.length; if (textCharacters > budget.maxTextCharacters) fail('Caption inventory exceeds maxTextCharacters.'); return value; };
   const is = (meta: Meta | undefined, ns: string, local: string) => meta?.node.namespaceUri === ns && meta.node.local === local;
+  const sourceParent = async (meta: Meta | undefined): Promise<Meta | undefined> => {
+    let parent = meta?.parent;
+    while ((is(parent, MCE, 'Choice') || is(parent, MCE, 'Fallback')) && is(parent?.parent, MCE, 'AlternateContent')) { await step(); parent = parent!.parent!.parent; }
+    return parent;
+  };
   for (const slide of structure.slides) {
     const effective = await c.root(slide.part, 'sld', 'presentationml.slide'), cSld = children(effective).find(node => node.namespaceUri === c.p && node.local === 'cSld');
     const tree = cSld && children(cSld).find(node => node.namespaceUri === c.p && node.local === 'spTree'), pictures = new Set<number>();
@@ -50,32 +56,34 @@ export async function inspectPptxCaptionTracks(bytes: Uint8Array, options: PptxC
     const stack: Meta[] = [{ node: raw, index: 0, ordinal: 1 }];
     while (stack.length) {
       await step(); const item = stack.pop()!; item.index = ++index;
-      const list = item.parent, info = list?.parent, ext = info?.parent, extList = ext?.parent, media = extList?.parent, outer = media?.parent, outerList = outer?.parent, nvPr = outerList?.parent, nvPic = nvPr?.parent, picture = nvPic?.parent;
-      if (is(item, P173, 'track') && is(list, P173, 'trackLst') && is(info, P173, 'tracksInfo') && is(ext, c.p, 'ext') && attribute(ext!.node, 'uri')?.toUpperCase() === TRACKS && is(extList, P14, 'extLst') && is(media, P14, 'media') && is(outer, c.p, 'ext') && attribute(outer!.node, 'uri')?.toUpperCase() === MEDIA && is(outerList, c.p, 'extLst') && is(nvPr, c.p, 'nvPr') && is(nvPic, c.p, 'nvPicPr') && is(picture, c.p, 'pic')) {
-        if (tracks.length >= budget.maxTracks) fail('Caption inventory exceeds maxTracks.');
-        const components: string[] = [];
-        for (let current: Meta | undefined = item; current; current = current.parent) { await step(); components.push(text(`Q{${current.node.namespaceUri}}${current.node.local}[${current.ordinal}]`)); }
-        const relationshipId = attribute(item.node, 'embed', c.r), trackId = attribute(item.node, 'id'), language = attribute(item.node, 'lang'), label = attribute(item.node, 'label');
-        const identity = children(nvPic!.node).find(node => node.namespaceUri === c.p && node.local === 'cNvPr'), objectId = identity && attribute(identity, 'id');
-        const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, pictureView: pictures.has(picture!.index) ? 'effective-drawing' as const : 'raw-only' as const, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
-        const relation = c.findRelationship(slide.part, relationshipId);
-        if (!relation || relation.type !== REL || relation.fragment !== undefined || (relation.targetMode === 'Internal' && !relation.targetPart)) tracks.push({ ...base, status: 'unsupported-relationship' });
-        else if (relation.targetMode === 'External') tracks.push({ ...base, status: 'external', externalTarget: text(relation.target) });
-        else {
-          const targetPart = text(relation.targetPart!), payload = c.payload(targetPart); let result = cache.get(targetPart);
-          if (!result) {
-            const length = payload.bytes.length;
-            if (length > budget.maxTrackBytes || inspectedBytes + length > budget.maxTotalTrackBytes) fail('Caption inventory exceeds track byte limits.');
-            inspectedBytes += length; const contentType = text(payload.contentType.trim().toLowerCase());
-            if (contentType !== 'text/vtt') result = { status: 'unsupported-content-type', contentType, byteLength: length };
-            else {
-              try { const decoded = new TextDecoder('utf-8', { fatal: true }).decode(payload.bytes); result = { status: /^WEBVTT(?:\r\n|\n)/u.test(decoded) ? 'vtt-header-only' : 'invalid-vtt-header', contentType, byteLength: length }; }
-              catch (error) { if (!(error instanceof TypeError)) throw error; result = { status: 'invalid-utf8', contentType, byteLength: length }; }
+      if (is(item, P173, 'track')) {
+        const list = await sourceParent(item), info = await sourceParent(list), ext = await sourceParent(info), extList = await sourceParent(ext), media = await sourceParent(extList), outer = await sourceParent(media), outerList = await sourceParent(outer), nvPr = await sourceParent(outerList), nvPic = await sourceParent(nvPr), picture = await sourceParent(nvPic);
+        if (is(list, P173, 'trackLst') && is(info, P173, 'tracksInfo') && is(ext, c.p, 'ext') && attribute(ext!.node, 'uri')?.toUpperCase() === TRACKS && is(extList, P14, 'extLst') && is(media, P14, 'media') && is(outer, c.p, 'ext') && attribute(outer!.node, 'uri')?.toUpperCase() === MEDIA && is(outerList, c.p, 'extLst') && is(nvPr, c.p, 'nvPr') && is(nvPic, c.p, 'nvPicPr') && is(picture, c.p, 'pic')) {
+          if (tracks.length >= budget.maxTracks) fail('Caption inventory exceeds maxTracks.');
+          const components: string[] = [];
+          for (let current: Meta | undefined = item; current; current = current.parent) { await step(); components.push(text(`Q{${current.node.namespaceUri}}${current.node.local}[${current.ordinal}]`)); }
+          const relationshipId = attribute(item.node, 'embed', c.r), trackId = attribute(item.node, 'id'), language = attribute(item.node, 'lang'), label = attribute(item.node, 'label');
+          const identity = children(nvPic!.node).find(node => node.namespaceUri === c.p && node.local === 'cNvPr'), objectId = identity && attribute(identity, 'id');
+          const base = { slideId: slide.id, source: { part: text(slide.part), elementIndex: item.index, path: '/' + components.reverse().join('/') }, pictureView: pictures.has(picture!.index) ? 'effective-drawing' as const : 'raw-only' as const, ...(objectId === undefined ? {} : { objectId: text(objectId) }), ...(trackId === undefined ? {} : { trackId: text(trackId) }), ...(language === undefined ? {} : { language: text(language) }), ...(label === undefined ? {} : { label: text(label) }), ...(relationshipId === undefined ? {} : { relationshipId: text(relationshipId) }) };
+          const relation = c.findRelationship(slide.part, relationshipId);
+          if (!relation || relation.type !== REL || relation.fragment !== undefined || (relation.targetMode === 'Internal' && !relation.targetPart)) tracks.push({ ...base, status: 'unsupported-relationship' });
+          else if (relation.targetMode === 'External') tracks.push({ ...base, status: 'external', externalTarget: text(relation.target) });
+          else {
+            const targetPart = text(relation.targetPart!), payload = c.payload(targetPart); let result = cache.get(targetPart);
+            if (!result) {
+              const length = payload.bytes.length;
+              if (length > budget.maxTrackBytes || inspectedBytes + length > budget.maxTotalTrackBytes) fail('Caption inventory exceeds track byte limits.');
+              inspectedBytes += length; const contentType = text(payload.contentType.trim().toLowerCase());
+              if (contentType !== 'text/vtt') result = { status: 'unsupported-content-type', contentType, byteLength: length };
+              else {
+                try { const decoded = new TextDecoder('utf-8', { fatal: true }).decode(payload.bytes); result = { status: /^WEBVTT(?:\r\n|\n)/u.test(decoded) ? 'vtt-header-only' : 'invalid-vtt-header', contentType, byteLength: length }; }
+                catch (error) { if (!(error instanceof TypeError)) throw error; result = { status: 'invalid-utf8', contentType, byteLength: length }; }
+              }
+              cache.set(targetPart, result);
             }
-            cache.set(targetPart, result);
+            if (result.contentType !== undefined) text(result.contentType);
+            tracks.push({ ...base, targetPart, ...result });
           }
-          if (result.contentType !== undefined) text(result.contentType);
-          tracks.push({ ...base, targetPart, ...result });
         }
       }
       const counts = new Map<string, number>(), nested: Meta[] = [];

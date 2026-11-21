@@ -74,3 +74,32 @@ test('picture status uses raw source identity rather than duplicate object IDs',
   assert.notEqual(result.tracks[0].source.elementIndex, result.tracks[2].source.elementIndex);
   assert.equal(result.tracks[0].targetPart, result.tracks[2].targetPart);
 });
+
+test('raw tracks inside opaque compatibility wrappers retain both branches and source identity', async () => {
+  const bytes = await mutate(entries => {
+    const key = 'ppt/slides/slide1.xml', xml = strFromU8(entries[key]), track = xml.match(/<p173:track id="\{363C0747[^>]*\/>/u)?.[0]; assert.ok(track);
+    const wrap = `<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:f="urn:unsupported"><mc:Choice Requires="f">${track}</mc:Choice><mc:Fallback>${track}</mc:Fallback></mc:AlternateContent>`;
+    entries[key] = strToU8(xml.replace(track, wrap));
+  });
+  const result = await inspectPptxCaptionTracks(bytes);
+  assert.deepEqual(result.tracks.map(x => x.language), ['en-us', 'en-us', 'fr-fr', 'es-es']);
+  assert.ok(result.tracks.every(x => x.pictureView === 'effective-drawing'));
+  assert.ok(result.tracks[0].source.path.includes('Choice')); assert.ok(result.tracks[1].source.path.includes('Fallback'));
+  assert.notEqual(result.tracks[0].source.elementIndex, result.tracks[1].source.elementIndex); assert.equal(result.tracks[0].targetPart, result.tracks[1].targetPart);
+  assert.equal((await inspectPptxCaptionTracks(bytes, { captionLimits: { maxWorkUnits: result.workUnits } })).workUnits, result.workUnits);
+  await assert.rejects(inspectPptxCaptionTracks(bytes, { captionLimits: { maxWorkUnits: result.workUnits - 1 } }), error => error.code === 'package-limit-exceeded');
+  const session = await importPptx(bytes, { projection: 'content' });
+  try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, bytes); } finally { session.dispose(); }
+});
+
+test('compatibility wrappers around media do not make unrelated track structures admissible', async () => {
+  const bytes = await mutate(entries => {
+    const key = 'ppt/slides/slide1.xml', xml = strFromU8(entries[key]), media = xml.match(/<p14:media\b.*?<\/p14:media>/u)?.[0]; assert.ok(media);
+    const wrap = `<mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:f="urn:unsupported"><mc:Choice Requires="f">${media}</mc:Choice><mc:Fallback/></mc:AlternateContent>`;
+    const unrelated = '<p173:track xmlns:p173="http://schemas.microsoft.com/office/powerpoint/2017/3/main" id="unrelated" r:embed="rId6"/>';
+    entries[key] = strToU8(xml.replace(media, wrap).replace('</p173:tracksInfo>', `${unrelated}</p173:tracksInfo>`));
+  });
+  const result = await inspectPptxCaptionTracks(bytes);
+  assert.deepEqual(result.tracks.map(x => x.language), ['en-us', 'fr-fr', 'es-es']); assert.ok(result.tracks[0].source.path.includes('AlternateContent'));
+  assert.ok(result.tracks.every(x => x.trackId !== 'unrelated'));
+});
