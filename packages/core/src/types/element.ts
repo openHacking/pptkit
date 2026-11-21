@@ -192,12 +192,16 @@ export interface VideoElementInput extends ElementBaseInput {
   type: "video";
   videoAssetId: string;
   posterAssetId?: string;
+  /** Defaults to click-sequence; automatic follows the native main sequence. */
+  playbackStart?: "click-sequence" | "automatic";
 }
 export interface VideoElement extends ElementBase, Omit<VideoElementInput, keyof ElementBaseInput> {}
 export interface NormalizedVideoElement extends NormalizedElementBase {
   type: "video";
   videoAssetId: string;
   posterAssetId?: string;
+  /** Defaults to click-sequence; automatic follows the native main sequence. */
+  playbackStart?: "click-sequence" | "automatic";
 }
 
 export type ShapeKind = "rect" | "roundRect" | "ellipse" | "triangle" | "diamond" | "arrow" | "chevron" | "parallelogram";

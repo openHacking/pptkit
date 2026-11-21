@@ -1,0 +1,10 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { createPresentation } from "../../packages/core/dist/index.js";
+import { generatePptx } from "../../packages/pptx-exporter/dist/index.js";
+import { readGeneratedZip } from "../../tests/support/read-generated-zip.mjs";
+if (!process.argv[2]) throw new Error("Usage: node scripts/research/generate-video-auto.mjs <output.pptx>");
+const parts = readGeneratedZip(await readFile(new URL("../../tests/fixtures/pptkit-mixed-av.pptx", import.meta.url)));
+const p = createPresentation();
+p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+p.addSlide({ elements: ["automatic", "automatic"].map((playbackStart, i) => ({ id: `video-${i}`, type: "video", videoAssetId: "movie", playbackStart, box: { x: 50 + i * 300, y: 80, width: 240, height: 135 } })) });
+await writeFile(process.argv[2], (await generatePptx(p, { videoMode: "iso-bmff-v1" })).bytes);

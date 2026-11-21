@@ -100,7 +100,7 @@ test("ambiguous video timing blocks the whole mixed main sequence", async () => 
   ];
   for (const change of changes) {
     const bytes = modify(original, change), s = await importPptx(bytes, mixedOptions);
-    try { assert.deepEqual(starts(s), [undefined, undefined]); const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, bytes); }
+    try { assert.deepEqual(starts(s), [undefined, undefined]); assert.deepEqual(s.document.slides[0].elements.filter(x => x.type === "video").map(x => x.playbackStart), [undefined, undefined]); const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, bytes); }
     finally { s.dispose(); }
   }
   const independent = modify(await makeMixed(), xml => xml.replace('cmd="togglePause"', 'cmd="stop"'));
@@ -118,8 +118,35 @@ test("native reordered automatic video remains unmapped instead of changing play
   try {
     assert.deepEqual(session.document.slides[0].elements.map(x => x.type), ["video", "video", "audio", "audio"]);
     assert.deepEqual(starts(session), [undefined, undefined]);
+    assert.deepEqual(session.document.slides[0].elements.filter(x => x.type === "video").map(x => x.playbackStart), [undefined, undefined]);
     assert.ok(session.report.diagnostics.some(x => x.code === "media-playback-unmapped"));
     const plan = await session.prepareSave({ mode: "no-op" });
     assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes));
   } finally { session.dispose(); }
+});
+
+
+test("ordered automatic video starts survive video-only and mixed fresh exports", async () => {
+  const parts = readGeneratedZip(await sample("pptkit-mixed-av"));
+  for (const mixed of [false, true]) {
+    const p = createPresentation();
+    p.registerAsset({ id: "movie", kind: "video", mimeType: "video/mp4", source: { type: "bytes", value: parts.get("ppt/media/movie.mp4") } });
+    p.registerAsset({ id: "sound", kind: "audio", mimeType: "audio/wav", source: { type: "bytes", value: parts.get("ppt/media/sound.wav") } });
+    p.addSlide({ elements: [
+      { type: "video", videoAssetId: "movie", playbackStart: "automatic", box: { x: 0, y: 0, width: 40, height: 40 } },
+      ...(mixed ? [{ type: "audio", audioAssetId: "sound", playbackStart: "automatic", box: { x: 50, y: 0, width: 40, height: 40 } }] : []),
+      { type: "video", videoAssetId: "movie", playbackStart: "click-sequence", box: { x: 100, y: 0, width: 40, height: 40 } },
+      { type: "video", videoAssetId: "movie", playbackStart: "automatic", box: { x: 150, y: 0, width: 40, height: 40 } },
+    ] });
+    let bytes = (await generatePptx(p, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+    for (let round = 0; round < 3; round++) {
+      const s = await importPptx(bytes, mixed ? mixedOptions : { projection: "content", videoProjection: "iso-bmff-v1" });
+      try {
+        assert.deepEqual(s.document.slides[0].elements.filter(x => x.type === "video").map(x => x.playbackStart), ["automatic", "click-sequence", "automatic"]);
+        if (mixed) assert.deepEqual(starts(s), ["automatic"]);
+        const plan = await s.prepareSave({ mode: "no-op" }); assert.deepEqual((await s.save(plan.plan)).bytes, new Uint8Array(bytes));
+        bytes = (await generatePptx(s.document, { audioMode: "wave-pcm-v1", videoMode: "iso-bmff-v1" })).bytes;
+      } finally { s.dispose(); }
+    }
+  }
 });

@@ -5,7 +5,7 @@ import { execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { createPresentation, normalizePresentation } from "@pptkit/core";
+import { createPresentation, normalizePresentation, validatePresentation } from "@pptkit/core";
 import { generatePptx } from "../dist/index.js";
 import { readGeneratedZip } from "../../../tests/support/read-generated-zip.mjs";
 const root = fileURLToPath(new URL("../../../", import.meta.url));
@@ -50,4 +50,33 @@ test("automatic after an indefinitely looping main effect is rejected", async ()
   await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), audio("automatic")]), options), /cannot follow looping audio/);
   await assert.rejects(generatePptx(make([audio("automatic", { loop: true }), audio("object-click"), audio("automatic")]), options), /cannot follow looping audio/);
   await generatePptx(make([audio("automatic", { loop: true }), audio("click-sequence")]), options);
+});
+
+
+test("automatic video uses ordered native media calls with independent pauses", async () => {
+  const video = playbackStart => ({ type: "video", videoAssetId: "movie", playbackStart });
+  const dir = await mkdtemp(join(tmpdir(), "pptkit-video-auto-"));
+  try {
+    const cases = [
+      [[video("automatic")], [group([auto(2, 0, 2000)], true)]],
+      [[video("click-sequence"), video("automatic")], [group([click(2, 2000), auto(3, 2000, 2000)])]],
+      [[audio("click-sequence"), video("automatic"), audio("automatic")], [group([click(2), auto(3, 1000, 2000), auto(4, 3000)])]],
+      [[video("automatic"), audio("object-click"), video("automatic")], [group([auto(2, 0, 2000), auto(4, 2000, 2000)], true)]],
+    ];
+    for (const [elements, expected] of cases) {
+      const p = make(elements);
+      assert.equal(normalizePresentation(p).slides[0].elements.find(x => x.type === "video" && x.playbackStart === "automatic").playbackStart, "automatic");
+      const path = join(dir, "out.pptx"); await writeFile(path, (await generatePptx(p, options)).bytes); verify(path, expected);
+    }
+    const generated = join(dir, "generated.pptx");
+    execFileSync(process.execPath, [join(root, "scripts/research/generate-video-auto.mjs"), generated]);
+    assert.deepEqual(await readFile(generated), await readFile(join(root, "tests/fixtures/pptkit-video-auto.pptx")));
+    verify(generated, [group([auto(2, 0, 2000), auto(3, 2000, 2000)], true)]);
+    const base = make([video(undefined)]), clickVideo = make([video("click-sequence")]);
+    assert.deepEqual((await generatePptx(base, options)).bytes, (await generatePptx(clickVideo, options)).bytes);
+    const invalid = make([video("object-click")]);
+    assert.ok(validatePresentation(invalid).some(x => x.code === "invalid-video-playback-start"));
+    await assert.rejects(generatePptx(invalid, options), /validation failed/i);
+    await assert.rejects(generatePptx(make([audio("click-sequence", { loop: true }), video("automatic")]), options), /cannot follow looping audio/);
+  } finally { await rm(dir, { recursive: true, force: true }); }
 });

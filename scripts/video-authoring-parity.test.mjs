@@ -77,6 +77,23 @@ for (const [fixture, starts] of [['pptkit-mixed-av', ['click-sequence', 'click-s
   assert.deepEqual(actual, expected); assert.deepEqual(actual.original, [...bytes]); assert.deepEqual(actual.elements.filter(x => x.type === "audio").map(x => x.playbackStart), starts); assert.deepEqual(requests, []);
 });
 
+test('automatic video import and fresh export agree across Node and browser', async t => {
+  const bytes = await readFile('tests/fixtures/pptkit-video-auto.pptx');
+  const options = { projection: 'content', videoProjection: 'iso-bmff-v1' };
+  const node = await importPptx(bytes, options); let expected;
+  try { const result = await generatePptx(node.document, { videoMode: 'iso-bmff-v1' }); expected = { elements: node.document.slides[0].elements, bytes: [...result.bytes], warnings: result.warnings }; } finally { node.dispose(); }
+  const browser = await chromium.launch(); t.after(() => browser.close()); const page = await browser.newPage(), requests = [];
+  await page.route('**/*', route => { requests.push(route.request().url()); return route.abort(); });
+  for (const name of ['core', 'layout', 'pptx-parser', 'pptx-exporter']) await page.addScriptTag({ content: await readFile(`packages/${name}/dist/browser/global.js`, 'utf8') });
+  const actual = await page.evaluate(async ({ data, options }) => {
+    const s = await PPTKit.importPptx(Uint8Array.from(data), options);
+    try { const result = await PPTKit.generatePptx(s.document, { videoMode: 'iso-bmff-v1' }); return { elements: s.document.slides[0].elements, bytes: [...result.bytes], warnings: result.warnings }; } finally { s.dispose(); }
+  }, { data: [...bytes], options });
+  assert.deepEqual(actual, expected);
+  assert.deepEqual(actual.elements.filter(x => x.type === 'video').map(x => x.playbackStart), ['automatic', 'automatic']);
+  assert.deepEqual(requests, []);
+});
+
 test('native trimmed audio import and fresh export agree across Node and browser', async t => {
   const bytes = await readFile('tests/fixtures/powerpoint-audio-trim.pptx');
   const importOptions = { projection: 'content', audioProjection: 'wave-pcm-v1' }, exportOptions = { audioMode: 'wave-pcm-v1' };

@@ -71,6 +71,6 @@ export async function audioMainStart(root: XmlElement, p: string, checkpoint: ()
       result.push({ target, durationMs: duration, start: kind === "afterEffect" ? "automatic" : "click-sequence" }); elapsed += duration;
     }
   }
-  if (videos.size && (result.filter(effect => videos.has(effect.target)).length !== videos.size || result.some(effect => videos.has(effect.target) && effect.start !== "click-sequence"))) return undefined;
+  if (videos.size && (result.filter(effect => videos.has(effect.target)).length !== videos.size)) return undefined;
   return result;
 }

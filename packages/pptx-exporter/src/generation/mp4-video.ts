@@ -11,6 +11,7 @@ export function planMp4Video(document: NormalizedPresentation, mode: "iso-bmff-v
   const check = (element: NormalizedElement, slideId?: string, nested = false) => {
     if (element.type === "group") { for (const child of element.children) check(child, slideId, true); return; }
     if (element.type !== "video") return;
+    if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "automatic") return reject("playbackStart must be click-sequence or automatic.");
     if (mode !== "iso-bmff-v1") return reject("requires videoMode iso-bmff-v1; video cannot be silently omitted.");
     if (!slideId || nested || element.hidden || element.action !== undefined || element.placeholderKey !== undefined || element.opacity !== 1 || !element.box.width || !element.box.height) return reject("only visible, nontransparent slide-local top-level video with nonzero geometry and no action or placeholder binding is supported.");
     const asset = assets.get(element.videoAssetId);

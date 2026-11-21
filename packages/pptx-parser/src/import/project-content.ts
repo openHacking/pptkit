@@ -84,8 +84,8 @@ export async function projectContent(document: ManagedPresentationDocument, base
     const root = await context.root(part, "sld"), r = contentReader(part, context.p, context.a);
     const audioSettings = audioProjection ? await audioPlayback(root, context.p, checkpoint) : undefined;
     const audioStart = audioProjection ? await audioObjectStart(root, context.p, checkpoint) : undefined;
-    const videoPauses = audioProjection && videoProjection ? await audioObjectStart(root, context.p, checkpoint, "video-pause") : undefined;
-    const audioMain = audioProjection ? await audioMainStart(root, context.p, checkpoint, videoPauses) : undefined;
+    const videoPauses = videoProjection ? await audioObjectStart(root, context.p, checkpoint, "video-pause") : undefined;
+    const audioMain = audioProjection || videoProjection ? await audioMainStart(root, context.p, checkpoint, videoPauses) : undefined;
     const audioMainInputs = new Map<string, { target: string; duration?: number; trimUnsupported: boolean; playbackMapped: boolean }>();
     const videoMainInputs = new Map<string, { target: string; duration?: number; eligible: boolean }>();
     const placeholders = await inheritance.slide(part, sourceSlide.layoutPart);
@@ -348,7 +348,7 @@ export async function projectContent(document: ManagedPresentationDocument, base
           reportMedia(!("reason" in result), "reason" in result, "video");
           for (const operation of ["create", "import", "edit", "preview", "export", "no-op-save", "edit-save"] as const) {
             const tier = operation === "no-op-save" ? "preserved" : operation === "edit-save" || operation === "export" ? "unsupported" : operation === "import" || operation === "preview" ? "fallback" : "editable";
-            finding("drawing.video.projected-fields", operation, tier, at, "Video bytes, source identity, poster and geometry are projected; codec validation, playback settings, timing, export and source edit-save remain unsupported.", slide.id, id);
+            finding("drawing.video.projected-fields", operation, tier, at, "Video bytes, source identity, poster, geometry and bounded main-sequence starts are projected; codec validation, other playback settings, general export and source edit-save remain unsupported.", slide.id, id);
           }
           if ("reason" in result) finding("drawing.video.poster", "preview", "fallback", at, `No supported poster was projected: ${result.reason}`, slide.id, id);
         } else if ("reason" in result) {
@@ -504,11 +504,11 @@ export async function projectContent(document: ManagedPresentationDocument, base
         const compatible = mediaInputs.length === audioMain.length && mediaInputs.every((input, index) => {
           const effect = audioMain[index]!, previous = mediaInputs[index - 1];
           if (previous?.type === "audio" && effect.start === "automatic" && previous.loop) return false;
-          if (input.type === "video") { const item = videoMainInputs.get(input.id!); return item && item.eligible && item.target === effect.target && item.duration === effect.durationMs && effect.start === "click-sequence"; }
+          if (input.type === "video") { const item = videoMainInputs.get(input.id!); return item && item.eligible && item.target === effect.target && item.duration === effect.durationMs; }
           const item = audioMainInputs.get(input.id!);
           return item && !item.trimUnsupported && item.playbackMapped && item.target === effect.target && item.duration === effect.durationMs;
         });
-        if (compatible) for (const [index, input] of mediaInputs.entries()) if (input.type === "audio") input.playbackStart = audioMain[index]!.start;
+        if (compatible) for (const [index, input] of mediaInputs.entries()) input.playbackStart = audioMain[index]!.start;
       }
       for (const input of inputs) slide.addElement(input);
     }

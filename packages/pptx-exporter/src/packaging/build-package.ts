@@ -45,7 +45,7 @@ interface PartContextResult {
   relationships: Relationship[];
   chartParts: { id: number; chart: LayoutChartElement }[];
   audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
-  videoTargets: { objectId: number; durationMs: number }[];
+  videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "automatic" }[];
   mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[];
 }
 
@@ -93,7 +93,7 @@ function createPartContext(options: {
   let nextObject = 2;
   const chartParts: { id: number; chart: LayoutChartElement }[] = [];
   const audioTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
-  const videoTargets: { objectId: number; durationMs: number }[] = [];
+  const videoTargets: { objectId: number; durationMs: number; playbackStart?: "click-sequence" | "automatic" }[] = [];
   const mediaTargets: { kind: "audio" | "video"; objectId: number; durationMs: number; playbackStart?: "click-sequence" | "object-click" | "automatic"; playbackVolume?: "low" | "medium" | "high" | "mute"; loop?: boolean; rewindAfterPlayback?: boolean }[] = [];
   const native = options.nativeElements ? nativeDrawingContext(options.nativeElements) : undefined;
   const context: ElementXmlContext = {
@@ -134,7 +134,7 @@ function createPartContext(options: {
       mediaTargets.push({ kind: "audio", objectId, durationMs: resource.durationMs - (trimStartMs ?? 0) - (trimEndMs ?? 0), ...(playbackStart === undefined ? {} : { playbackStart }), ...(playbackVolume === undefined ? {} : { playbackVolume }), ...(loop === undefined ? {} : { loop }), ...(rewindAfterPlayback === undefined ? {} : { rewindAfterPlayback }) });
       return { audio, media, poster: image };
     },
-    videoRelationship(assetId, posterAssetId, objectId) {
+    videoRelationship(assetId, posterAssetId, objectId, playbackStart) {
       const packaged = options.media.get(assetId), resource = options.video?.get(assetId);
       const poster = posterAssetId === undefined ? options.fallbackVideoPoster : options.media.get(posterAssetId);
       if (!packaged || !resource || !poster || !poster.loaded.mimeType.startsWith("image/")) throw new TypeError("PPTX video or its poster could not be packaged.");
@@ -142,8 +142,8 @@ function createPartContext(options: {
       relationships.push({ id: video, type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/video", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: media, type: "http://schemas.microsoft.com/office/2007/relationships/media", target: `../media/${mediaFilename(packaged.name)}` });
       relationships.push({ id: image, type: REL.image, target: `../media/${mediaFilename(poster.name)}` });
-      videoTargets.push({ objectId, durationMs: resource.durationMs });
-      mediaTargets.push({ kind: "video", objectId, durationMs: resource.durationMs });
+      videoTargets.push({ objectId, durationMs: resource.durationMs, ...(playbackStart === undefined ? {} : { playbackStart }) });
+      mediaTargets.push({ kind: "video", objectId, durationMs: resource.durationMs, ...(playbackStart === undefined ? {} : { playbackStart }) });
       return { video, media, poster: image };
     },
     actionRelationship(action: ElementAction) {
