@@ -542,7 +542,7 @@ test("packed packages work in an isolated npm consumer through every declared en
       const { generatePptx } = await import("@pptkit/pptx-exporter/browser");
       const { normalizeJpegOrientationInBrowser } = await import("@pptkit/pptx-exporter/dom");
       if (typeof normalizeJpegOrientationInBrowser !== "function") throw new Error("Installed JPEG normalization adapter missing");
-      const { inspectZipArchive, inspectXmlPart, inspectOpcPackage, inspectPresentationPackage, inspectMarkupCompatibility, inspectPptx, inspectPptxNotes, inspectPptxMasterPictures, importPptx } = await import("@pptkit/pptx-parser/browser");
+      const { inspectZipArchive, inspectXmlPart, inspectOpcPackage, inspectPresentationPackage, inspectMarkupCompatibility, inspectPptx, inspectPptxNotes, inspectPptxMasterPictures, inspectPptxCaptionTracks, importPptx } = await import("@pptkit/pptx-parser/browser");
       if ((await inspectXmlPart(new TextEncoder().encode('<p:r xmlns:p="urn:installed"/>'))).root.namespaceUri !== "urn:installed") throw new Error("Installed XML namespace inspection failed");
       const { renderLayoutToSvg } = await import("@pptkit/svg-renderer/browser");
       const { createBrowserTextMeasurement } = await import("@pptkit/layout/dom");
@@ -554,6 +554,7 @@ test("packed packages work in an isolated npm consumer through every declared en
       document.addSlide().addElement({ type: "text", content: "Installed browser", box: { x: 40, y: 40, width: 300, height: 80 } });
       const svg = await renderLayoutToSvg(resolveLayout(document));
       const pptx = await generatePptx(document);
+      if ((await inspectPptxCaptionTracks(pptx.bytes)).tracks.length !== 0) throw new Error("Installed caption source inventory failed");
       if ((await inspectPptx(pptx.bytes)).slideMasters.length !== 2) throw new Error("Installed browser master graph failed");
       const masterPictures = await inspectPptxMasterPictures(pptx.bytes);
       if (masterPictures.masters.length !== 2 || masterPictures.mapping !== "not-performed") throw new Error("Installed master picture inventory failed");

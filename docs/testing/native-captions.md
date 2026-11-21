@@ -6,6 +6,8 @@ The slide's Office 2017 `tracksInfo` extension lists each language, label, gener
 
 Run the research-only inspector with `python3 scripts/research/inspect-native-captions.py tests/fixtures/powerpoint-caption-multi.pptx`. It lists observed track links and checks only UTF-8 and a `WEBVTT` header, not complete cue validity. Tests cover no tracks, one track, multiple tracks, invalid bytes/header, absent or wrong relationships, MIME mismatch and an external target without fetching it. Current Parser reports source track parts as unsupported and preserves unchanged packages byte-for-byte; fresh export does not preserve captions. The [decision](../architecture/decisions/0065-caption-track-research.md) records remaining work.
 
+The separate [bounded Parser source inventory](../api/caption-source-inventory.md) reports the observed raw extension chain and its relationship/byte status without importing caption semantics. It retains inactive MCE branches as raw-only, so it does not claim that every reported track is active.
+
 Microsoft documents [WebVTT and SRT insertion for current PowerPoint versions](https://support.microsoft.com/en-us/powerpoint/add-closed-captions-or-subtitles-to-media-in-powerpoint). That product documentation is not evidence of how this particular sample plays or of support in other versions.
 
 ## SRT conversion and playback attempt

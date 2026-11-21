@@ -97,6 +97,8 @@ export type { ImportCapabilityLimits, ImportCapabilityOptions, ImportCapabilityR
 export type { ImportedChartValueSource, ImportedChartLabelSource, ImportedChartSeriesNameSource, ImportedChartSeriesOrderSource, ImportedPictureSource, ImportedAudioSource, ImportedVideoSource, ImportedSlideVisibilitySource, ImportedCoreMetadataSource, ImportedCustomPropertySource } from "./types/import.js";
 
 export { inspectNativeTiming as inspectPptxTiming } from "./timing/read-timing.js";
+export { inspectPptxCaptionTracks } from "./captions/inspect.js";
+export type { PptxCaptionInspection, PptxCaptionInspectionOptions, PptxCaptionInspectionLimits, PptxCaptionTrackSource } from "./types/captions.js";
 export type { PptxTimingInspectionLimits, PptxTimingInspectionOptions, PptxTimingView, PptxTimingAttribute, PptxTimingReference, PptxTimingNodeInfo, PptxTimingDrawingInfo, PptxTimingFinding, PptxSlideTimingInventory, PptxTimingInspection } from "./types/timing.js";
 
 export type { PptxTableStyleInheritance, PptxTableStyleSelection, PptxTableStylePropertyInfo } from "./types/inheritance.js";
