@@ -44,6 +44,24 @@ lifetime.abort();
 
 A supplied signal must belong to the container's browser window. After mounting, aborting it disposes that instance and publishes `disposed`; explicit `dispose()` detaches the abort listener. Distinct mounts keep separate URLs and lifetimes. The size check is made **after** the resolver returns a Blob: it is not a streaming/download budget. The resolver must enforce authorization, URL/redirect policy, decompression and actual transfer limits itself. The adapter never directly fetches an address, cannot stop a resolver that ignores its signal, and does not share or cache fetched blobs. Browser media engines may themselves follow references inside formats they support; use an appropriate network sandbox or CSP when loading untrusted media. Chromium tests cover an explicit fetch resolver, failure and retry, settings mutation, size rejection, cancellation with a late result, abort during/after mounting, and twenty repeated mount/leave/cancel cycles with owned listeners and object URLs counted.
 
+## Explicit shared loading
+
+`createSharedBrowserMediaPool(window, { maxBytes, resolve })` optionally shares an in-flight or resolved Blob among pending and active mounts with the same caller-supplied key. Each mount still creates its own media element, controller and object URL, with independent playback, cancellation and disposal. The pool retains a Blob only while at least one mount using its key is pending or active. When the last user cancels, fails or disposes, the entry is removed and its resolver signal is aborted; a later mount resolves again. A resolver that ignores cancellation can still finish its own work, but its result cannot revive the removed entry. A failed or oversized result is not kept after the affected mounts settle.
+
+```ts
+import { createSharedBrowserMediaPool } from '@pptkit/svg-renderer/media';
+
+const pool = createSharedBrowserMediaPool(window, {
+  maxBytes: 4_000_000,
+  resolve: (key, { signal, maxBytes }) => loadAuthorizedBlob(key, { signal, maxBytes }),
+});
+const first = await pool.mount(firstHost, 'movie-v1', { kind: 'video', contentType: 'video/mp4' });
+const second = await pool.mount(secondHost, 'movie-v1', { kind: 'video', contentType: 'video/mp4' });
+// Dispose each controller independently when its view leaves.
+```
+
+The pool belongs to one browser window. Choose a key that uniquely represents the authorized content and version: the pool does not inspect source identity, verify MIME, enforce authorization or separate incompatible uses sharing a key. The loader must enforce actual transfer and decompression limits; `maxBytes` checks the returned Blob and is also passed to the loader. The pool does not itself fetch, share object URLs, move a playing element between slides, or keep playback running after an instance is disposed. Chromium tests cover concurrent mounts, independent playback, one-user and last-user cancellation, late results, invalid/oversized data, separate keys, retry and synchronous abort on mounting.
+
 ## Composing with the bounded HTTP resolver
 
 Applications that already use `@pptkit/pptx-exporter` can explicitly reuse its [HTTP media resolver](byte-assets.md#external-audio-and-video) without introducing an exporter dependency into the SVG renderer. Use the **same byte limit** for the stream and the returned Blob, and validate the response MIME according to the consumer's accepted formats:

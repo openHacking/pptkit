@@ -5,3 +5,5 @@ export { mountLayoutMedia } from './adapters/layout-media.js';
 export type { BrowserMediaAssetRequest, BrowserLayoutMediaOptions, BrowserLayoutMedia } from './adapters/layout-media.js';
 export { mountLayoutMediaOverlay } from './adapters/layout-media-overlay.js';
 export { mountLayoutMediaInPlace } from './adapters/layout-media-in-place.js';
+export { createSharedBrowserMediaPool } from './adapters/shared-browser-media.js';
+export type { SharedBrowserMediaPool, SharedBrowserMediaPoolOptions, SharedBrowserMediaMountOptions } from './adapters/shared-browser-media.js';

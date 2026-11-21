@@ -356,6 +356,93 @@ test('repeated mount, leave and cancelled loads leave no media, owned listeners 
   assert.deepEqual(result, { children: 0, liveUrls: 0, listeners: 0, played: 0 }); assert.deepEqual(requests, []);
 });
 
+test('shared media pool isolates cancellation, playback and last-user cleanup', async t => {
+  const { page, movie, requests } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const firstHost = document.createElement('div'), secondHost = document.createElement('div'); document.body.append(firstHost, secondHost);
+    const create = URL.createObjectURL, revoke = URL.revokeObjectURL, live = new Set();
+    URL.createObjectURL = value => { const url = create.call(URL, value); live.add(url); return url; };
+    URL.revokeObjectURL = url => { live.delete(url); revoke.call(URL, url); };
+    try {
+      let calls = 0, finish, sharedSignal, budget;
+      const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: 1000000, resolve: (key, context) => { calls++; sharedSignal = context.signal; budget = context.maxBytes; return new Promise(resolve => { finish = resolve; }); } });
+      const a = new AbortController(), b = new AbortController(), options = { kind: 'video', contentType: 'video/mp4', muted: true };
+      const first = pool.mount(firstHost, 'movie', { ...options, signal: a.signal }).catch(e => e.name);
+      const second = pool.mount(secondHost, 'movie', { ...options, signal: b.signal });
+      await new Promise(resolve => setTimeout(resolve, 0)); a.abort(); const cancelled = await first, aliveAfterCancel = !sharedSignal.aborted;
+      finish(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); const c = await second;
+      const d = await pool.mount(firstHost, 'movie', options);
+      const ready = controller => new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('metadata timeout')), 5000); controller.subscribe(s => { if (s.status === 'ready') { clearTimeout(timer); resolve(); } else if (s.status === 'error') { clearTimeout(timer); reject(Error(s.failure)); } }); });
+      await Promise.all([ready(c), ready(d)]); await c.play(); const independent = !c.element.paused && d.element.paused;
+      const liveBefore = live.size; b.abort(); const afterOne = { live: live.size, sharedAlive: !sharedSignal.aborted, other: d.state.status !== 'disposed' };
+      d.dispose(); return { calls, budget, cancelled, aliveAfterCancel, independent, liveBefore, afterOne, final: { live: live.size, aborted: sharedSignal.aborted, nodes: firstHost.children.length + secondHost.children.length } };
+    } finally { URL.createObjectURL = create; URL.revokeObjectURL = revoke; }
+  }, movie);
+  assert.deepEqual(result, { calls: 1, budget: 1000000, cancelled: 'AbortError', aliveAfterCancel: true, independent: true, liveBefore: 2, afterOne: { live: 1, sharedAlive: true, other: true }, final: { live: 0, aborted: true, nodes: 0 } }); assert.deepEqual(requests, []);
+});
+
+test('shared media pool aborts abandoned loads, rejects bad results and retries without stale cache', async t => {
+  const { page, movie, requests } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host); const options = { kind: 'video', contentType: 'video/mp4', muted: true };
+    let calls = 0, finish, abandoned;
+    const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: 1000000, resolve: (key, { signal }) => { calls++; if (calls === 1) { abandoned = signal; return new Promise(resolve => { finish = resolve; }); } if (calls === 2) return new Blob([]); return new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' }); } });
+    const a = new AbortController(), pending = pool.mount(host, 'movie', { ...options, signal: a.signal }).catch(e => e.name);
+    await new Promise(resolve => setTimeout(resolve, 0)); a.abort(); const cancelled = await pending; const stopped = abandoned.aborted;
+    finish(new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); await Promise.resolve();
+    let failure; try { await pool.mount(host, 'movie', options); } catch (e) { failure = e.name; }
+    const c = await pool.mount(host, 'movie', options); const mounted = host.children.length; c.dispose();
+    const aborted = new AbortController(); aborted.abort(); let early; try { await pool.mount(host, 'movie', { ...options, signal: aborted.signal }); } catch (e) { early = e.name; }
+    return { calls, cancelled, stopped, failure, mounted, early, remaining: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { calls: 3, cancelled: 'AbortError', stopped: true, failure: 'TypeError', mounted: 1, early: 'AbortError', remaining: 0 }); assert.deepEqual(requests, []);
+});
+
+test('shared media pool separates keys, enforces the shared limit and releases synchronous aborts', async t => {
+  const { page, requests } = await setup(t);
+  const result = await page.evaluate(async () => {
+    const host = document.createElement('div'); document.body.append(host); const signals = [], keys = [];
+    const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: 4, resolve: (key, { signal }) => { keys.push(key); signals.push(signal); return new Blob([key === 'large' ? '12345' : '1234'], { type: 'audio/wav' }); } });
+    const options = { kind: 'audio', contentType: 'audio/wav' };
+    let large; try { await pool.mount(host, 'large', options); } catch (e) { large = e.name; }
+    const a = await pool.mount(host, 'a', options), b = await pool.mount(host, 'b', options);
+    const distinct = a.element.src !== b.element.src; a.dispose(); b.dispose();
+    const ac = new AbortController(); const c = await pool.mount(host, 'c', { ...options, signal: ac.signal, onResolveState: s => { if (s.status === 'mounted') ac.abort(); } });
+    const final = { status: c.state.status, aborted: signals.every(s => s.aborted), children: host.children.length };
+    let keyError; try { await pool.mount(host, '', options); } catch (e) { keyError = e.name; }
+    return { large, keys, distinct, final, keyError };
+  });
+  assert.deepEqual(result, { large: 'RangeError', keys: ['large', 'a', 'b', 'c'], distinct: true, final: { status: 'disposed', aborted: true, children: 0 }, keyError: 'TypeError' }); assert.deepEqual(requests, []);
+});
+
+test('abandoned shared resolution cannot replace a newer entry for the same key', async t => {
+  const { page, movie, requests } = await setup(t);
+  const result = await page.evaluate(async bytes => {
+    const host = document.createElement('div'); document.body.append(host); const completions = [], signals = [];
+    const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: 1000000, resolve: (_key, { signal }) => { signals.push(signal); return new Promise(resolve => completions.push(resolve)); } });
+    const opts = { kind: 'video', contentType: 'video/mp4', muted: true }, lifetime = new AbortController();
+    const old = pool.mount(host, 'same', { ...opts, signal: lifetime.signal }).catch(e => e.name); await new Promise(resolve => setTimeout(resolve, 0)); lifetime.abort(); const oldResult = await old;
+    const current = pool.mount(host, 'same', opts); await new Promise(resolve => setTimeout(resolve, 0));
+    completions[0](new Blob(['stale'], { type: 'video/mp4' })); await Promise.resolve();
+    completions[1](new Blob([Uint8Array.from(bytes)], { type: 'video/mp4' })); const c = await current;
+    const same = await pool.mount(host, 'same', opts), urls = c.element.src !== same.element.src, before = signals[1].aborted; c.dispose(); const between = signals[1].aborted; same.dispose();
+    return { oldResult, resolutions: completions.length, oldAborted: signals[0].aborted, urls, before, between, after: signals[1].aborted, remaining: host.children.length };
+  }, movie);
+  assert.deepEqual(result, { oldResult: 'AbortError', resolutions: 2, oldAborted: true, urls: true, before: false, between: false, after: true, remaining: 0 }); assert.deepEqual(requests, []);
+});
+
+test('failed shared entries allow immediate retry from a failure observer', async t => {
+  const { page, requests } = await setup(t);
+  const result = await page.evaluate(async () => {
+    const host = document.createElement('div'); document.body.append(host); let calls = 0, retry;
+    const pool = adapter.createSharedBrowserMediaPool(window, { maxBytes: 100, resolve: () => { calls++; return calls === 1 ? new Blob([]) : new Blob(['valid bytes'], { type: 'audio/wav' }); } });
+    const options = { kind: 'audio', contentType: 'audio/wav' };
+    const failure = await pool.mount(host, 'same', { ...options, onResolveState: state => { if (state.status === 'failed') retry = pool.mount(host, 'same', options); } }).catch(e => e.name);
+    const controller = await retry; controller.dispose(); return { calls, failure, remaining: host.children.length };
+  });
+  assert.deepEqual(result, { calls: 2, failure: 'TypeError', remaining: 0 }); assert.deepEqual(requests, []);
+});
+
 test('resolution events distinguish loading, failure, cancellation and mounted playback state', async t => {
   const { page, movie } = await setup(t);
   const result = await page.evaluate(async bytes => {

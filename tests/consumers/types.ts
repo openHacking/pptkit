@@ -144,8 +144,10 @@ function browserAnalysis(browserDocument: Document, fonts: readonly BrowserMeasu
 }
 void browserAnalysis;
 
-import { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay, mountLayoutMediaInPlace, type BrowserLayoutMedia, type BrowserMediaState, type BrowserMediaResolveState } from "@pptkit/svg-renderer/media";
+import { mountBrowserMedia, resolveAndMountBrowserMedia, mountLayoutMedia, mountLayoutMediaOverlay, mountLayoutMediaInPlace, createSharedBrowserMediaPool, type BrowserLayoutMedia, type BrowserMediaState, type BrowserMediaResolveState } from "@pptkit/svg-renderer/media";
 function browserMedia(host: HTMLElement, source: Blob) {
+  const pool = createSharedBrowserMediaPool(window, { maxBytes: 1000, resolve: (_key, { signal }) => { signal.throwIfAborted(); return source; } });
+  void pool.mount(host, "movie", { kind: "video", contentType: "video/mp4" });
   const controller = mountBrowserMedia(host, { kind: "video", source, contentType: "video/mp4", muted: true });
   const observe = (state: BrowserMediaState) => state.status;
   const unsubscribe = controller.subscribe(observe);
