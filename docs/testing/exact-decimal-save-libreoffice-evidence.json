@@ -1,0 +1,283 @@
+{
+  "scope": "PPTKit-created package with exact decimal variants; compare original to PPTKit exact source-value edits; no UI or native-authoring evidence.",
+  "producer": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "source_sha256": "0cd49db449c896ad8b349a6a1293f421cdd332f105705cd3cc8ab69c50db61e3",
+  "pptkit_edited_sha256": "b8b0b5288707ba30a436b8f2887d92967bec776b68896549e9968399816deca7",
+  "pptkit_changed_parts": [
+    "docProps/custom.xml"
+  ],
+  "records": [
+    {
+      "kind": "control",
+      "round": 0,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control.pptx",
+      "sha256": "0cd49db449c896ad8b349a6a1293f421cdd332f105705cd3cc8ab69c50db61e3",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Negative",
+          "type": "decimal",
+          "value": "-0.0001"
+        },
+        {
+          "name": "Tenth",
+          "type": "decimal",
+          "value": "0.1"
+        },
+        {
+          "name": "Wide",
+          "type": "decimal",
+          "value": "9007199254740993.0001"
+        }
+      ],
+      "decimal_elements": [
+        {
+          "part": "docProps/custom.xml",
+          "value": "0.1"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "9007199254740993.0001"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "-0.0001"
+        }
+      ]
+    },
+    {
+      "kind": "control",
+      "round": 1,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-1/control.pptx",
+      "sha256": "de7d4cfe70e55615f0800d1b66de0440c9ada855724d1106731841cd90c23990",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    },
+    {
+      "kind": "control",
+      "round": 2,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-2/control.pptx",
+      "sha256": "1a9a5d8efcff3b3744c54e7f08b62efa55d32d487174859aceceaaa20f6f7927",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    },
+    {
+      "kind": "control",
+      "round": 3,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-3/control.pptx",
+      "sha256": "ecdf2f2f9339d2ae282ea85a7d960869132b89e5c0bc2911662717f7aa875d92",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 0,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited.pptx",
+      "sha256": "b8b0b5288707ba30a436b8f2887d92967bec776b68896549e9968399816deca7",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Negative",
+          "type": "decimal",
+          "value": "-0.0001"
+        },
+        {
+          "name": "Tenth",
+          "type": "decimal",
+          "value": "0.2"
+        },
+        {
+          "name": "Wide",
+          "type": "decimal",
+          "value": "9007199254740994.0001"
+        }
+      ],
+      "decimal_elements": [
+        {
+          "part": "docProps/custom.xml",
+          "value": "0.2"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "9007199254740994.0001"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "-0.0001"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 1,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-1/edited.pptx",
+      "sha256": "a4898fe293010a7a7e4f97c13a1dcd4a102e28448b15d72ace6eddf18a0ccf42",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 2,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-2/edited.pptx",
+      "sha256": "ecdf2f2f9339d2ae282ea85a7d960869132b89e5c0bc2911662717f7aa875d92",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 3,
+      "path": ".tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-3/edited.pptx",
+      "sha256": "354e0680029d86e4ad30d749d6f5c7982a6c2d2e52a7a5556ae79b1b37cc550f",
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "decimal_elements": []
+    }
+  ],
+  "logs": [
+    {
+      "kind": "control",
+      "round": 1,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-1/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "control",
+      "round": 2,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-1/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-2/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "control",
+      "round": 3,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-2/control.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/control-3/control.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 1,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-1/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 2,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-1/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-2/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    },
+    {
+      "kind": "edited",
+      "round": 3,
+      "exit_code": 0,
+      "stdout": "convert /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-2/edited.pptx as a Impress document -> /Volumes/github/private/pptkit/.tmp/exact-decimal-save-libreoffice/run-8bnf3uhf/edited-3/edited.pptx using filter : Impress Office Open XML\n",
+      "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n"
+    }
+  ]
+}

@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { importPptx } from '../dist/index.js';
+import { createPresentation } from '../../core/dist/index.js';
+import { generatePptx } from '../../pptx-exporter/dist/index.js';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { metadataFixture, encodeMetadata, custom, MC } from './metadata-fixture.mjs';
 import { shape, body } from './content-fixture.mjs';
 import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
@@ -41,4 +45,12 @@ for(const strict of [false,true])test(`exact decimal edits combine atomically wi
 
 test('oversized source-only decimals remain untouched during other property edits',async()=>{
  const value='1'.repeat(10001),f=metadataFixture();f.add('custom',custom(2,'decimal',value,'name="Large"')+custom(3,'lpwstr','old','name="Control"'));const bytes=encodeMetadata(f),session=await importPptx(bytes,{...options,xmlLimits:{maxPendingCharacters:20000}});try{assert.deepEqual(session.document.metadata.customProperties,[{name:'Control',type:'string',value:'old'}]);session.document.setMetadata({...session.document.metadata,customProperties:[{name:'Control',type:'string',value:'new'}]});const ready=await session.prepareSave({mode:'edit'});assert.equal(ready.status,'ready',JSON.stringify(ready.report));const output=(await session.save(ready.plan)).bytes;assert.ok(readGeneratedZip(output).get('inventory/custom.data').toString().includes(`<v:decimal>${value}</v:decimal>`));}finally{session.dispose();}
+});
+
+test('recorded native comparison matches the generated source and exact edited file',async()=>{
+ const input=await readFile(new URL('../../../tests/fixtures/custom-exact-decimal-source.pptx',import.meta.url)),evidence=JSON.parse(await readFile(new URL('../../../docs/testing/exact-decimal-save-libreoffice-evidence.json',import.meta.url),'utf8'));const hash=bytes=>createHash('sha256').update(bytes).digest('hex');assert.equal(hash(input),evidence.source_sha256);
+ const doc=createPresentation({metadata:{customProperties:[{name:'Tenth',type:'decimal',value:'0.1'},{name:'Wide',type:'decimal',value:'9007199254740993.0001'},{name:'Negative',type:'decimal',value:'-0.0001'},{name:'Control',type:'string',value:'before'}]}});doc.addSlide({id:'decimal-test'});assert.deepEqual(Buffer.from((await generatePptx(doc)).bytes),input);
+ const session=await importPptx(input,options);let output;try{session.document.setMetadata({...session.document.metadata,customProperties:session.document.metadata.customProperties.map(p=>p.name==='Tenth'?{...p,value:'0.2'}:p.name==='Wide'?{...p,value:'9007199254740994.0001'}:p)});const ready=await session.prepareSave({mode:'edit'});assert.equal(ready.status,'ready');output=(await session.save(ready.plan)).bytes;}finally{session.dispose();}
+ assert.equal(hash(output),evidence.pptkit_edited_sha256);const before=readGeneratedZip(input),after=readGeneratedZip(output);assert.deepEqual([...before].filter(([name,payload])=>!after.has(name)||!payload.equals(after.get(name))).map(([name])=>name),['docProps/custom.xml']);let expected=before.get('docProps/custom.xml').toString().replace('<vt:decimal>0.1</vt:decimal>','<vt:decimal>0.2</vt:decimal>').replace('<vt:decimal>9007199254740993.0001</vt:decimal>','<vt:decimal>9007199254740994.0001</vt:decimal>');assert.equal(after.get('docProps/custom.xml').toString(),expected);
+ for(const kind of ['control','edited']){const records=evidence.records.filter(item=>item.kind===kind);assert.deepEqual(records.map(item=>item.round),[0,1,2,3]);assert.equal(records[0].decimal_elements.length,3);assert.ok(records.slice(1).every(item=>item.decimal_elements.length===0 && item.properties.every(p=>!['Tenth','Wide','Negative'].includes(p.name))));assert.ok(records.every(item=>item.properties.some(p=>p.name==='Control'&&p.value==='before')));}
 });
