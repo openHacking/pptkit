@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { importPptx } from '../dist/index.js';
+import { importPptx, inspectPptxCaptionTracks } from '../dist/index.js';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const { zipSync, unzipSync, strFromU8, strToU8 } = createRequire(import.meta.url)('fflate');
@@ -103,6 +103,25 @@ test('multitrack preview observations refer to retained per-instance captions an
   assert.deepEqual(evidence.menuObservations.secondAvailable, ['off', 'es-es']);
   assert.equal(inventoryResult[0].tracks[1].label, evidence.menuObservations.firstFrenchLabel);
   assert.match(evidence.scope, /screenshots were viewed but not retained/);
+});
+
+test('loop observation is bound to retained tracks, trim and native timing settings', async () => {
+  const evidence = JSON.parse(await readFile(join(root, 'docs/testing/native-caption-loop-evidence.json'), 'utf8'));
+  const bytes = await readFile(join(root, evidence.sourcePath)); assert.equal(createHash('sha256').update(bytes).digest('hex'), evidence.sourceSha256);
+  const [video] = inventory(join(root, evidence.sourcePath)); assert.deepEqual(video.tracks.map(track => track.language), evidence.trackLanguages);
+  assert.deepEqual(video.trims, [{ st: String(evidence.trimStartMs), end: String(evidence.trimEndMs) }]);
+  const french = await readFile(join(root, evidence.frenchInputPath), 'utf8'); assert.equal(video.tracks[1].text, `${french}\n`);
+  const slideXml = strFromU8(unzipSync(bytes)['ppt/slides/slide1.xml']); assert.match(slideXml, /repeatCount="indefinite"/u);
+  const timestamp = ms => `00:00:${String(Math.floor(ms / 1000)).padStart(2, '0')}.${String(ms % 1000).padStart(3, '0')}`;
+  for (const item of [evidence.preview.beforeRollover, evidence.preview.afterRollover]) {
+    const sourceTime = item.elapsedMs + evidence.trimStartMs; assert.ok(sourceTime >= item.cueStartMs && sourceTime < item.cueEndMs);
+    assert.ok(french.includes(`${timestamp(item.cueStartMs)} --> ${timestamp(item.cueEndMs)}\n${item.caption}`));
+  }
+  assert.ok(evidence.preview.afterRollover.elapsedMs < evidence.preview.beforeRollover.elapsedMs);
+  assert.equal(evidence.slideshow.applicationExitedUnexpectedly, true); assert.equal(evidence.slideshow.crashCause, 'undetermined');
+  assert.deepEqual((await inspectPptxCaptionTracks(bytes)).tracks.map(track => track.language), evidence.trackLanguages);
+  const session = await importPptx(bytes, { projection: 'content' });
+  try { const plan = await session.prepareSave({ mode: 'no-op' }); assert.deepEqual((await session.save(plan.plan)).bytes, new Uint8Array(bytes)); } finally { session.dispose(); }
 });
 
 test('research inventory identifies damaged track content and relationships without loading external targets', async () => {

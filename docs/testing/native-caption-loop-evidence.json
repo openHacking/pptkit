@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "application": "Microsoft PowerPoint for Mac",
+  "version": "16.104",
+  "sourcePath": "tests/fixtures/powerpoint-caption-loop-multitrack.pptx",
+  "sourceSha256": "ed0311a7ff6b7c99700983cee465f9c4520515393bc8af1d73c98296cde28d09",
+  "frenchInputPath": "tests/fixtures/caption-loop-fr-FR.vtt",
+  "trimStartMs": 2000,
+  "trimEndMs": 2000,
+  "mediaDurationMs": 12000,
+  "savedLoopSetting": "indefinite",
+  "trackLanguages": ["en-us", "fr-fr"],
+  "preview": {
+    "selectedLanguage": "fr-fr",
+    "beforeRollover": { "elapsedMs": 6330, "caption": "FR HUIT DIX", "cueStartMs": 8000, "cueEndMs": 10000 },
+    "afterRollover": { "elapsedMs": 3200, "caption": "FR QUATRE SIX", "cueStartMs": 4000, "cueEndMs": 6000 }
+  },
+  "slideshow": {
+    "initialCaption": "FR DEUX QUATRE",
+    "applicationExitedUnexpectedly": true,
+    "errorReportingDialogObserved": true,
+    "crashCause": "undetermined"
+  },
+  "scope": "One manual observation in an existing application session. Screenshots were viewed but not retained. The application exited while slideshow playback was active; the cause and reproducibility were not established. No crash report was submitted, no source document was modified, and the error recovery prompt was left for the user. The fixture anonymizes creator and last-modifier metadata only."
+}
