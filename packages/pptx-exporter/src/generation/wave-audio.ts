@@ -15,6 +15,8 @@ export function planWaveAudio(document: NormalizedPresentation, mode: "wave-pcm-
     if (mode !== "wave-pcm-v1") return reject("requires audioMode wave-pcm-v1; audio cannot be silently omitted.");
     if (element.playbackStart !== undefined && element.playbackStart !== "click-sequence" && element.playbackStart !== "object-click") return reject("playbackStart must be click-sequence or object-click.");
     if (element.playbackVolume !== undefined && element.playbackVolume !== "low" && element.playbackVolume !== "medium" && element.playbackVolume !== "high" && element.playbackVolume !== "mute") return reject("playbackVolume must be low, medium, high, or mute.");
+    if (element.loop !== undefined && typeof element.loop !== "boolean") return reject("loop must be a boolean.");
+    if (element.rewindAfterPlayback !== undefined && typeof element.rewindAfterPlayback !== "boolean") return reject("rewindAfterPlayback must be a boolean.");
     if (!slideId || nested || element.hidden || element.action !== undefined || element.placeholderKey !== undefined || element.opacity !== 1 || !element.box.width || !element.box.height) return reject("only visible, nontransparent slide-local top-level audio with nonzero geometry and no action or placeholder binding is supported.");
     const asset = assets.get(element.audioAssetId);
     if (!asset || asset.kind !== "audio") return reject("audio requires an audio asset.");

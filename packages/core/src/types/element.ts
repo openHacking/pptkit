@@ -162,6 +162,10 @@ export interface AudioElementInput extends ElementBaseInput {
   playbackStart?: "click-sequence" | "object-click";
   /** PowerPoint-style playback volume; defaults to high. */
   playbackVolume?: "low" | "medium" | "high" | "mute";
+  /** Repeat until stopped; defaults to false. */
+  loop?: boolean;
+  /** Return to the beginning after playback; defaults to false. */
+  rewindAfterPlayback?: boolean;
 }
 export interface AudioElement extends ElementBase, Omit<AudioElementInput, keyof ElementBaseInput> {}
 export interface NormalizedAudioElement extends NormalizedElementBase {
@@ -171,6 +175,10 @@ export interface NormalizedAudioElement extends NormalizedElementBase {
   playbackStart?: "click-sequence" | "object-click";
   /** PowerPoint-style playback volume; defaults to high. */
   playbackVolume?: "low" | "medium" | "high" | "mute";
+  /** Repeat until stopped; defaults to false. */
+  loop?: boolean;
+  /** Return to the beginning after playback; defaults to false. */
+  rewindAfterPlayback?: boolean;
 }
 
 /** Video bytes and the optional static poster are independently owned assets. */
