@@ -5,6 +5,37 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('closed and degenerate connector stroke geometry matches Chromium', async t => {
+  const doc = createPresentation();
+  const style = { paint: { type: 'solid', color: '000000' }, width: 4, dash: 'dash' };
+  doc.addSlide({ elements: [
+    { type: 'connector', id: 'closed', start: { x: 10, y: 10 }, route: [{ x: 50, y: 10 }, { x: 50, y: 50 }], end: { x: 10, y: 10 }, pathMode: 'closed-round', style },
+    { type: 'connector', id: 'zero', start: { x: 80, y: 80 }, end: { x: 80, y: 80 }, style },
+    { type: 'connector', id: 'repeated', start: { x: 100, y: 20 }, route: [{ x: 120, y: 20 }, { x: 120, y: 20 }], end: { x: 120, y: 50 }, style },
+  ] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.setContent(svg);
+  await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(layout => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+    const mismatches = [];
+    for (const item of items) {
+      const path = document.querySelector(`[data-pptkit-element-id="${item.elementId}"]`).querySelector('polygon,polyline');
+      const region = item.elementId === 'closed' ? [5, 55, 5, 55] : item.elementId === 'zero' ? [75, 85, 75, 85] : [95, 125, 15, 55];
+      for (let x = region[0] + .173; x < region[1]; x += .91) for (let y = region[2] + .231; y < region[3]; y += .87) {
+        // Chromium approximates the degenerate round cap near its mathematical circle.
+        if (item.elementId === 'zero' && Math.abs(Math.hypot(x - 80, y - 80) - 2) < 0.08) continue;
+        const point = new DOMPoint(x, y), expected = path.isPointInStroke(point), actual = !!PPTKit.hitTestSvgConnectorStrokes([item], point);
+        if (actual !== expected) mismatches.push({ id: item.elementId, x, y, expected, actual });
+      }
+    }
+    return { count: items.length, total: mismatches.length, examples: mismatches.slice(0, 5) };
+  }, layout);
+  assert.deepEqual(result, { count: 3, total: 0, examples: [] });
+});
+
 test('combined outline and connector stroke hits follow SVG paint order', async t => {
   const doc = createPresentation();
   doc.addSlide({ elements: [

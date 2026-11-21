@@ -248,6 +248,19 @@ test('dash phase continues through bends and round caps extend into gaps', () =>
   assert.ok(Object.isFrozen(items[0].strokeGeometry.dash));
 });
 
+test('captured stroke geometry covers closed seams and zero-length strokes', () => {
+  const doc = createPresentation();
+  const style = { paint: { type: 'solid', color: '000000' }, width: 4 };
+  doc.addSlide({ elements: [
+    { type: 'connector', id: 'closed', start: { x: 0, y: 0 }, route: [{ x: 20, y: 0 }, { x: 20, y: 20 }], end: { x: 0, y: 0 }, pathMode: 'closed-round', style },
+    { type: 'connector', id: 'zero', start: { x: 50, y: 50 }, end: { x: 50, y: 50 }, style },
+  ] });
+  const items = getSvgSlideSelectionGeometry(resolveNormalizedLayout(normalizePresentation(doc)), 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 10, y: 10 }).elementId, 'closed');
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 51, y: 50 }).elementId, 'zero');
+  assert.equal(hitTestSvgConnectorStrokes(items, { x: 52.1, y: 50 }), undefined);
+});
+
 test('zero-length connector segments remain selectable within the explicit tolerance', () => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'connector', id: 'point', start: { x: 10, y: 20 }, end: { x: 10, y: 20 } }] });
