@@ -1512,7 +1512,7 @@ test('CLI authoring exports custom values and reports unsupported XML strings as
 
 
 test('rename candidates exclude sources with undecidable opaque names while value edits remain available', async t => {
-  const data = metadataFixture(); data.add('custom', custom(2, 'lpwstr', 'old', 'name="A"') + custom(3, 'vector', '<v:lpwstr>x</v:lpwstr>', 'name="_x0041_"'));
+  const data = metadataFixture(); data.add('custom', custom(2, 'lpwstr', 'old', 'name="A"') + custom(3, 'vector', '<v:lpwstr>x</v:lpwstr>', 'name="_x0041_"') + custom(4, 'lpwstr', 'safe', 'name="B"'));
   const f = await fixture(t, encodeMetadata(data));
   const v2 = await runCliAsync(['inspect', 'source.pptx', '--projection', 'content', '--custom-property-values', '--custom-property-names', '--json'], f.options);
   assert.equal(v2.exitCode, 0, v2.output); assert.deepEqual(decode(v2).customPropertyEditCandidates.targets, []);
@@ -1521,6 +1521,8 @@ test('rename candidates exclude sources with undecidable opaque names while valu
   await writeFile(path.join(f.directory, 'custom.json'), JSON.stringify({ version: c.version, sourceSha256: c.sourceSha256, edits: [{ ...c.targets[0], replacement: 'new' }] }));
   const result = await runCliAsync(['save', 'source.pptx', 'value.pptx', '--mode', 'edit', '--custom-property-edits', 'custom.json', '--json'], f.options);
   assert.equal(result.exitCode, 0, result.output);
+  const saved = await importPptx(await readFile(path.join(f.directory, 'value.pptx')), { projection: 'content' });
+  try { assert.deepEqual(saved.document.metadata.customProperties, [{ name: 'B', type: 'string', value: 'new' }]); } finally { saved.dispose(); }
 });
 
 

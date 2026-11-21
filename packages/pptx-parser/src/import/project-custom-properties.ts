@@ -72,6 +72,11 @@ export function decodeLiteralEscapes(input: string): string | undefined {
   }
 }
 
+/** Decode one OOXML escape layer solely to detect collisions, without projecting unsupported names. */
+export function customNameCollisionKey(input: string): string {
+  return input.replace(/_x([0-9a-fA-F]{4})_/g, (_match, hex: string) => String.fromCharCode(Number.parseInt(hex, 16)));
+}
+
 /** Optional read-only projection; currency remains an opaque source value. */
 export function projectCurrencyProperty(property: CustomPropertyInfo, text: string): CustomDocumentProperty | undefined {
   if (property.valueType !== "cy" || property.value.status !== "uninterpreted" || !property.name || property.linkTarget !== undefined) return undefined;

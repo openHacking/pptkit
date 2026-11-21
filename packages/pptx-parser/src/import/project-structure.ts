@@ -1,4 +1,4 @@
-import { decodeLiteralEscapes, projectCustomProperty, sourceDateToUtc } from "./project-custom-properties.js";
+import { customNameCollisionKey, projectCustomProperty, sourceDateToUtc } from "./project-custom-properties.js";
 import { createPresentation, type PresentationMetadataInput } from "@pptkit/core";
 import type { PptxInspection } from "../types/structure.js";
 import { PptxImportError, type ImportFinding, type ImportReport, type ImportSourceIdentity, type ImportDiagnostic, type PptxSourceLocation } from "../types/import.js";
@@ -95,7 +95,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
       await checkpoint();
       const value = projectCustomProperty(property) ?? currencyProjection?.[projected.length];
       projected.push(value);
-      const decodedName = property.name === undefined ? undefined : decodeLiteralEscapes(property.name);
+      const decodedName = property.name === undefined ? undefined : customNameCollisionKey(property.name);
       if (decodedName !== undefined) nameCounts.set(decodedName, (nameCounts.get(decodedName) ?? 0) + 1);
     }
     for (const [index, property] of inspection.metadata.custom.properties.entries()) {
