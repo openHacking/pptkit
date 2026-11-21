@@ -4,6 +4,8 @@ import { importPptx, assessPptxCurrencyNumber } from '../dist/index.js';
 import { formatExactCurrency } from '../dist/metadata/currency-text.js';
 import { importPptxFile } from '../dist/node.js';
 import { fileURLToPath } from 'node:url';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { metadataFixture, encodeMetadata, custom, MC } from './metadata-fixture.mjs';
 import { readGeneratedZip } from '../../../tests/support/read-generated-zip.mjs';
 const options = {projection:'content',customCurrencyProjection:'exact-save-v2',customPropertySaveProfile:'scalar-v1'};
@@ -52,4 +54,17 @@ test('largest finite binary64 writes full decimal digits without exponent or rou
 test('currency formatter matches a binary denominator criterion over varied binary64 values',()=>{
  const view=new DataView(new ArrayBuffer(8));let seed=1234567;
  for(let i=0;i<1000;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;view.setUint32(0,seed & 0x7fffffff);seed=(Math.imul(seed,1664525)+1013904223)>>>0;view.setUint32(4,seed);const value=view.getFloat64(0);if(!Number.isFinite(value))continue;const text=formatExactCurrency(value),representable=value>=2**49||Number.isInteger(value*16);assert.equal(text!==undefined,representable,String(value));if(text!==undefined)assert.deepEqual(assessPptxCurrencyNumber(text),{status:'exact',value});}
+});
+
+test('recorded LibreOffice comparison matches the exact PPTKit-edited input',async()=>{
+ const source=await readFile(new URL('../../../tests/fixtures/custom-currency-source.pptx',import.meta.url));
+ const evidence=JSON.parse(await readFile(new URL('../../../docs/testing/custom-currency-save-libreoffice-evidence.json',import.meta.url),'utf8'));
+ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');assert.equal(hash(source),evidence.source_sha256);
+ const session=await importPptx(source,options);let output;
+ try {session.document.setMetadata({...session.document.metadata,customProperties:session.document.metadata.customProperties.map(p=>p.name==='Exact'?{...p,value:.5}:p)});const prepared=await session.prepareSave({mode:'edit'});assert.equal(prepared.status,'ready');output=(await session.save(prepared.plan)).bytes;}finally{session.dispose();}
+ assert.equal(hash(output),evidence.pptkit_edited_sha256);
+ const before=readGeneratedZip(source),after=readGeneratedZip(output),changed=[...before].filter(([name,data])=>!after.has(name)||!data.equals(after.get(name))).map(([name])=>name);assert.deepEqual(changed,['docProps/custom.xml']);
+ assert.match(after.get('docProps/custom.xml').toString(),/<vt:cy>0\.5000<\/vt:cy>/);
+ for(const kind of ['control','edited']){const records=evidence.records.filter(item=>item.kind===kind);assert.deepEqual(records.map(item=>item.round),[0,1,2,3]);assert.equal(records[0].currency_elements.length,3);assert.ok(records.slice(1).every(item=>item.currency_elements.length===0));assert.ok(records.every(item=>item.properties.some(p=>p.name==='Control'&&p.value==='before')));}
+ assert.equal(evidence.records.find(item=>item.kind==='edited'&&item.round===0).properties.find(item=>item.name==='Exact').value,'0.5000');
 });

@@ -1,0 +1,223 @@
+{
+  "scope": "Synthetic PPTKit-created package with three manually substituted currency variants; compare original to PPTKit exact currency value edit; no UI or native-authoring evidence.",
+  "producer": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "source_sha256": "7da28fe0e4d9f8064495d0e6abce455c3a64c494c0cce4ab3b376f0a9d345657",
+  "pptkit_edited_sha256": "2bd2025ac4ce8239585814648578222e3f874e7d72748162932f0645a3cead6a",
+  "pptkit_changed_parts": [
+    "docProps/custom.xml"
+  ],
+  "records": [
+    {
+      "kind": "control",
+      "round": 0,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Exact",
+          "type": "cy",
+          "value": "1.2500"
+        },
+        {
+          "name": "Inexact",
+          "type": "cy",
+          "value": "0.1000"
+        },
+        {
+          "name": "Negative",
+          "type": "cy",
+          "value": "-12.5000"
+        }
+      ],
+      "currency_elements": [
+        {
+          "part": "docProps/custom.xml",
+          "value": "1.2500"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "0.1000"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "-12.5000"
+        }
+      ]
+    },
+    {
+      "kind": "control",
+      "round": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    },
+    {
+      "kind": "control",
+      "round": 2,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    },
+    {
+      "kind": "control",
+      "round": 3,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 0,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "Exact",
+          "type": "cy",
+          "value": "0.5000"
+        },
+        {
+          "name": "Inexact",
+          "type": "cy",
+          "value": "0.1000"
+        },
+        {
+          "name": "Negative",
+          "type": "cy",
+          "value": "-12.5000"
+        }
+      ],
+      "currency_elements": [
+        {
+          "part": "docProps/custom.xml",
+          "value": "0.5000"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "0.1000"
+        },
+        {
+          "part": "docProps/custom.xml",
+          "value": "-12.5000"
+        }
+      ]
+    },
+    {
+      "kind": "edited",
+      "round": 1,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 2,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    },
+    {
+      "kind": "edited",
+      "round": 3,
+      "properties": [
+        {
+          "name": "Control",
+          "type": "lpwstr",
+          "value": "before"
+        },
+        {
+          "name": "PresentationFormat",
+          "type": "lpwstr",
+          "value": "On-screen Show (16:9)"
+        },
+        {
+          "name": "Slides",
+          "type": "r8",
+          "value": "1"
+        }
+      ],
+      "currency_elements": []
+    }
+  ]
+}
