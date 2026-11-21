@@ -253,6 +253,16 @@ test('filled markers remain selectable with transparent lines and nested scaling
   assert.throws(() => hitTestSvgConnectorMarkers(singular, { x: 0, y: 0 }), RangeError);
 });
 
+test('zero-length connector markers use SVG default tangent and remain selectable', () => {
+  const doc = createPresentation();
+  doc.addSlide({ elements: [{ type: 'connector', id: 'zero', start: { x: 50, y: 50 }, end: { x: 50, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: 'triangle', endArrow: 'triangle' } }] });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc));
+  const items = getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 42, y: 50 }).elementId, 'zero');
+  assert.equal(hitTestSvgSelectionOutlinesAndStrokes(items, { x: 42, y: 50 }).elementId, 'zero');
+  assert.equal(hitTestSvgConnectorMarkers(items, { x: 55, y: 50 }), undefined);
+});
+
 test('open arrow marker uses a hollow, clipped mitered stroke', () => {
   const doc = createPresentation();
   doc.addSlide({ elements: [{ type: 'connector', id: 'arrow', start: { x: 20, y: 50 }, end: { x: 80, y: 50 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, endArrow: 'arrow' } }] });

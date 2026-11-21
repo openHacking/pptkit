@@ -5,6 +5,30 @@ import { createPresentation, normalizePresentation } from '../packages/core/dist
 import { resolveNormalizedLayout } from '../packages/layout/dist/index.js';
 import { getSvgSelectionFrames, getSvgSlideSelectionFrames, getSvgSlideSelectionGeometry, hitTestSvgConnectorStrokes, hitTestSvgSelectionOutlinesAndStrokes, captureSvgPreviewSnapshot, planSvgPreviewInvalidation, renderLayoutToSvg } from '../packages/svg-renderer/dist/index.js';
 
+test('zero-length connector markers follow Chromium default orientation', async t => {
+  const doc = createPresentation({ size: { width: 120, height: 180 } });
+  const variants = [{ beginArrow: 'triangle' }, { endArrow: 'arrow' }, { beginArrow: 'diamond', endArrow: 'oval' }, { beginArrow: 'stealth', endArrow: 'triangle' }];
+  doc.addSlide({ elements: variants.map((variant, i) => ({ type: 'connector', id: `zero-${i}`, start: { x: 70, y: 25 + i * 40 }, end: { x: 70, y: 25 + i * 40 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, ...variant } })) });
+  const layout = resolveNormalizedLayout(normalizePresentation(doc)), svg = (await renderLayoutToSvg(layout)).slides[0].svg;
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(); await page.addScriptTag({ path: 'packages/svg-renderer/dist/browser/global.js' });
+  const result = await page.evaluate(async ({ layout, svg }) => {
+    const items = PPTKit.getSvgSlideSelectionGeometry(layout, 0, { includeConnectorStrokeGeometry: true });
+    const image = new Image(); image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`; await image.decode();
+    const canvas = document.createElement('canvas'); canvas.width = 120; canvas.height = 180;
+    const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0, 120, 180);
+    const mismatches = []; let dark = 0;
+    for (const [index, item] of items.entries()) for (let x = 45; x < 90; x++) for (let y = 15 + index * 40; y < 35 + index * 40; y++) {
+      const pixel = ctx.getImageData(x, y, 1, 1).data[0]; if (pixel > 15 && pixel < 240) continue;
+      const expected = pixel <= 15, actual = !!PPTKit.hitTestSvgConnectorMarkers([item], { x: x + .5, y: y + .5 });
+      if (expected) dark++; if (expected !== actual) mismatches.push({ id: item.elementId, x, y, pixel, expected, actual });
+    }
+    return { dark, count: mismatches.length, examples: mismatches.slice(0, 5) };
+  }, { layout, svg });
+  assert.ok(result.dark > 100);
+  assert.deepEqual({ count: result.count, examples: result.examples }, { count: 0, examples: [] });
+});
+
 test('connector markers match Chromium pixels even with transparent strokes', async t => {
   const doc = createPresentation({ size: { width: 200, height: 220 } });
   doc.addSlide({ elements: ['triangle', 'diamond', 'stealth', 'oval', 'arrow'].map((type, i) => ({ type: 'connector', id: type, start: { x: 35, y: 25 + i * 40 }, end: { x: 165, y: 25 + i * 40 }, style: { paint: { type: 'solid', color: '000000', opacity: 0 }, width: 2, beginArrow: type, endArrow: type } })) });

@@ -216,7 +216,7 @@ export function hitTestSvgConnectorStrokes(items: readonly SvgSelectionGeometry[
   return undefined;
 }
 
-/** Hit supported SVG connector markers with a nonzero endpoint tangent. */
+/** Hit supported SVG connector markers, including zero-length paths. */
 export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[], point: Point): SvgSelectionConnector | undefined {
   if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) throw new TypeError("Hit-test point must be finite.");
   for (let i = items.length - 1; i >= 0; i--) {
@@ -238,9 +238,10 @@ export function hitTestSvgConnectorMarkers(items: readonly SvgSelectionGeometry[
         const candidate = points[j]!;
         if (candidate.x !== endpoint.x || candidate.y !== endpoint.y) { neighbor = candidate; break; }
       }
-      if (!neighbor) continue;
-      // auto-start-reverse points both markers from their neighboring segment outward.
-      const dx = endpoint.x - neighbor.x, dy = endpoint.y - neighbor.y, length = Math.hypot(dx, dy);
+      // SVG uses a zero-degree tangent for a wholly degenerate path; the
+      // start marker is then reversed by auto-start-reverse.
+      const dx = neighbor ? endpoint.x - neighbor.x : start ? -1 : 1;
+      const dy = neighbor ? endpoint.y - neighbor.y : 0, length = Math.hypot(dx, dy);
       if (!Number.isFinite(length) || length === 0) throw new RangeError("Connector marker tangent exceeds finite range.");
       const px = localX - endpoint.x, py = localY - endpoint.y;
       const mx = (px * (dx / length) + py * (dy / length)) / width + (start ? 1 : 9);
