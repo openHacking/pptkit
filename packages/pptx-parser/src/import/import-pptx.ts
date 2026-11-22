@@ -47,7 +47,6 @@ export function captureImportOptions(options: PptxImportOptions) {
   if (!options || typeof options !== "object" || Array.isArray(options)) throw new TypeError("importPptx requires explicit projection: structure or content.");
   const sectionProjection = options.sectionProjection;
   if (sectionProjection !== undefined && sectionProjection !== "collection-v1") throw new TypeError("sectionProjection requires collection-v1.");
-  if (sectionProjection && [options.editSaveProfile, options.chartEditSaveProfile, options.pictureEditSaveProfile, options.descriptionEditSaveProfile, options.drawingNameSaveProfile, options.decorativeSaveProfile, options.slideVisibilitySaveProfile, options.metadataSaveProfile, options.customPropertySaveProfile, options.firstSlideNumberSaveProfile].some(value => value !== undefined)) throw new TypeError("sectionProjection cannot be combined with source edit-save profiles.");
   const mode = options.projection;
   if (mode !== "structure" && mode !== "content") throw new TypeError("importPptx requires explicit projection: structure or content.");
   const customCurrencyProjection = options.customCurrencyProjection;
@@ -296,6 +295,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
       ...(firstNumberBinding ? { firstNumberBinding } : {}), ...(descriptionBindings ? { descriptionBindings, descriptionBatch: drawingNameSaveProfile !== undefined || decorativeSaveProfile !== undefined || descriptionEditSaveProfile === 'batch-v3' || descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5', descriptionMixed: descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5' } : {}),
       ...(pictureEditSaveProfile ? { pictureSources: pictureSources! } : {}), ...(fieldTextProfile ? { fieldTextProfile } : {}),
       ...(customCurrencyProjection === "exact-save-v2" || customCurrencyProjection === "exact-save-v3" ? { currencySave: true } : {}), ...(customDecimalProjection === "exact-save-v2" || customDecimalProjection === "exact-save-v3" ? { decimalSave: true } : {}),
+      ...(sectionProjection ? { sectionProjection: true } : {}),
       options: { ...(diagramTextComparison ? { diagramTextComparison } : {}), diagramLimits, limits: captured.limits, xmlLimits: captured.xmlLimits, zipLimits: captured.zipLimits },
     } : undefined;
     abort();

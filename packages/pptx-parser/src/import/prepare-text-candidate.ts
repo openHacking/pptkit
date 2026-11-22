@@ -58,7 +58,7 @@ export async function verifyTextSourceAncestry(elements: readonly XmlTextSourceE
 
 export async function prepareTextCandidate(
   source: Uint8Array, candidate: NormalizedPresentation, analysis: TextEditAnalysis,
-  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean, decimalSave?: boolean,
+  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean, decimalSave?: boolean, sectionProjection?: boolean,
 ): Promise<{ bytes: Uint8Array; validationBytes: number; validationWork: number } | { diagnostics: readonly ImportDiagnostic[] }> {
   try {
     await checkpoint();
@@ -374,7 +374,7 @@ export async function prepareTextCandidate(
     }
     const currency = currencySave ? await projectCurrencies(context, checkpoint) : undefined;
     const decimal = decimalSave ? await projectExactDecimals(context.metadata.custom?.properties ?? [], checkpoint) : undefined;
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, undefined, false, currency?.values, decimal);
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, undefined, false, currency?.values, decimal, sectionProjection);
     const rebound: ChartValueBinding[] | undefined = analysis.chartValues.length ? [] : undefined;
     const reboundLabels: ChartLabelBinding[] | undefined = analysis.chartLabels?.length ? [] : undefined;
     const reboundOrders: ChartSeriesOrderBinding[] | undefined = analysis.chartOrders?.length ? [] : undefined;

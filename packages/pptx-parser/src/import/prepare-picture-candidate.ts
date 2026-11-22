@@ -25,7 +25,7 @@ export class PictureSourceUnsupportedError extends PptxImportError {
 }
 
 /** Private candidate builder. The session must still validate the complete mapped Core state. */
-export async function preparePictureCandidate(source: Uint8Array, binding: ImportedPictureSource, image: Uint8Array, mimeType: "image/png" | "image/jpeg" | "image/gif", options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>): Promise<{ bytes: Uint8Array; part: string; relationshipId: string }> {
+export async function preparePictureCandidate(source: Uint8Array, binding: ImportedPictureSource, image: Uint8Array, mimeType: "image/png" | "image/jpeg" | "image/gif", options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, sectionProjection?: boolean): Promise<{ bytes: Uint8Array; part: string; relationshipId: string }> {
   if (!(source instanceof Uint8Array) || !(image instanceof Uint8Array) || !binding || !["image/png", "image/jpeg", "image/gif"].includes(mimeType)) throw new TypeError("Invalid picture candidate input.");
   const sourceView = byteViewInfo(source), imageView = byteViewInfo(image);
   if (sourceView.shared || imageView.shared) throw new TypeError("Picture candidate requires ordinary byte buffers.");
@@ -93,7 +93,7 @@ export async function preparePictureCandidate(source: Uint8Array, binding: Impor
   const media = verified.inspection.parts.find(item => item.name === part);
   if (!next || next.type !== `${context.r}/image` || next.targetPart !== part || next.targetMode !== "Internal" || media?.contentType !== mimeType) throw new PptxImportError("save-candidate-invalid", "Picture candidate relationship or media type is incorrect.", { part });
   const project = async (current: Awaited<ReturnType<typeof structureContext>>, inspectionOptions: PptxInspectionOptions) => {
-    const inspection = await readStructureFromContext(current), projection = await projectStructure(inspection, savedLimits.maxReportFindings, check), pictureSources: ImportedPictureSource[] = [];
+    const inspection = await readStructureFromContext(current), projection = await projectStructure(inspection, savedLimits.maxReportFindings, check, undefined, false, undefined, undefined, sectionProjection), pictureSources: ImportedPictureSource[] = [];
     await projectContent(projection.document, projection.report, current, savedLimits, check, inspectionOptions, undefined, undefined, undefined, undefined, undefined, undefined, undefined, false, false, false, false, false, false, false, false, false, false, false, pictureSources);
     return { document: snapshot(projection.document, savedLimits.maxSnapshotValues), pictureSources };
   };

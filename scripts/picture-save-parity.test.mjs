@@ -14,6 +14,37 @@ import { relationships } from '../packages/pptx-parser/test/opc-fixture.mjs';
 import { rasterMetadata } from '../packages/pptx-parser/dist/import/image-metadata.js';
 import { readGeneratedZip } from '../tests/support/read-generated-zip.mjs';
 import { indexedRows, filterRows } from '../tests/support/png-indexed-fixture.mjs';
+import { section, withSections } from '../packages/pptx-parser/test/sections-fixture.mjs';
+
+test('section projection coexists with combined picture and slide-number source saves', async () => {
+  const unknown = '<s:extLst><p:ext xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" uri="urn:future"><u:data xmlns:u="urn:future"/></p:ext></s:extLst>';
+  const options = { projection: 'content', sectionProjection: 'collection-v1', pictureEditSaveProfile: 'replace-v1', firstSlideNumberSaveProfile: 'attribute-v2' };
+  for (const strict of [false, true]) {
+    let bytes = encodeImages(withSections(imageFixture(picture(), strict), section([300], 'name="Opening"', unknown) + section([], 'name="Empty"') + section([256], 'name="Closing"')));
+    for (let round = 1; round <= 3; round++) {
+      const session = await importPptx(bytes, options), before = readGeneratedZip(bytes).get('deck/main.data').toString();
+      try {
+        const sections = session.document.sections, slide = session.document.slides[0], image = slide.elements.find(element => element.type === 'image');
+        const replacement = round % 2 ? gif : png;
+        session.document.registerAsset({ id: `new-image-${round}`, kind: 'image', source: { type: 'bytes', value: replacement }, mimeType: round % 2 ? 'image/gif' : 'image/png', width: round % 2 ? 1 : 8, height: round % 2 ? 1 : 4 });
+        slide.replaceElement(image.id, { ...image, assetId: `new-image-${round}` });
+        session.document.setFirstSlideNumber(10 + round);
+        if (round === 1) {
+          session.document.setSections(sections.map((item, index) => index === 1 ? { ...item, name: 'Changed' } : item));
+          assert.equal((await session.prepareSave({ mode: 'edit' })).status, 'blocked');
+          session.document.setSections(sections);
+        }
+        const ready = await session.prepareSave({ mode: 'edit' }); assert.equal(ready.status, 'ready', JSON.stringify(ready.report));
+        bytes = (await session.save(ready.plan)).bytes;
+        const after = readGeneratedZip(bytes).get('deck/main.data').toString();
+        assert.equal(after.match(/<p:extLst>.*?<\/p:extLst>/)?.[0], before.match(/<p:extLst>.*?<\/p:extLst>/)?.[0]);
+        const reopened = await importPptx(bytes, options);
+        try { assert.deepEqual(reopened.document.sections, sections); assert.equal(reopened.document.firstSlideNumber, 10 + round); assert.equal(reopened.report.inspection.sectionList.sections[0].extensions[0].status, 'uninterpreted'); }
+        finally { reopened.dispose(); }
+      } finally { session.dispose(); }
+    }
+  }
+});
 
 test('media poster fallback and playback diagnostics agree across Node and browser entries', async t => {
   const source = await readFile('tests/fixtures/mixed-media-comments-source.pptx'), options = { projection: 'content' };

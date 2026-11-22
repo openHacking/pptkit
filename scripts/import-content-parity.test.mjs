@@ -58,6 +58,36 @@ test("explicit native section collection projection survives three fresh exports
   }
 });
 
+test("projected sections coexist with mixed text, metadata and visibility source saves", async () => {
+  let bytes = await readFile("tests/fixtures/authored-native-sections.pptx");
+  const options = { projection: "content", sectionProjection: "collection-v1", editSaveProfile: "text-runs-v3", metadataSaveProfile: "core-strings-v1", slideVisibilitySaveProfile: "attribute-v1" };
+  for (let round = 1; round <= 3; round++) {
+    const before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
+    try {
+      const sections = session.document.sections, slide = session.document.slides[0], text = slide.elements[0];
+      const changed = structuredClone(text); changed.content[0].runs[0].text = `Section test ${round}`;
+      slide.replaceElement(text.id, changed);
+      session.document.setMetadata({ ...session.document.metadata, title: `Title ${round}` });
+      session.document.slides[1].setHidden(round % 2 === 0);
+      const ready = await session.prepareSave({ mode: "edit" }); assert.equal(ready.status, "ready", JSON.stringify(ready.report));
+      const badSections = session.document.sections.map((section, index) => index === 0 ? { ...section, name: "Changed" } : section);
+      session.document.setSections(badSections);
+      await assert.rejects(session.save(ready.plan), error => error.code === "save-snapshot-stale");
+      assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
+      session.document.setSections(sections);
+      bytes = (await session.save(ready.plan)).bytes;
+      assert.deepEqual(readGeneratedZip(bytes).get("ppt/presentation.xml"), before.get("ppt/presentation.xml"));
+      const reopened = await importPptx(bytes, options);
+      try {
+        assert.deepEqual(reopened.document.sections, sections);
+        assert.equal(reopened.document.metadata.title, `Title ${round}`);
+        assert.equal(reopened.document.slides[0].elements[0].content[0].runs[0].text, `Section test ${round}`);
+        assert.equal(reopened.document.slides[1].hidden, round % 2 === 0);
+      } finally { reopened.dispose(); }
+    } finally { session.dispose(); }
+  }
+});
+
 test("authored native sections preserve names, empty sections and numeric slide membership", async () => {
   const deck = createPresentation();
   deck.addSlide({ id: "a", section: "legacy" }); deck.addSlide({ id: "b" }); deck.addSlide({ id: "c" });

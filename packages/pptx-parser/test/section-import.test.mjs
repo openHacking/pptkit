@@ -50,7 +50,7 @@ test("collection projection retains partial and out-of-order membership without 
   const absent = await open(structureFixture(), "content", { sectionProjection: "collection-v1" });
   assert.equal(absent.document.sections, undefined); absent.dispose();
   await assert.rejects(open(structureFixture(), "content", { sectionProjection: "invalid" }), TypeError);
-  await assert.rejects(open(structureFixture(), "content", { sectionProjection: "collection-v1", editSaveProfile: "text-runs-v1" }), TypeError);
+  const compatible = await open(structureFixture(), "content", { sectionProjection: "collection-v1", editSaveProfile: "text-runs-v1" }); compatible.dispose();
 });
 
 test("collection projection keeps unknown section extensions in source inspection", async () => {
