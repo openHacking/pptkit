@@ -200,7 +200,7 @@
 | TODO | 子任务 | 交付与验收 | 额外依赖 |
 | --- | --- | --- | --- |
 | [ ] | IMP-03.4 文档属性 | [属性检查](../api/pptx-inspection.md#document-metadata-profile)已实现 core/extended/custom 的结构与标量读取；结构投影映射受 Core 类型约束的字段、聚合关键词和安全整数 revision。混合语言/分段关键词、越界 revision 和复杂属性值仍不映射到 Core；自定义属性仅映射受约束的五类标量，完整保存映射待完成。继续验证缺省属性、重复身份、错误类型及 Strict/Transitional 样本；未知复杂值明确标记，不能扁平化后声称无损。 | IMP-02.3 |
-| [ ] | IMP-03.5 分节与演示文稿扩展 | [原生分节检查](../api/pptx-inspection.md#native-sections-and-presentation-extensions)已读取身份/页归属和未知扩展描述，两种[导入投影](../api/import-session.md#native-section-member-labels)映射成员名称到 Core 页标签。[ADR 0067](../architecture/decisions/0067-native-section-authoring.md)新增独立作者集合和受约束的 fresh 原生输出；[PowerPoint 具名样本](../testing/authored-native-sections.md)已验证空节和保存重开。源集合投影与保留式结构写回仍待验收。 | IMP-03.2, IMP-07 |
+| [ ] | IMP-03.5 分节与演示文稿扩展 | [原生分节检查](../api/pptx-inspection.md#native-sections-and-presentation-extensions)已读取身份/页归属和未知扩展描述；[显式集合投影](../api/import-session.md#native-section-member-labels)映射独立 Core 身份及归属，默认仍仅映射页标签。[ADR 0067](../architecture/decisions/0067-native-section-authoring.md)定义作者集合和 fresh 原生输出；[PowerPoint 具名样本](../testing/authored-native-sections.md)已验证空节和保存重开。保留式结构写回仍待验收。 | IMP-03.2, IMP-07 |
 | [ ] | IMP-03.6 Core 导入与会话接线 | [显式结构投影](../api/import-session.md)已映射尺寸、部分元数据/聚合关键词/安全 revision、页序/隐藏状态及原生成员名称标签；显式内容投影另有直接备注正文，源身份与未知内容留在报告。原生分节集合、备注页/继承/完整元数据语义仍待完成。将已识别骨架及元数据映射到经验证的 Core 文档，源身份及未映射字段留在 Parser 会话；明确空演示文稿、无效尺寸和未知字段的处理。公开 Node/浏览器消费者覆盖修改、释放与重复导入，检查器返回结果不等同于可编辑文档。 | IMP-01.4, IMP-03.4, IMP-03.5 |
 | [ ] | IMP-07.3 保留状态的生命周期 | 区分可达共享资源、未知关系引用与真正孤立资源；复制/删除后的闭包重算有来源记录。多会话隔离、dispose、取消和预算释放均有验证，清理不能误删未知对象仍引用的资产。 | IMP-07.1, IMP-01.4 |
 | [ ] | IMP-09.5 保存计划并发与原子性 | 计划生成后继续编辑、同时准备多个计划、取消提交与失败重试分别定义结果；过期计划不可覆盖新状态，失败不部分提交。字节输出与 Node 文件替换分层验收，浏览器不引入文件系统依赖。 | IMP-09.1, IMP-01.4 |
@@ -552,7 +552,8 @@
 | [ ] | IMP-03.3.3.1 空备注插入样式的原生保留 / P1 | **2026-10-26 具名修复已验证，父依赖仍开放**：[段尾插入属性](../testing/notes-insertion-styles.md)完成4控制、12空阶段页+12实际输入后页/各三轮、8实际PPTX反例，Node/ESM/global三轮与7实际输入no-op通过；多空run取最后样式、动作不复制、非空段落不变，原失败文件保留。 [fresh版式实验](../testing/authored-notes-pages.md)暴露三尺寸STYLED源的空run在PowerPoint首存被删除；修正共享文字序列化的end-paragraph插入属性，保留有动作/多个空run的语义边界，不靠可见空白判通过。保留旧失败目录，在新作者源验证font/size/bold/italic/lang等具名属性、实际追加文字后的继承及三轮保存重开；Node/浏览器/原有source保存默认兼容。 | IMP-03.3.2 |
 | [x] | IMP-03.5.1 原生分节创作契约 | [ADR 0067](../architecture/decisions/0067-native-section-authoring.md)定义有序集合、独立身份、空分节、重名和页归属；旧页标签独立，源 GUID 不作 Core 身份。公开消费者覆盖空/缺名/重复名及原生输出读取。源集合投影、保留保存和应用互操作继续由后续项验收。 | AUT-07.1.1 |
 | [x] | IMP-03.5.2 分节边界与页结构操作 | `setSections` 明确创建/重命名/合并/删除与边界归属，`setSectionStructure` 原子替换页顺序与归属；删除分节不删除页面。复制/删除/重排和重名、非法输入、重入失败有测试；跨文档复制不猜测归属。 | IMP-03.5.1 |
-| [x] | IMP-03.5.3 分节原生导出与读取 | Core 作者集合 fresh 输出及数值页身份、空节、顺序已验证；未知嵌套扩展作为 source-only 描述报告。[PowerPoint 16.104 具名样本](../testing/authored-native-sections.md)确认分节面板、保存重开及独立 ZIP/XML 与 Parser 一致。旧标签独立；源集合投影及保留式结构写回仍待后续项。 | IMP-03.5.2 |
+| [x] | IMP-03.5.3 分节原生导出与读取 | Core 作者集合 fresh 输出及数值页身份、空节、顺序已验证；未知嵌套扩展作为 source-only 描述报告。[PowerPoint 16.104 具名样本](../testing/authored-native-sections.md)确认分节面板、保存重开及独立 ZIP/XML 与 Parser 一致。旧标签独立；保留式结构写回仍待后续项。 | IMP-03.5.2 |
+| [x] | IMP-03.5.4 显式分节集合导入 | 显式 `collection-v1` 将空节、重名及成员映射到独立 Core 身份，并报告源 GUID 对应关系；默认投影保持兼容。部分或交错归属可编辑，fresh 导出能力按实际覆盖报告；no-op 精确保留，结构源保存仍开放。 | IMP-03.5.3 |
 
 ### 文档属性与自定义值 — IMP-03.4
 

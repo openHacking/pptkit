@@ -37,6 +37,27 @@ test("PowerPoint saved authored sections match independent XML and inspection", 
   assert.deepEqual(Buffer.from((await generatePptx(document)).bytes), await readFile(paths[0]));
 });
 
+test("explicit native section collection projection survives three fresh exports", async () => {
+  let bytes = encodeStructure(withSections(structureFixture()));
+  let sourceGuid;
+  for (let round = 0; round < 3; round++) {
+    const session = await importPptx(bytes, { projection: "content", sectionProjection: "collection-v1" });
+    try {
+      const order = new Map(session.document.slides.map((slide, index) => [slide.id, index]));
+      assert.deepEqual(session.document.sections.map(section => [section.id, section.name, section.slideIds.map(id => order.get(id))]), [
+        ["source-section-1", "Opening", [0]], ["source-section-2", "Empty", []], ["source-section-3", "Closing", [1]],
+      ]);
+      const noOp = await session.prepareSave({ mode: "no-op" }); assert.equal(noOp.status, "ready");
+      assert.equal(Buffer.compare(Buffer.from((await session.save(noOp.plan)).bytes), Buffer.from(bytes)), 0);
+      const guids = session.report.inspection.sectionList.sections.map(s => s.id);
+      if (round === 0) sourceGuid = guids[0]; else assert.notEqual(guids[0], sourceGuid);
+      bytes = (await generatePptx(session.document)).bytes;
+      const native = await inspectPptx(bytes);
+      assert.deepEqual(native.sectionList.sections.map(s => [s.name, s.slides.map(slide => slide.id)]), [["Opening", [256]], ["Empty", []], ["Closing", [257]]]);
+    } finally { session.dispose(); }
+  }
+});
+
 test("authored native sections preserve names, empty sections and numeric slide membership", async () => {
   const deck = createPresentation();
   deck.addSlide({ id: "a", section: "legacy" }); deck.addSlide({ id: "b" }); deck.addSlide({ id: "c" });

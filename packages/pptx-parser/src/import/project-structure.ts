@@ -8,7 +8,7 @@ import type { structureContext } from "../presentation/structure-context.js";
 import { contentReader } from "./content-reader.js";
 
 export interface MasterOwner { kind: "master" | "layout" | "slide"; id: string; name: string; part: string; masterId?: string; layoutPart?: string; showMasterShapes?: boolean }
-export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false, currencyProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], decimalProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[]) {
+export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false, currencyProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], decimalProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], sectionProjection = false) {
   const source = { part: inspection.mainPart, relationshipId: inspection.mainRelationshipId };
   if (inspection.kind !== "presentation" || inspection.macroEnabled) throw new PptxImportError("import-unsupported", "This import profile accepts non-macro presentation documents only, not templates or slideshows.", source);
   for (const part of inspection.package.parts) {
@@ -22,7 +22,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
   }
   if (!inspection.slideSize) throw new PptxImportError("import-unsupported", "A source slide size is required; structural import does not invent document dimensions.", source);
   const findings: ImportFinding[] = [], identities: ImportSourceIdentity[] = [], diagnostics: ImportDiagnostic[] = [
-    { code: "structural-projection-only", severity: "warning", source, message: "Only source dimensions, eligible starting slide number, selected metadata, slide order/hidden state and named native section member labels are mapped to Core. Drawing content, themes, notes and native section collections/editing are not imported; preview/fresh export of this document is incomplete. Use the session no-op save to retain source content." },
+    { code: "structural-projection-only", severity: "warning", source, message: sectionProjection ? "Source dimensions, eligible starting slide number, selected metadata, slide order/hidden state and eligible native section collections are mapped to Core. Drawing content, themes and notes are not imported; preview/fresh export of this document is incomplete. Use the session no-op save to retain source content." : "Only source dimensions, eligible starting slide number, selected metadata, slide order/hidden state and named native section member labels are mapped to Core. Drawing content, themes, notes and native section collections/editing are not imported; preview/fresh export of this document is incomplete. Use the session no-op save to retain source content." },
   ];
   const finding = (feature: string, operation: ImportFinding["operation"], tier: ImportFinding["tier"], at: PptxSourceLocation, reason: string, slideId?: string) => {
     if (findings.length >= maxFindings) throw new PptxImportError("import-limit-exceeded", "Import capability report exceeds maxReportFindings.", at);
@@ -143,7 +143,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
   }
   identities.push({ kind: "presentation", id: document.id, source });
   finding("presentation-dimensions", "import", "editable", { ...source, path: "presentation/sldSz" }, "Exact source EMUs are converted to Core points using 12700 EMU per point.");
-  const sections = await projectSections(inspection, finding, checkpoint);
+  const sections = await projectSections(inspection, finding, checkpoint, sectionProjection);
   diagnostics.push(...sections.diagnostics);
   for (const slide of inspection.slides) {
     await checkpoint();
@@ -167,8 +167,21 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
     }
     finding("slide-order-and-visibility", "import", "editable", at, "Source slide order and hidden state are mapped; no drawing elements or inherited layout are synthesized.", id);
   }
+  const sectionSources: { id: string; source: PptxSourceLocation }[] = [];
+  if (sectionProjection && inspection.sectionList) {
+    const sourceSections = inspection.sectionList.sections;
+    try {
+      document.setSections(sourceSections.map((section, index) => ({ id: `source-section-${index + 1}`, ...(section.name === undefined ? {} : { name: section.name }), slideIds: section.slides.map(slide => `source-slide-${slide.id}`) })));
+    } catch (cause) {
+      throw new PptxImportError("import-unsupported", "Native section collection exceeds Core authoring constraints.", { part: inspection.sectionList.part }, { cause });
+    }
+    for (const [index, section] of sourceSections.entries()) {
+      await checkpoint();
+      sectionSources.push({ id: `source-section-${index + 1}`, source: { part: inspection.sectionList.part, path: `presentation/extLst/ext[@uri="${inspection.sectionList.extensionUri}"]/sectionLst/section[${index + 1}]`, ...(section.id === undefined ? {} : { sourceObjectId: section.id }) } });
+    }
+  }
   for (const item of inspection.findings) diagnostics.push({ code: item.code, severity: "warning", message: item.message, source: { part: item.part, ...(item.slideId !== undefined ? { sourceObjectId: String(item.slideId) } : {}) } });
   diagnostics.push({ code: "core-projection-defaults", severity: "info", source, message: "Unmapped metadata/theme fields use Core defaults in this projection only; defaults are not inferred source values and are never written by no-op save." });
-  const report: ImportReport = freezeReport({ projection: "structure", inspection, findings, identities, diagnostics });
+  const report: ImportReport = freezeReport({ projection: "structure", inspection, findings, identities, diagnostics, ...(sectionProjection && inspection.sectionList ? { sectionSources } : {}) });
   return { document, report, masterOwners };
 }

@@ -8,6 +8,61 @@ import { section, withSections, SECTION_IDS, SECTION_URI } from "./sections-fixt
 const open = (fixture, projection = "structure", options = {}) => importPptx(encodeStructure(fixture), { projection, ...options });
 const equalBytes = (a, b) => assert.equal(Buffer.compare(Buffer.from(a), Buffer.from(b)), 0);
 
+test("opt-in section collections retain names, empty entries and stable source membership", async () => {
+  for (const strict of [false, true]) for (const projection of ["structure", "content"]) {
+    const body = section([300], `id="${SECTION_IDS[0]}" name="same"`) + section([], 'name=""') + section([256], `id="${SECTION_IDS[2]}" name="same"`) + section();
+    const fixture = withSections(structureFixture(strict), body), bytes = encodeStructure(fixture);
+    const session = await importPptx(bytes, { projection, sectionProjection: "collection-v1" });
+    assert.deepEqual(session.document.sections, [
+      { id: "source-section-1", name: "same", slideIds: ["source-slide-300"] },
+      { id: "source-section-2", name: "", slideIds: [] },
+      { id: "source-section-3", name: "same", slideIds: ["source-slide-256"] },
+      { id: "source-section-4", slideIds: [] },
+    ]);
+    assert.deepEqual(session.document.slides.map(s => s.section), ["same", "same"]);
+    const sectionIdentities = session.report.sectionSources;
+    assert.deepEqual(sectionIdentities.map(identity => [identity.id, identity.source.sourceObjectId]), [["source-section-1", SECTION_IDS[0]], ["source-section-2", undefined], ["source-section-3", SECTION_IDS[2]], ["source-section-4", undefined]]);
+    assert.ok(session.report.findings.some(f => f.feature === "section.native-collection" && f.operation === "import" && f.tier === "editable"));
+    assert.ok(session.report.findings.some(f => f.feature === "section.native-collection" && f.operation === "edit-save" && f.tier === "unsupported"));
+    assert.ok(session.report.diagnostics.some(d => d.code === "section-collection-projection"));
+    const ready = await session.prepareSave({ mode: "no-op" }); assert.equal(ready.status, "ready");
+    equalBytes((await session.save(ready.plan)).bytes, bytes);
+    session.document.setSections([{ id: "other", slideIds: session.document.slides.map(s => s.id) }]);
+    assert.equal((await session.prepareSave({ mode: "no-op" })).status, "blocked");
+    assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
+    session.dispose();
+  }
+});
+
+test("collection projection retains partial and out-of-order membership without changing default imports", async () => {
+  for (const [body, members, exportTier] of [
+    [section([300]), [["source-slide-300"]], "unsupported"],
+    [section([256]) + section([300]), [["source-slide-256"], ["source-slide-300"]], "unsupported"],
+    [section([256, 300]), [["source-slide-300", "source-slide-256"]], "editable"],
+  ]) {
+    const fixture = withSections(structureFixture(), body);
+    const projected = await open(fixture, "structure", { sectionProjection: "collection-v1" });
+    assert.deepEqual(projected.document.sections.map(s => s.slideIds), members);
+    assert.ok(projected.report.findings.filter(f => f.feature === "section.native-collection" && f.operation === "export").every(f => f.tier === exportTier));
+    projected.dispose();
+    const session = await open(fixture); assert.equal(session.document.sections, undefined); session.dispose();
+  }
+  const absent = await open(structureFixture(), "content", { sectionProjection: "collection-v1" });
+  assert.equal(absent.document.sections, undefined); absent.dispose();
+  await assert.rejects(open(structureFixture(), "content", { sectionProjection: "invalid" }), TypeError);
+  await assert.rejects(open(structureFixture(), "content", { sectionProjection: "collection-v1", editSaveProfile: "text-runs-v1" }), TypeError);
+});
+
+test("collection projection keeps unknown section extensions in source inspection", async () => {
+  const nested = '<s:extLst><p:ext uri="urn:future"><u:data xmlns:u="urn:future"/></p:ext></s:extLst>';
+  const fixture = withSections(structureFixture(), section([300, 256], 'name="Known"', nested));
+  const source = encodeStructure(fixture), session = await importPptx(source, { projection: "structure", sectionProjection: "collection-v1" });
+  assert.deepEqual(session.document.sections, [{ id: "source-section-1", name: "Known", slideIds: ["source-slide-300", "source-slide-256"] }]);
+  assert.equal(session.report.inspection.sectionList.sections[0].extensions[0].status, "uninterpreted");
+  const ready = await session.prepareSave({ mode: "no-op" }); assert.equal(ready.status, "ready");
+  equalBytes((await session.save(ready.plan)).bytes, source); session.dispose();
+});
+
 test("native member names project by stable slide identity in both dialects and projections", async () => {
   for (const strict of [false, true]) for (const projection of ["structure", "content"]) {
     const session = await open(withSections(structureFixture(strict)), projection);

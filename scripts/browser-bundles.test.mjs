@@ -952,6 +952,34 @@ test("browser native section label projection matches Node without inventing a n
   assert.equal(requests, 0);
 });
 
+test("opt-in native section collection agrees across Node, browser ESM and global", async t => {
+  const browser = await chromium.launch(); t.after(() => browser.close());
+  const page = await browser.newPage(), requests = [];
+  await page.route("**/*", route => { requests.push(route.request().url()); return route.abort(); });
+  await page.addScriptTag({ content: await readFile(bundlePath("pptx-parser", "global"), "utf8") });
+  const url = javascriptDataUrl(await readFile(bundlePath("pptx-parser", "esm")));
+  const { importPptx } = await import("../packages/pptx-parser/dist/index.js");
+  for (const strict of [false, true]) {
+    const bytes = encodeStructure(withSections(structureFixture(strict)));
+    const node = await importPptx(bytes, { projection: "content", sectionProjection: "collection-v1" });
+    const expected = { sections: node.document.sections, report: node.report };
+    const results = await page.evaluate(async ({ bytes, url }) => {
+      const esm = await import(url), output = [];
+      for (const api of [esm, globalThis.PPTKit]) {
+        const s = await api.importPptx(new Uint8Array(bytes), { projection: "content", sectionProjection: "collection-v1" });
+        const plan = await s.prepareSave({ mode: "no-op" });
+        if (plan.status !== "ready") throw new Error("no-op save failed");
+        const saved = (await s.save(plan.plan)).bytes;
+        if (saved.length !== bytes.length || saved.some((value, index) => value !== bytes[index])) throw new Error("no-op bytes changed");
+        output.push({ sections: s.document.sections, report: s.report }); s.dispose();
+      }
+      return output;
+    }, { bytes: [...bytes], url });
+    assert.deepEqual(results, [expected, expected]); node.dispose();
+  }
+  assert.deepEqual(requests, []);
+});
+
 test("browser metadata matches Node for both dialects without fetching links or losing integer precision", async (t) => {
   const browser = await chromium.launch({ headless: true });
   t.after(() => browser.close());

@@ -9,7 +9,8 @@ import { importPptxFile, writePptxFile, PptxFileError } from "../dist/node.js";
 import { importPptx } from "../dist/index.js";
 import { createPptxFileAdapter } from "../dist/node/file-adapter.js";
 import { tableFixture, table, tableRow, tableBody, cell } from "./table-fixture.mjs";
-import { encodeStructure } from "./structure-fixture.mjs";
+import { encodeStructure, structureFixture } from "./structure-fixture.mjs";
+import { withSections } from "./sections-fixture.mjs";
 import { bytes as contentBytes, shape as contentShape, body as contentBody } from './content-fixture.mjs';
 
 const options = { projection: "content", editSaveProfile: "text-runs-v3" };
@@ -40,6 +41,18 @@ async function fixture(t, adapter = { importFile: importPptxFile, writeFile: wri
   return { ...imported, plan: prepared.plan, source, directory, input: bytes, adapter };
 }
 const noTemps = async directory => assert.deepEqual((await fs.readdir(directory)).filter(temporary), []);
+
+test("Node file adapter captures the explicit section collection projection", async t => {
+  const directory = await fs.mkdtemp(path.join(tmpdir(), "pptkit-section-file-"));
+  t.after(() => fs.rm(directory, { recursive: true, force: true }));
+  const file = path.join(directory, "source.pptx"), bytes = encodeStructure(withSections(structureFixture()));
+  await fs.writeFile(file, bytes);
+  const imported = await importPptxFile(file, { projection: "structure", sectionProjection: "collection-v1" });
+  t.after(() => imported.session.dispose());
+  assert.deepEqual(imported.session.document.sections.map(s => [s.name, s.slideIds]), [["Opening", ["source-slide-300"]], ["Empty", []], ["Closing", ["source-slide-256"]]]);
+  const plan = await imported.session.prepareSave({ mode: "no-op" }); assert.equal(plan.status, "ready");
+  assert.deepEqual(Buffer.from((await imported.session.save(plan.plan)).bytes), Buffer.from(bytes));
+});
 
 test('Node file adapter captures and uses the explicit existing-description profile', async t => {
   const directory = await fs.realpath(await fs.mkdtemp(path.join(tmpdir(), 'pptkit-description-file-')));

@@ -147,6 +147,8 @@ export interface ImportedChartSeriesOrderSource {
   readonly series: readonly { readonly seriesIndex: number; readonly sourceId: number }[];
 }
 export interface ImportReport {
+  /** Source correspondence for explicitly projected Core sections; never save authority. */
+  readonly sectionSources?: readonly { readonly id: string; readonly source: PptxSourceLocation }[];
   /** Explicit number/date cache projection; not permission to edit source fields. */
   readonly fieldTextProfile?: "slide-number-v1" | "date-and-number-v1" | "date-time-and-number-v1";
   /** Opt-in slide-local projected picture references; no write permission. */
@@ -325,6 +327,8 @@ export interface PptxSessionLimits {
   maxLivePlans: number;
 }
 export interface PptxImportOptions extends PptxInspectionOptions {
+  /** Opt in to an independently identified Core section collection. */
+  sectionProjection?: "collection-v1";
   /** Exact currency projection; exact-save-v3 combines with exact decimal structural saves. */
   customCurrencyProjection?: "exact-v1" | "exact-save-v2" | "exact-save-v3";
   /** Explicit exact decimal projection; exact-save-v2 requires scalar-v1; exact-save-v3 requires append or create source saves. */

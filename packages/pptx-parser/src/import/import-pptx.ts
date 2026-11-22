@@ -45,6 +45,9 @@ export const DEFAULT_SESSION_LIMITS: Readonly<Required<PptxSessionLimits>> = Obj
 /** Shared invocation-time option capture for byte and Node file imports. */
 export function captureImportOptions(options: PptxImportOptions) {
   if (!options || typeof options !== "object" || Array.isArray(options)) throw new TypeError("importPptx requires explicit projection: structure or content.");
+  const sectionProjection = options.sectionProjection;
+  if (sectionProjection !== undefined && sectionProjection !== "collection-v1") throw new TypeError("sectionProjection requires collection-v1.");
+  if (sectionProjection && [options.editSaveProfile, options.chartEditSaveProfile, options.pictureEditSaveProfile, options.descriptionEditSaveProfile, options.drawingNameSaveProfile, options.decorativeSaveProfile, options.slideVisibilitySaveProfile, options.metadataSaveProfile, options.customPropertySaveProfile, options.firstSlideNumberSaveProfile].some(value => value !== undefined)) throw new TypeError("sectionProjection cannot be combined with source edit-save profiles.");
   const mode = options.projection;
   if (mode !== "structure" && mode !== "content") throw new TypeError("importPptx requires explicit projection: structure or content.");
   const customCurrencyProjection = options.customCurrencyProjection;
@@ -104,10 +107,10 @@ export function captureImportOptions(options: PptxImportOptions) {
   if (sessionLimits !== undefined && (!sessionLimits || typeof sessionLimits !== "object" || Array.isArray(sessionLimits))) throw new TypeError("Invalid session limits.");
   const limits = { ...DEFAULT_SESSION_LIMITS, ...sessionLimits };
   for (const [name, value] of Object.entries(limits)) if (!Number.isSafeInteger(value) || value <= 0) throw new RangeError(`Invalid session limit ${name}.`);
-  return { mode, profile, customCurrencyProjection, customDecimalProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile };
+  return { mode, profile, sectionProjection, customCurrencyProjection, customDecimalProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile };
 }
 export async function importPresentation(bytes: Uint8Array, options: PptxImportOptions): Promise<ImportedPresentation> {
-  const { mode, profile, customCurrencyProjection, customDecimalProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile } = captureImportOptions(options), signal = captured.signal;
+  const { mode, profile, sectionProjection, customCurrencyProjection, customDecimalProjection, customPropertySaveProfile, customPropertySourceProfile, descriptionEditSaveProfile, drawingNameSaveProfile, decorativeSaveProfile, slideVisibilitySaveProfile, metadataSaveProfile, firstSlideNumberSaveProfile, masterArtwork, textFontProfile, notesTextProfile, textTargetSaveProfile, chartEditSaveProfile, diagramPreview, mediaPreview, diagramTextComparison, diagramLimits, captured, limits, pictureSourceProfile, audioSourceProfile, audioProjection, videoSourceProfile, videoProjection, pictureEditSaveProfile, fieldTextProfile } = captureImportOptions(options), signal = captured.signal;
   const metadataLevel = metadataSaveProfile === undefined ? 0 : METADATA_SAVE_PROFILES.indexOf(metadataSaveProfile) + 1;
   if (!(bytes instanceof Uint8Array)) throw new TypeError("Import input must be Uint8Array.");
   const view = byteViewInfo(bytes);
@@ -125,7 +128,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
     const currency = customCurrencyProjection ? await projectCurrencies(context, checkpoint) : undefined;
     const currencyValues = currency?.values;
     const decimalValues = customDecimalProjection ? await projectExactDecimals(context.metadata.custom?.properties ?? [], checkpoint) : undefined;
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues, decimalValues);
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues, decimalValues, sectionProjection === "collection-v1");
     const bindings: TextRunBinding[] | undefined = profile ? [] : undefined;
     const chartBindings: ChartValueBinding[] | undefined = chartEditSaveProfile ? [] : undefined;
     const chartLabelBindings: import("./chart-label-bindings.js").ChartLabelBinding[] | undefined = (chartEditSaveProfile === "existing-values-and-labels-v4" || chartEditSaveProfile === "existing-values-and-series-names-v5" || chartEditSaveProfile === "existing-series-order-v6") ? [] : undefined;
