@@ -143,6 +143,8 @@ For asset registration and dimensions, see [Core assets](core/assets.md). For ge
 
 `firstSlideNumber?: number` overrides the authored starting slide number in native PPTX output (integer 0–9999). When omitted, the authored value is used; when both are absent, the attribute remains absent. This setting is independent of Layout's field-cache refresh and application-specific numbering behavior. See [field evaluation](field-evaluation.md).
 
+An explicitly authored Core section collection exports as the native section extension when its ordered memberships cover every slide exactly once in presentation order; invalid or interleaved membership rejects export. Empty sections and repeated or absent names are supported. A legacy slide `section` label remains independent PPTKit slide metadata. One [PowerPoint save/reopen observation](../testing/authored-native-sections.md) covers named and empty sections; it does not establish source-preserving section editing or general native interoperability.
+
 Analysis diagnostics become export warnings with their code, message, path and element/slide/layout identity. Bounds and severity remain available through direct Layout analysis. Provider failures are recoverable warnings; invalid option configuration rejects before package generation. Analysis alone does not change PPTX bytes, native text formatting, or frame dimensions.
 
 ## Byte-backed resources

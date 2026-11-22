@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { createPresentation, normalizePresentation } from "../packages/core/dist/index.js";
 import { importPptx, inspectOpcPackage, inspectPptx } from "../packages/pptx-parser/dist/index.js";
 import { generatePptx } from "../packages/pptx-exporter/dist/index.js";
@@ -10,6 +13,29 @@ import { png, gif } from "../packages/pptx-parser/test/image-fixture.mjs";
 import { readGeneratedZip } from "../tests/support/read-generated-zip.mjs";
 import { structureFixture, encodeStructure } from "../packages/pptx-parser/test/structure-fixture.mjs";
 import { withSections } from "../packages/pptx-parser/test/sections-fixture.mjs";
+import { createFixture } from "../tests/fixtures/presentations.mjs";
+
+test("PowerPoint saved authored sections match independent XML and inspection", async () => {
+  const paths = ["tests/fixtures/authored-native-sections.pptx", "tests/fixtures/authored-native-sections-powerpoint.pptx"];
+  const hashes = ["194f12063b331f75cc262e1421ca16448b7bddca9527c51259b8d34a2f311344", "c9917f74ae175e53bb383442b56536b36d46400d58dd557bba305881cc819189"];
+  const expected = [
+    { id: "{FAB7F38F-4347-8A71-BA1E-92B419C6FFB6}", name: "Introduction", slides: [256] },
+    { id: "{904FEFB3-D01C-82AE-B51E-1AEA66183C25}", name: "Empty", slides: [] },
+    { id: "{C2F00318-F053-800A-9AE1-DFF72F376939}", name: "Conclusion", slides: [257] },
+  ];
+  const oracle = spawnSync("python3", ["scripts/research/inspect-authored-sections.py", ...paths], { encoding: "utf8" });
+  assert.equal(oracle.status, 0, oracle.stderr); assert.deepEqual(JSON.parse(oracle.stdout), [expected, expected]);
+  for (const [index, path] of paths.entries()) {
+    const bytes = await readFile(path);
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), hashes[index]);
+    const inspection = await inspectPptx(bytes);
+    assert.deepEqual(inspection.sectionList.sections.map(s => ({ id: s.id, name: s.name, slides: s.slides.map(slide => slide.id) })), expected);
+    assert.deepEqual(inspection.findings, []);
+  }
+  const document = createFixture("text", createPresentation), [a, b] = document.slides;
+  document.setSections([{ id: "intro", name: "Introduction", slideIds: [a.id] }, { id: "empty", name: "Empty", slideIds: [] }, { id: "end", name: "Conclusion", slideIds: [b.id] }]);
+  assert.deepEqual(Buffer.from((await generatePptx(document)).bytes), await readFile(paths[0]));
+});
 
 test("authored native sections preserve names, empty sections and numeric slide membership", async () => {
   const deck = createPresentation();

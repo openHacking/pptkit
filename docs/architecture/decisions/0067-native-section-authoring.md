@@ -10,4 +10,4 @@ Core permits unassigned or interleaved membership while editing. Fresh PPTX expo
 
 ## Boundaries
 
-Native inspection still reports source GUIDs and unknown extension data separately. Existing import projections only project member names as legacy slide labels; they do not reconstruct Core sections. A no-op source save preserves the original bytes, but changing the new collection is not a supported source-preserving edit. Native application interoperability and full source-to-Core section projection remain separate work.
+Native inspection still reports source GUIDs and unknown extension data separately. Existing import projections only project member names as legacy slide labels; they do not reconstruct Core sections. A no-op source save preserves the original bytes, but changing the new collection is not a supported source-preserving edit. A [PowerPoint observation](../../testing/authored-native-sections.md) confirms one authored named/empty-section sample through save and reopen; broader interoperability and full source-to-Core section projection remain separate work.
