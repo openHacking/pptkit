@@ -4,7 +4,7 @@ import type { PptxInspection } from "../types/structure.js";
 type Finding = (feature: string, operation: ImportFinding["operation"], tier: ImportFinding["tier"], source: PptxSourceLocation, reason: string, slideId?: string) => void;
 
 /** Core slide labels do not stand in for a native section collection. */
-export async function projectSections(inspection: PptxInspection, finding: Finding, checkpoint: () => Promise<void>, collectionProjection = false) {
+export async function projectSections(inspection: PptxInspection, finding: Finding, checkpoint: () => Promise<void>, collectionProjection = false, projectLabels = true) {
   const labels = new Map<number, string>(), diagnostics: ImportDiagnostic[] = [];
   const collection = inspection.sectionList;
   if (!collection) return { labels, diagnostics };
@@ -33,6 +33,10 @@ export async function projectSections(inspection: PptxInspection, finding: Findi
       await checkpoint();
       const slideId = `source-slide-${member.id}`;
       const at = { ...source, path: `${source.path}/sldIdLst/sldId[${memberIndex + 1}]`, relationshipId: member.relationshipId };
+      if (!projectLabels) {
+        finding("section.label", "import", "unsupported", at, "The collection-only projection leaves legacy slide labels unset; source names remain in the section collection and inspection.", slideId);
+        continue;
+      }
       if (section.name === undefined) {
         finding("section.label", "import", "unsupported", at, "The source section has no name; no label is inferred from its identity, order or neighboring sections.", slideId);
         continue;

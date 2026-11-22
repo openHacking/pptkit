@@ -959,22 +959,22 @@ test("opt-in native section collection agrees across Node, browser ESM and globa
   await page.addScriptTag({ content: await readFile(bundlePath("pptx-parser", "global"), "utf8") });
   const url = javascriptDataUrl(await readFile(bundlePath("pptx-parser", "esm")));
   const { importPptx } = await import("../packages/pptx-parser/dist/index.js");
-  for (const strict of [false, true]) {
+  for (const strict of [false, true]) for (const sectionProjection of ["collection-v1", "collection-v2"]) {
     const bytes = encodeStructure(withSections(structureFixture(strict)));
-    const node = await importPptx(bytes, { projection: "content", sectionProjection: "collection-v1" });
-    const expected = { sections: node.document.sections, report: node.report };
-    const results = await page.evaluate(async ({ bytes, url }) => {
+    const node = await importPptx(bytes, { projection: "content", sectionProjection });
+    const expected = { sections: node.document.sections, labels: node.document.slides.map(s => s.section ?? null), report: node.report };
+    const results = await page.evaluate(async ({ bytes, url, sectionProjection }) => {
       const esm = await import(url), output = [];
       for (const api of [esm, globalThis.PPTKit]) {
-        const s = await api.importPptx(new Uint8Array(bytes), { projection: "content", sectionProjection: "collection-v1" });
+        const s = await api.importPptx(new Uint8Array(bytes), { projection: "content", sectionProjection });
         const plan = await s.prepareSave({ mode: "no-op" });
         if (plan.status !== "ready") throw new Error("no-op save failed");
         const saved = (await s.save(plan.plan)).bytes;
         if (saved.length !== bytes.length || saved.some((value, index) => value !== bytes[index])) throw new Error("no-op bytes changed");
-        output.push({ sections: s.document.sections, report: s.report }); s.dispose();
+        output.push({ sections: s.document.sections, labels: s.document.slides.map(slide => slide.section ?? null), report: s.report }); s.dispose();
       }
       return output;
-    }, { bytes: [...bytes], url });
+    }, { bytes: [...bytes], url, sectionProjection });
     assert.deepEqual(results, [expected, expected]); node.dispose();
   }
   assert.deepEqual(requests, []);
@@ -987,10 +987,10 @@ test("section collection and mixed source edits agree across Node and browser", 
   await page.addScriptTag({ content: await readFile(bundlePath("pptx-parser", "global"), "utf8") });
   const url = javascriptDataUrl(await readFile(bundlePath("pptx-parser", "esm")));
   const input = await readFile("tests/fixtures/authored-native-sections.pptx");
-  async function exercise(api, source) {
+  async function exercise(api, source, sectionProjection) {
     let bytes = new Uint8Array(source); const rounds = [];
     for (let round = 1; round <= 3; round++) {
-      const s = await api.importPptx(bytes, { projection: "content", sectionProjection: "collection-v1", editSaveProfile: "text-runs-v3", metadataSaveProfile: "core-strings-v1", slideVisibilitySaveProfile: "attribute-v1" });
+      const s = await api.importPptx(bytes, { projection: "content", sectionProjection, editSaveProfile: "text-runs-v3", metadataSaveProfile: "core-strings-v1", slideVisibilitySaveProfile: "attribute-v1" });
       try {
         const slide = s.document.slides[0], element = slide.elements[0], changed = structuredClone(element);
         changed.content[0].runs[0].text = `Browser section ${round}`; slide.replaceElement(element.id, changed);
@@ -1001,12 +1001,16 @@ test("section collection and mixed source edits agree across Node and browser", 
     }
     return rounds;
   }
-  const { importPptx } = await import("../packages/pptx-parser/dist/index.js"), expected = await exercise({ importPptx }, input);
-  const actual = await page.evaluate(async ({ url, source, fn }) => {
-    const run = (0, eval)(`(${fn})`), esm = await import(url);
-    return [await run(esm, source), await run(globalThis.PPTKit, source)];
-  }, { url, source: [...input], fn: exercise.toString() });
-  assert.deepEqual(actual, [expected, expected]); assert.deepEqual(requests, []);
+  const { importPptx } = await import("../packages/pptx-parser/dist/index.js");
+  for (const sectionProjection of ["collection-v1", "collection-v2"]) {
+    const expected = await exercise({ importPptx }, input, sectionProjection);
+    const actual = await page.evaluate(async ({ url, source, fn, sectionProjection }) => {
+      const run = (0, eval)(`(${fn})`), esm = await import(url);
+      return [await run(esm, source, sectionProjection), await run(globalThis.PPTKit, source, sectionProjection)];
+    }, { url, source: [...input], fn: exercise.toString(), sectionProjection });
+    assert.deepEqual(actual, [expected, expected]);
+  }
+  assert.deepEqual(requests, []);
 });
 
 test("browser metadata matches Node for both dialects without fetching links or losing integer precision", async (t) => {

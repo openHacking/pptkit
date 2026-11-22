@@ -52,6 +52,10 @@ test("Node file adapter captures the explicit section collection projection", as
   assert.deepEqual(imported.session.document.sections.map(s => [s.name, s.slideIds]), [["Opening", ["source-slide-300"]], ["Empty", []], ["Closing", ["source-slide-256"]]]);
   const plan = await imported.session.prepareSave({ mode: "no-op" }); assert.equal(plan.status, "ready");
   assert.deepEqual(Buffer.from((await imported.session.save(plan.plan)).bytes), Buffer.from(bytes));
+  const collectionOnly = await importPptxFile(file, { projection: "structure", sectionProjection: "collection-v2" });
+  t.after(() => collectionOnly.session.dispose());
+  assert.deepEqual(collectionOnly.session.document.sections, imported.session.document.sections);
+  assert.deepEqual(collectionOnly.session.document.slides.map(slide => slide.section), [undefined, undefined]);
 });
 
 test('Node file adapter captures and uses the explicit existing-description profile', async t => {

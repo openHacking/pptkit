@@ -67,53 +67,58 @@ test("PowerPoint section rename changes one native name and its projected member
 });
 
 test("explicit native section collection projection survives three fresh exports", async () => {
-  let bytes = encodeStructure(withSections(structureFixture()));
-  let sourceGuid;
-  for (let round = 0; round < 3; round++) {
-    const session = await importPptx(bytes, { projection: "content", sectionProjection: "collection-v1" });
-    try {
-      const order = new Map(session.document.slides.map((slide, index) => [slide.id, index]));
-      assert.deepEqual(session.document.sections.map(section => [section.id, section.name, section.slideIds.map(id => order.get(id))]), [
-        ["source-section-1", "Opening", [0]], ["source-section-2", "Empty", []], ["source-section-3", "Closing", [1]],
-      ]);
-      const noOp = await session.prepareSave({ mode: "no-op" }); assert.equal(noOp.status, "ready");
-      assert.equal(Buffer.compare(Buffer.from((await session.save(noOp.plan)).bytes), Buffer.from(bytes)), 0);
-      const guids = session.report.inspection.sectionList.sections.map(s => s.id);
-      if (round === 0) sourceGuid = guids[0]; else assert.notEqual(guids[0], sourceGuid);
-      bytes = (await generatePptx(session.document)).bytes;
-      const native = await inspectPptx(bytes);
-      assert.deepEqual(native.sectionList.sections.map(s => [s.name, s.slides.map(slide => slide.id)]), [["Opening", [256]], ["Empty", []], ["Closing", [257]]]);
-    } finally { session.dispose(); }
+  for (const sectionProjection of ["collection-v1", "collection-v2"]) {
+    let bytes = encodeStructure(withSections(structureFixture()));
+    let sourceGuid;
+    for (let round = 0; round < 3; round++) {
+      const session = await importPptx(bytes, { projection: "content", sectionProjection });
+      try {
+        const order = new Map(session.document.slides.map((slide, index) => [slide.id, index]));
+        assert.deepEqual(session.document.sections.map(section => [section.id, section.name, section.slideIds.map(id => order.get(id))]), [
+          ["source-section-1", "Opening", [0]], ["source-section-2", "Empty", []], ["source-section-3", "Closing", [1]],
+        ]);
+        const noOp = await session.prepareSave({ mode: "no-op" }); assert.equal(noOp.status, "ready");
+        assert.equal(Buffer.compare(Buffer.from((await session.save(noOp.plan)).bytes), Buffer.from(bytes)), 0);
+        const guids = session.report.inspection.sectionList.sections.map(s => s.id);
+        if (round === 0) sourceGuid = guids[0]; else assert.notEqual(guids[0], sourceGuid);
+        bytes = (await generatePptx(session.document)).bytes;
+        const native = await inspectPptx(bytes);
+        assert.deepEqual(native.sectionList.sections.map(s => [s.name, s.slides.map(slide => slide.id)]), [["Opening", [256]], ["Empty", []], ["Closing", [257]]]);
+        if (sectionProjection === "collection-v2") assert.doesNotMatch(readGeneratedZip(bytes).get("ppt/slides/slide1.xml").toString(), /&quot;section&quot;/);
+      } finally { session.dispose(); }
+    }
   }
 });
 
 test("projected sections coexist with mixed text, metadata and visibility source saves", async () => {
-  let bytes = await readFile("tests/fixtures/authored-native-sections.pptx");
-  const options = { projection: "content", sectionProjection: "collection-v1", editSaveProfile: "text-runs-v3", metadataSaveProfile: "core-strings-v1", slideVisibilitySaveProfile: "attribute-v1" };
-  for (let round = 1; round <= 3; round++) {
-    const before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
-    try {
-      const sections = session.document.sections, slide = session.document.slides[0], text = slide.elements[0];
-      const changed = structuredClone(text); changed.content[0].runs[0].text = `Section test ${round}`;
-      slide.replaceElement(text.id, changed);
-      session.document.setMetadata({ ...session.document.metadata, title: `Title ${round}` });
-      session.document.slides[1].setHidden(round % 2 === 0);
-      const ready = await session.prepareSave({ mode: "edit" }); assert.equal(ready.status, "ready", JSON.stringify(ready.report));
-      const badSections = session.document.sections.map((section, index) => index === 0 ? { ...section, name: "Changed" } : section);
-      session.document.setSections(badSections);
-      await assert.rejects(session.save(ready.plan), error => error.code === "save-snapshot-stale");
-      assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
-      session.document.setSections(sections);
-      bytes = (await session.save(ready.plan)).bytes;
-      assert.deepEqual(readGeneratedZip(bytes).get("ppt/presentation.xml"), before.get("ppt/presentation.xml"));
-      const reopened = await importPptx(bytes, options);
+  for (const sectionProjection of ["collection-v1", "collection-v2"]) {
+    let bytes = await readFile("tests/fixtures/authored-native-sections.pptx");
+    const options = { projection: "content", sectionProjection, editSaveProfile: "text-runs-v3", metadataSaveProfile: "core-strings-v1", slideVisibilitySaveProfile: "attribute-v1" };
+    for (let round = 1; round <= 3; round++) {
+      const before = readGeneratedZip(bytes), session = await importPptx(bytes, options);
       try {
-        assert.deepEqual(reopened.document.sections, sections);
-        assert.equal(reopened.document.metadata.title, `Title ${round}`);
-        assert.equal(reopened.document.slides[0].elements[0].content[0].runs[0].text, `Section test ${round}`);
-        assert.equal(reopened.document.slides[1].hidden, round % 2 === 0);
-      } finally { reopened.dispose(); }
-    } finally { session.dispose(); }
+        const sections = session.document.sections, slide = session.document.slides[0], text = slide.elements[0];
+        const changed = structuredClone(text); changed.content[0].runs[0].text = `Section test ${round}`;
+        slide.replaceElement(text.id, changed);
+        session.document.setMetadata({ ...session.document.metadata, title: `Title ${round}` });
+        session.document.slides[1].setHidden(round % 2 === 0);
+        const ready = await session.prepareSave({ mode: "edit" }); assert.equal(ready.status, "ready", JSON.stringify(ready.report));
+        const badSections = session.document.sections.map((section, index) => index === 0 ? { ...section, name: "Changed" } : section);
+        session.document.setSections(badSections);
+        await assert.rejects(session.save(ready.plan), error => error.code === "save-snapshot-stale");
+        assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
+        session.document.setSections(sections);
+        bytes = (await session.save(ready.plan)).bytes;
+        assert.deepEqual(readGeneratedZip(bytes).get("ppt/presentation.xml"), before.get("ppt/presentation.xml"));
+        const reopened = await importPptx(bytes, options);
+        try {
+          assert.deepEqual(reopened.document.sections, sections);
+          assert.equal(reopened.document.metadata.title, `Title ${round}`);
+          assert.equal(reopened.document.slides[0].elements[0].content[0].runs[0].text, `Section test ${round}`);
+          assert.equal(reopened.document.slides[1].hidden, round % 2 === 0);
+        } finally { reopened.dispose(); }
+      } finally { session.dispose(); }
+    }
   }
 });
 

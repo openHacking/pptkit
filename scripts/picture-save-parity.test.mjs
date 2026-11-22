@@ -18,8 +18,8 @@ import { section, withSections } from '../packages/pptx-parser/test/sections-fix
 
 test('section projection coexists with combined picture and slide-number source saves', async () => {
   const unknown = '<s:extLst><p:ext xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" uri="urn:future"><u:data xmlns:u="urn:future"/></p:ext></s:extLst>';
-  const options = { projection: 'content', sectionProjection: 'collection-v1', pictureEditSaveProfile: 'replace-v1', firstSlideNumberSaveProfile: 'attribute-v2' };
-  for (const strict of [false, true]) {
+  for (const strict of [false, true]) for (const sectionProjection of ['collection-v1', 'collection-v2']) {
+    const options = { projection: 'content', sectionProjection, pictureEditSaveProfile: 'replace-v1', firstSlideNumberSaveProfile: 'attribute-v2' };
     let bytes = encodeImages(withSections(imageFixture(picture(), strict), section([300], 'name="Opening"', unknown) + section([], 'name="Empty"') + section([256], 'name="Closing"')));
     for (let round = 1; round <= 3; round++) {
       const session = await importPptx(bytes, options), before = readGeneratedZip(bytes).get('deck/main.data').toString();

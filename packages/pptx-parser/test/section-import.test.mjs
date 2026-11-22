@@ -34,6 +34,24 @@ test("opt-in section collections retain names, empty entries and stable source m
   }
 });
 
+test("collection-v2 keeps native sections independent of legacy slide labels", async () => {
+  for (const strict of [false, true]) for (const projection of ["structure", "content"]) {
+    const fixture = withSections(structureFixture(strict)), bytes = encodeStructure(fixture);
+    const session = await importPptx(bytes, { projection, sectionProjection: "collection-v2" });
+    try {
+      assert.deepEqual(session.document.sections.map(s => [s.name, s.slideIds]), [["Opening", ["source-slide-300"]], ["Empty", []], ["Closing", ["source-slide-256"]]]);
+      assert.deepEqual(session.document.slides.map(s => s.section), [undefined, undefined]);
+      assert.ok(session.report.findings.some(f => f.feature === "section.label" && f.operation === "import" && f.tier === "unsupported"));
+      assert.equal(session.report.sectionSources.length, 3);
+      const ready = await session.prepareSave({ mode: "no-op" }); assert.equal(ready.status, "ready");
+      equalBytes((await session.save(ready.plan)).bytes, bytes);
+      session.document.setSections(session.document.sections.map((s, index) => index === 0 ? { ...s, name: "Renamed" } : s));
+      assert.deepEqual(session.document.slides.map(s => s.section), [undefined, undefined]);
+      assert.equal((await session.prepareSave({ mode: "edit" })).status, "blocked");
+    } finally { session.dispose(); }
+  }
+});
+
 test("collection projection retains partial and out-of-order membership without changing default imports", async () => {
   for (const [body, members, exportTier] of [
     [section([300]), [["source-slide-300"]], "unsupported"],

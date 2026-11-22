@@ -58,7 +58,7 @@ export async function verifyTextSourceAncestry(elements: readonly XmlTextSourceE
 
 export async function prepareTextCandidate(
   source: Uint8Array, candidate: NormalizedPresentation, analysis: TextEditAnalysis,
-  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean, decimalSave?: boolean, sectionProjection?: boolean,
+  options: PptxInspectionOptions, limits: Required<PptxSessionLimits>, checkpoint: () => Promise<void>, diagramPreview?: PptxImportOptions["diagramPreview"], textFontProfile?: PptxImportOptions["textFontProfile"], notesTextProfile?: PptxImportOptions["notesTextProfile"], fieldTextProfile?: PptxImportOptions["fieldTextProfile"], currencySave?: boolean, decimalSave?: boolean, sectionProjection?: "collection-v1" | "collection-v2",
 ): Promise<{ bytes: Uint8Array; validationBytes: number; validationWork: number } | { diagnostics: readonly ImportDiagnostic[] }> {
   try {
     await checkpoint();

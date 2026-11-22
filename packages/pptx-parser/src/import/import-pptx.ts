@@ -46,7 +46,7 @@ export const DEFAULT_SESSION_LIMITS: Readonly<Required<PptxSessionLimits>> = Obj
 export function captureImportOptions(options: PptxImportOptions) {
   if (!options || typeof options !== "object" || Array.isArray(options)) throw new TypeError("importPptx requires explicit projection: structure or content.");
   const sectionProjection = options.sectionProjection;
-  if (sectionProjection !== undefined && sectionProjection !== "collection-v1") throw new TypeError("sectionProjection requires collection-v1.");
+  if (sectionProjection !== undefined && sectionProjection !== "collection-v1" && sectionProjection !== "collection-v2") throw new TypeError("sectionProjection requires collection-v1 or collection-v2.");
   const mode = options.projection;
   if (mode !== "structure" && mode !== "content") throw new TypeError("importPptx requires explicit projection: structure or content.");
   const customCurrencyProjection = options.customCurrencyProjection;
@@ -127,7 +127,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
     const currency = customCurrencyProjection ? await projectCurrencies(context, checkpoint) : undefined;
     const currencyValues = currency?.values;
     const decimalValues = customDecimalProjection ? await projectExactDecimals(context.metadata.custom?.properties ?? [], checkpoint) : undefined;
-    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues, decimalValues, sectionProjection === "collection-v1");
+    const projection = await projectStructure(inspection, limits.maxReportFindings, checkpoint, masterArtwork ? context : undefined, ["artwork-v5", "artwork-v6", "artwork-v7", "artwork-v8", "artwork-v9", "artwork-v10", "artwork-v11"].includes(masterArtwork ?? ""), currencyValues, decimalValues, sectionProjection);
     const bindings: TextRunBinding[] | undefined = profile ? [] : undefined;
     const chartBindings: ChartValueBinding[] | undefined = chartEditSaveProfile ? [] : undefined;
     const chartLabelBindings: import("./chart-label-bindings.js").ChartLabelBinding[] | undefined = (chartEditSaveProfile === "existing-values-and-labels-v4" || chartEditSaveProfile === "existing-values-and-series-names-v5" || chartEditSaveProfile === "existing-series-order-v6") ? [] : undefined;
@@ -295,7 +295,7 @@ export async function importPresentation(bytes: Uint8Array, options: PptxImportO
       ...(firstNumberBinding ? { firstNumberBinding } : {}), ...(descriptionBindings ? { descriptionBindings, descriptionBatch: drawingNameSaveProfile !== undefined || decorativeSaveProfile !== undefined || descriptionEditSaveProfile === 'batch-v3' || descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5', descriptionMixed: descriptionEditSaveProfile === 'mixed-v4' || descriptionEditSaveProfile === 'mixed-v5' } : {}),
       ...(pictureEditSaveProfile ? { pictureSources: pictureSources! } : {}), ...(fieldTextProfile ? { fieldTextProfile } : {}),
       ...(customCurrencyProjection === "exact-save-v2" || customCurrencyProjection === "exact-save-v3" ? { currencySave: true } : {}), ...(customDecimalProjection === "exact-save-v2" || customDecimalProjection === "exact-save-v3" ? { decimalSave: true } : {}),
-      ...(sectionProjection ? { sectionProjection: true } : {}),
+      ...(sectionProjection ? { sectionProjection } : {}),
       options: { ...(diagramTextComparison ? { diagramTextComparison } : {}), diagramLimits, limits: captured.limits, xmlLimits: captured.xmlLimits, zipLimits: captured.zipLimits },
     } : undefined;
     abort();

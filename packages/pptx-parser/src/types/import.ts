@@ -328,7 +328,7 @@ export interface PptxSessionLimits {
 }
 export interface PptxImportOptions extends PptxInspectionOptions {
   /** Opt in to an independently identified Core section collection. */
-  sectionProjection?: "collection-v1";
+  sectionProjection?: "collection-v1" | "collection-v2";
   /** Exact currency projection; exact-save-v3 combines with exact decimal structural saves. */
   customCurrencyProjection?: "exact-v1" | "exact-save-v2" | "exact-save-v3";
   /** Explicit exact decimal projection; exact-save-v2 requires scalar-v1; exact-save-v3 requires append or create source saves. */

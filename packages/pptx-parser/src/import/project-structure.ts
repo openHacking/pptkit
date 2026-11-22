@@ -8,7 +8,7 @@ import type { structureContext } from "../presentation/structure-context.js";
 import { contentReader } from "./content-reader.js";
 
 export interface MasterOwner { kind: "master" | "layout" | "slide"; id: string; name: string; part: string; masterId?: string; layoutPart?: string; showMasterShapes?: boolean }
-export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false, currencyProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], decimalProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], sectionProjection = false) {
+export async function projectStructure(inspection: PptxInspection, maxFindings: number, checkpoint: () => Promise<void>, context?: Awaited<ReturnType<typeof structureContext>>, backgrounds = false, currencyProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], decimalProjection?: readonly (import("@pptkit/core").CustomDocumentProperty | undefined)[], sectionProjection?: "collection-v1" | "collection-v2") {
   const source = { part: inspection.mainPart, relationshipId: inspection.mainRelationshipId };
   if (inspection.kind !== "presentation" || inspection.macroEnabled) throw new PptxImportError("import-unsupported", "This import profile accepts non-macro presentation documents only, not templates or slideshows.", source);
   for (const part of inspection.package.parts) {
@@ -143,7 +143,7 @@ export async function projectStructure(inspection: PptxInspection, maxFindings: 
   }
   identities.push({ kind: "presentation", id: document.id, source });
   finding("presentation-dimensions", "import", "editable", { ...source, path: "presentation/sldSz" }, "Exact source EMUs are converted to Core points using 12700 EMU per point.");
-  const sections = await projectSections(inspection, finding, checkpoint, sectionProjection);
+  const sections = await projectSections(inspection, finding, checkpoint, sectionProjection !== undefined, sectionProjection !== "collection-v2");
   diagnostics.push(...sections.diagnostics);
   for (const slide of inspection.slides) {
     await checkpoint();
