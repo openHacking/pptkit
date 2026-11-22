@@ -37,6 +37,35 @@ test("PowerPoint saved authored sections match independent XML and inspection", 
   assert.deepEqual(Buffer.from((await generatePptx(document)).bytes), await readFile(paths[0]));
 });
 
+test("PowerPoint section rename changes one native name and its projected member label", async () => {
+  const before = await readFile("tests/fixtures/authored-native-sections-powerpoint.pptx");
+  const after = await readFile("tests/fixtures/authored-native-sections-powerpoint-renamed.pptx");
+  assert.equal(createHash("sha256").update(after).digest("hex"), "fad6dee9fa187d29318035f287d27b7dd01c9cca484aeea4c7be777726beb398");
+  const oracle = spawnSync("python3", ["scripts/research/inspect-authored-sections.py", "tests/fixtures/authored-native-sections-powerpoint.pptx", "tests/fixtures/authored-native-sections-powerpoint-renamed.pptx"], { encoding: "utf8" });
+  assert.equal(oracle.status, 0, oracle.stderr);
+  const [sourceSections, targetSections] = JSON.parse(oracle.stdout);
+  assert.deepEqual(targetSections, sourceSections.map((section, index) => index === 0 ? { ...section, name: "Renamed α & Test" } : section));
+  const original = readGeneratedZip(before), edited = readGeneratedZip(after);
+  assert.deepEqual([...original.keys()].sort(), [...edited.keys()].sort());
+  const changedParts = [...original.keys()].filter(name => !original.get(name).equals(edited.get(name))).sort();
+  assert.deepEqual(changedParts, ["docProps/app.xml", "docProps/core.xml", "ppt/presentation.xml", "ppt/viewProps.xml"]);
+  const sourceXml = original.get("ppt/presentation.xml").toString(), targetXml = edited.get("ppt/presentation.xml").toString();
+  assert.equal(sourceXml.split("Introduction").length, 2);
+  assert.equal(sourceXml.replace("Introduction", "Renamed α &amp; Test"), targetXml);
+  const options = { projection: "content", sectionProjection: "collection-v1" };
+  const a = await importPptx(before, options), b = await importPptx(after, options);
+  try {
+    assert.deepEqual(a.document.sections.map(s => s.name), ["Introduction", "Empty", "Conclusion"]);
+    assert.deepEqual(b.document.sections.map(s => s.name), ["Renamed α & Test", "Empty", "Conclusion"]);
+    assert.deepEqual(a.document.sections.map(s => s.slideIds), b.document.sections.map(s => s.slideIds));
+    assert.deepEqual(a.report.inspection.sectionList.sections.map(s => s.id), b.report.inspection.sectionList.sections.map(s => s.id));
+    assert.equal(a.document.slides[0].section, "Introduction"); assert.equal(b.document.slides[0].section, "Renamed α & Test");
+    a.document.setSections(a.document.sections.map((section, index) => index === 0 ? { ...section, name: "Renamed α & Test" } : section));
+    assert.equal((await a.prepareSave({ mode: "edit" })).status, "blocked");
+    assert.equal(a.document.slides[0].section, "Introduction");
+  } finally { a.dispose(); b.dispose(); }
+});
+
 test("explicit native section collection projection survives three fresh exports", async () => {
   let bytes = encodeStructure(withSections(structureFixture()));
   let sourceGuid;
