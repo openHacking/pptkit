@@ -360,7 +360,7 @@ test('custom property authoring and import agree across Node, browser ESM and gl
   const variantInput = [...encodeMetadata(variants)], expectedVariants = await exerciseIntegerVariants({ importPptx }, variantInput);
   const escapedReservation = metadataFixture(); escapedReservation.add('custom', custom(2, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x0041_"') + custom(3, 'lpwstr', 'old', 'name="B"'));
   const escapedInput = [...encodeMetadata(escapedReservation)], expectedEscapedReservation = await exerciseEscapedReservation({ importPptx }, escapedInput);
-  const collision = metadataFixture(); collision.add('custom', custom(2, 'lpwstr', 'first', 'name="_x005F_x0041_"') + custom(3, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x005f_x0041_"') + custom(4, 'lpwstr', 'a', 'name="A"') + custom(5, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x0041_"')); 
+  const collision = metadataFixture(); collision.add('custom', custom(2, 'lpwstr', 'first', 'name="_x005F_x0041_"') + custom(3, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x005f_x0041_"') + custom(4, 'lpwstr', 'a', 'name="A"') + custom(5, 'vector', '<v:lpstr>x</v:lpstr>', 'name="_x0041_"'));
   const collisionInput = [...encodeMetadata(collision)];
   const collisionSession = await importPptx(new Uint8Array(collisionInput), { projection: 'content' });
   const expectedCollision = { properties: collisionSession.document.metadata.customProperties, tiers: collisionSession.report.findings.filter(item => item.feature === 'metadata.custom-property').map(item => item.tier) };

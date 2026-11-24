@@ -38,4 +38,3 @@ export function inspectMp4MovieDuration(input: Uint8Array, options: IsoBmffInspe
   if (durationMs === undefined) throw new TypeError("MP4 movie header is missing.");
   return durationMs;
 }
-

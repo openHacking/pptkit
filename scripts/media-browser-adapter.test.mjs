@@ -462,7 +462,18 @@ test('explicit presentation lifetime keeps audio playing across slide changes an
       await Promise.all([ready(continuous), ready(slideAudio)]); await Promise.all([continuous.play(), slideAudio.play()]);
       await new Promise(resolve => setTimeout(resolve, 180)); const before = continuous.element.currentTime; pageOne.abort(); slideHost.replaceChildren();
       const slideDisposed = slideAudio.state.status === 'disposed' && slideHost.children.length === 0, afterSlide = { urls: live.size, shared: !sharedSignal.aborted };
-      await new Promise(resolve => setTimeout(resolve, 220)); const advanced = continuous.element.currentTime > before + 0.08 && !continuous.element.paused;
+      // The media clock can start late under parallel browser load. Wait for
+      // actual progress, with a bounded deadline, instead of assuming 220 ms
+      // of wall time always advances playback.
+      const advanced = await new Promise(resolve => {
+        const deadline = performance.now() + 3000;
+        const check = () => {
+          if (continuous.element.currentTime > before + 0.08 && !continuous.element.paused) return resolve(true);
+          if (continuous.element.paused || performance.now() >= deadline) return resolve(false);
+          setTimeout(check, 50);
+        };
+        check();
+      });
       const pageTwo = new AbortController(), second = await pool.mount(slideHost, 'score', { ...opts, signal: pageTwo.signal }); await ready(second); const independent = second.element.paused && !continuous.element.paused;
       pageTwo.abort(); show.abort();
       return { loads, slideDisposed, afterSlide, advanced, independent, final: { urls: live.size, aborted: sharedSignal.aborted, status: continuous.state.status, nodes: stage.querySelectorAll('audio').length } };

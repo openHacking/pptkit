@@ -39,6 +39,19 @@ test("invalid replacement is atomic and never guesses membership by name", () =>
   deck.addSlide({ id: "c" }); assert.deepEqual(deck.sections, before);
 });
 
+test("section capture reads bounded array entries rather than inherited iterators", () => {
+  const deck = createPresentation(); deck.addSlide({ id: "a" });
+  const maliciousPrototype = Object.assign(Object.create(Array.prototype), { [Symbol.iterator]: function* () { yield "not-an-entry"; } });
+  const members = ["a"]; Object.setPrototypeOf(members, maliciousPrototype);
+  const sections = [{ id: "wanted", slideIds: members }]; Object.setPrototypeOf(sections, maliciousPrototype);
+  deck.setSections(sections);
+  assert.deepEqual(deck.sections, [{ id: "wanted", slideIds: ["a"] }]);
+  const before = deck.sections;
+  const changing = [{ get id() { changing.push({ id: "extra", slideIds: [] }); return "new"; }, slideIds: [] }];
+  assert.throws(() => deck.setSections(changing), /changed during capture/);
+  assert.deepEqual(deck.sections, before);
+});
+
 test("section creation, rename, boundary moves, merge and deletion use explicit identities", () => {
   const deck = createPresentation({ id: "deck" });
   for (const id of ["a", "b", "c", "d"]) deck.addSlide({ id });
